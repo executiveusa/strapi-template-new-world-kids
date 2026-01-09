@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "E:/DESKTOP BACKUP FILES/NEW WORLD KIDS"
+		}
+	],
+	"settings": {
+		"tailwindCSS.classAttributes": [
+			"class",
+			"className",
+			"ngClass",
+			".*Styles*",
+			".*ClassName*"
+		],
+		"typescript.tsdk": "node_modules/typescript/lib",
+		"git.timeline.showUncommitted": true,
+		"git.terminalGitEditor": true,
+		"git.showPushSuccessNotification": true
+	}
+}

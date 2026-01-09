@@ -1,0 +1,253 @@
+{
+  // ============================================================================
+  // NEW WORLD KIDS - CUSTOM SNIPPETS
+  // AI-assisted code snippets for common patterns
+  // ============================================================================
+  
+  "React Component with TypeScript": {
+    "prefix": "nwk-component",
+    "body": [
+      "'use client';",
+      "",
+      "import { FC } from 'react';",
+      "",
+      "interface ${1:ComponentName}Props {",
+      "  $2",
+      "}",
+      "",
+      "export const ${1:ComponentName}: FC<${1:ComponentName}Props> = ({ $3 }) => {",
+      "  return (",
+      "    <div className=\"$4\">",
+      "      $0",
+      "    </div>",
+      "  );",
+      "};",
+      ""
+    ],
+    "description": "Create a new React component with TypeScript"
+  },
+  
+  "Next.js Server Action": {
+    "prefix": "nwk-action",
+    "body": [
+      "'use server';",
+      "",
+      "import { revalidatePath } from 'next/cache';",
+      "",
+      "export async function ${1:actionName}(formData: FormData) {",
+      "  const $2 = formData.get('$3') as string;",
+      "  ",
+      "  // TODO: Implement action logic",
+      "  $0",
+      "  ",
+      "  revalidatePath('/$4');",
+      "  return { success: true };",
+      "}",
+      ""
+    ],
+    "description": "Create a Next.js server action"
+  },
+  
+  "Supabase Query": {
+    "prefix": "nwk-supabase",
+    "body": [
+      "import { createClient } from '@/lib/supabase/server';",
+      "",
+      "export async function ${1:queryName}() {",
+      "  const supabase = createClient();",
+      "  ",
+      "  const { data, error } = await supabase",
+      "    .from('${2:table_name}')",
+      "    .select('$3')",
+      "    $0;",
+      "  ",
+      "  if (error) throw error;",
+      "  return data;",
+      "}",
+      ""
+    ],
+    "description": "Create a Supabase database query"
+  },
+  
+  "API Route Handler": {
+    "prefix": "nwk-api",
+    "body": [
+      "import { NextRequest, NextResponse } from 'next/server';",
+      "",
+      "export async function ${1|GET,POST,PUT,DELETE|}(request: NextRequest) {",
+      "  try {",
+      "    $0",
+      "    ",
+      "    return NextResponse.json({ success: true });",
+      "  } catch (error) {",
+      "    console.error('API Error:', error);",
+      "    return NextResponse.json(",
+      "      { error: 'Internal Server Error' },",
+      "      { status: 500 }",
+      "    );",
+      "  }",
+      "}",
+      ""
+    ],
+    "description": "Create a Next.js API route handler"
+  },
+  
+  "Ghost CMS Query": {
+    "prefix": "nwk-ghost",
+    "body": [
+      "import { getGhostClient } from '@/lib/ghost/client';",
+      "",
+      "export async function ${1:fetchPosts}() {",
+      "  const ghost = getGhostClient();",
+      "  ",
+      "  const posts = await ghost.posts.browse({",
+      "    limit: ${2:10},",
+      "    include: 'tags,authors',",
+      "    $0",
+      "  });",
+      "  ",
+      "  return posts;",
+      "}",
+      ""
+    ],
+    "description": "Create a Ghost CMS query"
+  },
+  
+  "AI Agent Function": {
+    "prefix": "nwk-agent",
+    "body": [
+      "import { OpenAI } from 'openai';",
+      "",
+      "const openai = new OpenAI({",
+      "  apiKey: process.env.OPENAI_API_KEY,",
+      "});",
+      "",
+      "export async function ${1:agentFunction}(prompt: string) {",
+      "  const completion = await openai.chat.completions.create({",
+      "    model: '${2|gpt-4-turbo,claude-3-5-sonnet,gemini-2.0-flash|}',",
+      "    messages: [",
+      "      {",
+      "        role: 'system',",
+      "        content: '$3',",
+      "      },",
+      "      {",
+      "        role: 'user',",
+      "        content: prompt,",
+      "      },",
+      "    ],",
+      "    temperature: ${4:0.7},",
+      "    max_tokens: ${5:2000},",
+      "  });",
+      "  ",
+      "  return completion.choices[0].message.content;",
+      "}",
+      ""
+    ],
+    "description": "Create an AI agent function"
+  },
+  
+  "Docker Compose Service": {
+    "prefix": "nwk-docker",
+    "body": [
+      "${1:service-name}:",
+      "  build:",
+      "    context: ./${2:path}",
+      "    dockerfile: Dockerfile",
+      "  container_name: ${3:container-name}",
+      "  environment:",
+      "    - NODE_ENV=production",
+      "    $4",
+      "  ports:",
+      "    - \"${5:3000}:${5:3000}\"",
+      "  volumes:",
+      "    - ./${2:path}:/app",
+      "  restart: unless-stopped",
+      "  networks:",
+      "    - nwk-network",
+      "$0"
+    ],
+    "description": "Add a Docker Compose service"
+  },
+  
+  "MCP Server Tool": {
+    "prefix": "nwk-mcp-tool",
+    "body": [
+      "{",
+      "  name: '${1:tool_name}',",
+      "  description: '${2:Tool description}',",
+      "  inputSchema: {",
+      "    type: 'object',",
+      "    properties: {",
+      "      ${3:param}: {",
+      "        type: '${4|string,number,boolean,object,array|}',",
+      "        description: '${5:Parameter description}',",
+      "      },",
+      "    },",
+      "    required: ['${3:param}'],",
+      "  },",
+      "},",
+      "$0"
+    ],
+    "description": "Create an MCP server tool definition"
+  },
+  
+  "Fundraising Campaign Component": {
+    "prefix": "nwk-campaign",
+    "body": [
+      "'use client';",
+      "",
+      "import { useState } from 'react';",
+      "import { motion } from 'framer-motion';",
+      "",
+      "interface CampaignProps {",
+      "  goal: number;",
+      "  raised: number;",
+      "  daysRemaining: number;",
+      "}",
+      "",
+      "export function ${1:CampaignComponent}({ goal, raised, daysRemaining }: CampaignProps) {",
+      "  const [donationAmount, setDonationAmount] = useState(0);",
+      "  const progress = (raised / goal) * 100;",
+      "  ",
+      "  return (",
+      "    <motion.div",
+      "      initial={{ opacity: 0, y: 20 }}",
+      "      animate={{ opacity: 1, y: 0 }}",
+      "      className=\"bg-gradient-to-br from-green-900 to-blue-900 p-8 rounded-2xl\"",
+      "    >",
+      "      <h2 className=\"text-3xl font-bold mb-4\">${2:Campaign Title}</h2>",
+      "      ",
+      "      {/* Progress Bar */}",
+      "      <div className=\"bg-gray-800 h-4 rounded-full overflow-hidden mb-4\">",
+      "        <motion.div",
+      "          initial={{ width: 0 }}",
+      "          animate={{ width: `\\${progress}%` }}",
+      "          className=\"bg-green-500 h-full\"",
+      "        />",
+      "      </div>",
+      "      ",
+      "      {/* Stats */}",
+      "      <div className=\"grid grid-cols-3 gap-4 text-center\">",
+      "        <div>",
+      "          <div className=\"text-2xl font-bold\">\\${raised.toLocaleString()}</div>",
+      "          <div className=\"text-sm text-gray-400\">Raised</div>",
+      "        </div>",
+      "        <div>",
+      "          <div className=\"text-2xl font-bold\">\\${goal.toLocaleString()}</div>",
+      "          <div className=\"text-sm text-gray-400\">Goal</div>",
+      "        </div>",
+      "        <div>",
+      "          <div className=\"text-2xl font-bold\">{daysRemaining}</div>",
+      "          <div className=\"text-sm text-gray-400\">Days Left</div>",
+      "        </div>",
+      "      </div>",
+      "      ",
+      "      $0",
+      "    </motion.div>",
+      "  );",
+      "}",
+      ""
+    ],
+    "description": "Create a fundraising campaign component"
+  }
+}
