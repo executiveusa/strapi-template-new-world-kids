@@ -1,0 +1,636 @@
+UI/UX Design Review and Recommendations
+Design Audit Summary (Steve Krug’s Heuristics)
+Intuitive & Self-Explanatory Design: The portfolio’s interface should require minimal cognitive effort
+to navigate. Currently, users may need to think too much about how to view projects or navigate the
+site. According to Krug’s first law, the UI must be self-explanatory and clear. We recommend
+simplifying labels, buttons, and icons so their purpose is immediately obvious (e.g. clear “View
+Project” calls-to-action on cards). Use familiar icons (like a magnifier for view, an X for close) and
+make interactive elements visually distinct (buttons, hover highlights). This reduces cognitive
+load and aligns with the “Don’t Make Me Think” principle.
+Scannable Content & Visual Hierarchy: Users scan pages rather than read every word , so the
+layout must highlight key info. Currently, project titles or section headings might not stand out
+enough. Design each page like a billboard – with a clear, concise message or title prominently visible
+within seconds. Use a strong visual hierarchy: for example, make the portfolio owner’s name or
+page title immediately visible in the hero, use large project titles, and supportive subtitles. Ensure
+font sizes and weights guide the eye (large/bold for titles, medium for subtitles, regular for
+descriptions). Avoid clutter around key content; generous whitespace and concise text will help
+users find relevant info quickly.
+Simplified Choices & Navigation: The user flow should offer mindless, straightforward choices
+. Currently, if projects open in new pages or external sites, it might disorient users or lead to
+premature exits. Instead, adopt a modal-first approach : clicking a project card opens a focused
+modal overlay with project details, rather than a separate page. This keeps users in context and
+prevents them from leaving unintentionally. Provide a single prominent action in the modal (“Open
+Project Site”) for those who want to dive deeper. By reducing the steps (one click to open modal, one
+more to visit external link if desired) and keeping the back action simple (close modal to return), we
+minimize required decisions and clicks. Also ensure the navigation (if any menu or links) is
+consistent and visible – e.g., a sticky menu icon or clearly labeled sections – so users always know
+how to get around without confusion.
+
+Omit Needless Elements: In line with Krug’s guidance, remove or refine any unnecessary text or
+design elements. Each project card, for instance, should display only the essential information
+(project name, a short one-liner or category, and maybe an indicative image). Avoid long
+descriptions on the main grid – detailed info can live inside the modal. Likewise, trim instructional
+text; for example, instead of a banner saying “Click on a card to view details”, make the cards
+themselves clearly clickable with hover effects, thereby showing affordance instead of telling.
+Simplicity and clarity in content will improve user focus. Every label and piece of text on the site
+should be purposeful and concise, supporting quick understanding.
+•
+1
+2
+•^3
+4 5 • 6 6 • 7 8
+Color Scheme & Psychology
+The current color palette should be evaluated for the emotions it evokes and its contrast effectiveness.
+Colors significantly influence user perceptions – studies show 84% of users cite color scheme as a key
+factor in their decisions or interest. Ensure the chosen colors align with the portfolio’s desired impression
+(e.g. a creative tech portfolio might use an energetic accent color, whereas a design studio might use a
+sophisticated or calming palette). For example, using a bold accent (like a vibrant blue or neon green) for
+interactive elements can signal creativity and action, while a dark background can convey sophistication or
+a modern tech feel – as seen on GSAP’s award-winning site which uses neon green on black to convey
+energy. However, balance is key: use a neutral or dark backdrop with high contrast text for readability,
+and one or two accent colors for consistency. Each color should have a role (primary action, background,
+hover state, etc.), and these should remain consistent to reduce cognitive load. Leverage color psychology
+carefully by considering associations (e.g. blue for trust , green for growth/freshness , red for excitement
+) but always ensure adequate contrast (meeting WCAG AA standards for text). The portfolio’s color
+scheme should not only be aesthetically pleasing but also guide attention – for instance, a consistent accent
+color on all clickable buttons and links tells users “this color means action.”
+
+Inspiration from Awwwards References
+We draw design inspiration from top-tier awwwards sites provided in the references to elevate the aesthetic
+and UX:
+
+Immersive Full-Page Hero: A signature full-page hero section should greet users on every page,
+establishing a strong first impression. For example, the Yogamaya site’s redesign is described as
+“immersive and informative, like the studio itself” – meaning the visuals and layout immediately
+convey the site’s purpose and vibe. Following this, we recommend a fullscreen hero on the portfolio
+with striking imagery or a subtle animation that reflects your personal brand. The hero should
+persist as a recognizable element across pages (more on this in Hero Section Integration below). This
+aligns with best-in-class designs: Yogamaya uses a clean, fullscreen single-page layout with
+engaging transitions and even unconventional navigation to keep the experience lively. Similarly,
+Alejandro Schintu’s portfolio blends storytelling with performance, using large background visuals
+and micro-interactions to captivate viewers. We should aim for a balance of creativity and
+clarity – e.g., a hero with an interactive 3D graphic (Spline) or looping video that doesn’t distract from
+the headline text. The hero must also include a clear title or tagline that tells visitors what this site is
+(e.g. “Jeremy Bowers – Projects & Portfolio”) within seconds of landing.
+GSAP-Level Interactivity: Modern interactive touches can set the portfolio apart. The GSAP site
+(awwwards SOTD) demonstrates “super fun hero animations” and smooth scrolling effects to engage
+users immediately. We can incorporate subtle animations: for instance, project cards can have
+hover effects (slight zoom or content reveal), scroll-triggered reveal animations for sections, and a
+polished modal opening transition (fading or sliding down). These should be tasteful and not
+overwhelming – the goal is to add a sense of sophistication and delight (as seen on high-end sites)
+without hampering usability. Micro-interactions (small hover responses, button press effects) provide
+feedback and make the interface feel responsive and alive. All animation should be performant
+(leveraging CSS transforms or lightweight GSAP/Framer Motion for more complex sequences) and
+should degrade gracefully on mobile (where reduced motion might be preferred).
+9
+10
+•
+11
+12
+13 14
+•
+15
+14
+Consistent Visual Style (Awwwards Aesthetic): Across the site, maintain a cohesive, modern
+aesthetic inspired by award-winning designs. This includes bold typography , ample whitespace, and
+thoughtful use of imagery. For instance, top portfolios often use large sans-serif headings paired
+with minimalist layouts to let content breathe. We recommend using a consistent type scale and
+perhaps an elegant font pairing (one for headings, one for body) that echoes the style seen on
+awwwards sites (many use clean geometric sans-serifs or stylish serifs for character). Ensure the
+visual hierarchy is beautiful: maybe the project cards each feature a cover image with an overlay
+and a sleek text treatment, similar to an “elements gallery” inspiration from awwwards. The
+color palette should also be consistent site-wide – for example, Yogamaya sticks to two main colors
+(warm beige and dark teal) for coherence. Choose your brand colors and apply them uniformly
+for backgrounds, text, accents, and interactive states. Finally, transitions between states (hover,
+modal open/close, page scroll) should be smooth (around 200–300ms ease animations) to mirror the
+polished feel of sites like Yogamaya and others.
+Recommended UI/UX Improvements (Design Upgrades & Rationale)
+Below is a detailed list of necessary design and layout upgrades, with rationale for each improvement:
+
+Redesign Project Cards for Clarity & Impact: The project cards should be visually striking and
+immediately communicate each project at a glance. We suggest converting the current cards into
+image-driven cards with an overlay: a high-quality screenshot or thumbnail fills the card, overlaid
+by the project title and a brief subtitle/category. This mirrors the awwwards “gallery” style that
+engages users with visuals first. On hover (or tap on mobile), the card can subtly elevate or
+reveal additional info (e.g. a short description or a “View More” icon) – providing an affordance that
+it’s clickable. Use Tailwind utility classes to implement a smooth hover transition (transition-
+transform duration-300 ease-out, etc.). The improved design will grab attention via imagery
+and clear titles, aligning with Krug’s advice that important info should be prominent and easily found
+. By reducing textual clutter on the card (just a concise title and maybe one line of context), we
+let users scan the projects quickly and decide where to click. The rationale is that a visual card
+both appeals emotionally (users get a sneak peek of the project) and reduces effort in understanding
+what the project is about.
+
+Implement Modal-Only Project Details: Replace any separate project detail pages with modal
+overlays. When a user clicks a project card, load a modal that contains the project’s detailed
+information (extended description, technologies, big screenshot carousel, etc.) on top of the project
+list page. This keeps the user in one context – they don’t lose the scroll position or the surrounding
+context of the portfolio. It also follows a consistent interaction logic: every project is explored in the
+same way (click -> modal) rather than a mix of new tabs or internal pages. This modal-first logic
+prevents accidental page exits and aligns with a “don’t make me think” approach by providing a
+straightforward, reversible action (open modal, close modal) instead of a potentially confusing
+navigation. For SEO and shareability, each modal can correspond to a unique URL (e.g. /
+projects/project-name) using Next.js routing, but when opened from the main page it behaves
+as a modal (we will use Next.js 13+ routing techniques to intercept routes and render modals).
+Ensure the modal has an obvious close button (top-right “×”) and clicking the dimmed background or
+pressing Esc also closes it – adhering to usability best practices. Inside the modal, include an “Open
+Project” button that either opens the live project site in a new tab (recommended to avoid losing the
+portfolio) or navigates to a full project page if needed. This two-step approach (modal preview then
+•
+16 17
+18
+12
+1.
+16
+4
+19
+2.
+6
+explicit open) provides the user a quick preview without commitment, reducing pogo-sticking and
+keeping the overall experience smooth.
+Enhanced Layout Structure & Responsiveness: Refine the site’s layout for mobile, tablet,
+desktop, and large screens , ensuring a responsive, fluid experience at all breakpoints. Start mobile-
+first: on small screens (iOS/Android), use a single-column layout for project cards (stacked vertically)
+or a horizontal scroll gallery if that better showcases visuals. All touch targets (cards, buttons) should
+be at least ~44px in height to meet mobile accessibility. The design must account for notched devices
+include CSS safe-area insets if necessary so content isn’t cut off on iPhone (e.g. padding at top/
+bottom where needed). On tablets, switch to a two-column grid of cards with appropriate gutters.
+On desktop, a masonry or uniform grid of three columns works well for a portfolio; use Tailwind’s
+grid classes (e.g. grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6) so that at lg
+breakpoint and above, users see three projects in a row. The hero section on mobile could condense
+to fit the smaller screen (e.g. maybe hide non-essential decorative elements, ensure text is readable
+on small screens by using responsive text sizes). Every breakpoint should be tested : the hero text
+should never overflow or become too small, and modals on mobile should occupy the full screen
+(with perhaps a slightly different styling – e.g. slide up from bottom, since that feels natural on
+mobile). By respecting each breakpoint’s needs, we guarantee the site looks and works great on all
+devices. The outcome is a cohesive experience, where nothing feels “squeezed in” or broken. Users
+on any device will find the interface natural – a critical factor since mobile web usage is high.
+Full-Page Hero Section Integration: Establish a persistent full-page hero as a signature style
+across the site. The hero should serve as a dynamic backdrop or header that reinforces your brand/
+design aesthetic. For example, it might be a fixed background element with subtle animation (using
+Spline’s 3D canvas or a looping video) that is visible on the homepage and still subtly present when a
+modal is open or when scrolling. We must ensure this hero does not conflict with the Spline
+animation – practically, this means layering the hero and Spline correctly: the Spline 3D object can
+be integrated within the hero section or as a background layer. Use z-index to keep interactive UI
+elements (navigation, cards, modals) above the Spline canvas, and possibly pause or simplify the
+animation when a modal opens to reduce distraction. The hero content (text/logo) should also
+remain accessible: for instance, Alejandroschintu’s site uses large background visuals but keeps text
+legible by overlaying color gradients or high-contrast text. We can apply similar techniques (like a
+dark overlay behind hero text or blur effect on the Spline background when scrolling) to maintain
+readability. Persisting the hero on every page (including project detail modals) can be achieved by
+placing it in a Next.js layout component that wraps all pages. This way, navigating or opening
+modals doesn’t re-render or remove the hero; it might just dim or animate subtly in the background.
+This approach, seen in sites like Yogamaya and Alejandro Schintu , creates continuity and a strong
+brand identity – the user is always aware of the site’s overarching theme, providing a memorable
+experience. Best practices from similar sites show that a fullscreen hero with interactive elements
+can dramatically increase engagement if done right , so long as performance is optimized (lazy-
+load heavy assets, use requestAnimationFrame for animations, etc.).
+Consistent Interaction & Navigation Logic: Unify how interactive elements behave throughout the
+site. Every button, link, or card should follow a consistent style and response so users aren’t
+surprised. For instance, hover and active states should be uniform (all buttons perhaps lighten or
+elevate on hover, all links maybe underline or change color on hover). Use Tailwind to apply these
+states globally (e.g. define a utility or use component classes). Navigation elements (like a
+3.
+4.
+13
+12
+5.
+hamburger menu or section links) should appear in the same place and style on each page (consider
+a sticky top nav icon, or a slide-out menu that covers the hero if needed). If using an unusual
+navigation (as inspired by Yogamaya’s “unusual navigation” tag ), ensure it remains intuitive: for
+example, if sections scroll horizontally or a custom cursor is used, provide visual cues or instructions
+in a subtle way. Interaction logic consistency also means things like the modal behavior should be
+the same for each project (e.g. clicking background always closes it, the close [X] is in a predictable
+corner). By maintaining consistency, we leverage user learned behavior – once they open one
+project, they’ll know how all others work, eliminating guesswork. This directly ties to Krug’s principle
+of not making users figure things out repeatedly. Also, ensure external links (like an “Open
+Project” or social links) are clearly indicated (perhaps with an external link icon and opening in new
+tabs with rel="noopener"). Consistency extends to animations too: if we use a fade-in for content
+on one page, use similar transition patterns on others for a coherent feel. Overall, a user should feel
+the site is one unified product with a clear logic, rather than a collection of disparate pieces.
+Improved Visual Hierarchy & Typography: Revisit typography and spacing to establish a clear
+visual hierarchy. Make sure the project titles (on cards and in modals) are prominent – they should
+likely be one of the largest text elements, as they are key info. Use a consistent heading style for all
+project titles. Supporting text (like project type, date, or a short description) should be visibly
+subordinate (smaller size or lighter color). We recommend using 2-3 font sizes in a card: e.g. title
+large, subtitle small, and nothing more. Additionally, ensure adequate contrast between text and
+background (use Tailwind classes like text-white on dark overlays, etc., and consider semi-
+transparent overlays on images to keep text readable). The visual hierarchy must guide the eye in
+the correct order: Hero title first, then section title (“Projects”), then individual project titles, etc.,
+without competition. This aligns with Krug’s advice that font size, color, and contrast help
+differentiate importance. Also, enforce consistent spacing: equal padding inside cards, uniform
+margin between grid items, and logical spacing between sections (e.g. more space above a section
+title than between items within the section). A consistent 8px or 4px baseline grid can be used with
+Tailwind’s spacing scale to maintain rhythm. These typographic and layout tweaks will make the site
+look polished and professional (an awwwards-like quality) and reduce the effort for users to parse
+content. When the hierarchy is clear, users can instantly find the project name, then optionally read
+the smaller details – matching how people scan pages.
+Color and Contrast Enhancements: Fine-tune the color usage for both aesthetics and function.
+Choose a primary brand color and an accent that will be used for interactive elements (buttons,
+links, hover states). Ensure this color is used consistently to create a familiar pattern (e.g. if the
+accent is orange, all clickable highlights and icons use that shade). Check contrast: if the hero uses a
+vibrant background, overlay a translucent dark layer under text or use lighter text to ensure
+readability. Utilize color psychology to support content – for example, if you want to convey
+creativity and energy, a pop of a warm color (like a bright coral or yellow) on hover can subliminally
+add excitement, whereas a cooler blue might convey trustworthiness for your portfolio. Keep in
+mind that colors trigger emotions and associations , but they must also align with personal
+branding. If the current palette feels off (e.g. too many clashing colors or a color that doesn't match
+the content’s mood), consider a refresh inspired by the references: Yogamaya’s palette (#ebdcc
+beige and #0b2a2b dark teal) creates a calm, modern feel for a yoga studio – in a tech portfolio
+context, one might choose a dark charcoal background and one vivid neon or pastel accent for a
+sleek yet creative vibe (similar to GSAP’s neon green on black for a techy excitement ).
+Additionally, implement a dark/light mode toggle if possible: many modern sites offer this, and it
+12
+3
+6.
+5
+19
+7.
+10
+18
+9
+enhances user comfort. If implementing, ensure the design in both modes remains consistent in
+quality (this is optional but a nice touch for an awwwards-level site). Lastly, verify all text meets
+accessibility contrast ratios; use Tailwind classes like bg-gray-800 text-gray-100 for dark
+sections, etc., to guarantee readability.
+Responsive Media and Performance: Optimize images and media for fast loading and adaptability.
+Each project card likely features a screenshot – use Next.js’s built-in Image component for efficient
+loading (with next/image you get automatic resizing and formats). Provide a placeholder for
+each image (blur-up or a solid color) so that even while loading, the card has a visual placeholder.
+This avoids layout jank and gives the impression of speed. Also, implement layout skeletons for
+content that loads asynchronously: for example, if project details are fetched on modal open, show a
+skeleton modal state (with grey blocks for image and text) while waiting. This approach is supported
+by UX research: users perceive interfaces as faster and more reliable when skeletons or spinners
+indicate progress, rather than staring at nothing. Tailwind can be used to create skeleton styles (e.g.
+animate-pulse bg-gray-700 elements for placeholders). Make sure media queries are used to
+maybe load smaller images on mobile to save bandwidth. Given Alejandro Schintu’s portfolio touts
+an LCP (Largest Contentful Paint) of 1.3s , performance is part of the awwwards aesthetic too.
+Thus, audit the site for any heavy scripts or unoptimized assets (like huge images) and address
+those. Use modern techniques: compress images, use prefetch for modal content if possible, and
+perhaps code-split the modal component so it’s not loaded until needed. The result will be a snappy
+experience where design enhancements don’t compromise load times – crucial for both user
+experience and SEO.
+Accessibility Improvements: As we refine the design, we must also ensure it’s accessible to all
+users. This includes proper aria labels and roles for interactive components. For example, the
+modal container should have role="dialog" and aria-modal="true", and the modal’s close
+button should be an actual <button> with aria-label="Close modal" so screen readers
+announce it. All images (especially project screenshots) need meaningful alt text describing the
+project or image content (or use empty alt if purely decorative). Ensure keyboard navigation works:
+users should be able to tab through project cards and open the modal via keyboard (thus each card
+should be an accessible link or button). When the modal opens, trap focus inside it (so Tab key loops
+within the modal controls) and return focus to the triggering element when closed – many libraries
+or a bit of JS can handle this. Also, design with sufficient color contrast (as noted) and avoid using
+color alone to signify meaning (e.g. an error message should not rely solely on red color without an
+icon or text indicating error). If any animations are intense, provide a prefers-reduced-motion
+fallback (CSS @media (prefers-reduced-motion) to disable or simplify certain motions for
+those who opt out). By addressing these, the site will not only be compliant with standards but also
+provide a frictionless experience to a wider audience , in line with the principle of not making
+users (of all abilities) think too hard or struggle with the interface.
+Design for Deployment & Portability: Lastly, structure the project’s frontend code and assets in a
+way that’s easy to containerize and deploy across various services (Railway, Vercel, Hostinger, Coolify,
+GCP, etc.). This is more of a developer experience improvement, but it ties into design insofar as
+ensuring no platform-specific assumptions in the UI. For example, avoid hard-coding service URLs or
+credentials in the frontend; instead use environment variables (which Docker containers can swap
+out easily). From a design standpoint, this means any third-party integrations (like Google Fonts,
+Spline embed links, etc.) should be easily configurable so that deploying to a different host doesn’t
+8.
+13
+9.
+10.
+break them. Ensure that building the Next.js app for static export or SSR works consistently (e.g. no
+reliance on runtime that isn’t available). Using Tailwind and Next.js 15 means most styling is static
+and can be containerized without issues. We should also provide documentation for how to run the
+project in Docker (though not building the Dockerfile here, just note that the app listens on a port via
+Next, uses npm run build && npm start which can be containerized). By keeping the design
+and codebase platform-agnostic, you can deploy the same beautiful UI/UX to any host effortlessly.
+This “design ops” consideration ensures your polished design isn’t locked to one environment – an
+important practical improvement for a portfolio that might need to be moved or scaled in the future.
+The above improvements focus on visual and UX enhancements while respecting best practices. Each
+recommendation aims to reduce user effort, heighten aesthetic appeal, and maintain consistency – all
+critical factors for an intuitive and memorable site (as emphasized by Krug ). Next, we translate some
+of these recommendations into actual component design, focusing on the Project Card UI and how it can
+be implemented with Tailwind CSS and React.
+
+Upgraded Project Card Component (Tailwind + React)
+Below is an example implementation of a redesigned ProjectCard component in Next.js 15 (React) using
+Tailwind CSS. This card design follows the awwwards-inspired aesthetic: featuring a visual preview, a textual
+overlay, and smooth interactive states. It is fully responsive and accessible, and includes a placeholder
+skeleton logic for loading states.
+
+// components/ProjectCard.jsx – A card showcasing a project with image, title,
+etc.
+import Imagefrom'next/image';
+import { useState} from'react';
+functionProjectCard({ project, onClick}) {
+// Props: project { id, title, subtitle, imageSrc, altText }, onClick handler
+for when card is clicked
+const{ title, subtitle, imageSrc, altText} = project;
+const[imageLoaded, setImageLoaded] = useState(false);
+return(
+<div
+className="group relative rounded-xl overflow-hidden bg-gray-800 shadow-lg
+cursor-pointer"
+onClick={onClick}
+onKeyDown={(e) => {if(e.key ==='Enter') onClick();}}
+role="button" tabIndex={0}
+aria-label={`View project: ${title}`}
+>
+{/* Project image */}
+<divclassName={`transition-all duration-500 ease-out
+${imageLoaded? 'scale-100 blur-0' :'scale-105 blur-lg'}
+20 3
+group-hover:scale-105 group-hover:blur-0`}>
+<Image
+src={imageSrc}
+alt={altText|| title}
+width={800} height={600} // exampledimensions
+className="object-cover w-full h-full"
+onLoadingComplete={()=> setImageLoaded(true)}
+placeholder="blur"
+blurDataURL="/placeholder.png"
+/>
+</div>
+{/* Overlay with title and subtitle */}
+<divclassName="absolute inset-0 flex flex-col justify-end
+p-4 bg-gradient-to-t from-black/80 via-black/20 to-
+transparent
+transition-colors duration-300 ease-in-out">
+<h3 className="text-xl md:text-2xl font-semibold text-white drop-shadow-
+md">
+{title}
+</h3>
+{subtitle&&
+<p className="mt-1 text-sm md:text-base text-gray-200 drop-shadow">
+{subtitle}
+</p>
+}
+</div>
+{/* Hover overlay (e.g., a "View More" indicator) */}
+<divclassName="absolute inset-0 bg-black/10 opacity-
+group-hover:opacity-100 transition-opacity duration-
+ease-in-out pointer-events-none"/>
+</div>
+);
+}
+export defaultProjectCard;
+In this code:
+
+The card is a focusable
+to behave like a button (ensuring
+keyboard accessibility). It calls onClick on Enter key for accessibility.
+We wrap the image in a container that applies a slight blur and scale effect until the image loads, giving a
+smooth image loading placeholder (using blurDataURL from Next Image for a low-res placeholder).
+The Tailwind classes swap from blur-lg scale-105 to blur-0 scale-100 once loaded, and on
+hover, we scale the image up slightly for a dynamic feel.
+A translucent gradient overlay at the bottom provides a dark backdrop for text (ensuring readability over
+any image) and is achieved with bg-gradient-to-t from-black/80 ... to-transparent. The
+project title and subtitle are placed within, using Tailwind typography utilities (responsive text sizes so they
+scale on md screens and above). We also add a slight text shadow (drop-shadow) to boost contrast
+against the background.
+
+Another overlay (
+with a semi-transparent black) fades in on hover via group-
+hover:opacity-100. This could be used to display an icon or simply to indicate interactivity. It’s marked
+pointer-events-none so it doesn’t block clicks – it’s purely decorative.
+The card has rounded corners and a subtle shadow (rounded-xl shadow-lg), aligning with modern
+design trends (slight neumorphism without overdoing). The background (bg-gray-800) is a fallback solid
+color that shows if the image hasn’t loaded yet, and also glimpses through on the edges around the image.
+All hover and focus states are handled: e.g., group-hover:scale-105 on the image for a subtle zoom
+effect; we could also add focus:outline-none focus:ring-4 on the card for an outline when
+keyboard-focused for accessibility (not shown above but recommended).
+The card is fully responsive: using relative units and letting the parent grid control its width. The text sizes
+use Tailwind’s responsive modifiers so, for example, the title is text-xl on mobile and text-2xl on
+medium screens, ensuring it scales nicely.
+This component delivers a polished project card that matches an awwwards-level aesthetic: it’s visually
+engaging (image with overlay, animation), clear in what it represents (title always visible with good
+contrast), and provides feedback on interaction (hover effects). It also considers performance (blur-up
+image) and accessibility (roles and keyboard interaction).
+
+Responsive Behavior: The above card will size itself to its container. In a grid layout, you might use
+something like:
+
+// Example usage in a grid
+<divclassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+{projects.map(prj => (
+<ProjectCard key={prj.id} project={prj} onClick={()=> openModal(prj.id)} />
+))}
+</div>
+This grid will show 1 column on mobile, 2 on tablets, 3 on desktop, with a consistent gap. The card’s internal
+layout (text overlay) already adapts text size for md (≈768px) and up, but you can tweak breakpoints as
+needed. On very large screens, you might increase the max-width for the grid container to avoid overly
+stretched layouts (e.g., wrap the grid in max-w-6xl mx-auto to cap width).
+
+Developer Handoff: Implementation Details (PRD)
+To ensure a smooth developer handoff, below is a Product Requirement Document (PRD) style breakdown
+of the components, naming conventions, props, states, and other considerations for implementing these
+design upgrades in a React/Next.js 15 project with TailwindCSS:
+
+Component Structure & Naming: We will create modular, clearly named components:
+HeroSection: Full-page hero banner, containing the signature background (Spline or hero media)
+and introductory text.
+•
+•
+ProjectCard: Individual project preview card (as coded above).
+ProjectList or ProjectsGrid: The section that maps through projects to display a responsive
+grid of ProjectCards.
+ProjectModal: The modal component that shows detailed info about a project.
+Layout: A Next.js layout component that wraps pages, used to include persistent elements like the
+HeroSection or a global header.
+We use PascalCase for React components and camelCase for props and local variables. Classes and
+IDs (if any) will be kebab-case (but we primarily use Tailwind utility classes rather than custom CSS
+classes).
+Props and Data Flow:
+ProjectCard expects a project object prop with at least { id, title, subtitle,
+imageSrc, altText }. We can extend this to include anything needed for a card display (like a
+placeholder image or a category tag). It also takes an onClick prop to handle opening the modal.
+This keeps it flexible: you can pass a function that sets some state or navigates to a route.
+ProjectModal will likely accept either the full project data or an id which it uses to fetch data
+(depending on how data is managed, e.g., could use Next.js dynamic routes or a context). Key props:
+project (with detailed info), and possibly onClose callback.
+If using Next.js App Router with dynamic segments, ProjectModal might be rendered via route
+(for SEO). In that case, the ProjectList page would include something like:
+{ modalProjectId && <ProjectModalproject={...} onClose={...} /> }
+and use Next’s useRouter to manage modalProjectId from the URL (using shallow routing or
+intercepting routes).
+HeroSection may accept props like title, subtitle or perhaps children (if we allow
+different text per page, but as per spec it’s global and persistent, so likely hardcoded content or site-
+wide config).
+We will ensure prop names are self-explanatory. For instance, use imageSrc instead of just src
+in project data to clarify it’s an image URL.
+State and Modal Logic:
+For modals, we can use React state or context to track if a modal is open and which project is in view.
+For example, clicking a ProjectCard sets currentProjectId state in the parent. This triggers
+rendering of ProjectModal.
+Alternatively, leverage Next.js routing: each project detail could be accessible at /projects/[id]
+with a dedicated page that, if accessed normally, shows the details (for SEO), but if accessed via the
+main page, is shown as an overlay. Next 13+ App Router offers intercepting routes for modals – we
+can configure the routing so that when navigation happens client-side, the ProjectModal is
+shown atop the current page.
+• • • • • • • • • • • • • •
+The modal component should handle its own close mechanism: perhaps by calling onClose prop
+or using router.back() if using routes (so that the URL goes back to /#projects without the
+modal).
+Animation States: Use Tailwind utility classes or headless UI transitions to animate modal
+appearance. For example, add a CSS transition for opacity/transform on the modal wrapper (e.g.
+start with opacity-0 translate-y-4 and animate to opacity-100 translate-y-0). For
+finer control, a library like Framer Motion or React Spring can provide springy animations (which
+aligns with an interactive aesthetic). The ProjectCard hover animations we handled with CSS
+(scale/blur).
+Global State: If needed (for example, to prevent background scrolling when modal is open), we
+might use a context or simply add a overflow-hidden class to <body> or a parent container
+when any modal opens. This prevents double-scrolling issues.
+Styling Conventions:
+TailwindCSS will be the primary way to style, ensuring consistency and rapid UI changes. We’ll use
+the design system enforced by Tailwind’s config (e.g., using the default color palette or extending it
+with brand colors). Naming of classes is handled by Tailwind, but we will keep our JSX structured
+semantically (header, main, section, etc., as appropriate).
+We will use responsive modifiers (sm:, md:, lg:, xl:) extensively to tailor the UI at different
+breakpoints, as demonstrated in the ProjectCard code. The breakpoint definitions can be
+Tailwind’s defaults (e.g., sm ~ 640px, md ~ 768px, etc.) which cover generic mobile, tablet, desktop
+sizes. Additionally, we’ll test on actual devices (Chrome dev tools device emulation for iPhone/
+Android sizes) to fine-tune any specific issues (like iOS Safari’s bottom bar overlap – usually handled
+by safe-area CSS if needed).
+Naming in Code: We maintain intuitive naming for state variables and handlers, e.g.,
+isModalOpen, setModalOpen, selectedProject, etc., for clarity.
+Assets & Image Handling:
+All project screenshots will be managed via Next.js Image component for optimal performance. We
+will store these images locally or on a CDN and provide multiple sizes if necessary. Using Image
+with fill or fixed dimensions ensures the layout doesn’t shift. We will take advantage of
+blurDataURL (as shown) to have a low-quality placeholder (LQIP) effect, which is visually
+appealing and indicates loading.
+In case an image fails to load or isn’t provided, we will have a placeholder image or color. For
+example, a solid gray background with a default “image not available” icon centered (or simply keep
+the card background as a neutral color with the title still visible).
+The design includes skeleton loaders : for project cards, if content is loading, we can show a
+<ProjectCardSkeleton /> – which could be a simplified version of the card with no image (just
+a gray rectangle and some gray bars for text, using Tailwind’s animate-pulse). This prepares the
+user for incoming content and keeps the layout stable. Similarly, when opening a modal, if the
+project data is not immediately ready, show a ModalSkeleton (perhaps a blank image frame and
+some loading lines) for a moment. These skeleton components won’t need many props (just maybe
+a flag for “isDarkMode” if we want to adjust colors), and they use hardcoded placeholder elements.
+• • • • • • • • • • •
+Animations & Micro-Interactions:
+Use CSS transitions (via Tailwind classes) for simple hovers and fades. For example, the card uses
+transition-transform and transition-opacity utilities. We ensure the duration and
+easing are consistent across components (e.g., 200–300ms ease-out for most hover effects, which
+feels quick but smooth).
+For more complex sequences (like a staggered reveal of cards on page load, or the hero text
+animating in), consider using a small JavaScript utility or intersection observers. For instance, we can
+add a Tailwind class that sets initial opacity 0 and translate down, and then add a class (via a React
+effect or when element comes into viewport) to animate it in. There are also Tailwind plugins for
+scroll reveal if needed.
+If integrating GSAP for complex animations (since GSAP was referenced), we must ensure it doesn’t
+bloat performance. GSAP could be used for the hero animation or for orchestrating staggered
+animations of cards on page load. This would involve writing some JS in useEffect hooks to animate
+refs. It’s an enhancement but not strictly required – CSS might suffice for most interactions. We’ll
+choose the simplest tool for each job to keep maintenance easy.
+Hero Section Implementation:
+The HeroSection component will be placed in a Next.js layout so it’s present on all pages. This
+component might contain the Spline embed. Typically, Spline provides an <iframe> or <canvas>
+embed code. We should load this responsibly (maybe lazy-load it after initial paint to avoid blocking
+LCP).
+The hero’s content (like a headline, subheadline, maybe a call-to-action scroll prompt) should be in
+HTML so it’s accessible and SEO-friendly (e.g., <h1> for the name or main tagline). Position this
+content either centered or appropriately on the hero, and use Tailwind utilities to style (text color,
+size, etc., plus maybe an animation class).
+To avoid conflict with the Spline animation: if Spline is interactive (users can drag or click it), we must
+ensure it doesn’t overlap essential navigation or content. Possibly set pointer-events: none on
+the Spline canvas when a modal is open or when content covers it, so it doesn’t capture scroll or
+clicks unexpectedly.
+On smaller devices, the hero might be simplified – e.g., maybe show a static image fallback if the 3D
+is too heavy, or hide some secondary text to fit the screen. This can be done with responsive
+conditionals in JSX or CSS (e.g., a md:block hidden to only show an element on medium+
+screens).
+Link Logic & Routing (Modal-First):
+Use Next.js routing such that clicking a card does
+router.push('/projects/[id]', { shallow: true }) (shallow navigation) to update the
+URL without full page load, and the page component detects this and shows ProjectModal. This
+way, if someone directly visits /projects/[id], we can render the project details page (for SEO),
+but in the context of the main page, it appears as a modal. Next.js 13+ can also handle modals via
+route groups – we could set up a parallel route for modals that overlays on the main route. The exact
+implementation can vary, but the key is no full page reload on opening a project. It should feel
+• • • • • • • • • • •
+instantaneous and reversible with the Back button (Back should simply close the modal and restore
+the listing page state).
+The “Open Site” button in the modal should use target="_blank" for external projects to respect
+the idea of not navigating them away. If the project detail is internal (like case study page), then that
+button could navigate internally – but given the prompt, likely it’s external project links. Clearly label
+it (e.g., “ Open Live Site”) and perhaps use an external-link icon for clarity.
+Also ensure that hitting the browser back button when a modal is open closes the modal (this will
+happen naturally if we manage URL state correctly). Conversely, forward navigation (if user arrived
+via a direct link to a project) should allow them to close to go back to the main list (so the routes
+need to be well-linked).
+Accessibility & Testing:
+After implementing, test keyboard navigation: tab through the page – the focus order should
+logically flow through the hero CTA (if any) to the project cards (each card gets focus outline). When a
+card is focused and Enter is pressed, the modal opens and focus should move into the modal
+(perhaps to the modal’s close button or the modal heading). We’ll utilize libraries or manage focus
+manually using refs.
+Test with a screen reader (like NVDA/VoiceOver) to ensure that the modal announcement is clear
+(“Dialog: [Project Title], showing details...” which we can achieve by aria-labelledby linking the modal
+title).
+Check color contrast with tools or Tailwind’s documentation to ensure all text is AA compliant at
+least.
+If possible, test on actual mobile devices or emulators to verify the responsive UI and that
+performance of animations is good (especially the Spline embed – ensure it’s not using too much
+CPU on mobile; if it is, consider offering an option to pause it or a static fallback).
+Docker & Deployment Considerations:
+While we are not writing a Dockerfile here, ensure that the app can run on Node in a container
+without issues. That means file paths and environment configs should be flexible. For instance, if
+using any file system route reading (unlikely in frontend), account for container paths. Use
+environment variables for any API endpoints or keys (Next.js supports this via process.env and can
+be configured in Vercel, Railway easily).
+The final app should build with next build and start with next start. All environment-specific
+differences (development vs production) should be handled by Next.js config or environment
+variables, so containerizing is straightforward.
+We should also ensure that our design doesn’t rely on any functionality that would break in a
+container (for example, if we used WebGL via Spline, ensure any required polyfills or permissions are
+handled).
+Provide documentation (in README) for steps to run the app, e.g., “npm install && npm run
+build && npm run start” for production, which will be the same commands used in most
+hosting platforms (including Docker).
+For services like Vercel, since the site is Next.js, deployment is seamless – just ensure no build
+warnings or errors from our changes (Tailwind should be configured properly with Next). For others
+• • • • • • • • • • • • •
+like Railway or Coolify that use Docker, confirm that the port is configurable (by default Next runs on
+3000, which is fine) and no hard-coded domains (use relative URLs or environment base URLs).
+By following this PRD and the code patterns given, the development team can implement the upgraded
+design with confidence. The result will be a modern, responsive, and user-friendly portfolio that
+embodies Steve Krug’s usability principles (“don’t make me think”), leverages color and visual psychology for
+impact, and takes inspiration from award-winning designs to deliver an outstanding user experience. The
+interface will be intuitive at first glance, delightful to interact with, and performant across devices –
+ensuring that the content (your projects) shine and users remember the experience.
+
+Sources: Applied Steve Krug’s usability principles and color psychology insights in formulating
+recommendations. Drew inspiration from Awwwards-winning designs like Yogamaya (immersive, clean fullscreen
+layout ) and GSAP (engaging hero animations ) to guide aesthetic and interaction enhancements.
+
+6 Guiding Principles from the “Don’t Make Me Think” by Steve Krug |
+by Yashasvini Raghuvanshi | Medium
+https://medium.com/@yashu02raghuwanshi/6-guiding-principles-from-the-dont-make-me-think-by-steve-krug-8dde3797abe
+
+GSAP - Awwwards SOTD
+https://www.awwwards.com/sites/gsap
+
+Color psychology refers to how colo.txt
+file://file_000000006b0872309c04b713074479a
+
+YOGAMAYA - Awwwards Honorable Mention
+https://www.awwwards.com/sites/yogamaya
+
+Alejandro Schintu | Web design - Awwwards Nominee
+https://www.awwwards.com/sites/alejandro-schintu-web-design
+
+design awwwards inspirations.txt
+file://file_000000007578720cb6e3d33f17573af
+
+21 3
+11 12 15
+1 2 3 4 5 6 7 8 19 20 21
+9 15
+10
+11 12 18
+13 14
+16 17
+This is a offline tool, your data stays locally and is not send to any server!
+Fe

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "typeRoots": ["./node_modules/@types", "../../node_modules/@types"],
+    "moduleResolution": "NodeNext",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

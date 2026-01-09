@@ -1,0 +1,142 @@
+{
+  // ============================================================================
+  // NEW WORLD KIDS - TASK AUTOMATION
+  // Common development tasks
+  // ============================================================================
+  
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Start: Next.js Dev Server",
+      "type": "npm",
+      "script": "dev",
+      "path": "apps/web/",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$tsc-watch"],
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Build: Next.js Production",
+      "type": "npm",
+      "script": "build",
+      "path": "apps/web/",
+      "group": "build",
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "Docker: Build All Services",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["-f", "docker-compose.coolify.yml", "build"],
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Docker: Start All Services",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["-f", "docker-compose.coolify.yml", "up", "-d"],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Docker: Stop All Services",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["-f", "docker-compose.coolify.yml", "down"],
+      "group": "test"
+    },
+    {
+      "label": "Docker: View Logs",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["-f", "docker-compose.coolify.yml", "logs", "-f"],
+      "group": "test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Test: Run All Tests",
+      "type": "npm",
+      "script": "test",
+      "group": "test",
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "Lint: Fix All Issues",
+      "type": "npm",
+      "script": "lint:fix",
+      "group": "test",
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "TypeScript: Check Types",
+      "type": "npm",
+      "script": "type-check",
+      "path": "apps/web/",
+      "group": "test",
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "Secrets Manager: Start",
+      "type": "shell",
+      "command": "node",
+      "args": ["${workspaceFolder}/services/secrets-manager/dist/index.js"],
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "isBackground": true
+    },
+    {
+      "label": "Install: All Dependencies",
+      "type": "shell",
+      "command": "npm",
+      "args": ["install"],
+      "group": "none",
+      "presentation": {
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "Clean: Node Modules",
+      "type": "shell",
+      "command": "Remove-Item",
+      "args": ["-Recurse", "-Force", "node_modules", "-ErrorAction", "SilentlyContinue"],
+      "options": {
+        "shell": {
+          "executable": "powershell.exe"
+        }
+      },
+      "group": "none"
+    },
+    {
+      "label": "Deploy: Production (Coolify)",
+      "type": "shell",
+      "command": "./deploy-production.sh",
+      "args": ["production", "ghcr.io", "v1.0.0"],
+      "group": "none",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    }
+  ]
+}
