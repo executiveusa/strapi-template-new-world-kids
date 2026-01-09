@@ -111,6 +111,14 @@ const getTrendIcon = (trend?: 'up' | 'down' | 'stable') => {
   return '→';
 };
 
+/**
+ * Renders a responsive grid of KPI cards showing title, icon, value, and optional trend/change; displays skeleton cards when loading.
+ *
+ * @param metrics - Array of KPI metrics to render; defaults to the component's sample metrics.
+ * @param isLoading - If true, renders six placeholder skeleton cards instead of the provided metrics.
+ * @param className - Optional additional CSS classes applied to the grid container.
+ * @returns A React element containing the grid of KPI cards or loading placeholders.
+ */
 export function SectionCards({
   metrics = defaultMetrics,
   isLoading = false,

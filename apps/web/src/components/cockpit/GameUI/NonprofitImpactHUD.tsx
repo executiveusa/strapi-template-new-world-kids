@@ -27,6 +27,13 @@ interface ActivityItem {
   timestamp: string
 }
 
+/**
+ * Render a real-time HUD displaying nonprofit impact metrics with animated metric cards, a live indicator, and recent-activity support.
+ *
+ * The component fetches metrics from the `/api/impact/metrics` endpoint, shows a loading skeleton while fetching, and polls for updates every 5 seconds. UI features include a demo-mode badge, a manual refresh control, animated value updates, and a descriptive panel explaining the metrics.
+ *
+ * @returns The React element for the impact dashboard UI.
+ */
 export function NonprofitImpactHUD() {
   const [metrics, setMetrics] = useState<ImpactMetrics>({
     totalDonations: 0,

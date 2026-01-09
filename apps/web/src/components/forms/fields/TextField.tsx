@@ -11,6 +11,18 @@ interface TextFieldProps<T extends FieldValues> {
   error?: string;
 }
 
+/**
+ * Renders a controlled text input for react-hook-form with an optional label and inline error message.
+ *
+ * @template T - The form values shape used for the field `name`.
+ * @param label - Optional label text displayed above the input.
+ * @param placeholder - Optional placeholder text for the input.
+ * @param type - HTML input type (defaults to `"text"`).
+ * @param name - Path to the form field within the form values.
+ * @param control - react-hook-form `control` object used to register the field.
+ * @param error - Optional error message displayed below the input; when present the input receives an error border.
+ * @returns A JSX element containing the labeled, controller-bound input and an optional error message.
+ */
 export function TextField<T extends FieldValues>({
   label,
   placeholder,

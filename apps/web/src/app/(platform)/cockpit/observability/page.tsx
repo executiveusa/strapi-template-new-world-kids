@@ -61,6 +61,15 @@ const TYPE_LABELS: Record<string, string> = {
   milestone: 'Milestone',
 }
 
+/**
+ * Renders the Observability dashboard page for real-time activity monitoring and system metrics.
+ *
+ * The page displays a live activity feed with search and filters (by log level and agent), quick
+ * level statistics, system health, per-agent activity, and an impact HUD. It fetches activity data
+ * from the activity feed API and keeps the UI updated while providing a manual refresh control.
+ *
+ * @returns The React element for the Observability dashboard page.
+ */
 export default function ObservabilityPage() {
   const [activities, setActivities] = useState<ActivityLog[]>([])
   const [isLoading, setIsLoading] = useState(true)

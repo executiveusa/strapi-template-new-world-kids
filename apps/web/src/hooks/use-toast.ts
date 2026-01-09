@@ -7,6 +7,13 @@ interface Toast {
   duration?: number;
 }
 
+/**
+ * Provides state and an enqueue function for toast notifications.
+ *
+ * @returns An object with:
+ * - `toasts`: an array of toast objects `{ id, message, type, duration? }`.
+ * - `toast(message, type = 'info', duration = 3000)`: enqueues a toast with the given `message`, `type` (`'success' | 'error' | 'info' | 'warning'`), and optional `duration` in milliseconds; if `duration` is truthy the toast is removed after that many milliseconds.
+ */
 export function useToast() {
   const [toasts, setToasts] = useState<Toast[]>([]);
 

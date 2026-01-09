@@ -34,6 +34,14 @@ interface DashboardSettings {
   };
 }
 
+/**
+ * Render a configurable dashboard settings UI.
+ *
+ * Manages local component state for dashboard configuration and user settings. Display-related
+ * configuration changes are persisted to localStorage under the key `dashboardConfig`.
+ *
+ * @returns A React element containing the dashboard configuration interface
+ */
 export function DashboardConfig() {
   const [config, setConfig] = React.useState<DashboardConfig>({
     theme: 'auto',

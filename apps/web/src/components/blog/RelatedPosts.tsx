@@ -11,6 +11,14 @@ interface Props {
   limit?: number;
 }
 
+/**
+ * Render a "Read Next" section displaying related post cards excluding the current post.
+ *
+ * @param posts - Array of post data to select related posts from
+ * @param currentPostId - ID of the post to exclude from the related list
+ * @param limit - Maximum number of related posts to display (default: 3)
+ * @returns `null` if no related posts remain; otherwise a section element containing up to `limit` related PostCard components
+ */
 export function RelatedPosts({ posts, currentPostId, limit = 3 }: Props) {
   // Filter out current post and limit results
   const relatedPosts = posts

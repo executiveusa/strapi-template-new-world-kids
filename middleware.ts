@@ -32,7 +32,10 @@ setInterval(() => {
 }, 60000);
 
 /**
- * Get client IP from request headers
+ * Extracts the client's IP address from common proxy headers.
+ *
+ * @param request - The incoming NextRequest whose headers are inspected.
+ * @returns The client IP from `x-forwarded-for` (first value), `x-real-ip`, or `cf-connecting-ip`, or `'unknown'` if none are present.
  */
 function getClientIP(request: NextRequest): string {
   const forwardedFor = request.headers.get('x-forwarded-for');
@@ -43,7 +46,13 @@ function getClientIP(request: NextRequest): string {
 }
 
 /**
- * Detect bot characteristics
+ * Determines whether an incoming request exhibits bot-like or otherwise suspicious header characteristics.
+ *
+ * Inspects the `User-Agent`, `Accept`, and `Accept-Language` headers and the request pathname for common bot patterns
+ * and header anomalies.
+ *
+ * @param request - The Next.js request to evaluate; inspected headers include `user-agent`, `accept`, and `accept-language`.
+ * @returns `true` if the request matches known bot user-agent patterns or has missing/suspicious headers (including API requests without a `User-Agent`), `false` otherwise.
  */
 function isSuspiciousBot(request: NextRequest): boolean {
   const userAgent = request.headers.get('user-agent') || '';
@@ -79,7 +88,10 @@ function isSuspiciousBot(request: NextRequest): boolean {
 }
 
 /**
- * Generate request fingerprint for persistent tracking
+ * Creates a compact fingerprint for a request by combining client IP, `User-Agent`, and `Accept` header.
+ *
+ * @param request - The NextRequest whose headers and client IP are used to build the fingerprint
+ * @returns A short base-36 string derived from a 32-bit hash of the combined fingerprint components
  */
 function generateFingerprint(request: NextRequest): string {
   const ip = getClientIP(request);
@@ -97,7 +109,14 @@ function generateFingerprint(request: NextRequest): string {
 }
 
 /**
- * Check rate limit with exponential backoff
+ * Determine whether a request from a given IP/fingerprint is permitted by the rate-limiting and exponential backoff policy.
+ *
+ * Applies per-minute limits (100 for authenticated, 10 for unauthenticated), enforces an increasing minimum inter-request interval after warnings, and escalates warnings to temporary or permanent blocking.
+ *
+ * @param ip - Client IP address used as part of the rate-limit key
+ * @param isAuthenticated - Whether the requester is authenticated; affects the per-minute quota
+ * @param fingerprint - Request fingerprint (e.g., derived from IP, User-Agent, Accept) used to differentiate clients behind the same IP
+ * @returns `allowed` if the request is permitted; when `allowed` is `false`, `retryAfter` is the number of seconds the client should wait before retrying. Notable values: `3600` for permanent blocks, `60` for quota exhaustion, or a computed smaller value when requests are too frequent under the backoff policy.
  */
 function checkRateLimit(
   ip: string,
@@ -166,7 +185,11 @@ function checkRateLimit(
 }
 
 /**
- * Main middleware
+ * Enforces per-IP and per-fingerprint rate limiting, detects suspicious bot activity, and returns a response with security and rate-limit headers.
+ *
+ * Skips static assets and health-check endpoints. If the request exceeds limits or is blocked, responds with a 429 JSON error including a `retryAfter` value and appropriate headers. For allowed requests, returns a NextResponse with a Content-Security-Policy, other security headers, rate-limit headers (`X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`), and a tracing `X-Request-ID`.
+ *
+ * @returns A NextResponse either representing a 429 JSON error with `retryAfter` when rate-limited, or a forwarded response augmented with security and rate-limit headers for allowed requests.
  */
 export function middleware(request: NextRequest) {
   const ip = getClientIP(request);
