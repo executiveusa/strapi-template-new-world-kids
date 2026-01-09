@@ -12,7 +12,14 @@ interface SkeletonProps {
   className?: string
 }
 
-// Base skeleton with shimmer effect
+/**
+ * Renders a rounded rectangular skeleton placeholder with a shimmering gradient.
+ *
+ * Use `className` to add or override Tailwind classes on the root container.
+ *
+ * @param className - Additional CSS classes applied to the skeleton container.
+ * @returns The skeleton element (a div) that visually indicates a loading surface with a shimmer effect.
+ */
 export function Skeleton({ className }: SkeletonProps) {
   return (
     <div
@@ -27,7 +34,12 @@ export function Skeleton({ className }: SkeletonProps) {
   )
 }
 
-// Animated skeleton with glow pulse
+/**
+ * Renders a rounded skeleton block that emits a subtle pulsing glow.
+ *
+ * @param className - Optional additional Tailwind or utility classes to apply to the root element
+ * @returns A JSX element representing the glow-animated skeleton block
+ */
 export function GlowSkeleton({ className }: SkeletonProps) {
   return (
     <motion.div
@@ -47,7 +59,14 @@ export function GlowSkeleton({ className }: SkeletonProps) {
   )
 }
 
-// Card skeleton for agent cards
+/**
+ * Renders a skeleton placeholder representing an agent/list card to indicate loading state.
+ *
+ * The skeleton visually mimics an agent card with avatar, title and subtitle lines, content rows,
+ * three action blocks, and a row of rounded action placeholders.
+ *
+ * @returns A React element representing the agent card loading skeleton.
+ */
 export function AgentCardSkeleton() {
   return (
     <div className="relative group">
@@ -80,7 +99,11 @@ export function AgentCardSkeleton() {
   )
 }
 
-// Stats card skeleton
+/**
+ * Renders a skeleton card used as a placeholder for a statistics/metric tile.
+ *
+ * @returns A JSX element containing a blurred background layer and a rounded foreground with skeleton blocks that mimic an icon, a main metric, and a secondary line.
+ */
 export function StatsCardSkeleton() {
   return (
     <div className="relative">
@@ -97,7 +120,13 @@ export function StatsCardSkeleton() {
   )
 }
 
-// Activity item skeleton
+/**
+ * Renders a skeleton placeholder for a single activity feed entry.
+ *
+ * The placeholder includes an avatar block, title/subtitle lines, content lines, and a trailing timestamp/action line to match typical activity item layout.
+ *
+ * @returns A JSX element rendering an activity item loading placeholder
+ */
 export function ActivitySkeleton() {
   return (
     <div className="p-4 bg-slate-900/80 rounded-xl border border-slate-700/50">
@@ -117,7 +146,13 @@ export function ActivitySkeleton() {
   )
 }
 
-// Metric card skeleton for Impact HUD
+/**
+ * Renders a compact skeleton card for an impact/metrics widget.
+ *
+ * Displays a blurred background layer and a foreground rounded card containing placeholders for an icon, a primary metric, and two secondary text lines.
+ *
+ * @returns A JSX element representing the metric card skeleton placeholder.
+ */
 export function MetricCardSkeleton() {
   return (
     <div className="relative">
@@ -132,7 +167,16 @@ export function MetricCardSkeleton() {
   )
 }
 
-// Chat message skeleton
+/**
+ * Renders a chat message loading placeholder aligned for user or other messages.
+ *
+ * The skeleton shows a rounded message bubble with three placeholder lines and,
+ * for non-user messages, an avatar placeholder to the left. For user messages
+ * the bubble is aligned to the right and the avatar is omitted.
+ *
+ * @param isUser - When `true`, aligns the skeleton to the right and hides the avatar; when `false`, aligns to the left and shows an avatar placeholder.
+ * @returns A JSX element representing the message skeleton.
+ */
 export function MessageSkeleton({ isUser = false }: { isUser?: boolean }) {
   return (
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
@@ -148,7 +192,11 @@ export function MessageSkeleton({ isUser = false }: { isUser?: boolean }) {
   )
 }
 
-// Full page loading skeleton
+/**
+ * Renders a full-page loading skeleton composed of a header, a responsive stats grid, and a grid of agent card placeholders.
+ *
+ * @returns A React element representing the page-level loading UI (header bar, four stats cards, and multiple agent card skeletons).
+ */
 export function PageLoadingSkeleton() {
   return (
     <div className="min-h-screen bg-slate-950">
@@ -191,7 +239,13 @@ export function PageLoadingSkeleton() {
   )
 }
 
-// Inline loading spinner
+/**
+ * Renders an inline circular loading spinner with configurable size and wrapper classes.
+ *
+ * @param size - Preset spinner size: 'sm' | 'md' | 'lg'. Each preset adjusts the spinner's dimensions and border thickness.
+ * @param className - Additional class names applied to the spinner wrapper.
+ * @returns A JSX element containing a spinning bordered circle with a pulsing (ping) ring overlay.
+ */
 export function LoadingSpinner({ size = 'md', className }: { size?: 'sm' | 'md' | 'lg'; className?: string }) {
   const sizes = {
     sm: 'h-4 w-4 border-2',
@@ -217,7 +271,13 @@ export function LoadingSpinner({ size = 'md', className }: { size?: 'sm' | 'md' 
   )
 }
 
-// Pulsing dot indicator
+/**
+ * Renders an animated pulsing dot indicator for status or presence.
+ *
+ * @param color - Visual color key for the dot; supported values: `cyan`, `green`, `purple`, `amber`, `red`. Default: `cyan`.
+ * @param size - Size of the dot; supported values: `sm`, `md`, `lg`. Default: `md`.
+ * @returns A circular, animated dot element representing a pulsing indicator.
+ */
 export function PulsingDot({ color = 'cyan', size = 'md' }: { color?: string; size?: 'sm' | 'md' | 'lg' }) {
   const sizes = {
     sm: 'w-1.5 h-1.5',

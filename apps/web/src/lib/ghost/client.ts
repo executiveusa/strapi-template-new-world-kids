@@ -15,7 +15,10 @@ import type {
 let ghostClient: GhostContentAPI | null = null;
 
 /**
- * Get or create Ghost API client instance
+ * Get the memoized Ghost Content API client configured from environment variables.
+ *
+ * @returns The singleton GhostContentAPI instance.
+ * @throws Error if GHOST_CONTENT_API_URL or NEXT_PUBLIC_GHOST_URL, or GHOST_CONTENT_API_KEY or NEXT_PUBLIC_GHOST_KEY are not set.
  */
 export function getGhostClient(): GhostContentAPI {
   if (ghostClient) return ghostClient;
@@ -39,7 +42,9 @@ export function getGhostClient(): GhostContentAPI {
 }
 
 /**
- * Check if Ghost CMS is configured
+ * Determines whether the Ghost content API has been configured via environment variables.
+ *
+ * @returns `true` if both the Ghost content API URL and key environment variables are set, `false` otherwise.
  */
 export function isGhostConfigured(): boolean {
   const url = process.env.GHOST_CONTENT_API_URL || process.env.NEXT_PUBLIC_GHOST_URL;
@@ -48,12 +53,14 @@ export function isGhostConfigured(): boolean {
 }
 
 /**
- * Fetch all posts with pagination
- * @param options - Query options (limit, page, filter, etc.)
+ * Retrieve posts from Ghost CMS using optional query parameters and include pagination metadata.
+ *
+ * @param options - Query options to customize the request (e.g., `limit`, `page`, `filter`, `include`). When omitted, defaults are applied.
+ * @returns An object with `posts` (array of posts) and `meta` (pagination and related metadata). If Ghost is not configured or the request fails, returns an empty `posts` array and a default `meta.pagination` structure.
  */
 export async function getPosts(options?: Params): Promise<PostsOrPages> {
   if (!isGhostConfigured()) {
-    console.warn('Ghost CMS not configured. Set GHOST_CONTENT_API_URL and GHOST_CONTENT_API_KEY (or NEXT_PUBLIC_GHOST_URL and NEXT_PUBLIC_GHOST_KEY) environment variables. Returning empty posts.');
+    console.warn('Ghost CMS not configured. Returning empty posts.');
     return { posts: [], meta: { pagination: { page: 1, limit: 15, pages: 0, total: 0, next: null, prev: null } } };
   }
 
@@ -72,8 +79,10 @@ export async function getPosts(options?: Params): Promise<PostsOrPages> {
 }
 
 /**
- * Fetch a single post by slug
- * @param slug - Post slug
+ * Fetches a single post identified by its slug.
+ *
+ * @param slug - The post's URL slug
+ * @returns The post as a `GhostPost`, or `null` if Ghost is not configured or an error occurs
  */
 export async function getPostBySlug(slug: string): Promise<GhostPost | null> {
   if (!isGhostConfigured()) {
@@ -95,9 +104,11 @@ export async function getPostBySlug(slug: string): Promise<GhostPost | null> {
 }
 
 /**
- * Fetch posts by tag
- * @param tag - Tag slug
- * @param options - Query options
+ * Retrieve posts filtered to a specific tag.
+ *
+ * @param tag - The tag slug to filter posts by
+ * @param options - Additional query parameters to merge with the tag filter
+ * @returns An object containing `posts` (array of posts) and `meta` (pagination/metadata)
  */
 export async function getPostsByTag(tag: string, options?: Params): Promise<PostsOrPages> {
   return getPosts({
@@ -107,9 +118,11 @@ export async function getPostsByTag(tag: string, options?: Params): Promise<Post
 }
 
 /**
- * Fetch posts by author
- * @param author - Author slug
- * @param options - Query options
+ * Fetches posts filtered by an author slug.
+ *
+ * @param author - The author's slug used to filter posts
+ * @param options - Optional query parameters to merge with the request
+ * @returns An object containing `posts` (array of posts) and `meta` (request metadata and pagination)
  */
 export async function getPostsByAuthor(author: string, options?: Params): Promise<PostsOrPages> {
   return getPosts({
@@ -119,7 +132,9 @@ export async function getPostsByAuthor(author: string, options?: Params): Promis
 }
 
 /**
- * Fetch all tags
+ * Retrieve all tags from the configured Ghost site.
+ *
+ * @returns An array of `GhostTag` objects; returns an empty array if Ghost is not configured or if fetching fails.
  */
 export async function getTags(): Promise<GhostTag[]> {
   if (!isGhostConfigured()) {
@@ -137,7 +152,11 @@ export async function getTags(): Promise<GhostTag[]> {
 }
 
 /**
- * Fetch all authors
+ * Retrieve all authors from the configured Ghost site.
+ *
+ * If Ghost is not configured or the request fails, an empty array is returned.
+ *
+ * @returns An array of Ghost authors; empty array if Ghost is not configured or the request fails.
  */
 export async function getAuthors(): Promise<GhostAuthor[]> {
   if (!isGhostConfigured()) {
@@ -155,7 +174,9 @@ export async function getAuthors(): Promise<GhostAuthor[]> {
 }
 
 /**
- * Fetch site settings
+ * Retrieve the site's Ghost settings.
+ *
+ * @returns The site's settings as `GhostSettings`, or `null` if Ghost is not configured or fetching the settings fails.
  */
 export async function getSettings(): Promise<GhostSettings | null> {
   if (!isGhostConfigured()) {
@@ -173,7 +194,10 @@ export async function getSettings(): Promise<GhostSettings | null> {
 }
 
 /**
- * Get full URL for Ghost images (handle relative URLs)
+ * Resolves a Ghost image URL to an absolute site URL when given a relative path.
+ *
+ * @param url - The image URL or path; may be an absolute `http(s)` URL or a relative path.
+ * @returns The absolute image URL, the original `url` if the site base is unavailable, or `null` if `url` is falsy.
  */
 export function getImageUrl(url: string | undefined | null): string | null {
   if (!url) return null;
@@ -193,9 +217,10 @@ export function getImageUrl(url: string | undefined | null): string | null {
 }
 
 /**
- * Calculate reading time from post HTML
- * @param html - Post HTML content
- * @returns Reading time in minutes
+ * Estimate the reading time for HTML content.
+ *
+ * @param html - HTML string whose visible text will be measured
+ * @returns The estimated reading time in minutes, rounded up to the nearest whole minute
  */
 export function calculateReadingTime(html: string): number {
   const wordsPerMinute = 200;
@@ -206,9 +231,11 @@ export function calculateReadingTime(html: string): number {
 }
 
 /**
- * Format post excerpt (truncate if needed)
- * @param excerpt - Post excerpt
- * @param maxLength - Maximum character length
+ * Return a post excerpt truncated to a maximum length.
+ *
+ * @param excerpt - The original post excerpt; may be undefined
+ * @param maxLength - Maximum allowed characters for the returned excerpt (default: 160)
+ * @returns The original excerpt if its length is less than or equal to `maxLength`; otherwise a truncated excerpt of at most `maxLength` characters with `...` appended. Returns an empty string if `excerpt` is falsy.
  */
 export function formatExcerpt(excerpt: string | undefined, maxLength: number = 160): string {
   if (!excerpt) return '';

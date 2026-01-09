@@ -12,6 +12,16 @@ interface PasswordFieldProps<T extends FieldValues> {
   error?: string;
 }
 
+/**
+ * Renders a password input field with an optional label, visibility toggle, and react-hook-form binding.
+ *
+ * @param label - Text label displayed above the input
+ * @param placeholder - Placeholder text shown inside the input
+ * @param name - Field path used by react-hook-form to register the input
+ * @param control - react-hook-form control object that manages the field state
+ * @param error - Error message to display below the input and to visually mark the input as invalid
+ * @returns A JSX element containing a controlled password input with a show/hide toggle and optional error text
+ */
 export function PasswordField<T extends FieldValues>({
   label = 'Password',
   placeholder = 'Enter your password',

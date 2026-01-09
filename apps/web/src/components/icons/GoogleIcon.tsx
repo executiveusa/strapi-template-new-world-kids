@@ -1,3 +1,9 @@
+/**
+ * Renders the Google multi-colored logo as an inline SVG.
+ *
+ * @param className - CSS class string applied to the root <svg> element; defaults to "w-5 h-5".
+ * @returns The SVG element representing the Google logo.
+ */
 export function GoogleIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg

@@ -10,6 +10,13 @@ interface Props {
   className?: string;
 }
 
+/**
+ * Renders a stylized newsletter signup card with an animated container, subscription form, and transient status messaging.
+ *
+ * @param variant - Visual style variant; one of `'sidebar'` (sticky card), `'footer'` (card for footer areas), or `'inline'` (compact gradient inline card).
+ * @param className - Optional additional CSS classes to apply to the root container.
+ * @returns A React element representing the newsletter signup card with input, submit button, and status feedback.
+ */
 export function NewsletterCTA({ variant = 'sidebar', className = '' }: Props) {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');

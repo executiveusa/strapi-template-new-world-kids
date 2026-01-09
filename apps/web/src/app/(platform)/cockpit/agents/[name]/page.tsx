@@ -156,6 +156,14 @@ interface TaskHistory {
   duration?: string
 }
 
+/**
+ * Renders the Agent detail page: a dashboard with agent metadata, a chat interface, task history, and performance stats.
+ *
+ * The component derives the agent name from route params, loads agent-specific metadata from an in-file registry,
+ * fetches runtime stats, manages chat messages and task history, and provides voice input/output and example commands.
+ *
+ * @returns The React element for the Agent detail page containing header, left-side agent info, and right-side tabbed panels (Chat, History, Stats).
+ */
 export default function AgentDetailPage() {
   const params = useParams()
   const router = useRouter()

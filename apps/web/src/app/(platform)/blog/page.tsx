@@ -21,6 +21,16 @@ export const metadata: Metadata = {
 // Revalidate every 60 seconds (ISR)
 export const revalidate = 60;
 
+/**
+ * Renders the blog index page or a "coming soon" placeholder depending on content configuration.
+ *
+ * When the content service is configured, this component fetches posts and tags, and renders
+ * a hero section, tag filters, a responsive grid of post cards with pagination (when applicable),
+ * and a newsletter sidebar. If the content service is not configured, it renders a full-screen
+ * "Blog Coming Soon" placeholder with a CTA.
+ *
+ * @returns A React element representing the blog index page or the placeholder UI when the content service is not configured.
+ */
 export default async function BlogIndexPage() {
   // Check if Ghost is configured
   if (!isGhostConfigured()) {

@@ -174,7 +174,15 @@ class ParticleSystem {
 }
 
 /**
- * Project Timeline Modal
+ * Render a centered modal that displays a project's timeline, description, and key stats.
+ *
+ * The modal overlays the page with a backdrop, supports animated entry/exit, closes when the
+ * backdrop or close button is clicked, and prevents backdrop clicks when interacting with the modal content.
+ *
+ * @param project - The project whose details and timeline are displayed.
+ * @param isOpen - Controls whether the modal is visible.
+ * @param onClose - Callback invoked to request closing the modal.
+ * @returns The modal element when `isOpen` is true, `null` otherwise.
  */
 function ProjectTimelineModal({
   project,
@@ -264,7 +272,17 @@ function ProjectTimelineModal({
 }
 
 /**
- * Main Interactive Hero Component
+ * Interactive hero section that combines a 3D particle background, parallax project cards, voice-driven project selection, and a per-project timeline modal.
+ *
+ * Renders a full-screen hero with:
+ * - a Three.js particle starfield background,
+ * - a title, voice command button (accepts "water", "food", "energy") that selects and opens a project,
+ * - GSAP ScrollTrigger-driven parallax for project cards and a scroll-based subtle transform,
+ * - project cards showing funding progress, lives impacted, and a short timeline preview,
+ * - a donation/impact ticker,
+ * - a modal that displays the selected project's timeline and stats.
+ *
+ * @returns A JSX element containing the interactive hero UI.
  */
 export default function GeminiInteractiveHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

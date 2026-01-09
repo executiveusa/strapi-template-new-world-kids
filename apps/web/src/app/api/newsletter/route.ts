@@ -14,7 +14,10 @@ const EmailSchema = z.object({
 type EmailRequest = z.infer<typeof EmailSchema>;
 
 /**
- * Get client IP for rate limiting
+ * Determine the client's IP address from the incoming request.
+ *
+ * @param request - The incoming NextRequest whose headers or connection info will be inspected to derive the client IP.
+ * @returns The resolved client IP address, using header values (`x-forwarded-for`, `x-real-ip`) or `request.ip`, falling back to `'127.0.0.1'` if none are available.
  */
 function getClientIP(request: NextRequest): string {
   return (
@@ -26,7 +29,12 @@ function getClientIP(request: NextRequest): string {
 }
 
 /**
- * Check rate limit (10 requests per hour per IP)
+ * Determine whether the given IP is allowed to make a request under the per-IP rate limit.
+ *
+ * Enforces a limit of 10 requests per 1-hour window per IP address; when the window expires the count is reset.
+ *
+ * @param ip - Client IP address used to track request count
+ * @returns `true` if the request is allowed, `false` if the IP has exceeded 10 requests within the current 1-hour window
  */
 function checkRateLimit(ip: string): boolean {
   const now = Date.now();
@@ -57,7 +65,13 @@ function checkRateLimit(ip: string): boolean {
 }
 
 /**
- * Honeypot validation - catches bots
+ * Detects whether a request body passes the honeypot bot check.
+ *
+ * Treats non-object or null inputs as passing. Considers the presence of a non-empty
+ * `website` field in the body to indicate a bot submission.
+ *
+ * @param request - The parsed request body to inspect
+ * @returns `true` if the request passes the honeypot check (not a bot), `false` otherwise
  */
 function validateHoneypot(request: unknown): boolean {
   if (typeof request !== 'object' || !request) return true;
@@ -67,8 +81,14 @@ function validateHoneypot(request: unknown): boolean {
 }
 
 /**
- * Add email to Ghost Members API
- * Falls back to Resend if Ghost not configured
+ * Subscribe an email address to the newsletter using configured providers and fallbacks.
+ *
+ * Attempts to add the subscriber via the Ghost Members API when configured, falls back to sending
+ * a welcome email via Resend if Ghost is unavailable, and finally logs the signup as a last resort.
+ *
+ * @param email - Subscriber email address
+ * @param name - Optional subscriber display name
+ * @returns An object with `success` indicating whether the signup was accepted, `message` describing the outcome, and an optional `error` with failure details when available
  */
 async function addToNewsletterService(
   email: string,
@@ -166,7 +186,15 @@ async function addToNewsletterService(
 }
 
 /**
- * POST handler for newsletter signup
+ * Handle newsletter signup requests.
+ *
+ * Enforces a per-IP rate limit, performs a honeypot bot check, validates the request body against the email schema,
+ * and attempts to subscribe the provided email using configured newsletter services (with fallbacks).
+ *
+ * @param request - Incoming Next.js request containing the JSON signup payload
+ * @returns A NextResponse whose JSON body is `{ success: boolean, message?: string, error?: string }`. Uses HTTP
+ * status codes to indicate the outcome: 200 on success, 400 for validation errors, 429 for rate limiting, and 500
+ * for server-side failures.
  */
 export async function POST(request: NextRequest) {
   try {
@@ -246,7 +274,9 @@ export async function POST(request: NextRequest) {
 }
 
 /**
- * GET handler - for healthchecks
+ * Provide a simple health check response for the newsletter API.
+ *
+ * @returns A JSON response with `{ status: 'ok', service: 'newsletter-api' }` indicating the service is healthy.
  */
 export async function GET() {
   return NextResponse.json({

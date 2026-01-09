@@ -65,6 +65,11 @@ const AGENT_CONFIGS = {
   },
 }
 
+/**
+ * Handle GET requests for agent statistics, returning computed real-time metrics or demo data when real data is unavailable.
+ *
+ * @returns A JSON NextResponse with the shape `{ success: boolean, agents: AgentStats[], isDemo: boolean, timestamp: string }`. `agents` contains aggregated per-agent stats when available; `isDemo` is `true` if demo data was returned, `false` for real computed stats.
+ */
 export async function GET(request: NextRequest) {
   try {
     // Try to fetch real agent data from Supabase
@@ -146,6 +151,12 @@ export async function GET(request: NextRequest) {
   }
 }
 
+/**
+ * Maps a raw agent status string to the standardized AgentStats status set.
+ *
+ * @param status - The raw status value to map (e.g., 'active', 'idle', 'busy', 'error')
+ * @returns `'online'` if `status` is 'active' or 'idle', `'busy'` if `status` is 'busy', `'error'` if `status` is 'error', `'offline'` otherwise
+ */
 function mapAgentStatus(status: string): AgentStats['status'] {
   switch (status) {
     case 'active':
@@ -160,6 +171,12 @@ function mapAgentStatus(status: string): AgentStats['status'] {
   }
 }
 
+/**
+ * Compute the average completed session duration and format it as seconds with one decimal.
+ *
+ * @param sessions - Array of session objects; each session should include `started_at` and `completed_at` timestamps
+ * @returns The average duration formatted as `<seconds>s` with one decimal (for example, `2.3s`), or `0.0s` if no sessions have both timestamps
+ */
 function calculateAvgResponseTime(sessions: any[]): string {
   const times = sessions
     .filter((s: any) => s.started_at && s.completed_at)
@@ -175,6 +192,11 @@ function calculateAvgResponseTime(sessions: any[]): string {
   return `${avg.toFixed(1)}s`
 }
 
+/**
+ * Generate an array of demo AgentStats used when real data is unavailable.
+ *
+ * @returns An array of AgentStats populated from predefined agent configurations with pseudo-randomized `stats` (tasksCompleted, successRate, avgResponseTime, lastActive); each entry has `isDemo` set to `true`.
+ */
 function generateDemoAgentStats(): AgentStats[] {
   const statuses: AgentStats['status'][] = ['online', 'online', 'busy', 'online', 'online', 'online']
 

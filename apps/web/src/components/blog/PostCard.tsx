@@ -13,6 +13,13 @@ interface Props {
   index?: number;
 }
 
+/**
+ * Renders a glassmorphism-styled blog post card that links to the post's detail page.
+ *
+ * @param post - Post data used to populate the card (expects properties like `slug`, `title`, `excerpt`, `feature_image`, `published_at`, `reading_time`, `primary_tag`, and `primary_author`).
+ * @param index - Optional zero-based index used to stagger the entry animation; defaults to `0`.
+ * @returns The JSX element for the interactive post card.
+ */
 export function PostCard({ post, index = 0 }: Props) {
   const {
     slug,

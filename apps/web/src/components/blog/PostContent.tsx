@@ -11,6 +11,13 @@ interface Props {
   className?: string;
 }
 
+/**
+ * Renders sanitized Ghost HTML and applies consistent styling and structural adjustments to common post elements.
+ *
+ * @param html - Raw HTML content to display; it will be sanitized before rendering.
+ * @param className - Optional additional CSS classes applied to the root container.
+ * @returns A div element containing the sanitized HTML with element-level styling and layout enhancements applied.
+ */
 export function PostContent({ html, className = '' }: Props) {
   const contentRef = useRef<HTMLDivElement>(null);
 

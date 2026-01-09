@@ -28,6 +28,13 @@ interface ActivityItem {
   timestamp: string
 }
 
+/**
+ * Provide impact metrics for the dashboard, using real-time Supabase data when available and falling back to demo values on missing data or error.
+ *
+ * The response includes aggregated metrics (totals, counts, derived values like milestones and lives impacted), a short recent-activity feed, an `isDemo` flag indicating whether demo data was used, and a timestamp.
+ *
+ * @returns A JSON response object with `success: true`, `metrics` (the computed `ImpactMetrics`), `isDemo` (boolean), and `timestamp` (ISO 8601 string)
+ */
 export async function GET(request: NextRequest) {
   try {
     // Try to fetch from Supabase if tables exist
@@ -118,11 +125,24 @@ export async function GET(request: NextRequest) {
   }
 }
 
+/**
+ * Estimates a growth rate percentage for the given current amount.
+ *
+ * This is a stubbed estimator that produces a deterministic-seeming but randomized growth rate for display purposes when historical comparison data is unavailable.
+ *
+ * @param currentAmount - The current total amount (used for context; does not affect the returned value in this stub).
+ * @returns A growth rate percentage between approximately 15.0 and 25.0 (rounded to one decimal place).
+ */
 function calculateGrowthRate(currentAmount: number): number {
   // Simple growth calculation (would compare to previous period in production)
   return Math.round((Math.random() * 10 + 15) * 10) / 10
 }
 
+/**
+ * Generate a demo recent-activity feed used when live activity data is unavailable.
+ *
+ * @returns An array of `ActivityItem` objects representing sample activities (donation, milestone, volunteer, project) with timestamps within the last hour.
+ */
 function generateDemoActivity(): ActivityItem[] {
   const activities: ActivityItem[] = [
     {

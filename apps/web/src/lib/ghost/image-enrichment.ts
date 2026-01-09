@@ -7,11 +7,15 @@ import OpenAI from 'openai';
 const imageCache = new Map<string, string>();
 
 /**
- * Generate an image for a blog post using OpenAI DALL-E
- * @param postTitle - Title of the blog post
- * @param postExcerpt - Excerpt/description of the post
- * @param niche - Site niche for context (default: "nonprofit social impact")
- * @returns Image URL or null if generation fails
+ * Generate a stock-photo-style header image for a blog post and return its URL.
+ *
+ * Uses an in-memory cache (keyed by a trimmed combination of title and excerpt) to avoid duplicate generation.
+ * If neither IMAGE_GEN_API_KEY nor OPENAI_API_KEY is set, image generation is skipped and `null` is returned.
+ *
+ * @param postTitle - The blog post title used to inform the image prompt
+ * @param postExcerpt - The post excerpt or description used to inform the image prompt
+ * @param niche - Site niche or context to shape the prompt (defaults to "nonprofit social impact education")
+ * @returns The generated image URL, or `null` if generation is skipped or fails
  */
 export async function generatePostImage(
   postTitle: string,
@@ -66,9 +70,12 @@ No text or words in the image.`;
 }
 
 /**
- * Get fallback gradient based on post category/tag
- * @param tag - Primary tag/category name
- * @returns CSS gradient string
+ * Return a CSS linear-gradient string that corresponds to a post tag.
+ *
+ * Matches known category keywords case-insensitively by substring and returns the associated gradient; if none match, returns the default gradient.
+ *
+ * @param tag - Primary tag or category name to match against (case-insensitive, substring match)
+ * @returns A CSS `linear-gradient(...)` string for the matched tag, or the default gradient if no match is found.
  */
 export function getFallbackGradient(tag?: string): string {
   const gradients: Record<string, string> = {
@@ -93,9 +100,12 @@ export function getFallbackGradient(tag?: string): string {
 }
 
 /**
- * Enrich a post with an image (generate if missing)
- * @param post - Ghost post object
- * @returns Image URL (existing, generated, or gradient fallback)
+ * Provide an image for a Ghost post by preferring an existing feature image, attempting generation when an image API key is available, and falling back to a category-based gradient.
+ *
+ * Attempts to generate a post image only if no `feature_image` is present and an image generation API key exists; otherwise returns an appropriate fallback.
+ *
+ * @param post - Ghost post object; `primary_tag?.name` is used to select a gradient when no image is available
+ * @returns An object with `type` indicating the image source (`'existing'`, `'generated'`, or `'gradient'`) and `url` containing either the image URL or a CSS gradient string
  */
 export async function enrichPostImage(post: {
   title: string;
@@ -136,11 +146,12 @@ export async function enrichPostImage(post: {
 }
 
 /**
- * Generate placeholder image data URL for loading states
- * @param width - Image width
- * @param height - Image height
- * @param color - Background color (hex)
- * @returns Data URL for placeholder
+ * Create an SVG placeholder image and return it as a base64 data URL for use during loading states.
+ *
+ * @param width - Width of the placeholder in pixels
+ * @param height - Height of the placeholder in pixels
+ * @param color - Background color for the placeholder (any valid CSS color string, e.g. `#1e293b`)
+ * @returns A `data:image/svg+xml;base64,...` URL containing the generated SVG placeholder
  */
 export function generatePlaceholder(
   width: number = 1200,

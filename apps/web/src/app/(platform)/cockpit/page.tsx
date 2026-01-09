@@ -17,6 +17,15 @@ import { Zap, Users, TrendingUp, Heart, Eye, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
 import { useState, useEffect, useCallback } from 'react';
 
+/**
+ * Render the Mission Control cockpit dashboard for managing and observing AI agents.
+ *
+ * Displays a live agent roster with loading and error states (falls back to simulated agents if needed),
+ * shows quick statistics (agents, active agents, success rate, total tasks) with periodic and manual refresh,
+ * and includes a live activity feed, impact dashboard, and floating voice command controls.
+ *
+ * @returns The React element for the cockpit dashboard UI containing agent cards, HUD-style stats, live logs, impact visualization, and voice controls.
+ */
 export default function CockpitDashboard() {
   const { data: agents, isLoading, error, refetch } = useAgents();
   const [stats, setStats] = useState({ totalTasks: 0, successRate: 97, activeAgents: 0 });

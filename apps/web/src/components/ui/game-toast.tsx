@@ -84,6 +84,11 @@ const TOAST_STYLES: Record<ToastType, { bg: string; border: string; icon: string
   },
 }
 
+/**
+ * Provides toast state and actions to descendants and renders the toast container alongside `children`.
+ *
+ * @returns The provider element that exposes current toasts and helper actions (addToast, removeToast, success, error, warning, info, agent) and renders the supplied `children` plus the toast display container.
+ */
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([])
 
@@ -131,6 +136,12 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   )
 }
 
+/**
+ * Access the toast context to read current toasts and call toast actions.
+ *
+ * @returns The `ToastContextType` value containing the current `toasts` array and action helpers (`addToast`, `removeToast`, `success`, `error`, `warning`, `info`, `agent`).
+ * @throws Error if called outside a `ToastProvider`.
+ */
 export function useToast() {
   const context = useContext(ToastContext)
   if (!context) {
@@ -139,6 +150,13 @@ export function useToast() {
   return context
 }
 
+/**
+ * Renders a fixed top-right container that displays and animates the provided toasts.
+ *
+ * @param toasts - Array of toast objects to render in the container.
+ * @param removeToast - Callback invoked with a toast id to remove that toast.
+ * @returns The container element that hosts animated toast items.
+ */
 function ToastContainer({ toasts, removeToast }: { toasts: Toast[]; removeToast: (id: string) => void }) {
   return (
     <div className="fixed top-4 right-4 z-50 space-y-3 pointer-events-none">
@@ -151,6 +169,15 @@ function ToastContainer({ toasts, removeToast }: { toasts: Toast[]; removeToast:
   )
 }
 
+/**
+ * Render a single toast entry with icon, title, optional message, close control, and a progress bar.
+ *
+ * The progress bar animates from full to empty over `toast.duration` milliseconds (defaults to 5000). If `toast.agent` is present, an agent badge is shown and an agent-specific icon is used when available. Calling `onClose` removes the toast (e.g., when the close button is pressed).
+ *
+ * @param toast - The toast data to render (id, type, title, optional message, optional duration, optional agent).
+ * @param onClose - Callback invoked to remove the toast when the close control is activated.
+ * @returns The rendered toast element.
+ */
 function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
   const style = TOAST_STYLES[toast.type]
   const Icon = toast.agent && AGENT_ICONS[toast.agent] ? AGENT_ICONS[toast.agent] : TOAST_ICONS[toast.type]
@@ -212,7 +239,14 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
   )
 }
 
-// Standalone toast component for server components
+/**
+ * Renders a static, non-interactive toast-like card styled for the given toast type (intended for server components).
+ *
+ * @param type - The toast variant to determine icon and visual styling (e.g., 'success', 'error', 'warning', 'info', 'agent').
+ * @param title - Primary title text displayed on the toast.
+ * @param message - Optional secondary message text displayed beneath the title.
+ * @returns A JSX element representing the styled, static toast card.
+ */
 export function StaticToast({ type, title, message }: { type: ToastType; title: string; message?: string }) {
   const style = TOAST_STYLES[type]
   const Icon = TOAST_ICONS[type]

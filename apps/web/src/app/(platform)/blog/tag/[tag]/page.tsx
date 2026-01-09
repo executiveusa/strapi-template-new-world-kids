@@ -17,6 +17,11 @@ interface TagPageProps {
   }>;
 }
 
+/**
+ * Generate static route parameters for each blog tag.
+ *
+ * @returns An array of objects of the form `{ tag: string }` where `tag` is the slug for each tag. If Ghost is not configured, returns an empty array.
+ */
 export async function generateStaticParams() {
   if (!isGhostConfigured()) return [];
 
@@ -26,6 +31,12 @@ export async function generateStaticParams() {
   }));
 }
 
+/**
+ * Generate page metadata for a blog tag.
+ *
+ * @param params - Promise resolving to an object containing the route `tag` slug
+ * @returns Metadata for the tag page. If the tag exists, includes `title` as "`<tag name> - Blog`", `description` set to the tag's description or a default "Posts tagged with \"<tag name>\"" string, and `openGraph` with `title`, `description`, and `type: 'website'`. If Ghost is not configured or the tag is not found, returns metadata with `title: 'Tag Not Found'`.
+ */
 export async function generateMetadata({ params }: TagPageProps): Promise<Metadata> {
   if (!isGhostConfigured()) return { title: 'Tag Not Found' };
 
@@ -47,6 +58,15 @@ export async function generateMetadata({ params }: TagPageProps): Promise<Metada
   };
 }
 
+/**
+ * Render the blog listing page for a specific tag slug.
+ *
+ * Fetches tags and posts, determines the current tag and its themed styling, and returns the page UI showing the tag hero, post grid (or an empty state), and newsletter CTA.
+ * Invokes the Next.js `notFound()` flow to produce a 404 when Ghost is not configured or the requested tag cannot be found.
+ *
+ * @param params - An object containing the route `tag` slug used to select the current tag
+ * @returns The React element for the tag-specific blog page
+ */
 export default async function TagPage({ params }: TagPageProps) {
   if (!isGhostConfigured()) {
     notFound();

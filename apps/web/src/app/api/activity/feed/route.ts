@@ -20,6 +20,12 @@ interface ActivityLog {
   metadata?: Record<string, any>
 }
 
+/**
+ * Retrieve recent activity logs, optionally filtered by agent or log level, and return them as ActivityLog items; falls back to a demo feed when no real logs are available.
+ *
+ * @param request - Incoming request; supports query parameters: `limit` (integer, default 50), `agent` (agent id to filter), and `level` (log level to filter)
+ * @returns JSON object containing `success`, `activities` (array of ActivityLog), `isDemo` (true when demo data is returned), and `timestamp` (ISO 8601 string)
+ */
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const limit = parseInt(searchParams.get('limit') || '50')
@@ -84,6 +90,12 @@ export async function GET(request: NextRequest) {
   }
 }
 
+/**
+ * Map various log level strings to the standardized ActivityLog level.
+ *
+ * @param level - The input log level string (for example: 'error', 'critical', 'warn', 'info')
+ * @returns `'error'` if `level` is 'error' or 'critical', `'warning'` if `level` is 'warn', `'info'` if `level` is 'info', otherwise `'success'`
+ */
 function mapLogLevel(level: string): ActivityLog['level'] {
   switch (level) {
     case 'error':
@@ -98,6 +110,14 @@ function mapLogLevel(level: string): ActivityLog['level'] {
   }
 }
 
+/**
+ * Generate a static demo activity feed used as a fallback when real logs are unavailable.
+ *
+ * The returned entries cover a variety of activity `type` and `level` values and include
+ * ISO-8601 `timestamp` strings computed relative to the current time.
+ *
+ * @returns An array of `ActivityLog` objects representing demo activities
+ */
 function generateDemoActivityFeed(): ActivityLog[] {
   const now = Date.now()
 

@@ -23,7 +23,7 @@ BOLD='\033[1m'
 
 # ============================================
 # HELPER FUNCTIONS
-# ============================================
+# print_banner prints a stylized, colorized installer banner to stdout.
 print_banner() {
     echo ""
     echo -e "${PURPLE}╔════════════════════════════════════════════════════════════════╗${NC}"
@@ -35,22 +35,27 @@ print_banner() {
     echo ""
 }
 
+# print_success prints a green checkmark followed by the provided message to stdout.
 print_success() {
     echo -e "${GREEN}✓${NC} $1"
 }
 
+# print_warning prints a yellow warning icon and the provided message to stdout.
 print_warning() {
     echo -e "${YELLOW}⚠${NC} $1"
 }
 
+# print_error prints an error message prefixed with a red cross icon and ANSI red coloring.
 print_error() {
     echo -e "${RED}✗${NC} $1"
 }
 
+# print_info prints an informational message prefixed with a blue 'ℹ' symbol to stdout.
 print_info() {
     echo -e "${BLUE}ℹ${NC} $1"
 }
 
+# print_step prints a cyan step indicator (→) followed by the given message.
 print_step() {
     echo -e "${CYAN}→${NC} $1"
 }
@@ -74,7 +79,7 @@ FILES=(
 
 # ============================================
 # INSTALLATION FUNCTIONS
-# ============================================
+# check_existing_files checks for files from FILES in INSTALL_DIR, prompts the user to optionally back them up and replace them, creates a timestamped backup directory copying any existing files there, and exits the script if the user declines.
 
 check_existing_files() {
     print_step "Checking for existing files..."
@@ -108,6 +113,7 @@ check_existing_files() {
     fi
 }
 
+# download_file downloads the given filename from the configured GitHub raw base into INSTALL_DIR using an available HTTP client (curl or wget) and exits with status 0 on success and 1 on failure.
 download_file() {
     local filename="$1"
     local url="$GITHUB_RAW_BASE/$filename"
@@ -120,6 +126,7 @@ download_file() {
     return 1
 }
 
+# create_files_locally creates minimal local configuration files (.env.example and .gitignore) in the install directory when they are missing and does nothing if an .env.example already exists.
 create_files_locally() {
     print_step "Creating configuration files..."
 
@@ -221,6 +228,7 @@ GITEOF
     fi
 }
 
+# make_scripts_executable makes setup-env.sh, security-scan.sh, and install.sh executable in INSTALL_DIR if present and reports each change.
 make_scripts_executable() {
     print_step "Setting script permissions..."
 
@@ -232,6 +240,7 @@ make_scripts_executable() {
     done
 }
 
+# run_setup prompts to run setup-env.sh from the install directory and, unless declined, executes it to initialize the .env.
 run_setup() {
     if [ -f "$INSTALL_DIR/setup-env.sh" ]; then
         echo ""
@@ -243,6 +252,7 @@ run_setup() {
     fi
 }
 
+# print_summary prints a completion banner, lists which FILES were created in INSTALL_DIR, and displays next steps and security reminders.
 print_summary() {
     echo ""
     echo -e "${GREEN}╔════════════════════════════════════════════════════════════════╗${NC}"
@@ -271,7 +281,7 @@ print_summary() {
 
 # ============================================
 # MAIN EXECUTION
-# ============================================
+# main orchestrates the installer workflow: displays the banner, checks for and optionally backs up existing files, downloads configuration files (or creates them locally if downloads fail), makes scripts executable, prints a summary, and optionally runs the setup script.
 main() {
     print_banner
 
