@@ -53,7 +53,7 @@ export function isGhostConfigured(): boolean {
  */
 export async function getPosts(options?: Params): Promise<PostsOrPages> {
   if (!isGhostConfigured()) {
-    console.warn('Ghost CMS not configured. Returning empty posts.');
+    console.warn('Ghost CMS not configured. Set GHOST_CONTENT_API_URL and GHOST_CONTENT_API_KEY (or NEXT_PUBLIC_GHOST_URL and NEXT_PUBLIC_GHOST_KEY) environment variables. Returning empty posts.');
     return { posts: [], meta: { pagination: { page: 1, limit: 15, pages: 0, total: 0, next: null, prev: null } } };
   }
 
