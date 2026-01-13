@@ -8,7 +8,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Mic, MicOff, Loader2, CheckCircle, XCircle, Sparkles } from 'lucide-react'
-import { translateCommand, getExampleCommands, explainAgent } from '@/lib/naturalLanguage'
+import { translateCommand, getExampleCommands } from '@/lib/naturalLanguage'
 
 type VoiceState = 'idle' | 'listening' | 'processing' | 'success' | 'error'
 
@@ -17,49 +17,54 @@ export function VoiceCommandGame() {
   const [transcript, setTranscript] = useState('')
   const [command, setCommand] = useState<any>(null)
   const [showExamples, setShowExamples] = useState(false)
+  const [isSpeechSupported, setIsSpeechSupported] = useState(true)
+  const [supportMessage, setSupportMessage] = useState('')
   const recognitionRef = useRef<any>(null)
 
   // Initialize Web Speech API
   useEffect(() => {
-    if (typeof window !== 'undefined' && 'webkitSpeechRecognition' in window) {
-      const SpeechRecognition = (window as any).webkitSpeechRecognition
-      const recognition = new SpeechRecognition()
+    if (typeof window === 'undefined') return
 
-      recognition.continuous = false
-      recognition.interimResults = true
-      recognition.lang = 'en-US'
-
-      recognition.onresult = (event: any) => {
-        const current = event.resultIndex
-        const transcriptText = event.results[current][0].transcript
-
-        setTranscript(transcriptText)
-
-        if (event.results[current].isFinal) {
-          setState('processing')
-          processCommand(transcriptText)
-        }
-      }
-
-      recognition.onerror = (event: any) => {
-        console.error('Speech recognition error:', event.error)
-        setState('error')
-        setTimeout(() => setState('idle'), 2000)
-      }
-
-      recognition.onend = () => {
-        if (state === 'listening') {
-          setState('idle')
-        }
-      }
-
-      recognitionRef.current = recognition
+    if (!('webkitSpeechRecognition' in window)) {
+      setIsSpeechSupported(false)
+      setSupportMessage('Voice capture is not available in this browser. Try Chrome on desktop for the best experience.')
+      return
     }
 
-    return () => {
-      if (recognitionRef.current) {
-        recognitionRef.current.stop()
+    const SpeechRecognition = (window as any).webkitSpeechRecognition
+    const recognition = new SpeechRecognition()
+
+    recognition.continuous = false
+    recognition.interimResults = true
+    recognition.lang = 'en-US'
+
+    recognition.onresult = (event: any) => {
+      const current = event.resultIndex
+      const transcriptText = event.results[current][0].transcript
+
+      setTranscript(transcriptText)
+
+      if (event.results[current].isFinal) {
+        setState('processing')
+        processCommand(transcriptText)
       }
+    }
+
+    recognition.onerror = (event: any) => {
+      console.error('Speech recognition error:', event.error)
+      setState('error')
+      setTimeout(() => setState('idle'), 2000)
+    }
+
+    recognition.onend = () => {
+      setState((current) => (current === 'listening' ? 'idle' : current))
+    }
+
+    recognitionRef.current = recognition
+    setIsSpeechSupported(true)
+
+    return () => {
+      recognition.stop()
     }
   }, [])
 
@@ -110,6 +115,12 @@ export function VoiceCommandGame() {
   }
 
   const startListening = () => {
+    if (!isSpeechSupported) {
+      setSupportMessage('Voice capture is not available in this browser. Try Chrome on desktop for the best experience.')
+      setState('error')
+      return
+    }
+
     if (recognitionRef.current && state === 'idle') {
       setState('listening')
       setTranscript('')
@@ -174,6 +185,11 @@ export function VoiceCommandGame() {
         animate={{ scale: 1 }}
         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
       >
+        {!isSpeechSupported && (
+          <div className="absolute -top-16 right-0 max-w-xs rounded-xl border border-amber-500/40 bg-amber-900/40 px-3 py-2 text-xs text-amber-100 shadow-lg">
+            {supportMessage || 'Voice commands are unavailable in this browser.'}
+          </div>
+        )}
         {/* Help button */}
         <button
           onClick={() => setShowExamples(!showExamples)}
@@ -199,8 +215,8 @@ export function VoiceCommandGame() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className={`relative w-20 h-20 rounded-full bg-gradient-to-br ${getStateColor()} shadow-2xl flex items-center justify-center`}
-            disabled={state === 'processing'}
-          >
+            disabled={state === 'processing' || !isSpeechSupported}
+            >
             {getStateIcon()}
           </motion.button>
         </div>
@@ -220,7 +236,7 @@ export function VoiceCommandGame() {
               {command && (
                 <div className="pt-3 border-t border-slate-700">
                   <p className="text-xs text-slate-400 mb-1">
-                    Agent: <span className="text-purple-400 font-bold">{command.agent}</span>
+                    Agent: <span className="text-purple-400 font-bold">{command.agentDisplayName}</span>
                   </p>
                   <p className="text-xs text-green-400">{command.simplifiedExplanation}</p>
                 </div>

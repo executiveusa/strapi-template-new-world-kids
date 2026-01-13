@@ -8,6 +8,7 @@ export interface NaturalCommand {
   originalText: string
   intent: string
   agent: string
+  agentDisplayName: string
   action: string
   parameters: Record<string, any>
   confidence: number
@@ -32,6 +33,24 @@ const COMMAND_PATTERNS = [
     action: 'orchestrate_task',
     extract: (match: RegExpMatchArray) => ({ task: match[2] }),
     explain: (params: any) => `I'll coordinate this work: ${params.task}`,
+  },
+  {
+    pattern: /(audit|review|score) (the)? ?(ui|design|interface|cockpit|dashboard)(.+)?/i,
+    agent: 'Sirius',
+    intent: 'design_audit',
+    action: 'run_design_audit',
+    extract: (match: RegExpMatchArray) => ({ target: `${match[3]}${match[4] || ''}`.trim() }),
+    explain: (params: any) =>
+      `I'll run a Refactoring UI audit for: ${params.target || 'the interface'}`,
+  },
+  {
+    pattern: /(refactor|improve|redesign) (the)? ?(ui|design|interface|cockpit|dashboard)(.+)?/i,
+    agent: 'Sirius',
+    intent: 'refactor_plan',
+    action: 'generate_refactor_plan',
+    extract: (match: RegExpMatchArray) => ({ target: `${match[3]}${match[4] || ''}`.trim() }),
+    explain: (params: any) =>
+      `I'll draft a refactor plan for: ${params.target || 'the interface'}`,
   },
 
   // Andromeda - Code Generation
@@ -162,10 +181,12 @@ export function translateCommand(text: string): NaturalCommand {
     const match = cleanText.match(pattern.pattern)
     if (match) {
       const parameters = pattern.extract(match)
+      const agentKey = pattern.agent.toLowerCase()
       return {
         originalText: cleanText,
         intent: pattern.intent,
-        agent: pattern.agent,
+        agent: agentKey,
+        agentDisplayName: pattern.agent,
         action: pattern.action,
         parameters,
         confidence: 0.9,
@@ -178,7 +199,8 @@ export function translateCommand(text: string): NaturalCommand {
   return {
     originalText: cleanText,
     intent: 'general',
-    agent: 'Sirius',
+    agent: 'sirius',
+    agentDisplayName: 'Sirius',
     action: 'handle_request',
     parameters: { request: cleanText },
     confidence: 0.5,
@@ -197,6 +219,14 @@ export function getExampleCommands() {
         'Plan a new donation campaign',
         'Organize our volunteer schedule',
         'Coordinate the fundraising event',
+      ],
+    },
+    {
+      category: 'Design Audit',
+      examples: [
+        'Audit the cockpit UI',
+        'Run a refactoring UI review',
+        'Create a refactor plan for the dashboard',
       ],
     },
     {

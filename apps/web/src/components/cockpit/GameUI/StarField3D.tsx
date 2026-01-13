@@ -5,7 +5,7 @@
  * Video game-style space environment with animated stars
  */
 
-import { useRef, useMemo } from 'react'
+import { useRef, useMemo, useEffect, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { Points, PointMaterial } from '@react-three/drei'
 import * as THREE from 'three'
@@ -68,12 +68,33 @@ function Stars() {
 }
 
 export function StarField3D() {
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+    const handleChange = (event: MediaQueryListEvent) => {
+      setPrefersReducedMotion(event.matches)
+    }
+
+    setPrefersReducedMotion(mediaQuery.matches)
+    mediaQuery.addEventListener('change', handleChange)
+
+    return () => mediaQuery.removeEventListener('change', handleChange)
+  }, [])
+
   return (
     <div className="fixed inset-0 -z-10">
-      <Canvas camera={{ position: [0, 0, 1] }}>
-        <color attach="background" args={['#0a0a1f']} />
-        <Stars />
-      </Canvas>
+      {prefersReducedMotion ? (
+        <div className="h-full w-full bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900" aria-hidden />
+      ) : (
+        <Canvas camera={{ position: [0, 0, 1] }}>
+          <color attach="background" args={['#0a0a1f']} />
+          <Stars />
+        </Canvas>
+      )}
     </div>
   )
 }
