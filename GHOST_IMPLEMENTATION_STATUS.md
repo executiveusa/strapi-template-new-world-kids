@@ -6,15 +6,16 @@
 1. **`apps/web/src/lib/ghost/client.ts`** - Ghost API client with all methods
 2. **`apps/web/src/lib/ghost/types.ts`** - TypeScript type definitions
 3. **`apps/web/src/lib/ghost/image-enrichment.ts`** - AI image generation fallback
+4. **`apps/web/src/lib/ghost/admin.ts`** - Ghost Admin API client for member signup
 
 ### React Components  
-4. **`apps/web/src/components/blog/PostCard.tsx`** - Blog card with glassmorphism
-5. **`apps/web/src/components/blog/PostContent.tsx`** - HTML renderer with DOMPurify
-6. **`apps/web/src/components/blog/NewsletterCTA.tsx`** - Email capture form
-7. **`apps/web/src/components/blog/RelatedPosts.tsx`** - Related content section
+5. **`apps/web/src/components/blog/PostCard.tsx`** - Blog card with glassmorphism
+6. **`apps/web/src/components/blog/PostContent.tsx`** - HTML renderer with DOMPurify
+7. **`apps/web/src/components/blog/NewsletterCTA.tsx`** - Email capture form
+8. **`apps/web/src/components/blog/RelatedPosts.tsx`** - Related content section
 
 ### Pages
-8. **`apps/web/src/app/(platform)/blog/page.tsx`** - Blog index with grid
+9. **`apps/web/src/app/(platform)/blog/page.tsx`** - Blog index with grid
 
 ---
 
@@ -28,8 +29,6 @@ apps/web/src/app/(platform)/blog/[slug]/page.tsx
 # Tag filter page  
 apps/web/src/app/(platform)/blog/tag/[tag]/page.tsx
 
-# Newsletter API endpoint
-apps/web/src/app/api/newsletter/route.ts
 ```
 
 ### Configuration Updates (3 files)
@@ -76,6 +75,7 @@ Add to `.env.example`:
 GHOST_CONTENT_API_URL=https://your-site.ghost.io
 GHOST_CONTENT_API_KEY=your-32-char-content-api-key
 GHOST_ADMIN_API_KEY=optional-for-admin-operations
+GHOST_ADMIN_API_URL=optional-admin-base-url-override
 GHOST_VERSION=v5.0
 
 # Optional: For image generation fallback
@@ -316,6 +316,8 @@ export default async function TagPage({ params }: { params: { tag: string } }) {
 ### 3. Newsletter API
 **File:** `apps/web/src/app/api/newsletter/route.ts`
 
+**Final approach:** Newsletter signups call `addToNewsletterService`, which first attempts to create a Ghost member via the Admin API using a JWT signed from `GHOST_ADMIN_API_KEY` (helper in `apps/web/src/lib/ghost/admin.ts`, optional `GHOST_ADMIN_API_URL` override). If Ghost is unavailable, the flow falls back to sending a welcome email via Resend, and finally logs the signup as a last resort. 
+
 ```typescript
 import { NextResponse } from 'next/server';
 
@@ -329,18 +331,19 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 });
     }
 
-    // TODO: Add to Ghost members via Admin API or your email service
-    // Example: Add to Ghost members
-    // const adminAPI = new GhostAdminAPI({ ... });
-    // await adminAPI.members.add({ email, subscribed: true });
+    // Adds to Ghost Members via Admin API with fallback to Resend (email)
+    // (Implementation lives in apps/web/src/lib/ghost/admin.ts)
+    const result = await addToNewsletterService(email, name);
 
-    // Or use external service (Mailchimp, ConvertKit, etc.)
-    // await fetch('https://api.mailchimp.com/3.0/lists/...', { ... });
-
-    console.log('Newsletter signup:', email);
+    if (!result.success) {
+      return NextResponse.json(
+        { success: false, error: result.error || 'Failed to subscribe' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({ 
-      message: 'Thanks for subscribing! Check your inbox for confirmation.',
+      message: result.message,
       success: true 
     });
   } catch (error) {
