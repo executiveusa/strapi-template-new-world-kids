@@ -7,6 +7,7 @@ type GhostMemberPayload = {
 };
 
 const ADMIN_AUDIENCE = '/admin/';
+const DEFAULT_TOKEN_EXPIRY_SECONDS = 5 * 60; // 5 minutes
 
 /**
  * Determine whether the Ghost Admin API is configured.
@@ -31,8 +32,13 @@ function createAdminToken(adminApiKey: string): string {
   const [id, secret] = parts;
 
   const iat = Math.floor(Date.now() / 1000);
+  // Allow configurable token expiry for high-latency networks or long-running operations
+  const expirySeconds = process.env.GHOST_ADMIN_TOKEN_EXPIRY_SECONDS
+    ? parseInt(process.env.GHOST_ADMIN_TOKEN_EXPIRY_SECONDS, 10)
+    : DEFAULT_TOKEN_EXPIRY_SECONDS;
+  
   const header = { alg: 'HS256', typ: 'JWT', kid: id };
-  const payload = { iat, exp: iat + 5 * 60, aud: ADMIN_AUDIENCE };
+  const payload = { iat, exp: iat + expirySeconds, aud: ADMIN_AUDIENCE };
 
   const encodedHeader = base64UrlEncode(JSON.stringify(header));
   const encodedPayload = base64UrlEncode(JSON.stringify(payload));
