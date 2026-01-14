@@ -65,3 +65,4 @@ apps/mobile/android
 .qoder/rules/byterover-rules.md
 .augment/rules/byterover-rules.md
 .env*.local
+.tsbuildinfo
