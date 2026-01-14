@@ -11,10 +11,10 @@ const ADMIN_AUDIENCE = '/admin/';
 /**
  * Determine whether the Ghost Admin API is configured.
  *
- * @returns `true` if both the Ghost admin URL and Admin API key are set.
+ * @returns `true` if both the Ghost Admin API URL and Admin API key are set.
  */
 export function isGhostAdminConfigured(): boolean {
-  const url = process.env.GHOST_ADMIN_API_URL || process.env.GHOST_CONTENT_API_URL;
+  const url = process.env.GHOST_ADMIN_API_URL;
   const key = process.env.GHOST_ADMIN_API_KEY;
   return Boolean(url && key);
 }
@@ -24,13 +24,15 @@ function base64UrlEncode(value: string): string {
 }
 
 function createAdminToken(adminApiKey: string): string {
-  const [id, secret] = adminApiKey.split(':');
-  if (!id || !secret) {
-    throw new Error('Invalid Ghost Admin API key format.');
+  const parts = adminApiKey.split(':');
+  if (parts.length !== 2 || !parts[0] || !parts[1]) {
+    throw new Error("Invalid Ghost Admin API key format. Expected format: 'id:secret'.");
   }
+  const [id, secret] = parts;
 
   const iat = Math.floor(Date.now() / 1000);
   const header = { alg: 'HS256', typ: 'JWT', kid: id };
+  // 5-minute expiration is sufficient for API requests under normal network conditions
   const payload = { iat, exp: iat + 5 * 60, aud: ADMIN_AUDIENCE };
 
   const encodedHeader = base64UrlEncode(JSON.stringify(header));
@@ -44,7 +46,7 @@ function createAdminToken(adminApiKey: string): string {
 }
 
 function getAdminApiBaseUrl(): string {
-  const url = process.env.GHOST_ADMIN_API_URL || process.env.GHOST_CONTENT_API_URL;
+  const url = process.env.GHOST_ADMIN_API_URL;
   if (!url) {
     throw new Error('Ghost Admin API URL not configured.');
   }
@@ -79,9 +81,17 @@ export async function addGhostMember(member: GhostMemberPayload): Promise<boolea
   });
 
   if (!response.ok) {
+    const statusInfo = response.statusText
+      ? `${response.status} ${response.statusText}`
+      : `${response.status}`;
+    let message = `Ghost Admin API error (${statusInfo})`;
+    
     const errorData = await response.json().catch(() => null);
-    const message =
-      errorData?.errors?.[0]?.message || `Ghost Admin API error (${response.status})`;
+    const serverMessage = errorData?.errors?.[0]?.message;
+    if (serverMessage) {
+      message += `: ${serverMessage}`;
+    }
+    
     throw new Error(message);
   }
 
