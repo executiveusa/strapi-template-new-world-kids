@@ -7,6 +7,7 @@ type GhostMemberPayload = {
 };
 
 const ADMIN_AUDIENCE = '/admin/';
+const DEFAULT_JWT_EXPIRATION_SECONDS = 5 * 60; // 5 minutes
 
 /**
  * Determine whether the Ghost Admin API is configured.
@@ -30,9 +31,29 @@ function createAdminToken(adminApiKey: string): string {
   }
   const [id, secret] = parts;
 
+  // Get JWT expiration from environment variable with default fallback
+  const expirationEnv = process.env.GHOST_ADMIN_JWT_EXPIRATION_SECONDS;
+  let expirationSeconds = DEFAULT_JWT_EXPIRATION_SECONDS;
+  
+  if (expirationEnv) {
+    const parsed = parseInt(expirationEnv, 10);
+    if (isNaN(parsed) || parsed <= 0) {
+      console.warn(
+        `Invalid GHOST_ADMIN_JWT_EXPIRATION_SECONDS value: ${expirationEnv}. Using default ${DEFAULT_JWT_EXPIRATION_SECONDS} seconds.`
+      );
+    } else if (parsed > 3600) {
+      console.warn(
+        `GHOST_ADMIN_JWT_EXPIRATION_SECONDS value ${parsed} exceeds recommended maximum of 3600 seconds (1 hour). Using provided value anyway.`
+      );
+      expirationSeconds = parsed;
+    } else {
+      expirationSeconds = parsed;
+    }
+  }
+
   const iat = Math.floor(Date.now() / 1000);
   const header = { alg: 'HS256', typ: 'JWT', kid: id };
-  const payload = { iat, exp: iat + 5 * 60, aud: ADMIN_AUDIENCE };
+  const payload = { iat, exp: iat + expirationSeconds, aud: ADMIN_AUDIENCE };
 
   const encodedHeader = base64UrlEncode(JSON.stringify(header));
   const encodedPayload = base64UrlEncode(JSON.stringify(payload));
