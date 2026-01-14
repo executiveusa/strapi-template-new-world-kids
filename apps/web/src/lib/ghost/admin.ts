@@ -81,8 +81,14 @@ export async function addGhostMember(member: GhostMemberPayload): Promise<boolea
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);
-    const message =
-      errorData?.errors?.[0]?.message || `Ghost Admin API error (${response.status})`;
+    const statusInfo = response.statusText
+      ? `${response.status} ${response.statusText}`
+      : `${response.status}`;
+    let message = `Ghost Admin API error (${statusInfo})`;
+    const serverMessage = errorData?.errors?.[0]?.message;
+    if (serverMessage) {
+      message += `: ${serverMessage}`;
+    }
     throw new Error(message);
   }
 
