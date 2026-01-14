@@ -10,7 +10,18 @@ export const registerAdminUserSubscriber = async ({
     models: ["admin::user"],
 
     async afterCreate(event) {
-      await sendEmail(strapi, event)
+      try {
+        await sendEmail(strapi, event)
+      } catch (error) {
+        strapi.log.error(
+          "Failed to send admin registration email after user creation.",
+          {
+            error: formatLifecycleError(error),
+            userId: event.result?.id,
+            email: event.result?.email,
+          }
+        )
+      }
     },
   })
 }
@@ -35,8 +46,23 @@ const sendEmail = async (strapi: Core.Strapi, event: Event) => {
         html,
       })
     } catch (e) {
-      // TODO: handle error
-      console.log(e)
+      strapi.log.error("Error sending admin registration email.", {
+        error: formatLifecycleError(e),
+        email,
+      })
+      throw e
     }
   }
+}
+
+const formatLifecycleError = (error: unknown) => {
+  if (error instanceof Error) {
+    return {
+      message: error.message,
+      name: error.name,
+      stack: error.stack,
+    }
+  }
+
+  return { message: String(error) }
 }

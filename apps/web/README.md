@@ -118,7 +118,7 @@ There is a lot of code prepared in this template:
 
 For more details see [project structure](#project-structure) section below.
 
-Not all predefined components or routes are needed in the final app, so unnecessary parts should be removed. A function called `removeThisWhenYouNeedMe` is placed at the top of each route or component and logs a warning message to the console. It helps identify unused or placeholder code. If the function, component, or page is required, simply remove the call to `removeThisWhenYouNeedMe`. Any code that still includes this call should be removed as development progresses.
+Not all predefined components or routes are needed in the final app, so unnecessary parts should be removed. A function called `logPlaceholderUsage` is placed at the top of each route or component and logs a warning message to the console. It helps identify unused or placeholder code. If the function, component, or page is required, simply remove the call to `logPlaceholderUsage`. Any code that still includes this call should be removed as development progresses.
 
 ## 🧬 Project structure
 
@@ -280,15 +280,14 @@ Page builder landing page is rendered inside the main [dynamic route](src/app/[l
 
 Special case is the Index/Root page. By default, its `fullPath` is set to shared value `/` in the [@repo/shared-data](../../packages/shared-data/index.ts) package.
 
-Another important aspect is the mapping between Strapi components and frontend components. This is handled in the [src/components/page-builder/index.ts](src/components/page-builder/index.tsx) file. `PageContentComponents` contains a mapping between Strapi component names and their corresponding React components.
+Another important aspect is the mapping between Strapi components and frontend components. This is handled in the [src/components/page-builder/index.ts](src/components/page-builder/index.tsx) file. The file exports a stable `PageContentComponentPaths` UID-to-module-path map (used for chunking) and `PageContentComponentLoaders` for loading modules in the app router/server components.
 
 > [!WARNING]
-> The mapping is not automatically generated, and it is your responsibility to keep it up to date. If you add a new page-level component in Strapi, you need to add it here as well.
-> Currently, there is a performance issue with dynamic lazy-loading and all components are preloaded in the page builder. This is a known issue and will be fixed in the future. See [#65](https://github.com/notum-cz/strapi-next-monorepo-starter/issues/65)
+> The mapping is not automatically generated, and it is your responsibility to keep it up to date. If you add a new page-level component in Strapi, you need to add it here as well. For Next.js 15 compatibility, avoid calling `next/dynamic` inside `pages/`; use the stable path map and loader functions from `index.tsx` in app-router/server components instead.
 
 > [!TIP]
 > Not all Strapi components should be rendered at the page level. Some components are intended to be used as subcomponents within other components (e.g. elements, utilities).
-> Single types (e.g. Navbar, Footer) are not rendered in the page builder, but are fetched and rendered separately. They are not included in the `PageContentComponents` mapping.
+> Single types (e.g. Navbar, Footer) are not rendered in the page builder, but are fetched and rendered separately. They are not included in the `PageContentComponentPaths` mapping.
 
 ### Metadata, sitemap.xml and robots.txt
 

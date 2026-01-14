@@ -9,7 +9,7 @@ import { Column } from "@tanstack/react-table"
 import { ArrowUpDown } from "lucide-react"
 import { useTranslations } from "next-intl"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { logPlaceholderUsage } from "@/lib/general-helpers"
 import { cn } from "@/lib/styles"
 import { Button } from "@/components/ui/button"
 import {
@@ -31,7 +31,7 @@ export function DataTableColumnHeader<TData, TValue>({
   className,
   withDropdown,
 }: Props<TData, TValue>) {
-  removeThisWhenYouNeedMe("DataTableColumnHeader")
+  logPlaceholderUsage("DataTableColumnHeader")
 
   const t = useTranslations("tables")
 

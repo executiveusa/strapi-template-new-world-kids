@@ -24,35 +24,52 @@ export const registerUserSubscriber = async ({
  *  - if the user is created via "/auth/local/register" - `confirmed` is always set to true by default
  */
 const sendEmail = async (strapi: Core.Strapi, event: Event) => {
+  const logger = strapi.log ?? console
   const { email, documentId, firstName, lastName, confirmed } =
     event.result ?? {}
 
   if (confirmed) {
     // do not send email if the user is already confirmed
-    console.log(`User ${email} is already confirmed. Skipping email.`)
+    logger.info("User already confirmed; skipping account creation email.", {
+      lifecycle: "user.afterCreate",
+      email,
+      documentId,
+    })
     return
   }
 
   if (!email || !documentId) {
+    logger.warn("Missing user data for account creation email.", {
+      lifecycle: "user.afterCreate",
+      email,
+      documentId,
+    })
     return
   }
 
   const feAccountActivationUrl = process.env.CLIENT_ACCOUNT_ACTIVATION_URL
   if (!feAccountActivationUrl) {
-    console.warn(
-      "CLIENT_ACCOUNT_ACTIVATION_URL is not set. After creation email will not be sent."
+    logger.warn(
+      "CLIENT_ACCOUNT_ACTIVATION_URL is not set; account creation email will not be sent.",
+      {
+        lifecycle: "user.afterCreate",
+        email,
+        documentId,
+      }
     )
     return
   }
 
   const name = [firstName, lastName].filter(Boolean).join(" ")
   const resetPasswordToken: string = crypto.randomBytes(64).toString("hex")
+  let tokenStored = false
 
   try {
     await strapi.documents("plugin::users-permissions.user").update({
       documentId,
       data: { resetPasswordToken },
     })
+    tokenStored = true
 
     const html = `<h2>Welcome to our community!</h2> <h3>We have created an account for you</h3><p>
              We have automatically generated a password for you, please change it as soon as possible!
@@ -65,7 +82,29 @@ const sendEmail = async (strapi: Core.Strapi, event: Event) => {
       html,
     })
   } catch (err) {
-    // TODO: handle error
-    console.log(err)
+    logger.error("Failed to send account creation email.", {
+      lifecycle: "user.afterCreate",
+      email,
+      documentId,
+      error: err instanceof Error ? err.message : err,
+      stack: err instanceof Error ? err.stack : undefined,
+    })
+
+    if (tokenStored) {
+      try {
+        await strapi.documents("plugin::users-permissions.user").update({
+          documentId,
+          data: { resetPasswordToken: null },
+        })
+      } catch (rollbackErr) {
+        logger.error("Failed to rollback reset password token.", {
+          lifecycle: "user.afterCreate",
+          email,
+          documentId,
+          error: rollbackErr instanceof Error ? rollbackErr.message : rollbackErr,
+          stack: rollbackErr instanceof Error ? rollbackErr.stack : undefined,
+        })
+      }
+    }
   }
 }

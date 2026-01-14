@@ -549,7 +549,7 @@ className="font-sans text-base"                  // Body text
 1. Re-read relevant section of `specification.md`
 2. Check `constitution.md` for constraints
 3. Review code templates above
-4. Emit `FIXME.md` if truly blocked (don't crash)
+4. Emit `FIXME.md` if truly blocked (don't crash). This is **expected only when blocked**: place it at the repo root (or closest relevant directory) and document the blocker, attempted fixes, and next steps; remove it once resolved.
 
 ---
 
