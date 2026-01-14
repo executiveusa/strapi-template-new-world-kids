@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl"
 import { useFormContext } from "react-hook-form"
 import { z } from "zod"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { logPlaceholderUsage } from "@/lib/general-helpers"
 import { cn } from "@/lib/styles"
 import { Tooltip } from "@/components/elementary/Tooltip"
 import { AppFormDescription } from "@/components/forms/AppFormDescription"
@@ -86,7 +86,7 @@ export function AppFilePicker({
   required,
   description,
 }: Props) {
-  removeThisWhenYouNeedMe("AppFilePicker")
+  logPlaceholderUsage("AppFilePicker")
 
   const [isDraggingOver, setIsDraggingOver] = useState(false)
 

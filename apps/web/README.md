@@ -118,7 +118,7 @@ There is a lot of code prepared in this template:
 
 For more details see [project structure](#project-structure) section below.
 
-Not all predefined components or routes are needed in the final app, so unnecessary parts should be removed. A function called `removeThisWhenYouNeedMe` is placed at the top of each route or component and logs a warning message to the console. It helps identify unused or placeholder code. If the function, component, or page is required, simply remove the call to `removeThisWhenYouNeedMe`. Any code that still includes this call should be removed as development progresses.
+Not all predefined components or routes are needed in the final app, so unnecessary parts should be removed. A function called `logPlaceholderUsage` is placed at the top of each route or component and logs a warning message to the console. It helps identify unused or placeholder code. If the function, component, or page is required, simply remove the call to `logPlaceholderUsage`. Any code that still includes this call should be removed as development progresses.
 
 ## 🧬 Project structure
 
