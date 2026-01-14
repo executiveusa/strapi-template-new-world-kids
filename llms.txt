@@ -1,0 +1,2 @@
+Deploy
+Deployment safety: deployments must use Vercel/Coolify pipelines and envs from `master.env`; never commit secrets or `.env*` files; avoid local scripts that embed credentials.
