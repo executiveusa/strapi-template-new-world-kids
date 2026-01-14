@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { addGhostMember, isGhostAdminConfigured } from '@/lib/ghost/admin';
 
 // Rate limiting store (in production, use Redis)
 const rateLimitStore = new Map<string, { count: number; resetTime: number }>();
@@ -99,39 +100,18 @@ async function addToNewsletterService(
   error?: string;
 }> {
   // Option 1: Try Ghost Members API
-  const ghostUrl = process.env.GHOST_CONTENT_API_URL;
-  const ghostAdminKey = process.env.GHOST_ADMIN_API_KEY;
-
-  if (ghostUrl && ghostAdminKey) {
+  if (isGhostAdminConfigured()) {
     try {
-      const response = await fetch(`${ghostUrl}/ghost/api/admin/members/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Ghost ${ghostAdminKey}`,
-        },
-        body: JSON.stringify({
-          members: [
-            {
-              email,
-              name: name || undefined,
-              subscribed: true,
-            },
-          ],
-        }),
+      await addGhostMember({
+        email,
+        name: name || undefined,
+        subscribed: true,
       });
 
-      if (response.ok) {
-        return {
-          success: true,
-          message: 'Successfully subscribed to newsletter',
-        };
-      } else {
-        const errorData = await response.json();
-        throw new Error(
-          errorData.errors?.[0]?.message || 'Failed to subscribe via Ghost'
-        );
-      }
+      return {
+        success: true,
+        message: 'Successfully subscribed to newsletter',
+      };
     } catch (ghostError) {
       console.error('Ghost API error:', ghostError);
       // Fall through to Resend
