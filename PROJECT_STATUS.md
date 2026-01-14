@@ -348,17 +348,17 @@ OPENROUTER_API_KEY=<set or needed>
 ### Vercel (Frontend)
 - **Status:** 🚧 Building (after package fixes)
 - **Project:** strapi-template-new-world-kids
-- **URL:** TBD (check Vercel dashboard)
+- **URL:** https://strapi-template-new-world-kids.vercel.app
 
 ### Supabase (Database)
 - **Status:** ✅ Connected
 - **Project:** sbbuxnyvflczfzvsglpe
-- **Region:** TBD
+- **Region:** EU (auto-selected)
 - **URL:** https://sbbuxnyvflczfzvsglpe.supabase.co
 
 ### Backend Services
 - **Status:** 🏠 Local development
-- **Deployment:** TBD (Railway, Render, or separate Vercel deployments)
+- **Deployment:** Coolify on Hostinger VPS
 
 ---
 
