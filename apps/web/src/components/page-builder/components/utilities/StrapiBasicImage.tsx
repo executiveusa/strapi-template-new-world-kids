@@ -6,6 +6,7 @@ import type { Data } from "@repo/strapi"
 
 import { formatStrapiMediaUrl } from "@/lib/strapi-helpers"
 import { ImageWithFallback } from "@/components/elementary/ImageWithFallback"
+import { ImageWithPlaiceholder } from "@/components/elementary/ImageWithPlaiceholder"
 
 export interface BasicImageProps
   extends Omit<ImageExtendedProps, "src" | "alt"> {
@@ -37,11 +38,12 @@ export function StrapiBasicImage({
     return null
   }
 
-  const ImageComp = useNativeNextImageOnly ? Image : ImageWithFallback
-
-  // TODO: the placeholder library is not working properly and crashes the storybook - revise its usage
-  // const ImageComp = useClient ? ImageWithFallback : ImageWithPlaiceholder
-  // useClient  ? ImageWithFallback : ImageWithPlaiceholder
+  const isBrowser = typeof window !== "undefined"
+  const ImageComp = useNativeNextImageOnly
+    ? Image
+    : isBrowser
+      ? ImageWithFallback
+      : ImageWithPlaiceholder
 
   const sizes = {
     width:

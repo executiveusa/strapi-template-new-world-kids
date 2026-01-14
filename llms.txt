@@ -1,0 +1,25 @@
+Deploy
+Deployment safety: deployments must use Vercel/Coolify pipelines and envs from `master.env`; never commit secrets or `.env*` files; avoid local scripts that embed credentials.
+# LLM Registry
+
+## Common actions
+- Build (workspace): `yarn build`
+- Build (web): `yarn build:web`
+- Dev (web): `yarn dev:web`
+- Lint/test (workspace): `yarn lint`, `yarn test`
+
+## Deploy
+- Vercel (frontend): `apps/web` with Preview for staging.
+- Coolify (backend): `services/cms` and other services as configured.
+
+## Deployment safety
+- Use Vercel/Coolify pipelines with envs loaded from `C:\Users\Trevor\Documents\master.env`.
+- Never commit `.env*` files or secrets, and avoid local scripts that embed credentials.
+
+## Ops docs
+- `docs/ops/*`: deployment decisions, staging choices, runbooks.
+- `docs/phase/*`: deployment reports and evidence.
+
+## Secrets policy
+- Env source-of-truth: `C:\Users\Trevor\Documents\master.env`.
+- Never commit `.env*` files or secrets.
