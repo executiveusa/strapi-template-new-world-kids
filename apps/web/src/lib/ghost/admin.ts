@@ -24,10 +24,11 @@ function base64UrlEncode(value: string): string {
 }
 
 function createAdminToken(adminApiKey: string): string {
-  const [id, secret] = adminApiKey.split(':');
-  if (!id || !secret) {
-    throw new Error('Invalid Ghost Admin API key format.');
+  const parts = adminApiKey.split(':');
+  if (parts.length !== 2 || !parts[0] || !parts[1]) {
+    throw new Error("Invalid Ghost Admin API key format. Expected format: 'id:secret'.");
   }
+  const [id, secret] = parts;
 
   const iat = Math.floor(Date.now() / 1000);
   const header = { alg: 'HS256', typ: 'JWT', kid: id };
