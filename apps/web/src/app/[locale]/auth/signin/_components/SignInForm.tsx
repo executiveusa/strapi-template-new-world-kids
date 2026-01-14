@@ -9,6 +9,7 @@ import { GoogleIcon } from '@/components/icons/GoogleIcon';
 import { AppForm } from '@/components/forms/AppForm';
 import { PasswordField } from '@/components/forms/fields/PasswordField';
 import { TextField } from '@/components/forms/fields/TextField';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { useAppRouter } from '@/hooks/useAppRouter';
 import { useAppSearchParams } from '@/hooks/useAppSearchParams';
@@ -34,19 +35,49 @@ export function SignInForm() {
     },
   });
 
-  const onSubmit = async (values: z.infer<typeof schema>) => {
-    const response = await signIn('credentials', {
-      redirect: false,
-      email: values.email,
-      password: values.password,
-    });
-
-    if (response?.ok) {
-      router.push(searchParams.get('callbackUrl') || APP_ROUTES.home);
+  const resolveSignInError = (error: string) => {
+    switch (error) {
+      case 'CredentialsSignin':
+        return 'Incorrect email or password. Please try again.';
+      case 'AccessDenied':
+        return 'Access denied. Please contact support if this continues.';
+      default:
+        return 'Unable to sign in right now. Please try again.';
     }
+  };
 
-    if (response?.error) {
-      // TODO: Handle error
+  const onSubmit = async (values: z.infer<typeof schema>) => {
+    form.clearErrors('root');
+
+    try {
+      const response = await signIn('credentials', {
+        redirect: false,
+        email: values.email,
+        password: values.password,
+      });
+
+      if (response?.ok) {
+        router.push(searchParams.get('callbackUrl') || APP_ROUTES.home);
+        return;
+      }
+
+      if (response?.error) {
+        form.setError('root', {
+          type: 'server',
+          message: resolveSignInError(response.error),
+        });
+        return;
+      }
+
+      form.setError('root', {
+        type: 'server',
+        message: 'Unable to sign in right now. Please try again.',
+      });
+    } catch (error) {
+      form.setError('root', {
+        type: 'server',
+        message: 'Something went wrong while signing you in. Please try again.',
+      });
     }
   };
 
@@ -64,6 +95,13 @@ export function SignInForm() {
           label="Password"
         />
       </div>
+      {form.formState.errors.root?.message ? (
+        <Alert variant="destructive">
+          <AlertDescription>
+            {form.formState.errors.root.message}
+          </AlertDescription>
+        </Alert>
+      ) : null}
       <Link
         href={APP_ROUTES.forgotPassword}
         className="text-right text-sm font-medium text-primary underline"
