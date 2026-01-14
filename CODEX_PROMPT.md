@@ -583,7 +583,7 @@ You're GPT-5-Codex. Use your adaptive reasoning:
 1. **Re-read specification.md** for that component
 2. **Check constitution.md** for constraints
 3. **Review code templates** above
-4. **Emit FIXME.md** if truly blocked (don't crash)
+4. **Emit `FIXME.md`** if truly blocked (don't crash). This is **expected only when blocked**: create it at the repo root (or the closest relevant directory) and include the blocker, what you tried, and next steps; remove it once resolved.
 
 ---
 
