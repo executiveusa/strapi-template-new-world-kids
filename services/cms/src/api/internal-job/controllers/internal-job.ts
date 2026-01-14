@@ -3,6 +3,7 @@
  */
 
 import { factories } from "@strapi/strapi"
+import { timingSafeEqual } from "crypto"
 
 export default factories.createCoreController(
   "api::internal-job.internal-job",
@@ -10,23 +11,56 @@ export default factories.createCoreController(
     const ensureAuthorized = (ctx) => {
       // Expect a static internal API token provided via Authorization: Bearer <token>.
       const expectedToken = process.env.INTERNAL_JOB_TOKEN
-      const authorization = ctx.request.header.authorization ?? ""
+      const authorization = ctx.request.headers.authorization ?? ""
       const token = authorization.replace(/^Bearer\s+/i, "")
 
       if (!expectedToken) {
         strapi.log.error(
           "Internal job token is not configured; refusing to execute internal job."
         )
-        ctx.internalServerError("Internal job token is not configured.")
+        ctx.internalServerError("Service unavailable.")
         return false
       }
 
-      if (!token || token !== expectedToken) {
+      // Use timing-safe comparison to prevent timing attacks
+      if (!token || token.length !== expectedToken.length) {
         strapi.log.warn("Unauthorized internal job request blocked.", {
           ip: ctx.request.ip,
           path: ctx.request.path,
         })
-        ctx.unauthorized("Unauthorized.")
+        ctx.status = 401
+        ctx.body = {
+          error: "Unauthorized",
+          message: "Invalid or missing internal job token.",
+        }
+        return false
+      }
+
+      try {
+        const tokenBuffer = Buffer.from(token, "utf8")
+        const expectedBuffer = Buffer.from(expectedToken, "utf8")
+        if (!timingSafeEqual(tokenBuffer, expectedBuffer)) {
+          strapi.log.warn("Unauthorized internal job request blocked.", {
+            ip: ctx.request.ip,
+            path: ctx.request.path,
+          })
+          ctx.status = 401
+          ctx.body = {
+            error: "Unauthorized",
+            message: "Invalid or missing internal job token.",
+          }
+          return false
+        }
+      } catch (error) {
+        strapi.log.warn("Unauthorized internal job request blocked.", {
+          ip: ctx.request.ip,
+          path: ctx.request.path,
+        })
+        ctx.status = 401
+        ctx.body = {
+          error: "Unauthorized",
+          message: "Invalid or missing internal job token.",
+        }
         return false
       }
 
