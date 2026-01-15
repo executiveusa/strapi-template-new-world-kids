@@ -31,7 +31,7 @@ const NEW_WORLD_KIDS_PROJECTS = [
       { label: 'Trees Planted', value: '500+' },
       { label: 'Food Produced', value: '2 tons/yr' },
     ],
-    detailsUrl: '#', // TODO: Create detail pages
+    detailsUrl: '/impact/proyecto-indigo-azul',
   },
   {
     id: '2',
@@ -47,7 +47,7 @@ const NEW_WORLD_KIDS_PROJECTS = [
       { label: 'Graduates', value: '127' },
       { label: 'Active Students', value: '45' },
     ],
-    detailsUrl: '#',
+    detailsUrl: '/impact/culture-shock',
   },
   {
     id: '3',
@@ -63,7 +63,7 @@ const NEW_WORLD_KIDS_PROJECTS = [
       { label: 'Athletes Supported', value: '23' },
       { label: 'Families Helped', value: '18' },
     ],
-    detailsUrl: '#',
+    detailsUrl: '/impact/culture-shock-sports',
   },
   {
     id: '4',
@@ -80,7 +80,7 @@ const NEW_WORLD_KIDS_PROJECTS = [
       { label: 'Articles Ready', value: '42' },
       { label: 'Contributors', value: '15' },
     ],
-    detailsUrl: '#',
+    detailsUrl: '/impact/real-minority-report',
   },
 ];
 

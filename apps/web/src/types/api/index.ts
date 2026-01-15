@@ -84,10 +84,10 @@ export type BreadCrumb = {
 }
 
 export type PageLocalization = {
-  localizations: Array<{
+  localizations?: Array<{
     id: number
     documentId: string
     fullPath: string
     locale: string
-  }>
-} | null
+  }> | null
+}
