@@ -176,7 +176,9 @@ export function VoiceCommandButton() {
                   status === 'processing' ? "bg-yellow-500 animate-pulse" : "bg-green-500 animate-pulse"
                 )}
               />
-              {status === 'processing' ? 'Sending to Cassiopeia...' : status === 'success' ? 'Success!' : 'Processing...'}
+              {status === 'processing' && 'Sending to Cassiopeia...'}
+              {status === 'success' && 'Success!'}
+              {status !== 'processing' && status !== 'success' && 'Processing...'}
             </div>
           )}
         </div>
