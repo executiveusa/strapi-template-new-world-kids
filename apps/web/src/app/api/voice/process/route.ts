@@ -14,6 +14,15 @@ export async function POST(request: NextRequest) {
     }
 
     const arrayBuffer = await audioFile.arrayBuffer()
+
+    // Validate file size (max 10MB) to prevent DoS attacks
+    if (arrayBuffer.byteLength > 10 * 1024 * 1024) {
+      return NextResponse.json(
+        { error: 'Audio file too large. Maximum size is 10MB.' },
+        { status: 413 }
+      )
+    }
+
     const stellarAgentsUrl = process.env.STELLAR_AGENTS_URL || 'http://localhost:3004'
     const cassiopeiaUrl = `${stellarAgentsUrl}/agents/cassiopeia/voice`
 
@@ -27,12 +36,17 @@ export async function POST(request: NextRequest) {
       })
 
       if (forwardResponse.ok) {
-        const forwarded = await forwardResponse.json()
-        return NextResponse.json({
-          success: true,
-          forwarded: true,
-          result: forwarded,
-        })
+        try {
+          const forwarded = await forwardResponse.json()
+          return NextResponse.json({
+            success: true,
+            forwarded: true,
+            result: forwarded,
+          })
+        } catch (jsonError) {
+          console.error('[Voice] Cassiopeia returned invalid JSON', jsonError)
+          // Continue to fallback response
+        }
       }
     } catch (error) {
       console.warn('[Voice] Cassiopeia forwarding failed, falling back to simulated response', error)
@@ -42,7 +56,7 @@ export async function POST(request: NextRequest) {
       success: true,
       forwarded: false,
       message:
-        'Voice command captured. Cassiopeia is currently offline, but we have stored your audio for processing.',
+        'Voice command received. Cassiopeia is currently offline - please try again later.',
       metadata: {
         sizeBytes: arrayBuffer.byteLength,
         contentType: (audioFile as File).type || 'audio/webm',
