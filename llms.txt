@@ -13,7 +13,7 @@ Deployment safety: deployments must use Vercel/Coolify pipelines and envs from `
 - Coolify (backend): `services/cms` and other services as configured.
 
 ## Deployment safety
-- Use Vercel/Coolify pipelines with envs loaded from `C:\Users\Trevor\Documents\master.env`.
+- Use Vercel/Coolify pipelines with envs loaded from your configured master env file (path set via `MASTER_ENV_PATH` environment variable).
 - Never commit `.env*` files or secrets, and avoid local scripts that embed credentials.
 
 ## Ops docs
@@ -21,5 +21,5 @@ Deployment safety: deployments must use Vercel/Coolify pipelines and envs from `
 - `docs/phase/*`: deployment reports and evidence.
 
 ## Secrets policy
-- Env source-of-truth: `C:\Users\Trevor\Documents\master.env`.
+- Env source-of-truth: a local master env file whose path is configured via the `MASTER_ENV_PATH` environment variable.
 - Never commit `.env*` files or secrets.

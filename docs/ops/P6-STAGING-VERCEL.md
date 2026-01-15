@@ -17,9 +17,9 @@ Use Vercel Preview Deployments as staging for `apps/web`.
 - Production promotion occurs only after staging verification.
 
 ## Env scope
-- Preview env vars must be set from `C:\Users\Trevor\Documents\master.env`.
+- Preview env vars must be sourced from a secure, project-agnostic env file or secret manager (for example, a `master.env` stored outside the repo and referenced via an environment variable such as `MASTER_ENV_PATH`).
 - Never commit secrets or `.env*` files.
 
 ## Security & env handling
-- Treat `C:\Users\Trevor\Documents\master.env` as the canonical source of truth.
+- Treat the centrally managed env source (e.g., your designated `master.env` location or secret manager configured via `MASTER_ENV_PATH`) as the canonical source of truth.
 - Load secrets into Vercel via the dashboard/CLI, not the repo.

@@ -1,7 +1,7 @@
 # Agent Guide (Codex/LLM)
 
 ## Core responsibilities
-- Follow repo layout and build commands in `LLM.txt`.
+- Follow repo layout and build commands in `LLM.txt` (this is distinct from `llms.txt`).
 - Keep changes atomic and reversible.
 - Never commit secrets or `.env*` files with secrets.
 

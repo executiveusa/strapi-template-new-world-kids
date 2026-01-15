@@ -19,7 +19,7 @@
 - Do not use Google Cloud for deployment or hosting.
 
 ## Env handling
-- Source of truth for env values: `C:\Users\Trevor\Documents\master.env` (never commit secrets).
+- Source of truth for env values: a local master env file whose path is configured via the `MASTER_ENV_PATH` environment variable (never commit secrets).
 - Do not check in `.env*` files containing secrets.
 
 ## Phase docs
