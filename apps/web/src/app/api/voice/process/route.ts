@@ -14,6 +14,16 @@ export async function POST(request: NextRequest) {
     }
 
     const arrayBuffer = await audioFile.arrayBuffer()
+    
+    // Validate file size to prevent DoS attacks (max 10MB)
+    const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB in bytes
+    if (arrayBuffer.byteLength > MAX_FILE_SIZE) {
+      return NextResponse.json(
+        { error: 'Audio file too large. Maximum size is 10MB.' },
+        { status: 413 }
+      )
+    }
+    
     const stellarAgentsUrl = process.env.STELLAR_AGENTS_URL || 'http://localhost:3004'
     const cassiopeiaUrl = `${stellarAgentsUrl}/agents/cassiopeia/voice`
 
