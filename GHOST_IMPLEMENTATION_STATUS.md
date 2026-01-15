@@ -76,6 +76,7 @@ GHOST_CONTENT_API_URL=https://your-site.ghost.io
 GHOST_CONTENT_API_KEY=your-32-char-content-api-key
 GHOST_ADMIN_API_KEY=optional-for-admin-operations
 GHOST_ADMIN_API_URL=optional-admin-base-url-override
+GHOST_ADMIN_JWT_EXPIRATION_SECONDS=300  # Optional: JWT expiration time in seconds (default: 300)
 GHOST_VERSION=v5.0
 
 # Optional: For image generation fallback

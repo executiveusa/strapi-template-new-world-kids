@@ -1,6 +1,6 @@
 import { Data } from "@repo/strapi"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { logPlaceholderUsage } from "@/lib/general-helpers"
 import { Container } from "@/components/elementary/Container"
 import {
   Accordion,
@@ -14,7 +14,7 @@ export function StrapiFaq({
 }: {
   readonly component: Data.Component<"sections.faq">
 }) {
-  removeThisWhenYouNeedMe("StrapiFaq")
+  logPlaceholderUsage("StrapiFaq")
 
   return (
     <section>

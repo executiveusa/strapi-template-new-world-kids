@@ -8,8 +8,12 @@ import {
   listNotebooks,
   exportNotebook,
 } from "./notebook-service";
+import {
+  generateNotebookPdf,
+  type PdfExportPayload,
+} from "./pdf-export";
 
-const app = express();
+export const app = express();
 app.use(express.json());
 
 const PORT = process.env.PORT || 3015;
@@ -152,11 +156,27 @@ app.get("/notebooks/:id/export", (req: Request, res: Response) => {
     const exported = exportNotebook(id);
 
     if (format === "pdf") {
-      // TODO: Implement PDF export
-      res.json({
-        ...exported,
-        message: "PDF export coming soon, returning markdown for now",
-      });
+      const payload = getPdfExportPayload(req);
+
+      generateNotebookPdf(exported.content, {
+        title: payload.title ?? exported.title,
+        author: payload.author,
+        subject: payload.subject,
+      })
+        .then((pdfBuffer) => {
+          const filename = payload.filename ?? `${exported.title}.pdf`;
+          res.set("Content-Type", "application/pdf");
+          res.set(
+            "Content-Disposition",
+            `attachment; filename="${filename}"`
+          );
+          res.set("Content-Length", pdfBuffer.length.toString());
+          res.send(pdfBuffer);
+        })
+        .catch((error) => {
+          console.error("Error generating PDF export:", error);
+          res.status(500).json({ error: "Failed to generate PDF export" });
+        });
     } else {
       res.set("Content-Type", "text/markdown");
       res.set(
@@ -189,9 +209,29 @@ app.get("/metrics", (req: Request, res: Response) => {
   });
 });
 
+function getPdfExportPayload(req: Request): PdfExportPayload {
+  const pickValue = (value: unknown): string | undefined => {
+    if (Array.isArray(value)) {
+      return typeof value[0] === "string" ? value[0] : undefined;
+    }
+    return typeof value === "string" ? value : undefined;
+  };
+
+  const body = req.body as Partial<PdfExportPayload> | undefined;
+
+  return {
+    title: pickValue(body?.title) ?? pickValue(req.query.title),
+    author: pickValue(body?.author) ?? pickValue(req.query.author),
+    subject: pickValue(body?.subject) ?? pickValue(req.query.subject),
+    filename: pickValue(body?.filename) ?? pickValue(req.query.filename),
+  };
+}
+
 // Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Rube MCP Server running on port ${PORT}`);
-  console.log(`📚 NotebookLLM Integration Active`);
-  console.log(`🔗 http://localhost:${PORT}/health`);
-});
+if (process.env.NODE_ENV !== "test" && require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Rube MCP Server running on port ${PORT}`);
+    console.log(`📚 NotebookLLM Integration Active`);
+    console.log(`🔗 http://localhost:${PORT}/health`);
+  });
+}

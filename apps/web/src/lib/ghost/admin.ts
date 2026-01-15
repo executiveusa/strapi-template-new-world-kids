@@ -52,6 +52,14 @@ function createAdminToken(adminApiKey: string): string {
   }
 
   const iat = Math.floor(Date.now() / 1000);
+  
+  // Allow configurable JWT expiration via environment variable.
+  // Increase this value if Ghost Admin API calls may take longer in certain scenarios
+  // (e.g., high latency networks, slow Ghost instances).
+  const expirationSeconds = process.env.GHOST_ADMIN_JWT_EXPIRATION_SECONDS
+    ? parseInt(process.env.GHOST_ADMIN_JWT_EXPIRATION_SECONDS, 10)
+    : DEFAULT_JWT_EXPIRATION_SECONDS;
+  
   const header = { alg: 'HS256', typ: 'JWT', kid: id };
   const payload = { iat, exp: iat + expirationSeconds, aud: ADMIN_AUDIENCE };
 
