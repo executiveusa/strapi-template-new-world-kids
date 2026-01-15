@@ -1,6 +1,6 @@
 import { Data } from "@repo/strapi"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { logPlaceholderUsage } from "@/lib/general-helpers"
 import { Container } from "@/components/elementary/Container"
 import { StrapiBasicImage } from "@/components/page-builder/components/utilities/StrapiBasicImage"
 import {
@@ -16,7 +16,7 @@ export function StrapiCarousel({
 }: {
   readonly component: Data.Component<"sections.carousel">
 }) {
-  removeThisWhenYouNeedMe("StrapiCarousel")
+  logPlaceholderUsage("StrapiCarousel")
 
   return (
     <section>

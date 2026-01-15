@@ -9,7 +9,7 @@ import {
 import { Table } from "@tanstack/react-table"
 import { useTranslations } from "next-intl"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { logPlaceholderUsage } from "@/lib/general-helpers"
 import { Button } from "@/components/ui/button"
 import {
   Select,
@@ -25,7 +25,7 @@ interface Props<TData> {
 }
 
 export function DataTablePagination<TData>({ table, simple }: Props<TData>) {
-  removeThisWhenYouNeedMe("DataTablePagination")
+  logPlaceholderUsage("DataTablePagination")
 
   const t = useTranslations("tables")
 
