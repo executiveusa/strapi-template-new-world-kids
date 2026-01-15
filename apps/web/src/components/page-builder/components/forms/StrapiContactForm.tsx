@@ -1,6 +1,6 @@
 import { Data } from "@repo/strapi"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { logPlaceholderUsage } from "@/lib/general-helpers"
 import { Container } from "@/components/elementary/Container"
 import { ContactForm } from "@/components/elementary/forms/ContactForm"
 import Heading from "@/components/typography/Heading"
@@ -11,7 +11,7 @@ export function StrapiContactForm({
 }: {
   readonly component: Data.Component<"forms.contact-form">
 }) {
-  removeThisWhenYouNeedMe("StrapiContactForm")
+  logPlaceholderUsage("StrapiContactForm")
 
   return (
     <div className="bg-white" id="form-section">

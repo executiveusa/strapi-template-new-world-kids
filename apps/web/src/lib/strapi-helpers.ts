@@ -6,22 +6,24 @@ import type { StaticImport } from "next/dist/shared/lib/get-img-props"
  * - local upload - in this case, the URL starts with /uploads and we need to add API url prefix
  * (this happens in route handler for Strapi assets)
  *
- * TODO: make this generic - return same type as argument has
  */
-export const formatStrapiMediaUrl = (
-  imageUrl: string | StaticImport | undefined | null
-): any => {
-  if (!imageUrl) {
-    return undefined
+type StrapiMediaInput = string | StaticImport | undefined | null
+type StrapiMediaOutput<T> = T extends string ? string : T
+
+export const formatStrapiMediaUrl = <T extends StrapiMediaInput>(
+  imageUrl: T
+): StrapiMediaOutput<T> => {
+  if (imageUrl == null) {
+    return imageUrl as StrapiMediaOutput<T>
   }
 
   if (typeof imageUrl === "string") {
     if (!imageUrl.startsWith("http")) {
       if (imageUrl.startsWith("/uploads")) {
-        return `/api/asset${imageUrl}`
+        return `/api/asset${imageUrl}` as StrapiMediaOutput<T>
       }
     }
   }
 
-  return imageUrl
+  return imageUrl as StrapiMediaOutput<T>
 }

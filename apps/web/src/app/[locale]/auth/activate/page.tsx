@@ -4,14 +4,14 @@ import { useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { useTranslations } from "next-intl"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { logPlaceholderUsage } from "@/lib/general-helpers"
 import { Alert } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 
 import { SetPasswordForm } from "./_components/SetPasswordForm"
 
 export default function ActivateAccountPage() {
-  removeThisWhenYouNeedMe("ActivateAccountPage")
+  logPlaceholderUsage("ActivateAccountPage")
 
   const t = useTranslations("auth.accountActivation")
   const [formToggled, setFormToggled] = useState(false)

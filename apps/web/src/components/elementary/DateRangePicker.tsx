@@ -6,7 +6,7 @@ import { Calendar as CalendarIcon } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { DateRange } from "react-day-picker"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { logPlaceholderUsage } from "@/lib/general-helpers"
 import { cn } from "@/lib/styles"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -24,7 +24,7 @@ type Props = React.HTMLAttributes<HTMLDivElement> & {
 }
 
 export function DateRangePicker({ className, date, setDate }: Props) {
-  removeThisWhenYouNeedMe("DateRangePicker")
+  logPlaceholderUsage("DateRangePicker")
 
   const t = useTranslations("comps.dateRangePicker")
 

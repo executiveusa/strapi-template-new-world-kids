@@ -1,7 +1,7 @@
 import React from "react"
 import { Data } from "@repo/strapi"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { logPlaceholderUsage } from "@/lib/general-helpers"
 import AppLink from "@/components/elementary/AppLink"
 
 export interface StrapiLinkProps {
@@ -17,7 +17,7 @@ export function StrapiLink({
   className,
   hideWhenMissing,
 }: StrapiLinkProps) {
-  removeThisWhenYouNeedMe("StrapiLink")
+  logPlaceholderUsage("StrapiLink")
 
   if (component == null && hideWhenMissing) {
     return null

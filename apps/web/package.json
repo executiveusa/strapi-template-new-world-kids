@@ -60,6 +60,7 @@
     "markdown-to-jsx": "^7.5.0",
     "motion-primitives": "^1.0.4",
     "next": "^15.4.7",
+    "next": "15.4.10",
     "next-auth": "^4.24.10",
     "next-intl": "^3.26.5",
     "next-recaptcha-v3": "^1.5.2",

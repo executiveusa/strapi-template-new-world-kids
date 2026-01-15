@@ -1,0 +1,255 @@
+version: '3.8'
+
+# Coolify-specific docker-compose override
+# For production deployment on Hostinger VPS with Coolify orchestration
+
+services:
+  web-frontend:
+    image: ${DOCKER_REGISTRY:-ghcr.io}/new-world-kids/web:${VERSION:-latest}
+    container_name: nwk-web-${ENVIRONMENT:-production}
+    restart: always
+    ports:
+      - '3000:3000'
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_SUPABASE_URL: ${NEXT_PUBLIC_SUPABASE_URL}
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: ${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+      GHOST_CONTENT_API_URL: ${GHOST_CONTENT_API_URL}
+      GHOST_CONTENT_API_KEY: ${GHOST_CONTENT_API_KEY}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      NEXT_PUBLIC_API_URL: http://localhost:3004
+    networks:
+      - nwk-network
+    depends_on:
+      - stellar-agents
+      - big-3-orchestrator
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3000/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  stellar-agents:
+    image: ${DOCKER_REGISTRY:-ghcr.io}/new-world-kids/stellar-agents:${VERSION:-latest}
+    container_name: nwk-stellar-${ENVIRONMENT:-production}
+    restart: always
+    ports:
+      - '3004:3004'
+    environment:
+      NODE_ENV: production
+      PORT: 3004
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      SUPABASE_URL: ${SUPABASE_URL}
+      SUPABASE_SERVICE_ROLE_KEY: ${SUPABASE_SERVICE_ROLE_KEY}
+      LOG_LEVEL: info
+    networks:
+      - nwk-network
+    depends_on:
+      - big-3-orchestrator
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3004/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+  big-3-orchestrator:
+    image: ${DOCKER_REGISTRY:-ghcr.io}/new-world-kids/big-3-orchestrator:${VERSION:-latest}
+    container_name: nwk-big3-${ENVIRONMENT:-production}
+    restart: always
+    ports:
+      - '3010:3010'
+    environment:
+      NODE_ENV: production
+      PORT: 3010
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      LOG_LEVEL: info
+    networks:
+      - nwk-network
+    depends_on:
+      - browser-service
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3010/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+  browser-service:
+    image: ${DOCKER_REGISTRY:-ghcr.io}/new-world-kids/browser-service:${VERSION:-latest}
+    container_name: nwk-browser-${ENVIRONMENT:-production}
+    restart: always
+    ports:
+      - '3013:3013'
+    environment:
+      NODE_ENV: production
+      PORT: 3013
+      CHROME_HEADLESS: 'true'
+      LOG_LEVEL: info
+    networks:
+      - nwk-network
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3013/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '1'
+          memory: 1G
+
+  chrome-devtools-mcp:
+    image: ${DOCKER_REGISTRY:-ghcr.io}/new-world-kids/chrome-devtools-mcp:${VERSION:-latest}
+    container_name: nwk-chrome-${ENVIRONMENT:-production}
+    restart: always
+    ports:
+      - '3014:3014'
+    environment:
+      NODE_ENV: production
+      PORT: 3014
+      LOG_LEVEL: info
+    networks:
+      - nwk-network
+    depends_on:
+      - browser-service
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3014/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  rube-mcp:
+    image: ${DOCKER_REGISTRY:-ghcr.io}/new-world-kids/rube-mcp:${VERSION:-latest}
+    container_name: nwk-rube-${ENVIRONMENT:-production}
+    restart: always
+    ports:
+      - '3015:3015'
+    environment:
+      NODE_ENV: production
+      PORT: 3015
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      LOG_LEVEL: info
+    networks:
+      - nwk-network
+    healthcheck:
+      test: ['CMD', 'curl', '-f', 'http://localhost:3015/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  redis:
+    image: redis:7-alpine
+    container_name: nwk-redis-${ENVIRONMENT:-production}
+    restart: always
+    ports:
+      - '6379:6379'
+    networks:
+      - nwk-network
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '5m'
+        max-file: '2'
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+networks:
+  nwk-network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
+
+volumes:
+  redis-data:
+    driver: local
