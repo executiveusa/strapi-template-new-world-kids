@@ -26,9 +26,6 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Convert file to array buffer to get size
-    const arrayBuffer = await audioFile.arrayBuffer();
-
     // Cassiopeia is currently offline - return appropriate message
     return NextResponse.json({
       success: true,
@@ -36,8 +33,8 @@ export async function POST(request: NextRequest) {
       message:
         'Voice command captured. Cassiopeia is currently offline. Please try again later.',
       metadata: {
-        sizeBytes: arrayBuffer.byteLength,
-        contentType: (audioFile as File).type || 'audio/webm',
+        sizeBytes: audioFile.size,
+        contentType: audioFile.type || 'audio/webm',
       },
     });
   } catch (error) {
