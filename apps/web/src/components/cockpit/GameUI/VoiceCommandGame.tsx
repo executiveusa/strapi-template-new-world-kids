@@ -18,6 +18,7 @@ export function VoiceCommandGame() {
   const [command, setCommand] = useState<any>(null)
   const [showExamples, setShowExamples] = useState(false)
   const recognitionRef = useRef<any>(null)
+  const errorTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   // Initialize Web Speech API
   useEffect(() => {
@@ -44,7 +45,11 @@ export function VoiceCommandGame() {
       recognition.onerror = (event: any) => {
         console.error('Speech recognition error:', event.error)
         setState('error')
-        setTimeout(() => setState('idle'), 2000)
+        // Clear any existing timeout before setting a new one
+        if (errorTimeoutRef.current) {
+          clearTimeout(errorTimeoutRef.current)
+        }
+        errorTimeoutRef.current = setTimeout(() => setState('idle'), 2000)
       }
 
       recognition.onend = () => {
@@ -57,6 +62,11 @@ export function VoiceCommandGame() {
     }
 
     return () => {
+      // Clear any pending error timeout
+      if (errorTimeoutRef.current) {
+        clearTimeout(errorTimeoutRef.current)
+      }
+      // Guard the stop call by checking if recognitionRef.current exists
       if (recognitionRef.current) {
         recognitionRef.current.stop()
       }
