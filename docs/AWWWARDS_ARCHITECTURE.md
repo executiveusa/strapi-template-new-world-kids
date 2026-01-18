@@ -51,6 +51,12 @@
 
 ---
 
+## Refactoring UI Mastery Skill (Design Intelligence Layer)
+
+The design system is now anchored by the **Refactoring UI Mastery** skill, which formalizes multi-framework UI audits, scoring, and refactoring plans. This skill is treated as a first-class architecture layer for ongoing UX quality, behavioral alignment, and ethics checks across the cockpit experience. See `docs/refactoring-ui-mastery.md` for the canonical specification and voice-command hooks.
+
+---
+
 ## Frontend Stack (Awwwards-Level)
 
 ### Animation Libraries

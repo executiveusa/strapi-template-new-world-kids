@@ -20,9 +20,11 @@ export async function POST(request: NextRequest) {
     }
 
     // Log the command (for observability)
+    const normalizedAgent = String(agent).toLowerCase()
+
     console.log('[Agent Execute]', {
       timestamp: new Date().toISOString(),
-      agent,
+      agent: normalizedAgent,
       action,
       parameters,
     })
@@ -30,7 +32,7 @@ export async function POST(request: NextRequest) {
     // Route to stellar agents service
     const stellarAgentsUrl = process.env.STELLAR_AGENTS_URL || 'http://localhost:3004'
 
-    const response = await fetch(`${stellarAgentsUrl}/api/v1/agents/${agent}/execute`, {
+    const response = await fetch(`${stellarAgentsUrl}/agents/${normalizedAgent}/execute`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +49,7 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json({
         success: true,
-        agent,
+        agent: normalizedAgent,
         action,
         result: {
           message: `✅ I understand! I would ${action.replace(/_/g, ' ')} for you.`,
@@ -62,7 +64,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      agent,
+      agent: normalizedAgent,
       action,
       result,
       simulated: false,
