@@ -17,6 +17,7 @@ export function VoiceCommandButton() {
   const [isSupported, setIsSupported] = useState(false);
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const supported = typeof navigator !== 'undefined' && !!navigator.mediaDevices?.getUserMedia;
@@ -24,6 +25,26 @@ export function VoiceCommandButton() {
     if (!supported) {
       setError('Microphone capture is not supported in this browser. Try Chrome on desktop.');
     }
+  }, []);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      // Clear any pending timeouts
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+
+      // Stop and cleanup MediaRecorder and stream
+      if (recorderRef.current && recorderRef.current.state !== 'inactive') {
+        const recorder = recorderRef.current;
+        // Get the stream before stopping the recorder
+        const stream = recorder.stream;
+        recorder.stop();
+        // Stop all tracks to release microphone
+        stream.getTracks().forEach((track) => track.stop());
+      }
+    };
   }, []);
 
   const sendToCassiopeia = async (audioBlob: Blob) => {
@@ -60,7 +81,11 @@ export function VoiceCommandButton() {
       setStatus('error');
       setError(err instanceof Error ? err.message : 'Unknown error while sending audio');
     } finally {
-      setTimeout(() => setStatus('idle'), 3000);
+      // Clear any existing timeout before setting a new one
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => setStatus('idle'), 3000);
     }
   };
 
@@ -204,12 +229,13 @@ export function VoiceCommandButton() {
   const handleClick = () => {
     if (!isSupported) {
       setError('Microphone capture is not supported in this browser.');
+      setStatus('error');
       return;
     }
 
     if (status === 'recording') {
       stopRecording();
-    } else {
+    } else if (status === 'idle') {
       startRecording();
     if (isListening) {
       stopRecording();
