@@ -12,10 +12,10 @@ const DEFAULT_JWT_EXPIRATION_SECONDS = 5 * 60; // 5 minutes
 /**
  * Determine whether the Ghost Admin API is configured.
  *
- * @returns `true` if both the Ghost admin URL and Admin API key are set.
+ * @returns `true` if both the Ghost Admin API URL and Admin API key are set.
  */
 export function isGhostAdminConfigured(): boolean {
-  const url = process.env.GHOST_ADMIN_API_URL || process.env.GHOST_CONTENT_API_URL;
+  const url = process.env.GHOST_ADMIN_API_URL;
   const key = process.env.GHOST_ADMIN_API_KEY;
   return Boolean(url && key);
 }
@@ -50,6 +50,7 @@ function createAdminToken(adminApiKey: string): string {
       expirationSeconds = parsed;
     }
   }
+  const [id, secret] = parts;
 
   const iat = Math.floor(Date.now() / 1000);
   
@@ -61,6 +62,8 @@ function createAdminToken(adminApiKey: string): string {
     : DEFAULT_JWT_EXPIRATION_SECONDS;
   
   const header = { alg: 'HS256', typ: 'JWT', kid: id };
+  // 5-minute expiration is sufficient for API requests under normal network conditions
+  const payload = { iat, exp: iat + 5 * 60, aud: ADMIN_AUDIENCE };
   const payload = { iat, exp: iat + expirationSeconds, aud: ADMIN_AUDIENCE };
 
   const encodedHeader = base64UrlEncode(JSON.stringify(header));
@@ -74,7 +77,7 @@ function createAdminToken(adminApiKey: string): string {
 }
 
 function getAdminApiBaseUrl(): string {
-  const url = process.env.GHOST_ADMIN_API_URL || process.env.GHOST_CONTENT_API_URL;
+  const url = process.env.GHOST_ADMIN_API_URL;
   if (!url) {
     throw new Error('Ghost Admin API URL not configured.');
   }
@@ -109,6 +112,11 @@ export async function addGhostMember(member: GhostMemberPayload): Promise<boolea
   });
 
   if (!response.ok) {
+    const statusInfo = response.statusText
+      ? `${response.status} ${response.statusText}`
+      : `${response.status}`;
+    let message = `Ghost Admin API error (${statusInfo})`;
+    
     const errorData = await response.json().catch(() => null);
     const statusInfo = response.statusText
       ? `${response.status} ${response.statusText}`
@@ -118,6 +126,7 @@ export async function addGhostMember(member: GhostMemberPayload): Promise<boolea
     if (serverMessage) {
       message += `: ${serverMessage}`;
     }
+    
     throw new Error(message);
   }
 

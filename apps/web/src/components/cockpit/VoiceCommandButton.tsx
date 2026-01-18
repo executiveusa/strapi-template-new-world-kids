@@ -17,6 +17,7 @@ export function VoiceCommandButton() {
   const [isSupported, setIsSupported] = useState(false);
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<Blob[]>([]);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const supported = typeof navigator !== 'undefined' && !!navigator.mediaDevices?.getUserMedia;
@@ -24,6 +25,26 @@ export function VoiceCommandButton() {
     if (!supported) {
       setError('Microphone capture is not supported in this browser. Try Chrome on desktop.');
     }
+  }, []);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      // Clear any pending timeouts
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+
+      // Stop and cleanup MediaRecorder and stream
+      if (recorderRef.current && recorderRef.current.state !== 'inactive') {
+        const recorder = recorderRef.current;
+        // Get the stream before stopping the recorder
+        const stream = recorder.stream;
+        recorder.stop();
+        // Stop all tracks to release microphone
+        stream.getTracks().forEach((track) => track.stop());
+      }
+    };
   }, []);
 
   const sendToCassiopeia = async (audioBlob: Blob) => {
@@ -60,7 +81,11 @@ export function VoiceCommandButton() {
       setStatus('error');
       setError(err instanceof Error ? err.message : 'Unknown error while sending audio');
     } finally {
-      setTimeout(() => setStatus('idle'), 3000);
+      // Clear any existing timeout before setting a new one
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => setStatus('idle'), 3000);
     }
   };
 
@@ -101,12 +126,13 @@ export function VoiceCommandButton() {
       setStatus('processing');
       recorderRef.current.stop();
   const [isListening, setIsListening] = useState(false);
-  const [isProcessing, setIsProcessing] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'processing' | 'success' | 'error'>('idle');
   const [transcript, setTranscript] = useState('');
   const [error, setError] = useState<string | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const mediaStreamRef = useRef<MediaStream | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const cleanupStream = () => {
     mediaStreamRef.current?.getTracks().forEach((track) => track.stop());
@@ -140,12 +166,17 @@ export function VoiceCommandButton() {
       recorder.onerror = () => {
         setError('Recording failed. Please try again.');
         setIsListening(false);
-        setIsProcessing(false);
+        setStatus('error');
         cleanupStream();
+        // Clear any existing timeout before setting a new one
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+        }
+        timeoutRef.current = setTimeout(() => setStatus('idle'), 3000);
       };
 
       recorder.onstop = async () => {
-        setIsProcessing(true);
+        setStatus('processing');
         const audioBlob = new Blob(audioChunksRef.current, { type: recorder.mimeType });
         audioChunksRef.current = [];
         cleanupStream();
@@ -165,11 +196,17 @@ export function VoiceCommandButton() {
 
           const data = await response.json();
           setTranscript(data?.transcript ?? '');
+          setStatus('success');
         } catch (err) {
           console.error('[Voice] Cassiopeia request failed', err);
           setError('Cassiopeia could not process the audio. Please try again.');
+          setStatus('error');
         } finally {
-          setIsProcessing(false);
+          // Clear any existing timeout before setting a new one
+          if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+          }
+          timeoutRef.current = setTimeout(() => setStatus('idle'), 3000);
         }
       };
 
@@ -179,30 +216,40 @@ export function VoiceCommandButton() {
       console.error('[Voice] Microphone access failed', err);
       setError('Microphone access denied. Please enable it and try again.');
       setIsListening(false);
-      setIsProcessing(false);
+      setStatus('error');
       cleanupStream();
+      // Clear any existing timeout before setting a new one
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(() => setStatus('idle'), 3000);
     }
   };
 
   const handleClick = () => {
     if (!isSupported) {
       setError('Microphone capture is not supported in this browser.');
+      setStatus('error');
       return;
     }
 
     if (status === 'recording') {
       stopRecording();
-    } else {
+    } else if (status === 'idle') {
       startRecording();
     if (isListening) {
       stopRecording();
-    } else if (!isProcessing) {
+    } else if (status === 'idle') {
       void startRecording();
     }
   };
 
   useEffect(() => {
     return () => {
+      // Clear any pending timeout
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
       stopRecording();
       cleanupStream();
     };
@@ -213,7 +260,7 @@ export function VoiceCommandButton() {
       {/* Floating Button */}
       <button
         onClick={handleClick}
-        disabled={isProcessing}
+        disabled={status === 'processing' || status === 'success' || status === 'error'}
         className={cn(
           'fixed bottom-8 right-8 z-50 flex h-16 w-16 items-center justify-center rounded-full shadow-lg transition-all',
           status === 'recording'
@@ -245,6 +292,7 @@ export function VoiceCommandButton() {
       </button>
 
       {/* Transcript popup */}
+      {(transcript || status !== 'idle' || error) && (
       {(transcript || responseMessage || error) && (
         <div className="fixed bottom-28 right-8 z-50 max-w-sm rounded-lg border border-purple-500/50 bg-slate-900 p-4 shadow-xl animate-in fade-in slide-in-from-bottom-4">
           {transcript && (
@@ -284,10 +332,12 @@ export function VoiceCommandButton() {
               <div
                 className={cn(
                   "h-2 w-2 rounded-full",
-                  isProcessing ? "bg-yellow-500 animate-pulse" : "bg-green-500 animate-pulse"
+                  status === 'processing' ? "bg-yellow-500 animate-pulse" : "bg-green-500 animate-pulse"
                 )}
               />
-              {isProcessing ? 'Sending to Cassiopeia...' : 'Processing...'}
+              {status === 'processing' && 'Sending to Cassiopeia...'}
+              {status === 'success' && 'Success!'}
+              {status !== 'processing' && status !== 'success' && 'Processing...'}
             </div>
           )}
         </div>

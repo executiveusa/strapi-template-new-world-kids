@@ -104,7 +104,7 @@ async function addToNewsletterService(
     try {
       await addGhostMember({
         email,
-        name: name || undefined,
+        name,
         subscribed: true,
       });
 

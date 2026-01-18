@@ -88,7 +88,10 @@ export function StarField3D() {
   return (
     <div className="fixed inset-0 -z-10">
       {prefersReducedMotion ? (
-        <div className="h-full w-full bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900" aria-hidden />
+        <div
+          className="h-full w-full bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900"
+          aria-hidden="true"
+        />
       ) : (
         <Canvas camera={{ position: [0, 0, 1] }}>
           <color attach="background" args={['#0a0a1f']} />

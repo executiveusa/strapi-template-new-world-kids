@@ -1,3 +1,30 @@
+/**
+ * API Route: Process Voice Command
+ * Handles voice audio processing
+ */
+
+import { NextRequest, NextResponse } from 'next/server';
+
+export async function POST(request: NextRequest) {
+  try {
+    const formData = await request.formData();
+    const audio = formData.get('audio');
+
+    if (!audio) {
+      return NextResponse.json(
+        { error: 'No audio file provided' },
+        { status: 400 }
+      );
+    }
+
+    // Log the request (for observability)
+    console.log('[Voice Process]', {
+      timestamp: new Date().toISOString(),
+      hasAudio: !!audio,
+    });
+
+    // TODO: Implement actual audio processing here
+    // For now, return a response indicating audio was received but not stored
 import { Buffer } from 'node:buffer'
 import { NextRequest, NextResponse } from 'next/server'
 
@@ -18,12 +45,16 @@ export async function POST(request: NextRequest) {
     // Validate file size to prevent DoS attacks (max 10MB)
     const MAX_FILE_SIZE = 10 * 1024 * 1024 // 10MB in bytes
     if (arrayBuffer.byteLength > MAX_FILE_SIZE) {
+
+    // Validate file size (max 10MB) to prevent DoS attacks
+    if (arrayBuffer.byteLength > 10 * 1024 * 1024) {
       return NextResponse.json(
         { error: 'Audio file too large. Maximum size is 10MB.' },
         { status: 413 }
       )
     }
     
+
     const stellarAgentsUrl = process.env.STELLAR_AGENTS_URL || 'http://localhost:3004'
     const cassiopeiaUrl = `${stellarAgentsUrl}/agents/cassiopeia/voice`
 
@@ -37,12 +68,17 @@ export async function POST(request: NextRequest) {
       })
 
       if (forwardResponse.ok) {
-        const forwarded = await forwardResponse.json()
-        return NextResponse.json({
-          success: true,
-          forwarded: true,
-          result: forwarded,
-        })
+        try {
+          const forwarded = await forwardResponse.json()
+          return NextResponse.json({
+            success: true,
+            forwarded: true,
+            result: forwarded,
+          })
+        } catch (jsonError) {
+          console.error('[Voice] Cassiopeia returned invalid JSON', jsonError)
+          // Continue to fallback response
+        }
       }
     } catch (error) {
       console.warn('[Voice] Cassiopeia forwarding failed, falling back to simulated response', error)
@@ -51,8 +87,25 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       forwarded: false,
+      message: 'Audio captured but not stored or processed',
+      metadata: {
+        timestamp: new Date().toISOString(),
+        audioReceived: true,
+        processed: false,
+      },
+    });
+  } catch (error) {
+    console.error('[Voice Process] Error:', error);
+
+    return NextResponse.json(
+      {
+        error: 'Failed to process audio',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
       message:
-        'Voice command captured. Cassiopeia is currently offline, but we have stored your audio for processing.',
+        'Voice command received. Cassiopeia is currently offline - please try again later.',
       metadata: {
         sizeBytes: arrayBuffer.byteLength,
         contentType: (audioFile as File).type || 'audio/webm',
