@@ -1,7 +1,7 @@
-import { removeThisWhenYouNeedMe } from "./general-helpers"
+import { logPlaceholderUsage } from "./general-helpers"
 
 export const downloadBlob = (blob: Blob, fileName: string) => {
-  removeThisWhenYouNeedMe("downloadBlob")
+  logPlaceholderUsage("downloadBlob")
 
   const fileUrl = window.URL.createObjectURL(blob)
   const link = document.createElement("a")
@@ -13,7 +13,7 @@ export const downloadBlob = (blob: Blob, fileName: string) => {
 }
 
 export const openBlobInNewTab = (blob: Blob) => {
-  removeThisWhenYouNeedMe("openBlobInNewTab")
+  logPlaceholderUsage("openBlobInNewTab")
 
   const file = window.URL.createObjectURL(blob)
   window.open(file, "_blank")

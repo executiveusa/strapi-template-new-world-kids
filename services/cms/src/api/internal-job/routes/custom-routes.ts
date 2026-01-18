@@ -5,7 +5,11 @@ export default {
       path: "/internal-job/fullpaths/recalculate/all",
       handler: "internal-job.runRecalculateFullpathAll",
       config: {
-        auth: false, // TODO: Solve this properly to not allow jobs without authentication
+        // Internal tooling must send an Authorization Bearer token from a Strapi API token
+        // (or authenticated user JWT) with permission to create internal jobs.
+        auth: {
+          scope: ["api::internal-job.internal-job.create"],
+        },
       },
     },
     {
@@ -13,7 +17,11 @@ export default {
       path: "/internal-job/redirects/create/all",
       handler: "internal-job.runCreateRedirectsAll",
       config: {
-        auth: false, // TODO: Solve this properly to not allow jobs without authentication
+        // Internal tooling must send an Authorization Bearer token from a Strapi API token
+        // (or authenticated user JWT) with permission to create internal jobs.
+        auth: {
+          scope: ["api::internal-job.internal-job.create"],
+        },
       },
     },
   ],
