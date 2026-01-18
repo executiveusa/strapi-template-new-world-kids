@@ -35,10 +35,16 @@ function createAdminToken(adminApiKey: string): string {
   const iat = Math.floor(Date.now() / 1000);
   // Allow configurable token expiry for high-latency networks or long-running operations
   let expirySeconds = DEFAULT_TOKEN_EXPIRY_SECONDS;
-  if (process.env.GHOST_ADMIN_TOKEN_EXPIRY_SECONDS) {
-    const parsed = parseInt(process.env.GHOST_ADMIN_TOKEN_EXPIRY_SECONDS, 10);
+  const rawExpiry = process.env.GHOST_ADMIN_TOKEN_EXPIRY_SECONDS;
+  if (rawExpiry !== undefined) {
+    const parsed = parseInt(rawExpiry, 10);
     if (!isNaN(parsed) && parsed > 0 && parsed <= MAX_TOKEN_EXPIRY_SECONDS) {
       expirySeconds = parsed;
+    } else {
+      console.warn(
+        `Invalid GHOST_ADMIN_TOKEN_EXPIRY_SECONDS value "${rawExpiry}". ` +
+          `Using default of ${DEFAULT_TOKEN_EXPIRY_SECONDS} seconds (allowed range: 1-${MAX_TOKEN_EXPIRY_SECONDS}).`,
+      );
     }
   }
 
