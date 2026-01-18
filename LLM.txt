@@ -1,0 +1,27 @@
+# LLM Operator Notes
+
+## Repository layout
+- `apps/web`: Next.js frontend deployed on Vercel.
+- `services/cms`: Strapi backend intended for Coolify (Hostinger).
+- `packages/*`: shared packages used by apps/services.
+- `docs/ops/*` and `docs/phase/*`: operational runbooks and phase reports.
+
+## Build & run
+- Install: `yarn install`
+- Dev (all): `yarn dev`
+- Dev (web): `yarn dev:web`
+- Build (all): `yarn build`
+- Build (web): `yarn build:web`
+
+## Deployment targets
+- Frontend: Vercel (Preview for staging, Production for release).
+- Backend services: Coolify on Hostinger (Strapi in `services/cms`).
+- Do not use Google Cloud for deployment or hosting.
+
+## Env handling
+- Source of truth for env values: a local master env file whose path is configured via the `MASTER_ENV_PATH` environment variable (never commit secrets).
+- Do not check in `.env*` files containing secrets.
+
+## Phase docs
+- Ops and staging decisions: `docs/ops/*`
+- Deployment reports: `docs/phase/*`

@@ -1,9 +1,9 @@
 import { CheckIcon, CrossIcon } from "lucide-react"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { logPlaceholderUsage } from "@/lib/general-helpers"
 
 export const AdornmentSuccess = () => {
-  removeThisWhenYouNeedMe("AdornmentSuccess")
+  logPlaceholderUsage("AdornmentSuccess")
 
   return (
     <span>
@@ -13,7 +13,7 @@ export const AdornmentSuccess = () => {
 }
 
 export const AdornmentError = () => {
-  removeThisWhenYouNeedMe("AdornmentError")
+  logPlaceholderUsage("AdornmentError")
 
   return (
     <span>

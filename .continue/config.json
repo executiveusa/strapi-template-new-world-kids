@@ -1,0 +1,128 @@
+{
+  "models": [
+    {
+      "title": "Claude 3.5 Sonnet",
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-20241022",
+      "apiKey": "",
+      "contextLength": 200000,
+      "completionOptions": {
+        "temperature": 0.7,
+        "maxTokens": 8192
+      }
+    },
+    {
+      "title": "GPT-4 Turbo",
+      "provider": "openai",
+      "model": "gpt-4-turbo-preview",
+      "apiKey": "",
+      "contextLength": 128000,
+      "completionOptions": {
+        "temperature": 0.7,
+        "maxTokens": 4096
+      }
+    },
+    {
+      "title": "Gemini 2.0 Flash",
+      "provider": "gemini",
+      "model": "gemini-2.0-flash-exp",
+      "apiKey": "",
+      "contextLength": 1000000,
+      "completionOptions": {
+        "temperature": 0.7,
+        "maxTokens": 8192
+      }
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "Claude 3.5 Sonnet",
+    "provider": "anthropic",
+    "model": "claude-3-5-sonnet-20241022"
+  },
+  "embeddingsProvider": {
+    "provider": "openai",
+    "model": "text-embedding-3-small"
+  },
+  "customCommands": [
+    {
+      "name": "test",
+      "prompt": "Write unit tests for the selected code using Jest and React Testing Library",
+      "description": "Generate tests for selected code"
+    },
+    {
+      "name": "doc",
+      "prompt": "Write comprehensive JSDoc comments for the selected code",
+      "description": "Add documentation"
+    },
+    {
+      "name": "fix",
+      "prompt": "Find and fix bugs in the selected code",
+      "description": "Debug selected code"
+    },
+    {
+      "name": "optimize",
+      "prompt": "Optimize the selected code for performance and readability",
+      "description": "Optimize code"
+    },
+    {
+      "name": "explain",
+      "prompt": "Explain what the selected code does in simple terms",
+      "description": "Explain code"
+    }
+  ],
+  "contextProviders": [
+    {
+      "name": "diff",
+      "params": {}
+    },
+    {
+      "name": "folder",
+      "params": {}
+    },
+    {
+      "name": "codebase",
+      "params": {}
+    },
+    {
+      "name": "url",
+      "params": {}
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "edit",
+      "description": "Edit highlighted code"
+    },
+    {
+      "name": "comment",
+      "description": "Add comments to code"
+    },
+    {
+      "name": "share",
+      "description": "Share code snippet"
+    },
+    {
+      "name": "cmd",
+      "description": "Generate a shell command"
+    }
+  ],
+  "allowAnonymousTelemetry": false,
+  "docs": [
+    {
+      "title": "Next.js 15 Docs",
+      "startUrl": "https://nextjs.org/docs"
+    },
+    {
+      "title": "React 18 Docs",
+      "startUrl": "https://react.dev"
+    },
+    {
+      "title": "Tailwind CSS",
+      "startUrl": "https://tailwindcss.com/docs"
+    },
+    {
+      "title": "Supabase",
+      "startUrl": "https://supabase.com/docs"
+    }
+  ]
+}

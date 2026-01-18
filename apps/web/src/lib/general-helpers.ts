@@ -12,13 +12,13 @@ export const setupLibraries = () => {
   setupDayJs()
 }
 
-export const removeThisWhenYouNeedMe = (functionName: string) => {
+export const logPlaceholderUsage = (componentName: string) => {
   if (!isDevelopment() || env.NEXT_PUBLIC_PREVENT_UNUSED_FUNCTIONS_ERROR_LOGS) {
     return
   }
 
   console.warn(
-    `TODO: Delete 'removeThisWhenYouNeedMe' call from '${functionName}' and confirm the usage.`
+    `[Placeholder] "${componentName}" rendered in development. Replace or remove this component when real logic is ready.`
   )
 }
 

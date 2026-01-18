@@ -1,0 +1,195 @@
+{
+  "project": "new-world-kids",
+  "version": "1.0.0",
+  "description": "Production deployment configuration for New World Kids platform on Coolify + Hostinger VPS",
+  "services": [
+    {
+      "name": "web-frontend",
+      "type": "docker",
+      "image": "newworldkids/web:latest",
+      "port": 3000,
+      "environment": {
+        "NODE_ENV": "production",
+        "NEXT_PUBLIC_SUPABASE_URL": "${NEXT_PUBLIC_SUPABASE_URL}",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY": "${NEXT_PUBLIC_SUPABASE_ANON_KEY}",
+        "GHOST_CONTENT_API_URL": "${GHOST_CONTENT_API_URL}",
+        "GHOST_CONTENT_API_KEY": "${GHOST_CONTENT_API_KEY}",
+        "STELLAR_AGENTS_URL": "http://stellar-agents:3004",
+        "BIG_3_URL": "http://big-3-orchestrator:3010",
+        "BROWSER_SERVICE_URL": "http://browser-service:3013"
+      },
+      "healthCheck": {
+        "path": "/health",
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3
+      },
+      "resources": {
+        "memory": "1G",
+        "cpu": "1"
+      }
+    },
+    {
+      "name": "stellar-agents",
+      "type": "docker",
+      "image": "newworldkids/stellar-agents:latest",
+      "port": 3004,
+      "environment": {
+        "NODE_ENV": "production",
+        "PORT": "3004",
+        "SUPABASE_URL": "${SUPABASE_URL}",
+        "SUPABASE_SERVICE_ROLE_KEY": "${SUPABASE_SERVICE_ROLE_KEY}",
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+        "GOOGLE_API_KEY": "${GOOGLE_API_KEY}"
+      },
+      "healthCheck": {
+        "path": "/health",
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3
+      },
+      "resources": {
+        "memory": "2G",
+        "cpu": "1.5"
+      }
+    },
+    {
+      "name": "big-3-orchestrator",
+      "type": "docker",
+      "image": "newworldkids/big-3-orchestrator:latest",
+      "port": 3010,
+      "environment": {
+        "NODE_ENV": "production",
+        "PORT": "3010",
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+        "GOOGLE_API_KEY": "${GOOGLE_API_KEY}"
+      },
+      "healthCheck": {
+        "path": "/health",
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3
+      },
+      "resources": {
+        "memory": "2G",
+        "cpu": "1.5"
+      }
+    },
+    {
+      "name": "browser-service",
+      "type": "docker",
+      "image": "newworldkids/browser-service:latest",
+      "port": 3013,
+      "environment": {
+        "NODE_ENV": "production",
+        "PORT": "3013"
+      },
+      "healthCheck": {
+        "path": "/health",
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3
+      },
+      "resources": {
+        "memory": "2G",
+        "cpu": "2"
+      }
+    },
+    {
+      "name": "chrome-devtools-mcp",
+      "type": "docker",
+      "image": "newworldkids/chrome-devtools-mcp:latest",
+      "port": 3014,
+      "environment": {
+        "NODE_ENV": "production",
+        "PORT": "3014"
+      },
+      "healthCheck": {
+        "path": "/health",
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3
+      },
+      "resources": {
+        "memory": "1G",
+        "cpu": "1"
+      }
+    },
+    {
+      "name": "rube-mcp",
+      "type": "docker",
+      "image": "newworldkids/rube-mcp:latest",
+      "port": 3015,
+      "environment": {
+        "NODE_ENV": "production",
+        "PORT": "3015",
+        "SUPABASE_URL": "${SUPABASE_URL}",
+        "SUPABASE_SERVICE_ROLE_KEY": "${SUPABASE_SERVICE_ROLE_KEY}"
+      },
+      "healthCheck": {
+        "path": "/health",
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3
+      },
+      "resources": {
+        "memory": "1G",
+        "cpu": "1"
+      }
+    }
+  ],
+  "proxy": {
+    "type": "nginx",
+    "routes": [
+      {
+        "domain": "${DOMAIN}",
+        "service": "web-frontend",
+        "path": "/",
+        "ssl": true
+      },
+      {
+        "domain": "${DOMAIN}",
+        "service": "stellar-agents",
+        "path": "/api/agents"
+      },
+      {
+        "domain": "${DOMAIN}",
+        "service": "big-3-orchestrator",
+        "path": "/api/orchestrator"
+      },
+      {
+        "domain": "${DOMAIN}",
+        "service": "browser-service",
+        "path": "/api/browser"
+      },
+      {
+        "domain": "${DOMAIN}",
+        "service": "rube-mcp",
+        "path": "/api/mcp"
+      }
+    ]
+  },
+  "monitoring": {
+    "enabled": true,
+    "prometheus": {
+      "enabled": true,
+      "port": 9090
+    },
+    "grafana": {
+      "enabled": true,
+      "port": 3000
+    },
+    "alerting": {
+      "enabled": true,
+      "channels": ["email", "slack"]
+    }
+  },
+  "backup": {
+    "enabled": true,
+    "schedule": "0 2 * * *",
+    "retention": 30,
+    "destination": "s3"
+  }
+}

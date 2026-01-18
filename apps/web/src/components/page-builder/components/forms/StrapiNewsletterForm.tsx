@@ -1,6 +1,6 @@
 import { Data } from "@repo/strapi"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { logPlaceholderUsage } from "@/lib/general-helpers"
 import AppLink from "@/components/elementary/AppLink"
 import { Container } from "@/components/elementary/Container"
 import { NewsletterForm } from "@/components/elementary/forms/NewsletterForm"
@@ -10,7 +10,7 @@ export function StrapiNewsletterForm({
 }: {
   readonly component: Data.Component<"forms.newsletter-form">
 }) {
-  removeThisWhenYouNeedMe("StrapiNewsletterForm")
+  logPlaceholderUsage("StrapiNewsletterForm")
 
   return (
     <div className="bg-blue-light pb-10">

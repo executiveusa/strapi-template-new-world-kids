@@ -3,7 +3,7 @@
 import React from "react"
 import { useFormContext } from "react-hook-form"
 
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { logPlaceholderUsage } from "@/lib/general-helpers"
 import { cn } from "@/lib/styles"
 import { Checkbox as CheckboxComponent } from "@/components/ui/checkbox"
 import {
@@ -32,7 +32,7 @@ export function AppCheckbox({
   description,
   ...nativeProps
 }: Props) {
-  removeThisWhenYouNeedMe("AppCheckbox")
+  logPlaceholderUsage("AppCheckbox")
 
   const { control } = useFormContext()
 
