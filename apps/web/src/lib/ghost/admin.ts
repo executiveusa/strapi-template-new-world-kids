@@ -11,6 +11,31 @@ const DEFAULT_TOKEN_EXPIRY_SECONDS = 5 * 60; // 5 minutes
 const MAX_TOKEN_EXPIRY_SECONDS = 24 * 60 * 60; // 24 hours maximum for security
 
 /**
+ * Parse and validate the token expiry setting at module initialization.
+ * This ensures consistent behavior and better performance across all token generations.
+ */
+function parseTokenExpiry(): number {
+  let expirySeconds = DEFAULT_TOKEN_EXPIRY_SECONDS;
+  const rawExpiry = process.env.GHOST_ADMIN_TOKEN_EXPIRY_SECONDS;
+  
+  if (rawExpiry !== undefined) {
+    const parsed = parseInt(rawExpiry, 10);
+    if (!isNaN(parsed) && parsed > 0 && parsed <= MAX_TOKEN_EXPIRY_SECONDS) {
+      expirySeconds = parsed;
+    } else {
+      console.warn(
+        `Invalid GHOST_ADMIN_TOKEN_EXPIRY_SECONDS value "${rawExpiry}". ` +
+          `Using default of ${DEFAULT_TOKEN_EXPIRY_SECONDS} seconds (allowed range: 1-${MAX_TOKEN_EXPIRY_SECONDS}).`,
+      );
+    }
+  }
+  
+  return expirySeconds;
+}
+
+const TOKEN_EXPIRY_SECONDS = parseTokenExpiry();
+
+/**
  * Determine whether the Ghost Admin API is configured.
  *
  * @returns `true` if both the Ghost admin URL and Admin API key are set.
@@ -33,23 +58,8 @@ function createAdminToken(adminApiKey: string): string {
   const [id, secret] = parts;
 
   const iat = Math.floor(Date.now() / 1000);
-  // Allow configurable token expiry for high-latency networks or long-running operations
-  let expirySeconds = DEFAULT_TOKEN_EXPIRY_SECONDS;
-  const rawExpiry = process.env.GHOST_ADMIN_TOKEN_EXPIRY_SECONDS;
-  if (rawExpiry !== undefined) {
-    const parsed = parseInt(rawExpiry, 10);
-    if (!isNaN(parsed) && parsed > 0 && parsed <= MAX_TOKEN_EXPIRY_SECONDS) {
-      expirySeconds = parsed;
-    } else {
-      console.warn(
-        `Invalid GHOST_ADMIN_TOKEN_EXPIRY_SECONDS value "${rawExpiry}". ` +
-          `Using default of ${DEFAULT_TOKEN_EXPIRY_SECONDS} seconds (allowed range: 1-${MAX_TOKEN_EXPIRY_SECONDS}).`,
-      );
-    }
-  }
-
   const header = { alg: 'HS256', typ: 'JWT', kid: id };
-  const payload = { iat, exp: iat + expirySeconds, aud: ADMIN_AUDIENCE };
+  const payload = { iat, exp: iat + TOKEN_EXPIRY_SECONDS, aud: ADMIN_AUDIENCE };
 
   const encodedHeader = base64UrlEncode(JSON.stringify(header));
   const encodedPayload = base64UrlEncode(JSON.stringify(payload));
