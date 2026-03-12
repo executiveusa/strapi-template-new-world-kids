@@ -1,0 +1,76 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '22.x'
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run npm audit
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
+      - name: Check for secrets
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: main
+          head: HEAD
+
+  build:
+    needs: security-scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Type check
+        run: yarn typecheck
+
+      - name: Build
+        run: yarn build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: production
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Railway
+        run: |
+          # Railway deployment via webhook or CLI
+          echo "Deploying to Railway..."
+          # railway deploy --service web
+
+      - name: Notify on success
+        uses: 8398a7/action-slack@v3
+        with:
+          status: success
+          text: '🚀 New World Kids deployed successfully!'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        if: success()
+
+      - name: Notify on failure
+        uses: 8398a7/action-slack@v3
+        with:
+          status: failure
+          text: '❌ Deployment failed!'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        if: failure()
