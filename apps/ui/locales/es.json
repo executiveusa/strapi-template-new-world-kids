@@ -1,0 +1,264 @@
+{
+  "seo": {
+    "metaTitle": "SEO-TÍTULO",
+    "metaDescription": "SEO-DESCRIPCIÓN",
+    "metaImage": "SEO-IMAGEN",
+    "metaRobots": "SEO-ROBOTS",
+    "keywords": "SEO-PALABRAS-CLAVE",
+    "applicationName": "SEO-NOMBRE-APLICACIÓN",
+    "og": {
+      "title": "SEO-OG-TÍTULO",
+      "description": "SEO-OG-DESCRIPCIÓN",
+      "url": "SEO-OG-URL",
+      "siteName": "SEO-OG-NOMBRE-SITIO",
+      "image": "SEO-OG-IMAGEN"
+    },
+    "twitter": {
+      "card": "SEO-TWITTER-TARJETA",
+      "title": "SEO-TWITTER-TÍTULO",
+      "description": "SEO-TWITTER-DESCRIPCIÓN",
+      "siteId": "SEO-TWITTER-ID-SITIO",
+      "creator": "SEO-TWITTER-CREADOR",
+      "creatorId": "SEO-TWITTER-ID-CREADOR",
+      "imageUrl": "SEO-TWITTER-URL-IMAGEN"
+    }
+  },
+
+  "general": {
+    "noOptionsAvailable": "No hay opciones disponibles",
+    "search": "Buscar",
+    "loading": "Cargando",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "submitForm": "Enviar",
+    "saveChanges": "Guardar cambios"
+  },
+
+  "tables": {
+    "previousPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "lastPage": "Última página",
+    "firstPage": "Primera página",
+    "rowsPerPage": "Filas por página",
+    "pageXOfY": "Página {x} de {y}",
+    "ascending": "Ascendente",
+    "descending": "Descendente",
+    "noData": "Sin datos"
+  },
+
+  "navbar": {
+    "account": "Cuenta",
+    "actions": {
+      "profile": "Perfil",
+      "signOut": "Cerrar sesión",
+      "changePassword": "Cambiar contraseña",
+      "signIn": "Iniciar sesión"
+    }
+  },
+
+  "comps": {
+    "fileInput": {
+      "label": "Seleccionar archivo",
+      "dragAndDrop": "Agrega un archivo arrastrándolo o seleccionándolo",
+      "validFileTypes": "El archivo debe estar en formato {validFileTypes}",
+      "wrongFileType": "Este tipo de archivo no es compatible",
+      "selectedFile": "Archivo seleccionado: {fileName}",
+      "removeFile": "Eliminar archivo"
+    },
+    "datePicker": {
+      "label": "Seleccionar fecha"
+    },
+    "dateRangePicker": {
+      "label": "Seleccionar rango de fechas"
+    },
+    "themeToggle": {
+      "label": "Cambiar tema"
+    },
+    "dialog": {
+      "confirmClose": "¿Deseas cerrar el diálogo? Perderás todos los cambios no guardados."
+    }
+  },
+
+  "errors": {
+    "global": {
+      "title": "Ocurrió un error desconocido",
+      "tryAgain": "Intentar de nuevo",
+      "invalidContent": "Este contenido no se puede mostrar",
+      "somethingWentWrong": "Algo salió mal 🥺"
+    },
+
+    "notFound": {
+      "title": "Página no encontrada",
+      "description": "La página que buscas no fue encontrada.",
+      "solution": "Verifica que hayas ingresado la URL correcta o regresa a la página de inicio.",
+      "redirect": "Ir a la página de inicio"
+    },
+
+    "forms": {
+      "errorsInForm": "El formulario contiene errores",
+      "checkFormForErrors": "Por favor verifica si falta algún valor"
+    },
+
+    "zodValidation": {
+      "invalid_type": "El tipo esperado es {expected}, pero se recibió {received}",
+      "invalid_type_received_undefined": "Este campo es obligatorio",
+      "invalid_literal": "Valor inválido, se esperaba {expected}",
+      "invalid_union": "Valor inválido",
+      "invalid_string": {
+        "regex": "Formato inválido"
+      },
+      "too_small": {
+        "string": {
+          "exact": "El texto debe tener exactamente {minimum} caracteres",
+          "inclusive": "El texto debe tener al menos {minimum} caracteres",
+          "not_inclusive": "El texto debe tener más de {minimum} caracteres"
+        },
+        "number": {
+          "exact": "El valor debe ser exactamente {minimum}",
+          "inclusive": "El valor mínimo es {minimum}",
+          "not_inclusive": "El número debe ser mayor que {minimum}"
+        }
+      },
+      "too_big": {
+        "string": {
+          "exact": "El texto debe tener exactamente {maximum} caracteres",
+          "inclusive": "El texto debe tener como máximo {maximum} caracteres",
+          "not_inclusive": "El texto debe tener menos de {maximum} caracteres"
+        },
+        "number": {
+          "exact": "El valor debe ser exactamente {maximum}",
+          "inclusive": "El valor máximo es {maximum}",
+          "not_inclusive": "El número debe ser menor que {maximum}"
+        }
+      },
+      "custom": {
+        "password": "Las contraseñas no coinciden",
+        "passwordWithNumber": "El texto debe contener al menos 1 número",
+        "phoneNumber": "Este campo debe contener 9 números"
+      }
+    }
+  },
+
+  "contactForm": {
+    "name": "Nombre completo",
+    "namePlaceholder": "Juan García",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "juan.garcia@gmail.com",
+    "message": "Mensaje",
+    "gdpr": "Acepto el procesamiento de mis datos personales",
+    "submit": "Enviar",
+    "success": "El formulario se ha enviado con éxito.",
+    "error": "No se pudo enviar el formulario. Por favor intenta de nuevo más tarde.",
+    "gdprLink": "Lee más sobre el procesamiento de datos personales"
+  },
+
+  "auth": {
+    "signIn": {
+      "status": {
+        "fail": "Error al iniciar sesión",
+        "success": "Sesión iniciada con éxito",
+        "checkCredentials": "Por favor verifica tus credenciales"
+      },
+      "errors": {
+        "CredentialsSignin": "Has ingresado credenciales incorrectas.",
+        "unexpectedError": "Error al iniciar sesión. Por favor intenta de nuevo más tarde."
+      },
+      "header": "Iniciar sesión",
+      "description": "Ingresa tus datos de acceso.",
+      "email": "Correo electrónico",
+      "password": "Contraseña",
+      "submit": "Iniciar sesión",
+      "signingIn": "Iniciando sesión...",
+      "forgotPassword": "Olvidé mi contraseña",
+      "createAccount": "Crear una cuenta"
+    },
+
+    "register": {
+      "status": {
+        "fail": "Error en el registro",
+        "success": "Registro exitoso",
+        "checkCredentials": "Por favor verifica tus datos"
+      },
+      "errors": {
+        "credentials": "Credenciales incorrectas",
+        "unexpectedError": "Error en el registro. Por favor intenta de nuevo más tarde.",
+        "emailUsernameTaken": "El correo ya está en uso. Por favor elige otro."
+      },
+      "header": "Registro",
+      "description": "Crea una cuenta para acceder al sistema.",
+      "email": "Correo electrónico",
+      "password": "Crear contraseña",
+      "checkPassword": "Confirmar contraseña",
+      "submit": "Crear cuenta",
+      "forgotPassword": "¿Ya tienes una cuenta? Inicia sesión.",
+      "checkEmail": "Sigue las instrucciones en tu correo para confirmar tu dirección.",
+      "signInLinkLinkDescription": "¿Ya tienes una cuenta?",
+      "signInLink": "Iniciar sesión"
+    },
+
+    "changePassword": {
+      "errors": {
+        "invalidCurrentPassword": "La contraseña actual no coincide",
+        "unexpectedError": "Ocurrió un error inesperado. Por favor intenta de nuevo más tarde.",
+        "newPasswordSameAsCurrent": "La nueva contraseña debe ser diferente a la actual"
+      },
+      "successfullyChanged": "Contraseña cambiada con éxito",
+      "header": "Cambiar contraseña",
+      "description": "Elige una nueva contraseña para iniciar sesión.",
+      "currentPassword": "Contraseña actual",
+      "password": "Nueva contraseña",
+      "confirmPassword": "Confirmar nueva contraseña",
+      "submit": "Cambiar contraseña"
+    },
+
+    "accountActivation": {
+      "successfullySet": "Cuenta activada con éxito. Ya puedes iniciar sesión.",
+      "errors": {
+        "incorrectCodeProvided": "Se generó un enlace incorrecto para ti. Contacta al soporte."
+      },
+      "welcome": "Bienvenido",
+      "activateAccount": "Se creó una nueva cuenta con el correo {email}.",
+      "invalidLink": "Este enlace no es válido.",
+      "activate": "Activar cuenta",
+      "header": "Establecer contraseña",
+      "description": "Elige una contraseña para iniciar sesión.",
+      "submit": "Activar cuenta",
+      "password": "Nueva contraseña",
+      "confirmPassword": "Confirmar contraseña"
+    },
+
+    "resetPassword": {
+      "successfullySet": "Contraseña cambiada con éxito.",
+      "header": "Restablecer contraseña",
+      "description": "Elige una nueva contraseña para iniciar sesión.",
+      "submit": "Establecer contraseña",
+      "password": "Nueva contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "errors": {
+        "incorrectCodeProvided": "Código inválido o vencido. Por favor solicita un nuevo restablecimiento."
+      }
+    },
+
+    "forgotPassword": {
+      "passwordChangeEmailSent": "Se te envió un correo con instrucciones para restablecer tu contraseña.",
+      "header": "Olvidé mi contraseña",
+      "description": "Ingresa el correo que usas normalmente para iniciar sesión. Te enviaremos instrucciones para restablecer tu contraseña.",
+      "email": "Correo electrónico",
+      "submit": "Recuperar cuenta",
+      "errors": {
+        "failedToSendPasswordResetEmail": "Error al enviar el correo de restablecimiento"
+      }
+    },
+
+    "oauth": {
+      "orContinueWith": "O continúa con",
+      "signingIn": "Iniciando sesión...",
+      "signedInSuccessfully": "Sesión iniciada con éxito",
+      "redirecting": "Redirigiendo...",
+      "errors": {
+        "signInFailed": "Error en el inicio de sesión con OAuth"
+      },
+      "withGithub": "Iniciar sesión con GitHub"
+    }
+  }
+}

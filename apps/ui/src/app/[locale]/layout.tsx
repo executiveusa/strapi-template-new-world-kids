@@ -16,7 +16,7 @@ import { ServerProviders } from "@/components/providers/ServerProviders"
 import TrackingScripts from "@/components/providers/TrackingScripts"
 import { Toaster } from "@/components/ui/sonner"
 import { debugStaticParams } from "@/lib/build"
-import { fontRoboto } from "@/lib/fonts"
+import { inter, jetbrainsMono, playfairDisplay } from "@/lib/fonts"
 import { routing } from "@/lib/navigation"
 import { cn } from "@/lib/styles"
 
@@ -29,8 +29,36 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   title: {
-    template: "%s / Notum Technologies",
-    default: "",
+    template: "%s | New World Kids",
+    default: "New World Kids — AI-Powered Life Skills for the Next Generation",
+  },
+  description:
+    "We run food forests, life skills programs, and AI-powered media services in real communities — funding youth education with earned revenue, and tracking every result in public.",
+  keywords: [
+    "youth empowerment",
+    "food forest",
+    "life skills",
+    "regenerative agriculture",
+    "nonprofit",
+    "culture shock program",
+    "Proyecto Indigo Azul",
+    "Puerto Vallarta",
+    "Seattle",
+    "AI nonprofit",
+    "Humanitarian Social Innovations",
+  ],
+  openGraph: {
+    siteName: "New World Kids",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@nwkids",
+  },
+  other: {
+    "charity-ein": "46-4779591",
+    "fiscal-sponsor": "Humanitarian Social Innovations",
   },
 }
 
@@ -88,8 +116,10 @@ export default async function RootLayout({
       </head>
       <body
         className={cn(
-          "min-h-screen bg-gray-100 font-sans antialiased",
-          fontRoboto.variable
+          "min-h-screen bg-[#080F0A] font-sans antialiased",
+          playfairDisplay.variable,
+          inter.variable,
+          jetbrainsMono.variable
         )}
       >
         <TrackingScripts />

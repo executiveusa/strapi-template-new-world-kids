@@ -15,9 +15,9 @@ import {
 } from "@/components/ui/select"
 import { routing, usePathname, useRouter } from "@/lib/navigation"
 
-const localeTranslation = {
-  cs: "Czech",
+const localeTranslation: Record<string, string> = {
   en: "English",
+  es: "Español",
 }
 
 function LocaleSwitcher({ locale }: { locale: Locale }) {
