@@ -1,0 +1,164 @@
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.timeline-item {
+  display: flex;
+  gap: 1rem;
+  position: relative;
+  padding: 1rem 0;
+}
+
+.timeline-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  background-color: #e5e7eb;
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px #d1d5db;
+}
+
+.timeline-dot--completed {
+  background-color: #10b981;
+  box-shadow: 0 0 0 2px #059669;
+}
+
+.timeline-dot--in-progress {
+  background-color: #3b82f6;
+  box-shadow: 0 0 0 2px #1d4ed8;
+  animation: pulse 2s infinite;
+}
+
+.timeline-dot--pending {
+  background-color: #f3f4f6;
+  box-shadow: 0 0 0 2px #e5e7eb;
+}
+
+.timeline-dot-icon {
+  color: white;
+  font-size: 1.25rem;
+}
+
+.timeline-dot--pending .timeline-dot-icon {
+  color: #6b7280;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 19px;
+  top: 40px;
+  width: 2px;
+  height: calc(100% + 1rem);
+  background-color: #e5e7eb;
+}
+
+.timeline-line--completed {
+  background-color: #10b981;
+}
+
+.timeline-line--in-progress {
+  background-color: #3b82f6;
+}
+
+.timeline-line--pending {
+  background-color: #d1d5db;
+}
+
+.timeline-content {
+  flex: 1;
+  padding-top: 0.25rem;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.timeline-date {
+  font-size: 0.875rem;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.timeline-description {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin: 0.5rem 0 0.5rem 0;
+  line-height: 1.5;
+}
+
+.timeline-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.5rem;
+}
+
+.timeline-badge--completed {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.timeline-badge--in-progress {
+  background-color: #dbeafe;
+  color: #0c4a6e;
+}
+
+.timeline-badge--pending {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .timeline-item {
+    gap: 0.75rem;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeline-title {
+    font-size: 1rem;
+  }
+
+  .timeline-date {
+    font-size: 0.75rem;
+  }
+}
