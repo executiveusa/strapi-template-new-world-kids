@@ -1,8 +1,6 @@
 import { setPluginConfig } from "@_sh/strapi-plugin-ckeditor"
 import type { StrapiApp } from "@strapi/strapi/admin"
 
-// eslint-disable-next-line import-x/order
-import { cs } from "./cs"
 import "@repo/design-system/styles.css"
 
 // eslint-disable-next-line import-x/order
@@ -11,10 +9,7 @@ import InternalJobs from "./extensions/InternalJobs"
 
 export default {
   config: {
-    locales: ["en", "cs"],
-    translations: {
-      cs,
-    },
+    locales: ["en", "es"],
   },
   async bootstrap(app: StrapiApp) {
     app.getPlugin("content-manager").injectComponent("listView", "actions", {

@@ -5,8 +5,8 @@ import { defineRouting } from "next-intl/routing"
 import { getEnvVar } from "@/lib/env-vars"
 
 export const routing = defineRouting({
-  // A list of all locales that are supported
-  locales: ["cs", "en"],
+  // Supported locales: English (primary) and Spanish (PV operations)
+  locales: ["en", "es"],
 
   // Used when no locale matches
   defaultLocale: "en",
