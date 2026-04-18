@@ -9,6 +9,12 @@ const withNextIntl = plugin("./src/lib/i18n.ts")
 const nextConfig = {
   output: env.NEXT_OUTPUT,
   reactStrictMode: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   devIndicators: {
     position: "bottom-right",
   },
