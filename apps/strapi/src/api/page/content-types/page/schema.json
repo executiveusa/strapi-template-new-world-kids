@@ -68,6 +68,7 @@
         "sections.faq",
         "sections.carousel",
         "sections.animated-logo-row",
+        "sections.timeline",
         "forms.newsletter-form",
         "forms.contact-form",
         "utilities.ck-editor-content",

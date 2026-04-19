@@ -9,6 +9,7 @@ import StrapiHeadingWithCTAButton from "@/components/page-builder/components/sec
 import StrapiHero from "@/components/page-builder/components/sections/StrapiHero"
 import StrapiHorizontalImages from "@/components/page-builder/components/sections/StrapiHorizontalImages"
 import StrapiImageWithCTAButton from "@/components/page-builder/components/sections/StrapiImageWithCTAButton"
+import StrapiTimeline from "@/components/page-builder/components/sections/StrapiTimeline"
 import StrapiCkEditorContent from "@/components/page-builder/components/utilities/StrapiCkEditorContent"
 import StrapiTipTapEditorContent from "@/components/page-builder/components/utilities/StrapiTipTapEditorContent"
 
@@ -36,6 +37,7 @@ export const PageContentComponents: Partial<
   "sections.hero": StrapiHero,
   "sections.horizontal-images": StrapiHorizontalImages,
   "sections.image-with-cta-button": StrapiImageWithCTAButton,
+  "sections.timeline": StrapiTimeline,
 
   // Forms
   "forms.contact-form": StrapiContactForm,

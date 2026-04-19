@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sections_timelines",
+  "info": {
+    "displayName": "Timeline",
+    "description": "Interactive timeline component with multiple stages",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    },
+    "stages": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.timeline-stage",
+      "required": true
+    }
+  }
+}
