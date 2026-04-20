@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "jcodemunch": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["jcodemunch-mcp"],
+      "env": {}
+    },
+    "supabase": {
+      "type": "url",
+      "url": "https://mcp.supabase.com/sse",
+      "headers": {
+        "Authorization": "Bearer ${SUPABASE_SERVICE_KEY}"
+      }
+    },
+    "mcp2cli": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["mcp2cli", "--mcp-stdio", "uvx mcp2cli --help"],
+      "env": {}
+    }
+  }
+}
