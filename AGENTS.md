@@ -54,3 +54,42 @@ pnpm commit    # Interactive Commitizen flow
 ```
 
 Or write manually: `type(scope): subject`
+
+---
+
+## Agent Directory (Octopus Architecture)
+
+This repo is managed by autonomous AI agents running on Paperclip at `http://31.220.58.212:3100`.
+
+| Agent | File | Role | Heartbeat |
+|-------|------|------|-----------|
+| Hermes (CEO) | `agents/hermes/SOUL.md` | Portfolio manager, grant hunter, content CEO | Every 4 hours |
+| Platform Worker | `agents/worker/SOUL.md` | Codebase health, KPIs, Strapi+Next operations | Every 4 hours |
+| Grant Hunter | (sub-agent, see company.json) | Weekly grant research & applications | Mondays 9am |
+| Content Engine | (sub-agent, see company.json) | Bilingual social content via Postiz | Mon/Wed/Fri 8am |
+
+### Octopus Structure
+```
+AGENTS.md                  ← This file
+KPI.md                     ← Live KPI dashboard
+agents/hermes/SOUL.md      ← CEO agent system prompt
+agents/wiki/WIKI.md        ← Accumulated repo knowledge (agents read first)
+agents/worker/SOUL.md      ← Platform worker identity
+.paperclip/company.json    ← Paperclip company + agent definitions
+ops/reports/               ← Machine-readable agent outputs
+infrastructure/hermes/     ← Docker Compose + Supabase SQL for agent stack
+.mcp.json                  ← MCP server config (jcodemunch + supabase)
+.ralphy/config.yaml        ← Ralphy autonomous loop config
+PRD.md                     ← Ralphy task list for remaining work
+```
+
+### Public Ledger
+All agent actions are logged at:
+- Supabase table: `agent_actions` (project: sbbuxnyvflczfzvsglpe)
+- Local: `ops/reports/YYYY-MM-DD.md`
+
+### Rules for AI Coding Agents (jCodemunch / jCodeMunch)
+- Install jcodemunch-mcp for this repo: `jcodemunch-mcp index .`
+- Always use `search_symbols` + `get_symbol_source` before reading full files
+- This saves 90%+ tokens on large file reads
+- Config: see `.mcp.json`

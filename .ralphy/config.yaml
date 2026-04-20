@@ -1,0 +1,38 @@
+project:
+  name: "new-world-kids"
+  language: "TypeScript"
+  framework: "Next.js 16 + Strapi v5"
+
+commands:
+  test: "pnpm test"
+  lint: "pnpm lint"
+  build: "pnpm build"
+
+rules:
+  - "use TypeScript strict mode — no any types"
+  - "never push directly to main — always branch and PR"
+  - "use jcodemunch-mcp search_symbols before reading full files"
+  - "all agent actions logged to Supabase agent_actions table before executing"
+  - "bilingual: all user-facing strings need both en and es keys in locales/"
+  - "Strapi content types defined in apps/strapi/src/api/ — never hand-edit migration files"
+  - "imports from @nwkids/* must resolve through packages/ workspace"
+  - "never hardcode secrets — use env vars, reference .env.example for key names"
+
+boundaries:
+  never_touch:
+    - "apps/strapi/src/migrations/**"
+    - "*.lock"
+    - "pnpm-lock.yaml"
+    - ".ralphy/**"
+    - "ops/reports/**"
+    - ".git/**"
+
+capabilities:
+  browser: "auto"
+
+notifications:
+  discord_webhook: "${DISCORD_WEBHOOK_URL}"
+
+engines:
+  default: "claude"
+  branch_per_task: true

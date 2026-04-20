@@ -1,0 +1,53 @@
+{
+  // jcodemunch architecture layer configuration
+  // Tells jcodemunch how this monorepo is organized so search_symbols
+  // and read_symbol respect layer boundaries and prioritize correctly.
+  "toolProfile": "standard",
+  "compactSchemas": true,
+  "layers": [
+    {
+      "name": "api-routes",
+      "paths": ["apps/ui/src/app/**/(api|_api)/**"],
+      "description": "Next.js API routes and server actions"
+    },
+    {
+      "name": "pages",
+      "paths": ["apps/ui/src/app/**/page.tsx", "apps/ui/src/app/**/layout.tsx"],
+      "description": "Next.js page and layout components"
+    },
+    {
+      "name": "components",
+      "paths": ["apps/ui/src/components/**"],
+      "description": "Shared React components"
+    },
+    {
+      "name": "strapi",
+      "paths": ["apps/strapi/src/**"],
+      "description": "Strapi CMS content types, services, and controllers"
+    },
+    {
+      "name": "packages",
+      "paths": ["packages/**"],
+      "description": "Shared workspace packages (localization, ui, config)"
+    },
+    {
+      "name": "agents",
+      "paths": ["agents/**", ".paperclip/**"],
+      "description": "AI agent definitions, souls, and Paperclip config"
+    },
+    {
+      "name": "infrastructure",
+      "paths": ["infrastructure/**"],
+      "description": "Docker Compose, SQL, and deploy configurations"
+    }
+  ],
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/.next/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/*.lock",
+    "apps/strapi/src/migrations/**",
+    "ops/reports/**"
+  ]
+}

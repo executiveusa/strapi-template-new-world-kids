@@ -1,0 +1,100 @@
+version: "3.9"
+
+services:
+  # ─────────────────────────────────────────
+  # Paperclip — AI company orchestration
+  # ─────────────────────────────────────────
+  paperclip:
+    image: ghcr.io/paperclip-ai/paperclip:latest
+    container_name: nwkids-paperclip
+    restart: unless-stopped
+    ports:
+      - "3100:3100"
+    environment:
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      PAPERCLIP_API_KEY: ${PAPERCLIP_API_KEY}
+      SUPABASE_URL: ${SUPABASE_URL}
+      SUPABASE_SERVICE_KEY: ${SUPABASE_SERVICE_KEY}
+      PUBLIC_URL: ${PAPERCLIP_PUBLIC_URL:-http://localhost:3100}
+    volumes:
+      - ../../.paperclip:/app/.paperclip:ro
+      - ../../agents:/app/agents:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3100/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ─────────────────────────────────────────
+  # hermes-webui — web UI for Hermes agent
+  # ─────────────────────────────────────────
+  hermes-webui:
+    image: ghcr.io/nesquena/hermes-webui:latest
+    container_name: nwkids-hermes-webui
+    restart: unless-stopped
+    ports:
+      - "8787:8787"
+    environment:
+      HERMES_WEBUI_PASSWORD: ${HERMES_WEBUI_PASSWORD}
+      PAPERCLIP_URL: http://paperclip:3100
+      PAPERCLIP_API_KEY: ${PAPERCLIP_API_KEY}
+    volumes:
+      - hermes-data:/root/.hermes
+    depends_on:
+      paperclip:
+        condition: service_healthy
+
+  # ─────────────────────────────────────────
+  # Postiz — social media scheduler
+  # ─────────────────────────────────────────
+  postiz:
+    image: ghcr.io/gitroomhq/postiz-app:latest
+    container_name: nwkids-postiz
+    restart: unless-stopped
+    ports:
+      - "3200:3000"
+    environment:
+      DATABASE_URL: postgresql://postiz:${POSTIZ_DB_PASS}@postiz-db:5432/postiz
+      REDIS_URL: redis://postiz-redis:6379
+      BACKEND_INTERNAL_URL: http://localhost:3000
+      IS_GENERAL: "true"
+      JWT_SECRET: ${POSTIZ_JWT_SECRET}
+      FRONTEND_URL: ${POSTIZ_FRONTEND_URL:-http://localhost:3200}
+    depends_on:
+      postiz-db:
+        condition: service_healthy
+      postiz-redis:
+        condition: service_healthy
+
+  postiz-db:
+    image: postgres:16-alpine
+    container_name: nwkids-postiz-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postiz
+      POSTGRES_PASSWORD: ${POSTIZ_DB_PASS}
+      POSTGRES_DB: postiz
+    volumes:
+      - postiz-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postiz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  postiz-redis:
+    image: redis:7-alpine
+    container_name: nwkids-postiz-redis
+    restart: unless-stopped
+    volumes:
+      - postiz-redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  hermes-data:
+  postiz-db-data:
+  postiz-redis-data:
