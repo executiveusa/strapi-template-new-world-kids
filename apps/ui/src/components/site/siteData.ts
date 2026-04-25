@@ -25,11 +25,158 @@ export const socialLinks = [
   { label: "Email", href: siteLinks.email, key: "email" },
 ] as const
 
+export const heroFeatureCards = [
+  {
+    eyebrow: "What visitors should understand fast",
+    title: "This is a school-in-public, not a pitch deck.",
+    body: "The strongest version of the site tells people what exists today, what is being built next, and why the work matters in daily life.",
+    bullets: [
+      "Real land, real curriculum, real local relationships",
+      "Practical work first, abstractions second",
+      "Public-facing copy designed to reduce guesswork",
+    ],
+  },
+  {
+    eyebrow: "Seth-guided brand question",
+    title: "Who are we helping students become?",
+    body: "More self-sufficient. More bilingual. More rooted. More trusted with responsibility. That question should shape every headline, program description, and donation ask.",
+  },
+  {
+    eyebrow: "Backend posture",
+    title: "Hermes supports the operations layer.",
+    body: "The frontend can stay simple and zero-secret while Hermes handles reporting, grant work, and future automation behind the scenes.",
+  },
+] as const
+
+export const heroFactStrip = [
+  {
+    label: "What is live now",
+    value: "Public homepage, donate flow, Hermes status",
+  },
+  {
+    label: "What needs proof",
+    value: "Photos, attributed testimonials, exact seasonal metrics",
+  },
+  {
+    label: "What this page should do",
+    value: "Explain the mission fast, then move people to timeline or donate",
+  },
+] as const
+
 export const homepageStats = [
   { value: "200+", label: "plant varieties growing today" },
   { value: "1.5", label: "acres in Paso de Guayabo" },
   { value: "5+", label: "years of boots-on-the-ground work" },
   { value: "$0", label: "tuition for accepted students" },
+] as const
+
+export type TimelineEntry = {
+  season: string
+  year: string
+  status: "past" | "current" | "future"
+  title: string
+  tagline: string
+  body: string
+  highlights: string[]
+  photo: string
+  photoAlt?: string
+}
+
+export const timelineEntries: TimelineEntry[] = [
+  {
+    season: "Season 1",
+    year: "2020",
+    status: "past",
+    title: "The land. The idea. The leap.",
+    tagline: "Completely degraded soil. Pure vision.",
+    body: "Volunteers from Seattle's Culture Shock program arrived in Paso de Guayabo and rented 1.5 acres that could barely support life. Soil restoration started anyway.",
+    highlights: [
+      "1.5 acres secured",
+      "Soil restoration begun",
+      "Volunteer network formed across three countries",
+    ],
+    photo: "",
+    photoAlt: "Season 1 land preparation in Paso de Guayabo",
+  },
+  {
+    season: "Season 2",
+    year: "2021-2022",
+    status: "past",
+    title: "Community. Proof. Momentum.",
+    tagline: "The neighborhood showed up. We listened.",
+    body: "The founder lived full-time in the community. Local children started arriving to plant, learn, and spend time on the site. Trust and proof of concept grew together.",
+    highlights: [
+      "Community relationships built",
+      "15 to 20 local children engaged weekly",
+      "Early plants established and language classes launched",
+    ],
+    photo: "",
+    photoAlt: "Season 2 community work and early garden growth",
+  },
+  {
+    season: "Season 3",
+    year: "2023-2025",
+    status: "current",
+    title: "200 plants. AI layer. Hinge moment.",
+    tagline: "The food forest is alive. Now we finish the school.",
+    body: "The site crossed 200 plant varieties. Syntropic agriculture is working. Hermes is being brought online to support grants, reporting, and operations while fundraising pushes the next build phase forward.",
+    highlights: [
+      "200+ plant varieties growing",
+      "$25K season fundraise in motion",
+      "Hermes operations layer connected",
+      "Grant applications in progress",
+    ],
+    photo: "",
+    photoAlt: "Season 3 food forest growth",
+  },
+  {
+    season: "Season 4",
+    year: "2025-2026",
+    status: "future",
+    title: "School doors open.",
+    tagline: "Five students. Real curriculum. Real change.",
+    body: "The learning center opens to its first student cohort, blending local youth participation with Culture Shock students from Seattle. Hermes supports the reporting and operational layer.",
+    highlights: [
+      "Learning center operational",
+      "First Culture Shock cohort onboarded",
+      "Hermes live for reporting and follow-through",
+      "Earn-while-you-learn stipends activated",
+    ],
+    photo: "",
+    photoAlt: "Season 4 opening day plan",
+  },
+  {
+    season: "Season 5",
+    year: "2026-2027",
+    status: "future",
+    title: "Scale. Replicate. Train the trainers.",
+    tagline: "A model that can travel.",
+    body: "Graduates bring skills home. The food forest feeds more of the school. Revenue diversifies through seeds, plants, oils, tours, and creative work tied back to the mission.",
+    highlights: [
+      "Toward 50% food self-sufficiency on site",
+      "More diversified revenue streams",
+      "Replication playbook documented",
+      "Quarterly art and story-based fundraising",
+    ],
+    photo: "",
+    photoAlt: "Season 5 scale phase",
+  },
+  {
+    season: "Season 6",
+    year: "2027-2030",
+    status: "future",
+    title: "Own the land. Expand the network.",
+    tagline: "A durable model, not a one-off.",
+    body: "The long-term goal is land ownership or a next-site build, paired with deeper food self-sufficiency and a network of programs that can fund and teach themselves with more resilience.",
+    highlights: [
+      "Toward 85% food self-sufficiency",
+      "Property acquisition decision",
+      "Global replication network",
+      "B-Corp social ventures supporting mission work",
+    ],
+    photo: "",
+    photoAlt: "Season 6 full vision",
+  },
 ] as const
 
 export const clarityCards = [
