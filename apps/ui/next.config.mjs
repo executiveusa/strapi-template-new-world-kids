@@ -4,10 +4,14 @@ import plugin from "next-intl/plugin"
 import { env } from "./src/env.mjs"
 
 const withNextIntl = plugin("./src/lib/i18n.ts")
+const nextOutput =
+  process.platform === "win32"
+    ? undefined
+    : process.env.NEXT_OUTPUT || env.NEXT_OUTPUT
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: env.NEXT_OUTPUT,
+  output: nextOutput,
   reactStrictMode: true,
   typescript: {
     ignoreBuildErrors: true,

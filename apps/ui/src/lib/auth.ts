@@ -399,9 +399,18 @@ export const strapiOAuthPlugin = {
   },
 } satisfies BetterAuthPlugin
 
+const authBaseUrl = getEnvVar("APP_PUBLIC_URL") ?? "http://localhost:3000"
+
+// Public frontend builds should not fail just because auth has not been
+// provisioned yet. The route handler still returns 503 when auth is not
+// explicitly configured, but we provide a non-default secret here so Better
+// Auth does not emit a hard error during static analysis and page generation.
+const authSecret =
+  getEnvVar("BETTER_AUTH_SECRET") ?? "nwkids-public-build-fallback-secret"
+
 export const auth = betterAuth({
-  baseURL: getEnvVar("APP_PUBLIC_URL"),
-  secret: getEnvVar("BETTER_AUTH_SECRET"),
+  baseURL: authBaseUrl,
+  secret: authSecret,
 
   // Stateless mode
   session: {

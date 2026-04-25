@@ -5,7 +5,7 @@ import { use } from "react"
 export default function Layout({
   children,
   params,
-}: LayoutProps<"/[locale]/[[...rest]]">) {
+}: LayoutProps<"/[locale]/[...rest]">) {
   const { locale } = use(params) as { locale: Locale }
 
   setRequestLocale(locale)
