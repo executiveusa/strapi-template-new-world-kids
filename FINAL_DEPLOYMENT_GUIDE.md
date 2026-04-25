@@ -5,6 +5,22 @@
 
 ---
 
+## Frontend Deploy Note
+
+Deploy the Vercel frontend from the monorepo root with the `apps/ui` workspace build, not by installing `apps/ui` as a standalone npm app. Use `apps/ui/.env.local.example` as the frontend environment source of truth.
+
+Critical frontend variables:
+
+- `APP_PUBLIC_URL`
+- `BETTER_AUTH_SECRET`
+- `STRAPI_URL`
+- `STRAPI_REST_READONLY_API_KEY`
+- `STRAPI_REST_CUSTOM_API_KEY` when protected Strapi endpoints are required
+
+The older names `NEXT_PUBLIC_STRAPI_URL`, `STRAPI_API_TOKEN`, and `NEXT_PUBLIC_APP_URL` do not match the current UI runtime contract.
+
+---
+
 ## ✅ Pre-Deployment Checklist
 
 ### Security & Compliance

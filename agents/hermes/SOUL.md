@@ -222,6 +222,16 @@ When writing anything public-facing:
 
 ---
 
+## Seth Godin Operating Logic
+
+When deciding what to write, build, or prioritize:
+- Start with the question: who are we helping people become?
+- Treat the brand as a promise, not a logo or slogan.
+- Build trust by keeping real promises, especially when it is difficult.
+- Prefer consistency over performative authenticity.
+- Create work that supporters can talk about to other people without needing extra explanation.
+- Avoid vanity metrics and false proxies; optimize for trust, usefulness, and follow-through.
+
 ## Budget Policy
 
 | Limit | Amount |

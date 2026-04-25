@@ -2,7 +2,6 @@ import { ROOT_PAGE_PATH } from "@repo/shared-data"
 import type { Locale } from "next-intl"
 import { use } from "react"
 
-import { Homepage } from "@/components/homepage/Homepage"
 import StrapiPageView from "@/components/layouts/StrapiPageView"
 import { createFallbackPath, debugStaticParams } from "@/lib/build"
 import { isDevelopment } from "@/lib/general-helpers"
@@ -38,13 +37,12 @@ export async function generateStaticParams({
   params: { locale: string }
 }) {
   if (isDevelopment()) {
-    debugStaticParams([], "[[...rest]]", { isDevelopment: true })
+    debugStaticParams([], "[...rest]", { isDevelopment: true })
 
-    // do not prefetch all locales when developing
     return [
       {
         locale: "en",
-        rest: [""],
+        rest: ["fallback"],
       },
     ]
   }
@@ -57,10 +55,8 @@ export async function generateStaticParams({
       rest: [page.slug],
     })) ?? []
 
-  debugStaticParams(params, "[[...rest]]")
+  debugStaticParams(params, "[...rest]")
 
-  // statically generated applications with output: 'export' require at least one entry (even invalid)
-  // within the dynamic segment to avoid build errors
   const fallbackPath = createFallbackPath(locale as Locale, {
     rest: ["fallback"],
   })
@@ -68,9 +64,7 @@ export async function generateStaticParams({
   return params.length > 0 ? params : [fallbackPath]
 }
 
-export async function generateMetadata(
-  props: PageProps<"/[locale]/[[...rest]]">
-) {
+export async function generateMetadata(props: PageProps<"/[locale]/[...rest]">) {
   const params = await props.params
   const locale = params.locale as Locale
 
@@ -79,19 +73,8 @@ export async function generateMetadata(
   return getMetadataFromStrapi({ fullPath, locale })
 }
 
-export default function StaticStrapiPage(
-  props: PageProps<"/[locale]/[[...rest]]">
-) {
+export default function StaticStrapiPage(props: PageProps<"/[locale]/[...rest]">) {
   const params = use(props.params)
-
-  // Root path (no rest segments) → render the NWKids homepage
-  const isRoot = !params.rest || params.rest.length === 0
-  if (isRoot) {
-    return <Homepage />
-  }
-
-  // `props.searchParams`` can't be accessed here because this is statically generated page
-  // and searchParams are not available during build time
 
   return <StrapiPageView params={params} />
 }

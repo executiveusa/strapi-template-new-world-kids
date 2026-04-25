@@ -30,7 +30,7 @@
     "lint": "turbo lint",
     "lint:fix": "turbo lint:fix",
     "prepare": "husky",
-    "setup:apps": "find . -name '*.example' -exec sh -c 'cp -n \"$1\" \"${1%.example}\"' _ {} \\;",
+    "setup:apps": "node ./scripts/setup-apps.mjs",
     "start:strapi": "turbo run start --filter=@repo/strapi",
     "start:ui": "turbo run start --filter=@repo/ui",
     "test": "turbo run test",
@@ -57,6 +57,7 @@
     "eslint": "^9.39.2",
     "husky": "9.1.7",
     "lint-staged": "15.2.7",
+    "next": "16.1.5",
     "prettier": "3.8.1",
     "semantic-release": "24.2.0",
     "turbo": "2.7.6"

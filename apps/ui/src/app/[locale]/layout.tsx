@@ -6,14 +6,11 @@ import Script from "next/script"
 import type { Locale } from "next-intl"
 import { setRequestLocale } from "next-intl/server"
 
-import { ErrorBoundary } from "@/components/elementary/ErrorBoundary"
-import StrapiPreviewListener from "@/components/elementary/StrapiPreviewListener"
-import { TailwindIndicator } from "@/components/elementary/TailwindIndicator"
-import StrapiFooter from "@/components/page-builder/single-types/footer/StrapiFooter"
-import StrapiNavbar from "@/components/page-builder/single-types/navbar/StrapiNavbar"
 import { ClientProviders } from "@/components/providers/ClientProviders"
 import { ServerProviders } from "@/components/providers/ServerProviders"
 import TrackingScripts from "@/components/providers/TrackingScripts"
+import PublicFooter from "@/components/site/PublicFooter"
+import { PublicNavbar } from "@/components/site/PublicNavbar"
 import { Toaster } from "@/components/ui/sonner"
 import { debugStaticParams } from "@/lib/build"
 import { inter, jetbrainsMono, playfairDisplay } from "@/lib/fonts"
@@ -30,14 +27,14 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   title: {
     template: "%s | New World Kids",
-    default: "New World Kids — AI-Powered Life Skills for the Next Generation",
+    default: "New World Kids | Food, Water, Energy, and Shelter for Youth",
   },
   description:
-    "We run food forests, life skills programs, and AI-powered media services in real communities — funding youth education with earned revenue, and tracking every result in public.",
+    "Free regenerative education in Puerto Vallarta. We teach young people how to grow food, protect water, make energy, and build shelter through real community work.",
   keywords: [
     "youth empowerment",
     "food forest",
-    "life skills",
+    "regenerative education",
     "regenerative agriculture",
     "nonprofit",
     "culture shock program",
@@ -54,7 +51,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@nwkids",
   },
   other: {
     "charity-ein": "46-4779591",
@@ -68,26 +64,12 @@ export default async function RootLayout({
 }: LayoutProps<"/[locale]">) {
   const { locale } = (await params) as { locale: Locale }
 
-  // Enable static rendering
-  // https://next-intl-docs.vercel.app/docs/getting-started/app-router/with-i18n-routing#static-rendering
   setRequestLocale(locale)
 
   if (!routing.locales.includes(locale)) {
     notFound()
   }
 
-  /**
-   * This allows you to make following env variables RUNTIME.
-   *
-   * Following variables aren't going to be embedded during the build-time. To avoid embedding,
-   * you must not use "NEXT_PUBLIC_" prefix for env variable that you want to keep
-   * private and dynamic at runtime.
-   *
-   * Instead, use this method to pass only the required env variables to the client side.
-   * To access them from CSR or SSR context, read them using `getEnvVar()` helper.
-   *
-   * Do not include "STRAPI_URL", we want to keep it private (hence why we use proxying).
-   */
   const CSR_ENVs = [
     "NODE_ENV",
     "DEBUG_STRAPI_CLIENT_API_CALLS",
@@ -116,7 +98,7 @@ export default async function RootLayout({
       </head>
       <body
         className={cn(
-          "min-h-screen bg-[#080F0A] font-sans antialiased",
+          "min-h-screen bg-[#050905] font-sans antialiased",
           playfairDisplay.variable,
           inter.variable,
           jetbrainsMono.variable
@@ -124,24 +106,12 @@ export default async function RootLayout({
       >
         <TrackingScripts />
         <ServerProviders>
-          <StrapiPreviewListener />
           <ClientProviders>
-            <div className="relative flex min-h-screen flex-col">
-              <ErrorBoundary showErrorMessage>
-                <StrapiNavbar locale={locale} />
-              </ErrorBoundary>
-
-              <div className="flex-1">
-                <div>{children}</div>
-              </div>
-
-              <TailwindIndicator />
-
+            <div className="relative flex min-h-screen flex-col bg-[#050905] text-[#f4edd9]">
+              <PublicNavbar />
+              <div className="flex-1">{children}</div>
               <Toaster />
-
-              <ErrorBoundary hideFallback>
-                <StrapiFooter locale={locale} />
-              </ErrorBoundary>
+              <PublicFooter />
             </div>
           </ClientProviders>
         </ServerProviders>
