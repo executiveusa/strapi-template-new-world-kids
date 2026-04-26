@@ -7,8 +7,10 @@ import { Link } from "@/lib/navigation"
 
 import {
   heroFactStrip,
+  heroMedia,
   heroFeatureCards,
   homepageStats,
+  verificationLabels,
 } from "../site/siteData"
 
 export function NonprofitHero() {
@@ -86,6 +88,30 @@ export function NonprofitHero() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="space-y-4 lg:pb-4"
           >
+            <article className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[linear-gradient(135deg,rgba(201,168,76,0.12),rgba(20,41,28,0.82))] p-7">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_38%)]" />
+              <div className="relative">
+                <div className="flex items-center justify-between gap-3">
+                  <p className="text-xs tracking-[0.24em] text-[#f7e7a7] uppercase">
+                    Future hero image
+                  </p>
+                  <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[10px] tracking-[0.18em] text-white/65 uppercase">
+                    {verificationLabels[heroMedia.status]}
+                  </span>
+                </div>
+                <div className="mt-8 flex min-h-[220px] items-end rounded-[26px] border border-dashed border-white/14 bg-black/15 p-5">
+                  <div>
+                    <p className="font-serif text-3xl text-white/80">
+                      Archive image slot
+                    </p>
+                    <p className="mt-3 max-w-sm text-sm leading-7 text-white/58">
+                      {heroMedia.caption}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
             {heroFeatureCards.map((card) => (
               <article
                 key={card.title}
@@ -128,11 +154,19 @@ export function NonprofitHero() {
                 transition={{ duration: 0.55, delay: 0.15 + index * 0.08 }}
                 className="rounded-[26px] border border-white/10 bg-white/[0.03] p-6"
               >
-                <p className="font-serif text-4xl font-semibold text-[#c9a84c]">
-                  {stat.value}
-                </p>
+                <div className="flex items-start justify-between gap-3">
+                  <p className="font-serif text-4xl font-semibold text-[#c9a84c]">
+                    {stat.value}
+                  </p>
+                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] tracking-[0.18em] text-white/56 uppercase">
+                    {verificationLabels[stat.status]}
+                  </span>
+                </div>
                 <p className="mt-2 text-sm leading-7 text-white/60">
                   {stat.label}
+                </p>
+                <p className="mt-3 text-xs leading-6 text-white/42">
+                  {stat.sourceNote}
                 </p>
               </motion.article>
             ))}

@@ -25,6 +25,14 @@ export const socialLinks = [
   { label: "Email", href: siteLinks.email, key: "email" },
 ] as const
 
+export type VerificationStatus = "confirmed" | "needs-review" | "planned"
+
+export const verificationLabels: Record<VerificationStatus, string> = {
+  confirmed: "Confirmed",
+  "needs-review": "Needs proof",
+  planned: "Planned",
+} as const
+
 export const heroFeatureCards = [
   {
     eyebrow: "What visitors should understand fast",
@@ -63,11 +71,39 @@ export const heroFactStrip = [
   },
 ] as const
 
+export const heroMedia = {
+  src: "",
+  alt: "New World Kids archive photography placeholder",
+  caption: "Hero image slot ready for the first confirmed field photo.",
+  status: "needs-review" as VerificationStatus,
+} as const
+
 export const homepageStats = [
-  { value: "200+", label: "plant varieties growing today" },
-  { value: "1.5", label: "acres in Paso de Guayabo" },
-  { value: "5+", label: "years of boots-on-the-ground work" },
-  { value: "$0", label: "tuition for accepted students" },
+  {
+    value: "200+",
+    label: "plant varieties growing today",
+    status: "needs-review" as VerificationStatus,
+    sourceNote:
+      "Needs a dated count source from the site archive or field log.",
+  },
+  {
+    value: "1.5",
+    label: "acres in Paso de Guayabo",
+    status: "needs-review" as VerificationStatus,
+    sourceNote: "Needs one dated acreage source we can repeat consistently.",
+  },
+  {
+    value: "5+",
+    label: "years of boots-on-the-ground work",
+    status: "needs-review" as VerificationStatus,
+    sourceNote: "Needs a clear program start date and current date reference.",
+  },
+  {
+    value: "$0",
+    label: "tuition for accepted students",
+    status: "needs-review" as VerificationStatus,
+    sourceNote: "Needs an exact public tuition policy statement.",
+  },
 ] as const
 
 export type TimelineEntry = {
@@ -80,6 +116,9 @@ export type TimelineEntry = {
   highlights: string[]
   photo: string
   photoAlt?: string
+  sourceStatus: VerificationStatus
+  imageStatus: VerificationStatus
+  sourceNote: string
 }
 
 export const timelineEntries: TimelineEntry[] = [
@@ -97,6 +136,10 @@ export const timelineEntries: TimelineEntry[] = [
     ],
     photo: "",
     photoAlt: "Season 1 land preparation in Paso de Guayabo",
+    sourceStatus: "needs-review",
+    imageStatus: "needs-review",
+    sourceNote:
+      "Needs a dated land record, first-season notes, and the first archive photo.",
   },
   {
     season: "Season 2",
@@ -112,6 +155,10 @@ export const timelineEntries: TimelineEntry[] = [
     ],
     photo: "",
     photoAlt: "Season 2 community work and early garden growth",
+    sourceStatus: "needs-review",
+    imageStatus: "needs-review",
+    sourceNote:
+      "Needs attendance proof, lesson records, and a confirmed community photo set.",
   },
   {
     season: "Season 3",
@@ -128,6 +175,10 @@ export const timelineEntries: TimelineEntry[] = [
     ],
     photo: "",
     photoAlt: "Season 3 food forest growth",
+    sourceStatus: "needs-review",
+    imageStatus: "needs-review",
+    sourceNote:
+      "Needs plant-count proof, current fundraising target, and a current field photo.",
   },
   {
     season: "Season 4",
@@ -144,6 +195,10 @@ export const timelineEntries: TimelineEntry[] = [
     ],
     photo: "",
     photoAlt: "Season 4 opening day plan",
+    sourceStatus: "planned",
+    imageStatus: "planned",
+    sourceNote:
+      "Keep framed as a target until the cohort, site opening date, and stipend policy are confirmed.",
   },
   {
     season: "Season 5",
@@ -160,6 +215,10 @@ export const timelineEntries: TimelineEntry[] = [
     ],
     photo: "",
     photoAlt: "Season 5 scale phase",
+    sourceStatus: "planned",
+    imageStatus: "planned",
+    sourceNote:
+      "Future-state roadmap. Needs milestone definitions before it becomes external proof copy.",
   },
   {
     season: "Season 6",
@@ -176,6 +235,10 @@ export const timelineEntries: TimelineEntry[] = [
     ],
     photo: "",
     photoAlt: "Season 6 full vision",
+    sourceStatus: "planned",
+    imageStatus: "planned",
+    sourceNote:
+      "Long-range vision only. Keep clearly labeled as future until funding and land strategy are fixed.",
   },
 ] as const
 
@@ -262,16 +325,34 @@ export const testimonialCards = [
     quote:
       "Parents who were skeptical about another youth program changed their minds when they saw students engage differently here.",
     person: "Parent feedback from Everett",
+    status: "needs-review" as VerificationStatus,
   },
   {
     quote:
       "Supporters connected to the Puerto Vallarta site describe the work as real, visible, and worth expanding with the right backing.",
     person: "Community supporter",
+    status: "needs-review" as VerificationStatus,
   },
   {
     quote:
       "Early program feedback keeps returning to the same point: the curriculum feels practical, creative, and grounded in lived experience.",
     person: "Volunteer-era testimonial summary",
+    status: "needs-review" as VerificationStatus,
+  },
+] as const
+
+export const dataPriorities = [
+  {
+    title: "Resolve sponsor language",
+    body: "Pick one legal public wording for the fiscal sponsor and donation recipient.",
+  },
+  {
+    title: "Upload seasonal photos",
+    body: "We need confirmed images for Seasons 1 through 3 before the timeline can feel fully proven.",
+  },
+  {
+    title: "Replace summary testimonials",
+    body: "Swap the current summary cards for attributed quotes with names, roles, and permission status.",
   },
 ] as const
 
