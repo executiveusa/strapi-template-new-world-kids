@@ -4,7 +4,11 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import Image from "next/image"
 import { useRef, useState } from "react"
 
-import { timelineEntries, type TimelineEntry } from "../site/siteData"
+import {
+  timelineEntries,
+  type TimelineEntry,
+  verificationLabels,
+} from "../site/siteData"
 
 const STATUS_STYLES = {
   current: {
@@ -86,6 +90,9 @@ function TimelineCard({
             <span className="text-xs tracking-[0.2em] text-white/35 uppercase">
               {entry.season} | {entry.year}
             </span>
+            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] tracking-[0.18em] text-white/55 uppercase">
+              {verificationLabels[entry.sourceStatus]}
+            </span>
           </div>
 
           <h3 className="font-serif text-2xl font-semibold text-white md:text-3xl">
@@ -110,6 +117,10 @@ function TimelineCard({
               </li>
             ))}
           </ul>
+
+          <p className="mt-6 rounded-[20px] border border-white/8 bg-black/15 px-4 py-3 text-xs leading-6 text-white/46">
+            {entry.sourceNote}
+          </p>
         </article>
       </motion.div>
 
@@ -160,7 +171,7 @@ function TimelineCard({
                 {entry.year}
               </span>
               <span className="absolute right-4 bottom-4 rounded-full bg-black/30 px-3 py-1 text-[10px] tracking-[0.18em] text-white/40 uppercase">
-                Photo archive coming soon
+                {verificationLabels[entry.imageStatus]} photo
               </span>
             </div>
           )}
