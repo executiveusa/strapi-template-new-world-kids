@@ -1,166 +1,172 @@
 {
   "agentcompanies": "v1",
   "company": {
-    "name": "New World Kids — Hermes Operations",
-    "slug": "nwkids-hermes",
-    "description": "AI-native operations company managing all NWKids repos, programs, and revenue streams. Hermes is the CEO. Zero human intervention required for routine operations.",
-    "mission": "Remove Bambu as operational bottleneck. Every repo becomes a self-improving business. Every KPI is tracked. Every action is logged publicly.",
+    "name": "New World Kids",
+    "slug": "new-world-kids",
+    "description": "Mission-first platform for food, water, energy, shelter, public trust, and field media.",
+    "mission": "Help people understand the work quickly, verify the proof easily, and support the mission without friction.",
     "brandColor": "#C9A84C"
   },
-
   "goals": [
     {
-      "title": "Portfolio: All repos bootstrapped with agents + WIKI + KPI",
-      "description": "Every GitHub repo under executiveusa has a Paperclip company, at least one worker agent, WIKI.md, and KPI.md with 3 measurable metrics.",
+      "title": "Production donor experience",
+      "description": "Ship a donor-facing site that explains the four pillars in seconds, surfaces trust visibly, and makes giving simple.",
       "priority": "critical"
     },
     {
-      "title": "Grant Pipeline: $150K raised in 12 months",
-      "description": "Hermes finds, applies for, and tracks grants across all NWKids programs. Priority targets: Microsoft AI for Good ($50K), Paul G. Allen Foundation ($50K), Google.org ($25K), local Seattle grants ($25K).",
+      "title": "Public proof engine",
+      "description": "Run a separate journal and trust center with article-scoped chat and durable verification documents.",
       "priority": "high"
     },
     {
-      "title": "Content Engine: 3x/week posting, fully automated",
-      "description": "All NWKids social content posted via Postiz without human intervention. Bilingual EN/ES. Tied to real program data from Supabase.",
-      "priority": "high"
-    },
-    {
-      "title": "Public Ledger: 100% action transparency",
-      "description": "Every agent action logged to Supabase agent_actions table and visible on nwkids.org public dashboard. Radical transparency is a stated NWKids value.",
+      "title": "Agent-native nonprofit backend",
+      "description": "Operate the backend as a Hermes harness with tool access, scoped automation, and explicit approval gates.",
       "priority": "high"
     }
   ],
-
   "agents": [
     {
       "name": "Hermes",
       "shortname": "hermes",
-      "role": "CEO",
-      "description": "Master orchestrator. Manages all repos, all programs, all agents. Checks on every business every heartbeat. Spawns agents where none exist. Reports to Bambu (board).",
+      "role": "Mission Operator",
+      "description": "Owns donor trust, orchestration, public proof, and backend policy.",
       "adapter": "claude-local",
       "heartbeatSchedule": "0 */4 * * *",
-      "systemPrompt": "file:HERMES.md",
+      "systemPrompt": "file:services/hermes/agents/hermes/SOUL.md",
       "skills": [
         "paperclip",
-        "para-memory-files",
-        "company-creator"
+        "jcodemunch",
+        "gbrain"
       ],
       "tools": [
         "web_search",
         "bash",
-        "text_editor"
+        "text_editor",
+        "browser"
       ],
       "mcpServers": [
         { "name": "supabase", "url": "${SUPABASE_MCP_URL}" },
-        { "name": "postiz", "url": "${POSTIZ_MCP_URL}" },
+        { "name": "gbrain", "url": "${GBRAIN_MCP_URL}" },
         { "name": "github", "url": "${GITHUB_MCP_URL}" }
       ],
       "budgetPolicy": {
-        "dailyLimitUsd": 50,
-        "sessionLimitUsd": 10,
+        "dailyLimitUsd": 35,
+        "sessionLimitUsd": 8,
         "alertThreshold": 0.8
       }
     },
     {
       "name": "Grant Hunter",
       "shortname": "grant-hunter",
-      "role": "Grant Research Specialist",
-      "description": "Finds and applies for grants across all NWKids programs. Runs weekly. Reports to Hermes.",
+      "role": "Funding Strategy",
+      "description": "Finds grants, drafts applications, and routes approvals for major submissions.",
       "adapter": "claude-local",
       "heartbeatSchedule": "0 9 * * 1",
-      "systemPrompt": "Hermes has assigned you a grant research task. Search Candid.org, Skip Grants, and SAM.gov for grants matching NWKids programs (food forest, youth life skills, AI nonprofit, environmental education). Match against current open programs. Draft applications for top 3 matches. Log all findings to the public ledger. Grants over $10K require board approval before submission — create an approval request instead of submitting directly.",
-      "skills": ["paperclip", "para-memory-files"],
-      "tools": ["web_search", "bash", "text_editor"],
+      "systemPrompt": "file:services/hermes/agents/grant-hunter/SOUL.md",
+      "skills": [
+        "paperclip",
+        "jcodemunch"
+      ],
+      "tools": [
+        "web_search",
+        "bash",
+        "text_editor",
+        "browser"
+      ],
       "mcpServers": [
         { "name": "supabase", "url": "${SUPABASE_MCP_URL}" }
       ],
       "budgetPolicy": {
-        "dailyLimitUsd": 20,
-        "sessionLimitUsd": 5
+        "dailyLimitUsd": 12,
+        "sessionLimitUsd": 4
+      }
+    },
+    {
+      "name": "Trust Steward",
+      "shortname": "trust-steward",
+      "role": "Verification",
+      "description": "Maintains trust docs, public proof pages, and verification copy.",
+      "adapter": "claude-local",
+      "heartbeatSchedule": "0 8 * * 1-5",
+      "systemPrompt": "file:services/hermes/agents/trust-steward/SOUL.md",
+      "skills": [
+        "paperclip"
+      ],
+      "tools": [
+        "bash",
+        "text_editor"
+      ],
+      "mcpServers": [
+        { "name": "supabase", "url": "${SUPABASE_MCP_URL}" }
+      ],
+      "budgetPolicy": {
+        "dailyLimitUsd": 5,
+        "sessionLimitUsd": 2
       }
     },
     {
       "name": "Content Engine",
       "shortname": "content-engine",
-      "role": "Social Media Manager",
-      "description": "Posts bilingual content 3x/week to all NWKids channels via Postiz. Pulls real data from Supabase. Reports to Hermes.",
+      "role": "Field Publishing",
+      "description": "Publishes journal notes, campaign updates, and bilingual public proof.",
       "adapter": "claude-local",
       "heartbeatSchedule": "0 8 * * 1,3,5",
-      "systemPrompt": "You manage NWKids social content. Pull this week's program data from Supabase (timeline entries, impact metrics, recent agent actions). Write 1 social post in English, then translate to Spanish. Schedule via Postiz. Voice: warm, direct, specific — no buzzwords. Always include one real number (e.g. '200+ plant varieties'). Log to public ledger.",
-      "skills": ["paperclip"],
-      "tools": ["bash", "text_editor"],
+      "systemPrompt": "file:services/hermes/agents/content-engine/SOUL.md",
+      "skills": [
+        "paperclip",
+        "gbrain"
+      ],
+      "tools": [
+        "bash",
+        "text_editor"
+      ],
       "mcpServers": [
-        { "name": "supabase", "url": "${SUPABASE_MCP_URL}" },
-        { "name": "postiz", "url": "${POSTIZ_MCP_URL}" }
+        { "name": "supabase", "url": "${SUPABASE_MCP_URL}" }
       ],
       "budgetPolicy": {
-        "dailyLimitUsd": 10,
+        "dailyLimitUsd": 8,
         "sessionLimitUsd": 3
       }
     }
   ],
-
   "projects": [
     {
-      "name": "Portfolio Bootstrap",
-      "description": "Install Paperclip company + WIKI.md + KPI.md in every GitHub repo under executiveusa",
-      "goalRef": "Portfolio: All repos bootstrapped",
+      "name": "Mission-first production release",
+      "description": "Move the site from prototype shape to production donor flow with trust, journal, and backend separation.",
+      "goalRef": "Production donor experience",
       "tasks": [
         {
-          "title": "Bootstrap: newworldkids-main",
-          "assignee": "hermes",
+          "title": "Launch trust center",
+          "assignee": "trust-steward",
           "priority": "critical",
-          "description": "Install .paperclip/company.json, WIKI.md, KPI.md, agents/worker/SOUL.md. Define 3 KPIs: site uptime, donor conversion rate, monthly recurring donations."
+          "description": "Keep verification documents visible, accurate, and easy to reach."
         },
         {
-          "title": "Create Grant Engine repo if not exists",
-          "assignee": "hermes",
+          "title": "Publish four-pillar journal",
+          "assignee": "content-engine",
           "priority": "high",
-          "description": "Create github.com/executiveusa/grant-engine. Bootstrap with grant-hunter agent. KPIs: applications/week, $ pipeline, $ awarded."
+          "description": "Keep food, water, energy, and shelter stories live in EN and ES."
         },
         {
-          "title": "Create Lead Engine repo if not exists",
-          "assignee": "hermes",
-          "priority": "high",
-          "description": "Create github.com/executiveusa/lead-engine. Bootstrap with worker agent. KPIs: leads/day, qualified leads/week, conversion rate."
-        }
-      ]
-    },
-    {
-      "name": "Season 3 Fundraise",
-      "description": "Raise $25K for Proyecto Indigo Azul Season 3 completion",
-      "goalRef": "Grant Pipeline: $150K raised in 12 months",
-      "tasks": [
-        {
-          "title": "Apply: Microsoft AI for Good",
-          "assignee": "grant-hunter",
-          "priority": "critical",
-          "description": "NWKids is AI-native nonprofit. Frame: Hermes agent manages operations, public transparency dashboard, AI reduces overhead. Deadline: check current cycle. Amount: request $50K."
-        },
-        {
-          "title": "Apply: Paul G. Allen Foundation",
+          "title": "Run grant pipeline",
           "assignee": "grant-hunter",
           "priority": "high",
-          "description": "Environmental + youth focus. Frame: food forest as environmental restoration + youth education. Amount: $25-50K range."
-        },
-        {
-          "title": "Apply: Google.org",
-          "assignee": "grant-hunter",
-          "priority": "high",
-          "description": "Technology + social impact. Frame: AI-powered nonprofit operations, radical transparency. Amount: $25K."
+          "description": "Pursue aligned grants and prepare approval-ready drafts."
         }
       ]
     }
   ],
-
   "secrets": [
-    "ANTHROPIC_API_KEY",
     "SUPABASE_URL",
     "SUPABASE_SERVICE_KEY",
-    "POSTIZ_API_KEY",
-    "GITHUB_TOKEN",
     "SUPABASE_MCP_URL",
-    "POSTIZ_MCP_URL",
-    "GITHUB_MCP_URL"
+    "GITHUB_MCP_URL",
+    "GBRAIN_MCP_URL",
+    "SYNTHIA_GATEWAY_URL",
+    "SYNTHIA_GATEWAY_API_KEY",
+    "OPENAI_API_KEY",
+    "BUY_ME_A_COFFEE_URL",
+    "DONORBOX_URL",
+    "CREEM_URL"
   ]
 }
