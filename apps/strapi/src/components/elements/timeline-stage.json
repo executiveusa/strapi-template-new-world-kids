@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_elements_timeline_stages",
+  "info": {
+    "displayName": "Timeline Stage",
+    "description": "Individual stage in a timeline",
+    "icon": "flag"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["completed", "in-progress", "pending"],
+      "default": "pending",
+      "required": true
+    },
+    "date": {
+      "type": "string",
+      "required": false
+    },
+    "icon": {
+      "type": "string",
+      "required": false
+    }
+  }
+}
