@@ -7,23 +7,37 @@
   "layers": [
     {
       "name": "api-routes",
-      "paths": ["apps/ui/src/app/**/(api|_api)/**"],
-      "description": "Next.js API routes and server actions"
+      "paths": [
+        "apps/ui/src/app/**/(api|_api)/**",
+        "apps/blog/src/app/**/route.ts",
+        "services/hermes/src/**"
+      ],
+      "description": "Frontend route handlers, server actions, and the Hermes backend service"
     },
     {
       "name": "pages",
-      "paths": ["apps/ui/src/app/**/page.tsx", "apps/ui/src/app/**/layout.tsx"],
-      "description": "Next.js page and layout components"
+      "paths": [
+        "apps/ui/src/app/**/page.tsx",
+        "apps/ui/src/app/**/layout.tsx",
+        "apps/blog/src/app/**/page.tsx",
+        "apps/blog/src/app/**/layout.tsx"
+      ],
+      "description": "Next.js page and layout components for the main site and journal"
     },
     {
       "name": "components",
-      "paths": ["apps/ui/src/components/**"],
-      "description": "Shared React components"
+      "paths": ["apps/ui/src/components/**", "apps/blog/src/components/**"],
+      "description": "Shared React components across the site and journal"
+    },
+    {
+      "name": "journal-content",
+      "paths": ["apps/blog/content/**", "apps/blog/messages/**"],
+      "description": "MDX journal content and localized blog copy"
     },
     {
       "name": "strapi",
       "paths": ["apps/strapi/src/**"],
-      "description": "Strapi CMS content types, services, and controllers"
+      "description": "Legacy and transition Strapi content types, services, and controllers"
     },
     {
       "name": "packages",
@@ -32,13 +46,18 @@
     },
     {
       "name": "agents",
-      "paths": ["agents/**", ".paperclip/**"],
-      "description": "AI agent definitions, souls, and Paperclip config"
+      "paths": [
+        "agents/**",
+        "services/hermes/agents/**",
+        ".paperclip/**",
+        "agent-skills/**"
+      ],
+      "description": "AI agent definitions, souls, skills, and orchestration files"
     },
     {
       "name": "infrastructure",
-      "paths": ["infrastructure/**"],
-      "description": "Docker Compose, SQL, and deploy configurations"
+      "paths": ["infrastructure/**", "services/hermes/**"],
+      "description": "Deployment, backend service, and integration configurations"
     }
   ],
   "ignorePatterns": [
@@ -47,6 +66,7 @@
     "**/dist/**",
     "**/build/**",
     "**/*.lock",
+    "agent-skills/external/**",
     "apps/strapi/src/migrations/**",
     "ops/reports/**"
   ]

@@ -6,11 +6,13 @@ import Script from "next/script"
 import type { Locale } from "next-intl"
 import { setRequestLocale } from "next-intl/server"
 
+import { ErrorBoundary } from "@/components/elementary/ErrorBoundary"
+import { TailwindIndicator } from "@/components/elementary/TailwindIndicator"
 import { ClientProviders } from "@/components/providers/ClientProviders"
 import { ServerProviders } from "@/components/providers/ServerProviders"
 import TrackingScripts from "@/components/providers/TrackingScripts"
-import PublicFooter from "@/components/site/PublicFooter"
-import { PublicNavbar } from "@/components/site/PublicNavbar"
+import SiteFooter from "@/components/site/SiteFooter"
+import SiteHeader from "@/components/site/SiteHeader"
 import { Toaster } from "@/components/ui/sonner"
 import { debugStaticParams } from "@/lib/build"
 import { inter, jetbrainsMono, playfairDisplay } from "@/lib/fonts"
@@ -27,18 +29,19 @@ export function generateStaticParams() {
 export const metadata: Metadata = {
   title: {
     template: "%s | New World Kids",
-    default: "New World Kids | Food, Water, Energy, and Shelter for Youth",
+    default: "New World Kids | Food, Water, Energy, Shelter",
   },
   description:
-    "Free regenerative education in Puerto Vallarta. We teach young people how to grow food, protect water, make energy, and build shelter through real community work.",
+    "Food, water, energy, and shelter for youth through regenerative education, public trust, and community work in Puerto Vallarta and beyond.",
   keywords: [
     "youth empowerment",
     "food forest",
-    "regenerative education",
-    "regenerative agriculture",
+    "water systems",
+    "off-grid energy",
+    "natural building",
     "nonprofit",
-    "culture shock program",
-    "Proyecto Indigo Azul",
+    "grant writing",
+    "public trust",
     "Puerto Vallarta",
     "Seattle",
     "AI nonprofit",
@@ -51,6 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    site: "@nwkids",
   },
   other: {
     "charity-ein": "46-4779591",
@@ -70,7 +74,7 @@ export default async function RootLayout({
     notFound()
   }
 
-  const CSR_ENVs = [
+  const csrEnvs = [
     "NODE_ENV",
     "DEBUG_STRAPI_CLIENT_API_CALLS",
     "SHOW_NON_BLOCKING_ERRORS",
@@ -84,7 +88,7 @@ export default async function RootLayout({
           {`
          window.CSR_CONFIG = window.CSR_CONFIG || {};
          window.CSR_CONFIG = ${JSON.stringify({
-           ...CSR_ENVs.reduce(
+           ...csrEnvs.reduce(
              (acc, curr) => {
                acc[curr] = process.env?.[curr]
 
@@ -98,7 +102,7 @@ export default async function RootLayout({
       </head>
       <body
         className={cn(
-          "min-h-screen bg-[#050905] font-sans antialiased",
+          "min-h-screen bg-[#080F0A] font-sans antialiased",
           playfairDisplay.variable,
           inter.variable,
           jetbrainsMono.variable
@@ -108,10 +112,18 @@ export default async function RootLayout({
         <ServerProviders>
           <ClientProviders>
             <div className="relative flex min-h-screen flex-col bg-[#050905] text-[#f4edd9]">
-              <PublicNavbar />
+              <ErrorBoundary showErrorMessage>
+                <SiteHeader locale={locale} />
+              </ErrorBoundary>
+
               <div className="flex-1">{children}</div>
+
+              <TailwindIndicator />
               <Toaster />
-              <PublicFooter />
+
+              <ErrorBoundary hideFallback>
+                <SiteFooter locale={locale} />
+              </ErrorBoundary>
             </div>
           </ClientProviders>
         </ServerProviders>

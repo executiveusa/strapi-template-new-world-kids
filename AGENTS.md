@@ -1,95 +1,65 @@
-# Strapi + Next.js Monorepo
+# New World Kids Platform
 
-Monorepo starter with Strapi v5 CMS and Next.js 16 frontend. Uses pnpm workspaces with Turborepo.
+Mission-first monorepo for the New World Kids donor site, separate journal, and Hermes backend.
 
-## Workspaces
+## Active Workspaces
 
-| Path                     | Description                                                  |
-| ------------------------ | ------------------------------------------------------------ |
-| `apps/ui`                | Next.js 16 (App Router, React 19, TailwindCSS v4, Shadcn/ui) |
-| `apps/strapi`            | Strapi v5 CMS (PostgreSQL via Docker)                        |
-| `packages/strapi-types`  | Auto-generated TypeScript types from Strapi schemas          |
-| `packages/design-system` | Shared TailwindCSS tokens and CkEditor styles                |
-| `packages/shared-data`   | Shared constants and types                                   |
-| `qa/tests/playwright`    | E2E and accessibility tests                                  |
+| Path | Purpose |
+| --- | --- |
+| `apps/ui` | Donor-facing site and trust layer |
+| `apps/blog` | Separate journal for field notes and proof |
+| `services/hermes` | Backend harness for trust APIs, article chat, and agent orchestration |
+| `packages/shared-data` | Shared mission data, trust docs, and taxonomy |
+| `agent-skills` | Local skill kit plus cloned external references |
+| `ops/reports` | Durable local report sink for agent-visible output |
 
-## Essential Commands
+`apps/strapi` remains in the repo as a legacy and transition surface. It is no longer the primary publishing path, but existing catch-all pages still depend on it until migration is complete.
 
-```bash
-pnpm dev              # Start both apps (Docker required for DB)
-pnpm build            # Build all
-pnpm lint             # ESLint all packages
-pnpm typecheck        # Typecheck (run from apps/ui)
-```
-
-See [docs/commands.md](docs/commands.md) for full command reference.
-
-## Type Generation (Critical)
-
-After ANY Strapi schema change:
+## Primary Commands
 
 ```bash
-cd apps/strapi && pnpm generate:types
+pnpm dev
+pnpm build
+pnpm typecheck
+pnpm test
 ```
 
-This updates `@repo/strapi-types`. Forgetting causes silent type mismatches between apps.
-
-## Documentation
-
-- [Commands Reference](docs/commands.md) — All pnpm commands
-- [Architecture](docs/architecture.md) — System design and patterns
-- [Page Builder](docs/page-builder.md) — Component registry and rendering
-- [Strapi API Client](docs/strapi-api-client.md) — Fetching content from Strapi
-- [Pages Hierarchy](docs/pages-hierarchy.md) — URL structure and redirects
-- [Authentication](docs/authentication.md) — Better Auth + Strapi JWT integration
-- [Strapi Schemas](docs/strapi-schemas.md) — Schema attributes, localization, lifecycle hooks
-- [Strapi Types](docs/strapi-types-usage.md) — Type utilities and usage patterns
-
-## Commits
-
-Uses conventional commits enforced by Husky + commitlint.
+Focused commands:
 
 ```bash
-pnpm commit    # Interactive Commitizen flow
+pnpm dev:ui
+pnpm dev:blog
+pnpm dev:hermes
+pnpm dev:strapi
 ```
 
-Or write manually: `type(scope): subject`
+## Nonprofit Product Rules
 
----
+1. Lead with the four pillars: food, water, energy, shelter.
+2. Keep the trust layer visible on every page.
+3. Separate charitable giving from paid services.
+4. Keep the frontend independent from the Hermes backend.
+5. Any public claim should map to a document, a journal note, or a clearly named future plan.
 
-## Agent Directory (Octopus Architecture)
+## Agent Operating Files
 
-This repo is managed by autonomous AI agents running on Paperclip at `http://31.220.58.212:3100`.
+| File | Purpose |
+| --- | --- |
+| `agents/hermes/SOUL.md` | Repo-level strategic operator identity |
+| `agents/worker/SOUL.md` | Platform worker identity |
+| `agents/wiki/WIKI.md` | Rolling repo memory |
+| `.paperclip/company.json` | Company orchestration config |
+| `.mcp.json` | MCP server config |
+| `.ralphy/config.yaml` | Autonomous execution guardrails |
+| `services/hermes/agents/**` | Backend agent soul and playbook files |
+| `infrastructure/hermes/**` | Local backend deployment and data bootstrap files |
 
-| Agent | File | Role | Heartbeat |
-|-------|------|------|-----------|
-| Hermes (CEO) | `agents/hermes/SOUL.md` | Portfolio manager, grant hunter, content CEO | Every 4 hours |
-| Platform Worker | `agents/worker/SOUL.md` | Codebase health, KPIs, Strapi+Next operations | Every 4 hours |
-| Grant Hunter | (sub-agent, see company.json) | Weekly grant research & applications | Mondays 9am |
-| Content Engine | (sub-agent, see company.json) | Bilingual social content via Postiz | Mon/Wed/Fri 8am |
+## Skills and MCP
 
-### Octopus Structure
-```
-AGENTS.md                  ← This file
-KPI.md                     ← Live KPI dashboard
-agents/hermes/SOUL.md      ← CEO agent system prompt
-agents/wiki/WIKI.md        ← Accumulated repo knowledge (agents read first)
-agents/worker/SOUL.md      ← Platform worker identity
-.paperclip/company.json    ← Paperclip company + agent definitions
-ops/reports/               ← Machine-readable agent outputs
-infrastructure/hermes/     ← Docker Compose + Supabase SQL for agent stack
-.mcp.json                  ← MCP server config (jcodemunch + supabase)
-.ralphy/config.yaml        ← Ralphy autonomous loop config
-PRD.md                     ← Ralphy task list for remaining work
-```
+- `jcodemunch` for token-efficient symbol discovery
+- `supabase` for data and ledger work
+- `mcp2cli` for bridging MCP tools to CLI workflows
+- `gbrain` for memory and retrieval once installed in the operator environment
 
-### Public Ledger
-All agent actions are logged at:
-- Supabase table: `agent_actions` (project: sbbuxnyvflczfzvsglpe)
-- Local: `ops/reports/YYYY-MM-DD.md`
-
-### Rules for AI Coding Agents (jCodemunch / jCodeMunch)
-- Install jcodemunch-mcp for this repo: `jcodemunch-mcp index .`
-- Always use `search_symbols` + `get_symbol_source` before reading full files
-- This saves 90%+ tokens on large file reads
-- Config: see `.mcp.json`
+The project-local `agent-skills/` directory is the curated holding area for the requested skills and reference repos.
+Material agent actions should be mirrored to a public ledger or durable report sink before broader automation is enabled.

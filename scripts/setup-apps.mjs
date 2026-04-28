@@ -1,34 +1,44 @@
-import { copyFileSync, existsSync, readdirSync, statSync } from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { copyFile, mkdir, readdir, stat } from "node:fs/promises"
+import { dirname, join, resolve } from "node:path"
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const root = path.resolve(__dirname, "..");
+const root = resolve(process.cwd())
+const blockedDirectories = new Set([
+  ".git",
+  ".next",
+  ".turbo",
+  "dist",
+  "external",
+  "node_modules",
+])
 
-function walk(dir) {
-  for (const entry of readdirSync(dir, { withFileTypes: true })) {
-    if (entry.name === "node_modules" || entry.name === ".git") {
-      continue;
+async function walk(directory) {
+  const entries = await readdir(directory, { withFileTypes: true })
+
+  for (const entry of entries) {
+    const absolutePath = join(directory, entry.name)
+
+    if (blockedDirectories.has(entry.name)) {
+      continue
     }
 
-    const fullPath = path.join(dir, entry.name);
-
     if (entry.isDirectory()) {
-      walk(fullPath);
-      continue;
+      await walk(absolutePath)
+      continue
     }
 
     if (!entry.isFile() || !entry.name.endsWith(".example")) {
-      continue;
+      continue
     }
 
-    const targetPath = fullPath.slice(0, -".".length - "example".length);
-    if (!existsSync(targetPath)) {
-      copyFileSync(fullPath, targetPath);
+    const targetPath = absolutePath.slice(0, -".example".length)
+
+    try {
+      await stat(targetPath)
+    } catch {
+      await mkdir(dirname(targetPath), { recursive: true })
+      await copyFile(absolutePath, targetPath)
     }
   }
 }
 
-if (statSync(root).isDirectory()) {
-  walk(root);
-}
+await walk(root)

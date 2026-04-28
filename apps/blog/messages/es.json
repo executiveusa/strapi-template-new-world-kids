@@ -1,0 +1,116 @@
+{
+  "site": {
+    "title": "Bitacora New World Kids",
+    "description": "Notas de campo, pruebas e historias largas de New World Kids sobre alimentos, agua, energia y refugio.",
+    "landingTitles": ["Alimentos", "Agua", "Energia", "Refugio"]
+  },
+  "routes": {
+    "posts": {
+      "name": "Bitacora",
+      "title": "Bitacora New World Kids",
+      "description": "Historias de campo, notas de impacto y pruebas del trabajo en terreno."
+    },
+    "about": {
+      "name": "Nosotros",
+      "title": "Sobre esta bitacora",
+      "description": "Por que New World Kids publica en publico."
+    }
+  },
+  "about": {
+    "bio": "Bitacora de medios para una organizacion social",
+    "location": "Puerto Vallarta / Seattle",
+    "followers": "Seguidores",
+    "following": "Siguiendo",
+    "totalRepositories": "Repositorios totales",
+    "publicRepositories": "Repositorios publicos",
+    "totalStars": "Estrellas totales",
+    "acrossAllProjects": "En todos los proyectos",
+    "featuredRepositories": "Repositorios destacados"
+  },
+  "commandMenu": {
+    "searchLabel": "Buscar historias y etiquetas",
+    "searchPlaceholder": "Buscar historias o etiquetas...",
+    "searchDescription": "Busca por titulo, etiqueta o tema",
+    "searchPostsShort": "Buscar...",
+    "searchPostsLong": "Buscar en la bitacora...",
+    "noResults": "No se encontraron resultados.",
+    "posts": "Historias",
+    "tags": "Etiquetas",
+    "navigate": "Navegar",
+    "select": "Seleccionar",
+    "close": "Cerrar"
+  },
+  "share": {
+    "shareOn": "Compartir en {platform}"
+  },
+  "agent": {
+    "copyForAgent": "Copiar para agente",
+    "copied": "Copiado",
+    "readWith": "Leer con {chatbot}",
+    "promptTitle": "Titulo",
+    "promptUrl": "URL",
+    "promptIntro": "Lee y analiza el siguiente articulo:",
+    "promptRequest": "Por favor entrega:",
+    "promptItem1": "Un resumen breve de los puntos principales",
+    "promptItem2": "Hallazgos y aprendizajes clave",
+    "promptItem3": "Preguntas o areas que requieren mas claridad"
+  },
+  "admonition": {
+    "success": "Exito",
+    "tip": "Consejo",
+    "info": "Info",
+    "note": "Nota",
+    "warning": "Advertencia",
+    "caution": "Cuidado",
+    "error": "Error",
+    "danger": "Peligro"
+  },
+  "footer": {
+    "copyright": "Derechos",
+    "lastBuilt": "Ultima compilacion"
+  },
+  "post": {
+    "readingTime": "min",
+    "selectCategory": "Selecciona categoria",
+    "notFound": "Articulo no encontrado",
+    "backToHome": "Volver al inicio",
+    "onThisPage": "En esta pagina"
+  },
+  "common": {
+    "all": "Todo",
+    "loading": "Cargando...",
+    "loadingContent": "Cargando contenido",
+    "error": "Error",
+    "notFound": "No encontrado",
+    "selectLanguage": "Selecciona idioma",
+    "backToTop": "Volver arriba",
+    "copyToClipboard": "Copiar al portapapeles",
+    "copiedToClipboard": "Copiado al portapapeles",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Cerrar menu",
+    "previousPost": "Articulo anterior",
+    "nextPost": "Siguiente articulo"
+  },
+  "metadata": {
+    "home": {
+      "title": "Bitacora New World Kids",
+      "description": "Notas de campo, pruebas e historias largas de New World Kids sobre alimentos, agua, energia y refugio."
+    },
+    "posts": {
+      "title": "Todas las historias",
+      "description": "Explora historias, pruebas y actualizaciones de New World Kids."
+    },
+    "about": {
+      "title": "Sobre la bitacora",
+      "description": "Por que New World Kids publica sus historias de campo en publico."
+    },
+    "notFound": {
+      "title": "No encontrado",
+      "description": "La pagina que buscas no existe."
+    }
+  },
+  "notFound": {
+    "title": "No encontrado",
+    "description": "La pagina que buscas no existe."
+  }
+}

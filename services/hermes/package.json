@@ -1,0 +1,22 @@
+{
+  "name": "@repo/hermes",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "node --watch --experimental-strip-types src/index.ts",
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "lint:fix": "tsc --noEmit -p tsconfig.json",
+    "start": "node dist/index.js",
+    "test": "node --eval \"console.log('No Hermes tests yet')\"",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@repo/shared-data": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "typescript": "^5"
+  }
+}

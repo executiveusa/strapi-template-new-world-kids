@@ -1,7 +1,7 @@
 project:
   name: "new-world-kids"
   language: "TypeScript"
-  framework: "Next.js 16 + Strapi v5"
+  framework: "Next.js 16 + separate Hermes backend + MDX journal"
 
 commands:
   test: "pnpm test"
@@ -9,14 +9,16 @@ commands:
   build: "pnpm build"
 
 rules:
-  - "use TypeScript strict mode — no any types"
-  - "never push directly to main — always branch and PR"
+  - "use TypeScript strict mode and avoid any types"
+  - "never push directly to main - always branch and PR"
   - "use jcodemunch-mcp search_symbols before reading full files"
-  - "all agent actions logged to Supabase agent_actions table before executing"
-  - "bilingual: all user-facing strings need both en and es keys in locales/"
-  - "Strapi content types defined in apps/strapi/src/api/ — never hand-edit migration files"
-  - "imports from @nwkids/* must resolve through packages/ workspace"
-  - "never hardcode secrets — use env vars, reference .env.example for key names"
+  - "keep frontend and backend separate - UI in apps/ui or apps/blog, orchestration in services/hermes"
+  - "keep legacy Strapi catch-all pages stable until each route is explicitly migrated"
+  - "all agent actions should be loggable to a durable ledger before automation expands"
+  - "bilingual: all new user-facing strings should support en and es"
+  - "trust claims must map to public verification documents"
+  - "imports from workspace packages should resolve through packages/"
+  - "never hardcode secrets - use env vars, reference .env.example for key names"
 
 boundaries:
   never_touch:
@@ -25,6 +27,7 @@ boundaries:
     - "pnpm-lock.yaml"
     - ".ralphy/**"
     - "ops/reports/**"
+    - "agent-skills/external/**"
     - ".git/**"
 
 capabilities:

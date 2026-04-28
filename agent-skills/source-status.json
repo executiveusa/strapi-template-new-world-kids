@@ -1,0 +1,117 @@
+[
+    {
+        "name":  "ralphy",
+        "url":  "https://github.com/michaelshimeles/ralphy.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "jcodemunch-mcp",
+        "url":  "https://github.com/jgravelle/jcodemunch-mcp.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "mcp2cli",
+        "url":  "https://github.com/knowsuchagency/mcp2cli.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "supabase-mcp",
+        "url":  "https://github.com/supabase-community/supabase-mcp.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "mattpocock-skills",
+        "url":  "https://github.com/mattpocock/skills.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "browser-harness",
+        "url":  "https://github.com/browser-use/browser-harness.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "cinematic-site-components",
+        "url":  "https://github.com/executiveusa/cinematic-site-components.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "synthia-gateway",
+        "url":  "https://github.com/executiveusa/synthia-gateway.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "gbrain",
+        "url":  "https://github.com/garrytan/gbrain.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "paperclip",
+        "url":  "https://github.com/paperclipai/paperclip.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "tegaki",
+        "url":  "https://github.com/KurtGokhan/tegaki.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "sabertazimi-blog",
+        "url":  "https://github.com/sabertazimi/blog.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "hermes-agent",
+        "url":  "https://github.com/NousResearch/hermes-agent.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "openmythos",
+        "url":  "https://github.com/kyegomez/OpenMythos.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "ext-apps",
+        "url":  "https://github.com/modelcontextprotocol/ext-apps.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "pauli-uncodixfy",
+        "url":  "https://github.com/executiveusa/pauli-Uncodixfy.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "superpowers",
+        "url":  "C:\\Users\\execu\\.agents\\skills\\paulsuperpowers",
+        "status":  "copied"
+    },
+    {
+        "name":  "uncodixfy",
+        "url":  "C:\\Users\\execu\\.agents\\skills\\uncodixfy",
+        "status":  "copied"
+    },
+    {
+        "name":  "mcp2cli-skill",
+        "url":  "C:\\Users\\execu\\.agents\\skills\\mcp2cli",
+        "status":  "copied"
+    },
+    {
+        "name":  "e2e-test",
+        "url":  "C:\\Users\\execu\\.agents\\skills\\e2e-test",
+        "status":  "copied"
+    },
+    {
+        "name":  "frontend-design",
+        "url":  "C:\\Users\\execu\\.agents\\skills\\frontend-design",
+        "status":  "copied"
+    },
+    {
+        "name":  "design-taste-frontend",
+        "url":  "C:\\Users\\execu\\.agents\\skills\\taste-skill\\taste-skill",
+        "status":  "copied"
+    },
+    {
+        "name":  "impeccable-design",
+        "url":  "C:\\Users\\execu\\.agents\\skills\\impeccable-design",
+        "status":  "copied"
+    }
+]

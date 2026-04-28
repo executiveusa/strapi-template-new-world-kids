@@ -1,0 +1,116 @@
+{
+  "site": {
+    "title": "New World Kids Journal",
+    "description": "Field notes, proof, and long-form stories from New World Kids across food, water, energy, and shelter.",
+    "landingTitles": ["Food", "Water", "Energy", "Shelter"]
+  },
+  "routes": {
+    "posts": {
+      "name": "Journal",
+      "title": "New World Kids Journal",
+      "description": "Field stories, impact notes, and proof from the work on the ground."
+    },
+    "about": {
+      "name": "About",
+      "title": "About This Journal",
+      "description": "Why New World Kids publishes in public."
+    }
+  },
+  "about": {
+    "bio": "Boots-on-the-ground nonprofit media journal",
+    "location": "Puerto Vallarta / Seattle",
+    "followers": "Followers",
+    "following": "Following",
+    "totalRepositories": "Total Repositories",
+    "publicRepositories": "Public repositories",
+    "totalStars": "Total Stars",
+    "acrossAllProjects": "Across all projects",
+    "featuredRepositories": "Featured Repositories"
+  },
+  "commandMenu": {
+    "searchLabel": "Search journal posts and tags",
+    "searchPlaceholder": "Search stories or tags...",
+    "searchDescription": "Search by title, tag, or topic",
+    "searchPostsShort": "Search...",
+    "searchPostsLong": "Search journal posts...",
+    "noResults": "No results found.",
+    "posts": "Posts",
+    "tags": "Tags",
+    "navigate": "Navigate",
+    "select": "Select",
+    "close": "Close"
+  },
+  "share": {
+    "shareOn": "Share on {platform}"
+  },
+  "agent": {
+    "copyForAgent": "Copy for agent",
+    "copied": "Copied!",
+    "readWith": "Read with {chatbot}",
+    "promptTitle": "Title",
+    "promptUrl": "URL",
+    "promptIntro": "Please read and analyze the following article:",
+    "promptRequest": "Please provide:",
+    "promptItem1": "A brief summary of the main points",
+    "promptItem2": "Key takeaways and insights",
+    "promptItem3": "Any questions or areas that need clarification"
+  },
+  "admonition": {
+    "success": "Success",
+    "tip": "Tip",
+    "info": "Info",
+    "note": "Note",
+    "warning": "Warning",
+    "caution": "Caution",
+    "error": "Error",
+    "danger": "Danger"
+  },
+  "footer": {
+    "copyright": "Copyright",
+    "lastBuilt": "Last built on"
+  },
+  "post": {
+    "readingTime": "min",
+    "selectCategory": "Select Category",
+    "notFound": "Post not found",
+    "backToHome": "Back to Home",
+    "onThisPage": "On this page"
+  },
+  "common": {
+    "all": "All",
+    "loading": "Loading...",
+    "loadingContent": "Loading content",
+    "error": "Error",
+    "notFound": "Not Found",
+    "selectLanguage": "Select Language",
+    "backToTop": "Back to top",
+    "copyToClipboard": "Copy to clipboard",
+    "copiedToClipboard": "Copied to clipboard",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "previousPost": "Previous post",
+    "nextPost": "Next post"
+  },
+  "metadata": {
+    "home": {
+      "title": "New World Kids Journal",
+      "description": "Field notes, proof, and long-form stories from New World Kids across food, water, energy, and shelter."
+    },
+    "posts": {
+      "title": "All Journal Posts",
+      "description": "Explore stories, proof, and updates from New World Kids."
+    },
+    "about": {
+      "title": "About the Journal",
+      "description": "Why New World Kids publishes its field stories in public."
+    },
+    "notFound": {
+      "title": "Not Found",
+      "description": "The page you are looking for does not exist."
+    }
+  },
+  "notFound": {
+    "title": "Not Found",
+    "description": "The page you are looking for does not exist."
+  }
+}
