@@ -4,6 +4,7 @@ import { MissionSection } from "./MissionSection"
 import { NonprofitHero } from "./NonprofitHero"
 import { ProgramsSection } from "./ProgramsSection"
 import { ProofSection } from "./ProofSection"
+import { ScrollRevealProverb } from "./ScrollRevealProverb"
 import { StudioSection } from "./StudioSection"
 import { SupportSection } from "./SupportSection"
 import { TimelineSection } from "./TimelineSection"
@@ -13,6 +14,7 @@ export function Homepage() {
   return (
     <main>
       <NonprofitHero />
+      <ScrollRevealProverb />
       <ClaritySection />
       <MissionSection />
       <ProgramsSection />

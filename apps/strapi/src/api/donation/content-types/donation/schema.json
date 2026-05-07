@@ -1,0 +1,121 @@
+{
+  "kind": "collectionType",
+  "collectionName": "donations",
+  "info": {
+    "singularName": "donation",
+    "pluralName": "donations",
+    "displayName": "Donation",
+    "description": "Track all donations from Stripe and other sources"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "amount": {
+      "type": "decimal",
+      "required": true
+    },
+    "currency": {
+      "type": "string",
+      "default": "usd"
+    },
+    "donorEmail": {
+      "type": "email",
+      "required": true
+    },
+    "donorName": {
+      "type": "string"
+    },
+    "paymentProvider": {
+      "type": "enumeration",
+      "enum": ["stripe", "paypal", "check", "wire", "crypto", "other"],
+      "default": "stripe",
+      "required": true
+    },
+    "paymentProviderId": {
+      "type": "string"
+    },
+    "stripeSessionId": {
+      "type": "string"
+    },
+    "stripePaymentIntentId": {
+      "type": "string"
+    },
+    "stripeSubscriptionId": {
+      "type": "string"
+    },
+    "paymentStatus": {
+      "type": "enumeration",
+      "enum": ["pending", "processing", "completed", "failed", "refunded", "cancelled"],
+      "default": "pending",
+      "required": true
+    },
+    "frequency": {
+      "type": "enumeration",
+      "enum": ["one-time", "monthly", "quarterly", "annually"],
+      "default": "one-time",
+      "required": true
+    },
+    "projectId": {
+      "type": "string",
+      "default": "general"
+    },
+    "projectName": {
+      "type": "string"
+    },
+    "tier": {
+      "type": "enumeration",
+      "enum": ["friend", "supporter", "champion", "patron", "custom"],
+      "default": "custom"
+    },
+    "isRecurring": {
+      "type": "boolean",
+      "default": false
+    },
+    "metadata": {
+      "type": "json"
+    },
+    "notes": {
+      "type": "text"
+    },
+    "taxReceiptSent": {
+      "type": "boolean",
+      "default": false
+    },
+    "taxReceiptSentAt": {
+      "type": "datetime"
+    },
+    "thankYouSent": {
+      "type": "boolean",
+      "default": false
+    },
+    "thankYouSentAt": {
+      "type": "datetime"
+    },
+    "refundedAt": {
+      "type": "datetime"
+    },
+    "refundReason": {
+      "type": "text"
+    },
+    "completedAt": {
+      "type": "datetime"
+    },
+    "failedAt": {
+      "type": "datetime"
+    },
+    "failureReason": {
+      "type": "text"
+    },
+    "source": {
+      "type": "string",
+      "default": "website"
+    },
+    "campaign": {
+      "type": "string"
+    },
+    "referrer": {
+      "type": "string"
+    }
+  }
+}
