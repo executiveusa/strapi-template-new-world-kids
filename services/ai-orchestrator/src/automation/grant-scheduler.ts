@@ -1,6 +1,7 @@
 import cron from 'node-cron';
 import GeminiIntegration from '../integrations/gemini.js';
 import BrowserAutomation, { GrantFormData } from './browser-automation.js';
+import NotificationService, { NotificationConfig } from '../lib/notification-service.js';
 
 export interface ScheduledGrant {
   id: string;
@@ -21,6 +22,7 @@ export interface GrantSchedulerConfig {
     username: string;
     password: string;
   };
+  notifications?: NotificationConfig;
 }
 
 export class GrantScheduler {
@@ -29,11 +31,16 @@ export class GrantScheduler {
   private config: GrantSchedulerConfig;
   private scheduledJobs: Map<string, cron.ScheduledTask> = new Map();
   private grants: Map<string, ScheduledGrant> = new Map();
+  private notificationService?: NotificationService;
 
   constructor(config: GrantSchedulerConfig) {
     this.config = config;
     this.gemini = new GeminiIntegration({ apiKey: config.geminiApiKey });
     this.automation = new BrowserAutomation();
+
+    if (config.notifications) {
+      this.notificationService = new NotificationService(config.notifications);
+    }
   }
 
   async scheduleGrant(grant: ScheduledGrant): Promise<void> {
@@ -88,6 +95,15 @@ export class GrantScheduler {
         });
 
         console.log(`Grant ${grant.grantName} submitted successfully`);
+
+        // Send success notification
+        if (this.notificationService) {
+          await this.notificationService.sendGrantSubmissionSuccess(
+            grant.grantName,
+            result.submissionId || 'N/A',
+            grant.formData.contactEmail
+          );
+        }
       } else {
         grant.status = 'failed';
         await this.updateGrantStatus(grantId, 'failed', {
@@ -96,6 +112,15 @@ export class GrantScheduler {
         });
 
         console.error(`Grant ${grant.grantName} submission failed:`, result.errors);
+
+        // Send failure notification
+        if (this.notificationService) {
+          await this.notificationService.sendGrantSubmissionFailed(
+            grant.grantName,
+            result.errors || ['Unknown error'],
+            grant.formData.contactEmail
+          );
+        }
       }
 
       // Remove from scheduled jobs
@@ -243,15 +268,15 @@ export class GrantScheduler {
   }
 
   private async sendDeadlineAlert(grant: ScheduledGrant, daysRemaining: number): Promise<void> {
-    // This could integrate with email service, Slack, etc.
     console.log(`[ALERT] Grant "${grant.grantName}" deadline in ${daysRemaining} days`);
 
-    // TODO: Implement email/notification service
-    // await emailService.send({
-    //   to: grant.formData.contactEmail,
-    //   subject: `Grant Deadline Alert: ${grant.grantName}`,
-    //   body: `The deadline for "${grant.grantName}" is in ${daysRemaining} days.`
-    // });
+    if (this.notificationService) {
+      await this.notificationService.sendGrantDeadlineAlert(
+        grant.grantName,
+        daysRemaining,
+        grant.formData.contactEmail
+      );
+    }
   }
 
   async start(): Promise<void> {

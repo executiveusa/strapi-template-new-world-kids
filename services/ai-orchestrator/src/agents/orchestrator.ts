@@ -369,6 +369,151 @@ Format as JSON with keys: content, suggestions (array)
     console.log('Saving agent memory...');
     // Implementation depends on Strapi schema
   }
+
+  async getAgentStatus(): Promise<{
+    agents: Array<{
+      name: string;
+      status: 'active' | 'idle' | 'error';
+      lastActivity: string;
+      tasksProcessed: number;
+      uptime: number;
+    }>;
+  }> {
+    const tasks = Array.from(this.tasks.values());
+    const completedTasks = tasks.filter((t) => t.status === 'completed').length;
+    const processingTasks = tasks.filter((t) => t.status === 'processing').length;
+    const failedTasks = tasks.filter((t) => t.status === 'failed').length;
+
+    return {
+      agents: [
+        {
+          name: 'Hermes - Mission Operator',
+          status: processingTasks > 0 ? 'active' : 'idle',
+          lastActivity: tasks.length > 0 ? new Date().toISOString() : 'Never',
+          tasksProcessed: completedTasks,
+          uptime: process.uptime(),
+        },
+        {
+          name: 'Grant Hunter - Funding Strategy',
+          status: processingTasks > 0 ? 'active' : 'idle',
+          lastActivity: tasks.length > 0 ? new Date().toISOString() : 'Never',
+          tasksProcessed: completedTasks,
+          uptime: process.uptime(),
+        },
+        {
+          name: 'Content Engine - Publishing',
+          status: 'idle',
+          lastActivity: new Date().toISOString(),
+          tasksProcessed: completedTasks,
+          uptime: process.uptime(),
+        },
+        {
+          name: 'Trust Steward - Verification',
+          status: 'idle',
+          lastActivity: new Date().toISOString(),
+          tasksProcessed: 0,
+          uptime: process.uptime(),
+        },
+      ],
+    };
+  }
+
+  async getInsights(): Promise<
+    Array<{
+      id: string;
+      type: 'success' | 'warning' | 'info';
+      category: 'grants' | 'timeline' | 'content' | 'general';
+      title: string;
+      description: string;
+      timestamp: string;
+      actionable: boolean;
+      action?: string;
+    }>
+  > {
+    const insights = [];
+
+    // Grant insights
+    const grantTasks = Array.from(this.tasks.values()).filter(
+      (t) => t.type === 'grant-analysis' || t.type === 'grant-application'
+    );
+    const successfulGrants = grantTasks.filter(
+      (t) => t.status === 'completed' && t.result?.shouldApply
+    ).length;
+
+    if (successfulGrants > 0) {
+      insights.push({
+        id: 'grant-success',
+        type: 'success' as const,
+        category: 'grants' as const,
+        title: `${successfulGrants} High-Fit Grants Identified`,
+        description: `The Grant Hunter agent has identified ${successfulGrants} grants with a fit score above 60%.`,
+        timestamp: new Date().toISOString(),
+        actionable: true,
+        action: 'Review and prioritize grant applications',
+      });
+    }
+
+    // Memory insights
+    if (this.memory.learnings.successfulStrategies.length > 5) {
+      insights.push({
+        id: 'learning-milestone',
+        type: 'info' as const,
+        category: 'general' as const,
+        title: 'AI Learning Progress',
+        description: `The system has learned from ${this.memory.learnings.successfulStrategies.length} successful grant strategies.`,
+        timestamp: new Date().toISOString(),
+        actionable: false,
+      });
+    }
+
+    // Timeline insights
+    const timelineTasks = Array.from(this.tasks.values()).filter(
+      (t) => t.type === 'timeline-enhancement'
+    );
+    if (timelineTasks.length > 0) {
+      insights.push({
+        id: 'timeline-enhanced',
+        type: 'info' as const,
+        category: 'timeline' as const,
+        title: 'Timeline Events Enhanced',
+        description: `${timelineTasks.length} timeline events have been analyzed and enhanced with AI-generated content.`,
+        timestamp: new Date().toISOString(),
+        actionable: false,
+      });
+    }
+
+    return insights;
+  }
+
+  async recordFeedback(
+    taskId: string,
+    feedback: string,
+    rating?: number
+  ): Promise<void> {
+    const task = this.tasks.get(taskId);
+    if (!task) {
+      throw new Error(`Task ${taskId} not found`);
+    }
+
+    // Find the interaction in memory and add feedback
+    const interaction = this.memory.interactions.find(
+      (i) => i.type === task.type && i.input === task.data
+    );
+
+    if (interaction) {
+      interaction.feedback = feedback;
+    }
+
+    // Learn from feedback
+    if (rating && rating >= 4) {
+      this.memory.learnings.bestPractices.push(
+        `${task.type}: ${feedback} (Rating: ${rating}/5)`
+      );
+    }
+
+    console.log(`Feedback recorded for task ${taskId}: ${feedback}`);
+    await this.saveMemoryToStrapi();
+  }
 }
 
 export default AIOrchestrator;
