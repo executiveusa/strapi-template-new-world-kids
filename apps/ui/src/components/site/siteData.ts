@@ -4,6 +4,7 @@ export const primaryNavigation = [
   { label: "Timeline", href: "/#timeline" },
   { label: "Proof", href: "/#proof" },
   { label: "Hermes", href: "/#hermes" },
+  { label: "Operations", href: "/ops" },
 ] as const
 
 export const siteLinks = {
