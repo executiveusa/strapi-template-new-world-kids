@@ -63,3 +63,55 @@ pnpm dev:strapi
 
 The project-local `agent-skills/` directory is the curated holding area for the requested skills and reference repos.
 Material agent actions should be mirrored to a public ledger or durable report sink before broader automation is enabled.
+
+---
+
+## THE GRAPHIFY LAW (Non-Negotiable for Every Agent)
+
+Before reading any file, searching this codebase, or making an architectural
+decision, every agent MUST check for a knowledge graph first.
+
+### Protocol
+1. Check: does `graphify-out/GRAPH_REPORT.md` exist?
+   YES → Read it. Navigate by structure, not keyword search.
+   NO  → Run `/graphify .` before all other work. Build the map first.
+
+2. Before Glob/Grep/Read:
+   Ask: "Can the graph answer this instead of raw files?"
+   YES → `/graphify query "your question"`
+   NO  → Read only the specific file the graph pointed to.
+
+3. Before any architectural decision:
+   Check GOD NODES in GRAPH_REPORT.md. Changes touching god nodes
+   affect everything downstream. Flag it. Do not proceed silently.
+
+4. After significant work:
+   Run `/graphify . --update` to keep the graph current.
+   Commit `graphify-out/` with your changes.
+
+### Why This Is a Law
+Without this law, Hermes reads raw files on every heartbeat:
+~40,000 tokens/walk × 8 repos = $6/day in API costs.
+
+With this law, Hermes reads GRAPH_REPORT.md (one page):
+~560 tokens/walk × 8 repos = $0.09/day in API costs.
+
+Violation of this law is not permitted. It wastes budget and degrades analysis.
+
+### Install Commands (run once per repo)
+```bash
+pip install graphifyy && graphify install
+graphify hermes install
+graphify hook install
+/graphify .
+```
+
+## graphify
+
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+Rules:
+- ALWAYS read graphify-out/GRAPH_REPORT.md before reading any source files, running grep/glob searches, or answering codebase questions. The graph is your primary map of the codebase.
+- IF graphify-out/wiki/index.md EXISTS, navigate it instead of reading raw files
+- For cross-module "how does X relate to Y" questions, prefer `graphify query "<question>"`, `graphify path "<A>" "<B>"`, or `graphify explain "<concept>"` over grep — these traverse the graph's EXTRACTED + INFERRED edges instead of scanning files
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
