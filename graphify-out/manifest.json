@@ -1,0 +1,3234 @@
+{
+  "/home/user/strapi-template-new-world-kids/eslint.config.mjs": {
+    "mtime": 1777525642.347809,
+    "hash": "fd6d998653603cf5c45881a63ac0a2c6"
+  },
+  "/home/user/strapi-template-new-world-kids/prettier.config.mjs": {
+    "mtime": 1777525642.395107,
+    "hash": "a651be50dff09f5fdc4857454be7c2b3"
+  },
+  "/home/user/strapi-template-new-world-kids/commitlint.config.js": {
+    "mtime": 1777525642.3457217,
+    "hash": "14eedb5ce0823700e6b78bc486ab2a0f"
+  },
+  "/home/user/strapi-template-new-world-kids/infrastructure/hermes/init.sql": {
+    "mtime": 1777525642.3512316,
+    "hash": "20b799f196b5eec57f00d2fc9526d8df"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/index.js": {
+    "mtime": 1777525642.353489,
+    "hash": "88fdd44e619e35467618b79ec8428270"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/import.js": {
+    "mtime": 1777525642.355494,
+    "hash": "b626ca272878b703773d101d2912dbc8"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/next.js": {
+    "mtime": 1777525642.355494,
+    "hash": "edb84522e40e20368d91e81d490ea850"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/javascript.js": {
+    "mtime": 1777525642.355494,
+    "hash": "d18d8781cc1f9e3006443c80a4a0662c"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/base.js": {
+    "mtime": 1777525642.355054,
+    "hash": "a272a6be6381cf599872c10bbb5998ab"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/typescriptTypeChecked.js": {
+    "mtime": 1777525642.355494,
+    "hash": "f7ceb2afc1f6a1b39aa737a0148d185b"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/sonarjs.js": {
+    "mtime": 1777525642.355494,
+    "hash": "a34beea0ad7e7cf5c8a9f2cf004aedb9"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/vitest.js": {
+    "mtime": 1777525642.355494,
+    "hash": "4b089db5961e81a95d715a29930b17cf"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/unusedImports.js": {
+    "mtime": 1777525642.355494,
+    "hash": "e1799964b69d00f6fd933f2821bd769b"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/prettier.js": {
+    "mtime": 1777525642.355494,
+    "hash": "8d59b24b6793e4d7585a4dc2a0ec5e96"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/react.js": {
+    "mtime": 1777525642.355494,
+    "hash": "e08811bc49e15ad18926bd63bf0ca4c6"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/unicorn.js": {
+    "mtime": 1777525642.355494,
+    "hash": "bd122f962320bf65294d12e75550e26f"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/index.js": {
+    "mtime": 1777525642.355494,
+    "hash": "fecfc5c62c192ba44e0cf6196990172e"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/turbo.js": {
+    "mtime": 1777525642.355494,
+    "hash": "468968b128992318eeeaf773149a2346"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/typescript.js": {
+    "mtime": 1777525642.355494,
+    "hash": "0fb6f9434c094a54da122654dc154aa0"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/sortClassMembers.js": {
+    "mtime": 1777525642.355494,
+    "hash": "d48a71bd15898728368fca15df61a4ea"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/configs/index.d.ts": {
+    "mtime": 1777525642.355494,
+    "hash": "e8518c7db80bff761572515841234c4f"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/eslint-config/src/utils/helpers.js": {
+    "mtime": 1777525642.355494,
+    "hash": "e32b7cb35c8a9b04fd688ad0a08a55fd"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/design-system/postcss.config.mjs": {
+    "mtime": 1777525642.3527312,
+    "hash": "9908260001d58f6cd0983d803ba3e82a"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/design-system/src/build-ck-config.js": {
+    "mtime": 1777525642.3527312,
+    "hash": "cf6261d5e3b935e07f2d080cf41f28cb"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/strapi-types/src/index.ts": {
+    "mtime": 1777525642.3617823,
+    "hash": "aeca5cda8449932e8da44b6112b80821"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/shared-data/index.ts": {
+    "mtime": 1777525642.3592117,
+    "hash": "99da4f645d93e7a0cf79863ddbf7c2cb"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/shared-data/site.ts": {
+    "mtime": 1777525642.3599515,
+    "hash": "40e27f1736de8782ba5f841ccb3d9d4f"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/semantic-release-config/index.js": {
+    "mtime": 1777525642.355494,
+    "hash": "6f2f0d6986e7187e1dded73069257ade"
+  },
+  "/home/user/strapi-template-new-world-kids/services/hermes/src/index.ts": {
+    "mtime": 1777525642.4146175,
+    "hash": "27272233452b2141688e3c31e12bed9e"
+  },
+  "/home/user/strapi-template-new-world-kids/services/hermes/src/config/agent-profiles.ts": {
+    "mtime": 1777525642.4146175,
+    "hash": "9f949d32095b3b196fc257bfb3ed39d6"
+  },
+  "/home/user/strapi-template-new-world-kids/services/hermes/src/lib/article-chat.ts": {
+    "mtime": 1777525642.4146175,
+    "hash": "0cea499429f84658ccabcf1d62abd308"
+  },
+  "/home/user/strapi-template-new-world-kids/services/hermes/src/lib/http.ts": {
+    "mtime": 1777525642.4161086,
+    "hash": "0024243875e7515d8ca7b04c5261f81b"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/brainstorming/scripts/helper.js": {
+    "mtime": 1777525641.794403,
+    "hash": "cef288b6b4543910ffc7826c3a036a55"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/writing-skills/render-graphs.js": {
+    "mtime": 1777525641.808768,
+    "hash": "e9d8be9caa34d327cac6f746f947cee0"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/systematic-debugging/condition-based-waiting-example.ts": {
+    "mtime": 1777525641.8017128,
+    "hash": "8e502a8c1e9c7de15967202615d241d5"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/hooks/session-start": {
+    "mtime": 1777525641.7926104,
+    "hash": "88e2ffcb62531c6ced5ca9b161137182"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/brainstorm-server/server.test.js": {
+    "mtime": 1777525641.8145065,
+    "hash": "48b4342457c82a33986cb5a6353b4d3c"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/brainstorm-server/ws-protocol.test.js": {
+    "mtime": 1777525641.8145065,
+    "hash": "1eeaae5f80f68147e8cd88bcd84247eb"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/server/index.js": {
+    "mtime": 1777525641.679112,
+    "hash": "9bd64b798acbbcf214c52feb5b04640b"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/server/lib/validation.js": {
+    "mtime": 1777525641.6822886,
+    "hash": "532c5e48ad630e02af810db478137709"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/server/lib/api-handlers.js": {
+    "mtime": 1777525641.6817708,
+    "hash": "f726d0c8275704bd66c1c32f7c10b412"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/app.js": {
+    "mtime": 1777525641.651107,
+    "hash": "43d13a401635bf023ad63423ed08b749"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demo-toggles.js": {
+    "mtime": 1777525641.6643102,
+    "hash": "5724bf6841fdd5f1a2dc6e5056c155c2"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demo-renderer.js": {
+    "mtime": 1777525641.6643102,
+    "hash": "0f7af4bbfbefb85a835b8e8ca5d22607"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/data.js": {
+    "mtime": 1777525641.6643102,
+    "hash": "9afae3ed62b1f8629daba106f14ec688"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/components/art-gallery.js": {
+    "mtime": 1777525641.6637495,
+    "hash": "0bf72ed7e6cb215d3c27d8baa9d0bcae"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/components/framework-viz.js": {
+    "mtime": 1777525641.6643102,
+    "hash": "3020e552088d820a45c3d753e051120d"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/components/glass-terminal.js": {
+    "mtime": 1777525641.6643102,
+    "hash": "ac30bfd158618348670779c0f0aef873"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/components/lens.js": {
+    "mtime": 1777525641.6643102,
+    "hash": "4442140cdf698a54a0499397b2bcc6c6"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/effects/split-compare.js": {
+    "mtime": 1777525641.67437,
+    "hash": "ae237741bf2d473d458cda8cef14f5fb"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/effects/liquid-canvas.js": {
+    "mtime": 1777525641.67437,
+    "hash": "f139a356a99bb1fec6d7d75037c34a92"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/effects/hero-shader.js": {
+    "mtime": 1777525641.6719105,
+    "hash": "76b1861ec439a6d3cd53264ef614e43b"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/index.js": {
+    "mtime": 1777525641.667107,
+    "hash": "49d7878176898bb9c0f725468ed835ad"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/skills/typography.js": {
+    "mtime": 1777525641.6719105,
+    "hash": "53119fda08a1b03bf3203c7170069665"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/skills/responsive-design.js": {
+    "mtime": 1777525641.6719105,
+    "hash": "db3025128c87c0da05747c6b5d1efa10"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/skills/spatial-design.js": {
+    "mtime": 1777525641.6719105,
+    "hash": "03cd46aec3165342fc1c9b37a6eaa68e"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/skills/color-and-contrast.js": {
+    "mtime": 1777525641.667107,
+    "hash": "c4daf011f04cd5a6fda303c9cffa629e"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/skills/index.js": {
+    "mtime": 1777525641.6719105,
+    "hash": "0874770018d39dfa32241808ff7deb14"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/skills/ux-writing.js": {
+    "mtime": 1777525641.6719105,
+    "hash": "466ebd30662e21a0af952ac5367de0ab"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/skills/motion-design.js": {
+    "mtime": 1777525641.6719105,
+    "hash": "fe4cc03e42f28f93071646112ec9643d"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/skills/interaction-design.js": {
+    "mtime": 1777525641.6719105,
+    "hash": "ea77df4a72f93a495f0db6eb8b3bd4b0"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/critique.js": {
+    "mtime": 1777525641.6665106,
+    "hash": "d46f613880c36f3254fc313ba2a426ce"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/distill.js": {
+    "mtime": 1777525641.6665106,
+    "hash": "44762a29f2c4c03df6f8f17731bd8c69"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/delight.js": {
+    "mtime": 1777525641.6665106,
+    "hash": "ef43d3de6c3149fa60c928ec2680403f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/typeset.js": {
+    "mtime": 1777525641.667107,
+    "hash": "784d885d68e12d8ff513a4a38fa1722a"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/normalize.js": {
+    "mtime": 1777525641.667107,
+    "hash": "1715c2870628d32a704379eb256f593a"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/arrange.js": {
+    "mtime": 1777525641.6665106,
+    "hash": "a06a5df28a0d569e771420d171c946f4"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/onboard.js": {
+    "mtime": 1777525641.667107,
+    "hash": "93a713774812d7b9fb59d861e21f7016"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/audit.js": {
+    "mtime": 1777525641.6665106,
+    "hash": "0e02b48c8b0fd0b17d096fa8fd46a5bd"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/extract.js": {
+    "mtime": 1777525641.6665106,
+    "hash": "5b0f1bb8141cc2eb6e3302337ebd0e64"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/colorize.js": {
+    "mtime": 1777525641.6665106,
+    "hash": "6881ef7a00465ac07e2dd3b8467da914"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/clarify.js": {
+    "mtime": 1777525641.6665106,
+    "hash": "9f9b29aeebb43398645e3aa095492cdb"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/overdrive.js": {
+    "mtime": 1777525641.667107,
+    "hash": "f3ac16c7cf01f1bd91a8166ece5c8f45"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/index.js": {
+    "mtime": 1777525641.667107,
+    "hash": "c12590e75c2ab7b7b7da607bda3ad9ed"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/bolder.js": {
+    "mtime": 1777525641.6665106,
+    "hash": "d1553d24c4b24bf7ada91bdcc191b39f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/harden.js": {
+    "mtime": 1777525641.667107,
+    "hash": "ae30bf8233ecd2bf999bc724c677c032"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/optimize.js": {
+    "mtime": 1777525641.667107,
+    "hash": "a7fdfaee4dfc68cbf08c344e6c29e1c0"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/polish.js": {
+    "mtime": 1777525641.667107,
+    "hash": "daad49d076f30dbe823c1839245de0dd"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/adapt.js": {
+    "mtime": 1777525641.6662285,
+    "hash": "be8043b2b63212d88dee1a69b208b5e8"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/quieter.js": {
+    "mtime": 1777525641.667107,
+    "hash": "c7f0ff96ebeb4a1e8d4eb7324359d72e"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/demos/commands/animate.js": {
+    "mtime": 1777525641.6665106,
+    "hash": "eef6868c40b4934716f143f7eaf5e409"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/utils/reveal.js": {
+    "mtime": 1777525641.67437,
+    "hash": "ef66fc286afc07d39e1176239ca90c3c"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/utils/scroll.js": {
+    "mtime": 1777525641.6761327,
+    "hash": "0e4e4da1baa2e4fac5e24ba7d3f7e031"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/js/utils/theme.js": {
+    "mtime": 1777525641.6761327,
+    "hash": "82362bef24d142d56ed92f2cb20756d7"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/build.js": {
+    "mtime": 1777525641.6761327,
+    "hash": "53275e2ba454cc0662f030963d8aecb7"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/generate-og-image.js": {
+    "mtime": 1777525641.67817,
+    "hash": "aca8857f0a1178e9dcb5f38572a7c164"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/screenshot-antipatterns.js": {
+    "mtime": 1777525641.679112,
+    "hash": "709a8c83da541460b9d6d63b9527f075"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/lib/zip.js": {
+    "mtime": 1777525641.679112,
+    "hash": "1dec34c1a724d33cd74667b007fef066"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/lib/utils.js": {
+    "mtime": 1777525641.679112,
+    "hash": "d3e21cef48d92a1de42a7b5a37295fd6"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/lib/transformers/claude-code.js": {
+    "mtime": 1777525641.679112,
+    "hash": "ca3a5522ad5a52610a60843bcf738c6f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/lib/transformers/kiro.js": {
+    "mtime": 1777525641.679112,
+    "hash": "790f3f910a69cc79c6ebc25c6112a35f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/lib/transformers/pi.js": {
+    "mtime": 1777525641.679112,
+    "hash": "0063c6cd6e09cd7c76f9a48d136a73a9"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/lib/transformers/agents.js": {
+    "mtime": 1777525641.678484,
+    "hash": "574452e068a9b67fdfaf742686d8b6e1"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/lib/transformers/index.js": {
+    "mtime": 1777525641.679112,
+    "hash": "e781af9bc2ee40d51d4e86d8c525ee64"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/lib/transformers/gemini.js": {
+    "mtime": 1777525641.679112,
+    "hash": "3867db643ea6a2e5cbe59dd9b7d5224d"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/lib/transformers/codex.js": {
+    "mtime": 1777525641.679112,
+    "hash": "829232bb388ae6b856924d828c10d780"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/lib/transformers/cursor.js": {
+    "mtime": 1777525641.679112,
+    "hash": "470af128a24c8de3269a5f73e6ff9853"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/scripts/lib/transformers/opencode.js": {
+    "mtime": 1777525641.679112,
+    "hash": "a18bf40544fd0aa4a4a3a18e4aa33fbd"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/tests/build.test.js": {
+    "mtime": 1777525641.691107,
+    "hash": "80efc4f5887d9fe9c7bd0f31ebd5f0b7"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/tests/server/download-validation.test.js": {
+    "mtime": 1777525641.6981206,
+    "hash": "e33af3022cbb809ae418177e10384bfd"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/tests/lib/utils.test.js": {
+    "mtime": 1777525641.6981206,
+    "hash": "a514b19ce6247dec2e96a3a8b1758369"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/tests/lib/transformers/pi.test.js": {
+    "mtime": 1777525641.6981206,
+    "hash": "c486d1938fbed0c0ffb9ae7e5e300ea1"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/tests/lib/transformers/opencode.test.js": {
+    "mtime": 1777525641.6981206,
+    "hash": "be44d36ace8abf2689ea20a1278cbd87"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/tests/lib/transformers/cursor.test.js": {
+    "mtime": 1777525641.6981206,
+    "hash": "64cf4987c96a17d2384b2cf2d8ce1a4f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/tests/lib/transformers/agents.test.js": {
+    "mtime": 1777525641.696426,
+    "hash": "fc374d0dd3d0bc23f59084f64854680a"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/tests/lib/transformers/codex.test.js": {
+    "mtime": 1777525641.6981206,
+    "hash": "45b7466cb1713d0878caefa59110d128"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/tests/lib/transformers/kiro.test.js": {
+    "mtime": 1777525641.6981206,
+    "hash": "e186a5f69beb60eeb1f43dc7916f4fac"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/tests/lib/transformers/gemini.test.js": {
+    "mtime": 1777525641.6981206,
+    "hash": "3e9f2440ea4623af08cd61dacae13bf9"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/tests/lib/transformers/claude-code.test.js": {
+    "mtime": 1777525641.6981206,
+    "hash": "3e2ede70a0dd8903c01e0919440721b9"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/lib/download-providers.js": {
+    "mtime": 1777525641.5801096,
+    "hash": "9538ec589e697066b5791e9c6b23c9b1"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/functions/api/download/bundle/[provider].js": {
+    "mtime": 1777525641.5801096,
+    "hash": "b7eb0f2c3c78b6aaee541e3462fe05e6"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/functions/api/download/[type]/[provider]/[id].js": {
+    "mtime": 1777525641.5801096,
+    "hash": "7a536374459e86b625ebc613e781e8bf"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/src/mcp2cli/__init__.py": {
+    "mtime": 1777525641.7634068,
+    "hash": "dbfcba2cca7e9830d35e936f1df3b974"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/src/mcp2cli/__main__.py": {
+    "mtime": 1777525641.7656004,
+    "hash": "61493be3906d81571f028841b77b8504"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/tests/test_bake.py": {
+    "mtime": 1777525641.767955,
+    "hash": "66b5f95aba80f805a3dc5c20d6f79e00"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/tests/test_mcp.py": {
+    "mtime": 1777525641.767955,
+    "hash": "21131da42c5161b1ee2fd7054873cc45"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/tests/_mcp_http_server.py": {
+    "mtime": 1777525641.7656004,
+    "hash": "6462ba33b4656bcadfaa73f16dc57386"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/tests/test_cache.py": {
+    "mtime": 1777525641.767955,
+    "hash": "728b962ebba8bc01445e6d79f396ec8a"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/tests/test_openapi.py": {
+    "mtime": 1777525641.771107,
+    "hash": "113a78a36fe5595bd0a95235429ad8f1"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/tests/mcp_test_server.py": {
+    "mtime": 1777525641.767955,
+    "hash": "0b4267f11d60bcdc045e09722ed1d5ca"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/tests/test_oauth.py": {
+    "mtime": 1777525641.767955,
+    "hash": "f248542937e8759053962c093ee2e92a"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/tests/test_helpers.py": {
+    "mtime": 1777525641.767955,
+    "hash": "9f146af0f4bdf60993d52a1a28b7dcf1"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/tests/conftest.py": {
+    "mtime": 1777525641.767955,
+    "hash": "861f7abcb1a8522883a99d9536acb908"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/tests/test_graphql.py": {
+    "mtime": 1777525641.767955,
+    "hash": "14a28f4cff786a561228acb9b67a809d"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/tests/test_token_savings.py": {
+    "mtime": 1777525641.771107,
+    "hash": "5b00ab88d696e17e376f2fde3f392834"
+  },
+  "/home/user/strapi-template-new-world-kids/scripts/setup-apps.mjs": {
+    "mtime": 1777525642.407107,
+    "hash": "0cb877375d3056df83feef62921e484f"
+  },
+  "/home/user/strapi-template-new-world-kids/qa/tests/playwright/playwright.config.ts": {
+    "mtime": 1777525642.4047296,
+    "hash": "9bffc4b08691606410f2a8840f5ad0b4"
+  },
+  "/home/user/strapi-template-new-world-kids/qa/tests/playwright/helpers/get-sitemap-links.ts": {
+    "mtime": 1777525642.4028153,
+    "hash": "6628a0b1266c022dd143513049b94c4c"
+  },
+  "/home/user/strapi-template-new-world-kids/qa/tests/playwright/perfo/lhci.ts": {
+    "mtime": 1777525642.4047296,
+    "hash": "a78d8a5d948021405b2f3222a60fa38b"
+  },
+  "/home/user/strapi-template-new-world-kids/qa/tests/playwright/visual/visual.spec.ts": {
+    "mtime": 1777525642.407107,
+    "hash": "88badacb3c5348c203a5b12ba7ea3317"
+  },
+  "/home/user/strapi-template-new-world-kids/qa/tests/playwright/axe/axe-test.ts": {
+    "mtime": 1777525642.4028153,
+    "hash": "ad76ed6526ec34a834967601f239d5a6"
+  },
+  "/home/user/strapi-template-new-world-kids/qa/tests/playwright/seo/seo.spec.ts": {
+    "mtime": 1777525642.4047296,
+    "hash": "8954acacfa19def7b73304158e7d8e2f"
+  },
+  "/home/user/strapi-template-new-world-kids/qa/tests/playwright/e2e/test_example.spec.ts": {
+    "mtime": 1777525642.4028153,
+    "hash": "75cedef9a84393650204532a6af0c90c"
+  },
+  "/home/user/strapi-template-new-world-kids/tests/quality-metrics.test.ts": {
+    "mtime": 1777525642.4161086,
+    "hash": "b3bdfdb11669e09f379da7367b56d013"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/eslint.config.mjs": {
+    "mtime": 1777525642.1969764,
+    "hash": "b95b6ddf24b6b05aa49f5bff816368df"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/next.config.mjs": {
+    "mtime": 1777525642.2000198,
+    "hash": "c2031ed2b707c0dc9e192e4b3db79ff8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/sentry.client.config.ts": {
+    "mtime": 1777525642.2711072,
+    "hash": "da5a97248cfe18ce7cccac59a3dc8b75"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/vitest.config.ts": {
+    "mtime": 1777525642.3457217,
+    "hash": "a514d87c4bca7b6f81177afd514dfc9e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/sentry.edge.config.ts": {
+    "mtime": 1777525642.2711072,
+    "hash": "f88940ef6b26f9d44695740f532e7260"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/postcss.config.js": {
+    "mtime": 1777525642.2000198,
+    "hash": "0540673a8b3113f0932eca1245c72ffc"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/sentry.server.config.ts": {
+    "mtime": 1777525642.2711072,
+    "hash": "1387eff592cf09e6ee54965f8f5c1231"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/instrumentation.ts": {
+    "mtime": 1777525642.3359544,
+    "hash": "5f76628ee8a13e9ec6f915ad64f55ea3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/proxy.ts": {
+    "mtime": 1777525642.3430166,
+    "hash": "47706af73e5b56de9efd84e5da8c8424"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/env.mjs": {
+    "mtime": 1777525642.3311071,
+    "hash": "2e8f2ae16db1f4dfc70912496047a63f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/types/global.d.ts": {
+    "mtime": 1777525642.3457217,
+    "hash": "e2ef70967f943899f60b2145e06777fc"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/types/next.ts": {
+    "mtime": 1777525642.3457217,
+    "hash": "b7b7c88682935e0fed495aef597cd1f5"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/types/better-auth.d.ts": {
+    "mtime": 1777525642.3457217,
+    "hash": "b58105bbc0780b6fcae3933cb06f019e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/types/general.ts": {
+    "mtime": 1777525642.3457217,
+    "hash": "61294c9586aa7a362c152582ac34e5a5"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/types/api/index.ts": {
+    "mtime": 1777525642.3457217,
+    "hash": "7356427b42a26f77d51273b27ffa2838"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/index.tsx": {
+    "mtime": 1777525642.3247135,
+    "hash": "9a3ded7d02f8183fb152b6d54018594d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/seo-utilities/StrapiStructuredData.tsx": {
+    "mtime": 1777525642.3224485,
+    "hash": "040f65c7f68bf0845aeae3ddaf571d10"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/utilities/StrapiTipTapEditorContent.tsx": {
+    "mtime": 1777525642.3247135,
+    "hash": "b8bf6da51661db1e15a6b70ed81381da"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/utilities/StrapiLink.tsx": {
+    "mtime": 1777525642.3247135,
+    "hash": "1f240272b676fa3f596726ca6be3e403"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/utilities/StrapiCkEditorContent.tsx": {
+    "mtime": 1777525642.3247135,
+    "hash": "1db8daee99235adc450fd1c9723aaa4a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/utilities/StrapiImageWithLink.tsx": {
+    "mtime": 1777525642.3247135,
+    "hash": "0a36a9242255b62e5170041f1a53379b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/utilities/StrapiBasicImage.tsx": {
+    "mtime": 1777525642.3224485,
+    "hash": "753ee4fbde1fe279de011a467d0f604c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/sections/StrapiTimeline.tsx": {
+    "mtime": 1777525642.3224485,
+    "hash": "995ebc652740759bdd98387ab63fb9d6"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/sections/StrapiCarousel.tsx": {
+    "mtime": 1777525642.3224485,
+    "hash": "bc5694e2ffb240bb30e8a58de73b07ad"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/sections/StrapiImageWithCTAButton.tsx": {
+    "mtime": 1777525642.3224485,
+    "hash": "2121e7bfc3cc64fc440adb16ae81a707"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/sections/StrapiFaq.tsx": {
+    "mtime": 1777525642.3224485,
+    "hash": "8438e96cb7f8fdd7b4b1ad09339a4998"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/sections/StrapiHorizontalImages.tsx": {
+    "mtime": 1777525642.3224485,
+    "hash": "b11f1d9efdc97709659ab109c6abe936"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/sections/StrapiHeadingWithCTAButton.tsx": {
+    "mtime": 1777525642.3224485,
+    "hash": "2e0f8468e8083f4ee0b264984ffdeb48"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/sections/StrapiAnimatedLogoRow.tsx": {
+    "mtime": 1777525642.3217795,
+    "hash": "e162b13711d360506ac8b5e3b33f81bb"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/sections/StrapiHero.tsx": {
+    "mtime": 1777525642.3224485,
+    "hash": "f3ce6f07ab8605c2617b723b596430ed"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/forms/StrapiContactForm.tsx": {
+    "mtime": 1777525642.320881,
+    "hash": "488016f92889707031664d939ff6f5f0"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/components/forms/StrapiNewsletterForm.tsx": {
+    "mtime": 1777525642.3217795,
+    "hash": "18ab9f5ecd660c021791b309e60dcdb4"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/single-types/navbar/StrapiNavbar.tsx": {
+    "mtime": 1777525642.3264928,
+    "hash": "fdfb1fe58c3f432584348ad7a7bf3b1a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/single-types/navbar/NavbarAuthSection.tsx": {
+    "mtime": 1777525642.3264928,
+    "hash": "f40680df69bb8e1e1b968eb3ea26fea2"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/single-types/navbar/LoggedUserMenu.tsx": {
+    "mtime": 1777525642.325837,
+    "hash": "ac260cebcb92c1a3fff41e16ca16c65b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/page-builder/single-types/footer/StrapiFooter.tsx": {
+    "mtime": 1777525642.325837,
+    "hash": "5b502b9022e48a936504cfe02764b35d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/helpers/UseSearchParamsWrapper.tsx": {
+    "mtime": 1777525642.316083,
+    "hash": "1b75194c1966a46bf3f09b90065e7443"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/tooltip.tsx": {
+    "mtime": 1777525642.3311071,
+    "hash": "083704d958cc6a15c4e05019a8d0c02d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/button.tsx": {
+    "mtime": 1777525642.3308327,
+    "hash": "7301465ca99fd6e9790d1bc2ad22d29e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/carousel.tsx": {
+    "mtime": 1777525642.3308327,
+    "hash": "fc68e4679f4fd72696b67728821dfd3b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/textarea.tsx": {
+    "mtime": 1777525642.3311071,
+    "hash": "145f54be28f3ff305e9c04f555cd2ec3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/dropdown-menu.tsx": {
+    "mtime": 1777525642.3308327,
+    "hash": "9095ac9c714918e3af3899e87860bf35"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/tabs.tsx": {
+    "mtime": 1777525642.3311071,
+    "hash": "64fc68c83c63aabe3313b1024f04b60a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/accordion.tsx": {
+    "mtime": 1777525642.329694,
+    "hash": "7beb3445852cdcce5916591c33df0957"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/checkbox.tsx": {
+    "mtime": 1777525642.3308327,
+    "hash": "2bd1e2a9e08433861266af6fdd91eeac"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/form.tsx": {
+    "mtime": 1777525642.3308327,
+    "hash": "91c16d9686210e4366711226db302164"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/dialog.tsx": {
+    "mtime": 1777525642.3308327,
+    "hash": "3382ecb2d1d0c39e22aa81da4332833c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/label.tsx": {
+    "mtime": 1777525642.3311071,
+    "hash": "b168d616d2d791bdad4f5a184ca20678"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/calendar.tsx": {
+    "mtime": 1777525642.3308327,
+    "hash": "59f44543490ae04a4be1051a1599e6f8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/alert.tsx": {
+    "mtime": 1777525642.3308327,
+    "hash": "055e5c43d136077975ce6678ad52f382"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/popover.tsx": {
+    "mtime": 1777525642.3311071,
+    "hash": "3a69cbb066dce769feeade98b5892282"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/sonner.tsx": {
+    "mtime": 1777525642.3311071,
+    "hash": "4636924044a80ad867692f806fd5673f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/input.tsx": {
+    "mtime": 1777525642.3308327,
+    "hash": "28ee073f2615bd8af1e07d7050d41a4f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/radio-group.tsx": {
+    "mtime": 1777525642.3311071,
+    "hash": "3f426e106842faea2afe3ab979adbe76"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/card.tsx": {
+    "mtime": 1777525642.3308327,
+    "hash": "6270760a8cff13ed42f300537e7ceb79"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/table.tsx": {
+    "mtime": 1777525642.3311071,
+    "hash": "20ac2a44baa65017772a020e0aeb2f18"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/skeleton.tsx": {
+    "mtime": 1777525642.3311071,
+    "hash": "d70fca3021aacc89101d567db447d0ed"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/ui/select.tsx": {
+    "mtime": 1777525642.3311071,
+    "hash": "06756f937a8c7449a59d425e5efc1447"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/layouts/StrapiPageView.tsx": {
+    "mtime": 1777525642.3182554,
+    "hash": "d5de18368f24d93d4a9870b7954283a9"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/providers/ClientProviders.tsx": {
+    "mtime": 1777525642.3264928,
+    "hash": "cbb154523853d0bfa652d21b7ea37972"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/providers/TrackingScripts.tsx": {
+    "mtime": 1777525642.3273947,
+    "hash": "c2670f98c1a9642eff38d10d80955dc2"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/providers/ServerProviders.tsx": {
+    "mtime": 1777525642.3273947,
+    "hash": "3b0391f6f6b6be14f184892ef1bc140d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/ErrorBoundary.tsx": {
+    "mtime": 1777525642.3098185,
+    "hash": "2f28a8f5e9de10eec9b904292fb1abbf"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/TailwindIndicator.tsx": {
+    "mtime": 1777525642.3122718,
+    "hash": "0e95aa12685b667006393752881fb229"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/Spinner.tsx": {
+    "mtime": 1777525642.3098185,
+    "hash": "0ed1c8b66d88810c6044649a22417cfc"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/DateRangePicker.tsx": {
+    "mtime": 1777525642.3098185,
+    "hash": "adb5144c111e360ec3f0999753d62d5c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/AppDialog.tsx": {
+    "mtime": 1777525642.3095808,
+    "hash": "456474b3582ca24ecaca089c24381924"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/Tooltip.tsx": {
+    "mtime": 1777525642.3122718,
+    "hash": "be541cf591de2f2835ccbac69824c6b6"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/LocaleSwitcher.tsx": {
+    "mtime": 1777525642.3098185,
+    "hash": "e1c2698176c0b85a0caa71421d27805d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/AppLink.tsx": {
+    "mtime": 1777525642.3098185,
+    "hash": "29e61363c0c725808bdb11f61df7e92a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/ThemeToggle.tsx": {
+    "mtime": 1777525642.3122718,
+    "hash": "b566b3714cf41d1718315e22ba87fdb0"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/Breadcrumbs.tsx": {
+    "mtime": 1777525642.3098185,
+    "hash": "93bb46022438a7143ac73aa26a04e796"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/ImageWithFallback.tsx": {
+    "mtime": 1777525642.3098185,
+    "hash": "74cd5e824638d4012c2fc821dca06b56"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/Container.tsx": {
+    "mtime": 1777525642.3098185,
+    "hash": "52765a2428f27863fb948f67feefa348"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/ImageWithBlur.tsx": {
+    "mtime": 1777525642.3098185,
+    "hash": "08cc6c6140b9b9cde2a29df406254094"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/DatePicker.tsx": {
+    "mtime": 1777525642.3098185,
+    "hash": "adf6c64278f39a64a7226174b15101cf"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/data-table/DataTableColumnHeader.tsx": {
+    "mtime": 1777525642.313521,
+    "hash": "ad9e6a847bf6750e5d7e223b43e33fc3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/data-table/DataTablePagination.tsx": {
+    "mtime": 1777525642.313521,
+    "hash": "2c6a88a2023a2035a0fcffe8ebf092b3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/data-table/DataTable.tsx": {
+    "mtime": 1777525642.3128123,
+    "hash": "90d90c6176740ab1b5e834ab7ef9014d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/StrapiPreviewListener/index.tsx": {
+    "mtime": 1777525642.3122718,
+    "hash": "6026010202c73548249ab758442a0b6a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/StrapiPreviewListener/StrapiPreviewListener.tsx": {
+    "mtime": 1777525642.3098185,
+    "hash": "5a8a0705aee31a7622e3efa563a1ad24"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/tiptap-editor/utils.ts": {
+    "mtime": 1777525642.3152142,
+    "hash": "d7aa20a92b89de8cffa874ea14971829"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/tiptap-editor/extensions.tsx": {
+    "mtime": 1777525642.3141408,
+    "hash": "3d757f37e3784eb42da327da25b85c8e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/tiptap-editor/index.tsx": {
+    "mtime": 1777525642.3152142,
+    "hash": "ee73ed92e136d57d39cfc6bbc59d55b7"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/ck-editor/utils.ts": {
+    "mtime": 1777525642.3128123,
+    "hash": "a298149239199507c7f384c3d64ce145"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/ck-editor/index.tsx": {
+    "mtime": 1777525642.3122718,
+    "hash": "82e60e758cfd0be3344938a25517e565"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/forms/NewsletterForm.tsx": {
+    "mtime": 1777525642.3141408,
+    "hash": "06dc90572d6c10f75d31e7c167e795de"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/elementary/forms/ContactForm.tsx": {
+    "mtime": 1777525642.313521,
+    "hash": "e5a68a3b925eff8e6b2de012a073b8c2"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/typography/index.tsx": {
+    "mtime": 1777525642.329694,
+    "hash": "4b07de9dab1a8d7f906fa7c436048674"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/timeline/Timeline.tsx": {
+    "mtime": 1777525642.3287044,
+    "hash": "52264070f45c90962485035a02937eb0"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/site/PublicNavbar.tsx": {
+    "mtime": 1777525642.3287044,
+    "hash": "c7b2181dbef2e18323a7333616975938"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/site/siteData.ts": {
+    "mtime": 1777525642.3287044,
+    "hash": "8908603042f0989151637311495de338"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/site/SiteHeader.tsx": {
+    "mtime": 1777525642.3287044,
+    "hash": "6c7a216db007cf6a557e6a21591473e1"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/site/PageHero.tsx": {
+    "mtime": 1777525642.3273947,
+    "hash": "280a4f7653e384a1c8bc962066aa723c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/site/PublicFooter.tsx": {
+    "mtime": 1777525642.3287044,
+    "hash": "20128cd1cdfa762a9a1d477c4b2ed9b8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/site/SiteFooter.tsx": {
+    "mtime": 1777525642.3287044,
+    "hash": "b6cf0c579c5274e00c721b3d9983cb9d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/homepage/StudioSection.tsx": {
+    "mtime": 1777525642.3182554,
+    "hash": "fe11d0414e431d659a9e87684e312c5b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/homepage/NonprofitHero.tsx": {
+    "mtime": 1777525642.3182554,
+    "hash": "769cb66c37c672e7ce09dc05f1b288c3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/homepage/ClaritySection.tsx": {
+    "mtime": 1777525642.316083,
+    "hash": "32d63bf04a6d1b67628ad7fecde937fd"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/homepage/Homepage.tsx": {
+    "mtime": 1777525642.3182554,
+    "hash": "5751b8a8e2358155b2987f052a353aea"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/homepage/TimelineSection.tsx": {
+    "mtime": 1777525642.3182554,
+    "hash": "b1965d2da9b0fcf6191ec50c684435f0"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/homepage/HermesStatusPanel.tsx": {
+    "mtime": 1777525642.3182554,
+    "hash": "c63ed61674f0ed3e7f78cd11fd5c560e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/homepage/MissionSection.tsx": {
+    "mtime": 1777525642.3182554,
+    "hash": "a8837504c39fd316e9604ff44c89e96e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/homepage/HermesSection.tsx": {
+    "mtime": 1777525642.3182554,
+    "hash": "e7f2e0c94f3f39edbc55c792f99dd31e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/homepage/SupportSection.tsx": {
+    "mtime": 1777525642.3182554,
+    "hash": "d62f366db19bb59d46fdd2916ea5cb0b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/homepage/TrustSection.tsx": {
+    "mtime": 1777525642.3182554,
+    "hash": "d4602283b6e5f47870bced3e493727b3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/homepage/ProofSection.tsx": {
+    "mtime": 1777525642.3182554,
+    "hash": "0a998870a50f06d6a42e495a6b24302b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/homepage/ProgramsSection.tsx": {
+    "mtime": 1777525642.3182554,
+    "hash": "a5b6a56a4b547b60a960a3352661eed0"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/forms/Adornment.tsx": {
+    "mtime": 1777525642.3152142,
+    "hash": "08f7114df26b62d1876c5be18d8ffb39"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/forms/AppTextArea.tsx": {
+    "mtime": 1777525642.316083,
+    "hash": "cbd6a65df485462756c5665ba6550549"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/forms/AppForm.tsx": {
+    "mtime": 1777525642.316083,
+    "hash": "b59f7381dc4818b3b726aad42b92b45b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/forms/AppSelect.tsx": {
+    "mtime": 1777525642.316083,
+    "hash": "ea579531c92680a2918fe9ff0ad14f35"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/forms/AppFilePicker.tsx": {
+    "mtime": 1777525642.316083,
+    "hash": "12b359cb43af533e1a603e031da49390"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/forms/AppRadioTabs.tsx": {
+    "mtime": 1777525642.316083,
+    "hash": "072faad178a3c62bf5639c59a314517b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/forms/AppFormLabel.tsx": {
+    "mtime": 1777525642.316083,
+    "hash": "e73f378ea814ac7d96b0eaf98cf13c72"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/forms/AppField.tsx": {
+    "mtime": 1777525642.316083,
+    "hash": "fd2ce57462a9bdbd59857a318fa2a33a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/forms/AppFormDescription.tsx": {
+    "mtime": 1777525642.316083,
+    "hash": "4da927b71335ad4318d4bab1383ce776"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/components/forms/AppCheckbox.tsx": {
+    "mtime": 1777525642.316083,
+    "hash": "4eb733626b25c578fdfbf86d1584a8f1"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/hooks/useUserMutations.ts": {
+    "mtime": 1777525642.3359544,
+    "hash": "67c04627e729182c9d17d2ed0b9bf8a0"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/hooks/useAppForm.ts": {
+    "mtime": 1777525642.3311071,
+    "hash": "52ec97983795e7bc43605be51f847a59"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/hooks/usePages.ts": {
+    "mtime": 1777525642.3359544,
+    "hash": "9c546977a674edc7f0fe4761266bafe4"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/hooks/useTranslatedZod.ts": {
+    "mtime": 1777525642.3359544,
+    "hash": "b527398d2bd2a0415e4ea784e773d2b5"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/robots.ts": {
+    "mtime": 1777525642.3084514,
+    "hash": "474cf1195b0c564a92de54821c2afc2d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/layout.tsx": {
+    "mtime": 1777525642.3084514,
+    "hash": "203836896fadca32fa2f6070290e14d4"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/sitemap.ts": {
+    "mtime": 1777525642.3084514,
+    "hash": "c2308b8fc9a62d046de0c9c7d46e0ea7"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/error.tsx": {
+    "mtime": 1777525642.3002322,
+    "hash": "1e6e9850d42e357d1240edd357c4a077"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/not-found.tsx": {
+    "mtime": 1777525642.3002322,
+    "hash": "3b589d4a78da2eaeeae0abc6cc40270b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/layout.tsx": {
+    "mtime": 1777525642.3002322,
+    "hash": "079330102b53ab73f6ac316c0d1704f3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/page.tsx": {
+    "mtime": 1777525642.286784,
+    "hash": "147be8ad0f976450377ad94d58beb2f5"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/layout.tsx": {
+    "mtime": 1777525642.286784,
+    "hash": "68b16842c7a89ebfe805a2a9f26b753f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/signout/page.tsx": {
+    "mtime": 1777525642.2918293,
+    "hash": "db028eba7479eebebf8f65fdfaacecca"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/forgot-password/page.tsx": {
+    "mtime": 1777525642.286784,
+    "hash": "939edaa4324fffa70bde5587624f069f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/forgot-password/_components/ForgotPasswordForm.tsx": {
+    "mtime": 1777525642.286784,
+    "hash": "0d0586f4802ad1c3214274e80e1b8c5a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/change-password/page.tsx": {
+    "mtime": 1777525642.2855644,
+    "hash": "ce69cef75f61963325204083d491a2f9"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/change-password/_components/ChangePasswordForm.tsx": {
+    "mtime": 1777525642.2855644,
+    "hash": "a4a114abd0ed179c64cae286e5e01272"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/strapi-oauth/[provider]/page.tsx": {
+    "mtime": 1777525642.2936373,
+    "hash": "843069fd4b548ef9e00db7220d6c3315"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/strapi-oauth/[provider]/_components/OAuthProvider.tsx": {
+    "mtime": 1777525642.2936373,
+    "hash": "b7d5361aa884b4592e49a5ee8d9e5f13"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/register/page.tsx": {
+    "mtime": 1777525642.287107,
+    "hash": "2f11dac0455e010a2afec8e2718a9e0a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/register/_components/RegisterForm.tsx": {
+    "mtime": 1777525642.287107,
+    "hash": "830bdc4e7e7a06be658708cce733c64f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/signin/page.tsx": {
+    "mtime": 1777525642.2918293,
+    "hash": "fd534bd3bb8621e9c08df2ae925605d8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/signin/_components/SocialButtons.tsx": {
+    "mtime": 1777525642.2918293,
+    "hash": "8d04ae418dc75f9add89cc0c8cdd0de9"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/signin/_components/SignInForm.tsx": {
+    "mtime": 1777525642.2910254,
+    "hash": "f0291f667c2cdcdda54b415fdf8230a6"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/reset-password/page.tsx": {
+    "mtime": 1777525642.287107,
+    "hash": "92a742ff4ddfea67de5fd49f8ca446a1"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/activate/page.tsx": {
+    "mtime": 1777525642.2837462,
+    "hash": "c78593936d269334abbe2cabbed2f2f7"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/auth/activate/_components/SetPasswordForm.tsx": {
+    "mtime": 1777525642.2837462,
+    "hash": "7b7b7dc6c058384b3ddf47f5ecd412d9"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/(platform)/donate/page.tsx": {
+    "mtime": 1777525642.2774808,
+    "hash": "7779a12e874e12d1094d6b52ad66903b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/(platform)/work-with-us/page.tsx": {
+    "mtime": 1777525642.2797167,
+    "hash": "d05977829fc58fd992f334f25f0a4bc2"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/(platform)/impact/[pillar]/page.tsx": {
+    "mtime": 1777525642.2797167,
+    "hash": "e5b81b4def3fa5607c52c2602a29df82"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/(platform)/contact/page.tsx": {
+    "mtime": 1777525642.2774808,
+    "hash": "82fd59d31a3c94d082e3ad7e65cb53ae"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/(platform)/trust/page.tsx": {
+    "mtime": 1777525642.2797167,
+    "hash": "3bade843e9ea9a0702b0c77b19c06128"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/(platform)/about/page.tsx": {
+    "mtime": 1777525642.2774808,
+    "hash": "ef4bf2f3d5a8b56a8ef77a48a69fe510"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/dev/layout.tsx": {
+    "mtime": 1777525642.2957885,
+    "hash": "5e176753d7be6a771ad0f7be1aa4dedc"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/dev/components/DevNavbar.tsx": {
+    "mtime": 1777525642.2957885,
+    "hash": "b578b3ba531db4170b5fd4e5a61570a1"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/dev/components-overview/page.tsx": {
+    "mtime": 1777525642.2957885,
+    "hash": "5fc489b5e1c81ba7533bced799a69927"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/dev/components-overview/components/ComponentsList.tsx": {
+    "mtime": 1777525642.2957885,
+    "hash": "1af02c83c280653b204ef1e9db651962"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/dev/pages-overview/page.tsx": {
+    "mtime": 1777525642.2981277,
+    "hash": "4a6ca7970eebd7e51d3c71d62d1b6ffd"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/dev/pages-overview/components/PageList.tsx": {
+    "mtime": 1777525642.2981277,
+    "hash": "a2aa9195014814ae058aefd8f31eef8d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/(homepage)/page.tsx": {
+    "mtime": 1777525642.276558,
+    "hash": "0c81a1187eb148f108d0a263f7c6685e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/[...rest]/page.tsx": {
+    "mtime": 1777525642.2832499,
+    "hash": "e90d95a9460fbbfaec4b108abf5d5045"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/[...rest]/layout.tsx": {
+    "mtime": 1777525642.2797167,
+    "hash": "6828886152c2dccfdad1febf7e659906"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/dashboard/page.tsx": {
+    "mtime": 1777525642.2946968,
+    "hash": "e732a9236cbd575e8c6359f2ddccda81"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/dashboard/layout.tsx": {
+    "mtime": 1777525642.2946968,
+    "hash": "0240367aebe99c1b7535217fc4d13d96"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/dashboard/_components/DashboardContent.tsx": {
+    "mtime": 1777525642.2946968,
+    "hash": "2bd9a2370fc9f6d3c7cc167d87579dc7"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/dynamic/[[...rest]]/page.tsx": {
+    "mtime": 1777525642.3002322,
+    "hash": "a57c556d097986e6a709eaa288ce4bdd"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/[locale]/dynamic/[[...rest]]/layout.tsx": {
+    "mtime": 1777525642.2997398,
+    "hash": "e2fa5f771f2f1fc59c48eaf04fd34c87"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/api/public-proxy/[...slug]/route.ts": {
+    "mtime": 1777525642.3084514,
+    "hash": "01be47caf026f0f650d5837dd7201ae3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/api/hermes/status/route.ts": {
+    "mtime": 1777525642.3056862,
+    "hash": "678dd7283097f1da222f409b1ca19503"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/api/auth/[...all]/route.ts": {
+    "mtime": 1777525642.303658,
+    "hash": "55635990d74cd5f04ff16f9ab11a6e84"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/api/donate/checkout/route.ts": {
+    "mtime": 1777525642.3046825,
+    "hash": "7409ff1d6f011dc805e8de9f4a90db2b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/api/asset/[...slug]/route.ts": {
+    "mtime": 1777525642.3013387,
+    "hash": "3b8633450feab33dad2b23f517a3bf9f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/api/private-proxy/[...slug]/route.ts": {
+    "mtime": 1777525642.307514,
+    "hash": "f56dc0fe45502de50b502e03523622a6"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/api/health/route.ts": {
+    "mtime": 1777525642.3046825,
+    "hash": "d117438602d2edeb32b6a398dd0c07d2"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/api/preview/route.ts": {
+    "mtime": 1777525642.3056862,
+    "hash": "0d330a3a93763d52ac1a0b41460e1fe4"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/app/api/content-snapshot/route.ts": {
+    "mtime": 1777525642.303658,
+    "hash": "ea28d08b336ff623f8a06fda1f28a7da"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/content/site.ts": {
+    "mtime": 1777525642.3311071,
+    "hash": "809041142079f5ef1872caa355e80922"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/logging.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "00519e573001ec4a570938816e6cfc69"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/navigation.ts": {
+    "mtime": 1777525642.340437,
+    "hash": "e861c92b25c909ff4825f53ca1078b89"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/strapi-helpers.ts": {
+    "mtime": 1777525642.3430166,
+    "hash": "034172d7ab4637352aaca95575a9d40b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/files.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "6db908d6e435a4b6434dff7c672b3d4a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/general-helpers.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "568b5fb56f8d4f95a7567b6be7aa2f08"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/auth-client.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "ba4040b06d7970ba33a95da809dabf98"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/auth.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "23012fb4549af04f79c94474aad2f601"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/i18n.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "bfa4c601c841451a0a3b5c7813bd4892"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/constants.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "cc67315c71d90725673ecc494d3bed82"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/styles.ts": {
+    "mtime": 1777525642.3430166,
+    "hash": "5a6fd53fdcf2be529e9cc0b718fde352"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/crypto.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "f15685279e4d24281590fc2396ad9085"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/fonts.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "cb0623be5341d951b7b44985f2c0a2ab"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/env-vars.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "2e66d35d84b711bf65591db2210326b5"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/recaptcha.ts": {
+    "mtime": 1777525642.341589,
+    "hash": "095cb009e5566dfbe8751e85c827a455"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/dates.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "6afb79cc1a27ca1d041b7ff607f1681e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/build.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "a314aa631040bdae6445cebb41641d82"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/metadata/index.ts": {
+    "mtime": 1777525642.340437,
+    "hash": "833efcccd706205d2219751508095b2b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/metadata/helpers.ts": {
+    "mtime": 1777525642.340437,
+    "hash": "8f0d25b128b80325dd4040fd64a6cc91"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/metadata/constants.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "6af64edaf423e5c3d3653786fb193bff"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/metadata/defaults.ts": {
+    "mtime": 1777525642.340437,
+    "hash": "dc46e49c9775dac52bcb5f25eb509e90"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/metadata/schemas.ts": {
+    "mtime": 1777525642.340437,
+    "hash": "97edee6d46d0eeb9e0a553813fc051ba"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/strapi-api/base.ts": {
+    "mtime": 1777525642.341589,
+    "hash": "75d8205b43508cc77253073f43e1fcbc"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/strapi-api/index.ts": {
+    "mtime": 1777525642.3430166,
+    "hash": "c5aebb546590a1b836245d27bde0852c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/strapi-api/private.ts": {
+    "mtime": 1777525642.3430166,
+    "hash": "a4f99e0a738cdf8d3873c39926b94c12"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/strapi-api/public.ts": {
+    "mtime": 1777525642.3430166,
+    "hash": "4fc3dfa6bd8b3bf0568a6fb51ec44d57"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/strapi-api/request-auth.ts": {
+    "mtime": 1777525642.3430166,
+    "hash": "26de2f19d3e1102457476b95c62d3695"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/strapi-api/content/server.ts": {
+    "mtime": 1777525642.3430166,
+    "hash": "1dc8a07b9207e003b294a4c79245e84c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/proxies/dynamicRewrite.ts": {
+    "mtime": 1777525642.341589,
+    "hash": "b22d0b4037660d42f3bb69a1f9525286"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/proxies/authGuard.ts": {
+    "mtime": 1777525642.340437,
+    "hash": "564affeea35df679502ea18a68ae65a2"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/proxies/httpsRedirect.ts": {
+    "mtime": 1777525642.341589,
+    "hash": "60347f868e0b173c3a792452e5bee217"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/proxies/basicAuth.ts": {
+    "mtime": 1777525642.341589,
+    "hash": "4d4387d26570dbd37f047916070cc1c6"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/src/lib/__tests__/dates.test.ts": {
+    "mtime": 1777525642.3368979,
+    "hash": "083a184190a4833fa264cd2807d351ee"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/public/sw.js": {
+    "mtime": 1777525642.203457,
+    "hash": "8e2e3d1b18f8972caac0ec3f127ace94"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/eslint.config.mjs": {
+    "mtime": 1777525641.853064,
+    "hash": "f8538234c38593deedf1a3b6222acf47"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/next.config.ts": {
+    "mtime": 1777525641.8568275,
+    "hash": "fb56d4c125b5bd3f34c1641ee54e2e03"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/playwright.config.ts": {
+    "mtime": 1777525641.8568275,
+    "hash": "b678efcf713d369cca4d2d97e461494d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/postcss.config.mjs": {
+    "mtime": 1777525641.8568275,
+    "hash": "b94982db987a06959d1836a6d7f9735a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/proxy.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "9a2804b59a22ab08efe73b0ab88c8dc7"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/types/i18n.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "9aff6bac686822d23cfde94a99dd1151"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/types/index.d.ts": {
+    "mtime": 1777525642.124707,
+    "hash": "f6c29863a5cfdec16132692390fc87a7"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/stat-card.tsx": {
+    "mtime": 1777525642.1071072,
+    "hash": "515b548738a64f787d6d5107ef1a29fb"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/site-footer.tsx": {
+    "mtime": 1777525642.1071072,
+    "hash": "158c91d3036d08b7522038862d393bfb"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/mobile-nav.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "d43b9ab70fb575920d55e6df5357905f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/formatted-date.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "0863cc55832d6a1518b3710804fd7393"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-share.tsx": {
+    "mtime": 1777525642.103107,
+    "hash": "e2233de74350b5d67065d857891aac09"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/landing-nav.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "ae0c395bbd588af1dcaa7307e4826fe1"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/site-header.tsx": {
+    "mtime": 1777525642.1071072,
+    "hash": "338c4460e7931596f0194b36a9777f6e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-agent-actions.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "b111dca63552f4fc71777b2919ee684b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/page-header.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "5ba8c2146b009a8170a9c57a8dc49216"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-footer.tsx": {
+    "mtime": 1777525642.103107,
+    "hash": "8940f78082142589a4009819a4a9f5a2"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/not-found-result.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "60d35f35893a54ca7af6074b29d2f51a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-comment.tsx": {
+    "mtime": 1777525642.099107,
+    "hash": "71385a99c42b7d9184f31993c020d22f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/language-switcher.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "7bcafcdeb0bf5ea7aa059f691847c7d3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-toc.tsx": {
+    "mtime": 1777525642.103107,
+    "hash": "11596b266833890b432d389d3bc3d008"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-image.tsx": {
+    "mtime": 1777525642.103107,
+    "hash": "2d4f67d1a355be5ad274ee81a1d2cc42"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/si-openai.tsx": {
+    "mtime": 1777525642.1071072,
+    "hash": "623573d0bad45bfe115cfc7feb79d474"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/mdx-image.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "6d52e0dcd550233aa8f774a8bea63bee"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-list.tsx": {
+    "mtime": 1777525642.103107,
+    "hash": "6dda5569bedcb4ab6ff3e0ef17533b55"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/main-nav.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "28c5573095fb0fef8d10985210f140dc"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/back-to-top.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "35a21ec2ca1d79ea8dfecf72cf0ca524"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-card.tsx": {
+    "mtime": 1777525642.099107,
+    "hash": "a3a46270b70d6c250f9d25af6c8d1cdc"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/progress-circle.tsx": {
+    "mtime": 1777525642.1071072,
+    "hash": "6ba5aa0b655d4d7534e5149baf81a2ea"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/mdx-editor.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "289f96aff6aa9f30581330d32e66e27b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/repo-card.tsx": {
+    "mtime": 1777525642.1071072,
+    "hash": "9bc68a311300566f0166c04ea42ec2b4"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/about-me.tsx": {
+    "mtime": 1777525642.0933957,
+    "hash": "1d75010547e746aaaa582c1b29dac46e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-footer-link.tsx": {
+    "mtime": 1777525642.103107,
+    "hash": "de07b588b5f8d33bb3ce826ae8f70420"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-metadata.tsx": {
+    "mtime": 1777525642.103107,
+    "hash": "78362997b164c4c76dc4c346a9303a3d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-section.tsx": {
+    "mtime": 1777525642.103107,
+    "hash": "980938d9df3c7c0c31f936826c0caa3f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/command-menu.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "e6e20dcabd6c6a2610d7bb83bb489b64"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-layout.tsx": {
+    "mtime": 1777525642.103107,
+    "hash": "618f1d04d2485d1b1169fef9add0580a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-content.tsx": {
+    "mtime": 1777525642.099107,
+    "hash": "bf9864686092843a9565b9516a1c797b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/mdx-admonition.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "e91979a2807ee995fbdb25a1b60ce65a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/tag-filter.tsx": {
+    "mtime": 1777525642.1071072,
+    "hash": "0d63091b091dbd3af09888ad11e409f5"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/mdx-code.tsx": {
+    "mtime": 1777525642.095773,
+    "hash": "33188d8a3d91e1931c4c01fcb4a0d662"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-article-chat.tsx": {
+    "mtime": 1777525642.099107,
+    "hash": "751a5485149c9759d8faee051ad49c0f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/post-header.tsx": {
+    "mtime": 1777525642.103107,
+    "hash": "55ed6a5b3a9545006deb9402f92e634f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/profile-card.tsx": {
+    "mtime": 1777525642.1071072,
+    "hash": "807ef79c516248581d64ceb6c15c64cb"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/animated-theme-toggler.tsx": {
+    "mtime": 1777525642.1139717,
+    "hash": "7c637f37e4fcc40a64dd6f1b086101ed"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/tooltip.tsx": {
+    "mtime": 1777525642.115107,
+    "hash": "3de99b4b61c0af2574e04f3bed94cdba"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/button.tsx": {
+    "mtime": 1777525642.1139717,
+    "hash": "f3681758050416369896a240b0e7bd67"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/drawer.tsx": {
+    "mtime": 1777525642.115107,
+    "hash": "7fd5a1d83cdb561c9bd51113a0745a4d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/dropdown-menu.tsx": {
+    "mtime": 1777525642.115107,
+    "hash": "bb3368e0036955c2c67fa4547415394e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/dock.tsx": {
+    "mtime": 1777525642.1139717,
+    "hash": "472a5719356549384f3982b149b2bd52"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/kbd.tsx": {
+    "mtime": 1777525642.115107,
+    "hash": "2c4a8a72ebf214b52ac1ac351554a5ad"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/avatar.tsx": {
+    "mtime": 1777525642.1139717,
+    "hash": "4fc3b78d2ed5b55d0b3c666562510897"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/collapsible.tsx": {
+    "mtime": 1777525642.1139717,
+    "hash": "8b89712dc45345bc82e4bdef49cca62c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/dialog.tsx": {
+    "mtime": 1777525642.1139717,
+    "hash": "cbc84267d0fbb6a491739414ebec2e38"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/gravity-stars.tsx": {
+    "mtime": 1777525642.115107,
+    "hash": "ac82fb2290faa7922b8de7e134a18184"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/flickering-grid.tsx": {
+    "mtime": 1777525642.115107,
+    "hash": "db9981a3e4c5ae9c361d0f8156fc65e1"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/command.tsx": {
+    "mtime": 1777525642.1139717,
+    "hash": "e642448732c56277755c8e5fd1b349e3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/alert.tsx": {
+    "mtime": 1777525642.111107,
+    "hash": "3ceb8736dfa31436a3eb286e626fc2e3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/fuzzy-text.tsx": {
+    "mtime": 1777525642.115107,
+    "hash": "b525482e8239380d695a3b40defa480f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/popover.tsx": {
+    "mtime": 1777525642.115107,
+    "hash": "776c186d52726b0a569020cfec5a38fc"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/dot-pattern.tsx": {
+    "mtime": 1777525642.1139717,
+    "hash": "202298356ed8865b0cdcd056e63780b7"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/card.tsx": {
+    "mtime": 1777525642.1139717,
+    "hash": "87ec4d336ff0a78161bc4e89836ccd9a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/navigation-menu.tsx": {
+    "mtime": 1777525642.115107,
+    "hash": "eb9f4360591dbfc74ee714b58dbd2fdc"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/morphing-text.tsx": {
+    "mtime": 1777525642.115107,
+    "hash": "715a318c689e2734e473e5c4e4a2ede5"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/skeleton.tsx": {
+    "mtime": 1777525642.115107,
+    "hash": "6afcfe547c661c9d3427b3b347448d43"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/separator.tsx": {
+    "mtime": 1777525642.115107,
+    "hash": "88346886e2413be323004fb88032dfb3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/components/ui/copy-button.tsx": {
+    "mtime": 1777525642.1139717,
+    "hash": "5090151772d6e9b08565c2c0cee0d2da"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/layouts/default-layout.tsx": {
+    "mtime": 1777525642.1207268,
+    "hash": "e525b54f552243311ef62450807b6d2f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/robots.ts": {
+    "mtime": 1777525642.0933957,
+    "hash": "26ae82c54a1c494e513866653b039eb7"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/providers.tsx": {
+    "mtime": 1777525642.0933957,
+    "hash": "4a28ce3ee43b03323b92aef70d632678"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/sitemap.ts": {
+    "mtime": 1777525642.0933957,
+    "hash": "0e8d2872d47e4e2f1003ec86c6390d49"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/[locale]/page.tsx": {
+    "mtime": 1777525642.0877187,
+    "hash": "f917c5d4467e2c02e7f1dc659bf1a76b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/[locale]/not-found.tsx": {
+    "mtime": 1777525642.0877187,
+    "hash": "03674a129c31976e67295fd2344bdc68"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/[locale]/layout.tsx": {
+    "mtime": 1777525642.0877187,
+    "hash": "40a2560aacbf965efbc04208ae42d2d5"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/[locale]/post/[slug]/page.tsx": {
+    "mtime": 1777525642.0916486,
+    "hash": "64e091e4b2a439325c36ccf0a8d46662"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/[locale]/posts/page.tsx": {
+    "mtime": 1777525642.0916486,
+    "hash": "6f2aa8915e510fd546198a755407a247"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/[locale]/[...rest]/page.tsx": {
+    "mtime": 1777525642.0877187,
+    "hash": "13f6e4171bcfd664e74a1f04386201d9"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/[locale]/tag/[tagName]/page.tsx": {
+    "mtime": 1777525642.0933957,
+    "hash": "d5fae33fee119f8e0b2b9c3d454b374b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/[locale]/about/page.tsx": {
+    "mtime": 1777525642.0877187,
+    "hash": "d95cfe3387ee7a5d37f2a982e0035d9b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/[locale]/feed.xml/route.ts": {
+    "mtime": 1777525642.0877187,
+    "hash": "45ebf03433a761dbf8d775b6c151e61c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/app/llms.txt/route.ts": {
+    "mtime": 1777525642.0933957,
+    "hash": "41896bed898a5fd6b1f680b3caf31b10"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/lib/get-github-data.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "cd4c1c711867402c8b17adaeca538b29"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/lib/remark-admonitions.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "62de9cd1a8dbea6d837ac3d60c8771fe"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/lib/utils.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "5431a95f2944a9424661a3d0f44e1376"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/lib/site.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "38c885a15b64e0d9c68efbd4f4ae781b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/lib/get-posts-data.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "ad0aa1424ea78426afe77ae29d05b20e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/lib/rehype-unwrap-images.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "7932d5b23d46b6c4c32ee6a294d336c7"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/lib/seo.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "2981bd3cb68a2584ed9d194fa21f04a4"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/lib/social.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "2e9f19dd25b948af05c30685879b3bd6"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/lib/colors.ts": {
+    "mtime": 1777525642.1207268,
+    "hash": "f00a923e4f4dbacd5090fac3eaf9152e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/lib/get-build-time.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "b25f7f03e066422cff60d7c49f804504"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/lib/llms.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "0c9e836165ba866657f3d46313549cd0"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/lib/get-routes.ts": {
+    "mtime": 1777525642.1222084,
+    "hash": "ac4125c41d246bd724983bcfde95c261"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/i18n/utils.ts": {
+    "mtime": 1777525642.1207268,
+    "hash": "98d913575ad558a2d532b0e86a3b25a6"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/i18n/navigation.ts": {
+    "mtime": 1777525642.115107,
+    "hash": "4b05e9d32a5ae46076f40a159d5a3a58"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/i18n/request.ts": {
+    "mtime": 1777525642.1207268,
+    "hash": "33ea771c67b0793fca8851931a082a47"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/src/i18n/routing.ts": {
+    "mtime": 1777525642.1207268,
+    "hash": "bb71f82a4f93903f5b2bd21db8e0741c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/setup.ts": {
+    "mtime": 1777525641.8449216,
+    "hash": "9d38eddc5de47a829a64a94a22f25b2a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/test-utils.tsx": {
+    "mtime": 1777525641.8449216,
+    "hash": "cbb0c30b5d72cda14398e76b2209d54f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/about-me.test.tsx": {
+    "mtime": 1777525641.834175,
+    "hash": "9751327bdeb815eaa5ff2f3a0e6f2d46"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/post-metadata.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "d43d7128ac00867bb1b3d0cdb46658a1"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/post-comment.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "54b0d30495dad7b0e2a6460888b8dcf9"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/repo-card.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "8717ad1b55a1f2394369d760bf7cf20d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/post-content.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "072f16a380ebeb614b8224fd32958d67"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/command-menu.test.tsx": {
+    "mtime": 1777525641.8346202,
+    "hash": "6902e22e0cdf51feddd080b04b5a7cd4"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/language-switcher.test.tsx": {
+    "mtime": 1777525641.8346202,
+    "hash": "0022694caf206b5440a2295fe3dc2ee7"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/post-agent-actions.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "0ee34e7aaacfbe505a175d59a27d63cd"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/formatted-date.test.tsx": {
+    "mtime": 1777525641.8346202,
+    "hash": "c10bebb5993efd3b75b32cf1faa98812"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/post-card.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "ccbb12b717ae119fe942560d1cc5f07b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/post-layout.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "9a3ce28bc1638c9d8e505b33661b3187"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/post-toc.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "057b8e54fdd8e899ae6c8eebbca67586"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/page-header.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "4e3863efbbfa49dc22b62da92682e59e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/progress-circle.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "fd85acbe3c7443dec56b8c550ad7b6f3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/site-header.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "b452099353e538549ddad26a0e9b7cbd"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/post-footer.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "466fa9c9ff2e2d091c769c002b6a3088"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/mdx-admonition.test.tsx": {
+    "mtime": 1777525641.8346202,
+    "hash": "e526be4ec28cddf331d12b124a30bb1f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/profile-card.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "424678276d7db1b783d63601cc886d06"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/post-share.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "412689a09c446367805f0eaed5390c02"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/mdx-image.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "9f1a3fb6bf807207e5c5e81a12335d45"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/mdx-editor.test.tsx": {
+    "mtime": 1777525641.8346202,
+    "hash": "e5735ef061eb351d977a73fd54c23d4e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/post-image.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "c7eee4b1e5756b33bf683e0eebcaddb8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/landing-nav.test.tsx": {
+    "mtime": 1777525641.8346202,
+    "hash": "33bbc5636395b80e4f1539c3808d2674"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/site-footer.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "4d416f1e6c206b1e02bc20dc2ba9be9c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/post-header.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "3c8d6b18d031487710d759006d02e96a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/mobile-nav.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "762c5bf4ead893dc49ba7f9174e0753d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/back-to-top.test.tsx": {
+    "mtime": 1777525641.8346202,
+    "hash": "5966842b598b6ff3b21fa05a576e249c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/main-nav.test.tsx": {
+    "mtime": 1777525641.8346202,
+    "hash": "c01ee982166f05df8aa7b222a5f44a34"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/post-list.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "5f3fecf5eb5eaf3ae11f956b861b3be7"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/tag-filter.test.tsx": {
+    "mtime": 1777525641.839107,
+    "hash": "2cf4bfee8421561e0c26b3e0bf92bdd3"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/stat-card.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "12275b2a7137a5a879ecab6a2b249e7c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/mdx-code.test.tsx": {
+    "mtime": 1777525641.8346202,
+    "hash": "9f3b79838d775de8d4493a8b06ad8e63"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/components/not-found-result.test.tsx": {
+    "mtime": 1777525641.835107,
+    "hash": "3a6d3d2edfe046ed3ab6dbaf494203ac"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/fixtures/test-data.ts": {
+    "mtime": 1777525641.839107,
+    "hash": "d7671bea9a66c9db883e16dbdfa208a9"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/lib/social.test.ts": {
+    "mtime": 1777525641.8436909,
+    "hash": "a7c9aea66c16ccf02e61a3df6f34eb6f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/lib/llms.test.ts": {
+    "mtime": 1777525641.8436909,
+    "hash": "715d817d688f1c0629b32a8935fb83b8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/lib/utils.test.ts": {
+    "mtime": 1777525641.8436909,
+    "hash": "c35b990fd4c1149c018d0728fdbf0f53"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/lib/colors.test.ts": {
+    "mtime": 1777525641.839107,
+    "hash": "0fb62a704da22f3415fbe962b3abccec"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/i18n/utils.test.ts": {
+    "mtime": 1777525641.839107,
+    "hash": "f50890fc6a30f0c1300469f1fc438c97"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/mocks/navigation.tsx": {
+    "mtime": 1777525641.8449216,
+    "hash": "9fc15387463530bfdb6a963966763582"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/mocks/next-navigation.ts": {
+    "mtime": 1777525641.8449216,
+    "hash": "e45a8f6741d1f3c490aec182d1636e6a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/mocks/next-mdx-remote.tsx": {
+    "mtime": 1777525641.8449216,
+    "hash": "2de0624698be0731a6fcd63e1842a52c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/mocks/mdx-editor.tsx": {
+    "mtime": 1777525641.8436909,
+    "hash": "46c6c395e86ecb97982a4d8e31808204"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/mocks/sandpack.tsx": {
+    "mtime": 1777525641.8449216,
+    "hash": "78988a596854fbc43c625de1e343dc2f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/mocks/next-image.tsx": {
+    "mtime": 1777525641.8449216,
+    "hash": "6ff2882d6d32845df652bdfd4e64cc42"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/e2e/tag-filter.spec.ts": {
+    "mtime": 1777525641.853064,
+    "hash": "398b99dcddfac3b022f16e9e3ef0a453"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/e2e/navigation.spec.ts": {
+    "mtime": 1777525641.853064,
+    "hash": "d8d5553821f693522907f726e4247252"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/e2e/home.spec.ts": {
+    "mtime": 1777525641.853064,
+    "hash": "728ba83c0d58f9ee8cea050a79bf2c9c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/e2e/posts.spec.ts": {
+    "mtime": 1777525641.853064,
+    "hash": "0abe0d6c860352fd8d440c419c8e9a58"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/e2e/command-menu.spec.ts": {
+    "mtime": 1777525641.853064,
+    "hash": "030254e5987e7104f3ff1eb148d951e7"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/e2e/i18n.spec.ts": {
+    "mtime": 1777525641.853064,
+    "hash": "f9181431da6807af069748ebd4e4d6f5"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/e2e/theme.spec.ts": {
+    "mtime": 1777525641.853064,
+    "hash": "f21f696a14e39362b0f7e44a0a6453bb"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/e2e/about.spec.ts": {
+    "mtime": 1777525641.8518417,
+    "hash": "e157934499cf7d8239d9851831fd8ca9"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/e2e/responsive.spec.ts": {
+    "mtime": 1777525641.853064,
+    "hash": "8feb3f99bf069ce6711016cc44ec1861"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/e2e/post.spec.ts": {
+    "mtime": 1777525641.853064,
+    "hash": "76ab8e8f9823a0ff0b67fcb546f5ba5d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/vitest.config.ts": {
+    "mtime": 1777525642.1954613,
+    "hash": "9afe52bd52f60c4e709b847d1db89e9e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/types/internals.ts": {
+    "mtime": 1777525642.1954613,
+    "hash": "b798bbbf0492280e0a3c29b23380004f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/types/index.ts": {
+    "mtime": 1777525642.1954613,
+    "hash": "dd95db8cc7fbd9078771c558f90a5933"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/types/generated/contentTypes.d.ts": {
+    "mtime": 1777525642.1954613,
+    "hash": "76928940be16534e985baf35902a6eed"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/types/generated/components.d.ts": {
+    "mtime": 1777525642.1946995,
+    "hash": "88d0687cb241aca563255de432ac0c53"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/index.ts": {
+    "mtime": 1777525642.1836667,
+    "hash": "04ae3015f4649c0bdd09890e6abdf366"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/admin/vite.config.ts": {
+    "mtime": 1777525642.1514728,
+    "hash": "a6fc65fa032d5294681cf8a7bed9e4d4"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/admin/cs.ts": {
+    "mtime": 1777525642.1473463,
+    "hash": "c3e18678a9067fea1c5f8e7e12655e1c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/admin/app.tsx": {
+    "mtime": 1777525642.1455996,
+    "hash": "509d9c3a6e780cb10820b0d8f03fcc16"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/admin/extensions/InternalJobs/index.tsx": {
+    "mtime": 1777525642.1514728,
+    "hash": "56015686e88d53ffa3617a5d3a77687f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/admin/extensions/InternalJobs/InternalJobActions.tsx": {
+    "mtime": 1777525642.1504982,
+    "hash": "4fd8c453d640b4cb3817e00938355b7c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/admin/ckeditor/plugins.ts": {
+    "mtime": 1777525642.1473463,
+    "hash": "0aa2c1a2242fd14c99a9492247dc1217"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/admin/ckeditor/configs.ts": {
+    "mtime": 1777525642.1467237,
+    "hash": "7b286d088379044f2c303bcaec490f71"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/admin/ckeditor/headings.ts": {
+    "mtime": 1777525642.1473463,
+    "hash": "2e25fe7c2ed5692ef75082bfbe6d079e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/documentMiddlewares/page.ts": {
+    "mtime": 1777525642.1824706,
+    "hash": "d222a508fbb878f41c2b28f4224b5615"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/documentMiddlewares/helpers.ts": {
+    "mtime": 1777525642.1808035,
+    "hash": "1d8a9111e4d82b6a2dc72b7b227f8a21"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/page/controllers/page.ts": {
+    "mtime": 1777525642.1637723,
+    "hash": "b8893b4e5ae2073d5450207317317a58"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/page/services/page.ts": {
+    "mtime": 1777525642.1637723,
+    "hash": "a000f81dfe048ddefb9d6440555b3086"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/page/content-types/page/lifecycles.ts": {
+    "mtime": 1777525642.162932,
+    "hash": "7a5cdf2090fa523036f2824ab40f0eb4"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/page/routes/page.ts": {
+    "mtime": 1777525642.1637723,
+    "hash": "930260fb1041027348753185cb16a142"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/navbar/controllers/navbar.ts": {
+    "mtime": 1777525642.1604855,
+    "hash": "82a09137f229ccbe1c24ca804d75833a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/navbar/services/navbar.ts": {
+    "mtime": 1777525642.1604855,
+    "hash": "b41da9275a71057cb86066176d07d17e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/navbar/routes/navbar.ts": {
+    "mtime": 1777525642.1604855,
+    "hash": "0dc129ce17a7e44750cd981b4bfb7ee8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/internal-job/controllers/internal-job.ts": {
+    "mtime": 1777525642.1575887,
+    "hash": "76bc993c9488d818681f13ab146f5300"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/internal-job/services/internal-job.ts": {
+    "mtime": 1777525642.1592944,
+    "hash": "ab9577f02f55fc22af747efecf0ce04f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/internal-job/routes/custom-routes.ts": {
+    "mtime": 1777525642.1575887,
+    "hash": "b570667b801568bf6274820291c8fb96"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/internal-job/routes/internal-job.ts": {
+    "mtime": 1777525642.1592944,
+    "hash": "0e5379eb790c8084b4be1b71744f778a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/footer/controllers/footer.ts": {
+    "mtime": 1777525642.1536407,
+    "hash": "f29c8267d4c1c84819e4e927e6c4d659"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/footer/services/footer.ts": {
+    "mtime": 1777525642.1536407,
+    "hash": "465d47f3024b129822f411b1cc11425d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/footer/routes/footer.ts": {
+    "mtime": 1777525642.1536407,
+    "hash": "32d236b03e9553274b326de2ca4590dc"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/health/controllers/health.ts": {
+    "mtime": 1777525642.155705,
+    "hash": "fefe0af2056ed5e71dbf235ccbdd2048"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/health/services/health.ts": {
+    "mtime": 1777525642.155705,
+    "hash": "6648e337907e478c32888c408fc71e97"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/health/routes/health.ts": {
+    "mtime": 1777525642.155705,
+    "hash": "b1492925da9b2b89754ebd680daa009c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/subscriber/controllers/subscriber.ts": {
+    "mtime": 1777525642.1707356,
+    "hash": "941cd8894363e31335ae62a7c8f0c3b6"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/subscriber/services/subscriber.ts": {
+    "mtime": 1777525642.171107,
+    "hash": "24866be47ccdc654b57de8ab8d8b8419"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/subscriber/routes/subscriber.ts": {
+    "mtime": 1777525642.171107,
+    "hash": "461493bf49608b683839b7a0dd72b993"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/admin-panel-config/controllers/admin-panel-config.ts": {
+    "mtime": 1777525642.1522567,
+    "hash": "61568d3684160ba9325ec86efb3e6b14"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/admin-panel-config/services/admin-panel-config.ts": {
+    "mtime": 1777525642.1522567,
+    "hash": "0121ab7cf620fbef90880d368ffbf73c"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/admin-panel-config/routes/admin-panel-config.ts": {
+    "mtime": 1777525642.1522567,
+    "hash": "3ef8ce4de9de9a6fa3040315852a5f03"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/redirect/controllers/redirect.ts": {
+    "mtime": 1777525642.1653972,
+    "hash": "e33f63f2fe2cedfb35dd2419f605d395"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/redirect/services/redirect.ts": {
+    "mtime": 1777525642.167107,
+    "hash": "f18b2be45f818f5351740ff7c61d8cf8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/api/redirect/routes/redirect.ts": {
+    "mtime": 1777525642.1653972,
+    "hash": "688dddd4919c883fe885b7da4fc71ec8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/lifeCycles/adminUser.ts": {
+    "mtime": 1777525642.1836667,
+    "hash": "0d1dd283a696fa6d5dd9eff1554c35b9"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/lifeCycles/user.ts": {
+    "mtime": 1777525642.1851854,
+    "hash": "0694e4ecd06785025932ad778eaa438b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/index.ts": {
+    "mtime": 1777525642.1865292,
+    "hash": "e1316bdec1cdc7567c2a4b2ac2c1d2f1"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/utilities/ck-editor-content.ts": {
+    "mtime": 1777525642.1893635,
+    "hash": "c125ce186c2b39b25dad399abdb1e0bd"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/utilities/link.ts": {
+    "mtime": 1777525642.1893635,
+    "hash": "851ad668160b8c712352a4e5cf92c843"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/utilities/ck-editor-text.ts": {
+    "mtime": 1777525642.1893635,
+    "hash": "c125ce186c2b39b25dad399abdb1e0bd"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/utilities/tip-tap-rich-text.ts": {
+    "mtime": 1777525642.1893635,
+    "hash": "c125ce186c2b39b25dad399abdb1e0bd"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/utilities/basic-image.ts": {
+    "mtime": 1777525642.1874967,
+    "hash": "04fa57e4b8f58954e076a9c611e4f197"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/utilities/link-decorations.ts": {
+    "mtime": 1777525642.1893635,
+    "hash": "d83ba79497be44274c74e42d968ccda0"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/sections/image-with-cta-button.ts": {
+    "mtime": 1777525642.1874967,
+    "hash": "1a75d9bdfb015a4979cec241f06ac149"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/sections/horizontal-images.ts": {
+    "mtime": 1777525642.1874967,
+    "hash": "df2f6a0b79b19abd7d4395d943b65106"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/sections/animated-logo-row.ts": {
+    "mtime": 1777525642.1865292,
+    "hash": "3c8e7aef7159163cbdad5d993e0e369d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/sections/heading-with-cta-button.ts": {
+    "mtime": 1777525642.1874967,
+    "hash": "6789edf9f74f5e8f8e0765c837970cb8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/sections/carousel.ts": {
+    "mtime": 1777525642.1874967,
+    "hash": "df2f6a0b79b19abd7d4395d943b65106"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/sections/faq.ts": {
+    "mtime": 1777525642.1874967,
+    "hash": "a80fe754f74bd5d7dec071c9b83d1d9f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/sections/hero.ts": {
+    "mtime": 1777525642.1874967,
+    "hash": "cb38262b08f1bb796b9b64d557905933"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/forms/contact-form.ts": {
+    "mtime": 1777525642.1860611,
+    "hash": "8eb4ef219366ba495fc65281efc337d8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/populateDynamicZone/forms/newsletter-form.ts": {
+    "mtime": 1777525642.1865292,
+    "hash": "8eb4ef219366ba495fc65281efc337d8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/utils/constants.ts": {
+    "mtime": 1777525642.1909134,
+    "hash": "ac020561d85bf8de17453a6b2a5caddc"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/utils/breadcrumbs.ts": {
+    "mtime": 1777525642.1893635,
+    "hash": "7dd0a4d63e469a3c7874e2f895e7c86a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/utils/hierarchy/index.ts": {
+    "mtime": 1777525642.191903,
+    "hash": "6bcc00927ea37ffe7ad3ce4dab682433"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/utils/hierarchy/helpers.ts": {
+    "mtime": 1777525642.1909134,
+    "hash": "7740413a4e5f0fbbdfd0fe5bebc386a8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/src/utils/hierarchy/types.ts": {
+    "mtime": 1777525642.191903,
+    "hash": "a74c912102b7fa6c4c098faa3efe6709"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/config/plugins.ts": {
+    "mtime": 1777525642.1295185,
+    "hash": "8e182c022eb01bb31aee372349b65bea"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/config/admin.ts": {
+    "mtime": 1777525642.125635,
+    "hash": "a19b886057c2a05aca43e68d13437298"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/config/cron-tasks.ts": {
+    "mtime": 1777525642.1283185,
+    "hash": "d0ae75371b7df8c4010c1652dc09e235"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/config/api.ts": {
+    "mtime": 1777525642.1283185,
+    "hash": "4d484d52a212d832040aa8bb51e13d6a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/config/database.ts": {
+    "mtime": 1777525642.1283185,
+    "hash": "7b68c33faf79180fe338fab2a676fee2"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/config/server.ts": {
+    "mtime": 1777525642.1295185,
+    "hash": "b14a03c331afba383b5955768d68e4aa"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/config/middlewares.ts": {
+    "mtime": 1777525642.1295185,
+    "hash": "3f573e67ad92609f063fc6aa8e018f80"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/config/typescript.ts": {
+    "mtime": 1777525642.139107,
+    "hash": "a32e13fb251e694dd8669e4713cbe508"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/tests/app.test.ts": {
+    "mtime": 1777525642.191903,
+    "hash": "95ad127d512eb38ce8e60c07fdf68d51"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/tests/helpers/strapi.ts": {
+    "mtime": 1777525642.1936104,
+    "hash": "4888ccb6f0bc1308b71d7913da72db80"
+  },
+  "/home/user/strapi-template-new-world-kids/QUALITY_SCORECARD.md": {
+    "mtime": 1777525641.4297898,
+    "hash": "36f1efd7f8a3b8bf59fc2cbb2d275aff"
+  },
+  "/home/user/strapi-template-new-world-kids/IMPLEMENTATION_COMPLETE.md": {
+    "mtime": 1777525641.4297898,
+    "hash": "bc01547790a2b5e8d8c024ca2bbc341a"
+  },
+  "/home/user/strapi-template-new-world-kids/PRD.md": {
+    "mtime": 1777525641.4297898,
+    "hash": "0fd0d1f2d39a77f7d051e3d3fc1a0c4e"
+  },
+  "/home/user/strapi-template-new-world-kids/README.md": {
+    "mtime": 1777525641.4297898,
+    "hash": "45db1b63de938f2d8e241601683b822a"
+  },
+  "/home/user/strapi-template-new-world-kids/KPI.md": {
+    "mtime": 1777525641.4297898,
+    "hash": "4a5d2448ba37cdddb578e71e8fb031d0"
+  },
+  "/home/user/strapi-template-new-world-kids/INCIDENT_RESPONSE.md": {
+    "mtime": 1777525641.4297898,
+    "hash": "c2ab8997bbe00fc282d64dc78708d608"
+  },
+  "/home/user/strapi-template-new-world-kids/FINAL_DEPLOYMENT_GUIDE.md": {
+    "mtime": 1777525641.4297898,
+    "hash": "2ca3d74648fe911b055666eb5ef5836e"
+  },
+  "/home/user/strapi-template-new-world-kids/DEPLOYMENT_AUDIT_REPORT.md": {
+    "mtime": 1777525641.4297898,
+    "hash": "663fb2a9ed3518fe97d205471954644c"
+  },
+  "/home/user/strapi-template-new-world-kids/FINAL_METRICS_REPORT.md": {
+    "mtime": 1777525641.4297898,
+    "hash": "93e504fad6ebb99a5b29205cbcfdd7a6"
+  },
+  "/home/user/strapi-template-new-world-kids/AGENTS.md": {
+    "mtime": 1778524564.4785633,
+    "hash": "65c83249535836d5a67547c25d2a307d"
+  },
+  "/home/user/strapi-template-new-world-kids/UX_AUDIT_REPORT.md": {
+    "mtime": 1777525641.4297898,
+    "hash": "344ddf826a783f3d7fa358e32e2b1192"
+  },
+  "/home/user/strapi-template-new-world-kids/REMAINING_TASKS_ROADMAP.md": {
+    "mtime": 1777525641.4297898,
+    "hash": "e31e2466ffb556c40b586ecd07527873"
+  },
+  "/home/user/strapi-template-new-world-kids/pnpm-workspace.yaml": {
+    "mtime": 1777525642.395107,
+    "hash": "69a9c172e98b180fa5b7e565046b48c0"
+  },
+  "/home/user/strapi-template-new-world-kids/infrastructure/hermes/docker-compose.yml": {
+    "mtime": 1777525642.35083,
+    "hash": "74e391abd5a7a67fd203a60e0993125f"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/design-system/README.md": {
+    "mtime": 1777525642.3523676,
+    "hash": "a5ed882baa83e782e32a8682f79f7c19"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/strapi-types/README.md": {
+    "mtime": 1777525642.3617823,
+    "hash": "76e043601bc33601a0c203f897fcd300"
+  },
+  "/home/user/strapi-template-new-world-kids/packages/strapi-types/AGENTS.md": {
+    "mtime": 1777525642.3599515,
+    "hash": "9e29cb7edcdc606be516c08d48049a32"
+  },
+  "/home/user/strapi-template-new-world-kids/agents/hermes/SOUL.md": {
+    "mtime": 1778524431.9279022,
+    "hash": "bf2157b12c8d347f88d793bf69317c81"
+  },
+  "/home/user/strapi-template-new-world-kids/agents/wiki/WIKI.md": {
+    "mtime": 1777525641.8278449,
+    "hash": "37c556ba0c9f0f7e412bcf0e8e5ea8a2"
+  },
+  "/home/user/strapi-template-new-world-kids/agents/worker/SOUL.md": {
+    "mtime": 1777525641.8278449,
+    "hash": "336010ee0d6d0221e920b3c64bed77a1"
+  },
+  "/home/user/strapi-template-new-world-kids/services/hermes/README.md": {
+    "mtime": 1777525642.4111726,
+    "hash": "d8871a2c25af785d25b5e996a84c39c3"
+  },
+  "/home/user/strapi-template-new-world-kids/services/hermes/agents/shared/SAFETY.md": {
+    "mtime": 1777525642.4131012,
+    "hash": "512b56a336b3de7a426de097e49bdcea"
+  },
+  "/home/user/strapi-template-new-world-kids/services/hermes/agents/shared/PLAYBOOK.md": {
+    "mtime": 1777525642.4115112,
+    "hash": "9cf3525615f41341028a1cf8c46fe16a"
+  },
+  "/home/user/strapi-template-new-world-kids/services/hermes/agents/shared/TOOLS.md": {
+    "mtime": 1777525642.4131012,
+    "hash": "ccca6238d76c1ff973ffeb993d72d0e2"
+  },
+  "/home/user/strapi-template-new-world-kids/services/hermes/agents/hermes/SOUL.md": {
+    "mtime": 1777525642.4115112,
+    "hash": "2d2ca77ab13461c954f4061fc729e7ff"
+  },
+  "/home/user/strapi-template-new-world-kids/services/hermes/agents/content-engine/SOUL.md": {
+    "mtime": 1777525642.4115112,
+    "hash": "7ec4a26dbd1450d80324d309cf52bc7b"
+  },
+  "/home/user/strapi-template-new-world-kids/services/hermes/agents/grant-hunter/SOUL.md": {
+    "mtime": 1777525642.4115112,
+    "hash": "5a3e7802ecc1d67adf9653bc6ec9f0c0"
+  },
+  "/home/user/strapi-template-new-world-kids/services/hermes/agents/trust-steward/SOUL.md": {
+    "mtime": 1777525642.4131012,
+    "hash": "66e800de99c5526a203838f225df3978"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/README.md": {
+    "mtime": 1777525641.4336178,
+    "hash": "82176b2a1581296b489f40a8cee2bd05"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/RELEASE-NOTES.md": {
+    "mtime": 1777525641.7822268,
+    "hash": "9874c19b237cafceb898e7201ed03d0f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/README.md": {
+    "mtime": 1777525641.7822268,
+    "hash": "71b4178298434f221cf864fb835ad6b9"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/GEMINI.md": {
+    "mtime": 1777525641.7822268,
+    "hash": "230c5bf044db5f542711b1c6745e3505"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/CHANGELOG.md": {
+    "mtime": 1777525641.7822268,
+    "hash": "6e1471be54e684bb80efe8b7daa77d1d"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/using-superpowers/SKILL.md": {
+    "mtime": 1777525641.8042254,
+    "hash": "0d647fe98cd43969647802ecbd09f459"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/using-superpowers/references/codex-tools.md": {
+    "mtime": 1777525641.8055613,
+    "hash": "c449cc56ce10fe77e7befb1de9822b93"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/using-superpowers/references/gemini-tools.md": {
+    "mtime": 1777525641.8062606,
+    "hash": "0e4b3f373761998ca296992e87a96c75"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/subagent-driven-development/spec-reviewer-prompt.md": {
+    "mtime": 1777525641.7995946,
+    "hash": "ecc20717d0b31a9013ba732f366eba8f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/subagent-driven-development/implementer-prompt.md": {
+    "mtime": 1777525641.7995946,
+    "hash": "b856c2076801a91854adf094a907de9c"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/subagent-driven-development/SKILL.md": {
+    "mtime": 1777525641.7984223,
+    "hash": "543afab876dc18817918377a19e16530"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/subagent-driven-development/code-quality-reviewer-prompt.md": {
+    "mtime": 1777525641.7995946,
+    "hash": "b411003e0281322218490c6a2ca0ec33"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/brainstorming/spec-document-reviewer-prompt.md": {
+    "mtime": 1777525641.794403,
+    "hash": "ea74c0f2369ae553c62f36af4ed3d424"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/brainstorming/SKILL.md": {
+    "mtime": 1777525641.7932866,
+    "hash": "eac21ff37d9118fe659ad1fc93fe4e88"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/brainstorming/visual-companion.md": {
+    "mtime": 1777525641.794403,
+    "hash": "055ad8ab379524ce92128b8220663334"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/brainstorming/scripts/frame-template.html": {
+    "mtime": 1777525641.7941039,
+    "hash": "b84f721842a76863e21074fb607b03d5"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/writing-plans/SKILL.md": {
+    "mtime": 1777525641.8062606,
+    "hash": "7cb0fcb9714cb331b3284ae9f6038900"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/writing-plans/plan-document-reviewer-prompt.md": {
+    "mtime": 1777525641.8072042,
+    "hash": "dcad0192c2c468107951d7dcb47246a9"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/executing-plans/SKILL.md": {
+    "mtime": 1777525641.794403,
+    "hash": "37939229bd59f8a4cc8c7bfd51b2b3eb"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/receiving-code-review/SKILL.md": {
+    "mtime": 1777525641.7951071,
+    "hash": "dd0aadbca70fe3bedbd059b730a6edbb"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/requesting-code-review/SKILL.md": {
+    "mtime": 1777525641.7951071,
+    "hash": "e03a4360964f2a4430a4a0ba760b3420"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/requesting-code-review/code-reviewer.md": {
+    "mtime": 1777525641.7984223,
+    "hash": "305ed1ed604a64c61c2dde96124c2e11"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/writing-skills/testing-skills-with-subagents.md": {
+    "mtime": 1777525641.8111072,
+    "hash": "3b7b7942a42cb0450896d4b48cd49ed0"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/writing-skills/SKILL.md": {
+    "mtime": 1777525641.8072042,
+    "hash": "f3aa8bfa1356b7a087aecce08de7862c"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/writing-skills/persuasion-principles.md": {
+    "mtime": 1777525641.808768,
+    "hash": "5f0c22c7c8c3c5e12f255719833c2545"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/writing-skills/anthropic-best-practices.md": {
+    "mtime": 1777525641.808768,
+    "hash": "fe57f9393b7ec1055ac6f66a0ab4dccc"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/writing-skills/examples/CLAUDE_MD_TESTING.md": {
+    "mtime": 1777525641.808768,
+    "hash": "2980791d97afe0f32c2eb4a6264fb8e6"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/dispatching-parallel-agents/SKILL.md": {
+    "mtime": 1777525641.794403,
+    "hash": "af319c60c986d9024c49de78dff43593"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/verification-before-completion/SKILL.md": {
+    "mtime": 1777525641.8062606,
+    "hash": "ccf0e58c597adc512d920263562b5391"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/using-git-worktrees/SKILL.md": {
+    "mtime": 1777525641.8042254,
+    "hash": "068743993231737c40eb5656ee0ac629"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/finishing-a-development-branch/SKILL.md": {
+    "mtime": 1777525641.794403,
+    "hash": "843f51fc511c9c850063ad26a24cbd12"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/test-driven-development/SKILL.md": {
+    "mtime": 1777525641.8017128,
+    "hash": "b349bbcc136f3f50c45f04d0917bdfc9"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/test-driven-development/testing-anti-patterns.md": {
+    "mtime": 1777525641.8042254,
+    "hash": "f4373033bf29f06897cd63c994deb2a7"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/systematic-debugging/test-academic.md": {
+    "mtime": 1777525641.8017128,
+    "hash": "272ab1d95e755a7ff9479d547168eef9"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/systematic-debugging/defense-in-depth.md": {
+    "mtime": 1777525641.8017128,
+    "hash": "002a0c9e8bee8fc29f85d7a434916977"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/systematic-debugging/condition-based-waiting.md": {
+    "mtime": 1777525641.8017128,
+    "hash": "c64d669f2490aa489c514304c9ad46d3"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/systematic-debugging/test-pressure-3.md": {
+    "mtime": 1777525641.8017128,
+    "hash": "42ea1bd281ca8d837f5dd45143762b95"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/systematic-debugging/SKILL.md": {
+    "mtime": 1777525641.8017128,
+    "hash": "3a08f3330fce34e3b2104e7d97f64af0"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/systematic-debugging/test-pressure-1.md": {
+    "mtime": 1777525641.8017128,
+    "hash": "3d8805e8946e3889d4de0e906af66c47"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/systematic-debugging/root-cause-tracing.md": {
+    "mtime": 1777525641.8017128,
+    "hash": "9b80d2e7aaff6e64f4c46f51312f126b"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/systematic-debugging/CREATION-LOG.md": {
+    "mtime": 1777525641.7995946,
+    "hash": "7226812eb1ce6a805732c2ff98712e4a"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/skills/systematic-debugging/test-pressure-2.md": {
+    "mtime": 1777525641.8017128,
+    "hash": "237f40dfd0b48af48d239ab3af499f7b"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/agents/code-reviewer.md": {
+    "mtime": 1777525641.7822268,
+    "hash": "a31503dfcc5dc994136e6c8d4c3540ac"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/claude-code/README.md": {
+    "mtime": 1777525641.8145065,
+    "hash": "23b455837e5660325b3d18d617c944a2"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/explicit-skill-requests/prompts/skip-formalities.txt": {
+    "mtime": 1777525641.8180833,
+    "hash": "f1bdf6c0abb22430311866aae5542f87"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/explicit-skill-requests/prompts/action-oriented.txt": {
+    "mtime": 1777525641.8175302,
+    "hash": "3629a1f492bdb192f39eb6bb9214fb54"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/explicit-skill-requests/prompts/claude-suggested-it.txt": {
+    "mtime": 1777525641.8180833,
+    "hash": "7e09e20f1c5c42290b9381668110cd4b"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/explicit-skill-requests/prompts/mid-conversation-execute-plan.txt": {
+    "mtime": 1777525641.8180833,
+    "hash": "3746f804cd316923020a26bff4e964b3"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/explicit-skill-requests/prompts/use-systematic-debugging.txt": {
+    "mtime": 1777525641.8180833,
+    "hash": "8fbb291006a51667dd2e437b8fcccc16"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/explicit-skill-requests/prompts/subagent-driven-development-please.txt": {
+    "mtime": 1777525641.8180833,
+    "hash": "97befcdbfdbf6b981e4a1cae46f1a4f7"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/explicit-skill-requests/prompts/please-use-brainstorming.txt": {
+    "mtime": 1777525641.8180833,
+    "hash": "8b070a03a6714d4bd440105c11aeca49"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/explicit-skill-requests/prompts/after-planning-flow.txt": {
+    "mtime": 1777525641.8180833,
+    "hash": "40823205486d865d64fb1af1006f2fa0"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/explicit-skill-requests/prompts/i-know-what-sdd-means.txt": {
+    "mtime": 1777525641.8180833,
+    "hash": "81f1bbf0e9672d38b2a6e3640593c6ac"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/skill-triggering/prompts/requesting-code-review.txt": {
+    "mtime": 1777525641.8226511,
+    "hash": "fd6dfe7fce7de8e570e6cde1757a0272"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/skill-triggering/prompts/test-driven-development.txt": {
+    "mtime": 1777525641.8226511,
+    "hash": "0c15df1f405db77e332622c100a2047c"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/skill-triggering/prompts/dispatching-parallel-agents.txt": {
+    "mtime": 1777525641.8219757,
+    "hash": "e1b75267d2160d6aa290345797399426"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/skill-triggering/prompts/writing-plans.txt": {
+    "mtime": 1777525641.8226511,
+    "hash": "c4c20b75e8913ad92c5475ca3411b286"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/skill-triggering/prompts/executing-plans.txt": {
+    "mtime": 1777525641.8226511,
+    "hash": "d4344f9b826e21e1335c420043378f35"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/skill-triggering/prompts/systematic-debugging.txt": {
+    "mtime": 1777525641.8226511,
+    "hash": "cfc5b0dc592c4b3b56bb238fedc62d44"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/subagent-driven-dev/svelte-todo/design.md": {
+    "mtime": 1777525641.825087,
+    "hash": "8d8d9379c628b29e538324049ed2c502"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/subagent-driven-dev/svelte-todo/plan.md": {
+    "mtime": 1777525641.8259757,
+    "hash": "900b80a80f76ed87a7d3a9a42e6fc7a5"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/subagent-driven-dev/go-fractals/design.md": {
+    "mtime": 1777525641.8245852,
+    "hash": "b8bddadda3898f3f376db7e302021eb4"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/tests/subagent-driven-dev/go-fractals/plan.md": {
+    "mtime": 1777525641.825087,
+    "hash": "c2e40ff8c0461f711bd78a84594bed5b"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/README.opencode.md": {
+    "mtime": 1777525641.7858047,
+    "hash": "67ac179c09ee5a4b7bc47280de3d8fab"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/testing.md": {
+    "mtime": 1777525641.7898064,
+    "hash": "f3971cb76452c1c41562d45914695582"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/README.codex.md": {
+    "mtime": 1777525641.7849398,
+    "hash": "9ea2d731756e42927c3ce3221c0cbacd"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/superpowers/plans/2026-02-19-visual-brainstorming-refactor.md": {
+    "mtime": 1777525641.788679,
+    "hash": "73a7beba849def6b7d20a500a1afda64"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/superpowers/plans/2026-01-22-document-review-system.md": {
+    "mtime": 1777525641.7880774,
+    "hash": "67adba36e0a07b62c10450b8f982684d"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/superpowers/plans/2026-03-11-zero-dep-brainstorm-server.md": {
+    "mtime": 1777525641.788679,
+    "hash": "bd9edfe0cac4da5662b671247c2b93b2"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/superpowers/specs/2026-01-22-document-review-system-design.md": {
+    "mtime": 1777525641.788679,
+    "hash": "a6baf8c9eea08844a389b961bb0ef4f7"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/superpowers/specs/2026-02-19-visual-brainstorming-refactor-design.md": {
+    "mtime": 1777525641.7898064,
+    "hash": "f4833089c696e2144b80bacac752a710"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/superpowers/specs/2026-03-11-zero-dep-brainstorm-server-design.md": {
+    "mtime": 1777525641.7898064,
+    "hash": "2a081bda4c6e67b5a7b89eda115472bb"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/plans/2026-01-17-visual-brainstorming.md": {
+    "mtime": 1777525641.7865498,
+    "hash": "cd479bbd44ed558cf55ea3ef4cafd14f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/plans/2025-11-28-skills-improvements-from-user-feedback.md": {
+    "mtime": 1777525641.7865498,
+    "hash": "fde1c66b332befd7be209b70f3858563"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/plans/2025-11-22-opencode-support-design.md": {
+    "mtime": 1777525641.7858047,
+    "hash": "0d3fdbb784e9c779d121b586dd1fc388"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/plans/2025-11-22-opencode-support-implementation.md": {
+    "mtime": 1777525641.7865498,
+    "hash": "583e0b9e5ec9abaf44d6d9aca813bd78"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/docs/windows/polyglot-hooks.md": {
+    "mtime": 1777525641.7898064,
+    "hash": "2fb6d3d3f450aa4a74ec307f73ed5c7b"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/commands/execute-plan.md": {
+    "mtime": 1777525641.7849398,
+    "hash": "70b099a0065d4c2137dfbdbbf9090827"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/commands/write-plan.md": {
+    "mtime": 1777525641.7849398,
+    "hash": "db44f6066ac88d7b60efbb89a6f4601d"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/superpowers/commands/brainstorm.md": {
+    "mtime": 1777525641.7822268,
+    "hash": "d2be33f220e85541a2724f142daeccaf"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/NOTICE.md": {
+    "mtime": 1777525641.5711071,
+    "hash": "fbb9c988eda9be6b9b0acb573104c07d"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/DEVELOP.md": {
+    "mtime": 1777525641.5711071,
+    "hash": "e06b37d7f4e43b72c805f24abfbe1a4e"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/README.md": {
+    "mtime": 1777525641.575107,
+    "hash": "6e427c299e19b571a9f4ac73f11dde8f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/CLAUDE.md": {
+    "mtime": 1777525641.5711071,
+    "hash": "a1c3c141330a53c3d4e6c2f41f82c54b"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/AGENTS.md": {
+    "mtime": 1777525641.5711071,
+    "hash": "cf94b8dc0e3e9a7ca52ee68c693d3e5d"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/index.html": {
+    "mtime": 1777525641.6613748,
+    "hash": "f9aa11eaf1e4ea491c8f9821d0f9beb7"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/cheatsheet.html": {
+    "mtime": 1777525641.655107,
+    "hash": "9d38b03d66d2c193cf24f199e5651911"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/robots.txt": {
+    "mtime": 1777525641.6761327,
+    "hash": "fc86fc537f308a9fe6095e6bc9bb98ed"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-examples/purple-gradients.html": {
+    "mtime": 1777525641.5841835,
+    "hash": "2b87bae976c1082ddb0ed31e38d65557"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-examples/layout-templates.html": {
+    "mtime": 1777525641.5841835,
+    "hash": "521bfa0f301420c0df9f37ce46b50cc3"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-examples/modal-abuse.html": {
+    "mtime": 1777525641.5841835,
+    "hash": "07d3ae696fddc659442e2acf2d9275b2"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-examples/inter-everywhere.html": {
+    "mtime": 1777525641.5841835,
+    "hash": "90485ac25f9b9cc8985f30a686e10518"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-examples/lazy-impact.html": {
+    "mtime": 1777525641.5841835,
+    "hash": "9742be4f0536ab842f1c0e8f3faff32c"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-examples/lazy-cool.html": {
+    "mtime": 1777525641.5841835,
+    "hash": "94c28fc269fa3746a9bd90d7c2a92edb"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-examples/cardocalypse.html": {
+    "mtime": 1777525641.5841835,
+    "hash": "31a2406da8ac6c1694e3c2e763742bfa"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-examples/redundant-ux-writing.html": {
+    "mtime": 1777525641.5841835,
+    "hash": "37af25d0ccbd7a7c2b8d8d51b033ca97"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-examples/bad-contrast.html": {
+    "mtime": 1777525641.583407,
+    "hash": "172ee3f0ccca06fe686421471000864f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-examples/massive-icons.html": {
+    "mtime": 1777525641.5841835,
+    "hash": "819cd88d32c575f732b077b761475f09"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-examples/thick-border-cards.html": {
+    "mtime": 1777525641.5841835,
+    "hash": "9aa48582f96268fbeb98efc6503cc962"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/delight/SKILL.md": {
+    "mtime": 1777525641.6831071,
+    "hash": "bbe043ff2a1cf064614f975ee34f15dc"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/animate/SKILL.md": {
+    "mtime": 1777525641.682577,
+    "hash": "909c2f7bab3f57e18b93ec910662611d"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/extract/SKILL.md": {
+    "mtime": 1777525641.6831071,
+    "hash": "49dc64af10d2b43f37df5fd91de18a0c"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/bolder/SKILL.md": {
+    "mtime": 1777525641.6831071,
+    "hash": "4596829f2d1ce9c0e24d063117c17a90"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/polish/SKILL.md": {
+    "mtime": 1777525641.691107,
+    "hash": "b490e6d4d271aacd1fc0acdbfe14b000"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/audit/SKILL.md": {
+    "mtime": 1777525641.6831071,
+    "hash": "01d05dbf2bc8e3729c7f0adf3dab5c95"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/critique/SKILL.md": {
+    "mtime": 1777525641.6831071,
+    "hash": "1cf3c38f7d26b3c5d5c74b3dda8ed0b7"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/arrange/SKILL.md": {
+    "mtime": 1777525641.682577,
+    "hash": "23f4556079cfd09a39d4592d8ff7cb4c"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/teach-impeccable/SKILL.md": {
+    "mtime": 1777525641.691107,
+    "hash": "1c3a3def18577df7adeba41802c3103f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/colorize/SKILL.md": {
+    "mtime": 1777525641.6831071,
+    "hash": "9904222f2134dcfd6ce192350f6a5847"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/adapt/SKILL.md": {
+    "mtime": 1777525641.682577,
+    "hash": "0de291e62e48e8861d0c5296d582a349"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/quieter/SKILL.md": {
+    "mtime": 1777525641.691107,
+    "hash": "9326422dd9825f146d26dde8d4497351"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/clarify/SKILL.md": {
+    "mtime": 1777525641.6831071,
+    "hash": "8962156de63ad190a0874eb9d60b7d02"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/frontend-design/SKILL.md": {
+    "mtime": 1777525641.6831071,
+    "hash": "e14a4c1baa77cf512bfcc31a99484c2f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/frontend-design/reference/typography.md": {
+    "mtime": 1777525641.6896405,
+    "hash": "ac62365fa49fac028fd049340067c11f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/frontend-design/reference/ux-writing.md": {
+    "mtime": 1777525641.6896405,
+    "hash": "1bcd62caa50e1b09cdabf1a2ea9bd37a"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/frontend-design/reference/responsive-design.md": {
+    "mtime": 1777525641.6896405,
+    "hash": "17e74cfd6936be3c6b62120dd05899b3"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/frontend-design/reference/motion-design.md": {
+    "mtime": 1777525641.6896405,
+    "hash": "2a38a73c6bbd11c3c95bc1a4602c75f9"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/frontend-design/reference/color-and-contrast.md": {
+    "mtime": 1777525641.688777,
+    "hash": "0e90f887b2def64c80fd696b95ef3f47"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/frontend-design/reference/interaction-design.md": {
+    "mtime": 1777525641.6896405,
+    "hash": "621dbda1251867989b52fe5de1ce4923"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/frontend-design/reference/spatial-design.md": {
+    "mtime": 1777525641.6896405,
+    "hash": "a212ddd7385fab96f04a3e9817b68726"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/distill/SKILL.md": {
+    "mtime": 1777525641.6831071,
+    "hash": "93c00c1c1d0420b96a74e3f9fba17f6f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/overdrive/SKILL.md": {
+    "mtime": 1777525641.6896405,
+    "hash": "84f42a2f54b0988d89e84114a9b76a48"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/harden/SKILL.md": {
+    "mtime": 1777525641.6896405,
+    "hash": "b0bf5c43644fa588ea7789e8d3c9f1e0"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/normalize/SKILL.md": {
+    "mtime": 1777525641.6896405,
+    "hash": "72d2b1b2488cc6e1ad7e09d49ddfbf80"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/typeset/SKILL.md": {
+    "mtime": 1777525641.691107,
+    "hash": "163d7532fa4855a7890c93da10a18342"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/onboard/SKILL.md": {
+    "mtime": 1777525641.6896405,
+    "hash": "543dc7f379f98f343677182d472f2fa2"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/source/skills/optimize/SKILL.md": {
+    "mtime": 1777525641.6896405,
+    "hash": "dc1e5afd85fb58f820ab716742acde9a"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/uncodixfy/SKILL.md": {
+    "mtime": 1777525641.8259757,
+    "hash": "ef1569559be0cae74a6ef0a15a41e8f9"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/uncodixfy/references/uncodixfy.md": {
+    "mtime": 1777525641.8268507,
+    "hash": "6a22f8e42c7abdf8ec6472b67a21d53e"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/SKILL.md": {
+    "mtime": 1777525641.7003717,
+    "hash": "6545583b0deb54a21efb9391730d0e14"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/README.md": {
+    "mtime": 1777525641.7003717,
+    "hash": "c962a6916dae4dc40200c4cf8fdd060a"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/skills/mcp2cli/SKILL.md": {
+    "mtime": 1777525641.7626295,
+    "hash": "233062fae3be09f4bea1491ee5fcbd76"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/design-taste-frontend/SKILL.md": {
+    "mtime": 1777525641.4340558,
+    "hash": "fb28c4450a0162882898437d2a29fbb2"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/frontend-design/implementation.md": {
+    "mtime": 1777525641.4362664,
+    "hash": "d48f8fdcaf03aa3c8a79d7d136d6ff92"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/frontend-design/SKILL.md": {
+    "mtime": 1777525641.4340558,
+    "hash": "a377840bcbc46753e0ca3baa84625550"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/frontend-design/evaluation.md": {
+    "mtime": 1777525641.4362664,
+    "hash": "37babc93f061932d996760ca62ce9c71"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/e2e-test/SKILL.md": {
+    "mtime": 1777525641.4340558,
+    "hash": "6c27f3a8e220c0ea8f480942bc00921b"
+  },
+  "/home/user/strapi-template-new-world-kids/qa/tests/README.md": {
+    "mtime": 1777525642.399107,
+    "hash": "d94ffeddea0db3d44316c0bb40c8ab7d"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/README.md": {
+    "mtime": 1777525642.1969764,
+    "hash": "dcd87c4274d9e23985821bca1340c7ca"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/AGENTS.md": {
+    "mtime": 1777525642.1969764,
+    "hash": "c8c84471ccb96822b2f336ca72ca2a6f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/README.md": {
+    "mtime": 1777525641.830988,
+    "hash": "48c6470d549fccb53c99e1b509638482"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/AGENTS.md": {
+    "mtime": 1777525641.830988,
+    "hash": "f0e5c2b19de23a296f6b1923ad724c5f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/__tests__/README.md": {
+    "mtime": 1777525641.8311071,
+    "hash": "46a6eb411931d7ce9ba712248a5110c6"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/content/en/shelter-built-to-last.mdx": {
+    "mtime": 1777525641.8499508,
+    "hash": "2a3858d502a554e875bd7f69ff795013"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/content/en/water-systems-field-note.mdx": {
+    "mtime": 1777525641.8499508,
+    "hash": "a76ff13147140dc11ea4c91b407f07fb"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/content/en/energy-that-stays-on.mdx": {
+    "mtime": 1777525641.848533,
+    "hash": "817d94065d0209a2b2c72e6fcbd3e5fd"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/content/en/food-forest-field-note.mdx": {
+    "mtime": 1777525641.8499508,
+    "hash": "b39ce774211b13a260a65fc5e02f5c0e"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/content/es/shelter-built-to-last.mdx": {
+    "mtime": 1777525641.8518417,
+    "hash": "149951eaaae377fc4b560de2ffe9d6a8"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/content/es/water-systems-field-note.mdx": {
+    "mtime": 1777525641.8518417,
+    "hash": "76c6fcf3fe8c6be257ce0f4c6e5a9792"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/content/es/energy-that-stays-on.mdx": {
+    "mtime": 1777525641.8499508,
+    "hash": "36925659a28c5fdfc145c26761b4b57f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/content/es/food-forest-field-note.mdx": {
+    "mtime": 1777525641.8518417,
+    "hash": "3dfc0268cb9848525fba8ff12a16608f"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/README.md": {
+    "mtime": 1777525642.125635,
+    "hash": "8b100c818c6f97de018f18fa2b2f3204"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/docker-compose.yml": {
+    "mtime": 1777525642.1430166,
+    "hash": "d064a66a9c2a9a2390870b1762b5dc99"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/AGENTS.md": {
+    "mtime": 1777525642.125635,
+    "hash": "b03f6f25b506625fc6fe3a1be37e8e7b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/public/robots.txt": {
+    "mtime": 1777525642.1430166,
+    "hash": "4d5c17190572544f878930e8a3a4c174"
+  },
+  "/home/user/strapi-template-new-world-kids/docs/authentication.md": {
+    "mtime": 1777525642.347809,
+    "hash": "4146fa302ef8e72b2c2103c054206491"
+  },
+  "/home/user/strapi-template-new-world-kids/docs/pages-hierarchy.md": {
+    "mtime": 1777525642.347809,
+    "hash": "a0ac42bc5a2db3fcc6424c5d1b6a89fb"
+  },
+  "/home/user/strapi-template-new-world-kids/docs/NWK_COPY_TIMELINE_AUDIT.md": {
+    "mtime": 1777525642.3457217,
+    "hash": "e8c17c16cf6741259a561446aaffb024"
+  },
+  "/home/user/strapi-template-new-world-kids/docs/page-builder.md": {
+    "mtime": 1777525642.347809,
+    "hash": "f6bd812a97e5edad210b973b6dc08086"
+  },
+  "/home/user/strapi-template-new-world-kids/docs/strapi-api-client.md": {
+    "mtime": 1777525642.347809,
+    "hash": "5f92410af3cc977a1855866e3aa8276a"
+  },
+  "/home/user/strapi-template-new-world-kids/docs/architecture.md": {
+    "mtime": 1777525642.347809,
+    "hash": "28d3c11bdcc385f1307e157ab18f7948"
+  },
+  "/home/user/strapi-template-new-world-kids/docs/strapi-types-usage.md": {
+    "mtime": 1777525642.347809,
+    "hash": "60cfe3d1324e638ef81f98d95bb8f0c0"
+  },
+  "/home/user/strapi-template-new-world-kids/docs/NWK_REAL_DATA_INTAKE.md": {
+    "mtime": 1777525642.347809,
+    "hash": "afa246a51af9e5d8f6ad56efe1f2a34b"
+  },
+  "/home/user/strapi-template-new-world-kids/docs/commands.md": {
+    "mtime": 1777525642.347809,
+    "hash": "ef9c068f57648a661569b1d689439969"
+  },
+  "/home/user/strapi-template-new-world-kids/docs/strapi-schemas.md": {
+    "mtime": 1777525642.347809,
+    "hash": "54e28f7fd28e6b40458e100c89cd8b82"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/public/trust/federal-tax-exemption.pdf": {
+    "mtime": 1777525642.203457,
+    "hash": "3ec917a08cfa614c5a7ecffb1033ee15"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/public/trust/signed-fiscal-sponsorship-agreement.pdf": {
+    "mtime": 1777525642.2711072,
+    "hash": "ff2fe4158432505eb152303628d06457"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/public/trust/hsi-determination-letter.pdf": {
+    "mtime": 1777525642.2351072,
+    "hash": "91256dd7b847762956ec34e71051df9a"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/public/trust/fiscal-sponsorship-letter.pdf": {
+    "mtime": 1777525642.2191072,
+    "hash": "9b3023d58fd97af13daf7d5a46f7d8d1"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/og-image.jpg": {
+    "mtime": 1777525641.6761327,
+    "hash": "08d75f584d056439b7a55460213bced0"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/favicon.svg": {
+    "mtime": 1777525641.6613748,
+    "hash": "847ac5d7c894c78779b636c4c0dff2b1"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/apple-touch-icon.png": {
+    "mtime": 1777525641.651107,
+    "hash": "f1cf24067680450532a5afcefb72afdc"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-images/inter-everywhere.png": {
+    "mtime": 1777525641.587107,
+    "hash": "32f3b02ad1a491efb605bc97894ba8eb"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-images/cardocalypse.png": {
+    "mtime": 1777525641.587107,
+    "hash": "1596065581a1d04b8074e2a239bba4b0"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-images/massive-icons.png": {
+    "mtime": 1777525641.635107,
+    "hash": "a1342e435e10006e8ddf8d714e8d6edc"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-images/lazy-cool.png": {
+    "mtime": 1777525641.615107,
+    "hash": "ec5d6cf4931a2d0b879f69061a4821db"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-images/bad-contrast.png": {
+    "mtime": 1777525641.587107,
+    "hash": "8e78d445b1f12f4e4253b70f4318fbe3"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-images/modal-abuse.png": {
+    "mtime": 1777525641.635107,
+    "hash": "32e550b1ff9d5052b835e5272dc81652"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-images/redundant-ux-writing.png": {
+    "mtime": 1777525641.6471071,
+    "hash": "d2fdc72ed4bf83e5ebe37b19025ff2d2"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-images/lazy-impact.png": {
+    "mtime": 1777525641.631107,
+    "hash": "6e5952fddc623712c25ec8ed330013ed"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-images/purple-gradients.png": {
+    "mtime": 1777525641.6471071,
+    "hash": "cd7fedf662f69e4d4ad0c17a9342ee45"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-images/layout-templates.png": {
+    "mtime": 1777525641.603107,
+    "hash": "fce5977cb48b59f56fc88480c560a6ae"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/antipattern-images/thick-border-cards.png": {
+    "mtime": 1777525641.651107,
+    "hash": "38d11c241969ac8bd727c1c4036cdbce"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/pi-logo.svg": {
+    "mtime": 1777525641.655107,
+    "hash": "86346f89e399a89d2cc24a5c22af54ca"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/cursor-logo.png": {
+    "mtime": 1777525641.6547992,
+    "hash": "e30e82baafbdcceaeadf3f0050dfc16c"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/openai-logo.png": {
+    "mtime": 1777525641.655107,
+    "hash": "8f9ca1f5ff7e5e69a68328a03b05998f"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/gemini-logo.png": {
+    "mtime": 1777525641.655107,
+    "hash": "950f53246ecf144f2f12df50a3983ced"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/form.after.webp": {
+    "mtime": 1777525641.655107,
+    "hash": "a7544eb71919cd8b40e1071dd449ddcc"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/antigravity-logo.png": {
+    "mtime": 1777525641.651107,
+    "hash": "e9ce68853c88f7e60c353b010ff28851"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/dashboard.before.webp": {
+    "mtime": 1777525641.6547992,
+    "hash": "e80070803178b46a85aa2e6db26ee41c"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/opencode-logo.png": {
+    "mtime": 1777525641.655107,
+    "hash": "f3fcf7e7aaa87998bc289908a5eaf7c3"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/diamond.svg": {
+    "mtime": 1777525641.655107,
+    "hash": "73222cb328f992bcb32b427c7914855d"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/form.before.webp": {
+    "mtime": 1777525641.655107,
+    "hash": "7613c21cefa31cbd65d26765f363b624"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/dashboard.after.webp": {
+    "mtime": 1777525641.6547992,
+    "hash": "778528e6c3efbe82e6f37fc64870a0d5"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/github-logo.png": {
+    "mtime": 1777525641.655107,
+    "hash": "afa6af390e99f8bdf4d446623d789316"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/kiro-logo.png": {
+    "mtime": 1777525641.655107,
+    "hash": "83d5199aeff347b3c5f714c82946d82c"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/landing.after.webp": {
+    "mtime": 1777525641.655107,
+    "hash": "6bbf719b7063832498c064352bb48ecf"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/landing.before.webp": {
+    "mtime": 1777525641.655107,
+    "hash": "01172a92d83f03d20bc67a9d3b6ae525"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/impeccable-design/public/assets/claude-logo.png": {
+    "mtime": 1777525641.6547992,
+    "hash": "dca172d72adc935494f2fa6310c7e1e1"
+  },
+  "/home/user/strapi-template-new-world-kids/agent-skills/local/mcp2cli-skill/assets/hero.png": {
+    "mtime": 1777525641.7551072,
+    "hash": "18931afba5b8118dca1efa9a489e3f55"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/public/images/broken-image.png": {
+    "mtime": 1777525642.2015407,
+    "hash": "6e1b49edbe1162c1b82e6d7262d1b5bf"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/ui/public/images/logo.svg": {
+    "mtime": 1777525642.203457,
+    "hash": "dfb6a57a9a75342e3be6ad25700be1c6"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/public/images/banner-light.png": {
+    "mtime": 1777525641.871107,
+    "hash": "4c4ab05d7c918c34175972ae77d162a9"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/public/images/logo.svg": {
+    "mtime": 1777525641.8749518,
+    "hash": "c0e8b8ad1b349cb3456ec86eb03de9b5"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/public/images/banner.png": {
+    "mtime": 1777525641.8749518,
+    "hash": "b8431ede6315437ff7085e1ce7cf619b"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/public/thumbnails/laptop-computer-on-table.jpg": {
+    "mtime": 1777525642.007107,
+    "hash": "a8562205f2243db9874d82da882ad829"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/public/thumbnails/pen-writing-on-notebook.jpg": {
+    "mtime": 1777525642.083107,
+    "hash": "94f97f25429daba93a63e1961c7e22d2"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/blog/public/thumbnails/laptop-ai-workspace.jpg": {
+    "mtime": 1777525641.967107,
+    "hash": "70fe5336500fa39f26116ffac53a1a10"
+  },
+  "/home/user/strapi-template-new-world-kids/apps/strapi/favicon.png": {
+    "mtime": 1777525642.1430166,
+    "hash": "c7c8fc4422064a5eca0e863060ebff8b"
+  }
+}

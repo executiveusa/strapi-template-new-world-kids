@@ -1,0 +1,35 @@
+{
+  "name": "@nwkids/mcp-server",
+  "version": "1.0.0",
+  "description": "NWKids Infrastructure MCP Server - Grant hunting, content publishing, impact logging, and Hermes status for Claude Code, ChatGPT, Cursor, and any MCP-compatible client",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "nwkids-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "nwkids",
+    "hermes",
+    "nonprofit",
+    "ai-tools"
+  ],
+  "author": "New World Kids",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4",
+    "@supabase/supabase-js": "^2.105.4",
+    "zod": "^3.25.67",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.6",
+    "typescript": "^6.0.3"
+  }
+}
