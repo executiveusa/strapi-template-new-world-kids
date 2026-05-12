@@ -1,0 +1,3 @@
+[submodule "agent-skills/local/jcodemunch-mcp"]
+	path = agent-skills/local/jcodemunch-mcp
+	url = https://github.com/jgravelle/jcodemunch-mcp.git

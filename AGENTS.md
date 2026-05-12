@@ -56,13 +56,38 @@ pnpm dev:strapi
 
 ## Skills and MCP
 
-- `jcodemunch` for token-efficient symbol discovery
+### Mandatory for All Agents
+
+- **`jcodemunch`** — Token-efficient symbol discovery (95% reduction in code-reading tokens)
+  - **STATUS**: REQUIRED for all coding tasks
+  - **WHY**: Cuts token usage from ~40K/scan to ~2K by fetching exact symbols instead of reading entire files
+  - **SETUP**: See `.claude/jcodemunch.md` for installation and agent configuration
+  - **LOCATION**: `agent-skills/local/jcodemunch-mcp/`
+  - **VERIFICATION**: Run `jcodemunch-mcp install-status` before starting work
+
+### Optional/Context-Specific
+
 - `supabase` for data and ledger work
 - `mcp2cli` for bridging MCP tools to CLI workflows
 - `gbrain` for memory and retrieval once installed in the operator environment
 
+### Agent Skills Directory
+
 The project-local `agent-skills/` directory is the curated holding area for the requested skills and reference repos.
+
+**jcodemunch-mcp is already cloned at**: `agent-skills/local/jcodemunch-mcp/`
+
 Material agent actions should be mirrored to a public ledger or durable report sink before broader automation is enabled.
+
+### Token Efficiency Mandate
+
+**Before reading any code file with Read tool, agents MUST**:
+1. Check if jCodeMunch is indexed (`get_watch_status` or `jcodemunch-mcp config --check`)
+2. Use `search_symbols` to locate the target function/class
+3. Use `get_symbol_source` to fetch only the needed code
+4. Use `format="auto"` on all jCodeMunch tool calls for MUNCH compact encoding
+
+Reading entire files is **token incineration**. Use precision retrieval.
 
 ---
 

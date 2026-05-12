@@ -183,6 +183,7 @@ heartbeat: every 4 hours
 reports_to: hermes
 kpi_owner: true
 wiki_maintainer: true
+tools: [jcodemunch, graphify, supabase]
 ```
 
 **Grant Hunter Agent** — Dedicated to finding and writing grants.
@@ -191,7 +192,7 @@ role: grant-hunter
 scope: cross-repo (serves all NWKids programs)
 heartbeat: daily
 reports_to: hermes
-tools: [web_search, candid_mcp, skip_grants_mcp, supabase]
+tools: [jcodemunch, web_search, candid_mcp, skip_grants_mcp, supabase]
 ```
 
 **Content Agent** — Social media, bilingual.
@@ -200,8 +201,25 @@ role: content-engine
 scope: cross-repo
 heartbeat: 3x/week (Mon/Wed/Fri 8am)
 reports_to: hermes
-tools: [supabase, postiz_mcp]
+tools: [jcodemunch, supabase, postiz_mcp]
 ```
+
+### Mandatory Tools for All Agents
+
+Every agent in the NWKids portfolio MUST have access to:
+
+1. **jcodemunch** — Token-efficient symbol discovery
+   - 95% reduction in code-reading tokens
+   - Use `search_symbols` → `get_symbol_source` instead of Read
+   - Configuration: See `.claude/jcodemunch.md`
+   - Status: Already cloned at `agent-skills/local/jcodemunch-mcp/`
+
+2. **graphify** — Architectural overview and community detection
+   - Check `graphify-out/GRAPH_REPORT.md` before file operations
+   - 45.3x token reduction for portfolio walks
+   - Pair with jcodemunch: graphify for structure, jcodemunch for precision
+
+Without these tools, agents waste 95%+ of their token budget on unnecessary file reads.
 
 ---
 
