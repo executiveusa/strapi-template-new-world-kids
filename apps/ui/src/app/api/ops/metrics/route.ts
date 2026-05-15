@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server"
 
-import { createSupabaseServerClient } from "@/lib/supabase"
+import { createSupabaseServerClient, hasSupabaseServerEnv } from "@/lib/supabase"
 
+export const dynamic = "force-dynamic"
 export const revalidate = 60
 
 type AgentAction = {
@@ -34,6 +35,35 @@ type WeeklyReport = {
 const GRANT_ACTION_TYPES = ["grant_tracked", "grant_draft"] as const
 
 export async function GET() {
+  if (!hasSupabaseServerEnv()) {
+    return NextResponse.json(
+      {
+        grants: {
+          tracked: 0,
+          awarded: 0,
+          pipeline_usd: 0,
+          awarded_usd: 0,
+          win_rate: 0,
+        },
+        content: {
+          posts_published: 0,
+          weeks_active: 0,
+        },
+        agent: {
+          last_heartbeat: null,
+          actions_7d: 0,
+          actions_30d: 0,
+          recent: [],
+        },
+        programs: [],
+        weekly: null,
+        generated_at: new Date().toISOString(),
+        disabled_reason: "Supabase environment variables are not configured.",
+      },
+      { status: 503 }
+    )
+  }
+
   const supabase = createSupabaseServerClient()
 
   try {
