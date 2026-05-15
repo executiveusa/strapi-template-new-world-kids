@@ -208,7 +208,7 @@ export function TimelineSection() {
       />
 
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <div ref={headerRef} className="mb-24 max-w-3xl">
+        <div ref={headerRef} className="mb-16 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={isHeaderInView ? { opacity: 1, x: 0 } : {}}
@@ -217,7 +217,7 @@ export function TimelineSection() {
           >
             <div className="h-px w-10 bg-[#c9a84c]" />
             <span className="text-xs tracking-[0.22em] text-[#c9a84c] uppercase">
-              Building in public
+              Proof before polish
             </span>
           </motion.div>
 
@@ -227,11 +227,9 @@ export function TimelineSection() {
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
             className="font-serif text-3xl leading-tight font-semibold tracking-tight text-white md:text-5xl"
           >
-            This is not a concept deck.
+            The mission gets clearer
             <br />
-            <span className="text-[#c9a84c]">
-              This is the actual build path.
-            </span>
+            <span className="text-[#c9a84c]">when you can walk the timeline.</span>
           </motion.h2>
 
           <motion.p
@@ -240,10 +238,44 @@ export function TimelineSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="mt-6 text-lg leading-8 text-white/56"
           >
-            Every season marks a real turn in the project: land restoration,
-            community trust, plant growth, fundraising pressure, and the move
-            toward a fully operating learning center.
+            Donors should not have to guess whether this work is real. Every
+            season marks a visible turn in the build: restoring land, earning
+            community trust, growing food, designing water and energy systems,
+            and moving toward a fully operating learning center.
           </motion.p>
+        </div>
+
+        <div className="mb-16 grid gap-4 lg:grid-cols-4">
+          {[
+            {
+              title: "Food",
+              body: "The food forest is the first proof layer. If the land is alive, the story gets real fast.",
+            },
+            {
+              title: "Water",
+              body: "Capture, storage, and irrigation move this from inspiration into survival logic.",
+            },
+            {
+              title: "Energy",
+              body: "Resilient power is part of the curriculum, not an afterthought hidden in operations.",
+            },
+            {
+              title: "Shelter",
+              body: "Natural building turns the site itself into a classroom students can shape and maintain.",
+            },
+          ].map((pillar) => (
+            <article
+              key={pillar.title}
+              className="rounded-[24px] border border-white/8 bg-white/[0.03] p-5"
+            >
+              <p className="text-xs tracking-[0.22em] text-[#c9a84c] uppercase">
+                {pillar.title}
+              </p>
+              <p className="mt-3 text-sm leading-7 text-white/58">
+                {pillar.body}
+              </p>
+            </article>
+          ))}
         </div>
 
         <div className="relative">
@@ -280,7 +312,9 @@ export function TimelineSection() {
             <p className="mt-4 text-sm leading-8 text-white/56">
               The project did not arrive all at once. It grew through repeated
               presence, practical work, and a willingness to keep going before
-              the support structure was fully in place.
+              the support structure was fully in place. That matters because
+              donors are not funding a theory. They are helping finish a real,
+              already-moving system.
             </p>
           </div>
           <div>
@@ -288,9 +322,10 @@ export function TimelineSection() {
               What happens next
             </p>
             <p className="mt-4 text-sm leading-8 text-white/56">
-              The next public milestone is straightforward: complete the site,
-              open the first student cohort, and keep the operating story
-              visible as Hermes and the learning center come fully online.
+              The next public milestone is straightforward: complete the water,
+              energy, and shelter layers around the living classroom, open the
+              first student cohort, and keep the operating story visible as
+              Hermes and the learning center come fully online.
             </p>
           </div>
         </motion.div>

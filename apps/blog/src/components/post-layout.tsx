@@ -16,7 +16,7 @@ interface PostLayoutProps {
 }
 
 export function PostLayout({
-  post: { source, rawContent, thumbnail, title, slug, prevPost, nextPost },
+  post: { source, rawContent, thumbnail, title, slug, prevPost, nextPost, tags },
   locale,
 }: PostLayoutProps) {
   return (
@@ -36,6 +36,7 @@ export function PostLayout({
               content={rawContent}
               locale={locale}
               url={`${siteConfig.url}/${locale}/post/${slug}`}
+              tags={tags}
             />
           </PostSection>
           <PostSection>

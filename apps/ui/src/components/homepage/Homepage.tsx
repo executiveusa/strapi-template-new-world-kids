@@ -14,9 +14,9 @@ export function Homepage() {
     <main>
       <NonprofitHero />
       <ClaritySection />
+      <TimelineSection />
       <MissionSection />
       <ProgramsSection />
-      <TimelineSection />
       <ProofSection />
       <TrustSection />
       <SupportSection />

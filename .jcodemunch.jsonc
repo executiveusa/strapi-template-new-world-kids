@@ -35,11 +35,6 @@
       "description": "MDX journal content and localized blog copy"
     },
     {
-      "name": "strapi",
-      "paths": ["apps/strapi/src/**"],
-      "description": "Legacy and transition Strapi content types, services, and controllers"
-    },
-    {
       "name": "packages",
       "paths": ["packages/**"],
       "description": "Shared workspace packages (localization, ui, config)"
@@ -67,7 +62,6 @@
     "**/build/**",
     "**/*.lock",
     "agent-skills/external/**",
-    "apps/strapi/src/migrations/**",
     "ops/reports/**"
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "name": "new-world-kids-browser-control",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Local runtime for browser automation smoke tests and CDP flows.",
+  "dependencies": {
+    "@playwright/test": "^1.53.2"
+  }
+}

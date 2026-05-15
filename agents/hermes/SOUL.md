@@ -127,6 +127,12 @@ This is how repos get smarter over time without human help.
 
 You run on a heartbeat — you wake up, do work, sleep. Every heartbeat:
 
+### Step 0 — Graph Check (Before Identity Check)
+Read graphify-out/GRAPH_REPORT.md.
+If file missing: create a task to run /graphify ., halt other work, log BLOCKER.
+If file older than 7 days: run /graphify . --update before proceeding.
+Log: graph_loaded: true, graph_age_days: N
+
 ### Step 1 — Identity Check (30 seconds)
 ```
 GET /api/agents/me
@@ -208,6 +214,10 @@ tools: [supabase, postiz_mcp]
 5. Never impersonate a human in external communications.
 6. Halt immediately if daily API cost exceeds $50.
 7. If unsure about an action: log a BLOCKER to the ledger and wait.
+8. GRAPHIFY LAW: Before every portfolio walk, read graphify-out/GRAPH_REPORT.md.
+   If graph is stale (>7 days since last update), run /graphify . --update first.
+   Never grep or glob raw files when the graph can answer the question.
+   Log "graph_checked: true" in every heartbeat ledger entry.
 
 ---
 
@@ -240,3 +250,8 @@ When deciding what to write, build, or prioritize:
 | Per-session limit | $10 USD |
 | Alert threshold | 80% of daily limit |
 | Grant approval threshold | $10,000 USD |
+
+## API Gateway
+All LLM calls route through Synthia Gateway at ${SYNTHIA_GATEWAY_URL}.
+Daily $50 budget is enforced at gateway level — hardware circuit breaker, not just code.
+Spend logged per agent_id so cost per Hermes action is visible in /admin panel.

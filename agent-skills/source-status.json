@@ -80,6 +80,16 @@
         "status":  "cloned"
     },
     {
+        "name":  "A2UI",
+        "url":  "https://github.com/google/A2UI.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "CopilotKit",
+        "url":  "https://github.com/CopilotKit/CopilotKit.git",
+        "status":  "cloned"
+    },
+    {
         "name":  "superpowers",
         "url":  "C:\\Users\\execu\\.agents\\skills\\paulsuperpowers",
         "status":  "copied"
@@ -113,5 +123,15 @@
         "name":  "impeccable-design",
         "url":  "C:\\Users\\execu\\.agents\\skills\\impeccable-design",
         "status":  "copied"
+    },
+    {
+        "name":  "a2ui-standard",
+        "url":  "agent-skills\\local\\a2ui-standard",
+        "status":  "created"
+    },
+    {
+        "name":  "copilotkit-ag-ui-standard",
+        "url":  "agent-skills\\local\\copilotkit-ag-ui-standard",
+        "status":  "created"
     }
 ]

@@ -4,12 +4,14 @@ import { Loader2Icon, SendIcon } from 'lucide-react'
 import type { FormEvent } from 'react'
 import { useState } from 'react'
 
+import { A2UIRenderer, type A2UIDocument } from '@/components/a2ui-renderer'
 import { Button } from '@/components/ui/button'
 
 type ChatMessage = {
   role: 'user' | 'assistant'
   content: string
   citations?: string[]
+  ui?: A2UIDocument
 }
 
 interface PostArticleChatProps {
@@ -17,6 +19,7 @@ interface PostArticleChatProps {
   content: string
   locale: string
   url: string
+  tags?: string[]
 }
 
 export function PostArticleChat({
@@ -24,6 +27,7 @@ export function PostArticleChat({
   content,
   locale,
   url,
+  tags,
 }: PostArticleChatProps) {
   const [question, setQuestion] = useState('')
   const [messages, setMessages] = useState<ChatMessage[]>([])
@@ -54,6 +58,7 @@ export function PostArticleChat({
           content,
           locale,
           url,
+          tags,
           question: trimmed,
         }),
       })
@@ -65,6 +70,7 @@ export function PostArticleChat({
       const payload = (await response.json()) as {
         answer: string
         citations?: string[]
+        ui?: A2UIDocument
       }
 
       setMessages((previous) => [
@@ -73,6 +79,7 @@ export function PostArticleChat({
           role: 'assistant',
           content: payload.answer,
           citations: payload.citations,
+          ui: payload.ui,
         },
       ])
     } catch (error) {
@@ -120,7 +127,12 @@ export function PostArticleChat({
                 : 'Hermes'}
             </div>
             <div className="text-sm leading-7 text-foreground">{message.content}</div>
-            {message.citations && message.citations.length > 0 && (
+            {message.ui && (
+              <div className="mt-4">
+                <A2UIRenderer document={message.ui} />
+              </div>
+            )}
+            {message.citations && message.citations.length > 0 && !message.ui && (
               <div className="mt-3 space-y-2 border-t border-border pt-3">
                 {message.citations.map((citation) => (
                   <div key={citation} className="text-xs leading-6 text-muted-foreground">
