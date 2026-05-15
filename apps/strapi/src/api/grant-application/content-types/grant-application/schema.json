@@ -1,0 +1,95 @@
+{
+  "kind": "collectionType",
+  "collectionName": "grant_applications",
+  "info": {
+    "singularName": "grant-application",
+    "pluralName": "grant-applications",
+    "displayName": "Grant Application",
+    "description": "Track grant applications and their status"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "grantName": {
+      "type": "string",
+      "required": true
+    },
+    "funderOrganization": {
+      "type": "string",
+      "required": true
+    },
+    "fundingAmount": {
+      "type": "decimal"
+    },
+    "deadline": {
+      "type": "datetime",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["discovered", "researching", "drafting", "submitted", "under-review", "awarded", "rejected", "withdrawn"],
+      "default": "discovered",
+      "required": true
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": ["low", "medium", "high", "urgent"],
+      "default": "medium"
+    },
+    "grantUrl": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "fitAssessment": {
+      "type": "richtext"
+    },
+    "draftApplication": {
+      "type": "richtext"
+    },
+    "submissionNotes": {
+      "type": "richtext"
+    },
+    "aiGeneratedContent": {
+      "type": "json"
+    },
+    "automationLogs": {
+      "type": "json"
+    },
+    "submittedAt": {
+      "type": "datetime"
+    },
+    "responseReceivedAt": {
+      "type": "datetime"
+    },
+    "awardAmount": {
+      "type": "decimal"
+    },
+    "attachments": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images", "files", "videos"]
+    },
+    "tags": {
+      "type": "json"
+    },
+    "contactPerson": {
+      "type": "string"
+    },
+    "contactEmail": {
+      "type": "email"
+    },
+    "scheduledSubmission": {
+      "type": "datetime"
+    },
+    "autoSubmit": {
+      "type": "boolean",
+      "default": false
+    },
+    "skipPlatformUrl": {
+      "type": "string"
+    }
+  }
+}

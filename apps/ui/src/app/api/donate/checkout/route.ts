@@ -132,17 +132,42 @@ export async function PUT(request: NextRequest) {
           mode: session.mode,
         })
 
-        // TODO: Update donations table with session details
-        // const donation = {
-        //   amount: (session.amount_total || 0) / 100,
-        //   donor_email: session.customer_email,
-        //   payment_provider: 'stripe',
-        //   payment_provider_id: session.payment_intent,
-        //   payment_status: 'completed',
-        //   frequency: session.metadata?.frequency || 'one-time',
-        //   project_id: session.metadata?.projectId || 'general',
-        // }
-        // await db.donations.create(donation)
+        // Save donation to Strapi
+        try {
+          const strapiUrl = process.env.STRAPI_URL || 'http://localhost:1337'
+          const strapiToken = process.env.STRAPI_TOKEN
+
+          await fetch(`${strapiUrl}/api/donations`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              ...(strapiToken && { Authorization: `Bearer ${strapiToken}` }),
+            },
+            body: JSON.stringify({
+              data: {
+                amount: (session.amount_total || 0) / 100,
+                currency: session.currency || 'usd',
+                donorEmail: session.customer_email,
+                donorName: session.customer_details?.name,
+                paymentProvider: 'stripe',
+                stripeSessionId: session.id,
+                stripePaymentIntentId: session.payment_intent as string,
+                stripeSubscriptionId: session.subscription as string | undefined,
+                paymentStatus: 'completed',
+                frequency: session.metadata?.frequency || 'one-time',
+                projectId: session.metadata?.projectId || 'general',
+                tier: session.metadata?.tier,
+                isRecurring: session.mode === 'subscription',
+                metadata: session.metadata,
+                source: 'website',
+                completedAt: new Date().toISOString(),
+              },
+            }),
+          })
+        } catch (error) {
+          console.error('Failed to save donation to Strapi:', error)
+          // Don't fail the webhook - Stripe already processed payment
+        }
 
         break
       }
@@ -155,13 +180,37 @@ export async function PUT(request: NextRequest) {
           subscriptionId: invoice.subscription,
         })
 
-        // TODO: Track subscription payment in database
-        // await db.subscriptionPayments.create({
-        //   subscription_id: invoice.subscription,
-        //   invoice_id: invoice.id,
-        //   amount: invoice.amount_paid / 100,
-        //   payment_status: 'succeeded',
-        // })
+        // Track subscription payment in Strapi
+        try {
+          const strapiUrl = process.env.STRAPI_URL || 'http://localhost:1337'
+          const strapiToken = process.env.STRAPI_TOKEN
+
+          await fetch(`${strapiUrl}/api/donations`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              ...(strapiToken && { Authorization: `Bearer ${strapiToken}` }),
+            },
+            body: JSON.stringify({
+              data: {
+                amount: invoice.amount_paid / 100,
+                currency: invoice.currency || 'usd',
+                donorEmail: invoice.customer_email,
+                paymentProvider: 'stripe',
+                stripeSubscriptionId: invoice.subscription as string,
+                paymentStatus: 'completed',
+                frequency: 'monthly', // From subscription
+                projectId: 'general',
+                isRecurring: true,
+                metadata: { invoiceId: invoice.id },
+                source: 'website',
+                completedAt: new Date().toISOString(),
+              },
+            }),
+          })
+        } catch (error) {
+          console.error('Failed to log subscription payment:', error)
+        }
 
         break
       }
@@ -174,14 +223,38 @@ export async function PUT(request: NextRequest) {
           reason: invoice.last_finalization_error?.message,
         })
 
-        // TODO: Log failed subscription payment
-        // await db.subscriptionPayments.create({
-        //   subscription_id: invoice.subscription,
-        //   invoice_id: invoice.id,
-        //   amount: invoice.amount_due / 100,
-        //   payment_status: 'failed',
-        //   failure_reason: invoice.last_finalization_error?.message,
-        // })
+        // Log failed subscription payment in Strapi
+        try {
+          const strapiUrl = process.env.STRAPI_URL || 'http://localhost:1337'
+          const strapiToken = process.env.STRAPI_TOKEN
+
+          await fetch(`${strapiUrl}/api/donations`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              ...(strapiToken && { Authorization: `Bearer ${strapiToken}` }),
+            },
+            body: JSON.stringify({
+              data: {
+                amount: invoice.amount_due / 100,
+                currency: invoice.currency || 'usd',
+                donorEmail: invoice.customer_email,
+                paymentProvider: 'stripe',
+                stripeSubscriptionId: invoice.subscription as string,
+                paymentStatus: 'failed',
+                frequency: 'monthly',
+                projectId: 'general',
+                isRecurring: true,
+                metadata: { invoiceId: invoice.id },
+                failureReason: invoice.last_finalization_error?.message,
+                failedAt: new Date().toISOString(),
+                source: 'website',
+              },
+            }),
+          })
+        } catch (error) {
+          console.error('Failed to log failed payment:', error)
+        }
 
         break
       }
@@ -193,11 +266,51 @@ export async function PUT(request: NextRequest) {
           cancelledAt: subscription.canceled_at,
         })
 
-        // TODO: Mark subscription as cancelled in database
-        // await db.subscriptions.update(
-        //   { stripe_subscription_id: subscription.id },
-        //   { status: 'cancelled', cancelled_at: new Date(subscription.canceled_at! * 1000) }
-        // )
+        // Mark subscription as cancelled in Strapi
+        try {
+          const strapiUrl = process.env.STRAPI_URL || 'http://localhost:1337'
+          const strapiToken = process.env.STRAPI_TOKEN
+
+          // Find donations with this subscription ID and update status
+          const response = await fetch(
+            `${strapiUrl}/api/donations?filters[stripeSubscriptionId][$eq]=${subscription.id}&pagination[limit]=100`,
+            {
+              headers: {
+                'Content-Type': 'application/json',
+                ...(strapiToken && { Authorization: `Bearer ${strapiToken}` }),
+              },
+            }
+          )
+
+          const { data: donations } = await response.json()
+
+          // Update each donation record to mark as cancelled
+          if (donations && donations.length > 0) {
+            const cancelledAt = new Date(subscription.canceled_at! * 1000).toISOString()
+
+            for (const donation of donations) {
+              await fetch(`${strapiUrl}/api/donations/${donation.id}`, {
+                method: 'PUT',
+                headers: {
+                  'Content-Type': 'application/json',
+                  ...(strapiToken && { Authorization: `Bearer ${strapiToken}` }),
+                },
+                body: JSON.stringify({
+                  data: {
+                    paymentStatus: 'cancelled',
+                    metadata: {
+                      ...donation.attributes.metadata,
+                      cancelledAt,
+                      cancelReason: subscription.cancellation_details?.reason,
+                    },
+                  },
+                }),
+              })
+            }
+          }
+        } catch (error) {
+          console.error('Failed to mark subscription as cancelled:', error)
+        }
 
         break
       }
