@@ -1,334 +1,70 @@
 "use client"
 
-import { motion, useInView, useScroll, useTransform } from "framer-motion"
-import Image from "next/image"
-import { useRef, useState } from "react"
+import { motion } from "framer-motion"
 
-import {
-  timelineEntries,
-  type TimelineEntry,
-  verificationLabels,
-} from "../site/siteData"
-
-const STATUS_STYLES = {
-  current: {
-    dot: "#C9A84C",
-    label: "Now",
-    labelBg: "rgba(201,168,76,0.14)",
-    labelColor: "#C9A84C",
-  },
-  future: {
-    dot: "#4CAF50",
-    label: "Planned",
-    labelBg: "rgba(76,175,80,0.12)",
-    labelColor: "#7cd27d",
-  },
-  past: {
-    dot: "#8B949E",
-    label: "Completed",
-    labelBg: "rgba(139,148,158,0.12)",
-    labelColor: "#c4ccd4",
-  },
-} as const
-
-const PLACEHOLDER_GRADIENTS = [
-  "linear-gradient(135deg, #163121 0%, #2E5B3C 100%)",
-  "linear-gradient(135deg, #101f17 0%, #c9a84c 100%)",
-  "linear-gradient(135deg, #11281c 0%, #34744c 100%)",
-  "linear-gradient(135deg, #162117 0%, #487760 100%)",
-] as const
-
-function TimelineCard({
-  entry,
-  index,
-}: {
-  entry: TimelineEntry
-  index: number
-}) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-80px" })
-  const isEven = index % 2 === 0
-  const style = STATUS_STYLES[entry.status]
-  const [imgError, setImgError] = useState(false)
-
-  return (
-    <div
-      ref={ref}
-      className={`relative flex flex-col gap-6 md:gap-14 ${
-        isEven ? "md:flex-row" : "md:flex-row-reverse"
-      }`}
-    >
-      <motion.div
-        initial={{ opacity: 0, x: isEven ? -32 : 32 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="flex-1 md:py-8"
-      >
-        <article
-          className="rounded-[30px] p-8"
-          style={{
-            background:
-              entry.status === "current"
-                ? "rgba(201,168,76,0.06)"
-                : "rgba(255,255,255,0.03)",
-            border:
-              entry.status === "current"
-                ? "1px solid rgba(201,168,76,0.25)"
-                : "1px solid rgba(255,255,255,0.08)",
-          }}
-        >
-          <div className="mb-5 flex items-center gap-3">
-            <span
-              className="rounded-full px-3 py-1 font-mono text-[10px] tracking-[0.2em] uppercase"
-              style={{
-                background: style.labelBg,
-                color: style.labelColor,
-              }}
-            >
-              {style.label}
-            </span>
-            <span className="text-xs tracking-[0.2em] text-white/35 uppercase">
-              {entry.season} | {entry.year}
-            </span>
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] tracking-[0.18em] text-white/55 uppercase">
-              {verificationLabels[entry.sourceStatus]}
-            </span>
-          </div>
-
-          <h3 className="font-serif text-2xl font-semibold text-white md:text-3xl">
-            {entry.title}
-          </h3>
-          <p className="mt-3 text-sm font-medium tracking-[0.02em] text-[#c9a84c]">
-            {entry.tagline}
-          </p>
-          <p className="mt-4 text-sm leading-8 text-white/60">{entry.body}</p>
-
-          <ul className="mt-6 space-y-3">
-            {entry.highlights.map((highlight) => (
-              <li
-                key={highlight}
-                className="flex items-start gap-3 text-sm leading-7 text-white/56"
-              >
-                <span
-                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
-                  style={{ background: style.dot }}
-                />
-                <span>{highlight}</span>
-              </li>
-            ))}
-          </ul>
-
-          <p className="mt-6 rounded-[20px] border border-white/8 bg-black/15 px-4 py-3 text-xs leading-6 text-white/46">
-            {entry.sourceNote}
-          </p>
-        </article>
-      </motion.div>
-
-      <div className="hidden shrink-0 flex-col items-center pt-8 md:flex">
-        <div
-          className="h-5 w-5 rounded-full"
-          style={{
-            background: style.dot,
-            boxShadow:
-              entry.status === "current"
-                ? "0 0 0 6px rgba(201,168,76,0.16), 0 0 0 12px rgba(201,168,76,0.06)"
-                : "none",
-          }}
-        />
-      </div>
-
-      <motion.div
-        initial={{ opacity: 0, x: isEven ? 32 : -32 }}
-        animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="flex-1 md:py-8"
-      >
-        <div
-          className="relative overflow-hidden rounded-[30px]"
-          style={{ aspectRatio: "16 / 9" }}
-        >
-          {entry.photo && !imgError ? (
-            <Image
-              src={entry.photo}
-              alt={entry.photoAlt || entry.title}
-              fill
-              className="object-cover"
-              onError={() => setImgError(true)}
-              sizes="(max-width: 768px) 100vw, 45vw"
-            />
-          ) : (
-            <div
-              className="absolute inset-0 flex flex-col items-center justify-center"
-              style={{
-                background:
-                  PLACEHOLDER_GRADIENTS[index % PLACEHOLDER_GRADIENTS.length],
-              }}
-            >
-              <span className="text-[10px] tracking-[0.2em] text-white/45 uppercase">
-                {entry.season}
-              </span>
-              <span className="mt-2 font-serif text-4xl font-semibold text-white/16">
-                {entry.year}
-              </span>
-              <span className="absolute right-4 bottom-4 rounded-full bg-black/30 px-3 py-1 text-[10px] tracking-[0.18em] text-white/40 uppercase">
-                {verificationLabels[entry.imageStatus]} photo
-              </span>
-            </div>
-          )}
-        </div>
-      </motion.div>
-    </div>
-  )
-}
+import { timelineEntries } from "../site/siteData"
 
 export function TimelineSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const headerRef = useRef<HTMLDivElement>(null)
-  const isHeaderInView = useInView(headerRef, { once: true, margin: "-100px" })
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  })
-
-  const lineScaleY = useTransform(scrollYProgress, [0.05, 0.95], [0, 1])
-
   return (
-    <section
-      id="timeline"
-      ref={containerRef}
-      className="relative overflow-hidden bg-[#080f0a] py-32"
-    >
-      <div
-        className="absolute inset-x-0 top-0 h-px"
-        style={{
-          background:
-            "linear-gradient(to right, transparent, rgba(201,168,76,0.24), transparent)",
-        }}
-      />
+    <section id="timeline" className="bg-[#080f0a] px-4 py-16 md:px-8">
+      <div className="mx-auto max-w-7xl">
+        <h2 className="text-center font-serif text-3xl text-white md:text-5xl">
+          From bare soil to food forest
+        </h2>
+        <p className="mt-3 text-center text-white/70">
+          6 seasons of building something real
+        </p>
 
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <div ref={headerRef} className="mb-16 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={isHeaderInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="mb-8 flex items-center gap-3"
-          >
-            <div className="h-px w-10 bg-[#c9a84c]" />
-            <span className="text-xs tracking-[0.22em] text-[#c9a84c] uppercase">
-              Proof before polish
-            </span>
-          </motion.div>
+        <div className="relative mt-10">
+          <div className="absolute top-12 right-0 left-0 h-px bg-[#c9a84c]/40" />
+          <div className="hide-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4">
+            {timelineEntries.map((entry) => {
+              const statusTone =
+                entry.status === "past"
+                  ? "bg-emerald-500/20 text-emerald-300"
+                  : entry.status === "current"
+                    ? "bg-[#c9a84c]/20 text-[#f4d98a]"
+                    : "bg-white/10 text-white/70"
 
-          <motion.h2
-            initial={{ opacity: 0, y: 24 }}
-            animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-3xl leading-tight font-semibold tracking-tight text-white md:text-5xl"
-          >
-            The mission gets clearer
-            <br />
-            <span className="text-[#c9a84c]">when you can walk the timeline.</span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="mt-6 text-lg leading-8 text-white/56"
-          >
-            Donors should not have to guess whether this work is real. Every
-            season marks a visible turn in the build: restoring land, earning
-            community trust, growing food, designing water and energy systems,
-            and moving toward a fully operating learning center.
-          </motion.p>
-        </div>
-
-        <div className="mb-16 grid gap-4 lg:grid-cols-4">
-          {[
-            {
-              title: "Food",
-              body: "The food forest is the first proof layer. If the land is alive, the story gets real fast.",
-            },
-            {
-              title: "Water",
-              body: "Capture, storage, and irrigation move this from inspiration into survival logic.",
-            },
-            {
-              title: "Energy",
-              body: "Resilient power is part of the curriculum, not an afterthought hidden in operations.",
-            },
-            {
-              title: "Shelter",
-              body: "Natural building turns the site itself into a classroom students can shape and maintain.",
-            },
-          ].map((pillar) => (
-            <article
-              key={pillar.title}
-              className="rounded-[24px] border border-white/8 bg-white/[0.03] p-5"
-            >
-              <p className="text-xs tracking-[0.22em] text-[#c9a84c] uppercase">
-                {pillar.title}
-              </p>
-              <p className="mt-3 text-sm leading-7 text-white/58">
-                {pillar.body}
-              </p>
-            </article>
-          ))}
-        </div>
-
-        <div className="relative">
-          <div className="absolute top-0 left-1/2 hidden h-full w-px -translate-x-1/2 md:block">
-            <div className="absolute inset-0 bg-white/6" />
-            <motion.div
-              className="absolute top-0 left-0 w-full origin-top"
-              style={{
-                scaleY: lineScaleY,
-                background:
-                  "linear-gradient(to bottom, #C9A84C, rgba(201,168,76,0.15))",
-              }}
-            />
-          </div>
-
-          <div className="space-y-12">
-            {timelineEntries.map((entry, index) => (
-              <TimelineCard key={entry.season} entry={entry} index={index} />
-            ))}
+              return (
+                <motion.article
+                  key={entry.season}
+                  initial={{ opacity: 0.3 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ amount: 0.5, once: true }}
+                  className={`max-w-[300px] min-w-[300px] snap-center rounded-2xl border p-4 md:max-w-[400px] md:min-w-[400px] ${entry.status === "current" ? "border-[#c9a84c]" : "border-white/10"} bg-[#0d1610]`}
+                >
+                  <div className="mb-3 inline-block rounded-full bg-[#c9a84c] px-3 py-1 text-xs font-semibold text-[#080f0a]">
+                    {entry.season} · {entry.year}
+                  </div>
+                  <h3 className="font-serif text-2xl text-white">
+                    {entry.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-white/70">{entry.tagline}</p>
+                  <img
+                    src={entry.photo}
+                    alt={entry.photoAlt ?? entry.title}
+                    className="mt-3 h-40 w-full rounded-xl object-cover"
+                  />
+                  <ul className="mt-3 list-disc space-y-1 pl-5 text-xs text-white/80">
+                    {entry.highlights.slice(0, 3).map((h) => (
+                      <li key={h}>{h}</li>
+                    ))}
+                  </ul>
+                  <span
+                    className={`mt-4 inline-flex rounded-full px-3 py-1 text-xs ${statusTone}`}
+                  >
+                    {entry.status === "past"
+                      ? "Complete"
+                      : entry.status === "current"
+                        ? "Current"
+                        : "Planned"}
+                  </span>
+                </motion.article>
+              )
+            })}
           </div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7 }}
-          className="mt-20 grid gap-4 rounded-[30px] border border-[#c9a84c]/14 bg-[#c9a84c]/[0.04] p-6 lg:grid-cols-[1.05fr_0.95fr]"
-        >
-          <div>
-            <p className="text-xs tracking-[0.22em] text-[#c9a84c] uppercase">
-              What the timeline proves
-            </p>
-            <p className="mt-4 text-sm leading-8 text-white/56">
-              The project did not arrive all at once. It grew through repeated
-              presence, practical work, and a willingness to keep going before
-              the support structure was fully in place. That matters because
-              donors are not funding a theory. They are helping finish a real,
-              already-moving system.
-            </p>
-          </div>
-          <div>
-            <p className="text-xs tracking-[0.22em] text-[#c9a84c] uppercase">
-              What happens next
-            </p>
-            <p className="mt-4 text-sm leading-8 text-white/56">
-              The next public milestone is straightforward: complete the water,
-              energy, and shelter layers around the living classroom, open the
-              first student cohort, and keep the operating story visible as
-              Hermes and the learning center come fully online.
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   )
