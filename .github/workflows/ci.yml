@@ -31,7 +31,6 @@ jobs:
 
       - name: Prepare Environment Variables
         run: |
-          cp apps/strapi/.env.example apps/strapi/.env
           cp apps/ui/.env.local.example apps/ui/.env.local
 
       - name: Run linter
@@ -54,5 +53,5 @@ jobs:
       #     rm -rf .next
       #     pnpm build:ui:static
 
-      - name: Build Strapi
-        run: pnpm build:strapi
+      - name: Build Hermes
+        run: pnpm build:hermes

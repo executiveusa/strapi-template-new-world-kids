@@ -314,3 +314,13 @@ There is a plenty of documentation in README files in individual apps and packag
 ## 💙 Feedback
 
 This repository was created based on [strapi-next-monorepo-starter](https://github.com/notum-cz/strapi-next-monorepo-starter). If you encounter a problem with the template code during development, or you have implemented a useful feature that should be part of that template, please create an issue with a description or PR in that repository. So we can keep it updated with great features.
+# New World Kids Runtime
+
+- `apps/ui` -> donor-facing site, trust layer, and `/ops` dashboard
+- `apps/blog` -> bilingual field journal
+- `services/hermes` -> public backend agent harness
+- `packages/nwkids-mcp` -> reusable nonprofit MCP tool package
+- `services/synthia-gateway` -> BYOK gateway for managed or client-supplied model keys
+
+Deploy `services/synthia-gateway` to Coolify at `gateway.nwkids.ai` using
+[`services/synthia-gateway/coolify.env.example`](./services/synthia-gateway/coolify.env.example).

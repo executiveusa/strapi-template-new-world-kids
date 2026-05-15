@@ -32,6 +32,20 @@ export default async function HomePage({ params }: HomePageProps) {
   const buildTime = getBuildTime()
   const metadata = await getPostsMeta(resolvedLocale)
   const featuredPosts = metadata.posts.slice(0, 4)
+  const pillarCards
+    = resolvedLocale === 'es'
+      ? [
+          ['Alimentos', 'Cultivo, bosque comestible, propagacion y soberania alimentaria.'],
+          ['Agua', 'Captacion, almacenamiento, riego y diseno hidrico para la vida diaria.'],
+          ['Energia', 'Sistemas fuera de red, resiliencia y herramientas que siguen funcionando.'],
+          ['Refugio', 'Construccion natural, espacios de aprendizaje y durabilidad comunitaria.'],
+        ]
+      : [
+          ['Food', 'Growing systems, food forests, propagation, and neighborhood food resilience.'],
+          ['Water', 'Capture, storage, irrigation, and water design for everyday stability.'],
+          ['Energy', 'Off-grid systems, resilience, and tools that keep working when things get hard.'],
+          ['Shelter', 'Natural building, learning spaces, and places people can actually care for.'],
+        ]
 
   return (
     <DefaultLayout metadata={metadata} buildTime={buildTime}>
@@ -46,6 +60,11 @@ export default async function HomePage({ params }: HomePageProps) {
           <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
             {t('description')}
           </p>
+          <p className="mt-4 max-w-3xl text-sm leading-7 text-muted-foreground">
+            {resolvedLocale === 'es'
+              ? 'Esta bitacora esta organizada para que puedas entender el trabajo rapido, revisar pruebas y luego ir mas profundo por tema. Cada historia debe poder sostener fotos reales, documentos de confianza y preguntas guiadas por IA.'
+              : 'This journal is organized so people can understand the work quickly, check proof, and then peel back deeper layers by topic. Every story is designed to hold real photography, trust documents, and scoped AI follow-up.'}
+          </p>
           <div className="mt-8 flex flex-wrap gap-3 text-sm">
             <Link href="/posts" className="rounded-sm border px-4 py-2 hover:bg-accent">
               {resolvedLocale === 'es' ? 'Ver todas las historias' : 'Browse all stories'}
@@ -57,6 +76,17 @@ export default async function HomePage({ params }: HomePageProps) {
               {resolvedLocale === 'es' ? 'Ver confianza y documentos' : 'See trust and documents'}
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b py-10">
+        <div className="container mx-auto grid gap-4 px-6 lg:grid-cols-4 lg:px-0">
+          {pillarCards.map(([title, body]) => (
+            <article key={title} className="rounded-sm border p-4">
+              <div className="text-xs uppercase tracking-[0.22em] text-[#9e8251]">{title}</div>
+              <p className="mt-3 text-sm leading-7 text-muted-foreground">{body}</p>
+            </article>
+          ))}
         </div>
       </section>
 

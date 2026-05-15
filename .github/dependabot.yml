@@ -21,10 +21,3 @@ updates:
       - dependency-type: "direct"
     open-pull-requests-limit: 0
 
-  - package-ecosystem: "npm"
-    directory: "/apps/strapi"
-    schedule:
-      interval: "weekly"
-    allow:
-      - dependency-type: "direct"
-    open-pull-requests-limit: 0

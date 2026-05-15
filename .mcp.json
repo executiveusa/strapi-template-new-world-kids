@@ -1,5 +1,20 @@
 {
   "mcpServers": {
+    "chrome-devtools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--browser-url=http://127.0.0.1:9222",
+        "--no-usage-statistics"
+      ],
+      "env": {
+        "SystemRoot": "C:\\Windows",
+        "PROGRAMFILES": "C:\\Program Files",
+        "CHROME_DEVTOOLS_MCP_NO_UPDATE_CHECKS": "1"
+      }
+    },
     "jcodemunch": {
       "type": "stdio",
       "command": "uvx",
@@ -17,6 +32,12 @@
       "type": "stdio",
       "command": "uvx",
       "args": ["mcp2cli", "--mcp-stdio", "uvx mcp2cli --help"],
+      "env": {}
+    },
+    "nwkids-infrastructure": {
+      "type": "stdio",
+      "command": "pnpm",
+      "args": ["--filter", "@nwkids/mcp", "start"],
       "env": {}
     },
     "gbrain": {

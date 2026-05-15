@@ -16,9 +16,9 @@ export function Homepage() {
       <CinematicHero />
       <ScrollRevealProverb />
       <ClaritySection />
+      <TimelineSection />
       <MissionSection />
       <ProgramsSection />
-      <TimelineSection />
       <ProofSection />
       <TrustSection />
       <SupportSection />

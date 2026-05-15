@@ -46,3 +46,12 @@ next-env.d.ts
 
 .claude/settings.local.json
 .vercel
+
+# browser control
+browser-control/artifacts/
+browser-control/logs/
+browser-control/node_modules/
+browser-control/vendor/
+browser-control/.venv-selenium/
+browser-control/package-lock.json
+.env.local.bak.*

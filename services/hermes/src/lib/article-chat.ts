@@ -1,3 +1,11 @@
+import {
+  copyForLocale,
+  getSupportRails,
+  impactPillars,
+  trustDocuments,
+  type PillarSlug,
+} from '../../../../packages/shared-data/site.ts'
+
 type ArticleChatRequest = {
   title: string
   url?: string
@@ -7,10 +15,50 @@ type ArticleChatRequest = {
   tags?: string[]
 }
 
+export type A2UIAction = {
+  label: string
+  href: string
+  variant?: 'primary' | 'secondary'
+}
+
+export type A2UIBlock =
+  | {
+      id: string
+      type: 'callout'
+      title: string
+      body: string
+      tone?: 'default' | 'accent'
+    }
+  | {
+      id: string
+      type: 'pillars'
+      title: string
+      items: string[]
+    }
+  | {
+      id: string
+      type: 'citations'
+      title: string
+      items: string[]
+    }
+  | {
+      id: string
+      type: 'actions'
+      title: string
+      items: A2UIAction[]
+    }
+
+export type A2UIDocument = {
+  version: '0.1'
+  kind: 'article-assistant'
+  blocks: A2UIBlock[]
+}
+
 type ArticleChatResponse = {
   answer: string
   citations: string[]
   mode: 'gateway' | 'local'
+  ui: A2UIDocument
 }
 
 const STOP_WORDS = new Set([
@@ -84,6 +132,106 @@ function rankPassages(question: string, content: string): string[] {
     .slice(0, 3)
     .sort((left, right) => left.index - right.index)
     .map((item) => item.passage)
+}
+
+function inferPillars(request: ArticleChatRequest): PillarSlug[] {
+  const haystack = `${request.title}\n${request.content}\n${(request.tags || []).join(' ')}`
+    .toLowerCase()
+
+  return impactPillars
+    .filter((pillar) => {
+      const titleEn = pillar.title.en.toLowerCase()
+      const titleEs = pillar.title.es.toLowerCase()
+      return haystack.includes(titleEn) || haystack.includes(titleEs)
+    })
+    .map((pillar) => pillar.slug)
+}
+
+function buildArticleUi(
+  request: ArticleChatRequest,
+  answer: string,
+  passages: string[],
+  env: NodeJS.ProcessEnv
+): A2UIDocument {
+  const locale = request.locale === 'es' ? 'es' : 'en'
+  const rails = getSupportRails(env)
+  const relatedPillars = inferPillars(request)
+  const relatedTrustDoc = trustDocuments[0]
+
+  const blocks: A2UIBlock[] = [
+    {
+      id: 'answer',
+      type: 'callout',
+      title:
+        locale === 'es'
+          ? 'Respuesta limitada a este articulo'
+          : 'Answer scoped to this article',
+      body: answer,
+      tone: 'accent',
+    },
+  ]
+
+  if (relatedPillars.length > 0) {
+    blocks.push({
+      id: 'pillars',
+      type: 'pillars',
+      title:
+        locale === 'es'
+          ? 'Pilares relacionados'
+          : 'Related pillars',
+      items: relatedPillars.map((slug) => {
+        const pillar = impactPillars.find((item) => item.slug === slug)
+        return pillar ? copyForLocale(locale, pillar.title) : slug
+      }),
+    })
+  }
+
+  if (passages.length > 0) {
+    blocks.push({
+      id: 'citations',
+      type: 'citations',
+      title:
+        locale === 'es'
+          ? 'Pasajes usados'
+          : 'Passages used',
+      items: passages,
+    })
+  }
+
+  blocks.push({
+    id: 'actions',
+    type: 'actions',
+    title:
+      locale === 'es'
+        ? 'Siguiente paso'
+        : 'Next step',
+    items: [
+      {
+        label: locale === 'es' ? 'Apoyar la mision' : 'Support the mission',
+        href: rails.donorbox,
+        variant: 'primary',
+      },
+      {
+        label:
+          locale === 'es'
+            ? copyForLocale(locale, relatedTrustDoc.title)
+            : copyForLocale(locale, relatedTrustDoc.title),
+        href: relatedTrustDoc.href,
+        variant: 'secondary',
+      },
+      {
+        label: locale === 'es' ? 'Ver la bitacora' : 'Browse the journal',
+        href: rails.blog,
+        variant: 'secondary',
+      },
+    ],
+  })
+
+  return {
+    version: '0.1',
+    kind: 'article-assistant',
+    blocks,
+  }
 }
 
 async function callGateway(
@@ -162,6 +310,14 @@ export async function answerArticleQuestion(
           : 'I do not see enough information in this article to answer that without making something up.',
       citations: [],
       mode: 'local',
+      ui: buildArticleUi(
+        request,
+        request.locale === 'es'
+          ? 'No veo suficiente informacion en este articulo para responder esa pregunta sin inventar.'
+          : 'I do not see enough information in this article to answer that without making something up.',
+        [],
+        env
+      ),
     }
   }
 
@@ -171,6 +327,7 @@ export async function answerArticleQuestion(
       answer: gatewayAnswer,
       citations: passages,
       mode: 'gateway',
+      ui: buildArticleUi(request, gatewayAnswer, passages, env),
     }
   }
 
@@ -183,5 +340,11 @@ export async function answerArticleQuestion(
     answer: `${answerPrefix} ${passages.join(' ')}`,
     citations: passages,
     mode: 'local',
+    ui: buildArticleUi(
+      request,
+      `${answerPrefix} ${passages.join(' ')}`,
+      passages,
+      env
+    ),
   }
 }
