@@ -25,10 +25,13 @@ export async function nimChat(
     model: opts.model ?? NIM_MODEL,
     max_tokens: opts.maxTokens ?? 4096,
     temperature: opts.temperature ?? 0.7,
-    messages: opts.systemPrompt ? [{ role: "system" as const, content: opts.systemPrompt }, ...messages] : messages,
+    messages:
+      opts.systemPrompt !== undefined && opts.systemPrompt.length > 0
+        ? [{ role: "system" as const, content: opts.systemPrompt }, ...messages]
+        : messages,
   }
 
-  const attempt = () => nimClient.chat.completions.create(payload)
+  const attempt = async () => nimClient.chat.completions.create(payload)
 
   let res
   try {

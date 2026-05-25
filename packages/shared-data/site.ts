@@ -58,7 +58,10 @@ export const socialLinks: SocialLink[] = [
   { label: "Instagram", href: "https://www.instagram.com/newworldkids/" },
   { label: "YouTube", href: "https://www.youtube.com/@newworldkids" },
   { label: "Facebook", href: "https://www.facebook.com/newworldkids" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/new-world-kids/" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/new-world-kids/",
+  },
 ]
 
 export const trustDocuments: TrustDocument[] = [
@@ -264,7 +267,9 @@ export type SupportRails = {
   blog: string
 }
 
-export function getSupportRails(env: Record<string, string | undefined>): SupportRails {
+export function getSupportRails(
+  env: Record<string, string | undefined>
+): SupportRails {
   return {
     donorbox: env.NEXT_PUBLIC_DONORBOX_URL || env.DONORBOX_URL || "/donate",
     creem: env.NEXT_PUBLIC_CREEM_URL || env.CREEM_URL || "/work-with-us",
@@ -276,9 +281,6 @@ export function getSupportRails(env: Record<string, string | undefined>): Suppor
   }
 }
 
-export function copyForLocale<T>(
-  locale: string,
-  value: { en: T; es: T }
-): T {
+export function copyForLocale<T>(locale: string, value: { en: T; es: T }): T {
   return locale === "es" ? value.es : value.en
 }

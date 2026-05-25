@@ -2,10 +2,16 @@ import { type NextRequest, NextResponse } from "next/server"
 
 import { nimChat } from "@/lib/nvidia-nim"
 
-export async function POST(req: NextRequest) {
-  const { message, systemPrompt } = await req.json()
+interface ChatRequestBody {
+  message: string
+  systemPrompt?: string
+}
 
-  if (!message) {
+export async function POST(req: NextRequest) {
+  const body = (await req.json()) as ChatRequestBody
+  const { message, systemPrompt } = body
+
+  if (typeof message !== "string" || message.length === 0) {
     return NextResponse.json({ error: "message is required" }, { status: 400 })
   }
 
