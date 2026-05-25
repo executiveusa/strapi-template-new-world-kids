@@ -2,7 +2,6 @@
   "name": "@repo/blog",
   "version": "5.4.0",
   "private": true,
-  "packageManager": "pnpm@10.33.0",
   "description": "A blog system based on React and Next",
   "author": "sabertazimi",
   "license": "MIT",
