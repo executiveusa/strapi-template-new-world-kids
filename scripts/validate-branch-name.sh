@@ -26,6 +26,7 @@ fi
 case "${branch}" in
   main|master|develop|dev) exit 0 ;;
   release/*|hotfix/*) exit 0 ;;
+  claude/*) exit 0 ;;
 esac
 
 pattern='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)/STAR-[0-9]+-[a-z0-9][a-z0-9-]*$'
