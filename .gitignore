@@ -55,3 +55,6 @@ browser-control/vendor/
 browser-control/.venv-selenium/
 browser-control/package-lock.json
 .env.local.bak.*
+
+# Coolify deployment env files (contain real secrets when filled in)
+coolify.env

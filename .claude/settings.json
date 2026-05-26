@@ -1,0 +1,75 @@
+{
+  "tokenSaverProtocol": {
+    "enabled": true,
+    "compressionFloor": 0.65,
+    "costGuards": {
+      "perTask": 10,
+      "perDay": 50,
+      "circuitBreakerEnabled": true
+    },
+    "jcodemunch": {
+      "enabled": true,
+      "compressionTarget": 0.95
+    },
+    "rtk": {
+      "enabled": true,
+      "compressionTarget": 0.80
+    }
+  },
+  "modelRouting": {
+    "default": "gpt-5.4-mini",
+    "cascade": [
+      {
+        "model": "gpt-5.4-mini",
+        "conditions": ["classification", "pattern-matching", "known-solutions"],
+        "costPerMToken": 0.0375
+      },
+      {
+        "model": "gpt-5.4-batch",
+        "conditions": ["bulk-operations", "async-ok"],
+        "costPerMToken": 0.0025,
+        "note": "50% discount, 12-24hr wait"
+      },
+      {
+        "model": "gpt-5.5",
+        "conditions": ["frontier-reasoning", "novel-architecture"],
+        "costPerMToken": 0.0235,
+        "note": "only if proven necessary"
+      }
+    ]
+  },
+  "nvidianim": {
+    "enabled": true,
+    "baseUrl": "http://31.220.58.212:8082",
+    "apiKey": "dummy",
+    "model": "moonshotai/kimi-k2-thinking",
+    "rateLimit": "40 req/min",
+    "retryOn429": true,
+    "retryDelay": 2000
+  },
+  "outputConstraints": {
+    "maxProseWords": 1200,
+    "maxCodeLines": 4096,
+    "preferredFormat": "json"
+  },
+  "logging": {
+    "enabled": true,
+    "outputDir": "ops/reports",
+    "trackMetrics": [
+      "model_used",
+      "input_tokens",
+      "output_tokens",
+      "jcodemunch_hits",
+      "rtk_commands",
+      "rtk_compression_pct",
+      "cost",
+      "duration_seconds"
+    ]
+  },
+  "gitWorkflow": {
+    "developBranch": "claude/nw-kids-site-redesign-OjB5s",
+    "requirePR": true,
+    "prDraft": true,
+    "commitFrequency": "atomic"
+  }
+}

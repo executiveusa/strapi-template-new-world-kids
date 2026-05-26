@@ -1,8 +1,9 @@
-import type { Locale } from 'next-intl'
-import { routing } from '@/i18n/routing'
-import { resolveLocale } from '@/i18n/utils'
-import { getPostsMeta } from '@/lib/get-posts-data'
-import { siteConfig } from '@/lib/site'
+import type { Locale } from "next-intl"
+
+import { routing } from "@/i18n/routing"
+import { resolveLocale } from "@/i18n/utils"
+import { getPostsMeta } from "@/lib/get-posts-data"
+import { siteConfig } from "@/lib/site"
 
 const AMPERSAND_REGEX = /&/g
 const LESS_THAN_REGEX = /</g
@@ -12,11 +13,11 @@ const APOSTROPHE_REGEX = /'/g
 
 function escapeXml(text: string): string {
   return text
-    .replace(AMPERSAND_REGEX, '&amp;')
-    .replace(LESS_THAN_REGEX, '&lt;')
-    .replace(GREATER_THAN_REGEX, '&gt;')
-    .replace(QUOTE_REGEX, '&quot;')
-    .replace(APOSTROPHE_REGEX, '&apos;')
+    .replaceAll(AMPERSAND_REGEX, "&amp;")
+    .replaceAll(LESS_THAN_REGEX, "&lt;")
+    .replaceAll(GREATER_THAN_REGEX, "&gt;")
+    .replaceAll(QUOTE_REGEX, "&quot;")
+    .replaceAll(APOSTROPHE_REGEX, "&apos;")
 }
 
 async function generateRssFeed(locale: Locale): Promise<string> {
@@ -38,10 +39,11 @@ async function generateRssFeed(locale: Locale): Promise<string> {
     </item>`
   })
 
-  const localeTitle = locale === 'zh-CN' ? 'Sabertaz 博客' : 'Sabertaz Blog'
-  const localeDescription = locale === 'zh-CN'
-    ? '一个关于 Web 开发、编程和技术的现代博客'
-    : 'A modern blog about web development, programming, and technology'
+  const localeTitle = "New World Kids Blog"
+  const localeDescription =
+    locale === "es"
+      ? "Historias, pruebas y aprendizajes desde el trabajo de campo de New World Kids"
+      : "Stories, proof, and lessons from New World Kids field work"
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
@@ -52,15 +54,15 @@ async function generateRssFeed(locale: Locale): Promise<string> {
     <language>${locale.toLowerCase()}</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${feedUrl}" rel="self" type="application/rss+xml"/>
-${items.join('\n')}
+${items.join("\n")}
   </channel>
 </rss>`
 }
 
-export const dynamic = 'force-static'
+export const dynamic = "force-static"
 
 export function generateStaticParams() {
-  return routing.locales.map(locale => ({ locale }))
+  return routing.locales.map((locale) => ({ locale }))
 }
 
 interface RouteParams {
@@ -74,8 +76,8 @@ export async function GET(_request: Request, { params }: RouteParams) {
 
   return new Response(content, {
     headers: {
-      'Content-Type': 'application/rss+xml; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+      "Content-Type": "application/rss+xml; charset=utf-8",
+      "Cache-Control": "public, max-age=3600, s-maxage=3600",
     },
   })
 }
