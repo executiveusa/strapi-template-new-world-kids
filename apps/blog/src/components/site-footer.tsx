@@ -43,6 +43,8 @@ export function SiteFooter({ buildTime }: Props) {
           {' '}
           <a
             href="https://newworldkids.org/trust"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hover:text-foreground underline underline-offset-4 transition-colors"
           >
             {locale === 'es' ? 'documentos de verificacion' : 'verification documents'}
