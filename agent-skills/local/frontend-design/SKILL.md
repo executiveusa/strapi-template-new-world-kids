@@ -42,6 +42,7 @@ These rules govern how you operate. Apply whichever are relevant to the request.
 ### 1. Plan the Direction
 
 Before delegating anything, commit to:
+
 - **Objective**: What the page is and who it's for
 - **Aesthetic direction**: A specific, opinionated direction (not generic)
 - **Content structure**: Sections, hierarchy, key elements
@@ -76,11 +77,13 @@ If the project has an existing design system file, reference its path in the bri
 **Always spawn a subagent for implementation — even for a single design.** Use the same model you are running on.
 
 Pass the implementation instruction file:
+
 - `{skill_dir}/implementation.md`
 
 Where `{skill_dir}` is the directory containing this SKILL.md file. **Do NOT read this file yourself** — just pass it to the subagent.
 
 Prompt the subagent with:
+
 ```
 You are a Design Implementation Agent. Your role, process, design principles, and technical standards are defined in the attached instruction file — read and follow it precisely.
 
@@ -124,6 +127,7 @@ For **attempt N** (starting at 1, up to 3):
   **Do NOT read this file yourself** — just pass it to the subagent.
 
   Prompt the subagent with:
+
   ```
   You are a Design Evaluator. Your role, criteria, and process are defined in the attached files — read and follow them precisely.
 
@@ -155,6 +159,7 @@ For **attempt N** (starting at 1, up to 3):
 **D. Send fixes to the implementation subagent:**
 
 Resume the implementation subagent (using its session ID from step 3) with:
+
 ```
 An evaluator has reviewed your design and found issues. Read the evaluation and apply fixes:
 - Evaluation file: {temp_dir}/eval_{eval_id}_{N}.md
@@ -180,6 +185,7 @@ Wait for the implementation subagent to complete. Increment N and go back to ste
 ### 5. Deliver
 
 Report to the user:
+
 - **Summary**: What was designed, aesthetic direction, key decisions
 - **Final screenshots**: Desktop and mobile views
 - **Paths**: To all created files/folders

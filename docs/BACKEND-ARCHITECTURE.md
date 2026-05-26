@@ -86,6 +86,7 @@ The platform uses **4 specialized AI agents** that work together to automate non
 **Purpose**: Acts as the central mission coordinator and decision-making layer.
 
 **Responsibilities**:
+
 - **Mission Alignment**: Ensures all activities align with nonprofit mission
 - **Resource Allocation**: Decides how to prioritize tasks across agents
 - **Public Communication**: Manages transparency and public trust
@@ -93,20 +94,23 @@ The platform uses **4 specialized AI agents** that work together to automate non
 - **Heartbeat Monitoring**: Tracks health of all services
 
 **Technology Stack**:
+
 - Node.js with TypeScript
 - Runs on port 3001
 - RESTful API for agent communication
 - Status endpoint: `/api/status`
 
 **Key Endpoints**:
+
 ```typescript
-GET  /api/status           // Get agent health and activity
-POST /api/consult          // Ask Hermes for strategic advice
-POST /api/route-task       // Route task to appropriate agent
-GET  /api/mission-status   // Check mission progress
+GET / api / status // Get agent health and activity
+POST / api / consult // Ask Hermes for strategic advice
+POST / api / route - task // Route task to appropriate agent
+GET / api / mission - status // Check mission progress
 ```
 
 **How It Works**:
+
 1. Receives strategic questions or task routing requests
 2. Analyzes context against mission objectives
 3. Determines priority and appropriate agent
@@ -114,18 +118,19 @@ GET  /api/mission-status   // Check mission progress
 5. Logs decisions for transparency
 
 **Example Usage**:
+
 ```typescript
 // From AI Orchestrator
-const response = await fetch('http://localhost:3001/api/consult', {
-  method: 'POST',
+const response = await fetch("http://localhost:3001/api/consult", {
+  method: "POST",
   body: JSON.stringify({
-    question: 'Should we apply for the XYZ Foundation grant?',
+    question: "Should we apply for the XYZ Foundation grant?",
     context: {
       grantAmount: 50000,
-      deadline: '2024-12-31',
-      alignment: 'STEM education'
-    }
-  })
+      deadline: "2024-12-31",
+      alignment: "STEM education",
+    },
+  }),
 })
 ```
 
@@ -138,6 +143,7 @@ const response = await fetch('http://localhost:3001/api/consult', {
 **Purpose**: Discovers, analyzes, and helps apply for grant opportunities.
 
 **Responsibilities**:
+
 - **Grant Discovery**: Finds relevant grants via web scraping and databases
 - **Fit Analysis**: Uses Gemini AI to score alignment (0-100%)
 - **Application Drafting**: Generates compelling letters of intent
@@ -145,12 +151,14 @@ const response = await fetch('http://localhost:3001/api/consult', {
 - **Success Learning**: Learns patterns from awarded vs rejected grants
 
 **Technology Stack**:
+
 - Gemini AI for multimodal analysis
 - Puppeteer for browser automation
 - Node-cron for deadline monitoring
 - Strapi for data persistence
 
 **Workflow**:
+
 ```
 1. Discovery Phase
    ├─► Scan grant databases (Skip, Candid, GrantStation)
@@ -184,6 +192,7 @@ const response = await fetch('http://localhost:3001/api/consult', {
 ```
 
 **Key Functions**:
+
 ```typescript
 // In /services/ai-orchestrator/src/integrations/gemini.ts
 async analyzeGrantFit(
@@ -218,6 +227,7 @@ async scheduleGrant(grant: {
 ```
 
 **Gemini Integration Details**:
+
 - **Model**: `gemini-2.0-flash-exp` (multimodal reasoning)
 - **Inputs**: Grant text + nonprofit mission + past achievements
 - **Analysis**: Understands context, identifies alignment patterns
@@ -232,6 +242,7 @@ async scheduleGrant(grant: {
 **Purpose**: Transforms field work into compelling public narratives.
 
 **Responsibilities**:
+
 - **Timeline Enhancement**: Analyzes photos/videos to suggest better titles and descriptions
 - **Blog Post Generation**: Creates impact stories from field updates
 - **Social Media Content**: Generates platform-optimized posts
@@ -239,11 +250,13 @@ async scheduleGrant(grant: {
 - **SEO Optimization**: Ensures content is discoverable
 
 **Technology Stack**:
+
 - Gemini AI for multimodal content analysis
 - Vision API for image understanding
 - Natural language generation
 
 **Workflow**:
+
 ```
 1. Input: Timeline event with photos, videos, description
    ↓
@@ -259,6 +272,7 @@ async scheduleGrant(grant: {
 ```
 
 **Key Functions**:
+
 ```typescript
 // In /services/ai-orchestrator/src/integrations/gemini.ts
 async analyzeTimelineContent(params: {
@@ -284,6 +298,7 @@ async generateContent(data: {
 ```
 
 **Example**: Timeline Photo → Enhanced Description
+
 ```
 Input:
   Image: Students planting seeds
@@ -296,8 +311,8 @@ Gemini Analysis:
 
 Output:
   Title: "Spring Planting Day: 12 Students Launch Food Forest"
-  Enhanced: "Our first cohort planted 50+ seedlings including tomatoes, 
-             peppers, and medicinal herbs. Students learned soil composition, 
+  Enhanced: "Our first cohort planted 50+ seedlings including tomatoes,
+             peppers, and medicinal herbs. Students learned soil composition,
              companion planting, and water conservation techniques."
   Tags: ["hands-on learning", "food forest", "spring 2024", "regenerative agriculture"]
   Category: "Programs"
@@ -312,6 +327,7 @@ Output:
 **Purpose**: Maintains public accountability and transparency.
 
 **Responsibilities**:
+
 - **Document Verification**: Ensures all public docs are current and valid
 - **Financial Transparency**: Tracks budget vs actual spending
 - **Update Cadence**: Reminds when quarterly reports are due
@@ -319,11 +335,13 @@ Output:
 - **Donor Communication**: Ensures thank-you emails and tax receipts sent
 
 **Technology Stack**:
+
 - Cron jobs for scheduled checks
 - Strapi for document storage
 - Email service integration
 
 **Verification Checklist**:
+
 ```
 Daily:
   □ Check fiscal sponsor docs still accessible
@@ -426,6 +444,7 @@ User schedules auto-submission (optional)
 ### Strapi CMS - Central Database
 
 **Content Types**:
+
 1. **donations** - All donor transactions
    - Stripe webhook creates records automatically
    - Tracks payment status, frequency, amounts
@@ -449,11 +468,13 @@ User schedules auto-submission (optional)
 ### AI Orchestrator - Agent Memory
 
 **Stored In-Memory** (resets on restart):
+
 - Task queue with priorities
 - Active agent states
 - Recent interactions
 
 **Persisted to Strapi**:
+
 - Nonprofit profile
   - Mission statement
   - Target population
@@ -468,6 +489,7 @@ User schedules auto-submission (optional)
 ### Better Auth - User Database
 
 **Tables** (managed by Better Auth):
+
 - users
 - sessions
 - accounts
@@ -480,6 +502,7 @@ User schedules auto-submission (optional)
 ### Stripe Payment Processing
 
 **Flow**:
+
 ```
 User clicks "Donate $100"
   ↓
@@ -503,6 +526,7 @@ User redirected back to success page
 ```
 
 **Webhook Events Handled**:
+
 - `checkout.session.completed` → One-time or subscription start
 - `invoice.payment_succeeded` → Recurring payment succeeded
 - `invoice.payment_failed` → Payment failed (retry or alert)
@@ -511,13 +535,16 @@ User redirected back to success page
 ### Gemini AI Integration
 
 **Use Cases**:
+
 1. **Grant Fit Analysis**
+
    ```
    Input: Grant description + Nonprofit mission
    Output: Fit score (0-100) + reasoning + recommendations
    ```
 
 2. **Application Drafting**
+
    ```
    Input: Grant requirements + Nonprofit profile
    Output: Letter of intent + key talking points
@@ -530,24 +557,26 @@ User redirected back to success page
    ```
 
 **API Configuration**:
+
 ```typescript
 // services/ai-orchestrator/.env
-GEMINI_API_KEY=your_api_key
-GEMINI_MODEL=gemini-2.0-flash-exp
+GEMINI_API_KEY = your_api_key
+GEMINI_MODEL = gemini - 2.0 - flash - exp
 ```
 
 **Request Pattern**:
+
 ```typescript
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import { GoogleGenerativeAI } from "@google/generative-ai"
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
-const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' })
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" })
 
 const result = await model.generateContent({
   parts: [
     { text: prompt },
-    { inlineData: { data: imageBase64, mimeType: 'image/jpeg' }}
-  ]
+    { inlineData: { data: imageBase64, mimeType: "image/jpeg" } },
+  ],
 })
 ```
 
@@ -556,6 +585,7 @@ const result = await model.generateContent({
 **Purpose**: Automate grant submissions to Skip platform
 
 **Flow**:
+
 ```typescript
 // services/ai-orchestrator/src/automation/browser-automation.ts
 
@@ -581,6 +611,7 @@ const result = await model.generateContent({
 ```
 
 **Error Handling**:
+
 - Network failures: Retry with exponential backoff
 - Form changes: Capture screenshot and alert admin
 - Login failures: Alert admin immediately
@@ -595,6 +626,7 @@ const result = await model.generateContent({
 **Endpoint**: `/api/hermes/status`
 
 **Response**:
+
 ```json
 {
   "agents": [
@@ -629,11 +661,13 @@ const result = await model.generateContent({
 ### Logging Strategy
 
 **Development**:
+
 - Console.log for all major events
 - Detailed error stack traces
 - Task queue state visible
 
 **Production**:
+
 - Structured JSON logging
 - Error tracking via Sentry (planned)
 - Performance metrics
@@ -687,6 +721,7 @@ localhost:3002  →  AI Orchestrator
 ### API Keys & Secrets
 
 **Never commit**:
+
 - `GEMINI_API_KEY`
 - `STRIPE_SECRET_KEY`
 - `STRIPE_WEBHOOK_SECRET`
@@ -694,6 +729,7 @@ localhost:3002  →  AI Orchestrator
 - `STRAPI_TOKEN`
 
 **Storage**:
+
 - Development: `.env.local` files (gitignored)
 - Production: Environment variables in hosting platform
 - Browser automation credentials: Encrypted at rest
@@ -701,12 +737,14 @@ localhost:3002  →  AI Orchestrator
 ### Authentication
 
 **Better Auth**:
+
 - Session-based auth with JWT
 - Secure HTTP-only cookies
 - CSRF protection
 - Rate limiting on auth endpoints
 
 **Strapi**:
+
 - Role-based access control (RBAC)
 - API tokens with scoped permissions
 - Public endpoints require explicit configuration
@@ -725,11 +763,13 @@ localhost:3002  →  AI Orchestrator
 ### Caching Strategy
 
 **Next.js**:
+
 - Static pages cached at edge
 - API routes with `revalidate` for Strapi content
 - ISR (Incremental Static Regeneration) for timeline
 
 **Strapi**:
+
 - Query caching for frequently accessed content
 - CDN for uploaded media
 - Database indexes on frequently queried fields
@@ -737,11 +777,13 @@ localhost:3002  →  AI Orchestrator
 ### Agent Performance
 
 **Task Queue**:
+
 - Priority-based processing
 - Parallel execution for independent tasks
 - Rate limiting for external APIs (Gemini, Stripe)
 
 **Memory Management**:
+
 - Agent memory size limited to 10MB
 - Periodic cleanup of old interactions
 - Most data persisted to Strapi, not in-memory
@@ -753,17 +795,20 @@ localhost:3002  →  AI Orchestrator
 ### Agent Performance KPIs
 
 **Grant Hunter**:
+
 - Grant discovery rate (new grants/week)
 - Average fit score accuracy
 - Application success rate (awarded/submitted)
 - Time saved vs manual process
 
 **Content Engine**:
+
 - Content generation speed
 - User acceptance rate of AI suggestions
 - SEO impact (organic traffic increase)
 
 **Trust Steward**:
+
 - Document verification coverage (100% target)
 - Donor communication timeliness
 - Transparency report completeness
@@ -771,6 +816,7 @@ localhost:3002  →  AI Orchestrator
 ### Platform Health
 
 **Monitored Metrics**:
+
 - Agent uptime (99.9% target)
 - API response times (< 200ms)
 - Webhook processing success rate (99%+)

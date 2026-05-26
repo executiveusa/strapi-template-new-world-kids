@@ -70,6 +70,7 @@ mcp2cli bake create paperclip \
 ```
 
 Usage in agent sessions:
+
 ```bash
 mcp2cli @nwkids-db --list
 mcp2cli @nwkids-db query-table --table agent_actions --limit 10
@@ -121,5 +122,6 @@ npx skills add knowsuchagency/mcp2cli --skill mcp2cli
 ```
 
 After install, agents can use prompts like:
+
 - `mcp2cli --mcp https://mcp.example.com/sse` — interact with MCP server
 - `mcp2cli create a skill for https://api.example.com/openapi.json` — generate a skill from an API

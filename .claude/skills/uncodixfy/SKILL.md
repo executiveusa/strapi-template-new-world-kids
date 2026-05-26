@@ -83,6 +83,7 @@ Think Linear. Think Raycast. Think Stripe. Think GitHub. They don't try to grab 
 - Colors going towards blue — NOPE, bad. Dark muted colors are best.
 
 Headlines of this form are **not allowed**:
+
 ```html
 <!-- BANNED -->
 <div class="headline">
@@ -92,11 +93,15 @@ Headlines of this form are **not allowed**:
 ```
 
 This pattern is **THE BIGGEST NO**:
+
 ```html
 <!-- BANNED -->
 <div class="team-note">
   <small>Focus</small>
-  <strong>Keep updates brief, blockers visible, and next actions easy to spot.</strong>
+  <strong
+    >Keep updates brief, blockers visible, and next actions easy to
+    spot.</strong
+  >
 </div>
 ```
 
@@ -132,6 +137,7 @@ If a UI choice feels like a default AI UI move, ban it and pick the harder, clea
 Colors should stay calm, not fight.
 
 **Color selection priority:**
+
 1. **Highest priority:** Use the existing colors from the user's project if they are provided (search a few files to find them).
 2. If the project does not provide a palette, get inspired from one of the predefined palettes below.
 3. Do **not** invent random color combinations unless explicitly requested.
@@ -153,9 +159,9 @@ Earth Brown:   #8b6914  (secondary)
 
 ## Reference Palettes (Dark)
 
-| Palette | Background | Surface | Primary | Accent | Text |
-|---------|-----------|---------|---------|--------|------|
-| Void Space | `#0d1117` | `#161b22` | `#58a6ff` | `#f78166` | `#c9d1d9` |
-| Graphite Pro | `#18181b` | `#27272a` | `#a855f7` | `#14b8a6` | `#fafafa` |
-| Obsidian Depth | `#0f0f0f` | `#1a1a1a` | `#00d4aa` | `#ff6b9d` | `#f5f5f5` |
-| Charcoal Studio | `#1c1c1e` | `#2c2c2e` | `#0a84ff` | `#ff375f` | `#f2f2f7` |
+| Palette         | Background | Surface   | Primary   | Accent    | Text      |
+| --------------- | ---------- | --------- | --------- | --------- | --------- |
+| Void Space      | `#0d1117`  | `#161b22` | `#58a6ff` | `#f78166` | `#c9d1d9` |
+| Graphite Pro    | `#18181b`  | `#27272a` | `#a855f7` | `#14b8a6` | `#fafafa` |
+| Obsidian Depth  | `#0f0f0f`  | `#1a1a1a` | `#00d4aa` | `#ff6b9d` | `#f5f5f5` |
+| Charcoal Studio | `#1c1c1e`  | `#2c2c2e` | `#0a84ff` | `#ff375f` | `#f2f2f7` |

@@ -1,4 +1,5 @@
 # Remaining Tasks Roadmap
+
 **Token-Efficient Implementation Guide**
 
 ---
@@ -6,6 +7,7 @@
 ## 📊 CURRENT SCORE: 7.2/10 → TARGET: 9.3/10
 
 ✅ **COMPLETED (8/15 tasks):**
+
 1. Remove hardcoded secrets
 2. Security headers & rate limiting
 3. COPPA compliance system
@@ -20,6 +22,7 @@
 ## 🔄 REMAINING 6 TASKS (Fastest Path to 9.3/10)
 
 ### **TASK 10: PWA for Offline Access** (3 hours)
+
 **Why:** Youth in underserved areas have spotty internet
 
 **Quick Implementation:**
@@ -51,6 +54,7 @@ module.exports = withPWA({...})
 ```
 
 **Files to create:**
+
 - `public/manifest.json` - PWA metadata
 - `public/icons/` - App icons (192x192, 512x512)
 
@@ -65,17 +69,17 @@ module.exports = withPWA({...})
 ```tsx
 // Create: app/admin/dashboard/page.tsx
 
-import { Suspense } from 'react'
-import ServiceCard from '@/components/admin/ServiceCard'
-import MetricsChart from '@/components/admin/MetricsChart'
+import { Suspense } from "react"
+import ServiceCard from "@/components/admin/ServiceCard"
+import MetricsChart from "@/components/admin/MetricsChart"
 
 export default function AdminDashboard() {
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
+    <div className="min-h-screen bg-gray-50 p-6">
+      <h1 className="mb-8 text-3xl font-bold">Admin Dashboard</h1>
 
       {/* Services Health Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         <ServiceCard
           name="Web App"
           status="healthy"
@@ -103,7 +107,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Metrics */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <Suspense fallback={<div>Loading...</div>}>
           <MetricsChart title="Youth Active Users" />
         </Suspense>
@@ -113,8 +117,8 @@ export default function AdminDashboard() {
       </div>
 
       {/* Recent Incidents */}
-      <div className="mt-8 bg-white p-6 rounded-lg">
-        <h2 className="text-xl font-bold mb-4">Recent Incidents</h2>
+      <div className="mt-8 rounded-lg bg-white p-6">
+        <h2 className="mb-4 text-xl font-bold">Recent Incidents</h2>
         <p className="text-green-600">✅ No incidents in last 7 days</p>
       </div>
     </div>
@@ -123,11 +127,13 @@ export default function AdminDashboard() {
 ```
 
 **Components to create:**
+
 - `components/admin/ServiceCard.tsx`
 - `components/admin/MetricsChart.tsx`
 - `components/admin/IncidentList.tsx`
 
 **Data sources:**
+
 - Health check: `/api/health`
 - Metrics: Sentry API (error rates, performance)
 - Incidents: Database query
@@ -140,73 +146,75 @@ export default function AdminDashboard() {
 
 ```tsx
 // Create: app/sitemap.ts
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: 'https://newworldkids.org',
+      url: "https://newworldkids.org",
       lastModified: new Date(),
-      changeFrequency: 'weekly',
+      changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: 'https://newworldkids.org/lessons',
+      url: "https://newworldkids.org/lessons",
       lastModified: new Date(),
-      changeFrequency: 'daily',
+      changeFrequency: "daily",
       priority: 0.8,
     },
     {
-      url: 'https://newworldkids.org/about',
+      url: "https://newworldkids.org/about",
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.5,
     },
   ]
 }
 
 // Create: app/robots.ts
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from "next"
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: '/admin',
+      userAgent: "*",
+      allow: "/",
+      disallow: "/admin",
     },
-    sitemap: 'https://newworldkids.org/sitemap.xml',
+    sitemap: "https://newworldkids.org/sitemap.xml",
   }
 }
 
 // Update: app/layout.tsx metadata
-import { Metadata } from 'next'
+import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: 'New World Kids - Learn Coding & Tech Skills',
-  description: 'Free coding and tech education for youth in Seattle',
+  title: "New World Kids - Learn Coding & Tech Skills",
+  description: "Free coding and tech education for youth in Seattle",
   openGraph: {
-    title: 'New World Kids',
-    description: 'Change your future through tech education',
-    url: 'https://newworldkids.org',
-    siteName: 'New World Kids',
-    images: [{ url: 'https://newworldkids.org/og-image.png' }],
-    type: 'website',
+    title: "New World Kids",
+    description: "Change your future through tech education",
+    url: "https://newworldkids.org",
+    siteName: "New World Kids",
+    images: [{ url: "https://newworldkids.org/og-image.png" }],
+    type: "website",
   },
 }
 
 // Update: app/(home)/page.tsx metadata
 export const metadata: Metadata = {
-  title: 'Learn Coding - New World Kids',
+  title: "Learn Coding - New World Kids",
 }
 ```
 
 **Files to create:**
+
 - `public/sitemap.xml` (generated by `app/sitemap.ts`)
 - `public/robots.txt` (generated by `app/robots.ts`)
 - `public/og-image.png` (1200x630px for social sharing)
 
 **Submit to search engines:**
+
 - Google Search Console
 - Bing Webmaster Tools
 
@@ -241,27 +249,32 @@ touch README.md DEPLOYMENT.md DEVELOPMENT.md SECURITY.md CONTRIBUTING.md
 ```
 
 **README.md Structure:**
+
 ```markdown
 # New World Kids 🌟
 
 Your mission. Our platform.
 
 ## What is New World Kids?
+
 [1 paragraph explaining mission]
 
 ## Quick Start
+
 1. Visit [link]
 2. Sign up (takes 2 min)
 3. Pick first lesson
 4. Start learning!
 
 ## Documentation
+
 - [Getting Started](DEVELOPMENT.md)
 - [Deployment Guide](DEPLOYMENT.md)
 - [Security & Safety](SECURITY.md)
 - [Contributing](CONTRIBUTING.md)
 
 ## Support
+
 - Email: support@newworldkids.org
 - Issues: [GitHub issues link]
 ```
@@ -274,65 +287,69 @@ Your mission. Our platform.
 
 ```tsx
 // Create: app/donate/page.tsx
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { DonationTier } from '@/components/donate/DonationTier'
-import { StripeCheckout } from '@/components/donate/StripeCheckout'
+import { useState } from "react"
+import { DonationTier } from "@/components/donate/DonationTier"
+import { StripeCheckout } from "@/components/donate/StripeCheckout"
 
 export default function DonatePage() {
-  const [selectedTier, setSelectedTier] = useState<'one-time' | 'monthly' | null>(null)
+  const [selectedTier, setSelectedTier] = useState<
+    "one-time" | "monthly" | null
+  >(null)
   const [amount, setAmount] = useState(25)
 
   return (
-    <div className="max-w-4xl mx-auto py-12 px-4">
-      <h1 className="text-4xl font-bold mb-4">Support Our Mission</h1>
-      <p className="text-xl text-gray-600 mb-12">
+    <div className="mx-auto max-w-4xl px-4 py-12">
+      <h1 className="mb-4 text-4xl font-bold">Support Our Mission</h1>
+      <p className="mb-12 text-xl text-gray-600">
         Every dollar helps a youth in Seattle learn tech skills.
       </p>
 
       {/* Impact Stats */}
-      <div className="grid grid-cols-3 gap-4 mb-12">
-        <div className="bg-blue-50 p-4 rounded">
+      <div className="mb-12 grid grid-cols-3 gap-4">
+        <div className="rounded bg-blue-50 p-4">
           <div className="text-3xl font-bold">$25</div>
           <div className="text-sm text-gray-600">One month of lessons</div>
         </div>
-        <div className="bg-blue-50 p-4 rounded">
+        <div className="rounded bg-blue-50 p-4">
           <div className="text-3xl font-bold">$100</div>
-          <div className="text-sm text-gray-600">Full program for one youth</div>
+          <div className="text-sm text-gray-600">
+            Full program for one youth
+          </div>
         </div>
-        <div className="bg-blue-50 p-4 rounded">
+        <div className="rounded bg-blue-50 p-4">
           <div className="text-3xl font-bold">$500</div>
           <div className="text-sm text-gray-600">Launch new cohort</div>
         </div>
       </div>
 
       {/* Donation Tiers */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+      <div className="mb-12 grid grid-cols-1 gap-4 md:grid-cols-3">
         <DonationTier
           amount={25}
           title="Supporter"
-          selected={selectedTier === 'one-time' && amount === 25}
+          selected={selectedTier === "one-time" && amount === 25}
           onClick={() => {
-            setSelectedTier('one-time')
+            setSelectedTier("one-time")
             setAmount(25)
           }}
         />
         <DonationTier
           amount={100}
           title="Champion"
-          selected={selectedTier === 'one-time' && amount === 100}
+          selected={selectedTier === "one-time" && amount === 100}
           onClick={() => {
-            setSelectedTier('one-time')
+            setSelectedTier("one-time")
             setAmount(100)
           }}
         />
         <DonationTier
           amount={500}
           title="Founder"
-          selected={selectedTier === 'one-time' && amount === 500}
+          selected={selectedTier === "one-time" && amount === 500}
           onClick={() => {
-            setSelectedTier('one-time')
+            setSelectedTier("one-time")
             setAmount(500)
           }}
         />
@@ -340,12 +357,12 @@ export default function DonatePage() {
 
       {/* Custom Amount */}
       <div className="mb-12">
-        <label className="block mb-2">Or donate any amount:</label>
+        <label className="mb-2 block">Or donate any amount:</label>
         <input
           type="number"
           value={amount}
           onChange={(e) => setAmount(parseInt(e.target.value))}
-          className="w-full px-4 py-2 border rounded"
+          className="w-full rounded border px-4 py-2"
           placeholder="Enter amount in USD"
         />
       </div>
@@ -354,8 +371,8 @@ export default function DonatePage() {
       {selectedTier || amount > 0 ? (
         <StripeCheckout
           amount={amount}
-          frequency={selectedTier || 'one-time'}
-          onSuccess={() => window.location.href = '/thank-you'}
+          frequency={selectedTier || "one-time"}
+          onSuccess={() => (window.location.href = "/thank-you")}
         />
       ) : null}
     </div>
@@ -363,8 +380,8 @@ export default function DonatePage() {
 }
 
 // Create: app/api/stripe/checkout/route.ts
-import Stripe from 'stripe'
-import { NextRequest, NextResponse } from 'next/server'
+import Stripe from "stripe"
+import { NextRequest, NextResponse } from "next/server"
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
 
@@ -372,26 +389,26 @@ export async function POST(request: NextRequest) {
   const { amount, frequency, returnUrl } = await request.json()
 
   try {
-    if (frequency === 'monthly') {
+    if (frequency === "monthly") {
       // Create subscription
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
+        payment_method_types: ["card"],
         line_items: [
           {
             price_data: {
-              currency: 'usd',
+              currency: "usd",
               product_data: {
-                name: 'Monthly Donation to New World Kids',
+                name: "Monthly Donation to New World Kids",
               },
               unit_amount: amount * 100,
               recurring: {
-                interval: 'month',
+                interval: "month",
               },
             },
             quantity: 1,
           },
         ],
-        mode: 'subscription',
+        mode: "subscription",
         success_url: `${returnUrl}?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: returnUrl,
       })
@@ -400,20 +417,20 @@ export async function POST(request: NextRequest) {
     } else {
       // One-time donation
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
+        payment_method_types: ["card"],
         line_items: [
           {
             price_data: {
-              currency: 'usd',
+              currency: "usd",
               product_data: {
-                name: 'Donation to New World Kids',
+                name: "Donation to New World Kids",
               },
               unit_amount: amount * 100,
             },
             quantity: 1,
           },
         ],
-        mode: 'payment',
+        mode: "payment",
         success_url: `${returnUrl}?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: returnUrl,
       })
@@ -422,7 +439,7 @@ export async function POST(request: NextRequest) {
     }
   } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to create checkout session' },
+      { error: "Failed to create checkout session" },
       { status: 500 }
     )
   }
@@ -430,6 +447,7 @@ export async function POST(request: NextRequest) {
 ```
 
 **Setup steps:**
+
 1. Create Stripe account
 2. Add keys to environment
 3. Update package.json: `yarn add stripe @stripe/react-js`
@@ -502,17 +520,18 @@ yarn test:smoke
 
 ## 📊 COMPLETION TIMELINE
 
-| Task | Est. Time | Priority | Difficulty |
-|------|-----------|----------|------------|
-| PWA | 3 hrs | 🟡 Medium | Easy |
-| Admin Dashboard | 4 hrs | 🟡 Medium | Easy |
-| SEO | 2 hrs | 🟡 Medium | Easy |
-| Docs | 3 hrs | 🟡 Medium | Medium |
-| Stripe | 4 hrs | 🟢 High | Medium |
-| Smoke Tests | 2 hrs | 🟢 High | Easy |
-| **TOTAL** | **18 hrs** | - | - |
+| Task            | Est. Time  | Priority  | Difficulty |
+| --------------- | ---------- | --------- | ---------- |
+| PWA             | 3 hrs      | 🟡 Medium | Easy       |
+| Admin Dashboard | 4 hrs      | 🟡 Medium | Easy       |
+| SEO             | 2 hrs      | 🟡 Medium | Easy       |
+| Docs            | 3 hrs      | 🟡 Medium | Medium     |
+| Stripe          | 4 hrs      | 🟢 High   | Medium     |
+| Smoke Tests     | 2 hrs      | 🟢 High   | Easy       |
+| **TOTAL**       | **18 hrs** | -         | -          |
 
 **Parallel Work Possible:**
+
 - PWA + Admin Dashboard (parallel, same person): 4 hrs
 - SEO + Docs (parallel, same person): 3 hrs
 - Stripe + Smoke Tests (parallel, same person): 4 hrs
@@ -524,25 +543,26 @@ yarn test:smoke
 
 After all 15 tasks complete:
 
-| Category | Current | After | Status |
-|----------|---------|-------|--------|
-| Code Quality | 6.5 | 9.0 | ✅ |
-| Security | 4.0 | 9.5 | ✅ |
-| Performance | 5.5 | 8.5 | ✅ |
-| UX | 6.0 | 8.5 | ✅ |
-| Content | 7.0 | 8.5 | ✅ |
-| Database | 5.0 | 9.0 | ✅ |
-| DevOps | 4.5 | 9.5 | ✅ |
-| SEO | 5.0 | 9.0 | ✅ |
-| Monitoring | 2.0 | 10.0 | ✅ |
-| Business | 6.5 | 9.0 | ✅ |
-| **OVERALL** | **5.8** | **9.3** | **✅ PRODUCTION READY** |
+| Category     | Current | After   | Status                  |
+| ------------ | ------- | ------- | ----------------------- |
+| Code Quality | 6.5     | 9.0     | ✅                      |
+| Security     | 4.0     | 9.5     | ✅                      |
+| Performance  | 5.5     | 8.5     | ✅                      |
+| UX           | 6.0     | 8.5     | ✅                      |
+| Content      | 7.0     | 8.5     | ✅                      |
+| Database     | 5.0     | 9.0     | ✅                      |
+| DevOps       | 4.5     | 9.5     | ✅                      |
+| SEO          | 5.0     | 9.0     | ✅                      |
+| Monitoring   | 2.0     | 10.0    | ✅                      |
+| Business     | 6.5     | 9.0     | ✅                      |
+| **OVERALL**  | **5.8** | **9.3** | **✅ PRODUCTION READY** |
 
 ---
 
 ## ✅ FINAL CHECKLIST
 
 Before launch:
+
 - [ ] All 15 tasks completed
 - [ ] Smoke tests passing
 - [ ] Security audit complete
@@ -557,6 +577,7 @@ Before launch:
 ---
 
 **Questions?** Refer to:
+
 - UX_AUDIT_REPORT.md
 - INCIDENT_RESPONSE.md
 - SECURITY.md (once created)

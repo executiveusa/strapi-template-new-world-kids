@@ -7,15 +7,15 @@ description: Full deployment runbook for New World Kids platform to Coolify VPS 
 
 ## Infrastructure
 
-| Service | Host | Port |
-|---------|------|------|
-| VPS | `31.220.58.212` | — |
-| Coolify panel | `31.220.58.212` | 8000 |
+| Service         | Host            | Port |
+| --------------- | --------------- | ---- |
+| VPS             | `31.220.58.212` | —    |
+| Coolify panel   | `31.220.58.212` | 8000 |
 | Supabase Studio | `31.220.58.212` | 3001 |
-| PostgreSQL | `31.220.58.212` | 5434 |
-| Paperclip | `31.220.58.212` | 3100 |
-| hermes-webui | `31.220.58.212` | 8787 |
-| Postiz | `31.220.58.212` | 3200 |
+| PostgreSQL      | `31.220.58.212` | 5434 |
+| Paperclip       | `31.220.58.212` | 3100 |
+| hermes-webui    | `31.220.58.212` | 8787 |
+| Postiz          | `31.220.58.212` | 3200 |
 
 ---
 
@@ -24,6 +24,7 @@ description: Full deployment runbook for New World Kids platform to Coolify VPS 
 Stored tokens expire. To get a fresh token:
 
 **Option A — SSH:**
+
 ```bash
 ssh root@31.220.58.212
 docker exec coolify php artisan coolify:create-token
@@ -47,6 +48,7 @@ curl -X POST "http://31.220.58.212:8000/api/v1/deploy" \
 ```
 
 **Environment variables to set in Coolify:**
+
 ```
 NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 NEXT_PUBLIC_SUPABASE_URL=https://sbbuxnyvflczfzvsglpe.supabase.co
@@ -117,11 +119,13 @@ docker-compose -f infrastructure/hermes/docker-compose.yml up -d --build
 ## Vercel (Web App Alternative)
 
 Vercel auto-deploys from GitHub `main` branch.
+
 - Org: `the-pauli-effect`
 - Project: `prj_qkw5bNiVwQ0lEPqWOahumjy1HJm2`
 - Token: stored in `.env.local` as `VERCEL_TOKEN`
 
 Force redeploy:
+
 ```bash
 npx vercel --prod --token=${VERCEL_TOKEN}
 ```

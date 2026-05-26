@@ -22,6 +22,7 @@ This skill exists to stop you from generating default AI UI. Read and follow the
 ## Trigger
 
 Load this skill whenever the task involves:
+
 - Any HTML, CSS, JS, TS, JSX, TSX, Svelte, or Vue file with visual output
 - Tailwind class usage in components or layouts
 - Dashboard, landing page, admin panel, form, modal, sidebar, card, or button creation

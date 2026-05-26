@@ -9,6 +9,7 @@ bunx @tailwindcss/cli -i public/css/main.css -o public/css/styles.css
 ```
 
 The CSS architecture:
+
 - `public/css/main.css` - Main entry point, imports Tailwind and all other CSS files
 - `public/css/workflow.css` - Commands section, glass terminal, case studies styles
 - `public/css/styles.css` - **Compiled output** (do not edit directly)
@@ -38,6 +39,7 @@ bun run rebuild    # Clean and rebuild
 ```
 
 Source files use placeholders that get replaced per-provider:
+
 - `{{model}}` - Model name (Claude, Gemini, GPT, etc.)
 - `{{config_file}}` - Config file name (CLAUDE.md, .cursorrules, etc.)
 - `{{ask_instruction}}` - How to ask user questions

@@ -1,7 +1,8 @@
 # NWKids Platform Worker - SOUL
+
 > Lives in: strapi-template-new-world-kids
 > Reports to: Hermes (CEO)
-> Heartbeat: 0 */4 * * *
+> Heartbeat: 0 _/4 _ \* \*
 
 ---
 
@@ -52,6 +53,7 @@ Update KPI.md after every heartbeat. Format: exact numbers, trend arrows, timest
 ## Heartbeat Protocol
 
 ### Every Run
+
 1. Check site uptime (frontend, journal, and Hermes health endpoints)
 2. Pull KPIs from the ledger or analytics system
 3. Check for open issues in the board
