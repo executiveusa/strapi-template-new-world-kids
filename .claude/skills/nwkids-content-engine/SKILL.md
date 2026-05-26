@@ -16,13 +16,13 @@ description: Bilingual content creation and scheduling workflow for New World Ki
 
 ## Content Pillars
 
-| Pillar | Frequency | Description |
-|--------|-----------|-------------|
-| Youth Stories | 2x/week | A specific young person's experience or achievement |
-| Program Glimpse | 1x/week | Behind-the-scenes of a current program activity |
-| Impact Snapshot | 1x/week | A single concrete outcome (number, quote, moment) |
-| Community Voice | 1x/week | Quote or story from a parent, teacher, or partner |
-| Call to Action | 1x/week | Donate, volunteer, share, or apply |
+| Pillar          | Frequency | Description                                         |
+| --------------- | --------- | --------------------------------------------------- |
+| Youth Stories   | 2x/week   | A specific young person's experience or achievement |
+| Program Glimpse | 1x/week   | Behind-the-scenes of a current program activity     |
+| Impact Snapshot | 1x/week   | A single concrete outcome (number, quote, moment)   |
+| Community Voice | 1x/week   | Quote or story from a parent, teacher, or partner   |
+| Call to Action  | 1x/week   | Donate, volunteer, share, or apply                  |
 
 ---
 
@@ -31,6 +31,7 @@ description: Bilingual content creation and scheduling workflow for New World Ki
 ### Step 1: Pull Program Context
 
 Check `impact_projects` table for active programs:
+
 ```sql
 SELECT name, description, location, status, impact_metrics
 FROM impact_projects
@@ -44,6 +45,7 @@ LIMIT 5;
 For each content pillar slot, generate a post:
 
 **Format:**
+
 ```
 [EN]
 <2-3 sentences, specific, vivid, action-oriented>
@@ -55,10 +57,12 @@ For each content pillar slot, generate a post:
 ```
 
 **Character limits:**
+
 - Instagram caption: 2,200 chars (aim for 150-200 for engagement)
 - Facebook post: 63,206 chars (aim for 80-150 for best reach)
 
 **Image guidance (include in payload for human to source):**
+
 - Youth-facing, smiling, action shots
 - Nature settings (forest, garden, water)
 - No stock photos — real program photos only
@@ -105,6 +109,7 @@ INSERT INTO agent_actions (
 ## Sample Posts by Pillar
 
 ### Youth Story (EN/ES)
+
 ```
 [EN]
 Maria came to our forest camp not speaking a word of English. By week three, she was leading trail identification for her whole group — teaching the names of native plants she'd learned in both English and Spanish.
@@ -116,6 +121,7 @@ María llegó a nuestro campamento en el bosque sin hablar ni una palabra de ing
 ```
 
 ### Impact Snapshot
+
 ```
 [EN]
 47 youth completed our 6-week leadership program this summer. 100% reported feeling more confident speaking in front of their community.

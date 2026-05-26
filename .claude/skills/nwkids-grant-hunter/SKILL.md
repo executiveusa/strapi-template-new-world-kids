@@ -14,7 +14,7 @@ description: Autonomous grant research and application workflow for New World Ki
 **Mission:** Expand opportunity for youth in underserved communities through nature-based education, digital storytelling, and community leadership programs.  
 **Population served:** Youth ages 8–18 from low-income families, primarily Latino and immigrant communities  
 **Annual budget:** ~$85,000 (fiscal year)  
-**Staff:** 2 FTE + volunteers  
+**Staff:** 2 FTE + volunteers
 
 ---
 
@@ -23,6 +23,7 @@ description: Autonomous grant research and application workflow for New World Ki
 ### Step 1: Funder Research
 
 When a grant opportunity is identified, gather:
+
 - Funder name, website, and program page URL
 - Funding priorities and focus areas
 - Geographic restrictions (must include WA or MX)
@@ -35,13 +36,13 @@ When a grant opportunity is identified, gather:
 
 Score the opportunity on:
 
-| Criterion | Weight | Notes |
-|-----------|--------|-------|
-| Mission alignment | 40% | Does it match youth, education, environmental, Latino focus? |
-| Geographic match | 20% | Seattle or Puerto Vallarta in scope? |
-| Award size | 20% | $5K–$75K sweet spot for NWKids scale |
-| Fiscal sponsor accepted | 10% | HSI as fiscal sponsor must be eligible |
-| Deadline feasibility | 10% | At least 14 days to apply? |
+| Criterion               | Weight | Notes                                                        |
+| ----------------------- | ------ | ------------------------------------------------------------ |
+| Mission alignment       | 40%    | Does it match youth, education, environmental, Latino focus? |
+| Geographic match        | 20%    | Seattle or Puerto Vallarta in scope?                         |
+| Award size              | 20%    | $5K–$75K sweet spot for NWKids scale                         |
+| Fiscal sponsor accepted | 10%    | HSI as fiscal sponsor must be eligible                       |
+| Deadline feasibility    | 10%    | At least 14 days to apply?                                   |
 
 Score > 70% → recommend applying. Score 50–70% → flag for ED review.
 
@@ -72,6 +73,7 @@ INSERT INTO agent_actions (
 If fit score > 70%, draft a 1-page Letter of Inquiry:
 
 **Structure:**
+
 1. Opening paragraph — who we are and why we're writing (2-3 sentences)
 2. Problem statement — specific, data-backed, community-rooted (1 paragraph)
 3. Proposed project — what we'll do, for whom, where (1 paragraph)
@@ -81,6 +83,7 @@ If fit score > 70%, draft a 1-page Letter of Inquiry:
 **Voice:** Specific, mission-forward, youth-centered. No NGO-speak. No buzzwords. Youth are protagonists.
 
 **Always include:**
+
 - EIN: 46-4779591
 - Fiscal sponsor: Healthy Schools Initiative
 - Geographic specificity: neighborhood names, not just "Seattle"
@@ -104,6 +107,7 @@ INSERT INTO agent_actions (
 ## Grant Database (Priority Funders)
 
 Search these sources first:
+
 - Grants.gov (federal)
 - WA State Department of Commerce — Youth Development
 - Seattle Office of Economic Development
@@ -118,6 +122,7 @@ Search these sources first:
 ## Deadline Alert Rule
 
 Run weekly check:
+
 ```sql
 SELECT payload->>'funder', payload->>'deadline'
 FROM agent_actions

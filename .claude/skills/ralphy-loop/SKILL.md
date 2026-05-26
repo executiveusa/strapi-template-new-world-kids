@@ -8,6 +8,7 @@ description: Configure and run Ralphy — an autonomous AI coding loop that read
 ## Overview
 
 Ralphy (`npm install -g ralphy-cli`) is an autonomous coding agent that:
+
 1. Reads tasks from `PRD.md` (by default) in priority order
 2. Spawns an AI coding session per task (Claude, Codex, GPT-4, etc.)
 3. Runs lint/test/build after each task
@@ -15,6 +16,7 @@ Ralphy (`npm install -g ralphy-cli`) is an autonomous coding agent that:
 5. Continues to the next task until the list is done
 
 Start a run with:
+
 ```bash
 ralphy run
 ```
@@ -24,13 +26,13 @@ ralphy run
 ```yaml
 project:
   name: "my-project"
-  language: "TypeScript"          # Primary language
-  framework: "Next.js + Strapi"   # Stack description
+  language: "TypeScript" # Primary language
+  framework: "Next.js + Strapi" # Stack description
 
 commands:
-  test: "pnpm test"               # Run after every task
-  lint: "pnpm lint"               # Run before commit
-  build: "pnpm build"             # Optional full build check
+  test: "pnpm test" # Run after every task
+  lint: "pnpm lint" # Run before commit
+  build: "pnpm build" # Optional full build check
 
 rules:
   - "use TypeScript strict mode"
@@ -45,15 +47,15 @@ boundaries:
     - ".ralphy/**"
 
 capabilities:
-  browser: "auto"     # "auto" | "off" — enables agent-browser for UI tasks
+  browser: "auto" # "auto" | "off" — enables agent-browser for UI tasks
 
 notifications:
-  discord_webhook: "${DISCORD_WEBHOOK_URL}"   # Posts on task complete/fail
+  discord_webhook: "${DISCORD_WEBHOOK_URL}" # Posts on task complete/fail
 
 engines:
-  default: "claude"   # "claude" | "codex" | "gpt4" | "gemini"
-  parallel: false     # Run tasks in parallel (experimental)
-  branch_per_task: true  # Create a git branch per task
+  default: "claude" # "claude" | "codex" | "gpt4" | "gemini"
+  parallel: false # Run tasks in parallel (experimental)
+  branch_per_task: true # Create a git branch per task
 ```
 
 ## PRD.md Task Format
@@ -64,17 +66,20 @@ Ralphy reads tasks as markdown headers + bullets. Each task must have a **priori
 # PRD
 
 ## [P1] Set up authentication
+
 - Use NextAuth v5 with credentials provider
 - Store sessions in Supabase
 - Acceptance: login/logout works, session persists across refresh
 
 ## [P1] Create donation page
+
 - Support 6 tier amounts ($5, $15, $35, $75, $150, $500)
 - Stripe integration via server action
 - Bilingual: en + es strings in locales/
 - Acceptance: test checkout with Stripe test card 4242 4242 4242 4242
 
 ## [P2] Add grant tracker dashboard
+
 - CRUD for grant applications
 - Status: Researching / Applied / Awarded / Declined
 - Acceptance: can create, update, delete grant entries
@@ -91,6 +96,7 @@ ralphy run --task "Set up authentication"  # Run a single named task
 ## Branch-Per-Task Mode
 
 When `branch_per_task: true`, Ralphy:
+
 1. Creates `feat/ralphy-<task-slug>` for each task
 2. Runs the agent, tests, commits
 3. Opens a GitHub PR (if `gh` CLI is available)
@@ -107,9 +113,9 @@ When writing Ralphy tasks for this repo:
 
 ## Troubleshooting
 
-| Problem | Fix |
-|---------|-----|
-| Task loops without committing | Check lint/test passes manually |
-| "Cannot read PRD.md" | Ensure PRD.md is in repo root |
-| Branch conflicts | Run `ralphy clean` to reset stale branches |
-| Discord webhook silent | Check `DISCORD_WEBHOOK_URL` is set in env |
+| Problem                       | Fix                                        |
+| ----------------------------- | ------------------------------------------ |
+| Task loops without committing | Check lint/test passes manually            |
+| "Cannot read PRD.md"          | Ensure PRD.md is in repo root              |
+| Branch conflicts              | Run `ralphy clean` to reset stale branches |
+| Discord webhook silent        | Check `DISCORD_WEBHOOK_URL` is set in env  |

@@ -3,6 +3,7 @@
 ## 🎬 Interactive Timeline System
 
 ### Enhanced Timeline Component
+
 - **GSAP Scroll Animations**: Cinematic entrance effects powered by GSAP ScrollTrigger
 - **Video Integration**: Embedded video players with React Player
   - YouTube, Vimeo, local files, external sources
@@ -15,6 +16,7 @@
 - **Smooth Animations**: Framer Motion + GSAP for professional feel
 
 ### Timeline Content Types (Strapi)
+
 - `video`: Comprehensive video management with metadata
 - `timeline-event`: Events with images, videos, rich text, and accordion content
 - Multilingual support (English/Spanish)
@@ -25,23 +27,27 @@
 ## 🤖 AI-Powered Grant Management
 
 ### Gemini AI Integration
+
 - **Grant Fit Analysis**: AI evaluates grant alignment (0-100% score)
 - **Application Drafting**: Automatically generates compelling LOIs and full applications
 - **Multimodal Reasoning**: Analyzes text, images, and videos
 - **Continuous Learning**: Agent memory improves recommendations over time
 
 ### Browser Automation
+
 - **Puppeteer Integration**: Automated form filling and submission
 - **Skip Platform Support**: Direct integration with Skip grant platform
 - **Error Handling**: Screenshot capture and retry logic
 - **Scheduling**: Cron-based auto-submission before deadlines
 
 ### Grant Workflow
+
 ```
 Discover Grant → AI Analysis → Generate Application → Review → Schedule → Auto-Submit → Track Outcome
 ```
 
 ### Grant Scheduler
+
 - **Deadline Monitoring**: Daily checks for approaching deadlines
 - **Auto-Submission**: Scheduled submissions 2 days before deadline
 - **Alerts**: Email/notification system for urgent deadlines
@@ -52,6 +58,7 @@ Discover Grant → AI Analysis → Generate Application → Review → Schedule 
 ## 📊 Unified Dashboard
 
 ### Grant Management Interface
+
 - **Pipeline Overview**: Stats for total, in-progress, submitted, awarded grants
 - **Filterable List**: View by status, priority, deadline
 - **AI Fit Scores**: See how well each grant matches your mission
@@ -59,6 +66,7 @@ Discover Grant → AI Analysis → Generate Application → Review → Schedule 
 - **Priority Indicators**: Visual priority levels (urgent, high, medium, low)
 
 ### AI Insights Panel
+
 - **Real-Time Recommendations**: AI suggests grants and actions
 - **Agent Activity Monitor**: See what each AI agent is doing
 - **Confidence Scores**: Transparency on AI predictions
@@ -70,6 +78,7 @@ Discover Grant → AI Analysis → Generate Application → Review → Schedule 
 ## 🎓 Onboarding Wizard
 
 ### Multi-Step Setup
+
 1. **Welcome**: Overview of AI capabilities
 2. **Organization**: Enter nonprofit details
 3. **Mission**: Define mission, target population, achievements
@@ -77,6 +86,7 @@ Discover Grant → AI Analysis → Generate Application → Review → Schedule 
 5. **Complete**: System ready, AI agents activated
 
 ### Benefits
+
 - **Guided Experience**: Step-by-step with validation
 - **Progressive Disclosure**: Only ask for what's needed
 - **Smart Defaults**: Pre-filled values where possible
@@ -87,6 +97,7 @@ Discover Grant → AI Analysis → Generate Application → Review → Schedule 
 ## 🧠 AI Orchestrator Service
 
 ### Architecture
+
 - **Task Queue**: Manages AI tasks with priorities
 - **Agent Coordination**: Coordinates Hermes, Grant Hunter, Content Engine
 - **Memory System**: Stores learnings, successful strategies, patterns
@@ -95,12 +106,14 @@ Discover Grant → AI Analysis → Generate Application → Review → Schedule 
 - **Cron Scheduling**: Automated task execution
 
 ### Supported Tasks
+
 - `grant-analysis`: Analyze grant fit and provide recommendations
 - `grant-application`: Generate application drafts
 - `timeline-enhancement`: Suggest improvements to timeline content
 - `content-generation`: Create blog posts, social media content
 
 ### API Endpoints
+
 - `POST /api/tasks` - Submit new task
 - `GET /api/tasks/:id` - Get task status
 - `GET /api/insights` - Fetch AI insights
@@ -112,6 +125,7 @@ Discover Grant → AI Analysis → Generate Application → Review → Schedule 
 ## 📈 Analytics & Tracking
 
 ### Event Tracking
+
 - Grant discovery and analysis
 - Timeline event views and interactions
 - Video plays and engagement
@@ -120,6 +134,7 @@ Discover Grant → AI Analysis → Generate Application → Review → Schedule 
 - User behavior patterns
 
 ### Insights Generated
+
 - Most successful grant types
 - Content that resonates
 - Best times for submissions
@@ -131,17 +146,20 @@ Discover Grant → AI Analysis → Generate Application → Review → Schedule 
 ## 🔌 Integration Points
 
 ### Hermes Integration
+
 - AI Orchestrator can consult Hermes agents
 - Shared mission context and learnings
 - Coordinated decision-making
 
 ### Strapi CMS
+
 - All content managed in Strapi
 - Auto-generated TypeScript types
 - RESTful API access
 - Role-based permissions
 
 ### External Services
+
 - **Gemini AI**: Google's multimodal AI
 - **Skip Platform**: Grant submission platform
 - **Analytics**: Custom tracking system
@@ -186,13 +204,13 @@ const events = [
 ### Analyze Grant with AI
 
 ```typescript
-const response = await fetch('/api/ai/analyze-grant', {
-  method: 'POST',
+const response = await fetch("/api/ai/analyze-grant", {
+  method: "POST",
   body: JSON.stringify({
-    grantDescription: 'STEM education grant for underserved youth...',
-    grantUrl: 'https://foundation.org/grants/stem',
-    deadline: '2024-12-31'
-  })
+    grantDescription: "STEM education grant for underserved youth...",
+    grantUrl: "https://foundation.org/grants/stem",
+    deadline: "2024-12-31",
+  }),
 })
 
 const { taskId } = await response.json()
@@ -202,13 +220,13 @@ const { taskId } = await response.json()
 ### Generate Grant Application
 
 ```typescript
-const response = await fetch('/api/ai/generate-application', {
-  method: 'POST',
+const response = await fetch("/api/ai/generate-application", {
+  method: "POST",
   body: JSON.stringify({
-    grantName: 'Tech Education Fund 2024',
-    requirements: 'Applicants must serve youth ages 10-18...',
-    fundingAmount: 50000
-  })
+    grantName: "Tech Education Fund 2024",
+    requirements: "Applicants must serve youth ages 10-18...",
+    fundingAmount: 50000,
+  }),
 })
 
 const { taskId } = await response.json()
@@ -236,6 +254,7 @@ apps/ui/src/components/
 ```
 
 ### UI Components Used
+
 - Card, CardContent, CardHeader (shadcn/ui)
 - Tabs, TabsList, TabsTrigger
 - Badge, Button, Input, Textarea
@@ -247,23 +266,28 @@ apps/ui/src/components/
 ## 🎨 Animation Details
 
 ### GSAP ScrollTrigger
+
 ```typescript
 // Timeline items animate on scroll
-gsap.fromTo(item,
+gsap.fromTo(
+  item,
   { opacity: 0, x: -50, scale: 0.9 },
   {
-    opacity: 1, x: 0, scale: 1,
+    opacity: 1,
+    x: 0,
+    scale: 1,
     scrollTrigger: {
       trigger: item,
-      start: 'top 80%',
-      end: 'top 50%',
-      scrub: 1
-    }
+      start: "top 80%",
+      end: "top 50%",
+      scrub: 1,
+    },
   }
 )
 ```
 
 ### Framer Motion
+
 ```typescript
 // Smooth card hover effects
 <motion.div
@@ -308,6 +332,7 @@ gsap.fromTo(item,
 ## 🎯 Success Metrics
 
 Track these KPIs:
+
 - **Grant Conversion Rate**: Discovered → Submitted → Awarded
 - **AI Accuracy**: Fit score correlation with actual outcomes
 - **Time Savings**: Manual vs automated application time
@@ -319,6 +344,7 @@ Track these KPIs:
 ## 🔮 Future Enhancements
 
 Planned features:
+
 - [ ] Email integration for alerts
 - [ ] Multi-language application generation
 - [ ] Advanced grant discovery (web scraping)

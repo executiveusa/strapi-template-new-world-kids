@@ -1,16 +1,17 @@
 # Incident Response Playbook
+
 **New World Kids Platform - Youth Safety & Security**
 
 ---
 
 ## 🎯 Quick Reference
 
-| Severity | Response Time | Examples | Action |
-|----------|---------------|----------|--------|
-| **P0 Critical** | <5 min | Data breach, youth safety threat | Immediate escalation |
-| **P1 High** | <30 min | Service down, payment system broken | Alert team |
-| **P2 Medium** | <2 hrs | Performance issue, minor bug | Create ticket |
-| **P3 Low** | Next day | Minor UI issue | Schedule fix |
+| Severity        | Response Time | Examples                            | Action               |
+| --------------- | ------------- | ----------------------------------- | -------------------- |
+| **P0 Critical** | <5 min        | Data breach, youth safety threat    | Immediate escalation |
+| **P1 High**     | <30 min       | Service down, payment system broken | Alert team           |
+| **P2 Medium**   | <2 hrs        | Performance issue, minor bug        | Create ticket        |
+| **P3 Low**      | Next day      | Minor UI issue                      | Schedule fix         |
 
 ---
 
@@ -19,26 +20,27 @@
 ### **Scenario 1: Data Breach (Youth PII Exposed)**
 
 **Detection Triggers:**
+
 - Security tool detects unusual data access patterns
 - External researcher reports vulnerability
 - Anomalous database queries
 
 **Response (Timeline):**
 
-| Time | Action | Owner |
-|------|--------|-------|
-| **T+0 min** | Page incident commander (on-call) | Alert system |
-| **T+2 min** | Take affected systems offline | Engineering lead |
-| **T+5 min** | Create incident war room (Slack + Zoom) | Incident commander |
-| **T+10 min** | Brief CEO, Legal, Board chair | Executive sponsor |
-| **T+15 min** | Assess scope: which data? how many youth? | Database team |
-| **T+30 min** | Start forensic analysis | Security team |
-| **T+1 hr** | Notify state attorney general (law required) | Legal |
-| **T+2 hrs** | Draft parent notification letter | Communications |
-| **T+4 hrs** | Send notifications if >500 youth affected | Legal/Communications |
-| **T+24 hrs** | Complete forensic analysis | Security |
-| **T+3 days** | Implement fixes | Engineering |
-| **T+7 days** | Final assessment & report | Incident commander |
+| Time         | Action                                       | Owner                |
+| ------------ | -------------------------------------------- | -------------------- |
+| **T+0 min**  | Page incident commander (on-call)            | Alert system         |
+| **T+2 min**  | Take affected systems offline                | Engineering lead     |
+| **T+5 min**  | Create incident war room (Slack + Zoom)      | Incident commander   |
+| **T+10 min** | Brief CEO, Legal, Board chair                | Executive sponsor    |
+| **T+15 min** | Assess scope: which data? how many youth?    | Database team        |
+| **T+30 min** | Start forensic analysis                      | Security team        |
+| **T+1 hr**   | Notify state attorney general (law required) | Legal                |
+| **T+2 hrs**  | Draft parent notification letter             | Communications       |
+| **T+4 hrs**  | Send notifications if >500 youth affected    | Legal/Communications |
+| **T+24 hrs** | Complete forensic analysis                   | Security             |
+| **T+3 days** | Implement fixes                              | Engineering          |
+| **T+7 days** | Final assessment & report                    | Incident commander   |
 
 **Parent Notification Template:**
 
@@ -86,24 +88,26 @@ New World Kids
 ### **Scenario 2: Youth Safety Incident (Harm/Abuse Report)**
 
 **Detection Triggers:**
+
 - Youth reports abuse in messaging
 - Parent reports concerning behavior
 - Staff observes red flags
 
 **Response (Immediate):**
 
-| Action | Timeline | Owner |
-|--------|----------|-------|
-| Document everything (do not alter) | NOW | Recipient |
-| Call police if imminent danger | NOW | Anyone present |
-| Notify safeguarding officer | <1 min | Recipient |
-| Create incident ticket (non-public) | <5 min | Safeguarding officer |
-| Brief CEO/Board | <15 min | Safeguarding officer |
-| Preserve all evidence | <1 hr | IT/Security |
-| Cooperate with authorities | Ongoing | Legal/Safeguarding |
-| Support affected youth | Ongoing | Safeguarding/Counselor |
+| Action                              | Timeline | Owner                  |
+| ----------------------------------- | -------- | ---------------------- |
+| Document everything (do not alter)  | NOW      | Recipient              |
+| Call police if imminent danger      | NOW      | Anyone present         |
+| Notify safeguarding officer         | <1 min   | Recipient              |
+| Create incident ticket (non-public) | <5 min   | Safeguarding officer   |
+| Brief CEO/Board                     | <15 min  | Safeguarding officer   |
+| Preserve all evidence               | <1 hr    | IT/Security            |
+| Cooperate with authorities          | Ongoing  | Legal/Safeguarding     |
+| Support affected youth              | Ongoing  | Safeguarding/Counselor |
 
 **Do NOT:**
+
 - Contact the alleged perpetrator
 - Investigate yourself
 - Delete any messages/evidence
@@ -124,6 +128,7 @@ BEFORE interacting with families:
 ```
 
 **Support Resources:**
+
 - Counselor hotline: [phone]
 - Crisis team contact: [email]
 - Safeguarding manual: [link]
@@ -133,6 +138,7 @@ BEFORE interacting with families:
 ### **Scenario 3: Service Outage (Platform Down >30 mins)**
 
 **Detection:**
+
 - Uptime monitor alerts
 - Users report "site not loading"
 
@@ -172,6 +178,7 @@ BEFORE interacting with families:
 ### **Service Degradation (Slow Performance)**
 
 **If platform is responding but slow:**
+
 1. Alert team with urgency
 2. Check database performance
 3. Check API latency
@@ -183,6 +190,7 @@ BEFORE interacting with families:
 ### **Payment System Broken**
 
 **If users can't donate:**
+
 1. Alert financial/payment team immediately
 2. Contact Stripe support
 3. Switch to backup payment processor if available
@@ -195,24 +203,28 @@ BEFORE interacting with families:
 ## ✅ PREVENTION MEASURES
 
 ### **Daily**
+
 - Monitor uptime dashboard
 - Review Sentry alerts
 - Check database query performance
 - Review security logs
 
 ### **Weekly**
+
 - Security scan (automated)
 - Backup verification
 - Incident review (if any)
 - Team standup on security posture
 
 ### **Monthly**
+
 - Disaster recovery drill
 - Penetration test review
 - Access control audit
 - Update runbooks based on incidents
 
 ### **Quarterly**
+
 - Full backup restoration test
 - Incident response tabletop exercise
 - Security assessment
@@ -255,17 +267,20 @@ Post-mortem: Scheduled for [date] at [time]
 ## 👥 ON-CALL ROTATION
 
 ### **Weekly Schedule**
+
 - Monday-Friday: Lead Engineer (primary) + Senior Tech (backup)
 - Weekends: Senior Tech (primary) + On-call volunteer (backup)
 - After-hours (10pm-8am): Response goal <15 mins
 
 ### **Contact Chain**
+
 1. Slack alert in #incidents
 2. Page primary via PagerDuty
 3. If no response in 5 mins, page backup
 4. If no response after 10 mins, page manager
 
 ### **Incident Commander Rotation**
+
 - Week 1: Engineering Lead
 - Week 2: Product Manager
 - Week 3: Tech Lead
@@ -275,13 +290,13 @@ Post-mortem: Scheduled for [date] at [time]
 
 ## 📞 EMERGENCY CONTACTS
 
-| Role | Name | Phone | Slack |
-|------|------|-------|-------|
-| CEO | [name] | [phone] | @ceo |
-| CTO | [name] | [phone] | @cto |
-| Security Lead | [name] | [phone] | @security |
+| Role                 | Name   | Phone   | Slack         |
+| -------------------- | ------ | ------- | ------------- |
+| CEO                  | [name] | [phone] | @ceo          |
+| CTO                  | [name] | [phone] | @cto          |
+| Security Lead        | [name] | [phone] | @security     |
 | Safeguarding Officer | [name] | [phone] | @safeguarding |
-| Legal | [name] | [phone] | @legal |
+| Legal                | [name] | [phone] | @legal        |
 
 ---
 
@@ -306,27 +321,30 @@ When handling security incidents, ensure:
 **Duration:** [start] - [end]
 
 ### What Happened?
+
 [Narrative of incident]
 
 ### What Went Well?
+
 - [response speed]
 - [communication clarity]
 - [technical fix]
 
 ### What Could Be Better?
+
 - [monitoring gap]
 - [process improvement]
 - [documentation]
 
 ### Action Items
-| Action | Owner | Due |
-|--------|-------|-----|
-| [implement fix] | [name] | [date] |
+
+| Action              | Owner  | Due    |
+| ------------------- | ------ | ------ |
+| [implement fix]     | [name] | [date] |
 | [update monitoring] | [name] | [date] |
-| [update runbook] | [name] | [date] |
+| [update runbook]    | [name] | [date] |
 
 ---
 
 **Last Updated:** 2026-03-12
 **Next Review:** 2026-04-12
-

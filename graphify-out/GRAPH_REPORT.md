@@ -1,15 +1,18 @@
-# Graph Report - E:\ACTIVE PROJECTS-PIPELINE\ACTIVE PROJECTS-PIPELINE\NEW WORLD KIDS\strapi-template-new-world-kids  (2026-04-30)
+# Graph Report - E:\ACTIVE PROJECTS-PIPELINE\ACTIVE PROJECTS-PIPELINE\NEW WORLD KIDS\strapi-template-new-world-kids (2026-04-30)
 
 ## Corpus Check
+
 - 316 files · ~72,933 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
+
 - 664 nodes · 562 edges · 26 communities detected
 - Extraction: 78% EXTRACTED · 22% INFERRED · 0% AMBIGUOUS · INFERRED: 124 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Community Hubs (Navigation)
+
 - [[_COMMUNITY_Community 0|Community 0]]
 - [[_COMMUNITY_Community 1|Community 1]]
 - [[_COMMUNITY_Community 2|Community 2]]
@@ -38,6 +41,7 @@
 - [[_COMMUNITY_Community 41|Community 41]]
 
 ## God Nodes (most connected - your core abstractions)
+
 1. `getEnvVar()` - 22 edges
 2. `removeThisWhenYouNeedMe()` - 16 edges
 3. `resolveLocale()` - 12 edges
@@ -50,124 +54,152 @@
 10. `createStrapiAuthHeader()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `isTesting()` --calls--> `getEnvVar()`  [INFERRED]
+
+- `isTesting()` --calls--> `getEnvVar()` [INFERRED]
   apps\ui\src\lib\general-helpers.ts → apps\ui\src\lib\env-vars.ts
-- `generateMetadata()` --calls--> `getMetadata()`  [INFERRED]
+- `generateMetadata()` --calls--> `getMetadata()` [INFERRED]
   apps\blog\src\app\[locale]\not-found.tsx → apps\blog\src\lib\seo.ts
-- `generateStaticParams()` --calls--> `getPostsMeta()`  [INFERRED]
+- `generateStaticParams()` --calls--> `getPostsMeta()` [INFERRED]
   apps\blog\src\app\[locale]\post\[slug]\page.tsx → apps\blog\src\lib\get-posts-data.ts
-- `generateStaticParams()` --calls--> `getPostsMeta()`  [INFERRED]
+- `generateStaticParams()` --calls--> `getPostsMeta()` [INFERRED]
   apps\blog\src\app\[locale]\tag\[tagName]\page.tsx → apps\blog\src\lib\get-posts-data.ts
-- `sitemap()` --calls--> `getPostsMeta()`  [INFERRED]
+- `sitemap()` --calls--> `getPostsMeta()` [INFERRED]
   apps\ui\src\app\sitemap.ts → apps\blog\src\lib\get-posts-data.ts
 
 ## Communities
 
 ### Community 0 - "Community 0"
+
 Cohesion: 0.07
 Nodes (30): AboutPage(), generateMetadata(), escapeXml(), generateRssFeed(), GET(), resolveLocale(), getBuildTime(), generatePostData() (+22 more)
 
 ### Community 1 - "Community 1"
+
 Cohesion: 0.06
 Nodes (20): robots(), sitemap(), Layout(), getSessionCSR(), hashStringSHA256(), getEnvVar(), isProduction(), verifyRecaptcha() (+12 more)
 
 ### Community 2 - "Community 2"
+
 Cohesion: 0.07
 Nodes (14): DashboardPage(), getSessionSSR(), throwBetterAuthError(), setupDayJs(), isTesting(), safeJSONParse(), setupLibraries(), authGuard() (+6 more)
 
 ### Community 3 - "Community 3"
+
 Cohesion: 0.07
 Nodes (14): ChangePasswordPage(), DatePicker(), Tooltip(), ForgotPasswordPage(), AppForm(), AppFormDescription(), AppFormLabel(), removeThisWhenYouNeedMe() (+6 more)
 
 ### Community 4 - "Community 4"
+
 Cohesion: 0.13
 Nodes (12): answerArticleQuestion(), buildArticleUi(), callGateway(), inferPillars(), rankPassages(), splitIntoPassages(), tokenize(), applyCors() (+4 more)
 
 ### Community 5 - "Community 5"
+
 Cohesion: 0.15
 Nodes (12): createPublicFullPath(), formatHref(), isAppLink(), getDefaultMetadata(), getDefaultOgMeta(), getDefaultTwitterMeta(), getMetaAlternates(), getMetaRobots() (+4 more)
 
 ### Community 6 - "Community 6"
+
 Cohesion: 0.16
 Nodes (8): AnchorProvider(), calcThumbPosition(), getLineOffset(), onResize(), TOCLink(), update(), useActiveAnchors(), useAnchorObserver()
 
 ### Community 7 - "Community 7"
+
 Cohesion: 0.16
 Nodes (7): MDXCode(), getSingleFileConfig(), getLanguageDisplayName(), normalizeFilepath(), parseHighlightLines(), parseLanguageFromClassName(), trimTrailingNewlines()
 
 ### Community 8 - "Community 8"
+
 Cohesion: 0.24
 Nodes (11): TailwindIndicator(), isDevelopment(), TrackingScriptWrapper(), fetchAll(), fetchAPI(), fetchMany(), fetchOne(), fetchOneByFullPath() (+3 more)
 
 ### Community 9 - "Community 9"
+
 Cohesion: 0.21
 Nodes (10): ComponentsOverviewPage(), fetchAllPages(), fetchAllPages(), fetchFooter(), fetchNavbar(), fetchPage(), fetchSeo(), logNonBlockingError() (+2 more)
 
 ### Community 10 - "Community 10"
+
 Cohesion: 0.25
 Nodes (4): LandingNav(), MainNav(), MobileNav(), getRoutes()
 
 ### Community 11 - "Community 11"
+
 Cohesion: 0.36
 Nodes (4): handleDrop(), handleFileInputChange(), removeSelectedFile(), setFile()
 
 ### Community 14 - "Community 14"
+
 Cohesion: 0.33
 Nodes (2): debugStaticParams(), generateStaticParams()
 
 ### Community 15 - "Community 15"
+
 Cohesion: 0.6
 Nodes (5): authDisabledResponse(), authIsConfigured(), GET(), POST(), runAuthHandler()
 
 ### Community 16 - "Community 16"
+
 Cohesion: 0.33
 Nodes (1): cn()
 
 ### Community 17 - "Community 17"
+
 Cohesion: 0.33
 Nodes (2): useTranslatedZod(), ClientProviders()
 
 ### Community 18 - "Community 18"
+
 Cohesion: 0.5
 Nodes (2): CardDescription(), cn()
 
 ### Community 20 - "Community 20"
+
 Cohesion: 0.5
 Nodes (2): Tooltip(), TooltipContent()
 
 ### Community 22 - "Community 22"
+
 Cohesion: 0.5
 Nodes (2): hrefIncludesLocale(), processLinkHrefAttribute()
 
 ### Community 24 - "Community 24"
+
 Cohesion: 0.67
 Nodes (2): Alert(), cn()
 
 ### Community 28 - "Community 28"
+
 Cohesion: 1.0
 Nodes (2): MDXAdmonition(), normalizeType()
 
 ### Community 31 - "Community 31"
+
 Cohesion: 1.0
 Nodes (2): clamp(), ProgressCircle()
 
 ### Community 33 - "Community 33"
+
 Cohesion: 0.67
 Nodes (1): cn()
 
 ### Community 34 - "Community 34"
+
 Cohesion: 1.0
 Nodes (2): getColorByName(), hashString()
 
 ### Community 35 - "Community 35"
+
 Cohesion: 0.67
 Nodes (1): Layout()
 
 ### Community 41 - "Community 41"
+
 Cohesion: 1.0
 Nodes (2): rgbDataURL(), triplet()
 
 ## Knowledge Gaps
+
 - **Thin community `Community 14`** (6 nodes): `layout.tsx`, `build.ts`, `createFallbackPath()`, `debugStaticParams()`, `generateStaticParams()`, `RootLayout()`
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 - **Thin community `Community 16`** (6 nodes): `dropdown-menu.tsx`, `dropdown-menu.tsx`, `cn()`, `DropdownMenuPortal()`, `DropdownMenuSubTrigger()`, `DropdownMenuTrigger()`
@@ -196,6 +228,7 @@ Nodes (2): rgbDataURL(), triplet()
   Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
+
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `getEnvVar()` connect `Community 1` to `Community 2`, `Community 3`, `Community 5`, `Community 8`, `Community 9`, `Community 14`?**

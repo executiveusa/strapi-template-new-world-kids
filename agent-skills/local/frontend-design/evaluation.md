@@ -76,6 +76,7 @@ Usability: Can users understand the page structure, read content comfortably, fi
 ### Inputs
 
 You will receive:
+
 - **Brief path**: A markdown file describing what was requested
 - **HTML path**: The page to evaluate
 - **Output path**: Where to write your evaluation report
@@ -88,6 +89,7 @@ Read the brief file to understand what was requested: purpose, audience, aesthet
 ### 2. Open & Inspect the Page
 
 Open the HTML file in a browser using browser automation (prefer playwright skill it it's available, use browser tool or any suitable skill otherwise). Take screenshots at multiple viewport sizes:
+
 - **1440px** — desktop
 - **768px** — tablet
 - **375px** — mobile
@@ -101,6 +103,7 @@ Score each criterion honestly. For each score, write a specific justification �
 ### 4. Identify Issues
 
 For each issue found, document:
+
 - **What**: Specific description of the problem
 - **Where**: Which section or element of the page
 - **Why it matters**: Impact on design quality, usability, or originality
@@ -116,35 +119,43 @@ Write your report to the specified output path using this format:
 ## Overall Verdict: PASS / NEEDS REVISION / MAJOR REVISION
 
 ## Overall Assessment
+
 [2-3 sentences: what's the design trying to be, and how well does it succeed?]
 
 ## Scores
-| Criterion | Score | Status | Weight | Notes |
-|-----------|-------|--------|--------|-------|
-| Design Quality | X/3 | PASS/FAIL | HIGH | [specific justification] |
-| Originality | X/3 | PASS/FAIL | HIGH | [specific justification] |
-| Craft | X/3 | PASS/FAIL | MEDIUM | [specific justification] |
-| Functionality | X/3 | PASS/FAIL | MEDIUM | [specific justification] |
+
+| Criterion      | Score | Status    | Weight | Notes                    |
+| -------------- | ----- | --------- | ------ | ------------------------ |
+| Design Quality | X/3   | PASS/FAIL | HIGH   | [specific justification] |
+| Originality    | X/3   | PASS/FAIL | HIGH   | [specific justification] |
+| Craft          | X/3   | PASS/FAIL | MEDIUM | [specific justification] |
+| Functionality  | X/3   | PASS/FAIL | MEDIUM | [specific justification] |
 
 ## What's Working Well
+
 [Specific elements that are genuinely strong — be precise about what and why]
 
 ## Issues Found
+
 ### Issue 1: [title]
+
 - **What**: [specific description]
 - **Where**: [section/element of the page]
 - **Why it matters**: [impact on design quality]
 - **Suggested fix**: [actionable recommendation]
 
 ### Issue 2: [title]
+
 ...
 
 ## Priority Fixes for Next Attempt
+
 1. [Most impactful improvement — be specific]
 2. [Second most impactful]
 3. [Third]
 
 ## Should the next attempt REFINE or PIVOT?
+
 [Based on scores: if the direction is sound but execution needs work → REFINE. If the fundamental approach isn't working → PIVOT. Explain your reasoning.]
 ```
 
@@ -153,6 +164,7 @@ Write your report to the specified output path using this format:
 ## On Resume (Re-evaluation)
 
 When you are resumed with information about fixes applied:
+
 1. Re-open the page in the browser (it has been modified since your last review)
 2. Take fresh screenshots at the same viewport sizes
 3. Check specifically whether the reported fixes address your previous feedback
