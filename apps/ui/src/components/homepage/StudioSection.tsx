@@ -8,7 +8,7 @@ export function StudioSection() {
     <section className="border-t border-white/8 bg-[#09120D] py-28">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
         <div>
-          <div className="mb-4 font-mono text-xs uppercase tracking-[0.2em] text-[#C9A84C]">
+          <div className="mb-4 font-mono text-xs tracking-[0.2em] text-[#C9A84C] uppercase">
             Mission-Funded Studio
           </div>
           <h2 className="font-serif text-4xl font-bold tracking-tight text-white sm:text-5xl">
@@ -22,7 +22,7 @@ export function StudioSection() {
           <div className="mt-8">
             <Link
               href="/work-with-us"
-              className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-[#C9A84C]"
+              className="inline-flex items-center gap-2 text-sm font-semibold tracking-[0.18em] text-[#C9A84C] uppercase"
             >
               Work with the studio
               <ArrowUpRight className="h-4 w-4" />

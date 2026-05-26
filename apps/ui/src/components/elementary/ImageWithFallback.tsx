@@ -20,6 +20,7 @@ export function ImageWithFallback({
   const [src, setSrc] = useState(originalSrc ?? fallbackSrc ?? invalidSrc)
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSrc(originalSrc ?? fallbackSrc ?? invalidSrc)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [originalSrc])

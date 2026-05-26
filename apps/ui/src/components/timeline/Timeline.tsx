@@ -1,12 +1,12 @@
-'use client'
+"use client"
 
-import React from 'react'
+import type React from "react"
 
 export interface TimelineStage {
   id: string
   title: string
   description?: string
-  status: 'completed' | 'in-progress' | 'pending'
+  status: "completed" | "in-progress" | "pending"
   icon?: React.ReactNode
   date?: string
 }
@@ -16,13 +16,15 @@ interface TimelineProps {
   className?: string
 }
 
-export function Timeline({ stages, className = '' }: TimelineProps) {
+export function Timeline({ stages, className = "" }: TimelineProps) {
   return (
     <div className={`timeline-container ${className}`}>
       {stages.map((stage, idx) => (
         <div key={stage.id} className="timeline-item">
           <div className={`timeline-dot timeline-dot--${stage.status}`}>
-            {stage.icon && <span className="timeline-dot-icon">{stage.icon}</span>}
+            {stage.icon && (
+              <span className="timeline-dot-icon">{stage.icon}</span>
+            )}
           </div>
           {idx < stages.length - 1 && (
             <div className={`timeline-line timeline-line--${stage.status}`} />
@@ -38,9 +40,9 @@ export function Timeline({ stages, className = '' }: TimelineProps) {
               <p className="timeline-description">{stage.description}</p>
             )}
             <div className={`timeline-badge timeline-badge--${stage.status}`}>
-              {stage.status === 'completed' && 'Completed'}
-              {stage.status === 'in-progress' && 'In Progress'}
-              {stage.status === 'pending' && 'Pending'}
+              {stage.status === "completed" && "Completed"}
+              {stage.status === "in-progress" && "In Progress"}
+              {stage.status === "pending" && "Pending"}
             </div>
           </div>
         </div>

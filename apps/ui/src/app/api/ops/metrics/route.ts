@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server"
 
-import { createSupabaseServerClient, hasSupabaseServerEnv } from "@/lib/supabase"
+import {
+  createSupabaseServerClient,
+  hasSupabaseServerEnv,
+} from "@/lib/supabase"
 
 export const dynamic = "force-dynamic"
 export const revalidate = 60
@@ -67,49 +70,57 @@ export async function GET() {
   const supabase = createSupabaseServerClient()
 
   try {
-    const [grantResult, contentResult, recentResult, heartbeatResult, actions7dResult, actions30dResult, programsResult, weeklyResult] =
-      await Promise.all([
-        supabase
-          .from("agent_actions")
-          .select("*")
-          .in("action_type", [...GRANT_ACTION_TYPES]),
-        supabase
-          .from("agent_actions")
-          .select("created_at")
-          .eq("action_type", "content_draft")
-          .eq("status", "completed"),
-        supabase
-          .from("agent_actions")
-          .select("*")
-          .order("created_at", { ascending: false })
-          .limit(10),
-        supabase
-          .from("agent_actions")
-          .select("created_at")
-          .eq("action_type", "heartbeat")
-          .order("created_at", { ascending: false })
-          .limit(1),
-        supabase
-          .from("agent_actions")
-          .select("*", { count: "exact", head: true })
-          .gte("created_at", new Date(Date.now() - 7 * 86400000).toISOString()),
-        supabase
-          .from("agent_actions")
-          .select("*", { count: "exact", head: true })
-          .gte("created_at", new Date(Date.now() - 30 * 86400000).toISOString()),
-        supabase
-          .from("impact_projects")
-          .select("*")
-          .eq("status", "active"),
-        supabase
-          .from("weekly_reports")
-          .select("*")
-          .order("created_at", { ascending: false })
-          .limit(1),
-      ])
+    const [
+      grantResult,
+      contentResult,
+      recentResult,
+      heartbeatResult,
+      actions7dResult,
+      actions30dResult,
+      programsResult,
+      weeklyResult,
+    ] = await Promise.all([
+      supabase
+        .from("agent_actions")
+        .select("*")
+        .in("action_type", [...GRANT_ACTION_TYPES]),
+      supabase
+        .from("agent_actions")
+        .select("created_at")
+        .eq("action_type", "content_draft")
+        .eq("status", "completed"),
+      supabase
+        .from("agent_actions")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(10),
+      supabase
+        .from("agent_actions")
+        .select("created_at")
+        .eq("action_type", "heartbeat")
+        .order("created_at", { ascending: false })
+        .limit(1),
+      supabase
+        .from("agent_actions")
+        .select("*", { count: "exact", head: true })
+        .gte("created_at", new Date(Date.now() - 7 * 86400000).toISOString()),
+      supabase
+        .from("agent_actions")
+        .select("*", { count: "exact", head: true })
+        .gte("created_at", new Date(Date.now() - 30 * 86400000).toISOString()),
+      supabase.from("impact_projects").select("*").eq("status", "active"),
+      supabase
+        .from("weekly_reports")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(1),
+    ])
 
     const grantActions = (grantResult.data ?? []) as AgentAction[]
-    const contentActions = (contentResult.data ?? []) as Pick<AgentAction, "created_at">[]
+    const contentActions = (contentResult.data ?? []) as Pick<
+      AgentAction,
+      "created_at"
+    >[]
     const recentActions = (recentResult.data ?? []) as AgentAction[]
     const heartbeat = heartbeatResult.data?.[0]?.created_at ?? null
     const programs = (programsResult.data ?? []) as ImpactProgram[]
@@ -118,6 +129,7 @@ export async function GET() {
     const tracked = grantActions.length
     const awarded = grantActions.filter((action) => {
       const payload = action.payload ?? {}
+
       return (
         action.status === "completed" &&
         (payload.outcome === "awarded" || payload.status === "awarded")

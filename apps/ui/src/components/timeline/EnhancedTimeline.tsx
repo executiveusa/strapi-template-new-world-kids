@@ -1,13 +1,19 @@
-'use client'
+"use client"
 
-import React, { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { motion, AnimatePresence } from 'framer-motion'
-import VideoPlayer from '../video/VideoPlayer'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../ui/accordion'
+import { motion, AnimatePresence } from "framer-motion"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useEffect, useRef, useState } from "react"
 
-if (typeof window !== 'undefined') {
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../ui/accordion"
+import VideoPlayer from "../video/VideoPlayer"
+
+if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
 }
 
@@ -32,7 +38,7 @@ export interface TimelineEventData {
   date: string
   description?: string
   expandedContent?: string
-  status: 'completed' | 'in-progress' | 'pending'
+  status: "completed" | "in-progress" | "pending"
   images?: TimelineImage[]
   videos?: TimelineVideo[]
   location?: string
@@ -47,7 +53,7 @@ interface EnhancedTimelineProps {
 
 export function EnhancedTimeline({
   events,
-  className = '',
+  className = "",
   animationDelay = 0.1,
 }: EnhancedTimelineProps) {
   const timelineRef = useRef<HTMLDivElement>(null)
@@ -57,7 +63,7 @@ export function EnhancedTimeline({
     if (!timelineRef.current) return
 
     const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray<HTMLElement>('.enhanced-timeline-item')
+      const items = gsap.utils.toArray<HTMLElement>(".enhanced-timeline-item")
 
       items.forEach((item, index) => {
         gsap.fromTo(
@@ -72,31 +78,31 @@ export function EnhancedTimeline({
             x: 0,
             scale: 1,
             duration: 0.8,
-            ease: 'power3.out',
+            ease: "power3.out",
             scrollTrigger: {
               trigger: item,
-              start: 'top 80%',
-              end: 'top 50%',
+              start: "top 80%",
+              end: "top 50%",
               scrub: 1,
-              toggleActions: 'play none none reverse',
+              toggleActions: "play none none reverse",
             },
           }
         )
       })
 
-      const line = timelineRef.current?.querySelector('.timeline-progress-line')
+      const line = timelineRef.current?.querySelector(".timeline-progress-line")
       if (line) {
         gsap.fromTo(
           line,
-          { scaleY: 0, transformOrigin: 'top' },
+          { scaleY: 0, transformOrigin: "top" },
           {
             scaleY: 1,
             duration: 1.5,
-            ease: 'power2.out',
+            ease: "power2.out",
             scrollTrigger: {
               trigger: timelineRef.current,
-              start: 'top 70%',
-              end: 'bottom 30%',
+              start: "top 70%",
+              end: "bottom 30%",
               scrub: 1,
             },
           }
@@ -109,27 +115,29 @@ export function EnhancedTimeline({
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'completed':
-        return '#10b981'
-      case 'in-progress':
-        return '#f59e0b'
-      case 'pending':
-        return '#6b7280'
+      case "completed":
+        return "#10b981"
+      case "in-progress":
+        return "#f59e0b"
+      case "pending":
+        return "#6b7280"
+
       default:
-        return '#6b7280'
+        return "#6b7280"
     }
   }
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'completed':
-        return '✓'
-      case 'in-progress':
-        return '⟳'
-      case 'pending':
-        return '○'
+      case "completed":
+        return "✓"
+      case "in-progress":
+        return "⟳"
+      case "pending":
+        return "○"
+
       default:
-        return '○'
+        return "○"
     }
   }
 
@@ -144,20 +152,25 @@ export function EnhancedTimeline({
         {events.map((event, index) => (
           <div
             key={event.id}
-            className={`enhanced-timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
+            className={`enhanced-timeline-item ${index % 2 === 0 ? "left" : "right"}`}
           >
             <div className="timeline-marker">
               <div
                 className="timeline-dot"
                 style={{ backgroundColor: getStatusColor(event.status) }}
               >
-                <span className="timeline-icon">{getStatusIcon(event.status)}</span>
+                <span className="timeline-icon">
+                  {getStatusIcon(event.status)}
+                </span>
               </div>
             </div>
 
             <motion.div
               className="timeline-card"
-              whileHover={{ scale: 1.02, boxShadow: '0 12px 40px rgba(0,0,0,0.15)' }}
+              whileHover={{
+                scale: 1.02,
+                boxShadow: "0 12px 40px rgba(0,0,0,0.15)",
+              }}
               transition={{ duration: 0.2 }}
             >
               <div className="timeline-card-header">
@@ -169,9 +182,7 @@ export function EnhancedTimeline({
                 </div>
                 <h3 className="timeline-event-title">{event.title}</h3>
                 {event.location && (
-                  <div className="timeline-location">
-                    📍 {event.location}
-                  </div>
+                  <div className="timeline-location">📍 {event.location}</div>
                 )}
               </div>
 
@@ -179,22 +190,24 @@ export function EnhancedTimeline({
                 <p className="timeline-description">{event.description}</p>
               )}
 
-              {(event.expandedContent || event.images?.length || event.videos?.length) && (
+              {(event.expandedContent ||
+                event.images?.length ||
+                event.videos?.length) && (
                 <Accordion
                   type="single"
                   collapsible
-                  value={expandedEvent === event.id ? event.id : ''}
+                  value={expandedEvent === event.id ? event.id : ""}
                   onValueChange={(value) => setExpandedEvent(value || null)}
                 >
                   <AccordionItem value={event.id}>
                     <AccordionTrigger className="timeline-expand-trigger">
-                      {expandedEvent === event.id ? 'Show Less' : 'Show More'}
+                      {expandedEvent === event.id ? "Show Less" : "Show More"}
                     </AccordionTrigger>
                     <AccordionContent>
                       <AnimatePresence>
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
+                          animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
                           className="timeline-expanded-content"
@@ -202,7 +215,9 @@ export function EnhancedTimeline({
                           {event.expandedContent && (
                             <div
                               className="timeline-rich-content"
-                              dangerouslySetInnerHTML={{ __html: event.expandedContent }}
+                              dangerouslySetInnerHTML={{
+                                __html: event.expandedContent,
+                              }}
                             />
                           )}
 
@@ -226,7 +241,9 @@ export function EnhancedTimeline({
 
                           {event.images && event.images.length > 0 && (
                             <div className="timeline-images">
-                              <h4 className="timeline-section-title">Gallery</h4>
+                              <h4 className="timeline-section-title">
+                                Gallery
+                              </h4>
                               <div className="timeline-image-grid">
                                 {event.images.map((image) => (
                                   <motion.div
@@ -234,9 +251,14 @@ export function EnhancedTimeline({
                                     className="timeline-image-item"
                                     whileHover={{ scale: 1.05 }}
                                   >
-                                    <img src={image.url} alt={image.alt || event.title} />
+                                    <img
+                                      src={image.url}
+                                      alt={image.alt || event.title}
+                                    />
                                     {image.caption && (
-                                      <p className="image-caption">{image.caption}</p>
+                                      <p className="image-caption">
+                                        {image.caption}
+                                      </p>
                                     )}
                                   </motion.div>
                                 ))}
@@ -251,9 +273,9 @@ export function EnhancedTimeline({
               )}
 
               <div className={`timeline-status-badge status-${event.status}`}>
-                {event.status === 'completed' && 'Completed'}
-                {event.status === 'in-progress' && 'In Progress'}
-                {event.status === 'pending' && 'Upcoming'}
+                {event.status === "completed" && "Completed"}
+                {event.status === "in-progress" && "In Progress"}
+                {event.status === "pending" && "Upcoming"}
               </div>
             </motion.div>
           </div>

@@ -16,6 +16,7 @@ export class Analytics {
     if (!Analytics.instance) {
       Analytics.instance = new Analytics()
     }
+
     return Analytics.instance
   }
 
@@ -25,7 +26,7 @@ export class Analytics {
       properties: {
         ...event.properties,
         timestamp: new Date().toISOString(),
-        url: typeof window !== 'undefined' ? window.location.href : '',
+        url: typeof window !== "undefined" ? window.location.href : "",
       },
     })
 
@@ -33,28 +34,28 @@ export class Analytics {
     this.sendToBackend(event)
 
     // Log in development
-    if (process.env.NODE_ENV === 'development') {
-      console.log('[Analytics]', event)
+    if (process.env.NODE_ENV === "development") {
+      console.log("[Analytics]", event)
     }
   }
 
   private async sendToBackend(event: AnalyticsEvent): Promise<void> {
     try {
-      await fetch('/api/analytics', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      await fetch("/api/analytics", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(event),
       })
     } catch (error) {
-      console.error('Failed to send analytics event:', error)
+      console.error("Failed to send analytics event:", error)
     }
   }
 
   // Grant-specific tracking
   trackGrantDiscovery(grantId: string, fitScore: number): void {
     this.track({
-      event: 'grant_discovered',
-      category: 'grants',
+      event: "grant_discovered",
+      category: "grants",
       label: grantId,
       value: fitScore,
       properties: { fitScore },
@@ -63,34 +64,41 @@ export class Analytics {
 
   trackGrantAnalysis(grantId: string, analysisType: string): void {
     this.track({
-      event: 'grant_analyzed',
-      category: 'grants',
+      event: "grant_analyzed",
+      category: "grants",
       label: grantId,
       properties: { analysisType },
     })
   }
 
-  trackGrantSubmission(grantId: string, method: 'manual' | 'automated'): void {
+  trackGrantSubmission(grantId: string, method: "manual" | "automated"): void {
     this.track({
-      event: 'grant_submitted',
-      category: 'grants',
+      event: "grant_submitted",
+      category: "grants",
       label: grantId,
       properties: { method },
     })
   }
 
-  trackTimelineEvent(eventId: string, action: 'create' | 'update' | 'view'): void {
+  trackTimelineEvent(
+    eventId: string,
+    action: "create" | "update" | "view"
+  ): void {
     this.track({
       event: `timeline_event_${action}`,
-      category: 'timeline',
+      category: "timeline",
       label: eventId,
     })
   }
 
-  trackAIInteraction(interactionType: string, agentName: string, success: boolean): void {
+  trackAIInteraction(
+    interactionType: string,
+    agentName: string,
+    success: boolean
+  ): void {
     this.track({
-      event: 'ai_interaction',
-      category: 'ai',
+      event: "ai_interaction",
+      category: "ai",
       label: interactionType,
       properties: { agentName, success },
     })
@@ -98,8 +106,8 @@ export class Analytics {
 
   trackOnboardingStep(step: string, completed: boolean): void {
     this.track({
-      event: 'onboarding_step',
-      category: 'onboarding',
+      event: "onboarding_step",
+      category: "onboarding",
       label: step,
       value: completed ? 1 : 0,
     })
@@ -107,8 +115,8 @@ export class Analytics {
 
   trackVideoPlay(videoId: string, videoUrl: string): void {
     this.track({
-      event: 'video_play',
-      category: 'media',
+      event: "video_play",
+      category: "media",
       label: videoId,
       properties: { videoUrl },
     })
@@ -132,12 +140,19 @@ export const trackGrantDiscovery = (grantId: string, fitScore: number) =>
   analytics.trackGrantDiscovery(grantId, fitScore)
 export const trackGrantAnalysis = (grantId: string, analysisType: string) =>
   analytics.trackGrantAnalysis(grantId, analysisType)
-export const trackGrantSubmission = (grantId: string, method: 'manual' | 'automated') =>
-  analytics.trackGrantSubmission(grantId, method)
-export const trackTimelineEvent = (eventId: string, action: 'create' | 'update' | 'view') =>
-  analytics.trackTimelineEvent(eventId, action)
-export const trackAIInteraction = (interactionType: string, agentName: string, success: boolean) =>
-  analytics.trackAIInteraction(interactionType, agentName, success)
+export const trackGrantSubmission = (
+  grantId: string,
+  method: "manual" | "automated"
+) => analytics.trackGrantSubmission(grantId, method)
+export const trackTimelineEvent = (
+  eventId: string,
+  action: "create" | "update" | "view"
+) => analytics.trackTimelineEvent(eventId, action)
+export const trackAIInteraction = (
+  interactionType: string,
+  agentName: string,
+  success: boolean
+) => analytics.trackAIInteraction(interactionType, agentName, success)
 export const trackOnboardingStep = (step: string, completed: boolean) =>
   analytics.trackOnboardingStep(step, completed)
 export const trackVideoPlay = (videoId: string, videoUrl: string) =>
