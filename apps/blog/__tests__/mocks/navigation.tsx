@@ -1,4 +1,4 @@
-import { vi } from 'vitest'
+import { vi } from "vitest"
 
 export const mockPush = vi.fn()
 export const mockReplace = vi.fn()
@@ -16,9 +16,9 @@ export const useNavigationRouter = vi.fn(() => ({
   prefetch: mockPrefetch,
 }))
 
-export const usePathname = vi.fn(() => '/en-US')
-export const useParams = vi.fn(() => ({ locale: 'en-US' }))
-export const getPathname = vi.fn((_params: unknown) => '/en-US')
+export const usePathname = vi.fn(() => "/en")
+export const useParams = vi.fn(() => ({ locale: "en" }))
+export const getPathname = vi.fn((_params: unknown) => "/en")
 export const redirect = vi.fn()
 
 export function Link({
@@ -36,7 +36,7 @@ export function Link({
   onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void
   [key: string]: unknown
 }) {
-  const hrefString = typeof href === 'string' ? href : ((href as { pathname: string })?.pathname ?? '/')
+  const hrefString = typeof href === "string" ? href : ((href as { pathname: string })?.pathname ?? "/")
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault() // Prevent navigation in tests
     onClick?.(e)
@@ -48,9 +48,9 @@ export function Link({
     </a>
   )
 }
-Link.displayName = 'Link'
+Link.displayName = "Link"
 
-vi.mock('@/i18n/navigation', () => ({
+vi.mock("@/i18n/navigation", () => ({
   useNavigationRouter,
   usePathname,
   useParams,

@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+      '@/tests': new URL('./__tests__', import.meta.url).pathname,
       '@': new URL('./src', import.meta.url).pathname,
     },
   },
@@ -22,17 +23,7 @@ export default defineConfig({
       '__tests__/mocks/sandpack.tsx',
     ],
     coverage: {
-      enabled: true,
-      exclude: [
-        'node_modules/**',
-        '__tests__/**',
-        '**/*.spec.{ts,tsx}',
-        '**/*.test.{ts,tsx}',
-        '**/*.config.{ts,mts,js,mjs}',
-        '**/dist/**',
-        'src/components/ui/**',
-        'src/app/globals.css',
-      ],
+      enabled: false,
     },
   },
 })
