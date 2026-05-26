@@ -29,7 +29,11 @@ export default function SiteFooter({ locale }: { readonly locale: Locale }) {
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <a href={supportRails.buyMeACoffee} target="_blank" rel="noreferrer">
+            <a
+              href={supportRails.buyMeACoffee}
+              target="_blank"
+              rel="noreferrer"
+            >
               <Button className="rounded-sm bg-[#C9A84C] text-[#08100B] hover:bg-[#D7B867]">
                 <Heart className="mr-2 h-4 w-4" />
                 Buy Me a Coffee
@@ -48,7 +52,7 @@ export default function SiteFooter({ locale }: { readonly locale: Locale }) {
           <div className="rounded-sm border border-[#C9A84C]/20 bg-[#0C1811] p-4 text-xs leading-6 text-[#E8DEC7]/70">
             <div className="mb-2 flex items-center gap-2 text-[#C9A84C]">
               <ShieldCheck className="h-3.5 w-3.5" />
-              <span className="font-semibold uppercase tracking-[0.18em]">
+              <span className="font-semibold tracking-[0.18em] uppercase">
                 {locale === "es" ? "Verificacion" : "Verification"}
               </span>
             </div>
@@ -62,30 +66,50 @@ export default function SiteFooter({ locale }: { readonly locale: Locale }) {
 
         <div className="space-y-6">
           <div>
-            <div className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-[#C9A84C]">
+            <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
               {locale === "es" ? "Enlaces" : "Explore"}
             </div>
             <div className="space-y-3 text-sm text-[#E8DEC7]/68">
-              <Link href="/impact/food" locale={locale} className="block hover:text-white">
+              <Link
+                href="/impact"
+                locale={locale}
+                className="block hover:text-white"
+              >
                 {locale === "es" ? "Impacto" : "Impact"}
               </Link>
-              <Link href="/trust" locale={locale} className="block hover:text-white">
+              <Link
+                href="/trust"
+                locale={locale}
+                className="block hover:text-white"
+              >
                 {locale === "es" ? "Centro de confianza" : "Trust Center"}
               </Link>
-              <Link href="/work-with-us" locale={locale} className="block hover:text-white">
+              <Link
+                href="/work-with-us"
+                locale={locale}
+                className="block hover:text-white"
+              >
                 {locale === "es" ? "Trabaja con nosotros" : "Work With Us"}
               </Link>
-              <Link href="/about" locale={locale} className="block hover:text-white">
+              <Link
+                href="/about"
+                locale={locale}
+                className="block hover:text-white"
+              >
                 {locale === "es" ? "Nosotros" : "About"}
               </Link>
-              <a href={supportRails.blog} className="block hover:text-white">
+              <Link
+                href="/journal"
+                locale={locale}
+                className="block hover:text-white"
+              >
                 {locale === "es" ? "Bitacora" : "Journal"}
-              </a>
+              </Link>
             </div>
           </div>
 
           <div>
-            <div className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-[#C9A84C]">
+            <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
               {locale === "es" ? "Redes" : "Social"}
             </div>
             <div className="space-y-3 text-sm text-[#E8DEC7]/68">
@@ -107,7 +131,7 @@ export default function SiteFooter({ locale }: { readonly locale: Locale }) {
 
         <div className="space-y-6">
           <div>
-            <div className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-[#C9A84C]">
+            <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
               {locale === "es" ? "Documentos publicos" : "Public Documents"}
             </div>
             <div className="space-y-3">
@@ -131,8 +155,10 @@ export default function SiteFooter({ locale }: { readonly locale: Locale }) {
           </div>
 
           <div>
-            <div className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-[#C9A84C]">
-              {locale === "es" ? "Servicios que financian la mision" : "Services Funding the Mission"}
+            <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
+              {locale === "es"
+                ? "Servicios que financian la mision"
+                : "Services Funding the Mission"}
             </div>
             <div className="space-y-3 text-sm text-[#E8DEC7]/62">
               {workWithUsOffers.slice(0, 2).map((offer) => (

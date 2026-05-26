@@ -13,6 +13,13 @@ const nextOutput =
 const nextConfig = {
   output: nextOutput,
   reactStrictMode: true,
+  async redirects() {
+    return [
+      { source: "/blog", destination: "/journal", permanent: true },
+      { source: "/en/blog", destination: "/en/journal", permanent: true },
+      { source: "/es/blog", destination: "/es/journal", permanent: true },
+    ]
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
