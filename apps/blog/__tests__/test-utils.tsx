@@ -1,18 +1,19 @@
-import { readFileSync } from "node:fs"
-import path from "node:path"
+import type { RenderOptions } from '@testing-library/react'
+import type { ReactElement, ReactNode } from 'react'
 
-import { ProgressProvider } from "@bprogress/next/app"
-import { type RenderOptions, render } from "@testing-library/react"
-import userEvent from "@testing-library/user-event"
-import { NextIntlClientProvider } from "next-intl"
-import { ThemeProvider } from "next-themes"
-import type { ReactElement, ReactNode } from "react"
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
+import { ProgressProvider } from '@bprogress/next/app'
+import { render } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { NextIntlClientProvider } from 'next-intl'
+import { ThemeProvider } from 'next-themes'
 
-const messagesEn = JSON.parse(readFileSync(path.join(process.cwd(), "messages/en.json"), "utf8")) as Record<
+const messagesEn = JSON.parse(readFileSync(path.join(process.cwd(), 'messages/en.json'), 'utf8')) as Record<
   string,
   unknown
 >
-const messagesEs = JSON.parse(readFileSync(path.join(process.cwd(), "messages/es.json"), "utf8")) as Record<
+const messagesEs = JSON.parse(readFileSync(path.join(process.cwd(), 'messages/es.json'), 'utf8')) as Record<
   string,
   unknown
 >
@@ -23,10 +24,10 @@ const messages = {
 
 interface AllTheProvidersProps {
   children: ReactNode
-  locale?: "en" | "es"
+  locale?: 'en' | 'es'
 }
 
-function AllTheProviders({ children, locale = "en" }: AllTheProvidersProps) {
+function AllTheProviders({ children, locale = 'en' }: AllTheProvidersProps) {
   return (
     <NextIntlClientProvider locale={locale} messages={messages[locale]} timeZone="UTC">
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
@@ -36,12 +37,12 @@ function AllTheProviders({ children, locale = "en" }: AllTheProvidersProps) {
   )
 }
 
-interface CustomRenderOptions extends Omit<RenderOptions, "wrapper"> {
-  locale?: "en" | "es"
+interface CustomRenderOptions extends Omit<RenderOptions, 'wrapper'> {
+  locale?: 'en' | 'es'
 }
 
 function customRender(ui: ReactElement, options?: CustomRenderOptions) {
-  const { locale = "en", ...renderOptions } = options ?? {}
+  const { locale = 'en', ...renderOptions } = options ?? {}
   const user = userEvent.setup()
 
   return {
@@ -53,5 +54,5 @@ function customRender(ui: ReactElement, options?: CustomRenderOptions) {
   }
 }
 
-export * from "@testing-library/react"
+export * from '@testing-library/react'
 export { customRender as render }

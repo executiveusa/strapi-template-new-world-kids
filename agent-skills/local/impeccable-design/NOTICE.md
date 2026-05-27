@@ -12,6 +12,7 @@ The `frontend-design` skill in this project builds on Anthropic's original front
 **Copyright:** 2025 Anthropic, PBC
 
 This project extends the original with:
+
 - 7 domain-specific reference files (typography, color-and-contrast, spatial-design, motion-design, interaction-design, responsive-design, ux-writing)
 - 20 steering commands
 - Expanded patterns and anti-patterns

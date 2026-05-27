@@ -17,6 +17,7 @@ We use a **feature-rich source format** that gets transformed for each provider:
 ### Why Option A?
 
 Cursor doesn't support frontmatter or arguments (lowest common denominator). Instead of limiting all providers, we:
+
 1. Author with full metadata in source files
 2. Generate full-featured versions for providers that support it (Claude Code, Gemini, Codex)
 3. Generate downgraded versions for Cursor (strip frontmatter, rely on appending)
@@ -83,6 +84,7 @@ impeccable/
 ## Website (impeccable.style)
 
 **Tech Stack:**
+
 - Vanilla JavaScript (no frameworks)
 - Modern CSS with Bun's bundler (nesting, OKLCH colors, @import)
 - **Local Development**: Bun server with native routes (`server/index.js`)
@@ -90,12 +92,14 @@ impeccable/
 - Deployed on Vercel with Bun runtime
 
 **Dual Setup:**
+
 - `/api` directory contains individual Vercel Functions for production
 - `/server` directory contains monolithic Bun server for local development
 - `/server/lib/api-handlers.js` contains shared logic used by both
 - Zero duplication: API functions and dev server import the same handlers
 
 **Design:**
+
 - Editorial precision aesthetic
 - Cormorant Garamond (display) + Instrument Sans (body)
 - OKLCH color space for vibrant, perceptually uniform colors
@@ -103,6 +107,7 @@ impeccable/
 - Modular CSS architecture (9 files)
 
 **API Endpoints** (Vercel Functions):
+
 - `/` - Homepage (static HTML)
 - `/api/skills` - JSON list of all skills
 - `/api/commands` - JSON list of all commands
@@ -122,7 +127,6 @@ args:
     description: Argument description
     required: false
 ---
-
 Command prompt here. Use {{argname}} placeholders for arguments.
 ```
 
@@ -134,7 +138,6 @@ name: skill-name
 description: Clear description of what this skill provides
 license: License info (optional)
 ---
-
 Skill instructions for the LLM here.
 ```
 
@@ -152,6 +155,7 @@ Run: `bun run build`
 ## Provider Transformations
 
 ### 1. Cursor (Agent Skills Standard)
+
 - **Commands**: Body only → `dist/cursor/.cursor/commands/*.md` (no frontmatter support)
 - **Skills**: Agent Skills standard → `dist/cursor/.cursor/skills/{name}/SKILL.md`
   - Full YAML frontmatter with name/description
@@ -160,6 +164,7 @@ Run: `bun run build`
 - **Note**: Agent Skills require Cursor nightly channel
 
 ### 2. Claude Code (Full Featured)
+
 - **Commands**: Full YAML frontmatter → `dist/claude-code/.claude/commands/*.md`
 - **Skills**: Full YAML frontmatter → `dist/claude-code/.claude/skills/{name}/SKILL.md`
 - **Preserves**: All metadata, all args
@@ -167,6 +172,7 @@ Run: `bun run build`
 - **Installation**: Extract ZIP into your project root, creates `.claude/` folder
 
 ### 3. Gemini CLI (Full Featured)
+
 - **Commands**: TOML format → `dist/gemini/.gemini/commands/*.toml`
   - Uses `description` and `prompt` keys
   - Transforms `{{argname}}` → `{{args}}` (Gemini uses single args string)
@@ -176,6 +182,7 @@ Run: `bun run build`
 - **Installation**: Extract ZIP into your project root, creates `.gemini/` folder + skill files
 
 ### 4. Codex CLI (Full Featured)
+
 - **Commands**: Custom prompt format → `dist/codex/.codex/prompts/*.md`
   - Uses `description` and `argument-hint` in frontmatter
   - Transforms `{{argname}}` → `$ARGNAME` (uppercase variables)
@@ -188,26 +195,31 @@ Run: `bun run build`
 ## Key Design Decisions
 
 ### Why commit dist/?
+
 End users can copy files directly without needing build tools.
 
 ### Why separate transformers?
+
 - Each provider ~30-85 lines, easy to understand
 - Can modify one without affecting others
 - Easy to add new providers
 
 ### Why Bun?
+
 - Much faster than Node.js (2-4x)
 - All-in-one toolkit (runtime + package manager)
 - Zero config, TypeScript native
 - Node.js compatible (works with existing code)
 
 ### Why modular skills for Gemini/Codex?
+
 - Better context management (load only what's needed)
 - Cleaner file organization
 - Gemini: Uses native `@file.md` import feature
 - Codex: Uses routing pattern with AGENTS.md guide
 
 ### Why vanilla JS for website?
+
 - No build complexity
 - Bun handles everything natively
 - Modern features (ES6+, CSS nesting, OKLCH colors)
@@ -247,4 +259,3 @@ End users can copy files directly without needing build tools.
 - [Gemini CLI GEMINI.md](https://github.com/google-gemini/gemini-cli/blob/main/docs/cli/gemini-md.md)
 - [Codex CLI Slash Commands](https://developers.openai.com/codex/guides/slash-commands)
 - [Codex CLI Skills](https://developers.openai.com/codex/skills/)
-

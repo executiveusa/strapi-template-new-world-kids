@@ -1,23 +1,18 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { type NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: NextRequest) {
   try {
     const onboardingData = await request.json()
 
-    // Save to environment or Strapi
-    const strapiUrl = process.env.STRAPI_URL || 'http://localhost:1337'
-
-    // Store onboarding data
-    // This could be saved to a custom Strapi content type or user profile
-
-    console.log('Onboarding completed:', onboardingData)
+    console.log("Onboarding completed:", onboardingData)
 
     // Update AI orchestrator with nonprofit profile
-    const orchestratorUrl = process.env.AI_ORCHESTRATOR_URL || 'http://localhost:3002'
+    const orchestratorUrl =
+      process.env.AI_ORCHESTRATOR_URL || "http://localhost:3002"
 
     await fetch(`${orchestratorUrl}/api/profile`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         nonprofitProfile: {
           name: onboardingData.organizationName,
@@ -27,17 +22,18 @@ export async function POST(request: NextRequest) {
         },
       }),
     }).catch(() => {
-      console.log('AI orchestrator not available, data saved locally')
+      console.log("AI orchestrator not available, data saved locally")
     })
 
     return NextResponse.json({
       success: true,
-      message: 'Onboarding completed successfully',
+      message: "Onboarding completed successfully",
     })
   } catch (error) {
-    console.error('Onboarding error:', error)
+    console.error("Onboarding error:", error)
+
     return NextResponse.json(
-      { error: 'Failed to complete onboarding' },
+      { error: "Failed to complete onboarding" },
       { status: 500 }
     )
   }

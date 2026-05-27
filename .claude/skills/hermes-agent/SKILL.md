@@ -42,11 +42,13 @@ Hermes runs a daily heartbeat (triggered via Paperclip cron or POST `/agents/her
 Hermes delegates to two sub-agents:
 
 ### Grant Hunter
+
 - **Trigger:** New grant opportunity found OR deadline within 30 days
 - **Task:** Research funder, assess fit, draft LOI or application
 - **Output:** `agent_actions` row with `action_type = 'grant_draft'`, content in `payload`
 
 ### Content Engine
+
 - **Trigger:** Weekly content calendar slot
 - **Task:** Draft bilingual (en/es) post for Instagram/Facebook using NWKids voice
 - **Output:** Postiz draft via API, logged to `agent_actions`
@@ -78,6 +80,7 @@ Company definition: `.paperclip/company.json`
 Soul: `agents/hermes/SOUL.md`
 
 API call to trigger heartbeat:
+
 ```bash
 curl -X POST ${PAPERCLIP_PUBLIC_URL}/agents/hermes/heartbeat \
   -H "Authorization: Bearer ${PAPERCLIP_API_KEY}"
@@ -94,6 +97,7 @@ The web UI for Hermes runs on port 8787 (`ghcr.io/nesquena/hermes-webui:latest`)
 - Access: `http://localhost:8787`
 
 Start:
+
 ```bash
 docker-compose -f infrastructure/hermes/docker-compose.yml up -d
 ```
@@ -103,6 +107,7 @@ docker-compose -f infrastructure/hermes/docker-compose.yml up -d
 ## NWKids Voice Guidelines
 
 When drafting content:
+
 - Warm, direct, mission-forward
 - Bilingual: always include es translation
 - No corporate jargon, no NGO-speak buzzwords

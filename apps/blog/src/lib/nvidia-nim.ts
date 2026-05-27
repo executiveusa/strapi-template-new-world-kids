@@ -1,13 +1,13 @@
-import OpenAI from "openai"
+import OpenAI from 'openai'
 
-const NIM_BASE_URL = process.env.NVIDIA_NIM_BASE_URL ?? "http://31.220.58.212:8082"
-const NIM_API_KEY = process.env.NVIDIA_NIM_API_KEY ?? "dummy"
-const NIM_MODEL = process.env.NVIDIA_NIM_MODEL ?? "moonshotai/kimi-k2-thinking"
+const NIM_BASE_URL = process.env.NVIDIA_NIM_BASE_URL ?? 'http://31.220.58.212:8082'
+const NIM_API_KEY = process.env.NVIDIA_NIM_API_KEY ?? 'dummy'
+const NIM_MODEL = process.env.NVIDIA_NIM_MODEL ?? 'moonshotai/kimi-k2-thinking'
 
 export const nimClient = new OpenAI({
   baseURL: NIM_BASE_URL,
   apiKey: NIM_API_KEY,
-  defaultHeaders: { "User-Agent": "nwkids/1.0" },
+  defaultHeaders: { 'User-Agent': 'nwkids/1.0' },
 })
 
 export interface NIMCallOptions {
@@ -18,8 +18,8 @@ export interface NIMCallOptions {
 }
 
 export async function nimChat(
-  messages: { role: "user" | "assistant" | "system"; content: string }[],
-  opts: NIMCallOptions = {}
+  messages: { role: 'user' | 'assistant' | 'system', content: string }[],
+  opts: NIMCallOptions = {},
 ): Promise<string> {
   const payload = {
     model: opts.model ?? NIM_MODEL,
@@ -27,7 +27,7 @@ export async function nimChat(
     temperature: opts.temperature ?? 0.7,
     messages:
       opts.systemPrompt !== undefined && opts.systemPrompt.length > 0
-        ? [{ role: "system" as const, content: opts.systemPrompt }, ...messages]
+        ? [{ role: 'system' as const, content: opts.systemPrompt }, ...messages]
         : messages,
   }
 
@@ -39,14 +39,14 @@ export async function nimChat(
   } catch (err: unknown) {
     const status = (err as { status?: number }).status
     if (status === 429) {
-      await new Promise((r) => setTimeout(r, 2000))
+      await new Promise(r => setTimeout(r, 2000))
       res = await attempt()
     } else {
       throw err
     }
   }
 
-  return res.choices[0]?.message?.content ?? ""
+  return res.choices[0]?.message?.content ?? ''
 }
 
 export { NIM_BASE_URL, NIM_MODEL }

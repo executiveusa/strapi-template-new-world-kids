@@ -1,13 +1,15 @@
-"use client"
+'use client'
 
-import { Loader2Icon, SendIcon } from "lucide-react"
-import { type FormEvent, useState } from "react"
+import type { FormEvent } from 'react'
+import type { A2UIDocument } from '@/components/a2ui-renderer'
+import { Loader2Icon, SendIcon } from 'lucide-react'
 
-import { type A2UIDocument, A2UIRenderer } from "@/components/a2ui-renderer"
-import { Button } from "@/components/ui/button"
+import { useState } from 'react'
+import { A2UIRenderer } from '@/components/a2ui-renderer'
+import { Button } from '@/components/ui/button'
 
 interface ChatMessage {
-  role: "user" | "assistant"
+  role: 'user' | 'assistant'
   content: string
   citations?: string[]
   ui?: A2UIDocument
@@ -22,7 +24,7 @@ interface PostArticleChatProps {
 }
 
 export function PostArticleChat({ title, content, locale, url, tags }: PostArticleChatProps) {
-  const [question, setQuestion] = useState("")
+  const [question, setQuestion] = useState('')
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [isLoading, setIsLoading] = useState(false)
 
@@ -34,16 +36,16 @@ export function PostArticleChat({ title, content, locale, url, tags }: PostArtic
       return
     }
 
-    setMessages((previous) => [...previous, { role: "user", content: trimmed }])
-    setQuestion("")
+    setMessages(previous => [...previous, { role: 'user', content: trimmed }])
+    setQuestion('')
     setIsLoading(true)
 
     try {
-      const baseUrl = process.env.NEXT_PUBLIC_HERMES_PUBLIC_URL ?? "http://localhost:4010"
-      const response = await fetch(`${baseUrl.replace(/\/$/, "")}/api/chat/article`, {
-        method: "POST",
+      const baseUrl = process.env.NEXT_PUBLIC_HERMES_PUBLIC_URL ?? 'http://localhost:4010'
+      const response = await fetch(`${baseUrl.replace(/\/$/, '')}/api/chat/article`, {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           title,
@@ -56,7 +58,7 @@ export function PostArticleChat({ title, content, locale, url, tags }: PostArtic
       })
 
       if (!response.ok) {
-        throw new Error("Chat request failed.")
+        throw new Error('Chat request failed.')
       }
 
       const payload = (await response.json()) as {
@@ -65,25 +67,25 @@ export function PostArticleChat({ title, content, locale, url, tags }: PostArtic
         ui?: A2UIDocument
       }
 
-      setMessages((previous) => [
+      setMessages(previous => [
         ...previous,
         {
-          role: "assistant",
+          role: 'assistant',
           content: payload.answer,
           citations: payload.citations,
           ui: payload.ui,
         },
       ])
     } catch {
-      const fallback =
-        locale === "es"
-          ? "No pude responder desde el servicio en este momento. Intenta de nuevo en un momento."
-          : "I could not answer from the service just now. Please try again in a moment."
+      const fallback
+        = locale === 'es'
+          ? 'No pude responder desde el servicio en este momento. Intenta de nuevo en un momento.'
+          : 'I could not answer from the service just now. Please try again in a moment.'
 
-      setMessages((previous) => [
+      setMessages(previous => [
         ...previous,
         {
-          role: "assistant",
+          role: 'assistant',
           content: fallback,
         },
       ])
@@ -96,12 +98,12 @@ export function PostArticleChat({ title, content, locale, url, tags }: PostArtic
     <div className="space-y-4">
       <div className="space-y-2">
         <div className="text-foreground text-lg font-semibold">
-          {locale === "es" ? "Pregunta a Hermes sobre este articulo" : "Ask Hermes about this article"}
+          {locale === 'es' ? 'Pregunta a Hermes sobre este articulo' : 'Ask Hermes about this article'}
         </div>
         <p className="text-muted-foreground text-sm leading-7">
-          {locale === "es"
-            ? "Las respuestas se limitan al contenido de esta nota."
-            : "Answers are scoped to this article only."}
+          {locale === 'es'
+            ? 'Las respuestas se limitan al contenido de esta nota.'
+            : 'Answers are scoped to this article only.'}
         </p>
       </div>
 
@@ -109,7 +111,7 @@ export function PostArticleChat({ title, content, locale, url, tags }: PostArtic
         {messages.map((message, index) => (
           <div key={`${message.role}-${index}`} className="border-border bg-card rounded-sm border p-4">
             <div className="text-muted-foreground mb-2 text-xs font-semibold tracking-[0.18em] uppercase">
-              {message.role === "user" ? (locale === "es" ? "Tu pregunta" : "Your question") : "Hermes"}
+              {message.role === 'user' ? (locale === 'es' ? 'Tu pregunta' : 'Your question') : 'Hermes'}
             </div>
             <div className="text-foreground text-sm leading-7">{message.content}</div>
             {message.ui && (
@@ -119,7 +121,7 @@ export function PostArticleChat({ title, content, locale, url, tags }: PostArtic
             )}
             {message.citations && message.citations.length > 0 && !message.ui && (
               <div className="border-border mt-3 space-y-2 border-t pt-3">
-                {message.citations.map((citation) => (
+                {message.citations.map(citation => (
                   <div key={citation} className="text-muted-foreground text-xs leading-6">
                     {citation}
                   </div>
@@ -138,17 +140,17 @@ export function PostArticleChat({ title, content, locale, url, tags }: PostArtic
       >
         <textarea
           value={question}
-          onChange={(event) => setQuestion(event.target.value)}
+          onChange={event => setQuestion(event.target.value)}
           placeholder={
-            locale === "es"
-              ? "Haz una pregunta concreta sobre este articulo"
-              : "Ask a specific question about this article"
+            locale === 'es'
+              ? 'Haz una pregunta concreta sobre este articulo'
+              : 'Ask a specific question about this article'
           }
           className="border-border bg-background placeholder:text-muted-foreground/60 focus:border-primary min-h-28 w-full rounded-sm border px-4 py-3 text-sm transition-colors outline-none"
         />
         <Button type="submit" disabled={isLoading || question.trim().length === 0} className="gap-2">
           {isLoading ? <Loader2Icon className="size-4 animate-spin" /> : <SendIcon className="size-4" />}
-          <span>{locale === "es" ? "Preguntar" : "Ask"}</span>
+          <span>{locale === 'es' ? 'Preguntar' : 'Ask'}</span>
         </Button>
       </form>
     </div>

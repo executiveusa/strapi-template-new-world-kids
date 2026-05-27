@@ -29,6 +29,7 @@ npx skills add knowsuchagency/mcp2cli --skill mcp2cli
 ```
 
 After installing, try prompts like:
+
 - `mcp2cli --mcp https://mcp.example.com/sse` — interact with an MCP server
 - `mcp2cli create a skill for https://api.example.com/openapi.json` — generate a skill from an API
 
@@ -191,6 +192,7 @@ mcp2cli bake install petstore --dir ./scripts/  # install wrapper to custom dire
 ```
 
 Filtering options:
+
 - `--include` — comma-separated glob patterns to whitelist tools (e.g. `"list-*,get-*"`)
 - `--exclude` — comma-separated glob patterns to blacklist tools (e.g. `"delete-*"`)
 - `--methods` — comma-separated HTTP methods to allow (e.g. `"GET,POST"`, OpenAPI only)

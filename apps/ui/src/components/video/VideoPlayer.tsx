@@ -1,8 +1,8 @@
-'use client'
+"use client"
 
-import React, { useState } from 'react'
-import ReactPlayer from 'react-player'
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion"
+import { useState } from "react"
+import ReactPlayer from "react-player"
 
 export interface VideoPlayerProps {
   url?: string
@@ -30,9 +30,9 @@ export function VideoPlayer({
   controls = true,
   loop = false,
   muted = false,
-  width = '100%',
-  height = '100%',
-  className = '',
+  width = "100%",
+  height = "100%",
+  className = "",
   onPlay,
   onPause,
   onEnded,
@@ -85,17 +85,17 @@ export function VideoPlayer({
         </div>
       )}
 
-      <div className="video-player-container" style={{ position: 'relative' }}>
+      <div className="video-player-container" style={{ position: "relative" }}>
         {showThumbnail && thumbnail ? (
           <motion.div
             className="video-player-thumbnail"
             onClick={handleThumbnailClick}
             style={{
               backgroundImage: `url(${thumbnail})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              cursor: 'pointer',
-              position: 'relative',
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              cursor: "pointer",
+              position: "relative",
               width,
               height,
             }}

@@ -314,6 +314,7 @@ There is a plenty of documentation in README files in individual apps and packag
 ## 💙 Feedback
 
 This repository was created based on [strapi-next-monorepo-starter](https://github.com/notum-cz/strapi-next-monorepo-starter). If you encounter a problem with the template code during development, or you have implemented a useful feature that should be part of that template, please create an issue with a description or PR in that repository. So we can keep it updated with great features.
+
 # New World Kids Runtime
 
 - `apps/ui` -> donor-facing site, trust layer, and `/ops` dashboard

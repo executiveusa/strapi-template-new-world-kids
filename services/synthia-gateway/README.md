@@ -11,27 +11,27 @@ you configure once.
 
 ## Features
 
-| Feature | Detail |
-|---|---|
-| **OpenAI-compatible API** | Drop-in replacement — point any OpenAI SDK at the gateway URL |
+| Feature                    | Detail                                                                              |
+| -------------------------- | ----------------------------------------------------------------------------------- |
+| **OpenAI-compatible API**  | Drop-in replacement — point any OpenAI SDK at the gateway URL                       |
 | **Multi-provider routing** | Auto-detects the provider from the model name; overridable with `X-Provider` header |
-| **Anthropic support** | Full OpenAI ↔ Anthropic format translation, including streaming SSE |
-| **Two auth modes** | Pass-through (caller sends their own key) or gateway-key (keys stored server-side) |
-| **Streaming** | Server-Sent Events (SSE) supported for all providers |
-| **Embeddings & models** | `/v1/embeddings` and `/v1/models` endpoints proxied |
+| **Anthropic support**      | Full OpenAI ↔ Anthropic format translation, including streaming SSE                 |
+| **Two auth modes**         | Pass-through (caller sends their own key) or gateway-key (keys stored server-side)  |
+| **Streaming**              | Server-Sent Events (SSE) supported for all providers                                |
+| **Embeddings & models**    | `/v1/embeddings` and `/v1/models` endpoints proxied                                 |
 
 ---
 
 ## Supported providers
 
-| Provider | Model prefix (auto-detect) | Override with `X-Provider` |
-|---|---|---|
-| OpenAI | `gpt-`, `o1`, `o3`, `text-embedding-`, `dall-e-`, `whisper-`, `tts-` | `openai` |
-| Anthropic | `claude-` | `anthropic` |
-| Groq | `llama`, `gemma` | `groq` |
-| Mistral / Mixtral | `mistral-`, `mixtral-`, `codestral-` | `mistral` |
-| Together AI | _(set `X-Provider: together`)_ | `together` |
-| Ollama (local) | _(set `X-Provider: ollama`)_ | `ollama` |
+| Provider          | Model prefix (auto-detect)                                           | Override with `X-Provider` |
+| ----------------- | -------------------------------------------------------------------- | -------------------------- |
+| OpenAI            | `gpt-`, `o1`, `o3`, `text-embedding-`, `dall-e-`, `whisper-`, `tts-` | `openai`                   |
+| Anthropic         | `claude-`                                                            | `anthropic`                |
+| Groq              | `llama`, `gemma`                                                     | `groq`                     |
+| Mistral / Mixtral | `mistral-`, `mixtral-`, `codestral-`                                 | `mistral`                  |
+| Together AI       | _(set `X-Provider: together`)_                                       | `together`                 |
+| Ollama (local)    | _(set `X-Provider: ollama`)_                                         | `ollama`                   |
 
 ---
 
@@ -87,14 +87,14 @@ Copy `.env.example` to `.env` and set the relevant variables.
 
 ### Pass-through mode (default)
 
-Leave `GATEWAY_API_KEY` unset.  Every request must carry the caller's provider
-API key as an `Authorization: Bearer <key>` header.  No keys are stored on the
+Leave `GATEWAY_API_KEY` unset. Every request must carry the caller's provider
+API key as an `Authorization: Bearer <key>` header. No keys are stored on the
 server.
 
 ### Gateway-key mode
 
-Set `GATEWAY_API_KEY` to a secret shared with your AI agents.  Store provider
-keys in the corresponding environment variables.  Callers authenticate with
+Set `GATEWAY_API_KEY` to a secret shared with your AI agents. Store provider
+keys in the corresponding environment variables. Callers authenticate with
 only the gateway key.
 
 ```
@@ -120,16 +120,16 @@ OLLAMA_BASE_URL=http://gpu-server:11434
 
 ## API
 
-All endpoints mirror the OpenAI API.  Set `base_url` in your client to point
+All endpoints mirror the OpenAI API. Set `base_url` in your client to point
 at the gateway.
 
-| Method | Path | Description |
-|---|---|---|
-| `GET` | `/health` | Liveness check (no auth required) |
+| Method | Path                   | Description                            |
+| ------ | ---------------------- | -------------------------------------- |
+| `GET`  | `/health`              | Liveness check (no auth required)      |
 | `POST` | `/v1/chat/completions` | Chat completions (streaming supported) |
-| `POST` | `/v1/completions` | Legacy text completions |
-| `POST` | `/v1/embeddings` | Embeddings |
-| `GET` | `/v1/models` | List available models |
+| `POST` | `/v1/completions`      | Legacy text completions                |
+| `POST` | `/v1/embeddings`       | Embeddings                             |
+| `GET`  | `/v1/models`           | List available models                  |
 
 ### `X-Provider` header
 

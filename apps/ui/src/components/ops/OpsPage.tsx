@@ -1,7 +1,13 @@
 "use client"
 
-import { animate, motion, useInView, useMotionValue, useTransform } from "framer-motion"
 import { formatDistanceToNowStrict } from "date-fns"
+import {
+  animate,
+  motion,
+  useInView,
+  useMotionValue,
+  useTransform,
+} from "framer-motion"
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { Link } from "@/lib/navigation"
@@ -146,7 +152,9 @@ function MetricCard({
       transition={{ duration: 0.55, delay }}
       className="rounded-[20px] border border-white/[0.08] bg-[#0c1710] p-6"
     >
-      <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">{label}</p>
+      <p className="text-xs tracking-[0.2em] text-[#c9a84c] uppercase">
+        {label}
+      </p>
       <div className="mt-5 font-serif text-4xl font-semibold text-white">
         <NumberTicker value={value} formatter={formatter} />
       </div>
@@ -237,7 +245,7 @@ export function OpsPage() {
     <div className="bg-[#080f0a]">
       <div className="border-b border-white/[0.08] px-6 py-4">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
-          <p className="text-xs uppercase tracking-[0.26em] text-[#c9a84c]">
+          <p className="text-xs tracking-[0.26em] text-[#c9a84c] uppercase">
             HERMES - LIVE OPERATIONS LEDGER
           </p>
           <div className="flex items-center gap-3 text-sm text-white/62">
@@ -302,7 +310,7 @@ export function OpsPage() {
               >
                 <div className="mb-6 flex items-center justify-between gap-3">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">
+                    <p className="text-xs tracking-[0.2em] text-[#c9a84c] uppercase">
                       Programs running now
                     </p>
                     <h2 className="mt-3 font-serif text-3xl font-semibold text-white">
@@ -331,17 +339,20 @@ export function OpsPage() {
                             </p>
                           </div>
                           <div className="flex flex-wrap items-center gap-2">
-                            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.16em] text-white/64">
-                              {LOCATION_LABELS[program.location] ?? program.location}
+                            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs tracking-[0.16em] text-white/64 uppercase">
+                              {LOCATION_LABELS[program.location] ??
+                                program.location}
                             </span>
-                            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs uppercase tracking-[0.16em] text-emerald-200">
+                            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs tracking-[0.16em] text-emerald-200 uppercase">
                               <span className="h-2 w-2 rounded-full bg-emerald-400" />
                               Active
                             </span>
                           </div>
                         </div>
                         <div className="mt-4 text-sm leading-6 text-white/58">
-                          {youthServed ? `${youthServed} youth served` : "Impact metrics syncing"}
+                          {youthServed
+                            ? `${youthServed} youth served`
+                            : "Impact metrics syncing"}
                         </div>
                       </div>
                     )
@@ -357,7 +368,7 @@ export function OpsPage() {
                 className="rounded-[20px] border border-white/[0.08] bg-[#0c1710] p-6"
               >
                 <div className="mb-6">
-                  <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">
+                  <p className="text-xs tracking-[0.2em] text-[#c9a84c] uppercase">
                     Recent agent actions
                   </p>
                   <h2 className="mt-3 font-serif text-3xl font-semibold text-white">
@@ -386,10 +397,10 @@ export function OpsPage() {
                                 {action.description}
                               </p>
                               <div className="mt-3 flex flex-wrap gap-2">
-                                <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-white/58">
+                                <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] tracking-[0.16em] text-white/58 uppercase">
                                   {action.action_type}
                                 </span>
-                                <span className="rounded-full border border-[#c9a84c]/20 bg-[#c9a84c]/10 px-2.5 py-1 text-[11px] uppercase tracking-[0.16em] text-[#e5cb7d]">
+                                <span className="rounded-full border border-[#c9a84c]/20 bg-[#c9a84c]/10 px-2.5 py-1 text-[11px] tracking-[0.16em] text-[#e5cb7d] uppercase">
                                   {action.status}
                                 </span>
                               </div>
@@ -404,8 +415,8 @@ export function OpsPage() {
                   </div>
                 ) : (
                   <div className="rounded-[18px] border border-white/[0.08] bg-black/15 p-5 text-sm leading-7 text-white/58">
-                    Hermes is in bootstrap. First heartbeat pending. Check back in
-                    4 hours.
+                    Hermes is in bootstrap. First heartbeat pending. Check back
+                    in 4 hours.
                   </div>
                 )}
               </motion.div>
@@ -419,7 +430,7 @@ export function OpsPage() {
                 transition={{ duration: 0.55 }}
                 className="rounded-[20px] border border-[#c9a84c]/30 bg-[#151108] p-6"
               >
-                <p className="text-xs uppercase tracking-[0.24em] text-[#c9a84c]">
+                <p className="text-xs tracking-[0.24em] text-[#c9a84c] uppercase">
                   Week of {data.weekly.week_label}
                 </p>
                 <p className="mt-4 max-w-4xl text-base leading-8 text-white/72">
@@ -444,7 +455,7 @@ export function OpsPage() {
                       key={item.label}
                       className="rounded-[18px] border border-white/[0.08] bg-black/15 p-4"
                     >
-                      <p className="text-xs uppercase tracking-[0.18em] text-white/48">
+                      <p className="text-xs tracking-[0.18em] text-white/48 uppercase">
                         {item.label}
                       </p>
                       <p className="mt-3 font-serif text-3xl font-semibold text-white">
@@ -464,7 +475,7 @@ export function OpsPage() {
               className="grid gap-6 rounded-[24px] border border-[#c9a84c]/20 bg-[#19140b] p-6 md:grid-cols-[1fr_1fr]"
             >
               <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">
+                <p className="text-xs tracking-[0.2em] text-[#c9a84c] uppercase">
                   What this page proves
                 </p>
                 <h2 className="mt-4 font-serif text-3xl font-semibold text-white">
@@ -479,13 +490,13 @@ export function OpsPage() {
 
               <div className="flex flex-col justify-between gap-6">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">
+                  <p className="text-xs tracking-[0.2em] text-[#c9a84c] uppercase">
                     What happens next
                   </p>
                   <p className="mt-4 max-w-xl text-base leading-8 text-white/66">
                     The system improves every cycle. Every grant that fails
-                    improves the targeting. The operational intelligence compounds
-                    automatically.
+                    improves the targeting. The operational intelligence
+                    compounds automatically.
                   </p>
                 </div>
 

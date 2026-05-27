@@ -1,18 +1,19 @@
 # New World Kids Platform - KPI Dashboard
+
 > Updated as the mission-first site, journal, and Hermes backend move toward production.
 
 ---
 
 ## Primary KPIs
 
-| Metric | Current | Target | Period |
-| --- | --- | --- | --- |
-| Monthly recurring donations | $0 | $2,000 | monthly |
-| Donor conversion rate | 0% | 3% | monthly |
-| Grant applications in pipeline | 0 | 3 | quarterly |
-| Public trust docs available | 4 | 4 | always-on |
-| Journal posts published | 8 seeded | 16 | launch |
-| Hermes service uptime | not measured yet | 99.9% | monthly |
+| Metric                         | Current          | Target | Period    |
+| ------------------------------ | ---------------- | ------ | --------- |
+| Monthly recurring donations    | $0               | $2,000 | monthly   |
+| Donor conversion rate          | 0%               | 3%     | monthly   |
+| Grant applications in pipeline | 0                | 3      | quarterly |
+| Public trust docs available    | 4                | 4      | always-on |
+| Journal posts published        | 8 seeded         | 16     | launch    |
+| Hermes service uptime          | not measured yet | 99.9%  | monthly   |
 
 ---
 

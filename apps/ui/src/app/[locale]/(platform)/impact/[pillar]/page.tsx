@@ -57,7 +57,7 @@ export default async function ImpactPillarPage({
         description={`${copyForLocale(locale, entry.need)} ${copyForLocale(locale, entry.build)}`}
         aside={
           <div className="space-y-4">
-            <div className="font-mono text-xs uppercase tracking-[0.18em] text-[#C9A84C]">
+            <div className="font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
               {locale === "es" ? "Forma de apoyo" : "Support path"}
             </div>
             <div className="text-sm leading-7 text-[#E8DEC7]/66">
@@ -76,7 +76,7 @@ export default async function ImpactPillarPage({
 
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
         <div className="rounded-sm border border-white/10 bg-white/[0.02] p-6">
-          <div className="font-mono text-xs uppercase tracking-[0.18em] text-[#C9A84C]">
+          <div className="font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
             {locale === "es" ? "Lo que construimos" : "What we build"}
           </div>
           <p className="mt-4 text-sm leading-7 text-[#E8DEC7]/62">
@@ -85,7 +85,7 @@ export default async function ImpactPillarPage({
         </div>
 
         <div className="rounded-sm border border-white/10 bg-white/[0.02] p-6">
-          <div className="font-mono text-xs uppercase tracking-[0.18em] text-[#C9A84C]">
+          <div className="font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
             {locale === "es" ? "Prueba en el terreno" : "Proof on the ground"}
           </div>
           <ul className="mt-5 space-y-4">

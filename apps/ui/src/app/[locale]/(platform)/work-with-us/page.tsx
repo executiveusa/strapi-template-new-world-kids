@@ -3,11 +3,7 @@ import type { Locale } from "next-intl"
 
 import PageHero from "@/components/site/PageHero"
 import { Button } from "@/components/ui/button"
-import {
-  copyForLocale,
-  supportRails,
-  workWithUsOffers,
-} from "@/content/site"
+import { copyForLocale, supportRails, workWithUsOffers } from "@/content/site"
 
 export const metadata: Metadata = {
   title: "Work With Us",
@@ -36,7 +32,7 @@ export default async function WorkWithUsPage({
         }
         aside={
           <div className="space-y-4">
-            <div className="font-mono text-xs uppercase tracking-[0.18em] text-[#C9A84C]">
+            <div className="font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
               {locale === "es" ? "Checkout comercial" : "Commercial checkout"}
             </div>
             <div className="text-sm leading-7 text-[#E8DEC7]/66">

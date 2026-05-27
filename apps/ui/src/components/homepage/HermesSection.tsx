@@ -1,5 +1,4 @@
 import { ArrowUpRight } from "lucide-react"
-import Link from "next/link"
 
 import { HermesStatusPanel } from "./HermesStatusPanel"
 import { hermesPrinciples, siteLinks } from "../site/siteData"
@@ -49,13 +48,6 @@ export function HermesSection() {
                 Open Hermes dashboard
                 <ArrowUpRight className="h-4 w-4" />
               </a>
-              <Link
-                href="/api/hermes/status"
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white/82"
-              >
-                View raw status JSON
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
             </div>
           </div>
 

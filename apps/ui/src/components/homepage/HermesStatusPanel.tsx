@@ -104,8 +104,9 @@ export function HermesStatusPanel() {
       </div>
 
       <p className="mt-5 text-sm leading-7 text-white/60">
-        {status?.error ??
-          "This card reads from the Hermes backend so the public site can prove the operations layer is alive without exposing secrets in the browser."}
+        {status?.error
+          ? "Hermes status temporarily offline — backend monitoring will return after deployment sync."
+          : "This card reads from the Hermes backend so the public site can prove the operations layer is alive without exposing secrets in the browser."}
       </p>
     </div>
   )

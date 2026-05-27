@@ -53,14 +53,18 @@ The system combines:
 ### 1. **Strapi Content Types**
 
 #### `/apps/strapi/src/api/video/`
+
 Video content type with support for:
+
 - YouTube, Vimeo, local, and external videos
 - Thumbnails and metadata
 - Autoplay, controls, loop settings
 - Multi-language support (i18n)
 
 #### `/apps/strapi/src/api/timeline-event/`
+
 Enhanced timeline events with:
+
 - Rich text descriptions
 - Multiple images and videos
 - Status tracking (completed, in-progress, pending)
@@ -68,7 +72,9 @@ Enhanced timeline events with:
 - Expanded content sections
 
 #### `/apps/strapi/src/api/grant-application/`
+
 Comprehensive grant tracking:
+
 - Grant details and funder info
 - Status workflow (discovered → researching → drafting → submitted → awarded)
 - Priority levels
@@ -81,7 +87,9 @@ Comprehensive grant tracking:
 ### 2. **React Components**
 
 #### `/apps/ui/src/components/video/VideoPlayer.tsx`
+
 Full-featured video player:
+
 - React Player integration
 - Custom thumbnail with play button
 - Framer Motion animations
@@ -89,7 +97,9 @@ Full-featured video player:
 - Event callbacks (onPlay, onPause, onEnded)
 
 #### `/apps/ui/src/components/timeline/EnhancedTimeline.tsx`
+
 Cinematic timeline component:
+
 - GSAP scroll animations
 - Accordion expansion for details
 - Video and image galleries
@@ -98,7 +108,9 @@ Cinematic timeline component:
 - Status indicators with colors
 
 #### `/apps/ui/src/components/dashboard/GrantManagementDashboard.tsx`
+
 Comprehensive grant management:
+
 - Stats overview (total, in-progress, submitted, funding)
 - Filterable grant list
 - Priority indicators
@@ -107,7 +119,9 @@ Comprehensive grant management:
 - Status badges
 
 #### `/apps/ui/src/components/dashboard/AIInsightsPanel.tsx`
+
 Real-time AI insights:
+
 - Agent activity monitoring
 - Recommendations and alerts
 - Confidence scores
@@ -115,7 +129,9 @@ Real-time AI insights:
 - Analytics dashboard
 
 #### `/apps/ui/src/components/onboarding/OnboardingWizard.tsx`
+
 Multi-step onboarding:
+
 - Organization profile setup
 - Mission and impact details
 - Automation configuration
@@ -129,6 +145,7 @@ Multi-step onboarding:
 Location: `/services/ai-orchestrator/`
 
 #### **Gemini Integration** (`src/integrations/gemini.ts`)
+
 - Multimodal AI analysis (text, images, videos)
 - Grant fit scoring
 - Application drafting
@@ -136,6 +153,7 @@ Location: `/services/ai-orchestrator/`
 - Continuous learning from interactions
 
 #### **Browser Automation** (`src/automation/browser-automation.ts`)
+
 - Puppeteer-based automation
 - Skip platform integration
 - Form filling and submission
@@ -143,6 +161,7 @@ Location: `/services/ai-orchestrator/`
 - Error handling and retry logic
 
 #### **Grant Scheduler** (`src/automation/grant-scheduler.ts`)
+
 - Cron-based scheduling
 - Deadline monitoring
 - Auto-submission workflows
@@ -150,6 +169,7 @@ Location: `/services/ai-orchestrator/`
 - Strapi integration for status updates
 
 #### **AI Orchestrator** (`src/agents/orchestrator.ts`)
+
 - Task queue management
 - Agent memory and learning
 - Multi-agent coordination
@@ -222,6 +242,7 @@ pnpm dev:ai-orchestrator  # AI Orchestrator on http://localhost:3002
    - Make content types public (grant-applications, timeline-events, videos)
 
 2. **Generate Strapi Types**:
+
    ```bash
    cd apps/strapi
    pnpm generate:types
@@ -334,6 +355,7 @@ AI learns from outcome (awarded/rejected)
 ### Environment Variables
 
 #### Strapi (`apps/strapi/.env`)
+
 ```env
 DATABASE_CLIENT=postgres
 DATABASE_HOST=localhost
@@ -349,6 +371,7 @@ JWT_SECRET=...
 ```
 
 #### Next.js UI (`apps/ui/.env.local`)
+
 ```env
 NEXT_PUBLIC_STRAPI_URL=http://localhost:1337
 STRAPI_TOKEN=your_strapi_token
@@ -356,6 +379,7 @@ AI_ORCHESTRATOR_URL=http://localhost:3002
 ```
 
 #### AI Orchestrator (`services/ai-orchestrator/.env`)
+
 ```env
 GEMINI_API_KEY=your_gemini_api_key
 STRAPI_URL=http://localhost:1337
@@ -429,6 +453,7 @@ The system tracks:
 - **Agent Activity**: Tasks completed, processing times
 
 View analytics in:
+
 - AI Insights Panel (real-time)
 - Strapi admin (historical data)
 - External analytics tools (via `/api/analytics` endpoint)
@@ -450,6 +475,7 @@ const response = await orchestrator.consultHermes(
 ### Gemini API
 
 Direct integration for:
+
 - Grant fit analysis
 - Application drafting
 - Content generation
@@ -458,6 +484,7 @@ Direct integration for:
 ### Strapi CMS
 
 All content stored and managed in Strapi:
+
 - Timeline events
 - Videos
 - Grants
@@ -482,18 +509,23 @@ All content stored and managed in Strapi:
 ### Common Issues
 
 **Issue**: AI Orchestrator not starting
+
 - **Solution**: Check Gemini API key is set, verify ports are available
 
 **Issue**: Timeline animations not working
+
 - **Solution**: Ensure GSAP is installed (`pnpm install` in apps/ui)
 
 **Issue**: Grant automation failing
+
 - **Solution**: Verify Skip credentials, check browser automation logs
 
 **Issue**: Strapi types not generating
+
 - **Solution**: Run `cd apps/strapi && pnpm generate:types`
 
 **Issue**: Videos not playing
+
 - **Solution**: Check video URL format, verify react-player is installed
 
 ---
@@ -520,7 +552,7 @@ Your system is working when:
 ✅ Grants submitted automatically via browser automation  
 ✅ Dashboard shows real-time insights  
 ✅ Agents coordinate and learn from interactions  
-✅ Onboarding flow completes successfully  
+✅ Onboarding flow completes successfully
 
 ---
 

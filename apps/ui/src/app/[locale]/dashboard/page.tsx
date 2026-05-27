@@ -1,14 +1,15 @@
-import type { Locale } from 'next-intl'
-import { redirect } from 'next/navigation'
-import { setRequestLocale } from 'next-intl/server'
-import { headers } from 'next/headers'
+import { headers } from "next/headers"
+import { redirect } from "next/navigation"
+import type { Locale } from "next-intl"
+import { setRequestLocale } from "next-intl/server"
 
-import { getSessionSSR } from '@/lib/auth'
-import { DashboardContent } from './_components/DashboardContent'
+import { getSessionSSR } from "@/lib/auth"
+
+import { DashboardContent } from "./_components/DashboardContent"
 
 export default async function DashboardPage({
   params,
-}: PageProps<'/[locale]/dashboard'>) {
+}: PageProps<"/[locale]/dashboard">) {
   const { locale } = (await params) as { locale: Locale }
   setRequestLocale(locale)
 

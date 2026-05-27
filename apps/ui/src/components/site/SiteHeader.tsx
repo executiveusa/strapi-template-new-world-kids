@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { Menu, ShieldCheck, X } from "lucide-react"
 import type { Locale } from "next-intl"
@@ -11,13 +11,13 @@ import { Link } from "@/lib/navigation"
 
 const navigation = {
   en: [
-    { href: "/impact/food", label: "Impact" },
+    { href: "/impact", label: "Impact" },
     { href: "/trust", label: "Trust" },
     { href: "/work-with-us", label: "Work With Us" },
     { href: "/about", label: "About" },
   ],
   es: [
-    { href: "/impact/food", label: "Impacto" },
+    { href: "/impact", label: "Impacto" },
     { href: "/trust", label: "Confianza" },
     { href: "/work-with-us", label: "Trabaja con nosotros" },
     { href: "/about", label: "Nosotros" },
@@ -65,12 +65,13 @@ export default function SiteHeader({ locale }: { readonly locale: Locale }) {
               {item.label}
             </Link>
           ))}
-          <a
-            href="/blog"
+          <Link
+            href="/journal"
+            locale={locale}
             className="text-sm text-[#E8DEC7]/72 transition-colors hover:text-white"
           >
             {locale === "es" ? "Bitacora" : "Journal"}
-          </a>
+          </Link>
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
@@ -89,7 +90,11 @@ export default function SiteHeader({ locale }: { readonly locale: Locale }) {
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
           >
-            {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            {mobileOpen ? (
+              <X className="h-4 w-4" />
+            ) : (
+              <Menu className="h-4 w-4" />
+            )}
           </button>
         </div>
       </div>
@@ -129,18 +134,23 @@ export default function SiteHeader({ locale }: { readonly locale: Locale }) {
                   {item.label}
                 </Link>
               ))}
-              <a
-                href="/blog"
+              <Link
+                href="/journal"
+                locale={locale}
                 className="block text-base text-white"
                 onClick={() => setMobileOpen(false)}
               >
                 {locale === "es" ? "Bitacora" : "Journal"}
-              </a>
+              </Link>
             </div>
 
             <div className="flex items-center justify-between gap-4 border-t border-white/10 pt-4">
               <LocaleSwitcher locale={locale} />
-              <Link href="/donate" locale={locale} onClick={() => setMobileOpen(false)}>
+              <Link
+                href="/donate"
+                locale={locale}
+                onClick={() => setMobileOpen(false)}
+              >
                 <Button className="rounded-sm bg-[#C9A84C] text-[#08100B] hover:bg-[#D7B867]">
                   {locale === "es" ? "Donar ahora" : "Donate now"}
                 </Button>

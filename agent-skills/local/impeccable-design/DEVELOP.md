@@ -9,6 +9,7 @@ This repository uses a **feature-rich source format** that transforms into provi
 ### Why This Approach?
 
 Different providers have different capabilities:
+
 - **Claude Code, OpenCode**: Full metadata — args, user-invocable, allowed-tools, license, compatibility
 - **Codex, Agents**: Args converted to `argument-hint` format
 - **Gemini**: Minimal frontmatter, `{{arg}}` placeholders become `{{args}}`
@@ -27,11 +28,11 @@ description: What this skill provides
 license: License info (optional)
 compatibility: Environment requirements (optional)
 ---
-
 Your skill instructions here...
 ```
 
 **Frontmatter fields** (based on [Agent Skills spec](https://agentskills.io/specification)):
+
 - `name` (required): Skill identifier (1-64 chars, lowercase/numbers/hyphens)
 - `description` (required): What the skill provides (1-1024 chars)
 - `user-invocable` (optional): Boolean — if `true`, the skill can be invoked as a slash command
@@ -49,6 +50,7 @@ Your skill instructions here...
 ## Building
 
 ### Prerequisites
+
 - Bun (fast JavaScript runtime and package manager)
 - No external dependencies required
 
@@ -84,40 +86,48 @@ source/                          → dist/
 All providers output skills to `dist/{provider}/.{config}/skills/{name}/SKILL.md` with reference files in subdirectories. They differ in frontmatter fields and argument handling.
 
 ### Cursor
+
 - Output: `dist/cursor/.cursor/skills/{name}/SKILL.md`
 - Frontmatter: name, description, license
 - **Note**: Agent Skills require Cursor nightly channel
 
 ### Claude Code (Full Featured)
+
 - Output: `dist/claude-code/.claude/skills/{name}/SKILL.md`
 - Frontmatter: name, description, user-invocable, args, license, compatibility, metadata, allowed-tools
 - Preserves `{{arg}}` placeholders in body
 
 ### OpenCode (Full Featured)
+
 - Output: `dist/opencode/.opencode/skills/{name}/SKILL.md`
 - Frontmatter: name, description, user-invocable, args, license, compatibility, metadata, allowed-tools
 - Same format as Claude Code
 
 ### Gemini CLI
+
 - Output: `dist/gemini/.gemini/skills/{name}/SKILL.md`
 - Frontmatter: name, description
 - For user-invocable skills: remaining `{{arg}}` placeholders become `{{args}}`
 
 ### Codex CLI
+
 - Output: `dist/codex/.codex/skills/{name}/SKILL.md`
 - Frontmatter: name, description, argument-hint, license
 - For user-invocable skills: `{{argname}}` → `$ARGNAME` (uppercase)
 
 ### Agents (VS Code Copilot, Antigravity)
+
 - Output: `dist/agents/.agents/skills/{name}/SKILL.md`
 - Frontmatter: name, description, user-invocable, argument-hint
 - Args converted to `argument-hint` format (e.g., `<target> [FORMAT=<value>]`)
 
 ### Kiro
+
 - Output: `dist/kiro/.kiro/skills/{name}/SKILL.md`
 - Frontmatter: name, description, license, compatibility, metadata
 
 ### Pi
+
 - Output: `dist/pi/.pi/skills/{name}/SKILL.md`
 - Frontmatter: name, description, license, compatibility, metadata
 
@@ -147,6 +157,7 @@ Test with your provider of choice to ensure it works correctly. Remember that Cu
 ### 4. Commit
 
 Commit source files:
+
 ```bash
 git add source/
 git commit -m "Add [skill name]"
@@ -245,16 +256,19 @@ impeccable/
 ## Troubleshooting
 
 ### Build fails with YAML parsing errors
+
 - Check frontmatter indentation (YAML is indent-sensitive)
 - Ensure `---` delimiters are on their own lines
 - Verify colons have spaces after them (`key: value`)
 
 ### Output doesn't match expectations
+
 - Check the transformer function for your provider in `scripts/lib/transformers/`
 - Verify source file has correct frontmatter structure
 - Run `bun run rebuild` to ensure clean build
 
 ### Provider doesn't recognize the files
+
 - Check installation path for your provider
 - Verify file naming matches provider requirements
 - Consult provider's documentation (links above)
@@ -262,4 +276,3 @@ impeccable/
 ## Questions?
 
 Open an issue or submit a PR!
-

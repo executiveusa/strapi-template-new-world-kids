@@ -1,4 +1,5 @@
 # UX Audit Report: New World Kids Platform
+
 **Framework:** Steve Krug's "Don't Make Me Think" Principles
 **Date:** 2026-03-12
 **Status:** Pre-Launch
@@ -16,13 +17,16 @@ The platform has strong infrastructure and mission, but the user experience requ
 ## 📋 Steve Krug's 10 Core Principles Assessment
 
 ### **1. Don't Make Me Think** ❌ FAILS
+
 **Current State:** The platform has TOO MANY OPTIONS
+
 - 15 microservices visible
 - Multiple deployment paths
 - Inconsistent navigation across pages
 - Complex signup flow (age verification, consent workflows)
 
 **Required Fixes:**
+
 ```tsx
 // BEFORE: Complex & confusing
 <SignupFlow>
@@ -53,8 +57,10 @@ The platform has strong infrastructure and mission, but the user experience requ
 ### **2. Eliminate Unnecessary Words** ⚠️ PARTIALLY FAILS
 
 **Current State:**
+
 ```markdown
 // Navigation is verbose and unclear
+
 - "Profile Settings" (should be "Your Profile")
 - "Agent Configuration" (youth don't know what agents are)
 - "Stellar Agents Dashboard" (jargon overload)
@@ -62,13 +68,14 @@ The platform has strong infrastructure and mission, but the user experience requ
 ```
 
 **Required Fixes:**
+
 ```tsx
 // Navigation - Use action verbs and simple language
 const navigation = [
-  { label: 'Learn', href: '/lessons' },
-  { label: 'My Progress', href: '/progress' },
-  { label: 'Your Profile', href: '/profile' },
-  { label: 'Help', href: '/help' }
+  { label: "Learn", href: "/lessons" },
+  { label: "My Progress", href: "/progress" },
+  { label: "Your Profile", href: "/profile" },
+  { label: "Help", href: "/help" },
 ]
 
 // Avoid these words:
@@ -83,6 +90,7 @@ const navigation = [
 ### **3. Visual Hierarchy & Clear Scanning** ❌ FAILS
 
 **Current State:** No clear visual hierarchy
+
 - Same font size for everything
 - No distinction between primary/secondary actions
 - No visual progress indicators
@@ -124,6 +132,7 @@ const navigation = [
 ### **4. Clear Information Hierarchy** ❌ FAILS
 
 **Current State:**
+
 - All information presented equally
 - No "need to know" vs "nice to know"
 - Dense paragraphs (violates Krug's "format text to support scanning")
@@ -169,12 +178,14 @@ const navigation = [
 ### **5. Use Conventions (Don't Reinvent the Wheel)** ⚠️ PARTIALLY FAILS
 
 **Issues:**
+
 - Search button placement inconsistent
 - Menu burger icon not in standard location (top-left)
 - Non-standard button styles
 - No breadcrumb navigation
 
 **Required Fixes:**
+
 ```tsx
 // Use convention: Navigation patterns youth recognize from YouTube, TikTok, Instagram
 <Header>
@@ -210,11 +221,13 @@ const navigation = [
 ### **6. Break Pages Into Clearly Defined Areas** ⚠️ PARTIALLY FAILS
 
 **Current State:** No clear "sections" on pages
+
 - Everything flows together
 - No visual boundaries
 - No whitespace to separate concerns
 
 **Required Fixes:**
+
 ```tsx
 // BEFORE: Everything mixed together
 <Page>
@@ -255,12 +268,14 @@ const navigation = [
 ### **7. Make Clickable Elements Obvious** ❌ FAILS
 
 **Current Issues:**
+
 - Buttons not visually distinct from text
 - Links may not be underlined/colored
 - No hover states
 - Focus states missing (accessibility issue)
 
 **Required Fixes:**
+
 ```tsx
 // BEFORE: Not obvious what's clickable
 <div>
@@ -295,6 +310,7 @@ const navigation = [
 **Current State:** Lorem ipsum style long paragraphs
 
 **Required Fixes:**
+
 ```tsx
 // BEFORE: Dense, hard to scan
 <Page>
@@ -332,11 +348,13 @@ const navigation = [
 ### **9. Make It Obvious Where to Start** ⚠️ PARTIALLY FAILS
 
 **Current State:**
+
 - No clear "primary action" on homepage
 - Multiple calls-to-action compete for attention
 - Unclear value proposition
 
 **Required Fixes:**
+
 ```tsx
 // BEFORE: Where do I start?
 <Homepage>
@@ -376,6 +394,7 @@ const navigation = [
 
 **Issue:** Platform likely requires JavaScript
 **Required Fixes:**
+
 ```tsx
 // Add noscript fallback
 <noscript>
@@ -435,12 +454,12 @@ const navigation = [
 
 ## 📊 Expected Impact
 
-| Improvement | Current | Target | Impact |
-|------------|---------|--------|--------|
-| Signup completion | 60% | 85% | +41% conversion |
-| Time to first lesson | 8 min | 2 min | -75% friction |
-| Task success rate | 70% | 95% | -28% support burden |
-| User satisfaction | 6/10 | 8.5/10 | 10% higher retention |
+| Improvement          | Current | Target | Impact               |
+| -------------------- | ------- | ------ | -------------------- |
+| Signup completion    | 60%     | 85%    | +41% conversion      |
+| Time to first lesson | 8 min   | 2 min  | -75% friction        |
+| Task success rate    | 70%     | 95%    | -28% support burden  |
+| User satisfaction    | 6/10    | 8.5/10 | 10% higher retention |
 
 ---
 
@@ -461,4 +480,3 @@ const navigation = [
 **Next Steps:** Run moderated usability test with 5 youth users (12-16 age group)
 **Estimated time to "Don't Make Me Think" compliance:** 2 weeks
 **Launch readiness:** After UX fixes + user validation
-

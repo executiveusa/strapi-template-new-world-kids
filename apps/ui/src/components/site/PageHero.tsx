@@ -17,7 +17,7 @@ export default function PageHero({
     <section className="border-b border-white/8 bg-[#09130D]">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-20">
         <div>
-          <div className="mb-5 font-mono text-xs uppercase tracking-[0.22em] text-[#C9A84C]">
+          <div className="mb-5 font-mono text-xs tracking-[0.22em] text-[#C9A84C] uppercase">
             {eyebrow}
           </div>
           <h1 className="max-w-4xl font-serif text-4xl font-bold tracking-tight text-white sm:text-5xl">

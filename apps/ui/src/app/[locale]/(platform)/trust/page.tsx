@@ -4,11 +4,7 @@ import type { Locale } from "next-intl"
 
 import PageHero from "@/components/site/PageHero"
 import { Button } from "@/components/ui/button"
-import {
-  copyForLocale,
-  fiscalSponsor,
-  trustDocuments,
-} from "@/content/site"
+import { copyForLocale, fiscalSponsor, trustDocuments } from "@/content/site"
 
 export const metadata: Metadata = {
   title: "Trust Center",
@@ -37,7 +33,7 @@ export default async function TrustPage({
         }
         aside={
           <div className="space-y-4">
-            <div className="font-mono text-xs uppercase tracking-[0.18em] text-[#C9A84C]">
+            <div className="font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
               Verification snapshot
             </div>
             <div className="text-sm leading-7 text-[#E8DEC7]/66">
@@ -65,7 +61,7 @@ export default async function TrustPage({
             >
               <div className="mb-4 flex items-center gap-2 text-[#C9A84C]">
                 <ShieldCheck className="h-4 w-4" />
-                <span className="font-mono text-xs uppercase tracking-[0.18em]">
+                <span className="font-mono text-xs tracking-[0.18em] uppercase">
                   {copyForLocale(locale, doc.category)}
                 </span>
               </div>

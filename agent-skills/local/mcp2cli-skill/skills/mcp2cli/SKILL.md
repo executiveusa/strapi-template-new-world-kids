@@ -274,19 +274,23 @@ mcp2cli --spec ./spec.json list-records --head 1 --jq 'keys'
 When the user asks to create a skill from an MCP server, OpenAPI spec, or GraphQL endpoint, follow this workflow:
 
 1. **Discover** all available commands:
+
    ```bash
    uvx mcp2cli --mcp https://target.example.com/sse --list
    ```
 
 2. **Inspect** each command to understand parameters:
+
    ```bash
    uvx mcp2cli --mcp https://target.example.com/sse <command> --help
    ```
 
 3. **Test** key commands and probe for edge cases:
+
    ```bash
    uvx mcp2cli --mcp https://target.example.com/sse <command> --param value
    ```
+
    Specifically test for:
    - Large responses: use `--head 3` to preview — do any fields produce oversized output (e.g. geo_shape, embedded blobs)?
    - Date/time fields: what format does the API expect? (ISO 8601, Unix timestamps, custom syntax like `date'2022'`?)
@@ -296,6 +300,7 @@ When the user asks to create a skill from an MCP server, OpenAPI spec, or GraphQ
    - Scope confusion: does the data contain more than expected (e.g. national data when you expect regional)?
 
 4. **Bake** the connection settings so the skill doesn't need to repeat flags:
+
    ```bash
    uvx mcp2cli bake create myapi \
      --mcp https://target.example.com/sse \
@@ -304,6 +309,7 @@ When the user asks to create a skill from an MCP server, OpenAPI spec, or GraphQ
    ```
 
 5. **Install** the wrapper into the skill's scripts directory:
+
    ```bash
    uvx mcp2cli bake install myapi --dir .claude/skills/myapi/scripts/
    ```
@@ -311,6 +317,7 @@ When the user asks to create a skill from an MCP server, OpenAPI spec, or GraphQ
 6. **Create a SKILL.md** in `.claude/skills/myapi/` that teaches another AI agent how to use this API. The SKILL.md must go beyond `--help` output — focus on knowledge that can only be learned through testing and reading documentation.
 
    **Frontmatter:**
+
    ```yaml
    ---
    name: myapi
@@ -320,6 +327,7 @@ When the user asks to create a skill from an MCP server, OpenAPI spec, or GraphQ
    ```
 
    **Core Workflow** (discovery + execution):
+
    ```bash
    # List available commands
    bash ${CLAUDE_SKILL_DIR}/scripts/myapi --list
@@ -343,6 +351,7 @@ When the user asks to create a skill from an MCP server, OpenAPI spec, or GraphQ
    - Binary export corruption risks (e.g. don't pipe binary formats through text encoding)
 
    **Output Processing** — recommend `--jq` over Python for JSON filtering:
+
    ```bash
    # Extract specific fields
    bash ${CLAUDE_SKILL_DIR}/scripts/myapi list-records --jq '.[].name'
@@ -351,6 +360,7 @@ When the user asks to create a skill from an MCP server, OpenAPI spec, or GraphQ
    # Filter by condition
    bash ${CLAUDE_SKILL_DIR}/scripts/myapi list-records --jq '[.[] | select(.status == "active")]'
    ```
+
    Prefer `--jq` over piping to Python for JSON processing — it is more token-efficient and avoids unnecessary script complexity.
 
    **Export Formats** (if the API supports multiple output types):

@@ -1,31 +1,25 @@
-'use client'
+"use client"
 
-import type { Locale } from 'next-intl'
-import { useTranslations } from 'next-intl'
+import type { Locale } from "next-intl"
 
-import type { BetterAuthSessionWithStrapi } from '@/types/better-auth'
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Link } from '@/lib/navigation'
+} from "@/components/ui/card"
+import { Link } from "@/lib/navigation"
+import type { BetterAuthSessionWithStrapi } from "@/types/better-auth"
 
 interface DashboardContentProps {
   session: BetterAuthSessionWithStrapi
   locale: Locale
 }
 
-export function DashboardContent({
-  session,
-  locale,
-}: DashboardContentProps) {
-  const t = useTranslations('dashboard')
-
-  const userName = session.user?.name || session.user?.email || 'User'
+export function DashboardContent({ session, locale }: DashboardContentProps) {
+  const userName = session.user?.name || session.user?.email || "User"
 
   return (
     <div className="dashboard-wrapper">
@@ -73,7 +67,9 @@ export function DashboardContent({
               {session.user?.emailVerified && (
                 <div className="dashboard-info-item">
                   <label className="dashboard-info-label">Email Verified</label>
-                  <p className="dashboard-info-value text-green-600">✓ Verified</p>
+                  <p className="dashboard-info-value text-green-600">
+                    ✓ Verified
+                  </p>
                 </div>
               )}
             </div>
@@ -99,7 +95,7 @@ export function DashboardContent({
                 <p className="dashboard-info-value">
                   {session.session?.createdAt
                     ? new Date(session.session.createdAt).toLocaleDateString()
-                    : 'N/A'}
+                    : "N/A"}
                 </p>
               </div>
               {session.session?.expiresAt && (
