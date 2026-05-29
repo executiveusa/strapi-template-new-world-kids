@@ -15,6 +15,7 @@ export const siteLinks = {
   facebook: "https://www.facebook.com/nwkidsorg",
   instagram: "https://www.instagram.com/proyectoindigoazul/",
   linkedin: "https://www.linkedin.com/company/nwkids/",
+  postMaxx: "/post-maxx",
   youtube: "https://www.youtube.com/@proyectoindigoazul",
 } as const
 
@@ -367,6 +368,35 @@ export const actionCards = [
     body: "See the agent layer that supports grants, reporting, content, and operational follow-through behind the public site.",
     href: siteLinks.dashboard,
     variant: "external",
+  },
+] as const
+
+export const socialOpsHighlights = [
+  "One place to plan, approve, and publish social content without extra tabs or guesswork.",
+  "A clear queue shows what is ready, what is scheduled, and what still needs a human eye.",
+  "The agent turns attention into repeatable reach so social media feels like a business system.",
+] as const
+
+export const socialOpsMetrics = [
+  {
+    label: "Time saved",
+    value: "5x",
+    note: "Replaces repeat posting work with one simple queue.",
+  },
+  {
+    label: "Approval speed",
+    value: "1 tap",
+    note: "Owners can review and approve without digging through settings.",
+  },
+  {
+    label: "Reach consistency",
+    value: "Daily",
+    note: "Keeps the brand visible even when the team is busy elsewhere.",
+  },
+  {
+    label: "Lead flow",
+    value: "Always on",
+    note: "Turns attention into inquiries instead of one-off posts.",
   },
 ] as const
 
