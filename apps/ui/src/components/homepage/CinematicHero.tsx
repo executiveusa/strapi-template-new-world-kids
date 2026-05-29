@@ -1,12 +1,6 @@
 "use client"
 
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useSpring,
-  useMotionValue,
-} from "framer-motion"
+import { motion, useScroll, useTransform, useSpring, useMotionValue, useAnimation } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
@@ -14,13 +8,14 @@ import { Link } from "@/lib/navigation"
 
 import {
   heroFactStrip,
+  heroMedia,
   heroFeatureCards,
   homepageStats,
   verificationLabels,
 } from "../site/siteData"
 
 // Animated counter hook
-function useCountUp(target: number, duration = 2000) {
+function useCountUp(target: number, duration: number = 2000) {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
@@ -103,7 +98,11 @@ function MagneticButton({
   )
 }
 
-export function CinematicHero() {
+export function CinematicHero({
+  id = "journey-start",
+}: {
+  id?: string
+}) {
   const { scrollY } = useScroll()
   const containerRef = useRef<HTMLElement>(null)
 
@@ -119,6 +118,7 @@ export function CinematicHero() {
 
   return (
     <section
+      id={id}
       ref={containerRef}
       className="relative overflow-hidden border-b border-white/10 bg-[#091109]"
     >
@@ -214,7 +214,9 @@ export function CinematicHero() {
               <MagneticButton href="/#timeline">
                 See the timeline
               </MagneticButton>
-              <MagneticButton href="/#hermes">Meet Hermes</MagneticButton>
+              <MagneticButton href="/#hermes">
+                Meet Hermes
+              </MagneticButton>
             </motion.div>
           </motion.div>
 
@@ -243,9 +245,7 @@ export function CinematicHero() {
                       {verificationLabels[card.status]}
                     </span>
                   </div>
-                  <p className="mt-3 text-sm leading-7 text-white/72">
-                    {card.value}
-                  </p>
+                  <p className="mt-3 text-sm leading-7 text-white/72">{card.value}</p>
                   {card.bullets ? (
                     <ul className="mt-4 space-y-1.5">
                       {card.bullets.map((bullet) => (
@@ -321,9 +321,9 @@ function AnimatedStatCard({ stat, index }: { stat: any; index: number }) {
   }, [])
 
   // Extract number from stat value for animation
-  const numericValue = Number.parseInt(stat.value.replaceAll(/\D/g, "")) || 0
+  const numericValue = parseInt(stat.value.replace(/[^0-9]/g, '')) || 0
   const count = useCountUp(isVisible ? numericValue : 0, 2000)
-  const displayValue = stat.value.replace(/\d+/, String(count))
+  const displayValue = stat.value.replace(/[0-9]+/, String(count))
 
   return (
     <motion.article
@@ -332,7 +332,7 @@ function AnimatedStatCard({ stat, index }: { stat: any; index: number }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, delay: 0.15 + index * 0.08 }}
       whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
-      className="cursor-pointer rounded-[26px] border border-white/10 bg-white/[0.03] p-6"
+      className="rounded-[26px] border border-white/10 bg-white/[0.03] p-6 cursor-pointer"
     >
       <div className="flex items-start justify-between gap-3">
         <motion.p
@@ -348,8 +348,12 @@ function AnimatedStatCard({ stat, index }: { stat: any; index: number }) {
           {verificationLabels[stat.status]}
         </span>
       </div>
-      <p className="mt-2 text-sm leading-7 text-white/60">{stat.label}</p>
-      <p className="mt-3 text-xs leading-6 text-white/42">{stat.sourceNote}</p>
+      <p className="mt-2 text-sm leading-7 text-white/60">
+        {stat.label}
+      </p>
+      <p className="mt-3 text-xs leading-6 text-white/42">
+        {stat.sourceNote}
+      </p>
     </motion.article>
   )
 }

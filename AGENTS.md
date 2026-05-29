@@ -60,6 +60,10 @@ pnpm dev:mcp
 - `supabase` for data and ledger work
 - `mcp2cli` for bridging MCP tools to CLI workflows
 - `gbrain` for memory and retrieval once installed in the operator environment
+- `post-maxx-sitewide` for the Absurd-backed sitewide agent loop, cinematic frontend work, and simple owner dashboards
+- `pi-review` for the final code-review gate before merge
+- `absurd` as the Postgres-native durable workflow substrate when the task needs retries, checkpoints, sleeps, and events
+- `seedance`, `hyperframes-helper`, and `cinematic-site-components` for motion studies, storyboards, and rendered cinematic clips
 
 The project-local `agent-skills/` directory is the curated holding area for the requested skills and reference repos.
 Material agent actions should be mirrored to a public ledger or durable report sink before broader automation is enabled.

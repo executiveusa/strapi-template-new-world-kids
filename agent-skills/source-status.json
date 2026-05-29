@@ -133,5 +133,65 @@
         "name":  "copilotkit-ag-ui-standard",
         "url":  "agent-skills\\local\\copilotkit-ag-ui-standard",
         "status":  "created"
+    },
+    {
+        "name":  "coolify-one-click-deploy",
+        "url":  "agent-skills\\local\\coolify-one-click-deploy",
+        "status":  "created"
+    },
+    {
+        "name":  "hostinger-api-mcp-server",
+        "url":  "https://github.com/hostinger/api-mcp-server.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "hostinger-api-cli",
+        "url":  "agent-skills\\local\\hostinger-api-cli",
+        "status":  "created"
+    },
+    {
+        "name":  "absurd",
+        "url":  "https://github.com/earendil-works/absurd",
+        "status":  "cloned"
+    },
+    {
+        "name":  "pi-review",
+        "url":  "https://github.com/earendil-works/pi-review",
+        "status":  "cloned"
+    },
+    {
+        "name":  "seedance-skill",
+        "url":  "https://github.com/robonuggets/seedance-skill.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "hyperframes-helper",
+        "url":  "https://github.com/robonuggets/hyperframes-helper.git",
+        "status":  "cloned"
+    },
+    {
+        "name":  "21st-main",
+        "url":  "E:\\DESIGN AGENT FILES\\DESIGN\\21st-main.zip",
+        "status":  "copied"
+    },
+    {
+        "name":  "design-resources-for-developers-master",
+        "url":  "E:\\DESIGN AGENT FILES\\DESIGN\\design-resources-for-developers-master.zip",
+        "status":  "copied"
+    },
+    {
+        "name":  "motion-primitives-main",
+        "url":  "E:\\DESIGN AGENT FILES\\DESIGN\\motion-primitives-main(1).zip",
+        "status":  "copied"
+    },
+    {
+        "name":  "post-maxx-sitewide",
+        "url":  "agent-skills\\local\\post-maxx-sitewide",
+        "status":  "created"
+    },
+    {
+        "name":  "pi-review-skill",
+        "url":  "agent-skills\\local\\pi-review",
+        "status":  "created"
     }
 ]

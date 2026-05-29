@@ -11,6 +11,7 @@ import {
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { Link } from "@/lib/navigation"
+import { SocialMediaOpsPanel } from "./SocialMediaOpsPanel"
 
 type AgentAction = {
   id: string
@@ -298,6 +299,52 @@ export function OpsPage() {
                 )}`}
                 delay={0.15}
               />
+            </section>
+
+            <section className="grid gap-6 xl:grid-cols-[1.05fr_0.95fr]">
+              <SocialMediaOpsPanel />
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.55, delay: 0.05 }}
+                className="rounded-[20px] border border-white/[0.08] bg-[#0c1710] p-6"
+              >
+                <div className="mb-6">
+                  <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">
+                    Social outcomes
+                  </p>
+                  <h2 className="mt-3 font-serif text-3xl font-semibold text-white">
+                    The agent turns content into pipeline.
+                  </h2>
+                </div>
+
+                <div className="space-y-4">
+                  {[
+                    "One calendar for posts, approvals, and distribution.",
+                    "Clear owner queue so business decisions do not get buried in DMs.",
+                    "A consistent message that helps people trust the brand faster.",
+                    "A repeatable social engine that supports donors, partners, and leads.",
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="rounded-[18px] border border-white/[0.08] bg-black/15 p-4 text-sm leading-7 text-white/60"
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-6 rounded-[18px] border border-[#c9a84c]/18 bg-[#c9a84c]/6 p-4">
+                  <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">
+                    POST-MAXX role
+                  </p>
+                  <p className="mt-3 text-sm leading-7 text-white/68">
+                    POST-MAXX is the social scheduling and distribution layer. MAXX owns the strategy, approval flow, and measurement. Together they make social media feel like a managed business system instead of a daily chore.
+                  </p>
+                </div>
+              </motion.div>
             </section>
 
             <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
