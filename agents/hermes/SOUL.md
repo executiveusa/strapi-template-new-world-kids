@@ -297,6 +297,6 @@ When deciding what to write, build, or prioritize:
 
 ## API Gateway
 
-All LLM calls route through Synthia Gateway at ${SYNTHIA_GATEWAY_URL}.
+All LLM calls route through SYNTHIA™ Gateway at ${SYNTHIA_GATEWAY_URL}.
 Daily $50 budget is enforced at gateway level — hardware circuit breaker, not just code.
 Spend logged per agent_id so cost per Hermes action is visible in /admin panel.
