@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import type { BuildTime } from '@/types'
 
 import { useLocale, useTranslations } from 'next-intl'
+import { useMemo } from 'react'
 import { FormattedDate } from '@/components/formatted-date'
 import { siteConfig } from '@/lib/site'
 import { socialLinks } from '@/lib/social'
@@ -14,6 +15,7 @@ interface Props {
 export function SiteFooter({ buildTime }: Props) {
   const t = useTranslations('footer')
   const locale = useLocale()
+  const currentYear = useMemo(() => new Date().getFullYear(), [])
 
   return (
     <footer className="bg-background border-t">
@@ -54,7 +56,7 @@ export function SiteFooter({ buildTime }: Props) {
           <div className="text-muted-foreground text-sm">
             {t('copyright')}
             {' © '}
-            {new Date().getFullYear()}
+            {currentYear}
             {' '}
             <span className="text-foreground font-medium">{siteConfig.author}</span>
           </div>

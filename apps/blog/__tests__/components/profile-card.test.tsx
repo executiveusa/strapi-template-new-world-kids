@@ -4,8 +4,8 @@ import { ProfileCard } from '@/components/profile-card'
 import { mockProfile } from '@/tests/fixtures/test-data'
 import { render, screen } from '@/tests/test-utils'
 
-describe("ProfileCard", () => {
-  it("should render user profile information", () => {
+describe('ProfileCard', () => {
+  it('should render user profile information', () => {
     render(<ProfileCard profile={mockProfile} />)
 
     expect(screen.getByText(`@${mockProfile.username}`)).toBeInTheDocument()
@@ -14,23 +14,23 @@ describe("ProfileCard", () => {
     expect(screen.getByText(mockProfile.location!)).toBeInTheDocument()
   })
 
-  it("should render avatar with fallback", () => {
+  it('should render avatar with fallback', () => {
     render(<ProfileCard profile={mockProfile} />)
 
     const avatarFallback = screen.getByText(mockProfile.username.charAt(0))
     expect(avatarFallback).toBeInTheDocument()
   })
 
-  it("should render GitHub link", () => {
+  it('should render GitHub link', () => {
     render(<ProfileCard profile={mockProfile} />)
 
-    const githubLink = screen.getByRole('link', { name: new RegExp(mockProfile.username, "i") })
+    const githubLink = screen.getByRole('link', { name: new RegExp(mockProfile.username, 'i') })
     expect(githubLink).toHaveAttribute('href', mockProfile.url)
-    expect(githubLink).toHaveAttribute('target', "_blank")
-    expect(githubLink).toHaveAttribute('rel', "noopener noreferrer")
+    expect(githubLink).toHaveAttribute('target', '_blank')
+    expect(githubLink).toHaveAttribute('rel', 'noopener noreferrer')
   })
 
-  it("should render followers and following counts", () => {
+  it('should render followers and following counts', () => {
     render(<ProfileCard profile={mockProfile} />)
 
     expect(screen.getByText(mockProfile.followers.toString())).toBeInTheDocument()
@@ -39,18 +39,18 @@ describe("ProfileCard", () => {
     expect(screen.getByText('Following')).toBeInTheDocument()
   })
 
-  it("should render followers and following as links", () => {
+  it('should render followers and following as links', () => {
     render(<ProfileCard profile={mockProfile} />)
 
     const links = screen.getAllByRole('link')
-    const followersLink = links.find((link) => link.getAttribute("href") === mockProfile.followersUrl)
-    const followingLink = links.find((link) => link.getAttribute("href") === mockProfile.followingUrl)
+    const followersLink = links.find(link => link.getAttribute('href') === mockProfile.followersUrl)
+    const followingLink = links.find(link => link.getAttribute('href') === mockProfile.followingUrl)
 
     expect(followersLink).toBeDefined()
     expect(followingLink).toBeDefined()
   })
 
-  it("should render create date", () => {
+  it('should render create date', () => {
     render(<ProfileCard profile={mockProfile} />)
 
     const timeElement = screen.getByRole('time')
@@ -58,22 +58,22 @@ describe("ProfileCard", () => {
     expect(timeElement).toHaveAttribute('dateTime', new Date(mockProfile.createDate).toISOString())
   })
 
-  it("should use fallback bio when bio is not provided", () => {
+  it('should use fallback bio when bio is not provided', () => {
     const profileWithoutBio = { ...mockProfile, bio: undefined }
     render(<ProfileCard profile={profileWithoutBio} />)
 
     expect(screen.getByText('Boots-on-the-ground nonprofit media journal')).toBeInTheDocument()
   })
 
-  it("should use fallback location when location is not provided", () => {
+  it('should use fallback location when location is not provided', () => {
     const profileWithoutLocation = { ...mockProfile, location: undefined }
     render(<ProfileCard profile={profileWithoutLocation} />)
 
     expect(screen.getByText('Puerto Vallarta / Seattle')).toBeInTheDocument()
   })
 
-  it("should render username in avatar fallback", () => {
-    const profile = { ...mockProfile, username: "JohnDoe" }
+  it('should render username in avatar fallback', () => {
+    const profile = { ...mockProfile, username: 'JohnDoe' }
     render(<ProfileCard profile={profile} />)
 
     const avatarFallback = screen.getByText('J')

@@ -90,8 +90,8 @@ export function A2UIRenderer({ document }: { document: A2UIDocument }) {
                 {block.title}
               </div>
               <div className="space-y-2">
-                {block.items.map((item, index) => (
-                  <div key={`${block.id}-${index}`} className="text-muted-foreground text-xs leading-6">
+                {block.items.map(item => (
+                  <div key={`${block.id}-${item}`} className="text-muted-foreground text-xs leading-6">
                     {item}
                   </div>
                 ))}

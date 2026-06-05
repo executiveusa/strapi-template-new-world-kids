@@ -4,22 +4,22 @@ import { MainNav } from '@/components/main-nav'
 import { usePathname } from '@/tests/mocks/navigation'
 import { render, screen } from '@/tests/test-utils'
 
-describe("MainNav", () => {
-  it("should render navigation menu", () => {
+describe('MainNav', () => {
+  it('should render navigation menu', () => {
     render(<MainNav />)
 
     expect(screen.getByRole('navigation')).toBeInTheDocument()
   })
 
-  it("should render navigation links", () => {
+  it('should render navigation links', () => {
     render(<MainNav />)
 
     expect(screen.getByRole('link', { name: /journal/i })).toBeInTheDocument()
     expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument()
   })
 
-  it("should highlight active route", () => {
-    vi.mocked(usePathname).mockReturnValue("/posts")
+  it('should highlight active route', () => {
+    vi.mocked(usePathname).mockReturnValue('/posts')
 
     render(<MainNav />)
 
@@ -33,17 +33,17 @@ describe("MainNav", () => {
     expect(aboutLink).not.toHaveClass('text-accent-foreground')
   })
 
-  it("should have correct href attributes", () => {
+  it('should have correct href attributes', () => {
     render(<MainNav />)
 
     const postsLink = screen.getByRole('link', { name: /journal/i })
     const aboutLink = screen.getByRole('link', { name: /about/i })
 
-    expect(postsLink).toHaveAttribute('href', "/posts")
-    expect(aboutLink).toHaveAttribute('href', "/about")
+    expect(postsLink).toHaveAttribute('href', '/posts')
+    expect(aboutLink).toHaveAttribute('href', '/about')
   })
 
-  it("should apply font-extrabold class to links", () => {
+  it('should apply font-extrabold class to links', () => {
     render(<MainNav />)
 
     const links = screen.getAllByRole('link')
