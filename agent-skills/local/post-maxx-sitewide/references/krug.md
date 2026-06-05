@@ -21,4 +21,3 @@ Use these rules on any dashboard or management page.
 ## Practical rule
 
 - If a business owner would have to think hard to know what to do next, the page is not done.
-

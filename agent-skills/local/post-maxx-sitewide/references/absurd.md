@@ -33,4 +33,3 @@ absurdctl emit-event --name <event-name> --data '{}'
 
 - Apply the Absurd schema through the normal database migration flow for production.
 - Keep the database simple enough that an operator can inspect task state without extra tooling.
-

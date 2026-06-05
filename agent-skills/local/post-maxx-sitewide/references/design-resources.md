@@ -7,4 +7,3 @@ Use this archive as a curated inspiration library when the design needs a strong
 ## Practical rule
 
 - Reach for it when you need a design pattern, a component idea, or a reference list before inventing a new layout.
-

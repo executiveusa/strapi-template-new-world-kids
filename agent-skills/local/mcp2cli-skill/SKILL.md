@@ -56,22 +56,23 @@ uv tool install mcp2cli
 
 Each MCP server the Kupuri OS uses. Load only when needed:
 
-| ID | Server URL | Purpose | Load when |
-|----|-----------|---------|-----------|
-| `gitkraken` | stdio `npx gitkraken-mcp` | Git ops, PR, issues | Code changes needed |
-| `chrome` | stdio `npx mcp-chrome-bridge` | Browser automation | Web scraping, testing UI |
-| `playwright` | stdio `npx @playwright/mcp` | E2E testing | Automated testing |
-| `supabase` | `https://mcp.supabase.com/sse` | DB queries, RPC, storage | Data ops |
-| `hostinger` | stdio `npx hostinger-api-mcp` | Hostinger VPS, hosting, DNS | VPS / hosting tasks |
-| `higgsfield` | `https://api.higgsfield.ai/mcp` | AI video | Media generation |
-| `kling` | `https://api.kling.com/mcp` | Video synthesis | Video tasks |
-| `worlds` | `https://api.worlds.xyz/mcp` | 3D worlds | Immersive output |
+| ID           | Server URL                      | Purpose                     | Load when                |
+| ------------ | ------------------------------- | --------------------------- | ------------------------ |
+| `gitkraken`  | stdio `npx gitkraken-mcp`       | Git ops, PR, issues         | Code changes needed      |
+| `chrome`     | stdio `npx mcp-chrome-bridge`   | Browser automation          | Web scraping, testing UI |
+| `playwright` | stdio `npx @playwright/mcp`     | E2E testing                 | Automated testing        |
+| `supabase`   | `https://mcp.supabase.com/sse`  | DB queries, RPC, storage    | Data ops                 |
+| `hostinger`  | stdio `npx hostinger-api-mcp`   | Hostinger VPS, hosting, DNS | VPS / hosting tasks      |
+| `higgsfield` | `https://api.higgsfield.ai/mcp` | AI video                    | Media generation         |
+| `kling`      | `https://api.kling.com/mcp`     | Video synthesis             | Video tasks              |
+| `worlds`     | `https://api.worlds.xyz/mcp`    | 3D worlds                   | Immersive output         |
 
 ---
 
 ## WORKFLOW (lazy load pattern)
 
 ### Step 1 — Identify the minimum server needed
+
 ```
 Task: "Query Supabase for sphere memory"
 → Server needed: supabase ONLY
@@ -79,6 +80,7 @@ Task: "Query Supabase for sphere memory"
 ```
 
 ### Step 2 — Discover tools on that server (lazy schema load)
+
 ```bash
 # List all tools on server (only loads this server's schema)
 uvx mcp2cli --mcp https://mcp.supabase.com/sse --auth-header "Authorization:Bearer $SUPABASE_ANON_KEY" --list
@@ -88,6 +90,7 @@ uvx mcp2cli --mcp https://mcp.supabase.com/sse --search "query"
 ```
 
 ### Step 3 — Call the tool directly
+
 ```bash
 # Call a specific tool
 uvx mcp2cli --mcp https://mcp.supabase.com/sse \
@@ -131,6 +134,7 @@ Follow these to keep token budget under control:
 This skill is a **Vessel** (Tablet 4 — On Form and Substance).
 
 When orchestrating Sphere agents that need cross-system data:
+
 ```
 SYNTHIA needs → Supabase vibe_nodes + Git status + Screenshot
                      │                   │              │
@@ -139,6 +143,7 @@ SYNTHIA needs → Supabase vibe_nodes + Git status + Screenshot
 ```
 
 Post results to Vibe Graph after each call:
+
 ```bash
 # After getting data, POST to vibe graph
 curl -X POST https://dashboard-agent-swarm-eight.vercel.app/api/vibe \
@@ -150,12 +155,12 @@ curl -X POST https://dashboard-agent-swarm-eight.vercel.app/api/vibe \
 
 ## TOKEN BUDGET GUIDE
 
-| Operation | Token cost | Use when |
-|-----------|-----------|---------|
-| `--search "keyword"` | ~50 tokens | Finding tool name |
-| `--list` | ~500-2000 tokens | Need full schema |
-| Direct tool call (known name) | ~100 tokens | Tool name already known |
-| Full MCP server in context | ~5000-20000 tokens | **NEVER** — this is what we avoid |
+| Operation                     | Token cost         | Use when                          |
+| ----------------------------- | ------------------ | --------------------------------- |
+| `--search "keyword"`          | ~50 tokens         | Finding tool name                 |
+| `--list`                      | ~500-2000 tokens   | Need full schema                  |
+| Direct tool call (known name) | ~100 tokens        | Tool name already known           |
+| Full MCP server in context    | ~5000-20000 tokens | **NEVER** — this is what we avoid |
 
 ---
 

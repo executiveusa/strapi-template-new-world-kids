@@ -19,4 +19,3 @@ Use Hyperframes when the output should be a deterministic HTML-to-MP4 motion pie
 ## Practical rule
 
 - Use this when the user wants a polished cinematic clip, not an interactive page.
-

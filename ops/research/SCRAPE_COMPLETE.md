@@ -15,6 +15,7 @@ This research run synthesized insights from Emad Mostaque (Intelligent Internet 
 ## Files Created
 
 ### Synthesis Documents
+
 1. ✅ **EMAD_KEY_IDEAS.md** (2,847 words)
    - 10 core concepts
    - Key quotes and predictions
@@ -46,6 +47,7 @@ This research run synthesized insights from Emad Mostaque (Intelligent Internet 
    - Validation checklist for Emad/Devin
 
 ### Research Artifacts
+
 - 10 directories created: `/ops/research/{emad,devin,synthesis}`
 - Failed scrapes logged: Firecrawl API (domain allowlist), WebFetch (403 Forbidden on direct URLs)
 - Successfully leveraged: WebSearch with fallback synthesis
@@ -57,7 +59,9 @@ This research run synthesized insights from Emad Mostaque (Intelligent Internet 
 ## Content Scraped vs. Attempted
 
 ### Sources Successfully Analyzed (via WebSearch)
+
 ✅ Emad Mostaque:
+
 - Cognitive Revolution Podcast (Dec 2024, 2hr 9min) - summary available
 - Impact Theory interview (Sep 2025) - transcript location identified
 - "The Tea with Myriam François" - referenced in search results
@@ -67,6 +71,7 @@ This research run synthesized insights from Emad Mostaque (Intelligent Internet 
 - Intelligent Internet official sites
 
 ✅ Devin Kearns / CustomAI Studio:
+
 - Company website (customaistudio.io)
 - YouTube channel (@customaistudio)
 - LinkedIn profile + posts
@@ -76,14 +81,14 @@ This research run synthesized insights from Emad Mostaque (Intelligent Internet 
 
 ### URLs That Failed to Load
 
-| URL | Reason | Workaround |
-|---|---|---|
-| cognitiverevolution.ai/* | HTTP 403 Forbidden | Used podcast summary sites + search results |
-| ii.inc/* | HTTP 403 Forbidden | Found blog posts via news aggregators |
-| customaistudio.io/* | HTTP 403 Forbidden | Used LinkedIn + YouTube + Tracxn profiles |
-| Medium (paywalled) | 403 Forbidden | Found summary + quoted content in search |
-| Transcript sites (singjupost.com) | 403 Forbidden | Search results provided article summaries |
-| YouTube videos | Limited transcripts | Summary sites (HorsyAI, Podtail, DeepCast) used |
+| URL                               | Reason              | Workaround                                      |
+| --------------------------------- | ------------------- | ----------------------------------------------- |
+| cognitiverevolution.ai/\*         | HTTP 403 Forbidden  | Used podcast summary sites + search results     |
+| ii.inc/\*                         | HTTP 403 Forbidden  | Found blog posts via news aggregators           |
+| customaistudio.io/\*              | HTTP 403 Forbidden  | Used LinkedIn + YouTube + Tracxn profiles       |
+| Medium (paywalled)                | 403 Forbidden       | Found summary + quoted content in search        |
+| Transcript sites (singjupost.com) | 403 Forbidden       | Search results provided article summaries       |
+| YouTube videos                    | Limited transcripts | Summary sites (HorsyAI, Podtail, DeepCast) used |
 
 **Total Failed URLs:** 15  
 **Reason:** Anti-bot protection (JavaScript rendering needed) + paywalls  
@@ -94,26 +99,31 @@ This research run synthesized insights from Emad Mostaque (Intelligent Internet 
 ## Key Findings Summary
 
 ### Finding 1: UBAI + Agentic OS = Perfect Complement
-**Why it matters:** Emad's *what* (sovereign, distributed AI) × Devin's *how* (observable, iterative agents) = Observable Agents framework
+
+**Why it matters:** Emad's _what_ (sovereign, distributed AI) × Devin's _how_ (observable, iterative agents) = Observable Agents framework
 
 Actionable: Position NWKids as implementing both visions simultaneously
 
 ### Finding 2: Three-Tier Architecture Maps to MAXX Pricing
+
 **Why it matters:** Emad's Tier 1/2/3 naturally maps to $200/$1000/$4000 MAXX service tiers
 
 Actionable: Pricing isn't arbitrary; it's architecture-derived. Messaging becomes: "Pay for the tier of sovereignty + specialization you need"
 
 ### Finding 3: CustomAI's ROI Pattern is Replicable for Nonprofits
+
 **Why it matters:** 50+ deployments across 12-18 months show 40-60% cost reduction + 2-3x velocity. Same math applies to nonprofits
 
 Actionable: Lead grant narratives with "We deploy agents like CustomAI does, but mission-driven"
 
 ### Finding 4: 900 Days Is a Real Deadline
-**Why it matters:** Emad explicitly warns that the window to build *sovereign* AI closes soon (by mid-2027)
 
-Actionable: Urgency is authentic. Use in fundraising: "We're one of the few nonprofits building sovereign AI *now*, not waiting"
+**Why it matters:** Emad explicitly warns that the window to build _sovereign_ AI closes soon (by mid-2027)
+
+Actionable: Urgency is authentic. Use in fundraising: "We're one of the few nonprofits building sovereign AI _now_, not waiting"
 
 ### Finding 5: NWKids Fills a Gap Nobody Else Addresses
+
 **Why it matters:** Emad ≠ nonprofits, Devin ≠ youth-centered, neither focuses on community co-design or offline-first global south
 
 Actionable: Position as "The Observable Agents platform for youth + underserved communities"
@@ -123,6 +133,7 @@ Actionable: Position as "The Observable Agents platform for youth + underserved 
 ## Recommended Next Steps
 
 ### Immediate (This Month)
+
 1. **Outreach to Emad Mostaque**
    - Email: [Find via II.inc contact]
    - Ask: Partnership opportunity on observable agents for youth
@@ -139,6 +150,7 @@ Actionable: Position as "The Observable Agents platform for youth + underserved 
    - Goal: Extract additional quotes for MAXX marketing
 
 ### Short-term (Next 2 Weeks)
+
 4. **Validate Positioning**
    - Share NWKIDS_APPLICATION.md with board/leadership
    - Collect feedback on Observable Agents messaging
@@ -155,6 +167,7 @@ Actionable: Position as "The Observable Agents platform for youth + underserved 
    - Update roadmap with 2026-2028 phases
 
 ### Medium-term (Next Month)
+
 7. **Budget for Partnerships**
    - If Emad interested: Budget for Intelligent Internet integration
    - If Devin interested: Budget for CustomAI Studio engagement
@@ -170,12 +183,14 @@ Actionable: Position as "The Observable Agents platform for youth + underserved 
 ## Cost & Budget
 
 ### Scraping Costs
+
 - **Firecrawl:** Attempted but API restricted (0 credits used due to domain allowlist)
 - **WebFetch:** Used 4 requests (failed all; cached after first attempt)
 - **WebSearch:** Used 3 requests (successfully returned 20+ results)
 - **Total:** Minimal API cost (~$0.10)
 
 ### Recommended Future Spending
+
 - **Transcript purchases:** $50-200 (Cognitive Revolution, etc.)
 - **CustomAI consultation:** $2,000-5,000 (initial engagement)
 - **Potential Intelligent Internet partnership:** TBD (to be negotiated)
@@ -185,11 +200,13 @@ Actionable: Position as "The Observable Agents platform for youth + underserved 
 ## Data Security & API Key Status
 
 ### Firecrawl API Key Exposure
+
 **Status:** 🔴 **COMPROMISED - REQUIRES ROTATION**
 
 **Key:** `fc-b3571bcfab44491f9d5bddb8a9ded001`  
 **Reason:** Exposed in research prompt (intentionally shared but now in codebase + session logs)  
-**Action Required:** 
+**Action Required:**
+
 1. Go to: https://app.firecrawl.dev → API Keys
 2. Regenerate key immediately
 3. Update `.env.local` or config with new key
@@ -202,22 +219,25 @@ Actionable: Position as "The Observable Agents platform for youth + underserved 
 ## Lessons Learned
 
 ### What Worked
+
 ✅ WebSearch for aggregated intelligence (better than single-source scraping)  
 ✅ Secondary source synthesis (Horsy.ai, Podtail, Tracxn summaries were high quality)  
 ✅ Concept mapping (Mermaid diagrams made complex ideas digestible)  
 ✅ Gap analysis framework (identifying what NWKids uniquely fills)
 
 ### What Didn't Work
+
 ❌ Firecrawl API (domain restrictions made it unusable)  
 ❌ Direct WebFetch (anti-bot protection on most sites)  
 ❌ YouTube transcript extraction (browser-based transcripts not accessible via APIs)  
 ❌ Paywalled content (Medium, transcript archives)
 
 ### Future Improvements
+
 💡 Use Chrome DevTools MCP for JavaScript-heavy sites (slower but more reliable)  
 💡 Build a transcript library by subscribing to podcast email summaries  
 💡 Request primary sources (transcripts) directly from creators (Emad, Devin)  
-💡 Use API-based approaches (YouTube Data API with API key) instead of scraping  
+💡 Use API-based approaches (YouTube Data API with API key) instead of scraping
 
 ---
 
@@ -226,6 +246,7 @@ Actionable: Position as "The Observable Agents platform for youth + underserved 
 This research successfully synthesized two disparate visionaries (Emad's infrastructure + Devin's methodology) into a coherent platform strategy for NWKids: **Observable Agents as the implementation of Universal Basic Intelligence for youth.**
 
 **The positioning is strong.** We have:
+
 - ✅ Philosophical foundation (Emad's UBAI)
 - ✅ Implementation proof (Devin's 50+ deployments)
 - ✅ Unique market gap (youth-centered, community-designed, offline-first)
