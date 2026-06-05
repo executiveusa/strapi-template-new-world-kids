@@ -5,7 +5,12 @@ import { ExternalLink } from "lucide-react"
 import { useRef } from "react"
 
 import { Link } from "@/lib/navigation"
-import { socialOpsHighlights, socialOpsMetrics, siteLinks } from "../site/siteData"
+
+import {
+  socialOpsHighlights,
+  socialOpsMetrics,
+  siteLinks,
+} from "../site/siteData"
 
 function SocialMetricCard({
   label,
@@ -29,8 +34,12 @@ function SocialMetricCard({
       transition={{ duration: 0.55, delay }}
       className="rounded-[24px] border border-white/10 bg-white/[0.03] p-5"
     >
-      <p className="text-xs tracking-[0.22em] text-[#c9a84c] uppercase">{label}</p>
-      <div className="mt-4 font-serif text-4xl font-semibold text-white">{value}</div>
+      <p className="text-xs tracking-[0.22em] text-[#c9a84c] uppercase">
+        {label}
+      </p>
+      <div className="mt-4 font-serif text-4xl font-semibold text-white">
+        {value}
+      </div>
       <p className="mt-3 text-sm leading-7 text-white/58">{note}</p>
     </motion.article>
   )
@@ -43,7 +52,10 @@ export function SocialMediaSection() {
   return (
     <section id="post-maxx" className="bg-[#08110a] py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <div ref={headerRef} className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+        <div
+          ref={headerRef}
+          className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]"
+        >
           <div className="max-w-2xl">
             <motion.p
               initial={{ opacity: 0, x: -16 }}
@@ -67,10 +79,10 @@ export function SocialMediaSection() {
               transition={{ duration: 0.65, delay: 0.16 }}
               className="mt-6 text-base leading-8 text-white/64"
             >
-              POST-MAXX gives MAXX a social command center: schedule posts, keep the
-              voice consistent, queue approvals, and turn attention into leads.
-              The goal is simple. More reach, less manual work, and a cleaner path
-              from content to business outcomes.
+              POST-MAXX gives MAXX a social command center: schedule posts, keep
+              the voice consistent, queue approvals, and turn attention into
+              leads. The goal is simple. More reach, less manual work, and a
+              cleaner path from content to business outcomes.
             </motion.p>
 
             <div className="mt-8 rounded-[28px] border border-white/10 bg-white/[0.03] p-6">

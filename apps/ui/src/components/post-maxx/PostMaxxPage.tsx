@@ -1,12 +1,25 @@
 "use client"
 
+import {
+  ExternalLink,
+  RefreshCw,
+  ShieldCheck,
+  Sparkles,
+  Target,
+} from "lucide-react"
+import Link from "next/link"
 import { useEffect, useState } from "react"
-import { ExternalLink, RefreshCw, ShieldCheck, Sparkles, Target } from "lucide-react"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
+import { socialOpsHighlights, socialOpsMetrics } from "../site/siteData"
 import { Badge } from "../ui/badge"
 import { Button } from "../ui/button"
-import { socialOpsHighlights, socialOpsMetrics } from "../site/siteData"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../ui/card"
 
 type StatusPayload = {
   ok: boolean
@@ -34,7 +47,9 @@ export function PostMaxxPage() {
 
     async function loadStatus() {
       try {
-        const response = await fetch("/api/post-maxx/status", { cache: "no-store" })
+        const response = await fetch("/api/post-maxx/status", {
+          cache: "no-store",
+        })
         const payload = (await response.json()) as StatusPayload
 
         if (!cancelled) {
@@ -46,7 +61,10 @@ export function PostMaxxPage() {
             ok: false,
             reachable: false,
             serverUrl: "unknown",
-            error: error instanceof Error ? error.message : "POST-MAXX status unavailable",
+            error:
+              error instanceof Error
+                ? error.message
+                : "POST-MAXX status unavailable",
           })
         }
       } finally {
@@ -75,9 +93,10 @@ export function PostMaxxPage() {
               Social publishing, approval, and distribution in one place.
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-white/68 md:text-lg">
-              This page is built for business owners first. It shows whether the social
-              server is reachable, what the agent is scheduled to do, and how social
-              turns into leads, trust, and repeatable reach without becoming a daily chore.
+              This page is built for business owners first. It shows whether the
+              social server is reachable, what the agent is scheduled to do, and
+              how social turns into leads, trust, and repeatable reach without
+              becoming a daily chore.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -90,12 +109,12 @@ export function PostMaxxPage() {
                 Open server
                 <ExternalLink className="h-4 w-4" />
               </a>
-              <a
+              <Link
                 href="/ops"
                 className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-medium text-white/82"
               >
                 Back to ops
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -120,22 +139,36 @@ export function PostMaxxPage() {
             <CardContent className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-white/45">Server URL</p>
-                  <p className="mt-2 break-all text-sm text-white/80">{status?.serverUrl ?? "Loading..."}</p>
+                  <p className="text-xs tracking-[0.18em] text-white/45 uppercase">
+                    Server URL
+                  </p>
+                  <p className="mt-2 text-sm break-all text-white/80">
+                    {status?.serverUrl ?? "Loading..."}
+                  </p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-white/45">Reachability</p>
+                  <p className="text-xs tracking-[0.18em] text-white/45 uppercase">
+                    Reachability
+                  </p>
                   <p className="mt-2 text-sm text-white/80">
                     {status?.reachable ? "Reachable" : "Blocked or offline"}
                   </p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-white/45">HTTP status</p>
-                  <p className="mt-2 text-sm text-white/80">{status?.status ?? "Pending"}</p>
+                  <p className="text-xs tracking-[0.18em] text-white/45 uppercase">
+                    HTTP status
+                  </p>
+                  <p className="mt-2 text-sm text-white/80">
+                    {status?.status ?? "Pending"}
+                  </p>
                 </div>
                 <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-white/45">Response time</p>
-                  <p className="mt-2 text-sm text-white/80">{status?.elapsedMs ? `${status.elapsedMs}ms` : "Pending"}</p>
+                  <p className="text-xs tracking-[0.18em] text-white/45 uppercase">
+                    Response time
+                  </p>
+                  <p className="mt-2 text-sm text-white/80">
+                    {status?.elapsedMs ? `${status.elapsedMs}ms` : "Pending"}
+                  </p>
                 </div>
               </div>
 
@@ -161,18 +194,22 @@ export function PostMaxxPage() {
                 What this does for the business
               </CardTitle>
               <CardDescription className="text-white/60">
-                Clear outcomes first. Features only matter if they change the result.
+                Clear outcomes first. Features only matter if they change the
+                result.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {socialOpsHighlights.map((item) => (
-                <div key={item} className="rounded-2xl border border-white/10 bg-black/20 p-4 text-sm leading-7 text-white/68">
+                <div
+                  key={item}
+                  className="rounded-2xl border border-white/10 bg-black/20 p-4 text-sm leading-7 text-white/68"
+                >
                   {item}
                 </div>
               ))}
 
               <div className="rounded-2xl border border-white/10 bg-black/20 p-4">
-                <p className="text-xs uppercase tracking-[0.18em] text-white/45">
+                <p className="text-xs tracking-[0.18em] text-white/45 uppercase">
                   Krug-friendly rules
                 </p>
                 <ul className="mt-3 space-y-3 text-sm leading-7 text-white/68">
@@ -190,25 +227,39 @@ export function PostMaxxPage() {
 
         <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {socialOpsMetrics.map((metric) => (
-            <Card key={metric.label} className="border-white/10 bg-white/[0.03]">
+            <Card
+              key={metric.label}
+              className="border-white/10 bg-white/[0.03]"
+            >
               <CardHeader className="pb-3">
-                <CardTitle className="text-sm font-medium text-[#c9a84c]">{metric.label}</CardTitle>
+                <CardTitle className="text-sm font-medium text-[#c9a84c]">
+                  {metric.label}
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="font-serif text-4xl font-semibold text-white">{metric.value}</div>
-                <p className="mt-3 text-sm leading-7 text-white/60">{metric.note}</p>
-                <Badge className="mt-4 bg-[#c9a84c]/15 text-[#f2d79c]">Business outcome</Badge>
+                <div className="font-serif text-4xl font-semibold text-white">
+                  {metric.value}
+                </div>
+                <p className="mt-3 text-sm leading-7 text-white/60">
+                  {metric.note}
+                </p>
+                <Badge className="mt-4 bg-[#c9a84c]/15 text-[#f2d79c]">
+                  Business outcome
+                </Badge>
               </CardContent>
             </Card>
           ))}
         </div>
 
         <div className="mt-8 rounded-[28px] border border-[#c9a84c]/20 bg-[#c9a84c]/6 p-6">
-          <p className="text-xs uppercase tracking-[0.24em] text-[#c9a84c]">
+          <p className="text-xs tracking-[0.24em] text-[#c9a84c] uppercase">
             Next step
           </p>
           <p className="mt-3 max-w-4xl text-sm leading-7 text-white/70">
-            Use this page as the owner dashboard for POST-MAXX. When the server is live, this page should show the connection as reachable, show the main actions at a glance, and let the team launch social work without digging through settings.
+            Use this page as the owner dashboard for POST-MAXX. When the server
+            is live, this page should show the connection as reachable, show the
+            main actions at a glance, and let the team launch social work
+            without digging through settings.
           </p>
         </div>
       </section>

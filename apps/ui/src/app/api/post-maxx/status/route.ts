@@ -33,7 +33,10 @@ export async function GET() {
         serverUrl,
         reachable: false,
         source: "post-maxx",
-        error: error instanceof Error ? error.message : "POST-MAXX server unreachable",
+        error:
+          error instanceof Error
+            ? error.message
+            : "POST-MAXX server unreachable",
       },
       { status: 503 }
     )
