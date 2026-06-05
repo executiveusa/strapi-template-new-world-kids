@@ -1,11 +1,11 @@
-import { beforeEach, describe, expect, it, vi } from "vitest"
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { CommandMenu } from "@/components/command-menu"
-import { mockMetadata } from "@/tests/fixtures/test-data"
-import { mockPush } from "@/tests/mocks/navigation"
-import { render, screen, waitFor } from "@/tests/test-utils"
+import { CommandMenu } from '@/components/command-menu'
+import { mockMetadata } from '@/tests/fixtures/test-data'
+import { mockPush } from '@/tests/mocks/navigation'
+import { render, screen, waitFor } from '@/tests/test-utils'
 
-describe("CommandMenu", () => {
+describe('CommandMenu', () => {
   beforeEach(() => {
     vi.clearAllMocks()
   })
