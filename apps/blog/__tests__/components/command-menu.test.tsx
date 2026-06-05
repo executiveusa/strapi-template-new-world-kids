@@ -13,24 +13,24 @@ describe('CommandMenu', () => {
   it("should render search buttons", () => {
     render(<CommandMenu metadata={mockMetadata} />)
 
-    const buttons = screen.getAllByRole("button", { name: /search/i })
+    const buttons = screen.getAllByRole('button', { name: /search/i })
     expect(buttons.length).toBeGreaterThan(0)
   })
 
   it("should show keyboard shortcuts hint", () => {
     render(<CommandMenu metadata={mockMetadata} />)
 
-    const kbd = screen.getByText("⌘")
+    const kbd = screen.getByText('⌘')
     expect(kbd).toBeInTheDocument()
-    expect(screen.getByText("K")).toBeInTheDocument()
+    expect(screen.getByText('K')).toBeInTheDocument()
   })
 
   it("should have search label", () => {
     render(<CommandMenu metadata={mockMetadata} />)
 
-    const buttons = screen.getAllByRole("button", { name: /search/i })
+    const buttons = screen.getAllByRole('button', { name: /search/i })
     buttons.forEach((button) => {
-      expect(button).toHaveAttribute("aria-label", "Search journal posts and tags")
+      expect(button).toHaveAttribute('aria-label', "Search journal posts and tags")
     })
   })
 
@@ -38,7 +38,7 @@ describe('CommandMenu', () => {
     const { user } = render(<CommandMenu metadata={mockMetadata} />)
 
     // Get mobile search button (icon only, hidden on md+ screens)
-    const buttons = screen.getAllByRole("button", { name: /search/i })
+    const buttons = screen.getAllByRole('button', { name: /search/i })
     const mobileButton = buttons.find((btn) => btn.querySelector("svg"))
 
     expect(mobileButton).toBeDefined()
@@ -47,7 +47,7 @@ describe('CommandMenu', () => {
       await user.click(mobileButton)
 
       await waitFor(() => {
-        expect(screen.getByRole("dialog")).toBeInTheDocument()
+        expect(screen.getByRole('dialog')).toBeInTheDocument()
       })
     }
   })
@@ -56,7 +56,7 @@ describe('CommandMenu', () => {
     const { user } = render(<CommandMenu metadata={mockMetadata} />)
 
     // Get desktop search button (with text)
-    const buttons = screen.getAllByRole("button", { name: /search/i })
+    const buttons = screen.getAllByRole('button', { name: /search/i })
     const desktopButton = buttons.find((btn) => btn.textContent?.includes("Search"))
 
     expect(desktopButton).toBeDefined()
@@ -65,7 +65,7 @@ describe('CommandMenu', () => {
       await user.click(desktopButton)
 
       await waitFor(() => {
-        expect(screen.getByRole("dialog")).toBeInTheDocument()
+        expect(screen.getByRole('dialog')).toBeInTheDocument()
       })
     }
   })
@@ -77,14 +77,14 @@ describe('CommandMenu', () => {
     await user.keyboard("{Meta>}k{/Meta}")
 
     await waitFor(() => {
-      expect(screen.getByRole("dialog")).toBeInTheDocument()
+      expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
 
     // Close by clicking outside or pressing Escape is more reliable
     await user.keyboard("{Escape}")
 
     await waitFor(() => {
-      expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     })
   })
 
@@ -95,7 +95,7 @@ describe('CommandMenu', () => {
     await user.keyboard("{Control>}k{/Control}")
 
     await waitFor(() => {
-      expect(screen.getByRole("dialog")).toBeInTheDocument()
+      expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
   })
 
@@ -117,7 +117,7 @@ describe('CommandMenu', () => {
     input.dispatchEvent(event)
 
     // Dialog should not open
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
     // Cleanup
     input.remove()
@@ -141,7 +141,7 @@ describe('CommandMenu', () => {
     textarea.dispatchEvent(event)
 
     // Dialog should not open
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
     // Cleanup
     textarea.remove()
@@ -166,7 +166,7 @@ describe('CommandMenu', () => {
     div.dispatchEvent(event)
 
     // Dialog should not open
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
     // Cleanup
     div.remove()
@@ -184,7 +184,7 @@ describe('CommandMenu', () => {
     await user.keyboard("{Meta>}k{/Meta}")
 
     // Dialog should not open
-    expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
     // Cleanup
     select.remove()
@@ -194,11 +194,11 @@ describe('CommandMenu', () => {
     const { user } = render(<CommandMenu metadata={mockMetadata} />)
 
     // Open dialog
-    const buttons = screen.getAllByRole("button", { name: /search/i })
+    const buttons = screen.getAllByRole('button', { name: /search/i })
     await user.click(buttons[0])
 
     await waitFor(() => {
-      expect(screen.getByRole("dialog")).toBeInTheDocument()
+      expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
 
     // Type in search input
@@ -206,7 +206,7 @@ describe('CommandMenu', () => {
     await user.type(searchInput, "Test Post 1")
 
     await waitFor(() => {
-      expect(screen.getByText("Test Post 1")).toBeInTheDocument()
+      expect(screen.getByText('Test Post 1')).toBeInTheDocument()
     })
   })
 
@@ -214,11 +214,11 @@ describe('CommandMenu', () => {
     const { user } = render(<CommandMenu metadata={mockMetadata} />)
 
     // Open dialog
-    const buttons = screen.getAllByRole("button", { name: /search/i })
+    const buttons = screen.getAllByRole('button', { name: /search/i })
     await user.click(buttons[0])
 
     await waitFor(() => {
-      expect(screen.getByRole("dialog")).toBeInTheDocument()
+      expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
 
     // Type in search input
@@ -227,7 +227,7 @@ describe('CommandMenu', () => {
 
     await waitFor(() => {
       // Should show both the tag and posts with React tag
-      const items = screen.getAllByText("React")
+      const items = screen.getAllByText('React')
       expect(items.length).toBeGreaterThan(0)
     })
   })
@@ -237,20 +237,20 @@ describe('CommandMenu', () => {
     const { user } = render(<CommandMenu metadata={mockMetadata} />)
 
     // Open dialog
-    const buttons = screen.getAllByRole("button", { name: /search/i })
+    const buttons = screen.getAllByRole('button', { name: /search/i })
     await user.click(buttons[0])
 
     await waitFor(() => {
-      expect(screen.getByRole("dialog")).toBeInTheDocument()
+      expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
 
     // Wait for posts to be displayed
     await waitFor(() => {
-      expect(screen.getByText("Test Post 1")).toBeInTheDocument()
+      expect(screen.getByText('Test Post 1')).toBeInTheDocument()
     })
 
     // Click on a post item
-    const postItem = screen.getByText("Test Post 1")
+    const postItem = screen.getByText('Test Post 1')
     await user.click(postItem)
 
     // Should call router.push with post URL (router may pass empty options object)
@@ -261,7 +261,7 @@ describe('CommandMenu', () => {
 
     // Dialog should close
     await waitFor(() => {
-      expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     })
   })
 
@@ -270,11 +270,11 @@ describe('CommandMenu', () => {
     const { user } = render(<CommandMenu metadata={mockMetadata} />)
 
     // Open dialog
-    const buttons = screen.getAllByRole("button", { name: /search/i })
+    const buttons = screen.getAllByRole('button', { name: /search/i })
     await user.click(buttons[0])
 
     await waitFor(() => {
-      expect(screen.getByRole("dialog")).toBeInTheDocument()
+      expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
 
     // Type to filter tags
@@ -282,12 +282,12 @@ describe('CommandMenu', () => {
     await user.type(searchInput, "TypeScript")
 
     await waitFor(() => {
-      const tagItems = screen.getAllByText("TypeScript")
+      const tagItems = screen.getAllByText('TypeScript')
       expect(tagItems.length).toBeGreaterThan(0)
     })
 
     // Click on the tag item (find the one in CommandGroup for tags)
-    const tagItems = screen.getAllByText("TypeScript")
+    const tagItems = screen.getAllByText('TypeScript')
     // The tag item should be the one with a count badge
     const tagItem = tagItems.find((item) => {
       const parent = item.closest('[role="option"]')
@@ -308,7 +308,7 @@ describe('CommandMenu', () => {
 
       // Dialog should close
       await waitFor(() => {
-        expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+        expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
       })
     }
   })
@@ -317,11 +317,11 @@ describe('CommandMenu', () => {
     const { user } = render(<CommandMenu metadata={mockMetadata} />)
 
     // Open dialog
-    const buttons = screen.getAllByRole("button", { name: /search/i })
+    const buttons = screen.getAllByRole('button', { name: /search/i })
     await user.click(buttons[0])
 
     await waitFor(() => {
-      expect(screen.getByRole("dialog")).toBeInTheDocument()
+      expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
 
     // Type in search input
@@ -331,19 +331,19 @@ describe('CommandMenu', () => {
     expect(searchInput).toHaveValue("test")
 
     // Select a post to close dialog
-    const postItem = screen.getByText("Test Post 1")
+    const postItem = screen.getByText('Test Post 1')
     await user.click(postItem)
 
     // Dialog should close
     await waitFor(() => {
-      expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
     })
 
     // Reopen dialog
     await user.click(buttons[0])
 
     await waitFor(() => {
-      expect(screen.getByRole("dialog")).toBeInTheDocument()
+      expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
 
     // Search should be cleared
@@ -355,11 +355,11 @@ describe('CommandMenu', () => {
     const { user } = render(<CommandMenu metadata={mockMetadata} />)
 
     // Open dialog
-    const buttons = screen.getAllByRole("button", { name: /search/i })
+    const buttons = screen.getAllByRole('button', { name: /search/i })
     await user.click(buttons[0])
 
     await waitFor(() => {
-      expect(screen.getByRole("dialog")).toBeInTheDocument()
+      expect(screen.getByRole('dialog')).toBeInTheDocument()
     })
 
     // Type non-matching search

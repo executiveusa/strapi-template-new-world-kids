@@ -1,7 +1,7 @@
-import { afterEach, describe, expect, it, vi } from "vitest"
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
-import { PostAgentActions } from "@/components/post-agent-actions"
-import { render, screen } from "@/tests/test-utils"
+import { PostAgentActions } from '@/components/post-agent-actions'
+import { render, screen } from '@/tests/test-utils'
 
 describe("PostAgentActions", () => {
   const defaultProps = {
@@ -18,7 +18,7 @@ describe("PostAgentActions", () => {
 
     const container = screen.getByTestId("post-agent-actions")
     expect(container).toBeInTheDocument()
-    expect(container).toHaveClass("flex", "items-center")
+    expect(container).toHaveClass('flex', "items-center")
   })
 
   it("should render Claude button", () => {

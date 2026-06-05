@@ -1,6 +1,6 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it } from 'vitest'
 
-import { resolveLocale } from "@/i18n/utils"
+import { resolveLocale } from '@/i18n/utils'
 
 describe("i18n/utils", () => {
   describe("resolveLocale", () => {

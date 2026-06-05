@@ -1,8 +1,8 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it } from 'vitest'
 
-import { ProfileCard } from "@/components/profile-card"
-import { mockProfile } from "@/tests/fixtures/test-data"
-import { render, screen } from "@/tests/test-utils"
+import { ProfileCard } from '@/components/profile-card'
+import { mockProfile } from '@/tests/fixtures/test-data'
+import { render, screen } from '@/tests/test-utils'
 
 describe("ProfileCard", () => {
   it("should render user profile information", () => {
@@ -24,10 +24,10 @@ describe("ProfileCard", () => {
   it("should render GitHub link", () => {
     render(<ProfileCard profile={mockProfile} />)
 
-    const githubLink = screen.getByRole("link", { name: new RegExp(mockProfile.username, "i") })
-    expect(githubLink).toHaveAttribute("href", mockProfile.url)
-    expect(githubLink).toHaveAttribute("target", "_blank")
-    expect(githubLink).toHaveAttribute("rel", "noopener noreferrer")
+    const githubLink = screen.getByRole('link', { name: new RegExp(mockProfile.username, "i") })
+    expect(githubLink).toHaveAttribute('href', mockProfile.url)
+    expect(githubLink).toHaveAttribute('target', "_blank")
+    expect(githubLink).toHaveAttribute('rel', "noopener noreferrer")
   })
 
   it("should render followers and following counts", () => {
@@ -35,14 +35,14 @@ describe("ProfileCard", () => {
 
     expect(screen.getByText(mockProfile.followers.toString())).toBeInTheDocument()
     expect(screen.getByText(mockProfile.following.toString())).toBeInTheDocument()
-    expect(screen.getByText("Followers")).toBeInTheDocument()
-    expect(screen.getByText("Following")).toBeInTheDocument()
+    expect(screen.getByText('Followers')).toBeInTheDocument()
+    expect(screen.getByText('Following')).toBeInTheDocument()
   })
 
   it("should render followers and following as links", () => {
     render(<ProfileCard profile={mockProfile} />)
 
-    const links = screen.getAllByRole("link")
+    const links = screen.getAllByRole('link')
     const followersLink = links.find((link) => link.getAttribute("href") === mockProfile.followersUrl)
     const followingLink = links.find((link) => link.getAttribute("href") === mockProfile.followingUrl)
 
@@ -53,30 +53,30 @@ describe("ProfileCard", () => {
   it("should render create date", () => {
     render(<ProfileCard profile={mockProfile} />)
 
-    const timeElement = screen.getByRole("time")
+    const timeElement = screen.getByRole('time')
     expect(timeElement).toBeInTheDocument()
-    expect(timeElement).toHaveAttribute("dateTime", new Date(mockProfile.createDate).toISOString())
+    expect(timeElement).toHaveAttribute('dateTime', new Date(mockProfile.createDate).toISOString())
   })
 
   it("should use fallback bio when bio is not provided", () => {
     const profileWithoutBio = { ...mockProfile, bio: undefined }
     render(<ProfileCard profile={profileWithoutBio} />)
 
-    expect(screen.getByText("Boots-on-the-ground nonprofit media journal")).toBeInTheDocument()
+    expect(screen.getByText('Boots-on-the-ground nonprofit media journal')).toBeInTheDocument()
   })
 
   it("should use fallback location when location is not provided", () => {
     const profileWithoutLocation = { ...mockProfile, location: undefined }
     render(<ProfileCard profile={profileWithoutLocation} />)
 
-    expect(screen.getByText("Puerto Vallarta / Seattle")).toBeInTheDocument()
+    expect(screen.getByText('Puerto Vallarta / Seattle')).toBeInTheDocument()
   })
 
   it("should render username in avatar fallback", () => {
     const profile = { ...mockProfile, username: "JohnDoe" }
     render(<ProfileCard profile={profile} />)
 
-    const avatarFallback = screen.getByText("J")
+    const avatarFallback = screen.getByText('J')
     expect(avatarFallback).toBeInTheDocument()
   })
 })
