@@ -9,6 +9,8 @@ import { HermesStatusInput } from "./tools/hermes-status/schema.js"
 import { hermesStatus } from "./tools/hermes-status/handler.js"
 import { logImpact } from "./tools/log-impact/handler.js"
 import { LogImpactInput } from "./tools/log-impact/schema.js"
+import { runMission } from "./tools/run-mission/handler.js"
+import { RunMissionInput } from "./tools/run-mission/schema.js"
 
 const server = new McpServer({
   name: "nwkids-infrastructure",
@@ -117,8 +119,33 @@ server.tool(
   }
 )
 
+server.tool(
+  "run_mission",
+  "Start a bounded NWKids mission and log it to the shared agent_actions ledger for public or private tracking.",
+  RunMissionInput.shape,
+  async (input) => {
+    try {
+      const result = await runMission(input as never)
+
+      return {
+        content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
+      }
+    } catch (error) {
+      return {
+        content: [
+          {
+            type: "text",
+            text: `Error: ${error instanceof Error ? error.message : String(error)}`,
+          },
+        ],
+        isError: true,
+      }
+    }
+  }
+)
+
 const transport = new StdioServerTransport()
 await server.connect(transport)
 console.error(
-  "[NWKids MCP] Server running. Tools: grant_hunt, content_post, log_impact, hermes_status"
+  "[NWKids MCP] Server running. Tools: grant_hunt, content_post, log_impact, hermes_status, run_mission"
 )

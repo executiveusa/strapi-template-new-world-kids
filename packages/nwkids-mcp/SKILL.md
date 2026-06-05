@@ -55,6 +55,12 @@ Get your portfolio health check.
 "What's our grant pipeline looking like?"
 -> Returns grants tracked, won, pipeline value, budget remaining, and health.
 
+### run_mission
+
+Start a bounded mission and write it to the agent ledger.
+"Run mission Indigo Azul seedling drive with a public dashboard entry"
+-> Returns ledger ID, pending status, and dashboard URL.
+
 ## Pricing
 
 Starter BYOK (bring your own OpenAI/Anthropic key): $200/month
