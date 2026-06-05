@@ -4,7 +4,7 @@ import {
   impactPillars,
   trustDocuments,
   type PillarSlug,
-} from "@repo/shared-data"
+} from "../config/mission-data.js"
 
 type ArticleChatRequest = {
   title: string

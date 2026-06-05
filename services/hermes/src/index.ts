@@ -1,7 +1,8 @@
-import { readFile } from "node:fs/promises"
-import { createServer, type IncomingMessage } from "node:http"
-import path from "node:path"
-import { fileURLToPath } from "node:url"
+import { readFile } from 'node:fs/promises'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+import express from 'express'
 
 import {
   fiscalSponsor,
@@ -9,16 +10,12 @@ import {
   impactPillars,
   socialLinks,
   trustDocuments,
-} from "@repo/shared-data"
+} from './config/mission-data.js'
 
-import { agentProfiles } from "./config/agent-profiles.js"
-import { answerArticleQuestion } from "./lib/article-chat.js"
-import { applyCors, readJsonBody, sendJson } from "./lib/http.js"
-import {
-  getApprovedPosts,
-  markNotionStatus,
-  publishToStrapi,
-} from "./lib/notion-blog.js"
+import { agentProfiles } from './config/agent-profiles.js'
+import { HEARTBEAT_INTERVAL_MS, logHeartbeat, startHeartbeatScheduler } from './heartbeat.js'
+import { answerArticleQuestion } from './lib/article-chat.js'
+import { getSupabaseStatus } from './supabase.js'
 
 type ArticleChatPayload = {
   title: string
@@ -30,276 +27,172 @@ type ArticleChatPayload = {
 }
 
 const currentFile = fileURLToPath(import.meta.url)
-const currentDir = path.dirname(currentFile)
-const serviceRoot = path.resolve(currentDir, "..")
-const repoRoot = path.resolve(serviceRoot, "..", "..")
-const skillManifestPath = path.resolve(
-  repoRoot,
-  "agent-skills",
-  "source-status.json"
-)
+const currentDir = dirname(currentFile)
+const serviceRoot = resolve(currentDir, '..')
+const repoRoot = resolve(serviceRoot, '..', '..')
+const skillManifestPath = resolve(repoRoot, 'agent-skills', 'source-status.json')
+const startedAt = new Date().toISOString()
 
 async function readSkillManifest() {
-  const raw = await readFile(skillManifestPath, "utf8")
-
+  const raw = await readFile(skillManifestPath, 'utf8')
   return JSON.parse(raw) as Record<string, unknown>
 }
 
 function getIntegrations(env: NodeJS.ProcessEnv) {
   return {
     synthiaGatewayUrl: env.SYNTHIA_GATEWAY_URL || null,
-    synthiaModel: env.SYNTHIA_MODEL || "gpt-4o-mini",
-    gbrainCommand: env.GBRAIN_MCP_COMMAND || "gbrain serve",
+    synthiaModel: env.SYNTHIA_MODEL || 'gpt-4o-mini',
+    gbrainCommand: env.GBRAIN_MCP_COMMAND || 'gbrain serve',
     browserHarnessUrl: env.BROWSER_HARNESS_URL || null,
-    skipPublicUrl: env.SKIP_PUBLIC_URL || "https://helloskip.com/grants",
+    skipPublicUrl: env.SKIP_PUBLIC_URL || 'https://helloskip.com/grants',
     creemPublicUrl: env.CREEM_PUBLIC_URL || null,
     buyMeACoffeeUrl: env.BUY_ME_A_COFFEE_URL || null,
   }
 }
 
-function checkOperatorKey(
-  request: IncomingMessage,
-  env: NodeJS.ProcessEnv
-): boolean {
-  const expected = env.HERMES_OPERATOR_KEY
-  if (!expected) return true
-  const header =
-    request.headers["x-hermes-key"] ??
-    (request.headers.authorization?.startsWith("Bearer ")
-      ? request.headers.authorization.slice(7)
-      : null)
+const app = express()
 
-  return header === expected
-}
+app.use(express.json({ limit: '1mb' }))
 
-const server = createServer(async (request, response) => {
-  applyCors(response)
+app.use((_request, response, next) => {
+  response.setHeader('Access-Control-Allow-Origin', '*')
+  response.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS')
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+  next()
+})
 
-  if (!request.url || !request.method) {
-    sendJson(response, 400, { error: "Missing request metadata." })
+app.options('*path', (_request, response) => {
+  response.status(204).end()
+})
 
-    return
-  }
+app.get('/health', (_request, response) => {
+  response.json({
+    ok: true,
+    service: '@repo/hermes',
+    timestamp: new Date().toISOString(),
+  })
+})
 
-  if (request.method === "OPTIONS") {
-    response.statusCode = 204
-    response.end()
+app.get('/status', (_request, response) => {
+  const supabase = getSupabaseStatus()
+  response.json({
+    ok: true,
+    service: '@repo/hermes',
+    started_at: startedAt,
+    uptime_seconds: Math.round(process.uptime()),
+    heartbeat: {
+      interval_hours: HEARTBEAT_INTERVAL_MS / 3600000,
+      scheduler_enabled: process.env.HERMES_ENABLE_HEARTBEAT === 'true',
+      supabase_configured: supabase.configured,
+      missing_env: supabase.missing,
+    },
+    integrations: getIntegrations(process.env),
+  })
+})
 
-    return
-  }
+app.get('/heartbeat', (_request, response) => {
+  const supabase = getSupabaseStatus()
+  response.json({
+    ok: supabase.configured,
+    ready_to_log: supabase.configured,
+    interval_hours: HEARTBEAT_INTERVAL_MS / 3600000,
+    missing_env: supabase.missing,
+    timestamp: new Date().toISOString(),
+  })
+})
 
-  const url = new URL(
-    request.url,
-    `http://${request.headers.host || "localhost"}`
-  )
-
+app.post('/heartbeat', async (_request, response, next) => {
   try {
-    if (request.method === "GET" && url.pathname === "/health") {
-      sendJson(response, 200, {
-        ok: true,
-        service: "@repo/hermes",
-        timestamp: new Date().toISOString(),
-      })
-
-      return
-    }
-
-    if (request.method === "GET" && url.pathname === "/api/trust/documents") {
-      const publicUrl = process.env.APP_PUBLIC_URL || "http://localhost:3000"
-      sendJson(response, 200, {
-        fiscalSponsor,
-        documents: trustDocuments.map((document) => ({
-          ...document,
-          absoluteHref: `${publicUrl.replace(/\/$/, "")}${document.href}`,
-        })),
-      })
-
-      return
-    }
-
-    if (request.method === "GET" && url.pathname === "/api/pillars") {
-      sendJson(response, 200, {
-        pillars: impactPillars,
-      })
-
-      return
-    }
-
-    if (request.method === "GET" && url.pathname === "/api/social-links") {
-      sendJson(response, 200, {
-        socialLinks,
-      })
-
-      return
-    }
-
-    if (request.method === "GET" && url.pathname === "/api/agents") {
-      sendJson(response, 200, {
-        profiles: agentProfiles,
-        sharedFiles: {
-          playbook: "services/hermes/agents/shared/PLAYBOOK.md",
-          safety: "services/hermes/agents/shared/SAFETY.md",
-          tools: "services/hermes/agents/shared/TOOLS.md",
-        },
-        integrations: getIntegrations(process.env),
-      })
-
-      return
-    }
-
-    if (request.method === "GET" && url.pathname === "/api/skills") {
-      const manifest = await readSkillManifest()
-      sendJson(response, 200, manifest)
-
-      return
-    }
-
-    if (request.method === "GET" && url.pathname === "/api/support-rails") {
-      sendJson(response, 200, {
-        rails: getSupportRails(process.env),
-      })
-
-      return
-    }
-
-    if (request.method === "GET" && url.pathname === "/api/blog/approved") {
-      if (!checkOperatorKey(request, process.env)) {
-        sendJson(response, 401, { error: "Operator key required." })
-
-        return
-      }
-
-      const posts = await getApprovedPosts(process.env)
-      sendJson(response, 200, { posts, count: posts.length })
-
-      return
-    }
-
-    if (request.method === "POST" && url.pathname === "/api/blog/publish") {
-      if (!checkOperatorKey(request, process.env)) {
-        sendJson(response, 401, { error: "Operator key required." })
-
-        return
-      }
-
-      const payload = await readJsonBody<{ notionId?: string }>(request)
-
-      if (!payload.notionId) {
-        sendJson(response, 400, { error: "notionId is required." })
-
-        return
-      }
-
-      const approvedPosts = await getApprovedPosts(process.env)
-      const draft = approvedPosts.find((p) => p.notionId === payload.notionId)
-
-      if (!draft) {
-        sendJson(response, 404, {
-          error: "Post not found or not in Approved status.",
-        })
-
-        return
-      }
-
-      const strapiResult = await publishToStrapi(draft, process.env)
-
-      if (!strapiResult) {
-        sendJson(response, 502, { error: "Strapi publish failed." })
-
-        return
-      }
-
-      const notionUpdated = await markNotionStatus(
-        draft.notionId,
-        "Scheduled",
-        process.env
-      )
-
-      sendJson(response, 200, {
-        ok: true,
-        strapiId: strapiResult.id,
-        slug: strapiResult.slug,
-        notionId: draft.notionId,
-        title: draft.title,
-        notionUpdated,
-      })
-
-      return
-    }
-
-    if (request.method === "POST" && url.pathname === "/api/blog/sync-all") {
-      if (!checkOperatorKey(request, process.env)) {
-        sendJson(response, 401, { error: "Operator key required." })
-
-        return
-      }
-
-      const posts = await getApprovedPosts(process.env)
-      const results = []
-
-      for (const draft of posts) {
-        const strapiResult = await publishToStrapi(draft, process.env)
-
-        if (strapiResult) {
-          const notionUpdated = await markNotionStatus(
-            draft.notionId,
-            "Scheduled",
-            process.env
-          )
-          results.push({
-            ok: true,
-            notionUpdated,
-            notionId: draft.notionId,
-            title: draft.title,
-            strapiId: strapiResult.id,
-          })
-        } else {
-          results.push({
-            ok: false,
-            notionId: draft.notionId,
-            title: draft.title,
-          })
-        }
-      }
-
-      sendJson(response, 200, {
-        synced: results.filter((r) => r.ok).length,
-        total: posts.length,
-        results,
-      })
-
-      return
-    }
-
-    if (request.method === "POST" && url.pathname === "/api/chat/article") {
-      const payload = await readJsonBody<ArticleChatPayload>(request)
-
-      if (!payload.question || !payload.content || !payload.title) {
-        sendJson(response, 400, {
-          error: "title, question, and content are required.",
-        })
-
-        return
-      }
-
-      const result = await answerArticleQuestion(payload, process.env)
-      sendJson(response, 200, result)
-
-      return
-    }
-
-    sendJson(response, 404, { error: "Not found." })
+    const result = await logHeartbeat()
+    response.status(result.logged ? 200 : 503).json(result)
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Unknown error"
-    sendJson(response, 500, {
-      error: message,
-    })
+    next(error)
   }
 })
 
+app.get('/api/trust/documents', (_request, response) => {
+  const publicUrl = process.env.APP_PUBLIC_URL || 'http://localhost:3000'
+  response.json({
+    fiscalSponsor,
+    documents: trustDocuments.map((document) => ({
+      ...document,
+      absoluteHref: `${publicUrl.replace(/\/$/, '')}${document.href}`,
+    })),
+  })
+})
+
+app.get('/api/pillars', (_request, response) => {
+  response.json({ pillars: impactPillars })
+})
+
+app.get('/api/social-links', (_request, response) => {
+  response.json({ socialLinks })
+})
+
+app.get('/api/agents', (_request, response) => {
+  response.json({
+    profiles: agentProfiles,
+    sharedFiles: {
+      playbook: 'services/hermes/agents/shared/PLAYBOOK.md',
+      safety: 'services/hermes/agents/shared/SAFETY.md',
+      tools: 'services/hermes/agents/shared/TOOLS.md',
+    },
+    integrations: getIntegrations(process.env),
+  })
+})
+
+app.get('/api/skills', async (_request, response, next) => {
+  try {
+    const manifest = await readSkillManifest()
+    response.json(manifest)
+  } catch (error) {
+    next(error)
+  }
+})
+
+app.get('/api/support-rails', (_request, response) => {
+  response.json({ rails: getSupportRails(process.env) })
+})
+
+app.post('/api/chat/article', async (request, response, next) => {
+  try {
+    const payload = request.body as Partial<ArticleChatPayload>
+
+    if (!payload.question || !payload.content || !payload.title) {
+      response.status(400).json({
+        error: 'title, question, and content are required.',
+      })
+      return
+    }
+
+    const result = await answerArticleQuestion(payload as ArticleChatPayload, process.env)
+    response.json(result)
+  } catch (error) {
+    next(error)
+  }
+})
+
+app.use((_request, response) => {
+  response.status(404).json({ error: 'Not found.' })
+})
+
+app.use(
+  (
+    error: unknown,
+    _request: express.Request,
+    response: express.Response,
+    _next: express.NextFunction
+  ) => {
+    const message = error instanceof Error ? error.message : 'Unknown error'
+    response.status(500).json({ error: message })
+  }
+)
+
+startHeartbeatScheduler()
+
 const port = Number(process.env.PORT || 4010)
 
-server.listen(port, () => {
+app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Hermes service listening on http://localhost:${port}`)
 })

@@ -13,9 +13,12 @@
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
-    "@repo/shared-data": "workspace:*"
+    "@repo/shared-data": "workspace:*",
+    "@supabase/supabase-js": "^2.53.0",
+    "express": "^5.2.1"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
     "@types/node": "^22",
     "typescript": "^5"
   }
