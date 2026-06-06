@@ -7,4 +7,3 @@ Use this archive for component and interaction references when the page needs a 
 ## Practical rule
 
 - Use it for layout inspiration, interaction ideas, and reusable UI rhythms before building custom motion from scratch.
-

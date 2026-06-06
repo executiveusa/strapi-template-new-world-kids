@@ -39,4 +39,3 @@ Use these guidelines for the final review pass on this repo.
 - Prioritize correctness, maintainability, and security
 - Call out dependency changes, config default changes, and auth/runtime behavior changes in the human callouts section
 - Prefer fail-fast handling over silent fallback unless a boundary explicitly needs translation
-

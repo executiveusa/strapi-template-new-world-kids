@@ -61,4 +61,3 @@ Use this skill when the task is bigger than a single file change and needs a reu
 - Use `pi-review` when implementation is done and the work needs a clean review pass.
 - Review uncommitted changes, a branch, a commit, a PR, or a folder snapshot.
 - Do not merge until the review findings are resolved or explicitly accepted.
-

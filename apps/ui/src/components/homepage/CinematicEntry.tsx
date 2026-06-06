@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useMemo, useRef, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
+import { useEffect, useMemo, useRef, useState } from "react"
 
 const COUNTDOWN_SVG = (
   <svg
@@ -12,11 +12,48 @@ const COUNTDOWN_SVG = (
     aria-hidden="true"
   >
     <rect width="800" height="800" fill="#0d0b08" />
-    <circle cx="400" cy="400" r="320" stroke="#1c1a17" strokeWidth="40" fill="none" />
-    <circle cx="400" cy="400" r="280" stroke="#2a261f" strokeWidth="8" fill="none" opacity="0.6" />
-    <circle cx="400" cy="400" r="250" stroke="#00e5ff" strokeWidth="3" fill="none" opacity="0.4" />
-    <line x1="400" y1="120" x2="400" y2="680" stroke="#2a261f" strokeWidth="2" />
-    <line x1="120" y1="400" x2="680" y2="400" stroke="#2a261f" strokeWidth="2" />
+    <circle
+      cx="400"
+      cy="400"
+      r="320"
+      stroke="#1c1a17"
+      strokeWidth="40"
+      fill="none"
+    />
+    <circle
+      cx="400"
+      cy="400"
+      r="280"
+      stroke="#2a261f"
+      strokeWidth="8"
+      fill="none"
+      opacity="0.6"
+    />
+    <circle
+      cx="400"
+      cy="400"
+      r="250"
+      stroke="#00e5ff"
+      strokeWidth="3"
+      fill="none"
+      opacity="0.4"
+    />
+    <line
+      x1="400"
+      y1="120"
+      x2="400"
+      y2="680"
+      stroke="#2a261f"
+      strokeWidth="2"
+    />
+    <line
+      x1="120"
+      y1="400"
+      x2="680"
+      y2="400"
+      stroke="#2a261f"
+      strokeWidth="2"
+    />
     <text
       x="400"
       y="430"
@@ -56,7 +93,10 @@ const COUNTDOWN_SVG = (
 
 function playEngineCue() {
   if (typeof window === "undefined") return
-  const AudioContextCtor = window.AudioContext || (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext
+  const AudioContextCtor =
+    window.AudioContext ||
+    (window as Window & { webkitAudioContext?: typeof AudioContext })
+      .webkitAudioContext
   if (!AudioContextCtor) return
 
   const ctx = new AudioContextCtor()
@@ -106,12 +146,14 @@ function playEngineCue() {
   hum.stop(ctx.currentTime + 1.15)
 
   setTimeout(() => {
-    ctx.close().catch(() => undefined)
+    ctx.close().catch(() => {})
   }, 1400)
 }
 
 export function CinematicEntry() {
-  const [phase, setPhase] = useState<"booting" | "playing" | "entering" | "done">("booting")
+  const [phase, setPhase] = useState<
+    "booting" | "playing" | "entering" | "done"
+  >("booting")
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const startedRef = useRef(false)
   const originalOverflowRef = useRef("")
@@ -139,7 +181,8 @@ export function CinematicEntry() {
       originalOverflowRef.current = document.body.style.overflow
     }
 
-    document.body.style.overflow = phase === "done" ? originalOverflowRef.current : "hidden"
+    document.body.style.overflow =
+      phase === "done" ? originalOverflowRef.current : "hidden"
 
     const attemptStart = () => {
       void startTheme()
@@ -148,7 +191,6 @@ export function CinematicEntry() {
       window.removeEventListener("touchstart", attemptStart)
     }
 
-    void startTheme()
     window.addEventListener("pointerdown", attemptStart, { passive: true })
     window.addEventListener("keydown", attemptStart)
     window.addEventListener("touchstart", attemptStart, { passive: true })
@@ -173,7 +215,9 @@ export function CinematicEntry() {
 
     window.setTimeout(() => {
       setPhase("done")
-      document.getElementById("journey-start")?.scrollIntoView({ behavior: "smooth", block: "start" })
+      document
+        .getElementById("journey-start")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" })
     }, 1250)
   }
 
@@ -187,7 +231,12 @@ export function CinematicEntry() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
           className="fixed inset-0 z-[80] flex items-center justify-center overflow-hidden bg-[#050905]"
         >
-          <audio ref={audioRef} src="/audio/beautiful-people.mp3" preload="auto" loop />
+          <audio
+            ref={audioRef}
+            src="/audio/beautiful-people.mp3"
+            preload="auto"
+            loop
+          />
 
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,229,255,0.08),transparent_32%),linear-gradient(180deg,rgba(5,9,5,0.88),rgba(5,9,5,0.98))]" />
           <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(0,229,255,0.55),transparent)]" />
@@ -201,20 +250,25 @@ export function CinematicEntry() {
           >
             <motion.div
               animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 5.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              transition={{
+                duration: 5.5,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "easeInOut",
+              }}
               className="w-full max-w-[420px] drop-shadow-[0_0_40px_rgba(0,229,255,0.14)]"
             >
               {COUNTDOWN_SVG}
             </motion.div>
 
-            <p className="mt-10 text-[11px] uppercase tracking-[0.42em] text-[#8fefff]">
+            <p className="mt-10 text-[11px] tracking-[0.42em] text-[#8fefff] uppercase">
               Classified opening sequence
             </p>
             <h1 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-white md:text-6xl">
               Agent MAXX
             </h1>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-white/62 md:text-base">
-              The theme plays, the door waits, and the mission begins only when you decide to enter.
+              The theme plays, the door waits, and the mission begins only when
+              you decide to enter.
             </p>
 
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3 text-[10px] tracking-[0.28em] text-white/48 uppercase">

@@ -9,6 +9,7 @@ import { A2UIRenderer } from '@/components/a2ui-renderer'
 import { Button } from '@/components/ui/button'
 
 interface ChatMessage {
+  id: string
   role: 'user' | 'assistant'
   content: string
   citations?: string[]
@@ -27,6 +28,7 @@ export function PostArticleChat({ title, content, locale, url, tags }: PostArtic
   const [question, setQuestion] = useState('')
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [isLoading, setIsLoading] = useState(false)
+  const [messageId, setMessageId] = useState(0)
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -36,7 +38,8 @@ export function PostArticleChat({ title, content, locale, url, tags }: PostArtic
       return
     }
 
-    setMessages(previous => [...previous, { role: 'user', content: trimmed }])
+    setMessages(previous => [...previous, { id: `msg-${messageId}`, role: 'user', content: trimmed }])
+    setMessageId(id => id + 1)
     setQuestion('')
     setIsLoading(true)
 
@@ -70,12 +73,14 @@ export function PostArticleChat({ title, content, locale, url, tags }: PostArtic
       setMessages(previous => [
         ...previous,
         {
+          id: `msg-${messageId + 1}`,
           role: 'assistant',
           content: payload.answer,
           citations: payload.citations,
           ui: payload.ui,
         },
       ])
+      setMessageId(id => id + 2)
     } catch {
       const fallback
         = locale === 'es'
@@ -85,10 +90,12 @@ export function PostArticleChat({ title, content, locale, url, tags }: PostArtic
       setMessages(previous => [
         ...previous,
         {
+          id: `msg-${messageId + 1}`,
           role: 'assistant',
           content: fallback,
         },
       ])
+      setMessageId(id => id + 2)
     } finally {
       setIsLoading(false)
     }
@@ -108,8 +115,8 @@ export function PostArticleChat({ title, content, locale, url, tags }: PostArtic
       </div>
 
       <div className="space-y-3">
-        {messages.map((message, index) => (
-          <div key={`${message.role}-${index}`} className="border-border bg-card rounded-sm border p-4">
+        {messages.map(message => (
+          <div key={message.id} className="border-border bg-card rounded-sm border p-4">
             <div className="text-muted-foreground mb-2 text-xs font-semibold tracking-[0.18em] uppercase">
               {message.role === 'user' ? (locale === 'es' ? 'Tu pregunta' : 'Your question') : 'Hermes'}
             </div>

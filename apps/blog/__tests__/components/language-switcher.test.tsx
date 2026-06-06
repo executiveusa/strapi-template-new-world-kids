@@ -1,63 +1,63 @@
-import { describe, expect, it } from "vitest"
+import { describe, expect, it } from 'vitest'
 
-import { LanguageSwitcher } from "@/components/language-switcher"
-import { routing } from "@/i18n/routing"
-import { mockPush } from "@/tests/mocks/navigation"
-import { render, screen } from "@/tests/test-utils"
+import { LanguageSwitcher } from '@/components/language-switcher'
+import { routing } from '@/i18n/routing'
+import { mockPush } from '@/tests/mocks/navigation'
+import { render, screen } from '@/tests/test-utils'
 
-describe("LanguageSwitcher", () => {
-  it("should render language switcher button", () => {
+describe('LanguageSwitcher', () => {
+  it('should render language switcher button', () => {
     render(<LanguageSwitcher />)
 
-    const button = screen.getByRole("button", { name: /select language/i })
+    const button = screen.getByRole('button', { name: /select language/i })
     expect(button).toBeInTheDocument()
   })
 
-  it("should have correct aria attributes", () => {
+  it('should have correct aria attributes', () => {
     render(<LanguageSwitcher />)
 
-    const button = screen.getByRole("button", { name: /select language/i })
-    expect(button).toHaveAttribute("aria-label", "Select Language")
+    const button = screen.getByRole('button', { name: /select language/i })
+    expect(button).toHaveAttribute('aria-label', 'Select Language')
   })
 
-  it("should render language icon", () => {
+  it('should render language icon', () => {
     render(<LanguageSwitcher />)
 
-    const button = screen.getByRole("button", { name: /select language/i })
-    const icon = button.querySelector("svg")
+    const button = screen.getByRole('button', { name: /select language/i })
+    const icon = button.querySelector('svg')
     expect(icon).toBeInTheDocument()
   })
 
-  it("should render correct number of language options", async () => {
+  it('should render correct number of language options', async () => {
     const { user } = render(<LanguageSwitcher />)
 
-    const button = screen.getByRole("button", { name: /select language/i })
+    const button = screen.getByRole('button', { name: /select language/i })
     await user.click(button)
 
-    const options = screen.getAllByRole("menuitemradio")
+    const options = screen.getAllByRole('menuitemradio')
     expect(options).toHaveLength(routing.locales.length)
-    expect(screen.getByRole("menuitemradio", { name: /english/i })).toBeInTheDocument()
-    expect(screen.getByRole("menuitemradio", { name: /español/i })).toBeInTheDocument()
+    expect(screen.getByRole('menuitemradio', { name: /english/i })).toBeInTheDocument()
+    expect(screen.getByRole('menuitemradio', { name: /español/i })).toBeInTheDocument()
   })
 
-  it("should change language when different language option is clicked", async () => {
+  it('should change language when different language option is clicked', async () => {
     const { user } = render(<LanguageSwitcher />)
 
-    const button = screen.getByRole("button", { name: /select language/i })
+    const button = screen.getByRole('button', { name: /select language/i })
     await user.click(button)
-    const esOption = screen.getByRole("menuitemradio", { name: /español/i })
+    const esOption = screen.getByRole('menuitemradio', { name: /español/i })
     await user.click(esOption)
 
     expect(mockPush).toHaveBeenCalledTimes(1)
-    expect(mockPush).toHaveBeenCalledWith("/es", { locale: "es" })
+    expect(mockPush).toHaveBeenCalledWith('/es', { locale: 'es' })
   })
 
-  it("should not change language when same language option is clicked", async () => {
+  it('should not change language when same language option is clicked', async () => {
     const { user } = render(<LanguageSwitcher />)
 
-    const button = screen.getByRole("button", { name: /select language/i })
+    const button = screen.getByRole('button', { name: /select language/i })
     await user.click(button)
-    const enOption = screen.getByRole("menuitemradio", { name: /english/i })
+    const enOption = screen.getByRole('menuitemradio', { name: /english/i })
     await user.click(enOption)
 
     expect(mockPush).not.toHaveBeenCalled()

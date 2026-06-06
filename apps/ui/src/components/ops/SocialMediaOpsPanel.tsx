@@ -4,10 +4,17 @@ import { Megaphone } from "lucide-react"
 import { useMemo } from "react"
 
 import { Link } from "@/lib/navigation"
+
 import { siteLinks } from "../site/siteData"
 import { Badge } from "../ui/badge"
 import { Button } from "../ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../ui/card"
 
 type SocialChannel = {
   name: string
@@ -27,7 +34,8 @@ const CHANNELS: SocialChannel[] = [
     name: "LinkedIn",
     status: "ready",
     nextAction: "Approve leadership post",
-    outcome: "Supports partnerships, credibility, and higher-value inbound leads.",
+    outcome:
+      "Supports partnerships, credibility, and higher-value inbound leads.",
   },
   {
     name: "Facebook",
@@ -39,7 +47,8 @@ const CHANNELS: SocialChannel[] = [
     name: "YouTube",
     status: "paused",
     nextAction: "Prep short-form clip",
-    outcome: "Turns video into a repeatable story engine when the team is ready.",
+    outcome:
+      "Turns video into a repeatable story engine when the team is ready.",
   },
 ]
 
@@ -52,9 +61,15 @@ const STATUS_STYLES: Record<SocialChannel["status"], string> = {
 
 export function SocialMediaOpsPanel() {
   const totals = useMemo(() => {
-    const scheduled = CHANNELS.filter((channel) => channel.status === "scheduled").length
-    const ready = CHANNELS.filter((channel) => channel.status === "ready").length
-    const needsApproval = CHANNELS.filter((channel) => channel.status === "needs-approval").length
+    const scheduled = CHANNELS.filter(
+      (channel) => channel.status === "scheduled"
+    ).length
+    const ready = CHANNELS.filter(
+      (channel) => channel.status === "ready"
+    ).length
+    const needsApproval = CHANNELS.filter(
+      (channel) => channel.status === "needs-approval"
+    ).length
 
     return { scheduled, ready, needsApproval }
   }, [])
@@ -67,22 +82,33 @@ export function SocialMediaOpsPanel() {
           POST-MAXX Control
         </CardTitle>
         <CardDescription>
-          POST-MAXX publishing for the agent: schedule, review, and ship social content from one place.
+          POST-MAXX publishing for the agent: schedule, review, and ship social
+          content from one place.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="mb-6 grid gap-4 md:grid-cols-3">
           <div className="rounded-lg border bg-[#0b1710] p-4">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">Scheduled</p>
-            <p className="mt-2 text-3xl font-bold text-white">{totals.scheduled}</p>
+            <p className="text-xs tracking-[0.2em] text-[#c9a84c] uppercase">
+              Scheduled
+            </p>
+            <p className="mt-2 text-3xl font-bold text-white">
+              {totals.scheduled}
+            </p>
           </div>
           <div className="rounded-lg border bg-[#0b1710] p-4">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">Ready to publish</p>
+            <p className="text-xs tracking-[0.2em] text-[#c9a84c] uppercase">
+              Ready to publish
+            </p>
             <p className="mt-2 text-3xl font-bold text-white">{totals.ready}</p>
           </div>
           <div className="rounded-lg border bg-[#0b1710] p-4">
-            <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">Pending approval</p>
-            <p className="mt-2 text-3xl font-bold text-white">{totals.needsApproval}</p>
+            <p className="text-xs tracking-[0.2em] text-[#c9a84c] uppercase">
+              Pending approval
+            </p>
+            <p className="mt-2 text-3xl font-bold text-white">
+              {totals.needsApproval}
+            </p>
           </div>
         </div>
 
@@ -95,16 +121,24 @@ export function SocialMediaOpsPanel() {
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="text-lg font-semibold text-white">{channel.name}</h3>
+                    <h3 className="text-lg font-semibold text-white">
+                      {channel.name}
+                    </h3>
                     <Badge className={STATUS_STYLES[channel.status]}>
                       {channel.status.replace("-", " ")}
                     </Badge>
                   </div>
-                  <p className="mt-2 text-sm text-white/60">{channel.outcome}</p>
+                  <p className="mt-2 text-sm text-white/60">
+                    {channel.outcome}
+                  </p>
                 </div>
                 <div className="text-right">
-                  <p className="text-xs uppercase tracking-[0.18em] text-white/45">Next action</p>
-                  <p className="mt-1 text-sm text-white/85">{channel.nextAction}</p>
+                  <p className="text-xs tracking-[0.18em] text-white/45 uppercase">
+                    Next action
+                  </p>
+                  <p className="mt-1 text-sm text-white/85">
+                    {channel.nextAction}
+                  </p>
                 </div>
               </div>
             </div>

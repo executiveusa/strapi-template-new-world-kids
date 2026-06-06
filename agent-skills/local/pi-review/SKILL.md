@@ -45,4 +45,3 @@ Use `/end-review` to close the review session and return to the original branch 
 - Do not pretend a change is fine if the evidence says otherwise.
 - Treat `REVIEW_GUIDELINES.md` as higher priority when it exists.
 - Keep the verdict and the fix queue explicit and short.
-

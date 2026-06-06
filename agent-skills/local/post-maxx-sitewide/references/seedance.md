@@ -21,4 +21,3 @@ Use Seedance when the work needs motion graphics or a cinematic short.
 
 - Use Seedance for story beats, intro frames, and motion studies.
 - Use the result as a reference or a clip, then polish in the app.
-

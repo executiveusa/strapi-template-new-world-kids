@@ -19,4 +19,3 @@ Use this repo as a motion-pattern reference when building the POST-MAXX homepage
 ## Practical rule
 
 - Use these patterns to make the page feel like a continuous film, not a pile of separate sections.
-

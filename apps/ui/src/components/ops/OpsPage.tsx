@@ -11,6 +11,7 @@ import {
 import { useEffect, useMemo, useRef, useState } from "react"
 
 import { Link } from "@/lib/navigation"
+
 import { SocialMediaOpsPanel } from "./SocialMediaOpsPanel"
 
 type AgentAction = {
@@ -312,7 +313,7 @@ export function OpsPage() {
                 className="rounded-[20px] border border-white/[0.08] bg-[#0c1710] p-6"
               >
                 <div className="mb-6">
-                  <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">
+                  <p className="text-xs tracking-[0.2em] text-[#c9a84c] uppercase">
                     Social outcomes
                   </p>
                   <h2 className="mt-3 font-serif text-3xl font-semibold text-white">
@@ -337,11 +338,14 @@ export function OpsPage() {
                 </div>
 
                 <div className="mt-6 rounded-[18px] border border-[#c9a84c]/18 bg-[#c9a84c]/6 p-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-[#c9a84c]">
+                  <p className="text-xs tracking-[0.2em] text-[#c9a84c] uppercase">
                     POST-MAXX role
                   </p>
                   <p className="mt-3 text-sm leading-7 text-white/68">
-                    POST-MAXX is the social scheduling and distribution layer. MAXX owns the strategy, approval flow, and measurement. Together they make social media feel like a managed business system instead of a daily chore.
+                    POST-MAXX is the social scheduling and distribution layer.
+                    MAXX owns the strategy, approval flow, and measurement.
+                    Together they make social media feel like a managed business
+                    system instead of a daily chore.
                   </p>
                 </div>
               </motion.div>

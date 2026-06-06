@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
-import { setRequestLocale } from "next-intl/server"
 import type { Locale } from "next-intl"
+import { setRequestLocale } from "next-intl/server"
 
 import { PostMaxxPage } from "@/components/post-maxx/PostMaxxPage"
 
@@ -18,4 +18,3 @@ export default async function Page({
 
   return <PostMaxxPage />
 }
-
