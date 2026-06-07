@@ -1,5 +1,7 @@
 # Source: https://www.youtube.com/@customaistudio/videos
+
 # Scraped: 2026-06-07
+
 ---
 
 ## FETCH FAILED
@@ -9,6 +11,7 @@
 **Reason:** YouTube returned a 403 Forbidden response. YouTube blocks automated/server-side fetches without a valid session cookie, and the sandbox network also enforces an outbound allowlist that blocks this domain.
 
 **Attempted methods:**
+
 - WebFetch (Claude built-in) — HTTP 403
 
 **Recommended manual action:**

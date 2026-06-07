@@ -1,6 +1,7 @@
 # Emad Mostaque: Key Ideas, Quotes & Vision
-*Enriched synthesis — June 7, 2026*
-*Sources: Search results from Cognitive Revolution, Moonshots w/ Diamandis, Brave Technologist, The Last Economy, Raoul Pal/RealVision, singjupost.com transcripts, and multiple interviews*
+
+_Enriched synthesis — June 7, 2026_
+_Sources: Search results from Cognitive Revolution, Moonshots w/ Diamandis, Brave Technologist, The Last Economy, Raoul Pal/RealVision, singjupost.com transcripts, and multiple interviews_
 
 ---
 
@@ -10,35 +11,35 @@
 - **Background:** Former Founder & CEO of Stability AI
 - **Location:** London
 - **Focus:** Universal Basic AI (UBAI), decentralized AI infrastructure, sovereign intelligence
-- **Book:** *The Last Economy: A Guide to the Age of Intelligent Economics* (Aug 2025)
+- **Book:** _The Last Economy: A Guide to the Age of Intelligent Economics_ (Aug 2025)
 - **Massive Transformative Purpose:** "I want every kid to achieve their potential and give them the tools to do that."
 
 ---
 
 ## Top 20 Quotes (Verbatim, with Source)
 
-| # | Quote | Source |
-|---|-------|--------|
-| 1 | "The most profound change is not just that AI replaces the mind. It is that it introduces a new form of labor into the world with a completely different physical basis." | *The Last Economy* (Aug 2025) |
-| 2 | "For a growing majority of cognitive tasks, the economic value of a human is now negative. A human is not just more expensive than an AI, a human is a liability." | *The Last Economy* (Aug 2025) |
-| 3 | "Your economic life expectancy is shrinking. Not your job. Not your career. Your relevance as a human being." | *The Last Economy* (Aug 2025) |
-| 4 | "The crucial question is not 'What could I be producing?' but 'What am I choosing to experience?'" | *The Last Economy* (Aug 2025) |
-| 5 | "If the AI that's next to you is a Chinese AI or it's a Silicon Valley AI, then you will implicitly be taught its principles, its morals, its worldview." | Multiple interviews 2024–2025 |
-| 6 | "You can't beat centralized intelligence with centralized intelligence. The only way you can beat it is to create the standard that represents humanity: decentralized intelligence. It's collective intelligence—datasets and norms that help children, that help people suffering." | Moonshots w/ Peter Diamandis EP#184 (Jul 2025) |
-| 7 | "The AI that I care about is the AI that teaches my kid, the AI that helps with my mental health, the AI that organizes our collective knowledge." | Moonshots w/ Peter Diamandis EP#184 (Jul 2025) |
-| 8 | "Labour isn't the key driver of productivity anymore. We need to have a new equation for that." | Moonshots w/ Peter Diamandis EP#184 (Jul 2025) |
-| 9 | "We're going to build a GPT-4 for cancer…Nobody is going to be alone on that journey and lose that agency because they'll have comprehensive, authoritative, up-to-date knowledge." | Moonshots w/ Peter Diamandis EP#184 (Jul 2025) |
-| 10 | "Everyone should have the right to an AI that is open, aligned and sovereign to them, that's looking out for their flourishing." | Multiple interviews (Cognitive Revolution, IQ.wiki) |
-| 11 | "Humanity faces roughly 50-50 odds of survival as AI systems become more capable and ubiquitous." | Cognitive Revolution podcast (Dec 2024) |
-| 12 | "Next year AI becomes good enough overnight and job losses start." | Rohan Paul/X quoting Mostaque (Apr 2026) |
-| 13 | "They will create a digital replica of you for $1,000, dropping fast." | Rohan Paul/X quoting Mostaque (Apr 2026) |
-| 14 | "Most human cognitive labor will probably turn negative in value." | Rohan Paul/X quoting Mostaque (Apr 2026) |
-| 15 | "How can you expect leaders to trust your AI if you don't disclose its technical details?" | AI transparency advocacy (2025) |
-| 16 | "A framework where everyone checks on everyone promotes accountability, trust and agency." | Schelling AI / Intelligent Internet architecture |
-| 17 | "It will probably look like Jarvis for Iron Man — where you come in and talk to your AI and it also talks to your kids and runs governments and things like that." | Brave Technologist EP101 (Dec 2025) |
-| 18 | "The entities behind it are extractive entities. Google and Meta's business model is ultimately ads." | Multiple interviews 2024–2025 |
-| 19 | "GDP & Capitalism Is Obsolete in an AI World." | Impact Theory interview (2025) |
-| 20 | "Do we have visibility into that?" [On who owns AI systems and how they're constructed] | AI Intelligence Tsunami / Raoul Pal (Mar 2026) |
+| #   | Quote                                                                                                                                                                                                                                                                                 | Source                                              |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| 1   | "The most profound change is not just that AI replaces the mind. It is that it introduces a new form of labor into the world with a completely different physical basis."                                                                                                             | _The Last Economy_ (Aug 2025)                       |
+| 2   | "For a growing majority of cognitive tasks, the economic value of a human is now negative. A human is not just more expensive than an AI, a human is a liability."                                                                                                                    | _The Last Economy_ (Aug 2025)                       |
+| 3   | "Your economic life expectancy is shrinking. Not your job. Not your career. Your relevance as a human being."                                                                                                                                                                         | _The Last Economy_ (Aug 2025)                       |
+| 4   | "The crucial question is not 'What could I be producing?' but 'What am I choosing to experience?'"                                                                                                                                                                                    | _The Last Economy_ (Aug 2025)                       |
+| 5   | "If the AI that's next to you is a Chinese AI or it's a Silicon Valley AI, then you will implicitly be taught its principles, its morals, its worldview."                                                                                                                             | Multiple interviews 2024–2025                       |
+| 6   | "You can't beat centralized intelligence with centralized intelligence. The only way you can beat it is to create the standard that represents humanity: decentralized intelligence. It's collective intelligence—datasets and norms that help children, that help people suffering." | Moonshots w/ Peter Diamandis EP#184 (Jul 2025)      |
+| 7   | "The AI that I care about is the AI that teaches my kid, the AI that helps with my mental health, the AI that organizes our collective knowledge."                                                                                                                                    | Moonshots w/ Peter Diamandis EP#184 (Jul 2025)      |
+| 8   | "Labour isn't the key driver of productivity anymore. We need to have a new equation for that."                                                                                                                                                                                       | Moonshots w/ Peter Diamandis EP#184 (Jul 2025)      |
+| 9   | "We're going to build a GPT-4 for cancer…Nobody is going to be alone on that journey and lose that agency because they'll have comprehensive, authoritative, up-to-date knowledge."                                                                                                   | Moonshots w/ Peter Diamandis EP#184 (Jul 2025)      |
+| 10  | "Everyone should have the right to an AI that is open, aligned and sovereign to them, that's looking out for their flourishing."                                                                                                                                                      | Multiple interviews (Cognitive Revolution, IQ.wiki) |
+| 11  | "Humanity faces roughly 50-50 odds of survival as AI systems become more capable and ubiquitous."                                                                                                                                                                                     | Cognitive Revolution podcast (Dec 2024)             |
+| 12  | "Next year AI becomes good enough overnight and job losses start."                                                                                                                                                                                                                    | Rohan Paul/X quoting Mostaque (Apr 2026)            |
+| 13  | "They will create a digital replica of you for $1,000, dropping fast."                                                                                                                                                                                                                | Rohan Paul/X quoting Mostaque (Apr 2026)            |
+| 14  | "Most human cognitive labor will probably turn negative in value."                                                                                                                                                                                                                    | Rohan Paul/X quoting Mostaque (Apr 2026)            |
+| 15  | "How can you expect leaders to trust your AI if you don't disclose its technical details?"                                                                                                                                                                                            | AI transparency advocacy (2025)                     |
+| 16  | "A framework where everyone checks on everyone promotes accountability, trust and agency."                                                                                                                                                                                            | Schelling AI / Intelligent Internet architecture    |
+| 17  | "It will probably look like Jarvis for Iron Man — where you come in and talk to your AI and it also talks to your kids and runs governments and things like that."                                                                                                                    | Brave Technologist EP101 (Dec 2025)                 |
+| 18  | "The entities behind it are extractive entities. Google and Meta's business model is ultimately ads."                                                                                                                                                                                 | Multiple interviews 2024–2025                       |
+| 19  | "GDP & Capitalism Is Obsolete in an AI World."                                                                                                                                                                                                                                        | Impact Theory interview (2025)                      |
+| 20  | "Do we have visibility into that?" [On who owns AI systems and how they're constructed]                                                                                                                                                                                               | AI Intelligence Tsunami / Raoul Pal (Mar 2026)      |
 
 ---
 
@@ -65,14 +66,17 @@
 ### 3. The Three-Tier Architecture of Intelligent Internet
 
 **Tier 1:** National hyper-scalable nodes for massive model training
+
 - Foundation layer for computational power
 - Ensures base model quality at scale
 
 **Tier 2:** Domain-distributed nodes for local fine-tuning
+
 - Specialized adaptations for regional/industry needs
 - Maintains sovereignty and customization
 
 **Tier 3:** AI assistants on edge devices (Raspberry Pi level)
+
 - Privacy-preserving personal AI
 - Sovereign computation at the individual level
 - No central authority access
@@ -110,9 +114,9 @@
 - Full-stack web builds, Codex integration, editable slides
 - Philosophy: you own it, you control it, you can take it in-house
 
-### 8. *The Last Economy* (Book, Aug 2025)
+### 8. _The Last Economy_ (Book, Aug 2025)
 
-- Full title: *The Last Economy: A Guide to the Age of Intelligent Economics*
+- Full title: _The Last Economy: A Guide to the Age of Intelligent Economics_
 - Core thesis: ~1,000 days remain to make essential decisions before irreversible phase transition
 - **Three possible futures:**
   - **Digital Feudalism**: hi-tech billionaires control everything
@@ -125,15 +129,15 @@
 
 ## Predictions With Specific Timeframes
 
-| Timeframe | Prediction |
-|-----------|-----------|
-| "Months" (mid-2026) | "AI hits like COVID" — sudden, disruptive, systemic shock |
-| ~Late 2026 | "AI becomes good enough overnight and job losses start" |
-| ~$1,000 threshold (2026–2027) | Digital replicas of cognitive workers, cost dropping fast |
-| 1,000 days (~2028) | Screen-based jobs largely replaceable; "meaningful choice" window closes |
-| 1,000 days (~2028) | Phase transition to one of the three futures becomes locked in |
-| Near-term | AI agents go mainstream; friction in intelligence flow eliminated (Raoul Pal, Feb 2026) |
-| Near-term | Transformers are NOT the final architecture — successor already emerging |
+| Timeframe                     | Prediction                                                                              |
+| ----------------------------- | --------------------------------------------------------------------------------------- |
+| "Months" (mid-2026)           | "AI hits like COVID" — sudden, disruptive, systemic shock                               |
+| ~Late 2026                    | "AI becomes good enough overnight and job losses start"                                 |
+| ~$1,000 threshold (2026–2027) | Digital replicas of cognitive workers, cost dropping fast                               |
+| 1,000 days (~2028)            | Screen-based jobs largely replaceable; "meaningful choice" window closes                |
+| 1,000 days (~2028)            | Phase transition to one of the three futures becomes locked in                          |
+| Near-term                     | AI agents go mainstream; friction in intelligence flow eliminated (Raoul Pal, Feb 2026) |
+| Near-term                     | Transformers are NOT the final architecture — successor already emerging                |
 
 ---
 
@@ -164,16 +168,16 @@
 
 ## Applicable Language for NWKids
 
-| Emad's Term | NWKids Translation |
-|---|---|
-| UBAI | "Universal Access to Intelligent Mentorship" |
-| Tier 3 Edge AI | "Offline, sovereign learning tools" |
-| Sovereign Intelligence | "AI that serves your community, not extracting from it" |
-| Intelligent Internet | "The infrastructure of an equitable digital future" |
-| SAGE Governance | "Democratic decision-making for AI deployment" |
-| Cognitive Colonialism | "When your child's AI thinks like Silicon Valley, not like your community" |
-| Proof of Benefit | "Every deployment that helps a kid mints value for the commons" |
-| Three futures | "NWKids is choosing Human Symbiosis — and building it now" |
+| Emad's Term            | NWKids Translation                                                         |
+| ---------------------- | -------------------------------------------------------------------------- |
+| UBAI                   | "Universal Access to Intelligent Mentorship"                               |
+| Tier 3 Edge AI         | "Offline, sovereign learning tools"                                        |
+| Sovereign Intelligence | "AI that serves your community, not extracting from it"                    |
+| Intelligent Internet   | "The infrastructure of an equitable digital future"                        |
+| SAGE Governance        | "Democratic decision-making for AI deployment"                             |
+| Cognitive Colonialism  | "When your child's AI thinks like Silicon Valley, not like your community" |
+| Proof of Benefit       | "Every deployment that helps a kid mints value for the commons"            |
+| Three futures          | "NWKids is choosing Human Symbiosis — and building it now"                 |
 
 ---
 
@@ -189,7 +193,7 @@
 
 ## Research Sources
 
-- *The Last Economy* book (Goodreads quotes + Amazon)
+- _The Last Economy_ book (Goodreads quotes + Amazon)
 - Cognitive Revolution Podcast (Dec 2024 + Jan 2026)
 - Moonshots w/ Peter Diamandis EP#184 (Jul 2025)
 - Brave Technologist EP101 (Dec 2025)

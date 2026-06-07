@@ -1,5 +1,6 @@
 # Research Scrape Complete
-*Session: 2026-06-07 | Agent: Claude Sonnet*
+
+_Session: 2026-06-07 | Agent: Claude Sonnet_
 
 ---
 
@@ -14,43 +15,46 @@ This research run attempted to scrape and synthesize content from all sources sp
 ## Files Created
 
 ### ops/research/emad/ (15 files)
-| File | Status | Content |
-|------|--------|---------|
-| 01-cognitive-revolution-dec2024.md | FAILED (403) | Error note |
-| 06-master-plan-blog.md | FAILED (403) | Error note |
-| 07-ii-agent-beta.md | FAILED (403) | Error note |
-| 08-ii-whitepaper.md | FAILED (403) | Error note |
-| 09-new-economies-nov2025.md | FAILED (403) | Error note |
-| 10-medium-profile-apr2026.md | FAILED (403) | Error note |
-| 11-raoul-pal-mar2026.md | FAILED (403) | Error note |
-| 12-iq-wiki-intelligent-internet.md | FAILED (403) | Error note |
-| 13-search-results-more-interviews.md | ✅ SUCCESS | 10 search results with URLs and snippets |
-| 14-search-podcast-transcripts.md | ✅ SUCCESS | 10 search results — podcast sources, II.inc blogs, SAGE context |
-| 15-youtube-search-results.md | ✅ SUCCESS | 9 results — "900 days" YouTube videos, cognitive colonialism quotes |
+
+| File                                 | Status       | Content                                                             |
+| ------------------------------------ | ------------ | ------------------------------------------------------------------- |
+| 01-cognitive-revolution-dec2024.md   | FAILED (403) | Error note                                                          |
+| 06-master-plan-blog.md               | FAILED (403) | Error note                                                          |
+| 07-ii-agent-beta.md                  | FAILED (403) | Error note                                                          |
+| 08-ii-whitepaper.md                  | FAILED (403) | Error note                                                          |
+| 09-new-economies-nov2025.md          | FAILED (403) | Error note                                                          |
+| 10-medium-profile-apr2026.md         | FAILED (403) | Error note                                                          |
+| 11-raoul-pal-mar2026.md              | FAILED (403) | Error note                                                          |
+| 12-iq-wiki-intelligent-internet.md   | FAILED (403) | Error note                                                          |
+| 13-search-results-more-interviews.md | ✅ SUCCESS   | 10 search results with URLs and snippets                            |
+| 14-search-podcast-transcripts.md     | ✅ SUCCESS   | 10 search results — podcast sources, II.inc blogs, SAGE context     |
+| 15-youtube-search-results.md         | ✅ SUCCESS   | 9 results — "900 days" YouTube videos, cognitive colonialism quotes |
 
 **YouTube URLs (02–05):** Returned minimal content (YouTube blocks unauthenticated requests)
 
 ### ops/research/devin/ (10 files)
-| File | Status | Content |
-|------|--------|---------|
-| 00-channel-video-list.md | FAILED (403) | Error note |
-| 01-website-homepage.md | FAILED (403) | Error note |
-| 02-services.md | FAILED (403) | Error note |
-| 03-case-studies.md | FAILED (403) | Error note |
-| 04-articles-index.md | FAILED (403) | Error note |
-| 05-about.md | FAILED (403) | Error note |
-| 07-search-devin-content.md | ✅ SUCCESS | 10 results — key Devin quote on role elimination, 2025/2026 roadmap framing |
-| 08-youtube-search.md | ✅ SUCCESS | 10 results — YouTube channel stats (471K views, ~15,900 subs), YTScribe links |
-| 09-linkedin-profile.md | FAILED (403) | LinkedIn blocks unauthenticated requests |
-| 10-transcript-search.md | ✅ SUCCESS | 10 results — agenticOS framing, community platform, key workforce quote |
+
+| File                       | Status       | Content                                                                       |
+| -------------------------- | ------------ | ----------------------------------------------------------------------------- |
+| 00-channel-video-list.md   | FAILED (403) | Error note                                                                    |
+| 01-website-homepage.md     | FAILED (403) | Error note                                                                    |
+| 02-services.md             | FAILED (403) | Error note                                                                    |
+| 03-case-studies.md         | FAILED (403) | Error note                                                                    |
+| 04-articles-index.md       | FAILED (403) | Error note                                                                    |
+| 05-about.md                | FAILED (403) | Error note                                                                    |
+| 07-search-devin-content.md | ✅ SUCCESS   | 10 results — key Devin quote on role elimination, 2025/2026 roadmap framing   |
+| 08-youtube-search.md       | ✅ SUCCESS   | 10 results — YouTube channel stats (471K views, ~15,900 subs), YTScribe links |
+| 09-linkedin-profile.md     | FAILED (403) | LinkedIn blocks unauthenticated requests                                      |
+| 10-transcript-search.md    | ✅ SUCCESS   | 10 results — agenticOS framing, community platform, key workforce quote       |
 
 ### ops/research/synthesis/ (4 files)
-| File | Status | Content |
-|------|--------|---------|
-| EMAD_KEY_IDEAS.md | ✅ COMPLETE | 20 verbatim quotes, 8 core concepts, predictions table, Big Tech critique, education/nonprofit section, NWKids language map |
-| DEVIN_KEY_IDEAS.md | ✅ COMPLETE | 20 quotes, service model, pricing tiers, agenticOS definition, pitch framework, tools, nonprofit translation map |
-| NWKIDS_APPLICATION.md | ✅ COMPLETE | 10 blog angles, 5 social series, 3 grant narratives, 5 MAXX quotes, 5 gaps, Observable Agents positioning |
-| CONCEPT_MAP.md | ✅ COMPLETE | Mermaid diagram, legend tables, three-circles framework, roadmap visualization |
+
+| File                  | Status      | Content                                                                                                                     |
+| --------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------- |
+| EMAD_KEY_IDEAS.md     | ✅ COMPLETE | 20 verbatim quotes, 8 core concepts, predictions table, Big Tech critique, education/nonprofit section, NWKids language map |
+| DEVIN_KEY_IDEAS.md    | ✅ COMPLETE | 20 quotes, service model, pricing tiers, agenticOS definition, pitch framework, tools, nonprofit translation map            |
+| NWKIDS_APPLICATION.md | ✅ COMPLETE | 10 blog angles, 5 social series, 3 grant narratives, 5 MAXX quotes, 5 gaps, Observable Agents positioning                   |
+| CONCEPT_MAP.md        | ✅ COMPLETE | Mermaid diagram, legend tables, three-circles framework, roadmap visualization                                              |
 
 **Total files:** 29 | **Total successes:** 8 raw files + 4 synthesis documents
 
@@ -69,18 +73,23 @@ This research run attempted to scrape and synthesize content from all sources sp
 ## Top 3 Most Valuable Findings
 
 ### 1. "The Last Economy" Verbatim Quotes Are Devastating and Usable
+
 Emad's book contains some of the most quotable, urgent language about AI's economic impact:
+
 > "For a growing majority of cognitive tasks, the economic value of a human is now negative. A human is not just more expensive than an AI, a human is a liability."
 
 This directly supports NWKids' urgency framing — children need AI literacy NOW to remain economically relevant.
 
 ### 2. Devin's "Buying Relief" Insight Reframes the Nonprofit Pitch Entirely
+
 > "Most clients aren't actually buying AI systems — they're buying relief."
 
 This is the key insight for MAXX nonprofit marketing. Program directors aren't asking for AI tools — they're asking for relief from capacity crisis. The pitch is: MAXX = relief from admin overwhelm, so you can focus on youth.
 
 ### 3. Observable Agents™ Sits in a Genuine Gap
+
 Neither Emad (infrastructure) nor Devin (enterprise efficiency) addresses:
+
 - Youth as designers of their own AI agents
 - Emotional/relational mentorship augmentation
 - Offline-first / low-bandwidth deployment
@@ -136,5 +145,5 @@ This run did NOT use the Firecrawl API (all calls failed with "host not in allow
 
 ---
 
-*Research Pipeline v1.0 | NWKids Observable Agents Initiative*
-*Run in Claude Code (Sonnet) | Remote execution environment*
+_Research Pipeline v1.0 | NWKids Observable Agents Initiative_
+_Run in Claude Code (Sonnet) | Remote execution environment_
