@@ -95,7 +95,10 @@ async function fetchAndMapStrapiMetadata(
   const forbidIndexing = !isProduction()
   const res = await fetchSeo(uid, fullPath, locale)
 
-  const { seo, localizations } = res?.data || {}
+  const { seo, localizations } = (res?.data ?? {}) as {
+    seo?: Parameters<typeof preprocessSocialMetadata>[0]
+    localizations?: Parameters<typeof getMetaAlternates>[0]["localizations"]
+  }
 
   const strapiMeta: Metadata = {
     title: seo?.metaTitle,
