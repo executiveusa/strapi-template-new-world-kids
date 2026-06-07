@@ -237,7 +237,7 @@ export function CinematicHero() {
                 <div className="relative">
                   <div className="flex items-center justify-between gap-3">
                     <p className="text-xs tracking-[0.24em] text-[#f7e7a7] uppercase">
-                      {card.label}
+                      {card.eyebrow}
                     </p>
                     <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[10px] tracking-[0.18em] text-white/65 uppercase">
                       {verificationLabels[card.status]}
