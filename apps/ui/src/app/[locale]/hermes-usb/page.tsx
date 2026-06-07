@@ -72,7 +72,7 @@ export default function HermesUsbPage() {
           href="/en/ops"
           className="rounded bg-accent px-5 py-3 font-semibold text-background"
         >
-          Open MAXX portal
+          Open operations portal
         </Link>
         <Link href="/en/mission" className="rounded border border-border px-5 py-3">
           View mission ledger

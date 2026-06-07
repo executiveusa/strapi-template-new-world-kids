@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "baseUrl": ".",
     "esModuleInterop": true,
     "incremental": true,
     "isolatedModules": true,
@@ -12,6 +13,9 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "target": "ES2022",
     "types": ["node"]
   },

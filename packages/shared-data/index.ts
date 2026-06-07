@@ -1,8 +1,8 @@
-// This value must be in sync with the fullPath of root page in the Strapi
+// This value anchors the root page path used by the public content surface.
 export const ROOT_PAGE_PATH = "/"
 
 /**
- * Join Strapi page path segments into a single normalized path (no duplicate slashes).
+ * Join page path segments into a single normalized path (no duplicate slashes).
  * It always starts with ROOT_PAGE_PATH ("/"). Optionally, locale prefix can be added.
  *
  * Examples (input -> output):
@@ -35,7 +35,7 @@ export const normalizePageFullPath = (
   const filteredPaths = paths.filter(Boolean) as string[]
   const fullPath = [ROOT_PAGE_PATH, ...filteredPaths]
     .join("/")
-    .replaceAll(/\/+/g, "/")
+    .replace(/\/+/g, "/")
 
   if (locale) {
     // make sure not to add same locale twice

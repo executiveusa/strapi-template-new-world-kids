@@ -8,7 +8,7 @@
   "exports": {
     "./theme.css": "./src/theme.css",
     "./styles.css": "./dist/styles.css",
-    "./styles-strapi.json": "./dist/styles-strapi.json",
+    "./styles-editor.json": "./dist/styles-editor.json",
     "./custom-styles.css": "./src/custom-styles.css",
     "./ck-color-config.json": "./dist/ckeditor-color-config.json",
     "./ck-fontSize-config.json": "./dist/ckeditor-fontSize-config.json"

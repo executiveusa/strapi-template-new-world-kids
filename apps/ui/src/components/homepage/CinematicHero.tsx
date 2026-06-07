@@ -103,7 +103,7 @@ function MagneticButton({
   )
 }
 
-export function CinematicHero({ id = "journey-start" }: { id?: string }) {
+export function CinematicHero() {
   const { scrollY } = useScroll()
   const containerRef = useRef<HTMLElement>(null)
 
@@ -119,7 +119,6 @@ export function CinematicHero({ id = "journey-start" }: { id?: string }) {
 
   return (
     <section
-      id={id}
       ref={containerRef}
       className="relative overflow-hidden border-b border-white/10 bg-[#091109]"
     >

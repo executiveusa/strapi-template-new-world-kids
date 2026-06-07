@@ -9,12 +9,12 @@
  * 1. Reads the compiled styles.css file and extracts all CSS variables.
  * 2. Generates a color configuration JSON file (ckeditor-color-config.json) for CKEditor, containing all color variables.
  * 3. Generates a font size configuration JSON file (ckeditor-fontSize-config.json) for CKEditor, containing all font size variables.
- * 4. Outputs a theme CSS string (styles-strapi.json) that sets all variables on the .ck class, for use in CKEditor themes.
+ * 4. Outputs a theme CSS string (styles-editor.json) that sets all variables on the .ck class, for use in CKEditor themes.
  *
  * Output files (all in ../dist/):
  *   - ckeditor-color-config.json: Array of color variable objects for CKEditor color plugin.
  *   - ckeditor-fontSize-config.json: Array of font size variable objects for CKEditor font size plugin.
- *   - styles-strapi.json: String of CSS to apply all variables to the .ck class, plus the full custom styles CSS.
+ *   - styles-editor.json: String of CSS to apply all variables to the .ck class, plus the full custom styles CSS.
  *
  */
 const fs = require("node:fs")
@@ -68,7 +68,7 @@ fs.writeFileSync(
   "utf8"
 )
 
-const themeCssFilePath = path.resolve(__dirname, "../dist/styles-strapi.json")
+const themeCssFilePath = path.resolve(__dirname, "../dist/styles-editor.json")
 fs.writeFileSync(
   themeCssFilePath,
   JSON.stringify(

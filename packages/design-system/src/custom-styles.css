@@ -131,7 +131,7 @@
   @apply mb-0.5 text-xs;
 }
 
-/* We needed to rewrite default Strapi ck editor styling, that's why we used important */
+/* We needed to rewrite the default CKEditor styling, that's why we used important */
 .ck-style-grid .ck-disabled {
   display: none !important;
 }

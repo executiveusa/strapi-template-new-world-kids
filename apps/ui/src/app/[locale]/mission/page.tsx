@@ -84,7 +84,7 @@ export default async function MissionPage() {
             href="/en/ops"
             className="block rounded border border-border bg-panel px-5 py-4 font-semibold"
           >
-            MAXX portal
+            Operations portal
           </Link>
           {ledger.error ? (
             <p className="rounded border border-warm/40 bg-warm/10 p-4 text-sm text-warm">
