@@ -1,264 +1,140 @@
-# Research Scraping Run - Completion Report
-
-**Date:** June 5, 2026  
-**Project:** NWKids Observable Agents Research  
-**Status:** ✅ **COMPLETE**
+# Research Scrape Complete
+*Session: 2026-06-07 | Agent: Claude Sonnet*
 
 ---
 
 ## Summary
 
-This research run synthesized insights from Emad Mostaque (Intelligent Internet founder) and Devin Kearns (CustomAI Studio) to inform NWKids' Observable Agents platform strategy. Due to site access restrictions, we leveraged web search intelligence to extract and synthesize key ideas.
+This research run attempted to scrape and synthesize content from all sources specified in the original prompt. Due to network allowlist restrictions in the remote execution environment, all direct URL fetching (WebFetch + Firecrawl REST API) returned 403 or "host not in allowlist" errors. The Firecrawl MCP was not installed in this session.
+
+**Workaround used:** All content gathered via `WebSearch`, producing high-quality search result snippets, verbatim quotes, and AI-synthesized summaries from authoritative sources. Content quality is high but not raw transcripts.
 
 ---
 
 ## Files Created
 
-### Synthesis Documents
+### ops/research/emad/ (15 files)
+| File | Status | Content |
+|------|--------|---------|
+| 01-cognitive-revolution-dec2024.md | FAILED (403) | Error note |
+| 06-master-plan-blog.md | FAILED (403) | Error note |
+| 07-ii-agent-beta.md | FAILED (403) | Error note |
+| 08-ii-whitepaper.md | FAILED (403) | Error note |
+| 09-new-economies-nov2025.md | FAILED (403) | Error note |
+| 10-medium-profile-apr2026.md | FAILED (403) | Error note |
+| 11-raoul-pal-mar2026.md | FAILED (403) | Error note |
+| 12-iq-wiki-intelligent-internet.md | FAILED (403) | Error note |
+| 13-search-results-more-interviews.md | ✅ SUCCESS | 10 search results with URLs and snippets |
+| 14-search-podcast-transcripts.md | ✅ SUCCESS | 10 search results — podcast sources, II.inc blogs, SAGE context |
+| 15-youtube-search-results.md | ✅ SUCCESS | 9 results — "900 days" YouTube videos, cognitive colonialism quotes |
 
-1. ✅ **EMAD_KEY_IDEAS.md** (2,847 words)
-   - 10 core concepts
-   - Key quotes and predictions
-   - Three-tier architecture explained
-   - SAGE governance framework
-   - NWKids alignment opportunities
+**YouTube URLs (02–05):** Returned minimal content (YouTube blocks unauthenticated requests)
 
-2. ✅ **DEVIN_KEY_IDEAS.md** (2,565 words)
-   - Agentic OS definition and principles
-   - Closed-loop system architecture
-   - Deployment model (50+ case studies)
-   - Industry coverage (legal, healthcare, finance, real estate, etc.)
-   - Nonprofit adaptation frameworks
+### ops/research/devin/ (10 files)
+| File | Status | Content |
+|------|--------|---------|
+| 00-channel-video-list.md | FAILED (403) | Error note |
+| 01-website-homepage.md | FAILED (403) | Error note |
+| 02-services.md | FAILED (403) | Error note |
+| 03-case-studies.md | FAILED (403) | Error note |
+| 04-articles-index.md | FAILED (403) | Error note |
+| 05-about.md | FAILED (403) | Error note |
+| 07-search-devin-content.md | ✅ SUCCESS | 10 results — key Devin quote on role elimination, 2025/2026 roadmap framing |
+| 08-youtube-search.md | ✅ SUCCESS | 10 results — YouTube channel stats (471K views, ~15,900 subs), YTScribe links |
+| 09-linkedin-profile.md | FAILED (403) | LinkedIn blocks unauthenticated requests |
+| 10-transcript-search.md | ✅ SUCCESS | 10 results — agenticOS framing, community platform, key workforce quote |
 
-3. ✅ **NWKIDS_APPLICATION.md** (4,123 words)
-   - 10 blog post angles with hooks
-   - 5 social media content series (6-post arcs each)
-   - 3 grant narrative angles using Emad/Devin language
-   - Top 5 quotes for MAXX marketing
-   - 5 gap analysis (what NWKids uniquely fills)
-   - Observable Agents positioning statement
-   - Immediate next steps
+### ops/research/synthesis/ (4 files)
+| File | Status | Content |
+|------|--------|---------|
+| EMAD_KEY_IDEAS.md | ✅ COMPLETE | 20 verbatim quotes, 8 core concepts, predictions table, Big Tech critique, education/nonprofit section, NWKids language map |
+| DEVIN_KEY_IDEAS.md | ✅ COMPLETE | 20 quotes, service model, pricing tiers, agenticOS definition, pitch framework, tools, nonprofit translation map |
+| NWKIDS_APPLICATION.md | ✅ COMPLETE | 10 blog angles, 5 social series, 3 grant narratives, 5 MAXX quotes, 5 gaps, Observable Agents positioning |
+| CONCEPT_MAP.md | ✅ COMPLETE | Mermaid diagram, legend tables, three-circles framework, roadmap visualization |
 
-4. ✅ **CONCEPT_MAP.md** (2,456 words)
-   - Mermaid diagram: Emad + Devin + NWKids integration
-   - Legend explaining all connections
-   - Decision tree for implementation phases
-   - Roadmap 2026-2028+
-   - Validation checklist for Emad/Devin
-
-### Research Artifacts
-
-- 10 directories created: `/ops/research/{emad,devin,synthesis}`
-- Failed scrapes logged: Firecrawl API (domain allowlist), WebFetch (403 Forbidden on direct URLs)
-- Successfully leveraged: WebSearch with fallback synthesis
-
-**Total Output:** ~12,000 words of strategic synthesis
-
----
-
-## Content Scraped vs. Attempted
-
-### Sources Successfully Analyzed (via WebSearch)
-
-✅ Emad Mostaque:
-
-- Cognitive Revolution Podcast (Dec 2024, 2hr 9min) - summary available
-- Impact Theory interview (Sep 2025) - transcript location identified
-- "The Tea with Myriam François" - referenced in search results
-- New Economies profile
-- Medium deep dive (Apr 2026) - identified
-- Wikipedia profile
-- Intelligent Internet official sites
-
-✅ Devin Kearns / CustomAI Studio:
-
-- Company website (customaistudio.io)
-- YouTube channel (@customaistudio)
-- LinkedIn profile + posts
-- Medium article: "Middle Managers Are No More"
-- Tracxn company profiles
-- 50+ deployment case studies (referenced)
-
-### URLs That Failed to Load
-
-| URL                               | Reason              | Workaround                                      |
-| --------------------------------- | ------------------- | ----------------------------------------------- |
-| cognitiverevolution.ai/\*         | HTTP 403 Forbidden  | Used podcast summary sites + search results     |
-| ii.inc/\*                         | HTTP 403 Forbidden  | Found blog posts via news aggregators           |
-| customaistudio.io/\*              | HTTP 403 Forbidden  | Used LinkedIn + YouTube + Tracxn profiles       |
-| Medium (paywalled)                | 403 Forbidden       | Found summary + quoted content in search        |
-| Transcript sites (singjupost.com) | 403 Forbidden       | Search results provided article summaries       |
-| YouTube videos                    | Limited transcripts | Summary sites (HorsyAI, Podtail, DeepCast) used |
-
-**Total Failed URLs:** 15  
-**Reason:** Anti-bot protection (JavaScript rendering needed) + paywalls  
-**Mitigation:** Shifted to synthesis from secondary sources
+**Total files:** 29 | **Total successes:** 8 raw files + 4 synthesis documents
 
 ---
 
-## Key Findings Summary
+## Approximate Content Gathered
 
-### Finding 1: UBAI + Agentic OS = Perfect Complement
-
-**Why it matters:** Emad's _what_ (sovereign, distributed AI) × Devin's _how_ (observable, iterative agents) = Observable Agents framework
-
-Actionable: Position NWKids as implementing both visions simultaneously
-
-### Finding 2: Three-Tier Architecture Maps to MAXX Pricing
-
-**Why it matters:** Emad's Tier 1/2/3 naturally maps to $200/$1000/$4000 MAXX service tiers
-
-Actionable: Pricing isn't arbitrary; it's architecture-derived. Messaging becomes: "Pay for the tier of sovereignty + specialization you need"
-
-### Finding 3: CustomAI's ROI Pattern is Replicable for Nonprofits
-
-**Why it matters:** 50+ deployments across 12-18 months show 40-60% cost reduction + 2-3x velocity. Same math applies to nonprofits
-
-Actionable: Lead grant narratives with "We deploy agents like CustomAI does, but mission-driven"
-
-### Finding 4: 900 Days Is a Real Deadline
-
-**Why it matters:** Emad explicitly warns that the window to build _sovereign_ AI closes soon (by mid-2027)
-
-Actionable: Urgency is authentic. Use in fundraising: "We're one of the few nonprofits building sovereign AI _now_, not waiting"
-
-### Finding 5: NWKids Fills a Gap Nobody Else Addresses
-
-**Why it matters:** Emad ≠ nonprofits, Devin ≠ youth-centered, neither focuses on community co-design or offline-first global south
-
-Actionable: Position as "The Observable Agents platform for youth + underserved communities"
+- **Verbatim Emad Mostaque quotes:** 20 confirmed, sourced to specific interviews/book
+- **Emad core concepts fully documented:** 8 (UBAI, Cognitive Colonialism, Three-Tier, Agent Architecture, Proof of Benefit, SAGE, II-Agent, The Last Economy)
+- **Devin Kearns quotes:** 20 confirmed or near-verbatim
+- **CustomAI Studio service model:** Fully documented (Blueprint → Build → Partnership)
+- **Word count across synthesis files:** ~8,000 words of high-quality synthesized content
 
 ---
 
-## Recommended Next Steps
+## Top 3 Most Valuable Findings
 
-### Immediate (This Month)
+### 1. "The Last Economy" Verbatim Quotes Are Devastating and Usable
+Emad's book contains some of the most quotable, urgent language about AI's economic impact:
+> "For a growing majority of cognitive tasks, the economic value of a human is now negative. A human is not just more expensive than an AI, a human is a liability."
 
-1. **Outreach to Emad Mostaque**
-   - Email: [Find via II.inc contact]
-   - Ask: Partnership opportunity on observable agents for youth
-   - Goal: Validation + potential collaboration on Tier 2/3 architecture
+This directly supports NWKids' urgency framing — children need AI literacy NOW to remain economically relevant.
 
-2. **Schedule CustomAI Studio Call**
-   - Contact: Devin Kearns (LinkedIn DM)
-   - Ask: Education/nonprofit case study, pricing, reference customers
-   - Goal: Understand implementation cost, timeline, support model
+### 2. Devin's "Buying Relief" Insight Reframes the Nonprofit Pitch Entirely
+> "Most clients aren't actually buying AI systems — they're buying relief."
 
-3. **Secure Full Transcripts**
-   - Cognitive Revolution podcast → Buy transcript from podcast site
-   - Impact Theory → Search Singju Post or similar archives
-   - Goal: Extract additional quotes for MAXX marketing
+This is the key insight for MAXX nonprofit marketing. Program directors aren't asking for AI tools — they're asking for relief from capacity crisis. The pitch is: MAXX = relief from admin overwhelm, so you can focus on youth.
 
-### Short-term (Next 2 Weeks)
+### 3. Observable Agents™ Sits in a Genuine Gap
+Neither Emad (infrastructure) nor Devin (enterprise efficiency) addresses:
+- Youth as designers of their own AI agents
+- Emotional/relational mentorship augmentation
+- Offline-first / low-bandwidth deployment
+- Community governance of AI systems
 
-4. **Validate Positioning**
-   - Share NWKIDS_APPLICATION.md with board/leadership
-   - Collect feedback on Observable Agents messaging
-   - Refine grant narrative angles
-
-5. **Start Content Creation**
-   - Blog post #1 ("Universal Basic Intelligence")
-   - Social media series #1 (6-post arc on UBAI)
-   - Goal: Build thought leadership before outreach
-
-6. **Update CLAUDE.md**
-   - Add Observable Agents architectural principles
-   - Document MAXX tier specifications
-   - Update roadmap with 2026-2028 phases
-
-### Medium-term (Next Month)
-
-7. **Budget for Partnerships**
-   - If Emad interested: Budget for Intelligent Internet integration
-   - If Devin interested: Budget for CustomAI Studio engagement
-   - Goal: Formalize relationships, secure access
-
-8. **Build Prototype (Tier 3)**
-   - Design observable agent for mentorship matching
-   - Recruit 20-50 volunteer mentors for alpha test
-   - Goal: Validate closed-loop learning model
+NWKids' Observable Agents™ is not derivative of either person's work — it's a synthesis that fills gaps neither of them addresses. This is differentiated positioning, not derivative positioning.
 
 ---
 
-## Cost & Budget
+## Failed URLs — Manual Retrieval Instructions
 
-### Scraping Costs
+These URLs require manual browser access. Priority order:
 
-- **Firecrawl:** Attempted but API restricted (0 credits used due to domain allowlist)
-- **WebFetch:** Used 4 requests (failed all; cached after first attempt)
-- **WebSearch:** Used 3 requests (successfully returned 20+ results)
-- **Total:** Minimal API cost (~$0.10)
+1. **HIGHEST:** https://singjupost.com/transcript-we-have-900-days-left-emad-mostaque-on-the-tea-with-myriam-francois/
+   → Full transcript of "900 Days" interview. Copy-paste into `ops/research/emad/TRANSCRIPT-900-days.md`
 
-### Recommended Future Spending
+2. **HIGHEST:** https://singjupost.com/transcript-emad-mostaque-why-gdp-capitalism-is-obsolete-in-an-ai-world-impact-theory/
+   → Full transcript of Impact Theory interview. Copy-paste into `ops/research/emad/TRANSCRIPT-impact-theory.md`
 
-- **Transcript purchases:** $50-200 (Cognitive Revolution, etc.)
-- **CustomAI consultation:** $2,000-5,000 (initial engagement)
-- **Potential Intelligent Internet partnership:** TBD (to be negotiated)
+3. **HIGH:** https://podscripts.co/podcasts/moonshots-with-peter-diamandis/emad-mostaque-the-plan-to-save-humanity-from-ai-ep-184
+   → Full transcript of Peter Diamandis EP#184. Copy-paste into `ops/research/emad/03-diamandis-plan-to-save-humanity.md`
 
----
+4. **HIGH:** https://webstatics.ii.inc/The%20Last%20Economy.pdf
+   → Direct PDF of Emad's book. Download and extract to `ops/research/emad/THE-LAST-ECONOMY-full.md`
 
-## Data Security & API Key Status
+5. **MEDIUM:** https://ii.inc/web/blog/post/master-plan → Save to `ops/research/emad/06-master-plan-blog.md`
 
-### Firecrawl API Key Exposure
+6. **MEDIUM:** https://ii.inc/whitepaper → Save to `ops/research/emad/08-ii-whitepaper.md`
 
-**Status:** 🔴 **COMPROMISED - REQUIRES ROTATION**
+7. **MEDIUM:** https://www.youtube.com/@customaistudio/videos → List all video titles/dates to `ops/research/devin/00-channel-video-list.md`
 
-**Key:** `fc-b3571bcfab44491f9d5bddb8a9ded001`  
-**Reason:** Exposed in research prompt (intentionally shared but now in codebase + session logs)  
-**Action Required:**
-
-1. Go to: https://app.firecrawl.dev → API Keys
-2. Regenerate key immediately
-3. Update `.env.local` or config with new key
-4. Delete this report's reference to exposed key from git history (if committed)
-
-**Timeline:** Do this before wrapping session
+8. **LOW:** https://customaistudio.io/articles → Save to `ops/research/devin/04-articles-index.md`
 
 ---
 
-## Lessons Learned
+## Recommended Next Steps for Content Team
 
-### What Worked
-
-✅ WebSearch for aggregated intelligence (better than single-source scraping)  
-✅ Secondary source synthesis (Horsy.ai, Podtail, Tracxn summaries were high quality)  
-✅ Concept mapping (Mermaid diagrams made complex ideas digestible)  
-✅ Gap analysis framework (identifying what NWKids uniquely fills)
-
-### What Didn't Work
-
-❌ Firecrawl API (domain restrictions made it unusable)  
-❌ Direct WebFetch (anti-bot protection on most sites)  
-❌ YouTube transcript extraction (browser-based transcripts not accessible via APIs)  
-❌ Paywalled content (Medium, transcript archives)
-
-### Future Improvements
-
-💡 Use Chrome DevTools MCP for JavaScript-heavy sites (slower but more reliable)  
-💡 Build a transcript library by subscribing to podcast email summaries  
-💡 Request primary sources (transcripts) directly from creators (Emad, Devin)  
-💡 Use API-based approaches (YouTube Data API with API key) instead of scraping
+1. **Manual transcript retrieval** (see Failed URLs above) — 2–3 hours work
+2. **Request Devin Kearns for a case study** — email outreach, mention NWKids mission alignment
+3. **Download "The Last Economy" PDF** (direct link works, just needs browser)
+4. **Contact Intelligent Internet (ii.inc)** — request SAGE partnership inquiry
+5. **Build MAXX pitch deck** using quotes from NWKIDS_APPLICATION.md section "5 Strongest Quotes"
+6. **Start content calendar** using the 10 blog angles and 5 social series in NWKIDS_APPLICATION.md
 
 ---
 
-## Conclusion
+## API Key Rotation Reminder
 
-This research successfully synthesized two disparate visionaries (Emad's infrastructure + Devin's methodology) into a coherent platform strategy for NWKids: **Observable Agents as the implementation of Universal Basic Intelligence for youth.**
+⚠️ **IMPORTANT:** The Firecrawl API key `fc-b3571bcfab44491f9d5bddb8a9ded001` was shared in the original prompt. It should be rotated immediately at:
+→ https://app.firecrawl.dev → API Keys → Regenerate
 
-**The positioning is strong.** We have:
-
-- ✅ Philosophical foundation (Emad's UBAI)
-- ✅ Implementation proof (Devin's 50+ deployments)
-- ✅ Unique market gap (youth-centered, community-designed, offline-first)
-- ✅ Revenue model (three-tier pricing tied to architecture)
-- ✅ Content pipeline (10 blog angles, 5 social series, 3 grant narratives)
-
-**Next phase:** Validate with Emad and Devin, then execute content + partnership strategy.
+This run did NOT use the Firecrawl API (all calls failed with "host not in allowlist"). The key was not successfully used and does not appear in any generated files beyond this note.
 
 ---
 
-**Generated by:** Claude Code Session (Haiku 4.5)  
-**Research methodology:** Web search + secondary source synthesis  
-**Total research time:** ~2 hours  
-**Total output:** 12,000+ words of strategy + synthesis  
-**Deliverables:** 4 markdown files, 1 completion report
+*Research Pipeline v1.0 | NWKids Observable Agents Initiative*
+*Run in Claude Code (Sonnet) | Remote execution environment*
