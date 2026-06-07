@@ -37,8 +37,8 @@ export const verificationLabels: Record<VerificationStatus, string> = {
 export const heroFeatureCards = [
   {
     eyebrow: "What visitors should understand fast",
-    title: "This is a school-in-public, not a pitch deck.",
-    body: "The strongest version of the site tells people what exists today, what is being built next, and why the work matters in daily life.",
+    title: "This is a public school-in-progress, not a pitch deck.",
+    body: "New World Kids shows two living projects: Culture Shock for young people learning by doing, and Proyecto Indigo Azul, the food forest in Paso de Guayabo. Everything on the page should help people understand those two things quickly.",
     bullets: [
       "Real land, real curriculum, real local relationships",
       "Practical work first, abstractions second",
@@ -46,14 +46,14 @@ export const heroFeatureCards = [
     ],
   },
   {
-    eyebrow: "Seth-guided brand question",
-    title: "Who are we helping students become?",
-    body: "More self-sufficient. More bilingual. More rooted. More trusted with responsibility. That question should shape every headline, program description, and donation ask.",
+    eyebrow: "Culture Shock program",
+    title: "Young people learn by crossing boundaries, not just classrooms.",
+    body: "The Culture Shock program brings students into a real working environment where they practice the core four, build confidence, and learn how to contribute across language, culture, and daily responsibility.",
   },
   {
-    eyebrow: "Backend posture",
-    title: "Hermes supports the operations layer.",
-    body: "The frontend can stay simple and zero-secret while Hermes handles reporting, grant work, and future automation behind the scenes.",
+    eyebrow: "Proyecto Indigo Azul",
+    title: "The food forest is the campus, the classroom, and the proof.",
+    body: "In Paso de Guayabo, the land itself teaches food, water, energy, and shelter. The page should keep coming back to that place so visitors understand what is real, what is growing, and what still needs support.",
   },
 ] as const
 
@@ -125,12 +125,12 @@ export type TimelineEntry = {
 export const timelineEntries: TimelineEntry[] = [
   // TODO: Replace with real NWKids photos from Google Drive
   {
-    season: "Season 1",
+    season: "Chapter 1",
     year: "2020-2021",
     status: "past",
-    title: "Land restoration",
-    tagline: "Soil first. Systems second.",
-    body: "We started with land repair so food, water, energy, and shelter could be taught on real ground.",
+    title: "The ground gets repaired first",
+    tagline: "Before a school can teach, it has to hold life.",
+    body: "The first chapter is soil work, water discipline, and land repair. That is where the public story begins, because the learning site only matters if the ground can support it.",
     highlights: [
       "1.5 acres secured",
       "Soil restoration started",
@@ -143,12 +143,12 @@ export const timelineEntries: TimelineEntry[] = [
   },
   // TODO: Replace with real NWKids photos from Google Drive
   {
-    season: "Season 2",
+    season: "Chapter 2",
     year: "2021-2022",
     status: "past",
-    title: "Community roots",
-    tagline: "Families started showing up every week.",
-    body: "Local participation turned the site from an idea into a routine community learning space.",
+    title: "The community starts coming back",
+    tagline: "A site becomes real when people begin to return.",
+    body: "Families, neighbors, and students turn the project from an idea into a weekly rhythm. The story becomes less about intention and more about repetition, trust, and presence.",
     highlights: [
       "Weekly community sessions",
       "Youth participation increased",
@@ -161,12 +161,12 @@ export const timelineEntries: TimelineEntry[] = [
   },
   // TODO: Replace with real NWKids photos from Google Drive
   {
-    season: "Season 3",
+    season: "Chapter 3",
     year: "2023-2024",
     status: "past",
-    title: "Food forest thriving",
-    tagline: "Biodiversity and consistency took hold.",
-    body: "The farm matured into a dependable teaching site with strong biodiversity and recurring youth learning.",
+    title: "The food forest takes root",
+    tagline: "Biodiversity stops being a hope and becomes a pattern.",
+    body: "The land matures into a dependable classroom where food grows, students return, and the project starts to prove that the model can hold its own.",
     highlights: [
       "200+ plant varieties",
       "Soilless agriculture active",
@@ -179,12 +179,12 @@ export const timelineEntries: TimelineEntry[] = [
   },
   // TODO: Replace with real NWKids photos from Google Drive
   {
-    season: "Season 4",
+    season: "Chapter 4",
     year: "2024-2025",
     status: "past",
-    title: "Infrastructure + school",
-    tagline: "Built the base for structured programs.",
-    body: "We built systems and learning infrastructure to host regular education and operating workflows.",
+    title: "Infrastructure becomes a school",
+    tagline: "The work gets organized so students can trust it.",
+    body: "Learning spaces, operating systems, and public-facing proof start working together. This is the chapter where the site stops feeling improvised and starts feeling durable.",
     highlights: [
       "Learning spaces upgraded",
       "Program structure formalized",
@@ -197,12 +197,12 @@ export const timelineEntries: TimelineEntry[] = [
   },
   // TODO: Replace with real NWKids photos from Google Drive
   {
-    season: "Season 5",
+    season: "Chapter 5",
     year: "2025-2026",
     status: "current",
-    title: "Programs + AI operations",
-    tagline: "Education + Hermes operations running together.",
-    body: "This season connects direct youth programming with the Hermes operations layer for proof, grants, and continuity.",
+    title: "Programs and operations run side by side",
+    tagline: "The public work and the backend have to stay in sync.",
+    body: "Culture Shock and Proyecto Indigo Azul now move with the Hermes operations layer so grants, proof, and continuity stay visible instead of hidden.",
     highlights: [
       "Active youth programs",
       "Agent operations online",
@@ -216,12 +216,12 @@ export const timelineEntries: TimelineEntry[] = [
   },
   // TODO: Replace with real NWKids photos from Google Drive
   {
-    season: "Season 6",
+    season: "Chapter 6",
     year: "2027-2030",
     status: "future",
-    title: "Scale + land ownership",
-    tagline: "From one site to a durable model.",
-    body: "We plan to secure long-term land and expand the model without losing hands-on quality.",
+    title: "Scale without losing the heart",
+    tagline: "The model should grow without becoming abstract.",
+    body: "The long-term story is land security, program replication, and a durable public model that still feels human, local, and hands-on.",
     highlights: [
       "Land ownership path",
       "Program replication",

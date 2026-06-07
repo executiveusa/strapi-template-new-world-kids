@@ -4,52 +4,52 @@ Source: `apps/ui/src/components/homepage/TimelineSection.tsx`
 
 ## Heading
 
-- From bare soil to food forest
+- From bare soil to a living school
 
 ## Subheading
 
-- 6 seasons of building something real
+- Swipe through the seasons. Each chapter should read like a piece of the story, not just a status update.
 
 ## Season cards
 
-### Season 1
+### Chapter 1
 
 - 2020-2021
-- Land restoration
-- Soil first. Systems second.
-- We started with land repair so food, water, energy, and shelter could be taught on real ground.
+- The ground gets repaired first
+- Before a school can teach, it has to hold life.
+- The first chapter is soil work, water discipline, and land repair. That is where the public story begins, because the learning site only matters if the ground can support it.
 
-### Season 2
+### Chapter 2
 
 - 2021-2022
-- Community roots
-- Families started showing up every week.
-- Local participation turned the site from an idea into a routine community learning space.
+- The community starts coming back
+- A site becomes real when people begin to return.
+- Families, neighbors, and students turn the project from an idea into a weekly rhythm. The story becomes less about intention and more about repetition, trust, and presence.
 
-### Season 3
+### Chapter 3
 
 - 2023-2024
-- Food forest thriving
-- Biodiversity and consistency took hold.
-- The farm matured into a dependable teaching site with strong biodiversity and recurring youth learning.
+- The food forest takes root
+- Biodiversity stops being a hope and becomes a pattern.
+- The land matures into a dependable classroom where food grows, students return, and the project starts to prove that the model can hold its own.
 
-### Season 4
+### Chapter 4
 
 - 2024-2025
-- Infrastructure + school
-- Built the base for structured programs.
-- We built systems and learning infrastructure to host regular education and operating workflows.
+- Infrastructure becomes a school
+- The work gets organized so students can trust it.
+- Learning spaces, operating systems, and public-facing proof start working together. This is the chapter where the site stops feeling improvised and starts feeling durable.
 
-### Season 5
+### Chapter 5
 
 - 2025-2026
-- Programs + AI operations
-- Education + Hermes operations running together.
-- This season connects direct youth programming with the Hermes operations layer for proof, grants, and continuity.
+- Programs and operations run side by side
+- The public work and the backend have to stay in sync.
+- Culture Shock and Proyecto Indigo Azul now move with the Hermes operations layer so grants, proof, and continuity stay visible instead of hidden.
 
-### Season 6
+### Chapter 6
 
 - 2027-2030
-- Scale + land ownership
-- From one site to a durable model.
-- We plan to secure long-term land and expand the model without losing hands-on quality.
+- Scale without losing the heart
+- The model should grow without becoming abstract.
+- The long-term story is land security, program replication, and a durable public model that still feels human, local, and hands-on.

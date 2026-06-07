@@ -9,12 +9,12 @@ Source: `apps/ui/src/components/homepage/CinematicHero.tsx`
 
 ## Intro copy
 
-- New World Kids is building a real learning site in Paso de Guayabo, Mexico where students practice the basics most systems leave out.
+- New World Kids is building two public projects: the Culture Shock program for young people learning by doing, and Proyecto Indigo Azul, the food forest in Paso de Guayabo, Mexico.
 - The work is hands-on, tuition-free for accepted students, and designed to leave behind usable skills instead of empty inspiration.
 
 ## Promise
 
-- If a young person shows up here, they should leave more capable, more employable, and more able to care for themselves and the people around them.
+- If a young person shows up here, they should leave more capable, more employable, and more able to care for themselves, their community, and the land around them.
 
 ## Hero buttons
 
@@ -27,8 +27,8 @@ Source: `apps/ui/src/components/homepage/CinematicHero.tsx`
 ### Card 1
 
 - Eyebrow: What visitors should understand fast
-- Title: This is a school-in-public, not a pitch deck.
-- Body: The strongest version of the site tells people what exists today, what is being built next, and why the work matters in daily life.
+- Title: This is a public school-in-progress, not a pitch deck.
+- Body: New World Kids shows two living projects: Culture Shock for young people learning by doing, and Proyecto Indigo Azul, the food forest in Paso de Guayabo. Everything on the page should help people understand those two things quickly.
 - Bullets:
   - Real land, real curriculum, real local relationships
   - Practical work first, abstractions second
@@ -36,15 +36,15 @@ Source: `apps/ui/src/components/homepage/CinematicHero.tsx`
 
 ### Card 2
 
-- Eyebrow: Seth-guided brand question
-- Title: Who are we helping students become?
-- Body: More self-sufficient. More bilingual. More rooted. More trusted with responsibility. That question should shape every headline, program description, and donation ask.
+- Eyebrow: Culture Shock program
+- Title: Young people learn by crossing boundaries, not just classrooms.
+- Body: The Culture Shock program brings students into a real working environment where they practice the core four, build confidence, and learn how to contribute across language, culture, and daily responsibility.
 
 ### Card 3
 
-- Eyebrow: Backend posture
-- Title: Hermes supports the operations layer.
-- Body: The frontend can stay simple and zero-secret while Hermes handles reporting, grant work, and future automation behind the scenes.
+- Eyebrow: Proyecto Indigo Azul
+- Title: The food forest is the campus, the classroom, and the proof.
+- Body: In Paso de Guayabo, the land itself teaches food, water, energy, and shelter. The page should keep coming back to that place so visitors understand what is real, what is growing, and what still needs support.
 
 ## Stats
 
