@@ -167,9 +167,17 @@ export function CinematicHero() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="mt-8 max-w-5xl font-serif text-5xl font-semibold tracking-tight text-white md:text-7xl xl:text-[6.2rem] xl:leading-[0.92]"
             >
-              We teach young people how to grow food, protect water, make
-              energy, and build shelter.
+              Food, Water, Energy, Shelter.
             </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.35 }}
+              className="mt-4 max-w-3xl text-lg font-medium tracking-[0.14em] text-[#f7e7a7] uppercase"
+            >
+              The core four.
+            </motion.p>
 
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -319,10 +327,15 @@ function AnimatedStatCard({ stat, index }: { stat: any; index: number }) {
     return () => observer.disconnect()
   }, [])
 
-  // Extract number from stat value for animation
-  const numericValue = Number.parseInt(stat.value.replaceAll(/\D/g, "")) || 0
-  const count = useCountUp(isVisible ? numericValue : 0, 2000)
-  const displayValue = stat.value.replace(/\d+/, String(count))
+  const animatedStatMatch = stat.value.match(/^(\d+)(\+?)$/)
+  const canAnimate = Boolean(animatedStatMatch)
+  const numericValue = animatedStatMatch
+    ? Number.parseInt(animatedStatMatch[1], 10)
+    : 0
+  const count = useCountUp(isVisible && canAnimate ? numericValue : 0, 2000)
+  const displayValue = animatedStatMatch
+    ? `${count}${animatedStatMatch[2]}`
+    : stat.value
 
   return (
     <motion.article
