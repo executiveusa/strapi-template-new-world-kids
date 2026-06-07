@@ -246,7 +246,7 @@ export function CinematicHero() {
                   <p className="mt-3 text-sm leading-7 text-white/72">
                     {card.body}
                   </p>
-                  {card.bullets ? (
+                  {"bullets" in card && card.bullets.length > 0 ? (
                     <ul className="mt-4 space-y-1.5">
                       {card.bullets.map((bullet) => (
                         <li
