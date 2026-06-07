@@ -58,7 +58,7 @@ function MagneticButton({
   className?: string
   primary?: boolean
 }) {
-  const ref = useRef<HTMLAnchorElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
   const springConfig = { damping: 15, stiffness: 150 }
