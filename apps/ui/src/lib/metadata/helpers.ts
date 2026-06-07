@@ -33,7 +33,9 @@ export const preprocessSocialMetadata = (
       siteId: twitterSeo?.siteId ?? undefined,
       creator: twitterSeo?.creator ?? undefined,
       creatorId: twitterSeo?.creatorId ?? undefined,
-      images: twitterImages?.map((img) => img?.url),
+      images: twitterImages?.map(
+        (img: { url?: string | null } | null | undefined) => img?.url
+      ),
     },
     openGraph: {
       siteName: ogSeo?.siteName ?? undefined,
