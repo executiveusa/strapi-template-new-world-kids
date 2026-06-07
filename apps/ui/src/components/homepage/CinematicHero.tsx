@@ -240,7 +240,7 @@ export function CinematicHero() {
                       {card.eyebrow}
                     </p>
                     <span className="rounded-full border border-white/10 bg-black/20 px-3 py-1 text-[10px] tracking-[0.18em] text-white/65 uppercase">
-                      {verificationLabels[card.status]}
+                      {verificationLabels["needs-review"]}
                     </span>
                   </div>
                   <p className="mt-3 text-sm leading-7 text-white/72">
