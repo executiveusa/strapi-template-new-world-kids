@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises"
-import { createServer } from "node:http"
+import { createServer, type IncomingMessage } from "node:http"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
@@ -14,6 +14,11 @@ import {
 import { agentProfiles } from "./config/agent-profiles.js"
 import { answerArticleQuestion } from "./lib/article-chat.js"
 import { applyCors, readJsonBody, sendJson } from "./lib/http.js"
+import {
+  getApprovedPosts,
+  markNotionStatus,
+  publishToStrapi,
+} from "./lib/notion-blog.js"
 
 type ArticleChatPayload = {
   title: string
@@ -50,6 +55,21 @@ function getIntegrations(env: NodeJS.ProcessEnv) {
     creemPublicUrl: env.CREEM_PUBLIC_URL || null,
     buyMeACoffeeUrl: env.BUY_ME_A_COFFEE_URL || null,
   }
+}
+
+function checkOperatorKey(
+  request: IncomingMessage,
+  env: NodeJS.ProcessEnv
+): boolean {
+  const expected = env.HERMES_OPERATOR_KEY
+  if (!expected) return true
+  const header =
+    request.headers["x-hermes-key"] ??
+    (request.headers.authorization?.startsWith("Bearer ")
+      ? request.headers.authorization.slice(7)
+      : null)
+
+  return header === expected
 }
 
 const server = createServer(async (request, response) => {
@@ -137,6 +157,115 @@ const server = createServer(async (request, response) => {
     if (request.method === "GET" && url.pathname === "/api/support-rails") {
       sendJson(response, 200, {
         rails: getSupportRails(process.env),
+      })
+
+      return
+    }
+
+    if (request.method === "GET" && url.pathname === "/api/blog/approved") {
+      if (!checkOperatorKey(request, process.env)) {
+        sendJson(response, 401, { error: "Operator key required." })
+
+        return
+      }
+
+      const posts = await getApprovedPosts(process.env)
+      sendJson(response, 200, { posts, count: posts.length })
+
+      return
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/blog/publish") {
+      if (!checkOperatorKey(request, process.env)) {
+        sendJson(response, 401, { error: "Operator key required." })
+
+        return
+      }
+
+      const payload = await readJsonBody<{ notionId?: string }>(request)
+
+      if (!payload.notionId) {
+        sendJson(response, 400, { error: "notionId is required." })
+
+        return
+      }
+
+      const approvedPosts = await getApprovedPosts(process.env)
+      const draft = approvedPosts.find((p) => p.notionId === payload.notionId)
+
+      if (!draft) {
+        sendJson(response, 404, {
+          error: "Post not found or not in Approved status.",
+        })
+
+        return
+      }
+
+      const strapiResult = await publishToStrapi(draft, process.env)
+
+      if (!strapiResult) {
+        sendJson(response, 502, { error: "Strapi publish failed." })
+
+        return
+      }
+
+      const notionUpdated = await markNotionStatus(
+        draft.notionId,
+        "Scheduled",
+        process.env
+      )
+
+      sendJson(response, 200, {
+        ok: true,
+        strapiId: strapiResult.id,
+        slug: strapiResult.slug,
+        notionId: draft.notionId,
+        title: draft.title,
+        notionUpdated,
+      })
+
+      return
+    }
+
+    if (request.method === "POST" && url.pathname === "/api/blog/sync-all") {
+      if (!checkOperatorKey(request, process.env)) {
+        sendJson(response, 401, { error: "Operator key required." })
+
+        return
+      }
+
+      const posts = await getApprovedPosts(process.env)
+      const results = []
+
+      for (const draft of posts) {
+        const strapiResult = await publishToStrapi(draft, process.env)
+
+        if (strapiResult) {
+          const notionUpdated = await markNotionStatus(
+            draft.notionId,
+            "Scheduled",
+            process.env
+          )
+          results.push({
+            ok: true,
+            notionUpdated,
+            notionId: draft.notionId,
+            title: draft.title,
+            strapiId: strapiResult.id,
+          })
+        } else {
+          results.push({
+            ok: false,
+            notionId: draft.notionId,
+            title: draft.title,
+          })
+        }
+      }
+
+      sendJson(response, 200, {
+        synced: results.filter((r) => r.ok).length,
+        total: posts.length,
+        results,
       })
 
       return
