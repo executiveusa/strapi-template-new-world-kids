@@ -4,7 +4,7 @@ import {
   impactPillars,
   trustDocuments,
   type PillarSlug,
-} from "../../../../packages/shared-data/site.ts"
+} from "@repo/shared-data"
 
 type ArticleChatRequest = {
   title: string
