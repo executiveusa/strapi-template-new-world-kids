@@ -81,7 +81,7 @@ export async function fetchAllPages(
 
 export async function fetchSeo(
   // eslint-disable-next-line @typescript-eslint/default-param-last
-  uid: Extract<UID.ContentType, "api::page.page"> = "api::page.page",
+  uid: "api::page.page" = "api::page.page",
   fullPath: string | null,
   locale: Locale
 ) {

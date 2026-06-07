@@ -20,17 +20,19 @@ import {
 import { fetchSeo } from "@/lib/strapi-api/content/server"
 import type { SocialMetadata } from "@/types/general"
 
+const PAGE_UID = "api::page.page" as const
+
 export async function getMetadataFromStrapi({
   fullPath,
   locale,
   customMetadata,
-  uid = "api::page.page",
+  uid = PAGE_UID,
 }: {
   fullPath?: string
   locale: Locale
   customMetadata?: Metadata
   // Add more content types here if we want to fetch SEO components for them
-  uid?: Extract<UID.ContentType, "api::page.page">
+  uid?: typeof PAGE_UID
 }): Promise<Metadata | null> {
   const t = await getTranslations({ locale, namespace: "seo" })
   const siteUrl = getEnvVar("APP_PUBLIC_URL")
@@ -88,7 +90,7 @@ async function fetchAndMapStrapiMetadata(
   defaultOgMeta: Metadata["openGraph"],
   defaultTwitterMeta: Metadata["twitter"],
   customMetadata?: Metadata,
-  uid: Extract<UID.ContentType, "api::page.page"> = "api::page.page"
+  uid: typeof PAGE_UID = PAGE_UID
 ) {
   const forbidIndexing = !isProduction()
   const res = await fetchSeo(uid, fullPath, locale)
