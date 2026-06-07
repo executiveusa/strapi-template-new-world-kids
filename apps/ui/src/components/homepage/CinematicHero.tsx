@@ -345,7 +345,7 @@ function AnimatedStatCard({ stat, index }: { stat: any; index: number }) {
           {displayValue}
         </motion.p>
         <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[10px] tracking-[0.18em] text-white/56 uppercase">
-          {verificationLabels[stat.status]}
+          {verificationLabels[stat.status as keyof typeof verificationLabels]}
         </span>
       </div>
       <p className="mt-2 text-sm leading-7 text-white/60">{stat.label}</p>
