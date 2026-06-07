@@ -42,6 +42,7 @@ Environment variables required for blog pipeline:
 
 - `NOTION_API_KEY` — Notion integration token
 - `NOTION_BLOG_DB_ID` — `764494f6-b984-4a57-859b-a88ff5011c04` (set in .env.example)
+- `HERMES_OPERATOR_KEY` — protects `/api/blog/*` routes; pass as `x-hermes-key` header or `Authorization: Bearer <key>`; if unset endpoints are open (local dev only)
 - `STRAPI_URL` + `STRAPI_TOKEN`
 
 ---

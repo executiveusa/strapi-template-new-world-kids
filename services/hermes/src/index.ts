@@ -1,5 +1,5 @@
 import { readFile } from "node:fs/promises"
-import { createServer } from "node:http"
+import { createServer, type IncomingMessage } from "node:http"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
@@ -55,6 +55,21 @@ function getIntegrations(env: NodeJS.ProcessEnv) {
     creemPublicUrl: env.CREEM_PUBLIC_URL || null,
     buyMeACoffeeUrl: env.BUY_ME_A_COFFEE_URL || null,
   }
+}
+
+function checkOperatorKey(
+  request: IncomingMessage,
+  env: NodeJS.ProcessEnv
+): boolean {
+  const expected = env.HERMES_OPERATOR_KEY
+  if (!expected) return true
+  const header =
+    request.headers["x-hermes-key"] ??
+    (request.headers.authorization?.startsWith("Bearer ")
+      ? request.headers.authorization.slice(7)
+      : null)
+
+  return header === expected
 }
 
 const server = createServer(async (request, response) => {
@@ -148,6 +163,12 @@ const server = createServer(async (request, response) => {
     }
 
     if (request.method === "GET" && url.pathname === "/api/blog/approved") {
+      if (!checkOperatorKey(request, process.env)) {
+        sendJson(response, 401, { error: "Operator key required." })
+
+        return
+      }
+
       const posts = await getApprovedPosts(process.env)
       sendJson(response, 200, { posts, count: posts.length })
 
@@ -155,6 +176,12 @@ const server = createServer(async (request, response) => {
     }
 
     if (request.method === "POST" && url.pathname === "/api/blog/publish") {
+      if (!checkOperatorKey(request, process.env)) {
+        sendJson(response, 401, { error: "Operator key required." })
+
+        return
+      }
+
       const payload = await readJsonBody<{ notionId?: string }>(request)
 
       if (!payload.notionId) {
@@ -182,7 +209,11 @@ const server = createServer(async (request, response) => {
         return
       }
 
-      await markNotionStatus(draft.notionId, "Scheduled", process.env)
+      const notionUpdated = await markNotionStatus(
+        draft.notionId,
+        "Scheduled",
+        process.env
+      )
 
       sendJson(response, 200, {
         ok: true,
@@ -190,12 +221,19 @@ const server = createServer(async (request, response) => {
         slug: strapiResult.slug,
         notionId: draft.notionId,
         title: draft.title,
+        notionUpdated,
       })
 
       return
     }
 
     if (request.method === "POST" && url.pathname === "/api/blog/sync-all") {
+      if (!checkOperatorKey(request, process.env)) {
+        sendJson(response, 401, { error: "Operator key required." })
+
+        return
+      }
+
       const posts = await getApprovedPosts(process.env)
       const results = []
 
@@ -203,9 +241,14 @@ const server = createServer(async (request, response) => {
         const strapiResult = await publishToStrapi(draft, process.env)
 
         if (strapiResult) {
-          await markNotionStatus(draft.notionId, "Scheduled", process.env)
+          const notionUpdated = await markNotionStatus(
+            draft.notionId,
+            "Scheduled",
+            process.env
+          )
           results.push({
             ok: true,
+            notionUpdated,
             notionId: draft.notionId,
             title: draft.title,
             strapiId: strapiResult.id,
