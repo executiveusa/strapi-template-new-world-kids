@@ -4,7 +4,10 @@
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "rootDir": "../../",
-    "types": ["node"]
+    "types": ["node"],
+    "paths": {
+      "@repo/shared-data": ["../../packages/shared-data/index.ts"]
+    }
   },
   "include": ["src/**/*.ts", "../../packages/shared-data/**/*.ts"]
 }
