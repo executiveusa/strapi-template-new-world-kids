@@ -29,10 +29,10 @@ export const dynamicRewrite = (
   }
 
   const parts = pathname.split("/").filter(Boolean)
+  const firstPart = parts[0] as (typeof routing.locales)[number] | undefined
 
-  const hasLocale =
-    parts.length >= 1 && routing.locales.includes(parts[0] as Locale)
-  const locale = hasLocale ? parts[0] : routing.defaultLocale
+  const hasLocale = Boolean(firstPart && routing.locales.includes(firstPart))
+  const locale = hasLocale ? firstPart : routing.defaultLocale
   const rest = parts.slice(hasLocale ? 1 : 0).join("/")
 
   if (rest.startsWith(dynamicPrefix)) {
