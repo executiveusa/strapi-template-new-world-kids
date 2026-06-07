@@ -244,7 +244,7 @@ export function CinematicHero() {
                     </span>
                   </div>
                   <p className="mt-3 text-sm leading-7 text-white/72">
-                    {card.value}
+                    {card.body}
                   </p>
                   {card.bullets ? (
                     <ul className="mt-4 space-y-1.5">
