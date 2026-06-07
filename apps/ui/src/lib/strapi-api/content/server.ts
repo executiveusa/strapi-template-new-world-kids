@@ -1,6 +1,5 @@
 import "server-only"
 
-import type { UID } from "@repo/strapi-types"
 import { draftMode } from "next/headers"
 import type { Locale } from "next-intl"
 
@@ -54,7 +53,7 @@ export async function fetchPage(
 
 export async function fetchAllPages(
   // eslint-disable-next-line @typescript-eslint/default-param-last
-  uid: Extract<UID.ContentType, "api::page.page"> = "api::page.page",
+  uid: "api::page.page" = "api::page.page",
   locale: Locale
 ) {
   try {
