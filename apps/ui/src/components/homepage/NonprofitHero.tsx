@@ -1,6 +1,6 @@
 "use client"
 
-import { Link } from "@/lib/navigation"
+import Link from "next/link"
 
 const galleryImages = [
   "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400",

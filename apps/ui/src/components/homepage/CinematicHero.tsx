@@ -8,9 +8,8 @@ import {
   useMotionValue,
 } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
-
-import { Link } from "@/lib/navigation"
 
 import {
   heroFactStrip,

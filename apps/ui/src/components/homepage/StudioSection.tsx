@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react"
+import Link from "next/link"
 
 import { workWithUsOffers } from "@/content/site"
-import { Link } from "@/lib/navigation"
 
 export function StudioSection() {
   return (

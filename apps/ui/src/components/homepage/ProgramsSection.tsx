@@ -1,6 +1,5 @@
 import { ArrowUpRight } from "lucide-react"
-
-import { Link } from "@/lib/navigation"
+import Link from "next/link"
 
 import { programCards, siteLinks } from "../site/siteData"
 

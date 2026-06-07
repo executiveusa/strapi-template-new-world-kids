@@ -1,6 +1,5 @@
 import { ArrowUpRight, CheckCircle2 } from "lucide-react"
-
-import { Link } from "@/lib/navigation"
+import Link from "next/link"
 
 import { actionCards, testimonialCards, trustSignals } from "../site/siteData"
 
