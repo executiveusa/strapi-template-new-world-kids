@@ -1,7 +1,7 @@
 # Grant Opportunity Board
 
 | Date | Source | Opportunity | Fit | Deadline | Eligibility | Approval | Status | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| ---- | ------ | ----------- | --- | -------- | ----------- | -------- | ------ | ----- |
 
 Use this table for live grant discovery.
 
