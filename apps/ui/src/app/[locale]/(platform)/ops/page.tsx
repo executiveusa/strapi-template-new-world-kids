@@ -6,7 +6,7 @@ import { readAgentActions } from "../../../../lib/agent-actions"
 
 export const dynamic = "force-dynamic"
 
-function getOpsAccessState() {
+async function getOpsAccessState() {
   const accessToken = process.env.OPS_ACCESS_TOKEN
 
   if (!accessToken) {
@@ -16,7 +16,7 @@ function getOpsAccessState() {
     }
   }
 
-  const sessionCookie = cookies().get("nwkids_ops")?.value
+  const sessionCookie = (await cookies()).get("nwkids_ops")?.value
 
   if (sessionCookie !== accessToken) {
     return {
@@ -43,7 +43,7 @@ function formatTime(value: string | null | undefined) {
 }
 
 export default async function OpsPage() {
-  const auth = getOpsAccessState()
+  const auth = await getOpsAccessState()
   const actions = auth.authorized
     ? await readAgentActions("private", 20)
     : { configured: false, missing: [], actions: [] }
