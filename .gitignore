@@ -58,3 +58,4 @@ browser-control/package-lock.json
 
 # Coolify deployment env files (contain real secrets when filled in)
 coolify.env
+*.tsbuildinfo
