@@ -60,7 +60,7 @@ export const heroFeatureCards = [
 export const heroFactStrip = [
   {
     label: "What is live now",
-    value: "Public homepage, donate flow, Hermes status",
+    value: "Public homepage, donate flow, program pages",
   },
   {
     label: "What needs proof",
