@@ -8,6 +8,8 @@ This service is the thin harness around the nonprofit operations layer:
 - article-scoped chat for the journal
 - agent profile and skill manifest endpoints
 - integration points for Synthia Gateway, GBrain, and browser harness workers
+- a local Hermes skill tree under `services/hermes/skills`
+- a fallback legacy manifest for older skill sources
 
 ## Local commands
 
@@ -29,3 +31,8 @@ pnpm -F @repo/hermes start
 - `SKIP_PUBLIC_URL` optional grants platform URL
 - `CREEM_PUBLIC_URL` optional paid services URL
 - `BUY_ME_A_COFFEE_URL` optional support widget URL
+
+## Hermes skills tree
+
+Hermes now prefers the local registry at `services/hermes/skills/registry.json`.
+If that file is unavailable, it falls back to `agent-skills/source-status.json`.

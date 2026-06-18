@@ -33,9 +33,11 @@ export const normalizePageFullPath = (
   locale?: string | null
 ) => {
   const filteredPaths = paths.filter(Boolean) as string[]
-  const fullPath = [ROOT_PAGE_PATH, ...filteredPaths]
-    .join("/")
-    .replace(/\/+/g, "/")
+  let fullPath = [ROOT_PAGE_PATH, ...filteredPaths].join("/")
+
+  while (fullPath.includes("//")) {
+    fullPath = fullPath.replaceAll("//", "/")
+  }
 
   if (locale) {
     // make sure not to add same locale twice
