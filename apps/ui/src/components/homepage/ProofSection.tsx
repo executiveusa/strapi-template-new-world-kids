@@ -9,18 +9,9 @@ export function ProofSection() {
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="grid gap-12 lg:grid-cols-[0.88fr_1.12fr]">
           <div className="max-w-2xl">
-            <p className="text-xs tracking-[0.26em] text-[#c9a84c] uppercase">
-              Why this feels credible
-            </p>
-            <h2 className="mt-4 font-serif text-3xl font-semibold tracking-tight text-white md:text-5xl">
+            <h2 className="font-serif text-3xl font-semibold tracking-tight text-white md:text-5xl">
               Trust comes from promises kept in public.
             </h2>
-            <p className="mt-6 text-base leading-8 text-white/64">
-              Seth Godin&apos;s framework is useful here: make a real promise,
-              help people become someone more capable, and keep that promise
-              when it is hard. The site now reflects that instead of burying it
-              in nonprofit filler.
-            </p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-3">

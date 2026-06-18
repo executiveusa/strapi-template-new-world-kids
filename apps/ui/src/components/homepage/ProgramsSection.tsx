@@ -9,17 +9,9 @@ export function ProgramsSection() {
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="flex flex-col gap-6 border-b border-white/10 pb-10 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl">
-            <p className="text-xs tracking-[0.26em] text-[#c9a84c] uppercase">
-              What students actually do here
-            </p>
-            <h2 className="mt-4 font-serif text-3xl font-semibold tracking-tight text-white md:text-5xl">
+            <h2 className="font-serif text-3xl font-semibold tracking-tight text-white md:text-5xl">
               The work is practical by design.
             </h2>
-            <p className="mt-5 text-base leading-8 text-white/64">
-              Every program is built around capability, not optics. The goal is
-              to help students leave with useful habits, useful tools, and a
-              clearer sense of what they can contribute.
-            </p>
           </div>
 
           <Link

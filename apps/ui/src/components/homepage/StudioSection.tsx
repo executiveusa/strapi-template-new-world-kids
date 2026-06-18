@@ -19,15 +19,6 @@ export function StudioSection() {
             arm exists so the mission can support itself with earned revenue,
             strong reporting, and public proof.
           </p>
-          <div className="mt-8">
-            <Link
-              href="/work-with-us"
-              className="inline-flex items-center gap-2 text-sm font-semibold tracking-[0.18em] text-[#C9A84C] uppercase"
-            >
-              Work with the studio
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </div>
         </div>
 
         <div className="grid gap-4">
@@ -44,6 +35,15 @@ export function StudioSection() {
               </div>
             </div>
           ))}
+          <div className="mt-4">
+            <Link
+              href="/work-with-us"
+              className="inline-flex items-center gap-2 text-sm font-semibold tracking-[0.18em] text-[#C9A84C] uppercase"
+            >
+              Work with the studio
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
