@@ -139,10 +139,14 @@ You run on a heartbeat — you wake up, do work, sleep. Every heartbeat:
 
 ### Step 0 — Graph Check (Before Identity Check)
 
-Read graphify-out/GRAPH_REPORT.md.
-If file missing: create a task to run /graphify ., halt other work, log BLOCKER.
-If file older than 7 days: run /graphify . --update before proceeding.
-Log: graph_loaded: true, graph_age_days: N
+Read the Hermes local knowledge graph first:
+
+- `services/hermes/skills/graph/knowledge-map.json`
+- `services/hermes/skills/logs/learning-log.md`
+
+If the local graph is missing or stale, log a blocker and rebuild the graph from verified work before proceeding.
+If a separate `graphify-out/GRAPH_REPORT.md` exists, treat it as supplemental structure, not a hard dependency.
+Log: graph_loaded: true, graph_age_days: N when age can be determined
 
 ### Step 1 — Identity Check (30 seconds)
 
@@ -205,7 +209,7 @@ heartbeat: every 4 hours
 reports_to: hermes
 kpi_owner: true
 wiki_maintainer: true
-tools: [jcodemunch, graphify, supabase]
+tools: [command-code, browser-harness, supabase]
 ```
 
 **Grant Hunter Agent** — Dedicated to finding and writing grants.
@@ -215,7 +219,7 @@ role: grant-hunter
 scope: cross-repo (serves all NWKids programs)
 heartbeat: daily
 reports_to: hermes
-tools: [jcodemunch, web_search, candid_mcp, skip_grants_mcp, supabase]
+tools: [command-code, web_search, candid_mcp, skip_grants_mcp, supabase]
 ```
 
 **Content Agent** — Social media, bilingual.
@@ -225,23 +229,29 @@ role: content-engine
 scope: cross-repo
 heartbeat: 3x/week (Mon/Wed/Fri 8am)
 reports_to: hermes
-tools: [jcodemunch, supabase, postiz_mcp]
+tools: [command-code, supabase, postiz_mcp]
 ```
 
 ### Mandatory Tools for All Agents
 
 Every agent in the NWKids portfolio MUST have access to:
 
-1. **jcodemunch** — Token-efficient symbol discovery
+1. **Command Code / jcodemunch** — Token-efficient symbol discovery
    - 95% reduction in code-reading tokens
    - Use `search_symbols` → `get_symbol_source` instead of Read
-   - Configuration: See `.claude/jcodemunch.md`
    - Status: Already cloned at `agent-skills/local/jcodemunch-mcp/`
 
-2. **graphify** — Architectural overview and community detection
-   - Check `graphify-out/GRAPH_REPORT.md` before file operations
-   - 45.3x token reduction for portfolio walks
-   - Pair with jcodemunch: graphify for structure, jcodemunch for precision
+2. **Browser harness** — Live verification and page inspection
+   - Use for production URLs, screenshots, donor flows, and browser proof
+   - Prefer `BROWSER_HARNESS_URL` when available
+
+3. **Hermes skills tree** — Local category-based instructions
+   - Read `services/hermes/skills/registry.json` first for skill routing
+   - Use the category doc that matches the task before inventing a new path
+
+4. **Graph logic** — Knowledge relationships and verified learning
+   - Update the local knowledge graph after verified work
+   - Use it to avoid re-discovering the same repo facts repeatedly
 
 Without these tools, agents waste 95%+ of their token budget on unnecessary file reads.
 
@@ -256,8 +266,8 @@ Without these tools, agents waste 95%+ of their token budget on unnecessary file
 5. Never impersonate a human in external communications.
 6. Halt immediately if daily API cost exceeds $50.
 7. If unsure about an action: log a BLOCKER to the ledger and wait.
-8. GRAPHIFY LAW: Before every portfolio walk, read graphify-out/GRAPH_REPORT.md.
-   If graph is stale (>7 days since last update), run /graphify . --update first.
+8. KNOWLEDGE GRAPH LAW: Before every portfolio walk, read the Hermes local knowledge graph.
+   If the graph is stale (>7 days since last update), refresh it from verified work first.
    Never grep or glob raw files when the graph can answer the question.
    Log "graph_checked: true" in every heartbeat ledger entry.
 

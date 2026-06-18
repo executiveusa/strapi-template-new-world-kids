@@ -11,13 +11,13 @@ MCP tools expose grants, content, impact, and mission actions to agent clients.
 
 ## Active Surfaces
 
-| Surface | Current role | Notes |
-| --- | --- | --- |
-| `apps/ui` | Donor site and trust layer | The current worktree has most tracked UI files deleted; treat UI changes as a rebuild surface until this is reconciled. |
-| `apps/blog` | Public field journal | Next.js journal app remains present. |
-| `services/hermes` | Hermes backend harness | Existing repo convention places Hermes under `services/hermes`, not `apps/hermes`. |
-| `packages/nwkids-mcp` | `@nwkids/mcp` tool server | Existing root scripts build this package with `pnpm build:mcp`. |
-| `ops/reports` | Durable report sink | Completion reports and SQL handoffs belong here. |
+| Surface               | Current role               | Notes                                                                                                                   |
+| --------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `apps/ui`             | Donor site and trust layer | The current worktree has most tracked UI files deleted; treat UI changes as a rebuild surface until this is reconciled. |
+| `apps/blog`           | Public field journal       | Next.js journal app remains present.                                                                                    |
+| `services/hermes`     | Hermes backend harness     | Existing repo convention places Hermes under `services/hermes`, not `apps/hermes`.                                      |
+| `packages/nwkids-mcp` | `@nwkids/mcp` tool server  | Existing root scripts build this package with `pnpm build:mcp`.                                                         |
+| `ops/reports`         | Durable report sink        | Completion reports and SQL handoffs belong here.                                                                        |
 
 ## Hermes Operating Model
 

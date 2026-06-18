@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "name": "Hermes Local Skills Registry",
+  "agent": "Hermes",
+  "scope": "Nonprofit and social-purpose operating harness",
+  "root": "services/hermes/skills",
+  "generatedAt": "2026-06-07",
+  "integrations": {
+    "browserHarnessEnv": "BROWSER_HARNESS_URL",
+    "synthiaGatewayEnv": "SYNTHIA_GATEWAY_URL",
+    "gbrainCommandEnv": "GBRAIN_MCP_COMMAND"
+  },
+  "learning": {
+    "log": "logs/learning-log.md",
+    "graph": "graph/knowledge-map.json"
+  },
+  "compatibility": {
+    "legacyManifest": "../../agent-skills/source-status.json",
+    "fallbackOrder": ["local_registry", "legacy_manifest"]
+  },
+  "categories": [
+    {
+      "id": "core",
+      "title": "Core Hermes",
+      "description": "Operating rules for nonprofit-proof, public-proof, human-approved work.",
+      "skills": [
+        {
+          "id": "operating-principles",
+          "title": "Operating Principles",
+          "file": "core/README.md",
+          "purpose": "Defines how Hermes behaves, what it protects, and when it pauses for approval."
+        }
+      ]
+    },
+    {
+      "id": "browser-harness",
+      "title": "Browser Harness",
+      "description": "Live browser verification, page inspection, and visual proof of work.",
+      "skills": [
+        {
+          "id": "browser-harness",
+          "title": "Browser Harness",
+          "file": "browser-harness/SKILL.md",
+          "purpose": "Use the local or remote browser harness to verify public pages, donor flows, and agent-facing surfaces."
+        }
+      ]
+    },
+    {
+      "id": "command-code",
+      "title": "Command Code",
+      "description": "CLI-first execution, targeted code intelligence, and token-saving lookups.",
+      "skills": [
+        {
+          "id": "command-code",
+          "title": "Command Code",
+          "file": "command-code/SKILL.md",
+          "purpose": "Prefer indexed lookup and focused CLI actions before broad file scans or large refactors."
+        }
+      ]
+    },
+    {
+      "id": "nonprofit-ops",
+      "title": "Nonprofit Ops",
+      "description": "Websites, internal micro apps, grants, donor flow, and support rails for social-purpose organizations.",
+      "skills": [
+        {
+          "id": "nonprofit-ops",
+          "title": "Nonprofit Ops",
+          "file": "nonprofit-ops/SKILL.md",
+          "purpose": "Design and maintain practical, conversion-oriented nonprofit systems."
+        },
+        {
+          "id": "grant-search",
+          "title": "Grant Search",
+          "file": "nonprofit-ops/grant-search/SKILL.md",
+          "purpose": "Discover, qualify, and track grant opportunities without skipping approval gates."
+        }
+      ]
+    },
+    {
+      "id": "graph-logic",
+      "title": "Graph Logic",
+      "description": "Evidence graphs, task dependencies, blockers, and learning loops.",
+      "skills": [
+        {
+          "id": "graph-logic",
+          "title": "Graph Logic",
+          "file": "graph-logic/SKILL.md",
+          "purpose": "Track what Hermes knows, why it knows it, and how it should route future work."
+        }
+      ]
+    },
+    {
+      "id": "self-learning",
+      "title": "Self Learning",
+      "description": "Append-only learning logs and repeatable pattern capture.",
+      "skills": [
+        {
+          "id": "self-learning",
+          "title": "Self Learning",
+          "file": "self-learning/SKILL.md",
+          "purpose": "Record verified learnings and convert them into reusable patterns."
+        }
+      ]
+    },
+    {
+      "id": "source-catalog",
+      "title": "Source Catalog",
+      "description": "Grouped index of the external repos, skills, and references Hermes can reuse.",
+      "skills": [
+        {
+          "id": "source-catalog",
+          "title": "Source Catalog",
+          "file": "source-catalog/SKILL.md",
+          "purpose": "Catalog the external repositories and skills that shape Hermes."
+        }
+      ]
+    }
+  ]
+}
