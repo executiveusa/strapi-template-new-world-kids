@@ -30,12 +30,41 @@ const currentFile = fileURLToPath(import.meta.url)
 const currentDir = dirname(currentFile)
 const serviceRoot = resolve(currentDir, '..')
 const repoRoot = resolve(serviceRoot, '..', '..')
-const skillManifestPath = resolve(repoRoot, 'agent-skills', 'source-status.json')
+const localSkillRegistryPath = resolve(serviceRoot, 'skills', 'registry.json')
+const legacySkillManifestPath = resolve(repoRoot, 'agent-skills', 'source-status.json')
 const startedAt = new Date().toISOString()
 
-async function readSkillManifest() {
-  const raw = await readFile(skillManifestPath, 'utf8')
+async function readJsonFile(path: string) {
+  const raw = await readFile(path, 'utf8')
   return JSON.parse(raw) as Record<string, unknown>
+}
+
+async function readSkillRegistry() {
+  try {
+    const localRegistry = await readJsonFile(localSkillRegistryPath)
+
+    let legacyManifest: Record<string, unknown> | null = null
+    try {
+      legacyManifest = await readJsonFile(legacySkillManifestPath)
+    } catch {
+      legacyManifest = null
+    }
+
+    return {
+      activeSource: 'local-registry',
+      registryPath: 'services/hermes/skills/registry.json',
+      registry: localRegistry,
+      legacyManifest,
+    }
+  } catch {
+    const legacyManifest = await readJsonFile(legacySkillManifestPath)
+    return {
+      activeSource: 'legacy-manifest',
+      registryPath: 'agent-skills/source-status.json',
+      registry: null,
+      legacyManifest,
+    }
+  }
 }
 
 function getIntegrations(env: NodeJS.ProcessEnv) {
@@ -143,7 +172,7 @@ app.get('/api/agents', (_request, response) => {
 
 app.get('/api/skills', async (_request, response, next) => {
   try {
-    const manifest = await readSkillManifest()
+    const manifest = await readSkillRegistry()
     response.json(manifest)
   } catch (error) {
     next(error)
