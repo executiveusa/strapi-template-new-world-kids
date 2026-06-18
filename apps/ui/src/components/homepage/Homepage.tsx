@@ -1,6 +1,5 @@
 import { CinematicHero } from "./CinematicHero"
 import { ClaritySection } from "./ClaritySection"
-import { HermesSection } from "./HermesSection"
 import { MissionSection } from "./MissionSection"
 import { ProgramsSection } from "./ProgramsSection"
 import { ProofSection } from "./ProofSection"
@@ -21,7 +20,6 @@ export function Homepage() {
       <TrustSection />
       <SupportSection />
       <StudioSection />
-      <HermesSection />
     </main>
   )
 }

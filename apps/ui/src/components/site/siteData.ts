@@ -211,10 +211,10 @@ const rawTimelineEntries: TimelineEntry[] = [
     capturedAt: "2023-05-01",
     title: "Programs and operations run side by side",
     tagline: "The public work and the backend have to stay in sync.",
-    body: "Culture Shock and Proyecto Indigo Azul now move with the Hermes operations layer so grants, proof, and continuity stay visible instead of hidden.",
+    body: "Culture Shock and Proyecto Indigo Azul now run side by side, with grants, proof, and continuity kept visible and current.",
     highlights: [
       "Active youth programs",
-      "Agent operations online",
+      "Operations systems active",
       "Public proof cadence live",
     ],
     photo:
@@ -255,29 +255,17 @@ export const clarityCards = [
   {
     title: "What this is",
     body: "If a young person walks through our gate, they leave knowing how to grow food, filter water, generate power, and build shelter. Not theory. Not a workshop. Hands in the dirt, every week, for free.",
-    bullets: [
-      "Hands-on, not theory-first",
-      "Built around a real food forest in Puerto Vallarta",
-      "Designed to stay readable in one fast scan",
-    ],
+    bullets: [] as string[],
   },
   {
     title: "Who it helps",
-    body: "Young people who need practical skills, cultural grounding, and a path into useful work instead of more abstract promises.",
-    bullets: [
-      "Local children in Paso de Guayabo",
-      "Culture Shock students from Seattle",
-      "Supporters who want visible, concrete outcomes",
-    ],
+    body: "Local children in Paso de Guayabo. Culture Shock students from Seattle. People who want to support work they can actually see.",
+    bullets: [] as string[],
   },
   {
     title: "What to do next",
-    body: "Start with the timeline, then the programs, then donate or partner if the work feels like a promise worth backing.",
-    bullets: [
-      "See the six-season path before you read deeper",
-      "Review what students actually learn",
-      "Choose how to support the next milestone",
-    ],
+    body: "Look at the timeline first. Then the programs. If it feels worth backing, donate or reach out directly.",
+    bullets: [] as string[],
   },
 ] as const
 
@@ -308,7 +296,7 @@ export const programCards = [
     body: "Design, media, and AI services help fund tuition-free programming so support does not rely on one funding source alone.",
     bullets: [
       "Creative services that produce cash flow",
-      "Hermes-backed grant and operations support",
+      "Grant support and operational systems that run behind the scenes",
       "A model built for resilience, not dependence",
     ],
   },
@@ -321,7 +309,7 @@ export const trustSignals = [
   },
   {
     title: "Public proof",
-    body: "The site, the timeline, the budget framing, and the Hermes status feed all point back to one rule: show the work, then ask for trust.",
+    body: "The site, the timeline, and the budget framing all point back to one rule: show the work, then ask for trust.",
   },
   {
     title: "Funding clarity",
@@ -333,7 +321,7 @@ export const testimonialCards = [
   {
     quote:
       "Parents who were skeptical about another youth program changed their minds when they saw students engage differently here.",
-    person: "Parent feedback from Everett",
+    person: "Parent, Paso de Guayabo community",
     status: "needs-review" as VerificationStatus,
   },
   {
@@ -344,8 +332,8 @@ export const testimonialCards = [
   },
   {
     quote:
-      "Early program feedback keeps returning to the same point: the curriculum feels practical, creative, and grounded in lived experience.",
-    person: "Volunteer-era testimonial summary",
+      "The curriculum feels practical, creative, and grounded in actual experience. That's rare.",
+    person: "Program volunteer",
     status: "needs-review" as VerificationStatus,
   },
 ] as const
@@ -376,12 +364,6 @@ export const actionCards = [
     title: "Partner",
     body: "If you can offer funding, tools, curriculum, or aligned services, start with a direct conversation instead of a form maze.",
     href: siteLinks.email,
-    variant: "external",
-  },
-  {
-    title: "Track Hermes",
-    body: "See the agent layer that supports grants, reporting, content, and operational follow-through behind the public site.",
-    href: siteLinks.dashboard,
     variant: "external",
   },
 ] as const

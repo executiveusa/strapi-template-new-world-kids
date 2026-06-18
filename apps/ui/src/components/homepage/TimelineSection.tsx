@@ -15,15 +15,11 @@ export function TimelineSection() {
           <h2 className="mt-3 font-serif text-3xl text-white md:text-5xl">
             From bare soil to a living school
           </h2>
-          <p className="mt-4 text-white/70">
-            Swipe through the seasons. Each chapter should read like a piece of
-            the story, not just a status update.
-          </p>
         </div>
 
         <div className="relative mt-12">
           <div className="absolute top-12 right-0 left-0 h-px bg-[#c9a84c]/40" />
-          <div className="hide-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto pb-5 pt-2">
+          <div className="hide-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto pt-2 pb-5">
             {timelineEntries.map((entry) => {
               const statusTone =
                 entry.status === "past"

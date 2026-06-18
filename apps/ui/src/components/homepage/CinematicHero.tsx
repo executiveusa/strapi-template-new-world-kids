@@ -221,7 +221,7 @@ export function CinematicHero() {
               <MagneticButton href="/#timeline">
                 See the timeline
               </MagneticButton>
-              <MagneticButton href="/#hermes">Meet Hermes</MagneticButton>
+              <MagneticButton href="/#timeline">See the work</MagneticButton>
             </motion.div>
           </motion.div>
 
