@@ -111,6 +111,7 @@ export type TimelineEntry = {
   season: string
   year: string
   status: "past" | "current" | "future"
+  capturedAt: string
   title: string
   tagline: string
   body: string
@@ -122,12 +123,12 @@ export type TimelineEntry = {
   sourceNote: string
 }
 
-export const timelineEntries: TimelineEntry[] = [
-  // TODO: Replace with real NWKids photos from Google Drive
+const rawTimelineEntries: TimelineEntry[] = [
   {
     season: "Chapter 1",
     year: "2020-2021",
     status: "past",
+    capturedAt: "2021-04-10",
     title: "The ground gets repaired first",
     tagline: "Before a school can teach, it has to hold life.",
     body: "The first chapter is soil work, water discipline, and land repair. That is where the public story begins, because the learning site only matters if the ground can support it.",
@@ -136,16 +137,18 @@ export const timelineEntries: TimelineEntry[] = [
       "Soil restoration started",
       "First planting cycles completed",
     ],
-    photo: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400",
+    photo:
+      "https://drive.google.com/uc?export=view&id=1V28MzHM2XNFVE3bDJonYSur2eXrTw9GZ",
+    photoAlt: "Field documentation from April 10, 2021",
     sourceStatus: "confirmed",
-    imageStatus: "planned",
-    sourceNote: "Placeholder image",
+    imageStatus: "confirmed",
+    sourceNote: "Google Drive photo sorted by capture date",
   },
-  // TODO: Replace with real NWKids photos from Google Drive
   {
     season: "Chapter 2",
     year: "2021-2022",
     status: "past",
+    capturedAt: "2021-04-18",
     title: "The community starts coming back",
     tagline: "A site becomes real when people begin to return.",
     body: "Families, neighbors, and students turn the project from an idea into a weekly rhythm. The story becomes less about intention and more about repetition, trust, and presence.",
@@ -154,16 +157,18 @@ export const timelineEntries: TimelineEntry[] = [
       "Youth participation increased",
       "Water systems piloted",
     ],
-    photo: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400",
+    photo:
+      "https://drive.google.com/uc?export=view&id=1lZa3CrOKxBzf5byGkCtlTDD4zsoucR2S",
+    photoAlt: "Community documentation from April 18, 2021",
     sourceStatus: "confirmed",
-    imageStatus: "planned",
-    sourceNote: "Placeholder image",
+    imageStatus: "confirmed",
+    sourceNote: "Google Drive photo sorted by capture date",
   },
-  // TODO: Replace with real NWKids photos from Google Drive
   {
     season: "Chapter 3",
     year: "2023-2024",
     status: "past",
+    capturedAt: "2023-04-08",
     title: "The food forest takes root",
     tagline: "Biodiversity stops being a hope and becomes a pattern.",
     body: "The land matures into a dependable classroom where food grows, students return, and the project starts to prove that the model can hold its own.",
@@ -172,16 +177,18 @@ export const timelineEntries: TimelineEntry[] = [
       "Soilless agriculture active",
       "Volunteer network stabilized",
     ],
-    photo: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400",
+    photo:
+      "https://drive.google.com/uc?export=view&id=1kAUrUyzSqJTCxMXRCLqqtIkkkxiNCFI5",
+    photoAlt: "Food forest documentation from April 8, 2023",
     sourceStatus: "confirmed",
-    imageStatus: "planned",
-    sourceNote: "Placeholder image",
+    imageStatus: "confirmed",
+    sourceNote: "Google Drive photo sorted by capture date",
   },
-  // TODO: Replace with real NWKids photos from Google Drive
   {
     season: "Chapter 4",
     year: "2024-2025",
     status: "past",
+    capturedAt: "2023-04-08",
     title: "Infrastructure becomes a school",
     tagline: "The work gets organized so students can trust it.",
     body: "Learning spaces, operating systems, and public-facing proof start working together. This is the chapter where the site stops feeling improvised and starts feeling durable.",
@@ -190,16 +197,18 @@ export const timelineEntries: TimelineEntry[] = [
       "Program structure formalized",
       "Trust reporting improved",
     ],
-    photo: "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?w=400",
+    photo:
+      "https://drive.google.com/uc?export=view&id=1UsnsJIGS4o1t5apWeQhSp6_Msd48J_hW",
+    photoAlt: "Infrastructure documentation from April 8, 2023",
     sourceStatus: "confirmed",
-    imageStatus: "planned",
-    sourceNote: "Placeholder image",
+    imageStatus: "confirmed",
+    sourceNote: "Google Drive photo sorted by capture date",
   },
-  // TODO: Replace with real NWKids photos from Google Drive
   {
     season: "Chapter 5",
     year: "2025-2026",
     status: "current",
+    capturedAt: "2023-05-01",
     title: "Programs and operations run side by side",
     tagline: "The public work and the backend have to stay in sync.",
     body: "Culture Shock and Proyecto Indigo Azul now move with the Hermes operations layer so grants, proof, and continuity stay visible instead of hidden.",
@@ -209,16 +218,17 @@ export const timelineEntries: TimelineEntry[] = [
       "Public proof cadence live",
     ],
     photo:
-      "https://plus.unsplash.com/premium_photo-1673264933212-d78737f38e48?w=400",
+      "https://drive.google.com/uc?export=view&id=1PBvFhGrqwDuDoCJMXluSYoItDyKCqeld",
+    photoAlt: "Program documentation from May 1, 2023",
     sourceStatus: "confirmed",
-    imageStatus: "planned",
-    sourceNote: "Placeholder image",
+    imageStatus: "confirmed",
+    sourceNote: "Google Drive photo sorted by capture date",
   },
-  // TODO: Replace with real NWKids photos from Google Drive
   {
     season: "Chapter 6",
     year: "2027-2030",
     status: "future",
+    capturedAt: "2023-05-01",
     title: "Scale without losing the heart",
     tagline: "The model should grow without becoming abstract.",
     body: "The long-term story is land security, program replication, and a durable public model that still feels human, local, and hands-on.",
@@ -228,12 +238,18 @@ export const timelineEntries: TimelineEntry[] = [
       "Long-horizon financial resilience",
     ],
     photo:
-      "https://plus.unsplash.com/premium_photo-1711434824963-ca894373272e?w=400",
+      "https://drive.google.com/uc?export=view&id=1F5-B4z7AJyMOorKR-xtQ49iDi8MLIQgv",
+    photoAlt: "Scale planning documentation from May 1, 2023",
     sourceStatus: "planned",
-    imageStatus: "planned",
-    sourceNote: "Future target",
+    imageStatus: "confirmed",
+    sourceNote: "Google Drive photo sorted by capture date",
   },
 ] as const
+
+export const timelineEntries = [...rawTimelineEntries].sort(
+  (left, right) =>
+    new Date(left.capturedAt).getTime() - new Date(right.capturedAt).getTime()
+)
 
 export const clarityCards = [
   {
