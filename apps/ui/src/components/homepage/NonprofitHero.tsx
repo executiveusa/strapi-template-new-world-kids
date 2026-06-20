@@ -29,12 +29,18 @@ export function NonprofitHero() {
           </p>
 
           <h1 className="mx-auto max-w-5xl font-serif text-4xl leading-tight text-white md:text-6xl">
-            We build systems to address the Core 4: Food, Water, Energy,
-            Shelter.
+            Food, Water, Energy, Shelter.
           </h1>
+          <p className="font-serif text-xl text-[#c9a84c] italic md:text-2xl">
+            The core four.
+          </p>
           <p className="mx-auto max-w-3xl text-base text-white/80 md:text-xl">
-            Seattle, WA / Puerto Vallarta, Mexico. Zero tuition. Real skills. 5
-            years running.
+            New World Kids is a Seattle based non profit that addresses core
+            issues around the challenges youth face when transitioning from
+            public school out into the real world. Inner city youth and youth in
+            rural areas each face a separate set of challenges and our
+            volunteers and mentors have created inclusive and practical
+            initiatives to address both.
           </p>
 
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
