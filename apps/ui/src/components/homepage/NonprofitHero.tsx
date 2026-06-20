@@ -2,80 +2,92 @@
 
 import Link from "next/link"
 
-const galleryImages = [
-  "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400",
-  "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400",
-  "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=400",
-  "https://images.unsplash.com/photo-1482881497185-d4a9ddbe4151?w=400",
-  "https://plus.unsplash.com/premium_photo-1673264933212-d78737f38e48?w=400",
-  "https://plus.unsplash.com/premium_photo-1711434824963-ca894373272e?w=400",
-  "https://plus.unsplash.com/premium_photo-1675705721263-0bbeec261c49?w=400",
-  "https://images.unsplash.com/photo-1524799526615-766a9833dec0?w=400",
-]
+// HERO PHOTO SLOT: Replace the src below with your real photo path once uploaded.
+// Drop your photo into apps/ui/public/images/hero.jpg and update the src to "/images/hero.jpg"
+// Stock placeholder is used until then.
+const HERO_PHOTO_SRC =
+  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80"
+const HERO_PHOTO_ALT =
+  "Food forest at Proyecto Indigo Azul — replace with real field photo"
 
 export function NonprofitHero() {
-  const scrollingImages = [...galleryImages, ...galleryImages]
-
   return (
-    <section className="min-h-screen border-b border-white/10 bg-[#080f0a] px-6 py-10 md:px-10">
-      <div className="mx-auto flex min-h-[calc(100svh-80px)] max-w-6xl flex-col justify-between gap-8">
-        <div className="space-y-10 pt-10 text-center md:pt-16">
-          <p className="font-serif text-2xl leading-relaxed text-[#c9a84c] italic md:text-4xl">
-            “If you ever think you&apos;re too small to make a difference, try
-            going to sleep with a mosquito in the room.”
-          </p>
-          <p className="font-serif text-sm tracking-[0.25em] text-[#c9a84c] uppercase">
-            African Proverb
-          </p>
+    <section className="relative min-h-screen overflow-hidden bg-[#060e08]">
+      {/* Background photo with dark overlay */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src={HERO_PHOTO_SRC}
+          alt={HERO_PHOTO_ALT}
+          className="h-full w-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#060e08]/60 via-[#060e08]/40 to-[#060e08]" />
+      </div>
 
-          <h1 className="mx-auto max-w-5xl font-serif text-4xl leading-tight text-white md:text-6xl">
-            Food, Water, Energy, Shelter.
-          </h1>
-          <p className="font-serif text-xl text-[#c9a84c] italic md:text-2xl">
-            The core four.
-          </p>
-          <p className="mx-auto max-w-3xl text-base text-white/80 md:text-xl">
-            New World Kids is a Seattle based non profit that addresses core
-            issues around the challenges youth face when transitioning from
-            public school out into the real world. Inner city youth and youth in
-            rural areas each face a separate set of challenges and our
-            volunteers and mentors have created inclusive and practical
-            initiatives to address both.
-          </p>
+      {/* Content */}
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 py-24 text-center md:px-10">
+        {/* Proverb */}
+        <p className="font-serif text-base italic leading-relaxed text-[#c9a84c] md:text-xl">
+          &ldquo;If you ever think you&apos;re too small to make a difference,
+          try going to sleep with a mosquito in the room.&rdquo;
+        </p>
+        <p className="mt-2 text-xs tracking-[0.28em] text-[#c9a84c]/70 uppercase">
+          West African Proverb
+        </p>
 
-          <div className="flex flex-col justify-center gap-4 sm:flex-row">
-            <Link
-              href="/#timeline"
-              className="rounded-full bg-[#c9a84c] px-7 py-4 text-sm font-semibold text-[#080f0a]"
-            >
-              See our timeline →
-            </Link>
-            <Link
-              href="/donate"
-              className="rounded-full border border-white px-7 py-4 text-sm font-semibold text-white"
-            >
-              Support the mission →
-            </Link>
-          </div>
+        {/* Headline */}
+        <h1 className="mt-10 font-serif text-4xl font-semibold leading-tight text-white md:text-6xl lg:text-7xl">
+          Food. Water. Energy. Shelter.
+        </h1>
+        <p className="mt-4 font-serif text-2xl text-[#c9a84c] md:text-3xl">
+          The core four.
+        </p>
+
+        {/* Body */}
+        <p className="mt-8 max-w-2xl text-base leading-8 text-white/75 md:text-lg">
+          New World Kids is a Seattle-based nonprofit that addresses the core
+          challenges youth face when they transition out of public school and
+          into the real world. Our volunteers and mentors have created inclusive,
+          practical initiatives for both inner-city and rural youth.
+        </p>
+
+        {/* CTAs */}
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+          <Link
+            href="/#programs"
+            className="rounded-full bg-[#c9a84c] px-8 py-4 text-sm font-semibold text-[#060e08] transition hover:bg-[#e0bc6a]"
+          >
+            See our programs →
+          </Link>
+          <Link
+            href="/donate"
+            className="rounded-full border border-white/60 px-8 py-4 text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
+          >
+            Support the mission →
+          </Link>
         </div>
 
-        <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-          <div className="flex w-max animate-[scroll-right_20s_linear_infinite] gap-4 py-2">
-            {scrollingImages.map((src, idx) => (
-              <img
-                key={`${src}-${idx}`}
-                src={src}
-                alt="New World Kids field placeholder"
-                className="h-20 w-auto rounded-xl object-cover md:h-[120px]"
-              />
-            ))}
-          </div>
+        {/* Stat strip */}
+        <div className="mt-16 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 text-center sm:grid-cols-4">
+          {[
+            { value: "200+", label: "plant varieties on site" },
+            { value: "1.5", label: "acres in Puerto Vallarta" },
+            { value: "5+", label: "years in operation" },
+            { value: "$0", label: "cost to every student" },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <p className="font-serif text-3xl font-semibold text-[#c9a84c] md:text-4xl">
+                {stat.value}
+              </p>
+              <p className="mt-1 text-xs text-white/55">{stat.label}</p>
+            </div>
+          ))}
         </div>
+      </div>
 
-        <div className="border-t border-[#c9a84c]/40 pt-4 text-center text-xs tracking-[0.25em] text-[#c9a84c] uppercase">
-          A program of Humanitarian Social Innovations · 501(c)(3) · EIN:
-          46-4779591
-        </div>
+      {/* Scroll hint */}
+      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
+        <div className="h-6 w-px bg-[#c9a84c]/40 mx-auto" />
+        <div className="mt-1 h-1.5 w-1.5 rounded-full bg-[#c9a84c]/60 mx-auto" />
       </div>
     </section>
   )
