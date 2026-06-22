@@ -78,7 +78,7 @@ export function PublicNavbar() {
           </div>
           <Link
             href={siteLinks.donate}
-            className="inline-flex items-center gap-2 rounded-full bg-[#c9a84c] px-5 py-3 text-sm font-semibold text-[#091109] transition-transform hover:-translate-y-0.5"
+            className="rounded-full bg-[#c8400e] px-5 py-2 text-sm font-semibold text-white transition hover:bg-[#d9500f]"
           >
             Donate
           </Link>

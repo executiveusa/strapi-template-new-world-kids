@@ -1,46 +1,79 @@
 export function TrustSection() {
   return (
-    <section className="border-y-2 border-[#c9a84c] bg-[#0a1410] py-20">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="proof" className="bg-[#060e08] px-6 py-20 md:px-10">
+      <div className="mx-auto max-w-4xl">
 
-        <div className="max-w-2xl">
-          <h2 className="font-serif text-4xl text-white">Trust Layer</h2>
-          <p className="mt-4 text-base leading-8 text-white/70">
-            We build in public and your donations help keep all our resources,
-            solutions, and programs 100% free for every student who finds them.
+        {/* Header */}
+        <div className="text-center">
+          <p className="text-xs tracking-[0.24em] text-[#c9a84c] uppercase">
+            Verified & transparent
           </p>
-          <p className="mt-2 text-sm text-white/50">
-            Before you give, verify us.
+          <h2 className="mt-3 font-serif text-3xl text-white md:text-4xl">
+            We build in public.
+          </h2>
+          <p className="mt-4 text-sm leading-7 text-white/55 md:text-base">
+            Your donations help keep all our resources, solutions, and programs
+            100% free for every student who finds them.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4 rounded-2xl border border-[#c9a84c] bg-[#101b14] p-6 text-sm text-white/85 md:grid-cols-2">
-          <p>
-            <strong className="text-white">Fiscal sponsor:</strong>{" "}
-            Humanitarian Social Innovations
-          </p>
-          <p>
-            <strong className="text-white">Legal structure:</strong>{" "}
-            501(c)(3) fiscally sponsored program
-          </p>
-          <p>
-            <strong className="text-white">EIN:</strong> 46-4779591
-          </p>
-          <p>
-            <strong className="text-white">Tax status:</strong> All donations
-            are tax-deductible to the extent allowed by law.
-          </p>
-          <p>
-            <strong className="text-white">Indigo Azul address:</strong>{" "}
-            Azucena 1112, Paso de Guayabo, Puerto Vallarta MX
-          </p>
-          <p>
-            <strong className="text-white">Seattle office:</strong>{" "}
-            6725 S 116th Pl, Seattle, WA 98178 — NWKids leadership and partner
-            operations coordinated from Seattle, WA.
-          </p>
+        {/* Trust badges grid */}
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              label: "Fiscal sponsor",
+              value: "Humanitarian Social Innovations",
+              note: "Established 501(c)(3) partner",
+            },
+            {
+              label: "Legal structure",
+              value: "501(c)(3) fiscally sponsored program",
+              note: "Tax-deductible contributions",
+            },
+            {
+              label: "Tax ID (EIN)",
+              value: "46-4779591",
+              note: "Verify at IRS Tax Exempt Search",
+            },
+            {
+              label: "Indigo Azul site",
+              value: "Azucena 1112, Paso de Guayabo",
+              note: "Puerto Vallarta, MX 48373",
+            },
+            {
+              label: "Seattle office",
+              value: "6725 S 116th Pl",
+              note: "Seattle, WA 98178",
+            },
+            {
+              label: "Contact",
+              value: "info@nwkids.org",
+              note: "Response within 48 hours",
+            },
+          ].map((item) => (
+            <div
+              key={item.label}
+              className="rounded-2xl border border-white/8 bg-[#0d1610] p-5"
+            >
+              <p className="text-xs tracking-[0.18em] text-[#c9a84c]/70 uppercase">
+                {item.label}
+              </p>
+              <p className="mt-2 text-sm font-semibold text-white">{item.value}</p>
+              <p className="mt-1 text-xs text-white/40">{item.note}</p>
+            </div>
+          ))}
         </div>
 
+        {/* Proverb anchor */}
+        <div className="mt-16 rounded-3xl border border-[#c9a84c]/15 bg-[#c9a84c]/5 px-8 py-10 text-center">
+          <p className="font-serif text-lg italic leading-relaxed text-white/80 md:text-xl">
+            &ldquo;If you think you&apos;re too small to make a difference,
+            try going to sleep with a mosquito in the room.&rdquo;
+          </p>
+          <p className="mt-3 text-xs tracking-[0.22em] text-[#c9a84c]/70 uppercase">
+            West African Proverb · A small reminder to keep showing up.
+          </p>
+        </div>
       </div>
     </section>
   )
