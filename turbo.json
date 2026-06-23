@@ -52,7 +52,8 @@
     "BASIC_AUTH_PASSWORD",
     "NVIDIA_NIM_BASE_URL",
     "NVIDIA_NIM_API_KEY",
-    "NVIDIA_NIM_MODEL"
+    "NVIDIA_NIM_MODEL",
+    "OPS_ACCESS_TOKEN"
   ],
   "tasks": {
     "build": {

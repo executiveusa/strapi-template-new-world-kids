@@ -134,7 +134,7 @@ export function HermesVoiceChat() {
   }
 
   return (
-    <div className="flex h-[560px] flex-col">
+    <div className="flex h-[480px] flex-col">
       {/* Messages */}
       <div className="flex-1 space-y-3 overflow-y-auto p-5">
         {messages.map((msg) => (
@@ -146,7 +146,7 @@ export function HermesVoiceChat() {
               className={[
                 "max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-7",
                 msg.role === "user"
-                  ? "bg-[#c9a84c] text-[#060e08]"
+                  ? "bg-[#1a3a2a] text-[#c9a84c]"
                   : "border border-white/8 bg-white/5 text-white/80",
               ].join(" ")}
             >
