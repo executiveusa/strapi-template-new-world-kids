@@ -1,6 +1,6 @@
 import { cookies } from "next/headers"
 
-import { OpsSidebar } from "../../../components/ops/OpsSidebar"
+import { OpsSidebar } from "@/components/ops/OpsSidebar"
 
 export default async function PlatformLayout({
   children,
