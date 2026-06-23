@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useRef, useEffect } from "react"
 import { Mic, MicOff, Send, Loader2 } from "lucide-react"
+import { useState, useRef, useEffect } from "react"
 
 type Message = {
   role: "user" | "assistant"
@@ -10,7 +10,7 @@ type Message = {
 }
 
 export function HermesVoiceChat() {
-  const [messages, setMessages] = useState<Message[]>([
+  const [messages, setMessages] = useState<Message[]>(() => [
     {
       role: "assistant",
       content:
@@ -22,7 +22,8 @@ export function HermesVoiceChat() {
   const [loading, setLoading] = useState(false)
   const [listening, setListening] = useState(false)
   const bottomRef = useRef<HTMLDivElement>(null)
-  const recognitionRef = useRef<SpeechRecognition | null>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const recognitionRef = useRef<any>(null)
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -33,32 +34,43 @@ export function HermesVoiceChat() {
     if (listening) {
       recognitionRef.current?.stop()
       setListening(false)
+
       return
     }
 
     const SpeechRecognition =
-      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).SpeechRecognition ||
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      (window as any).webkitSpeechRecognition
 
     if (!SpeechRecognition) {
       alert("Voice input not supported in this browser. Use Chrome or Edge.")
+
       return
     }
 
     const recognition = new SpeechRecognition()
+
     recognition.lang = "en-US"
+
     recognition.continuous = false
+
     recognition.interimResults = false
 
-    recognition.onresult = (event: SpeechRecognitionEvent) => {
-      const transcript = event.results[0][0].transcript
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    recognition.onresult = (event: any) => {
+      const transcript = event.results[0][0].transcript as string
       setInput(transcript)
       setListening(false)
     }
 
-    recognition.onerror = () => setListening(false)
-    recognition.onend = () => setListening(false)
+    recognition.addEventListener("error", () => setListening(false))
+
+    recognition.addEventListener("end", () => setListening(false))
 
     recognitionRef.current = recognition
+
     recognition.start()
     setListening(true)
   }
@@ -66,14 +78,16 @@ export function HermesVoiceChat() {
   async function send(text: string) {
     if (!text.trim() || loading) return
 
-    const userMsg: Message = { role: "user", content: text.trim(), ts: Date.now() }
+    const userMsg: Message = {
+      role: "user",
+      content: text.trim(),
+      ts: Date.now(),
+    }
     setMessages((prev) => [...prev, userMsg])
     setInput("")
     setLoading(true)
 
     try {
-      // Calls the existing Anthropic API route used by the blog chat
-      // You can swap this to your own /api/hermes/chat route
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -91,7 +105,10 @@ export function HermesVoiceChat() {
         }),
       })
 
-      const data = await res.json()
+      const data = (await res.json()) as {
+        content?: { text: string }[]
+        message?: string
+      }
       const content =
         data?.content?.[0]?.text ??
         data?.message ??
@@ -106,7 +123,8 @@ export function HermesVoiceChat() {
         ...prev,
         {
           role: "assistant",
-          content: "Connection error. Check ANTHROPIC_API_KEY and /api/chat route.",
+          content:
+            "Connection error. Check ANTHROPIC_API_KEY and /api/chat route.",
           ts: Date.now(),
         },
       ])
@@ -129,7 +147,7 @@ export function HermesVoiceChat() {
                 "max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-7",
                 msg.role === "user"
                   ? "bg-[#c9a84c] text-[#060e08]"
-                  : "bg-white/5 text-white/80 border border-white/8",
+                  : "border border-white/8 bg-white/5 text-white/80",
               ].join(" ")}
             >
               {msg.content}
@@ -159,20 +177,26 @@ export function HermesVoiceChat() {
             ].join(" ")}
             title={listening ? "Stop listening" : "Start voice input"}
           >
-            {listening ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+            {listening ? (
+              <MicOff className="h-4 w-4" />
+            ) : (
+              <Mic className="h-4 w-4" />
+            )}
           </button>
 
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && send(input)}
+            onKeyDown={(e) =>
+              e.key === "Enter" && !e.shiftKey && void send(input)
+            }
             placeholder={listening ? "Listening…" : "Ask Hermes anything…"}
             className="flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/25 focus:border-[#c9a84c]/40 focus:outline-none"
           />
 
           <button
-            onClick={() => send(input)}
+            onClick={() => void send(input)}
             disabled={!input.trim() || loading}
             className="shrink-0 rounded-full bg-[#c9a84c] p-2.5 text-[#060e08] transition hover:bg-[#e0bc6a] disabled:opacity-40"
           >
@@ -182,7 +206,7 @@ export function HermesVoiceChat() {
 
         {listening && (
           <p className="mt-2 text-center text-xs text-[#c8400e]">
-            🎙 Listening — speak now
+            Listening — speak now
           </p>
         )}
       </div>
