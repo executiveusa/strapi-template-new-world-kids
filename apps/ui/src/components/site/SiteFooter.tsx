@@ -9,6 +9,8 @@ import {
   supportRails,
   trustDocuments,
   workWithUsOffers,
+  type SocialLink,
+  type TrustDocument,
 } from "@/content/site"
 import { Link } from "@/lib/navigation"
 
@@ -113,7 +115,7 @@ export default function SiteFooter({ locale }: { readonly locale: Locale }) {
               {locale === "es" ? "Redes" : "Social"}
             </div>
             <div className="space-y-3 text-sm text-[#E8DEC7]/68">
-              {socialLinks.map((link) => (
+              {socialLinks.map((link: SocialLink) => (
                 <a
                   key={link.label}
                   href={link.href}
@@ -135,7 +137,7 @@ export default function SiteFooter({ locale }: { readonly locale: Locale }) {
               {locale === "es" ? "Documentos publicos" : "Public Documents"}
             </div>
             <div className="space-y-3">
-              {trustDocuments.slice(0, 3).map((doc) => (
+              {trustDocuments.slice(0, 3).map((doc: TrustDocument) => (
                 <a
                   key={doc.slug}
                   href={doc.href}
@@ -161,7 +163,8 @@ export default function SiteFooter({ locale }: { readonly locale: Locale }) {
                 : "Services Funding the Mission"}
             </div>
             <div className="space-y-3 text-sm text-[#E8DEC7]/62">
-              {workWithUsOffers.slice(0, 2).map((offer) => (
+              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+              {(workWithUsOffers as any[]).slice(0, 2).map((offer: any) => (
                 <div key={offer.title.en}>
                   <div className="font-medium text-white">
                     {copyForLocale(locale, offer.title)}

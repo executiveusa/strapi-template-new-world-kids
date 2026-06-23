@@ -1,130 +1,128 @@
 import Link from "next/link"
-import { cookies } from "next/headers"
 
-import { PageShell } from "../../../../components/PageShell"
+import { HermesVoiceChat } from "../../../../components/homepage/HermesVoiceChat"
+import { ActivePrograms } from "../../../../components/ops/ActivePrograms"
+import { AgentLedger } from "../../../../components/ops/AgentLedger"
+import { OpsMetricStrip } from "../../../../components/ops/OpsMetricStrip"
+import { ProgramHealth } from "../../../../components/ops/ProgramHealth"
 import { readAgentActions } from "../../../../lib/agent-actions"
 
 export const dynamic = "force-dynamic"
 
-async function getOpsAccessState() {
-  const accessToken = process.env.OPS_ACCESS_TOKEN
-
-  if (!accessToken) {
-    return {
-      authorized: false,
-      reason: "missing-secret" as const,
-    }
-  }
-
-  const sessionCookie = (await cookies()).get("nwkids_ops")?.value
-
-  if (sessionCookie !== accessToken) {
-    return {
-      authorized: false,
-      reason: "missing-session" as const,
-    }
-  }
-
-  return {
-    authorized: true,
-    reason: null,
-  }
-}
-
 function formatTime(value: string | null | undefined) {
-  if (!value) {
-    return "No heartbeat logged"
-  }
+  if (!value) return "No heartbeat"
+  const diff = Date.now() - new Date(value).getTime()
+  const mins = Math.floor(diff / 60_000)
+  if (mins < 60) return `${mins}m ago`
+  const hours = Math.floor(mins / 60)
+  if (hours < 24) return `${hours}h ago`
 
-  return new Intl.DateTimeFormat("en", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(new Date(value))
+  return `${Math.floor(hours / 24)}d ago`
 }
 
 export default async function OpsPage() {
-  const auth = await getOpsAccessState()
-  const actions = auth.authorized
-    ? await readAgentActions("private", 20)
-    : { configured: false, missing: [], actions: [] }
+  const actions = await readAgentActions("private", 50)
+
   const lastHeartbeat = actions.actions.find(
-    (action) => action.action_type === "heartbeat"
+    (a) => a.action_type === "heartbeat"
   )
+  const metrics = {
+    heartbeatAt: lastHeartbeat?.created_at ?? null,
+    missions: actions.actions.filter((a) => a.action_type === "mission_run")
+      .length,
+    grants: actions.actions.filter((a) => a.action_type === "grant_tracked")
+      .length,
+    clips: actions.actions.filter((a) => a.action_type === "clip_created")
+      .length,
+    reports: actions.actions.filter((a) => a.action_type === "report").length,
+  }
 
   return (
-    <PageShell
-      eyebrow="Private operations"
-      title="Hermes mission control"
-      summary="A private operator surface for heartbeat state, mission runs, and the latest ledger actions."
-    >
-      {!auth.authorized ? (
-        <section className="rounded border border-warm/40 bg-warm/10 p-6">
-          <p className="font-mono text-sm uppercase tracking-[0.18em] text-warm">
-            Auth gate active
+    <div className="min-h-screen space-y-4 bg-[#060e08] p-5">
+      {/* Topbar */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="font-serif text-2xl text-white">Mission control</h1>
+          <p className="mt-0.5 text-xs text-white/40">
+            Hermes ·{" "}
+            {metrics.heartbeatAt
+              ? `last heartbeat ${formatTime(metrics.heartbeatAt)}`
+              : "no heartbeat logged"}
           </p>
-          <h2 className="mt-3 text-2xl font-semibold">Private data is withheld.</h2>
-          <p className="mt-3 max-w-2xl text-muted">
-            {auth.reason === "missing-secret"
-              ? "BETTER_AUTH_SECRET is not configured, so the ops page cannot verify a better-auth session."
-              : "No better-auth session cookie was present for this request."}
-          </p>
-        </section>
-      ) : (
-        <div className="grid gap-5 lg:grid-cols-[22rem_1fr]">
-          <aside className="rounded border border-border bg-panel p-5">
-            <p className="font-mono text-sm text-accent">Heartbeat</p>
-            <p className="mt-4 text-3xl font-semibold">
-              {lastHeartbeat ? "Recorded" : "Waiting"}
-            </p>
-            <p className="mt-2 text-sm text-muted">
-              Last: {formatTime(lastHeartbeat?.created_at)}
-            </p>
-            {actions.error ? (
-              <p className="mt-4 rounded border border-warm/40 p-3 text-sm text-warm">
-                {actions.error}
-              </p>
-            ) : null}
-            <Link
-              href="/en/mission"
-              className="mt-6 inline-flex rounded bg-accent px-4 py-2 text-sm font-semibold text-background"
-            >
-              Open mission dashboard
-            </Link>
-          </aside>
-          <section className="rounded border border-border bg-panel">
-            <div className="border-b border-border p-5">
-              <h2 className="text-xl font-semibold">Latest agent actions</h2>
-              <p className="mt-1 text-sm text-muted">
-                Last 20 rows from Supabase `agent_actions`.
-              </p>
-            </div>
-            <div className="divide-y divide-border">
-              {actions.actions.length === 0 ? (
-                <p className="p-5 text-muted">
-                  No actions returned. Check Supabase service credentials and RLS.
-                </p>
-              ) : (
-                actions.actions.map((action) => (
-                  <article key={action.id} className="grid gap-2 p-5 md:grid-cols-[10rem_1fr_8rem]">
-                    <p className="font-mono text-xs text-muted">
-                      {formatTime(action.created_at)}
-                    </p>
-                    <div>
-                      <h3 className="font-semibold">{action.description}</h3>
-                      <p className="mt-1 text-sm text-muted">
-                        {action.agent_id ?? "unknown"} / {action.action_type}
-                      </p>
-                    </div>
-                    <p className="font-mono text-xs uppercase text-accent">
-                      {action.status ?? "unknown"}
-                    </p>
-                  </article>
-                ))
-              )}
-            </div>
-          </section>
         </div>
-      )}
-    </PageShell>
+        <div className="flex items-center gap-2">
+          <div
+            className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs ${
+              metrics.heartbeatAt
+                ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-400"
+                : "border-amber-500/20 bg-amber-500/10 text-amber-400"
+            }`}
+          >
+            <span
+              className={`h-1.5 w-1.5 rounded-full ${
+                metrics.heartbeatAt ? "bg-emerald-400" : "bg-amber-400"
+              }`}
+            />
+            {metrics.heartbeatAt ? "Agent active" : "Waiting for heartbeat"}
+          </div>
+          <Link
+            href="https://pauli-hermes-agent-web.vercel.app"
+            target="_blank"
+            className="rounded-lg bg-[#c9a84c] px-3 py-1.5 text-xs font-semibold text-[#060e08] transition hover:bg-[#e0bc6a]"
+          >
+            Full dashboard ↗
+          </Link>
+        </div>
+      </div>
+
+      {/* Metric strip */}
+      <OpsMetricStrip metrics={metrics} />
+
+      {/* Main 2-col grid */}
+      <div className="grid gap-4 lg:grid-cols-2">
+        {/* Hermes voice/text chat */}
+        <div className="flex flex-col overflow-hidden rounded-xl border border-white/8 bg-[#0d1610]">
+          <div className="flex items-center justify-between border-b border-white/8 px-4 py-3">
+            <div>
+              <p className="text-xs tracking-widest text-white/30 uppercase">
+                Hermes
+              </p>
+              <h2 className="text-sm font-medium text-white">
+                Voice interface
+              </h2>
+            </div>
+            <span className="rounded-full bg-[#1a3a2a] px-2 py-0.5 text-[10px] text-[#c9a84c]">
+              Private
+            </span>
+          </div>
+          <HermesVoiceChat />
+        </div>
+
+        {/* Right column */}
+        <div className="flex flex-col gap-4">
+          <ProgramHealth />
+          <ActivePrograms />
+        </div>
+      </div>
+
+      {/* Agent action ledger */}
+      <AgentLedger actions={actions.actions} error={actions.error} />
+
+      {/* Quick links */}
+      <div className="flex flex-wrap gap-2 pt-2">
+        {[
+          { label: "Public mission ledger", href: "/mission" },
+          { label: "Hermes hardware", href: "/hermes-usb" },
+        ].map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="rounded-full border border-white/10 px-4 py-1.5 text-xs text-white/50 transition hover:border-white/25 hover:text-white/80"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </div>
+    </div>
   )
 }

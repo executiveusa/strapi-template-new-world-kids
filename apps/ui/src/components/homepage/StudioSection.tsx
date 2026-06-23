@@ -1,113 +1,80 @@
-import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 
 const services = [
   "AI agents that understand your mission",
-  "Automated social media posting and content creation",
-  "Full-stack website design",
-  "AI operating system designed for nonprofits, trained on your specific data",
+  "Automated social media and content creation",
   "Grant support automation",
-  "Compliance reporting and public accountability systems",
-  "Campaign storytelling and bilingual publishing",
-  "Transparency infrastructure and lightweight mission dashboards",
+  "Mission dashboards and transparency infrastructure",
+  "Full-stack website design",
+  "Compliance reporting systems",
 ]
 
 export function StudioSection() {
   return (
-    <section className="border-t border-white/8 bg-[#09120d] py-28">
-      <div className="mx-auto max-w-7xl px-6 md:px-10">
+    <section id="studio" className="bg-[#060e08] border-t border-white/5 px-6 py-20 md:px-10">
+      <div className="mx-auto max-w-5xl">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1fr]">
 
-        {/* Header row */}
-        <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
-
-          {/* Left: mission context */}
+          {/* Left — pitch */}
           <div>
-            <div className="mb-4 font-mono text-xs tracking-[0.2em] text-[#c9a84c] uppercase">
+            <p className="text-xs tracking-[0.24em] text-[#c9a84c] uppercase">
               Mission-Funded Studio
-            </div>
-            <h2 className="font-serif text-4xl font-bold tracking-tight text-white sm:text-5xl">
-              We are not built to beg. We are built to produce.
+            </p>
+            <h2 className="mt-4 font-serif text-3xl text-white md:text-4xl">
+              We are not built to beg.{" "}
+              <span className="text-[#c9a84c]">We are built to produce.</span>
             </h2>
-            <p className="mt-6 text-base leading-8 text-white/65">
-              Starting and running a nonprofit can be overwhelming — especially
-              as a solo founder or small team. Compliance, research, grant
-              writing, fundraising, website design, social media. It&apos;s an
-              uphill battle that crushes many great ideas before they get a
-              chance to do any good. We know the feeling. We&apos;ve been
-              through all of it.
+            <p className="mt-5 text-sm leading-8 text-white/60 md:text-base">
+              Starting a nonprofit is overwhelming. Compliance, grant writing,
+              fundraising, website design, social media — it crushes great
+              ideas before they do any good. We know. We&apos;ve been through
+              all of it.
             </p>
-            <p className="mt-4 text-base leading-8 text-white/65">
-              Over the last two years New World Kids has built an in-house
-              development team and collaborated with local tech companies right
-              here in Washington State. Support and technology from Microsoft,
-              the Allen Institute, the Gates Foundation, and local software
-              engineers has allowed us to build AI-powered systems that drive
-              our mission and help solve real-world problems.
+            <p className="mt-4 text-sm leading-8 text-white/60 md:text-base">
+              Over two years we built AI systems that drive our mission.
+              We now offer them to other nonprofits at a discounted rate —
+              because we understand your challenges. We live them.
             </p>
-            <p className="mt-4 text-base leading-8 text-white/65">
-              We see the change these tools have made for us — and we are ready
-              to offer them to other nonprofits and social purpose companies at
-              a discounted rate. We understand your challenges because we live
-              them. We understand what matters to you because the same things
-              matter to us.
-            </p>
-            <div className="mt-8">
+            <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/work-with-us"
-                className="inline-flex items-center gap-2 text-sm font-semibold tracking-[0.18em] text-[#c9a84c] uppercase transition hover:text-[#e0bc6a]"
+                className="rounded-full bg-[#c9a84c] px-6 py-3 text-sm font-semibold text-[#060e08] transition hover:bg-[#e0bc6a]"
               >
-                Work with the studio
-                <ArrowUpRight className="h-4 w-4" />
+                Work with the studio →
+              </Link>
+              <Link
+                href="/work-with-us"
+                className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white/70 transition hover:border-white/40 hover:text-white"
+              >
+                See pricing
               </Link>
             </div>
           </div>
 
-          {/* Right: services list */}
-          <div className="rounded-[28px] border border-white/10 bg-white/[0.03] p-8">
-            <h3 className="font-serif text-2xl font-semibold text-white">
+          {/* Right — services list */}
+          <div className="rounded-3xl border border-white/8 bg-[#0d1610] p-7">
+            <p className="text-xs tracking-[0.22em] text-[#c9a84c]/70 uppercase">
               What we offer
-            </h3>
-            <p className="mt-3 text-sm leading-7 text-white/60">
-              Available to nonprofits and social purpose companies at a
-              discounted rate to support our mission.
             </p>
-            <ul className="mt-6 space-y-4">
-              {services.map((service) => (
-                <li
-                  key={service}
-                  className="flex items-start gap-3 text-sm leading-6 text-white/70"
-                >
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#c9a84c]" />
-                  <span>{service}</span>
+            <p className="mt-2 text-xs text-white/35">
+              Available to nonprofits and social purpose companies at a discounted rate.
+            </p>
+            <ul className="mt-6 space-y-3">
+              {services.map((s) => (
+                <li key={s} className="flex items-center gap-3 text-sm text-white/70">
+                  <span className="h-1 w-1 shrink-0 rounded-full bg-[#c9a84c]" />
+                  {s}
                 </li>
               ))}
             </ul>
-            <div className="mt-8 border-t border-white/10 pt-6 text-sm leading-7 text-white/50">
-              Our end goal is to bring the fun back into being of service and
-              empower more nonprofits to thrive and fulfill their missions. We
-              meet you where you are and work together until you don&apos;t need
-              us anymore.
-            </div>
+            <Link
+              href="/work-with-us"
+              className="mt-8 block rounded-2xl border border-[#c9a84c]/20 bg-[#c9a84c]/5 p-4 text-center text-sm font-semibold text-[#c9a84c] transition hover:bg-[#c9a84c]/12"
+            >
+              Start a conversation →
+            </Link>
           </div>
-
         </div>
-
-        {/* Bottom CTA */}
-        <div className="mt-14 rounded-[28px] border border-[#c9a84c]/20 bg-[#0d1a10] p-8 text-center">
-          <p className="font-serif text-2xl text-white">
-            Looking for a technology partner that understands?
-          </p>
-          <p className="mt-3 text-sm text-white/60">
-            We are here for you. Let&apos;s explore what&apos;s possible together.
-          </p>
-          <Link
-            href="/work-with-us"
-            className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#c9a84c] px-8 py-4 text-sm font-semibold text-[#060e08] transition hover:bg-[#e0bc6a]"
-          >
-            Start a conversation →
-          </Link>
-        </div>
-
       </div>
     </section>
   )

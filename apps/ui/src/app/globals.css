@@ -3,12 +3,44 @@
 @theme {
   --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
-  --color-background: #09110f;
+  --font-serif: "Georgia", "Times New Roman", ui-serif, serif;
+
+  /* === SEED & SOIL COLOR SYSTEM === */
+  /* Forest Night — primary dark bg, nav, footer */
+  --color-forest: #1a3a2a;
+  --color-forest-light: #243f2f;
+
+  /* Indigo Coral — CTA ONLY (donate buttons) */
+  --color-coral: #c8400e;
+  --color-coral-hover: #d9500f;
+
+  /* Guayabo Green — accent, links */
+  --color-guayabo: #4a8c5c;
+  --color-guayabo-light: #5aab72;
+
+  /* Harvest Gold — numbers, badges, current-season highlights */
+  --color-gold: #c9a84c;
+  --color-gold-light: #e0bc6a;
+  --color-gold-glow: rgba(201, 168, 76, 0.15);
+
+  /* Adobe Cream — page background, cards */
+  --color-cream: #f5f0e8;
+  --color-cream-dark: #ede8df;
+
+  /* Volcanic Black — body text, headings */
+  --color-volcanic: #2c2c2a;
+
+  /* Dark section surfaces */
+  --color-background: #060e08;
+  --color-panel: #0d1610;
+  --color-panel-light: #111c18;
+  --color-border: #1e3327;
+  --color-border-light: rgba(255, 255, 255, 0.1);
+
+  /* Legacy aliases (keep for ops/mission pages that use them) */
   --color-foreground: #f7f2e8;
   --color-muted: #a8b7ad;
-  --color-panel: #111c18;
-  --color-border: #274238;
-  --color-accent: #69d391;
+  --color-accent: #c9a84c;
   --color-warm: #e5b75f;
   --color-water: #67c7d8;
 }
@@ -21,9 +53,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background:
-    linear-gradient(180deg, rgba(105, 211, 145, 0.08), transparent 38rem),
-    var(--color-background);
+  background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
 }
@@ -36,4 +66,27 @@ a {
 button,
 a {
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Hide scrollbar but keep functionality */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Timeline progress dot pulse */
+@keyframes pulse-gold {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(201, 168, 76, 0);
+  }
+}
+.pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
 }

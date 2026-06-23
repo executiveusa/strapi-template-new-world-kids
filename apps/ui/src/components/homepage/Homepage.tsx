@@ -1,24 +1,23 @@
 import { NonprofitHero } from "./NonprofitHero"
+import { TimelineSection } from "./TimelineSection"
 import { ProgramsSection } from "./ProgramsSection"
 import { TrustSection } from "./TrustSection"
 import { SupportSection } from "./SupportSection"
 import { StudioSection } from "./StudioSection"
 
-// RENDER ORDER (per V2 layout spec):
-// 1. Full-page hero with photo slot + stats
-// 2. Programs — Culture Shock + Indigo Azul (your rewritten copy)
-// 3. Trust layer — fiscal sponsor, EIN, addresses
-// 4. CTA — Donate / Volunteer / Follow
-// 5. Studio — standalone section for AI services
-//
-// REMOVED FROM PUBLIC PAGE: ClaritySection, TimelineSection,
-// MissionSection, ProofSection, HermesSection
-// (Timeline and Mission still available at /ops or as standalone pages)
+// RENDER ORDER (V3 — per full audit):
+// 1. Hero  — problem-first headline + donate CTA + stats
+// 2. Timeline — RESTORED — horizontal scroll, 6 seasons, click-to-expand
+// 3. Programs — Culture Shock + Indigo Azul
+// 4. Trust — fiscal sponsor, EIN, addresses
+// 5. CTA — Give / Volunteer / Follow
+// 6. Studio — separate B2N pitch section (teaser only here)
 
 export function Homepage() {
   return (
     <main>
       <NonprofitHero />
+      <TimelineSection />
       <ProgramsSection />
       <TrustSection />
       <SupportSection />
