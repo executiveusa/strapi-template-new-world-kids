@@ -35,7 +35,7 @@
   --color-panel: #0d1610;
   --color-panel-light: #111c18;
   --color-border: #1e3327;
-  --color-border-light: rgba(255, 255, 255, 0.10);
+  --color-border-light: rgba(255, 255, 255, 0.1);
 
   /* Legacy aliases (keep for ops/mission pages that use them) */
   --color-foreground: #f7f2e8;
@@ -69,12 +69,24 @@ a {
 }
 
 /* Hide scrollbar but keep functionality */
-.hide-scrollbar::-webkit-scrollbar { display: none; }
-.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 /* Timeline progress dot pulse */
 @keyframes pulse-gold {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(201, 168, 76, 0); }
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(201, 168, 76, 0);
+  }
 }
-.pulse-gold { animation: pulse-gold 2s ease-in-out infinite; }
+.pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
