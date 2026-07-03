@@ -42,9 +42,11 @@ Primary CTA group. Each tier links to /donate.
 ## Secondary CTAs
 
 ### Volunteer
+
 - Links to /work-with-us
 
 ### Follow
+
 - Instagram
 - Facebook
 - LinkedIn
