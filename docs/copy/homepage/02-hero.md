@@ -1,61 +1,55 @@
 # Section 02. Hero
 
-Source: `apps/ui/src/components/homepage/CinematicHero.tsx`
+Source of truth for: `apps/ui/src/components/homepage/NonprofitHero.tsx`.
 
-## Main headline
+## Eyebrow
 
-- Food, Water, Energy, Shelter.
-- The core four.
+Proyecto Indigo Azul food forest
 
-## Intro copy
+## Proverb (above the headline)
 
-- New World Kids is building two public projects: the Culture Shock program for young people learning by doing, and Proyecto Indigo Azul, the food forest in Paso de Guayabo, Mexico.
-- The work is hands-on, tuition-free for accepted students, and designed to leave behind usable skills instead of empty inspiration.
+"If you ever think you're too small to make a difference, try going to sleep with a mosquito in the room."
+— West African Proverb
 
-## Promise
+## Headline (3 lines, large serif)
 
-- If a young person shows up here, they should leave more capable, more employable, and more able to care for themselves, their community, and the land around them.
+Most kids graduate
+without ever learning
+the most important life skills.
 
-## Hero buttons
+## Sub-headline (gold)
 
-- Support the mission
-- See the timeline
-- Meet Hermes
+We fix that. Free. No exceptions.
 
-## Hero feature cards
+## Body
 
-### Card 1
+New World Kids is a Seattle-based nonprofit. We create projects and programs that teach inner-city and rural youth life skills. We meet them where they are and then inspire them with the possibilities and skills to go beyond.
 
-- Eyebrow: What visitors should understand fast
-- Title: This is a public school-in-progress, not a pitch deck.
-- Body: New World Kids shows two living projects: Culture Shock for young people learning by doing, and Proyecto Indigo Azul, the food forest in Paso de Guayabo. Everything on the page should help people understand those two things quickly.
-- Bullets:
-  - Real land, real curriculum, real local relationships
-  - Practical work first, abstractions second
-  - Public-facing copy designed to reduce guesswork
+## Program tag
 
-### Card 2
+INDIGO AZUL PROGRAM
 
-- Eyebrow: Culture Shock program
-- Title: Young people learn by crossing boundaries, not just classrooms.
-- Body: The Culture Shock program brings students into a real working environment where they practice the core four, build confidence, and learn how to contribute across language, culture, and daily responsibility.
+## Program blurb (under the tag)
 
-### Card 3
+The ability and knowledge of how to grow your food is a priceless yet undervalued skill. Indigo Azul project is a 1.5 acre food forest demonstration site started in 2020. Based in rural hills of Puerto Vallarta Mexico we have created sustainable and thoughtful solutions for what we call the core four: Food, Water, Energy, and Shelter. We are now ready to create certified training courses for youth interested in our programs.
 
-- Eyebrow: Proyecto Indigo Azul
-- Title: The food forest is the campus, the classroom, and the proof.
-- Body: In Paso de Guayabo, the land itself teaches food, water, energy, and shelter. The page should keep coming back to that place so visitors understand what is real, what is growing, and what still needs support.
+## CTAs
 
-## Stats
+- Primary (coral, anchors to #donate): Plant a seed — give $25 →
+- Secondary (outlined, anchors to #timeline): See 5 years of work →
 
-- 200+ plant varieties growing on site
-- 15.5 acres in Paso de Guayabo, Puerto Vallarta
-- 5+ years of continuous operation
-- $0 cost to every student, always
-- 0-20 local children engaged weekly
+## Stat strip (4 stats)
 
-## Fact strip
+- 200+ — plant varieties growing
+- 1.5 — acres in Puerto Vallarta
+- 5+ — years of operation
+- $0 — cost to every student
 
-- What is live now: Public homepage, donate flow, Hermes status
-- What needs proof: Photos, attributed testimonials, exact seasonal metrics
-- What this page should do: Explain the mission fast, then move people to timeline or donate
+## Trust microline (small caps, gold, bottom of hero viewport)
+
+A program of Humanitarian Social Innovations · 501(c)(3) · EIN: 46-4779591
+
+## Notes
+
+- The old headline ("Food, Water, Energy, Shelter. The core four.") is replaced — it named a category, not a problem. New headline names the problem first ("Most kids graduate without ever learning the most important life skills"), then the solution follows ("We fix that. Free. No exceptions."). This is the Krug "billboard at 60mph" test — a scanner gets the whole story in two seconds.
+- The old scaffolding cards ("What visitors should understand fast" / fact strips) are removed entirely. They were editorial scaffolding, not donor copy.

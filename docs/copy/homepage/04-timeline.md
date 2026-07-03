@@ -1,55 +1,88 @@
 # Section 04. Timeline
 
-Source: `apps/ui/src/components/homepage/TimelineSection.tsx`
+Source: `apps/ui/src/components/homepage/TimelineSection.tsx` + `siteData.timelineEntries`.
+
+## Eyebrow
+
+- A story in chapters
 
 ## Heading
 
-- From bare soil to a living school
+- From bare soil to a living ecosystem
 
 ## Subheading
 
-- Swipe through the seasons. Each chapter should read like a piece of the story, not just a status update.
+- 6 seasons of documented, continuous work. Every chapter is real.
 
-## Season cards
+## Chapter cards (rendered in this order)
 
-### Chapter 1
+### Chapter 1 · 2020-2021
 
-- 2020-2021
-- The ground gets repaired first
-- Before a school can teach, it has to hold life.
-- The first chapter is soil work, water discipline, and land repair. That is where the public story begins, because the learning site only matters if the ground can support it.
+- Title: The soil gets repaired first
+- Tagline: Before a sc can teach, it has to hold life.
+- Photo alt: Field documentation from April 10, 2021
+- Highlights:
+  - 1.5 acres secured
+  - Soil restoration started
+  - First planting cycles completed
+- Status: past (✓ Complete)
 
-### Chapter 2
+### Chapter 2 · 2021-2022
 
-- 2021-2022
-- The community starts coming back
-- A site becomes real when people begin to return.
-- Families, neighbors, and students turn the project from an idea into a weekly rhythm. The story becomes less about intention and more about repetition, trust, and presence.
+- Title: The youth and community shows interest
+- Tagline: The idea became real when people began to return.
+- Photo alt: Community documentation from April 18, 2021
+- Highlights:
+  - Weekly planting sessions
+  - Youth participation increased
+  - Water systems piloted
+- Status: past (✓ Complete)
 
-### Chapter 3
+### Chapter 3 · 2023-2024
 
-- 2023-2024
-- The food forest takes root
-- Biodiversity stops being a hope and becomes a pattern.
-- The land matures into a dependable classroom where food grows, students return, and the project starts to prove that the model can hold its own.
+- Title: The food forest takes root
+- Tagline: Biodiversity stops being a hope and becomes a pattern.
+- Photo alt: Food forest documentation from April 8, 2023
+- Highlights:
+  - 200+ plant varieties
+  - Soilless agriculture put into practice
+  - Volunteer network engaged
+- Status: past (✓ Complete)
 
-### Chapter 4
+### Chapter 4 · 2024-2025
 
-- 2024-2025
-- Infrastructure becomes a school
-- The work gets organized so students can trust it.
-- Learning spaces, operating systems, and public-facing proof start working together. This is the chapter where the site stops feeling improvised and starts feeling durable.
+- Title: Infrastructure begins for the school
+- Tagline: Trees and bamboo begin to reach harvest stage
+- Photo alt: Infrastructure documentation from April 8, 2023
+- Highlights:
+  - Learning spaces
+  - Program structure formalized
+  - Trust reporting improved
+- Status: past (✓ Complete)
 
-### Chapter 5
+### Chapter 5 · 2025-2026
 
-- 2025-2026
-- Programs and operations run side by side
-- The public work and the backend have to stay in sync.
-- Culture Shock and Proyecto Indigo Azul now move with the Hermes operations layer so grants, proof, and continuity stay visible instead of hidden.
+- Title: Programs and operations concepts take shape
+- Tagline: The public work and the backend have to stay in sync.
+- Photo alt: Program documentation from May 1, 2023
+- Highlights:
+  - Active youth programs
+  - Operations systems active
+  - Public proof cadence live
+- Status: current (● Active now) — pulsing gold dot
 
-### Chapter 6
+### Chapter 6 · 2027-2030
 
-- 2027-2030
-- Scale without losing the heart
-- The model should grow without becoming abstract.
-- The long-term story is land security, program replication, and a durable public model that still feels human, local, and hands-on.
+- Title: Scale without losing the heart
+- Tagline: The model should grow without becoming abstract.
+- Photo alt: Scale planning documentation from May 1, 2023
+- Highlights:
+  - Land ownership path
+  - Program replication
+  - Long-horizon financial resilience
+- Status: planned (◌ Planned)
+
+## Notes
+
+- Chapter 5 tagline keeps the "public work + backend sync" idea but the chapter does NOT name Hermes on the public page (Hermes is backend-only). The phrase "operations systems active" carries the meaning without leaking agent internals.
+- Subheading changed from the editorial-instruction ("Swipe through the seasons. Each chapter should read like...") to donor-facing copy ("6 seasons of documented, continuous work. Every chapter is real."). The old line was a writer's note to themselves, accidentally published.
