@@ -20,6 +20,7 @@ Source of truth for: `packages/shared-data` → `programCards` (consumed by `app
 - Body: After graduation most inner-city youth are thrown into an economy that values financial gain over creativity, and success over service. Without the right life skills, young people with raw talent and real potential get stuck in a desperate loop just trying to survive. Those pressures lead to poor decisions and the pull of crime, drugs, and destructive behavior.
 
 Our Culture Shock program uses mentors with backgrounds in art, sports, and urban agriculture to help youth discover their full potential, find meaningful employment avoid the traps and pitfalls of street life and contribute their gifts to the world.
+
 - Bullets:
   - Earn-while-you-learn stipends
   - Mentors in art, sports, and urban agriculture
@@ -34,6 +35,7 @@ Our Culture Shock program uses mentors with backgrounds in art, sports, and urba
 - Body: Youth in rural areas face different challenges than youth in the city. Many families live day to day, markets are far away and expensive, and the basics — food, water, shelter — are never guaranteed. Knowing how to produce your own can be life-changing.
 
 Our Indigo Azul Project is a 1.5-acre experimental food forest in Puerto Vallarta, Mexico. We began planting in 2020 with the goal of building systems for food, water, energy, and shelter that can be duplicated anywhere. The site has grown to over 200 plant species, fruit trees, medicinal herbs, and flowers. We are now ready to begin the next stage of fundraising that can open the doors to get our site certified by the government and offer our first pilot program.
+
 - Bullets:
   - 200+ plant species, fruit trees, and medicinal herbs
   - Techniques practiced and documented year-round
