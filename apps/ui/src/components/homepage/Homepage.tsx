@@ -1,27 +1,34 @@
+import { AudienceTabs } from "./AudienceTabs"
 import { NonprofitHero } from "./NonprofitHero"
-import { TimelineSection } from "./TimelineSection"
 import { ProgramsSection } from "./ProgramsSection"
-import { TrustSection } from "./TrustSection"
-import { SupportSection } from "./SupportSection"
+import { StickyDonateMobile } from "./StickyDonateMobile"
 import { StudioSection } from "./StudioSection"
+import { SupportSection } from "./SupportSection"
+import { TimelineSection } from "./TimelineSection"
+import { TrustSection } from "./TrustSection"
 
 // RENDER ORDER (V3 — per full audit):
-// 1. Hero  — problem-first headline + donate CTA + stats
-// 2. Timeline — RESTORED — horizontal scroll, 6 seasons, click-to-expand
-// 3. Programs — Culture Shock + Indigo Azul
-// 4. Trust — fiscal sponsor, EIN, addresses
-// 5. CTA — Give / Volunteer / Follow
-// 6. Studio — separate B2N pitch section (teaser only here)
+// 1. AudienceTabs — sticky dual-audience nav (donor / AI client)
+// 2. Hero  — problem-first headline + donate CTA + stats
+// 3. Timeline — horizontal scroll, 6 seasons, click-to-expand
+// 4. Programs — Culture Shock + Indigo Azul
+// 5. Trust — fiscal sponsor, EIN, addresses
+// 6. CTA — Give / Volunteer / Follow
+// 7. Studio — separate B2N pitch section (teaser only here)
 
 export function Homepage() {
   return (
-    <main>
-      <NonprofitHero />
-      <TimelineSection />
-      <ProgramsSection />
-      <TrustSection />
-      <SupportSection />
-      <StudioSection />
-    </main>
+    <>
+      <AudienceTabs />
+      <main>
+        <NonprofitHero />
+        <TimelineSection />
+        <ProgramsSection />
+        <TrustSection />
+        <SupportSection />
+        <StudioSection />
+      </main>
+      <StickyDonateMobile />
+    </>
   )
 }

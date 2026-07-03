@@ -11,10 +11,12 @@ const services = [
 
 export function StudioSection() {
   return (
-    <section id="studio" className="bg-[#060e08] border-t border-white/5 px-6 py-20 md:px-10">
+    <section
+      id="studio"
+      className="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-6 py-20 md:px-10"
+    >
       <div className="mx-auto max-w-5xl">
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr]">
-
           {/* Left — pitch */}
           <div>
             <p className="text-xs tracking-[0.24em] text-[#c9a84c] uppercase">
@@ -26,14 +28,14 @@ export function StudioSection() {
             </h2>
             <p className="mt-5 text-sm leading-8 text-white/60 md:text-base">
               Starting a nonprofit is overwhelming. Compliance, grant writing,
-              fundraising, website design, social media — it crushes great
-              ideas before they do any good. We know. We&apos;ve been through
-              all of it.
+              fundraising, website design, social media — it crushes great ideas
+              before they do any good. We know. We&apos;ve been through all of
+              it.
             </p>
             <p className="mt-4 text-sm leading-8 text-white/60 md:text-base">
-              Over two years we built AI systems that drive our mission.
-              We now offer them to other nonprofits at a discounted rate —
-              because we understand your challenges. We live them.
+              Over two years we built AI systems that drive our mission. We now
+              offer them to other nonprofits at a discounted rate — because we
+              understand your challenges. We live them.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -57,11 +59,15 @@ export function StudioSection() {
               What we offer
             </p>
             <p className="mt-2 text-xs text-white/35">
-              Available to nonprofits and social purpose companies at a discounted rate.
+              Available to nonprofits and social purpose companies at a
+              discounted rate.
             </p>
             <ul className="mt-6 space-y-3">
               {services.map((s) => (
-                <li key={s} className="flex items-center gap-3 text-sm text-white/70">
+                <li
+                  key={s}
+                  className="flex items-center gap-3 text-sm text-white/70"
+                >
                   <span className="h-1 w-1 shrink-0 rounded-full bg-[#c9a84c]" />
                   {s}
                 </li>

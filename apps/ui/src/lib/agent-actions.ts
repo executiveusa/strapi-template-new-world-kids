@@ -34,7 +34,7 @@ export async function readAgentActions(limit = 20): Promise<AgentActionResult> {
   const missing = [
     url ? null : "NEXT_PUBLIC_SUPABASE_URL",
     key ? null : "NEXT_PUBLIC_SUPABASE_ANON_KEY",
-  ].filter(Boolean)
+  ].filter((x): x is string => x !== null)
 
   if (missing.length > 0) {
     return {

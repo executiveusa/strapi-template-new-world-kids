@@ -1,7 +1,7 @@
 "use client"
 
-import Link from "next/link"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 // ─────────────────────────────────────────────────
 // VIDEO HERO SWAP — set SHOW_VIDEO = true and drop
@@ -9,19 +9,23 @@ import { motion } from "framer-motion"
 // ─────────────────────────────────────────────────
 const SHOW_VIDEO = false
 const VIDEO_SRC = "/videos/hero.mp4"
-const PHOTO_SRC = "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80"
+const PHOTO_SRC =
+  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80"
 // TODO: swap above with "/images/hero.jpg" once real field photo is uploaded
 
 const stats = [
   { value: "200+", label: "plant varieties growing" },
-  { value: "1.5",  label: "acres in Puerto Vallarta" },
-  { value: "5+",   label: "years of operation" },
-  { value: "$0",   label: "cost to every student" },
+  { value: "1.5", label: "acres in Puerto Vallarta" },
+  { value: "5+", label: "years of operation" },
+  { value: "$0", label: "cost to every student" },
 ]
 
 export function NonprofitHero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#060e08]">
+    <section
+      data-hero
+      className="relative min-h-screen overflow-hidden bg-[#060e08]"
+    >
       {/* Background media */}
       <div className="absolute inset-0 z-0">
         {SHOW_VIDEO ? (
@@ -45,13 +49,12 @@ export function NonprofitHero() {
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 py-24 text-center md:px-10">
-
         {/* Proverb */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-serif text-base italic leading-relaxed text-[#c9a84c] md:text-xl"
+          className="font-serif text-base leading-relaxed text-[#c9a84c] italic md:text-xl"
         >
           &ldquo;If you ever think you&apos;re too small to make a difference,
           try going to sleep with a mosquito in the room.&rdquo;
@@ -70,9 +73,11 @@ export function NonprofitHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="mt-10 font-serif text-4xl font-semibold leading-tight text-white md:text-6xl lg:text-7xl"
+          className="mt-10 font-serif text-4xl leading-tight font-semibold text-white md:text-6xl lg:text-7xl"
         >
-          Most kids graduate<br className="hidden md:block" /> without ever learning<br className="hidden md:block" /> how to grow food.
+          Most kids graduate
+          <br className="hidden md:block" /> without ever learning
+          <br className="hidden md:block" /> how to grow food.
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -96,24 +101,24 @@ export function NonprofitHero() {
           Not a workshop. A real job.
         </motion.p>
 
-        {/* CTAs — donate is primary, coral-colored */}
+        {/* CTAs — donate is dominant primary; timeline is a quiet text link */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.65 }}
-          className="mt-10 flex flex-col gap-4 sm:flex-row"
+          className="mt-10 flex flex-col items-center gap-3"
         >
           <Link
             href="/donate"
-            className="rounded-full bg-[#c8400e] px-8 py-4 text-sm font-semibold text-white shadow-lg transition hover:bg-[#d9500f] hover:shadow-[#c8400e]/30"
+            className="rounded-full bg-[#c8400e] px-12 py-4 text-base font-semibold text-white shadow-xl shadow-[#c8400e]/25 transition hover:bg-[#d9500f] hover:shadow-[#c8400e]/40"
           >
             Plant a seed — give $25 →
           </Link>
           <Link
             href="/#timeline"
-            className="rounded-full border border-[#c9a84c]/60 px-8 py-4 text-sm font-semibold text-[#c9a84c] transition hover:border-[#c9a84c] hover:bg-[#c9a84c]/10"
+            className="text-sm text-[#c9a84c]/55 transition hover:text-[#c9a84c]"
           >
-            See 5 years of work →
+            or see 5 years of work →
           </Link>
         </motion.div>
 
