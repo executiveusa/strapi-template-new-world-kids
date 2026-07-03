@@ -1,24 +1,48 @@
 # Homepage Copy Map
 
-This folder is the editable copy layer for the current New World Kids homepage.
+This folder is the **single source of truth** for the New World Kids homepage copy.
+Edit the markdown here first; the matching component consumes it via
+`packages/shared-data` or `apps/ui/src/components/site/siteData.ts`.
 
-Live sections in order:
+## Live render order (`apps/ui/src/components/homepage/Homepage.tsx`)
 
-1. `01-site-header.md`
-2. `02-hero.md`
-3. `03-clarity.md`
-4. `04-timeline.md`
-5. `05-mission.md`
-6. `06-programs.md`
-7. `07-proof.md`
-8. `08-trust.md`
-9. `09-support.md`
-10. `10-studio.md`
-11. `11-hermes.md`
-12. `12-site-footer.md`
+1. **Hero** — `NonprofitHero.tsx` ← `02-hero.md`
+2. **Timeline** — `TimelineSection.tsx` ← `04-timeline.md` + `siteData.timelineEntries`
+3. **Programs** — `ProgramsSection.tsx` ← `06-programs.md` + `siteData.programCards`
+4. **Trust** — `TrustSection.tsx` ← `08-trust.md`
+5. **Support** — `SupportSection.tsx` ← `09-support.md`
+6. **Studio** — `StudioSection.tsx` ← `10-studio.md`
 
-Notes:
+The header (`SiteHeader.tsx` ← `01-site-header.md`) and footer
+(`SiteFooter.tsx` ← `12-site-footer.md`) wrap the page via the layout.
 
-- Edit the markdown first, then patch the matching component.
-- The proverb has been moved into the support block so it stays visible near the donation CTA.
-- The hero now leads with "Food, Water, Energy, Shelter" and "The core four."
+## Files present but NOT rendered on the public homepage
+
+These component files exist in `components/homepage/` but are deliberately
+**not imported by `Homepage.tsx`**. They are kept for potential `/ops` or
+internal use, or are pending removal:
+
+- `ClaritySection.tsx` ← `03-clarity.md` (content folded into Hero + Programs)
+- `MissionSection.tsx` ← `05-mission.md` (content folded into Hero + Programs)
+- `HermesSection.tsx`, `HermesStatusPanel.tsx`, `HermesVoiceChat.tsx` — Hermes is
+  backend-only. Not rendered publicly. No copy file (the old `11-hermes.md`
+  was removed June 2026).
+- `CinematicHero.tsx` — dead code, ships scaffolding text. Pending deletion.
+- `ScrollRevealProverb.tsx` — alternate proverb placement; not currently rendered.
+
+## Reconciliation principle
+
+The copy folder is authoritative for **structure and content**. Where a
+component's live phrasing is clearly stronger voice than the folder, the
+better wording wins and is back-written into the folder. The folder never
+silently drifts from what ships.
+
+## Open question — canonical social handles
+
+Two sources disagree:
+
+- `packages/shared-data/socialLinks` → `@newworldkids` (Instagram, Facebook, LinkedIn, YouTube)
+- `apps/ui/src/components/site/siteData.ts` `siteLinks` → `@proyectoindigoazul`, `@nwkidsorg`, `@nwkids`
+
+Components currently import from `siteData` (the legacy handles). Owner needs to
+confirm which set is canonical before sweep.

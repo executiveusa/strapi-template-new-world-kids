@@ -43,6 +43,19 @@
   --color-accent: #c9a84c;
   --color-warm: #e5b75f;
   --color-water: #67c7d8;
+
+  /* === CANONICAL HOMEPAGE TOKENS (single source for homepage components) ===
+     These alias the values above so every homepage section reads from the
+     same names. Hardcoded hex (e.g. bg-[#060e08], bg-[#071008], bg-[#08110a],
+     bg-[#060c07]) is being swept out in favor of these tokens so the six
+     competing darks collapse to one system. */
+  --color-bg: #060e08; /* page background — deepest dark */
+  --color-surface: #0d1610; /* card / panel background */
+  --color-surface-raised: #111c18; /* elevated panel (modals, hover) */
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
+  --color-gold-bright: #f0d98a; /* link hover, brighter gold accents */
+  --color-text-primary: #f7f2e8;
+  --color-text-muted: #a8b7ad;
 }
 
 html {

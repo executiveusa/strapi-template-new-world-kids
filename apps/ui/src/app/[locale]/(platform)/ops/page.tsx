@@ -21,7 +21,9 @@ function formatTime(value: string | null | undefined) {
 }
 
 export default async function OpsPage() {
-  const actions = await readAgentActions("private", 50)
+  // Frontend reads the public ledger only (anon key). Private/internal
+  // views live in services/hermes. See lib/agent-actions.ts.
+  const actions = await readAgentActions(50)
 
   const lastHeartbeat = actions.actions.find(
     (a) => a.action_type === "heartbeat"
@@ -65,13 +67,6 @@ export default async function OpsPage() {
             />
             {metrics.heartbeatAt ? "Agent active" : "Waiting for heartbeat"}
           </div>
-          <Link
-            href="https://pauli-hermes-agent-web.vercel.app"
-            target="_blank"
-            className="rounded-lg bg-[#c9a84c] px-3 py-1.5 text-xs font-semibold text-[#060e08] transition hover:bg-[#e0bc6a]"
-          >
-            Full dashboard ↗
-          </Link>
         </div>
       </div>
 

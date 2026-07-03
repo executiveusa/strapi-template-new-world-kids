@@ -1,3 +1,15 @@
+/**
+ * Public agent-action ledger reader — ANON ONLY.
+ *
+ * The frontend never holds the service role key. If anon env is missing or
+ * Supabase is unreachable, callers get `{ configured: false, actions: [] }`
+ * and can render a graceful empty state. The build never fails for lack of
+ * credentials.
+ *
+ * The old `mode: "private"` path that read `SUPABASE_SERVICE_ROLE_KEY` has
+ * been removed. Private/internal views live in `services/hermes` now.
+ */
+
 export type AgentAction = {
   id: string
   agent_id: string | null
@@ -15,39 +27,19 @@ type AgentActionResult = {
   error?: string
 }
 
-function readSupabaseEnv(mode: "private" | "public") {
-  const url =
-    process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL ?? ""
-  const key =
-    mode === "private"
-      ? process.env.SUPABASE_SERVICE_KEY ??
-        process.env.SUPABASE_SERVICE_ROLE_KEY ??
-        ""
-      : process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
-        process.env.SUPABASE_ANON_KEY ??
-        ""
+export async function readAgentActions(limit = 20): Promise<AgentActionResult> {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL ?? ""
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? ""
+
   const missing = [
-    url ? null : "SUPABASE_URL or NEXT_PUBLIC_SUPABASE_URL",
-    key
-      ? null
-      : mode === "private"
-        ? "SUPABASE_SERVICE_KEY or SUPABASE_SERVICE_ROLE_KEY"
-        : "NEXT_PUBLIC_SUPABASE_ANON_KEY or SUPABASE_ANON_KEY",
-  ].filter((item): item is string => Boolean(item))
+    url ? null : "NEXT_PUBLIC_SUPABASE_URL",
+    key ? null : "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+  ].filter(Boolean)
 
-  return { url, key, missing }
-}
-
-export async function readAgentActions(
-  mode: "private" | "public",
-  limit = 20
-): Promise<AgentActionResult> {
-  const env = readSupabaseEnv(mode)
-
-  if (env.missing.length > 0) {
+  if (missing.length > 0) {
     return {
       configured: false,
-      missing: env.missing,
+      missing,
       actions: [],
     }
   }
@@ -55,16 +47,16 @@ export async function readAgentActions(
   const params = new URLSearchParams({
     select: "id,agent_id,action_type,description,status,payload,created_at",
     order: "created_at.desc",
-    limit: String(mode === "public" ? Math.max(limit, 50) : limit),
+    limit: String(Math.max(limit, 50)),
   })
 
   try {
     const response = await fetch(
-      `${env.url.replace(/\/$/, "")}/rest/v1/agent_actions?${params}`,
+      `${url.replace(/\/$/, "")}/rest/v1/agent_actions?${params}`,
       {
         headers: {
-          apikey: env.key,
-          Authorization: `Bearer ${env.key}`,
+          apikey: key,
+          Authorization: `Bearer ${key}`,
         },
         cache: "no-store",
       }
@@ -80,10 +72,7 @@ export async function readAgentActions(
     }
 
     const actions = (await response.json()) as AgentAction[]
-    const visible =
-      mode === "public"
-        ? actions.filter((action) => action.payload?.public === true)
-        : actions
+    const visible = actions.filter((action) => action.payload?.public === true)
 
     return {
       configured: true,

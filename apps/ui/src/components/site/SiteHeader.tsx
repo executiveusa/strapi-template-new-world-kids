@@ -1,6 +1,7 @@
 "use client"
 
 import { Menu, ShieldCheck, X } from "lucide-react"
+import Image from "next/image"
 import type { Locale } from "next-intl"
 import { useState } from "react"
 
@@ -38,9 +39,14 @@ export default function SiteHeader({ locale }: { readonly locale: Locale }) {
             className="flex items-center gap-3"
             onClick={() => setMobileOpen(false)}
           >
-            <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-[#C9A84C] text-sm font-black text-[#08100B]">
-              NW
-            </div>
+            <Image
+              src="/images/nwkids-logo.png"
+              alt="New World Kids"
+              width={44}
+              height={44}
+              className="h-10 w-10 shrink-0 rounded-sm object-cover"
+              priority
+            />
             <div className="min-w-0">
               <div className="font-serif text-lg font-bold tracking-tight text-white">
                 New World Kids

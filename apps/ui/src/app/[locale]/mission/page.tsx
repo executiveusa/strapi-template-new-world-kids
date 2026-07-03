@@ -13,7 +13,7 @@ function countActions(
 }
 
 export default async function MissionPage() {
-  const ledger = await readAgentActions("public", 20)
+  const ledger = await readAgentActions(20)
   const grantsFound = countActions(ledger.actions, "grant_tracked")
   const clipsMade = countActions(ledger.actions, "clip_created")
   const impactLogs = countActions(ledger.actions, "report")
@@ -32,26 +32,30 @@ export default async function MissionPage() {
           ["Grants found", grantsFound],
           ["Clips made", clipsMade],
         ].map(([label, value]) => (
-          <div key={label} className="rounded border border-border bg-panel p-5">
-            <p className="font-mono text-sm text-muted">{label}</p>
-            <p className="mt-3 text-4xl font-semibold text-accent">{value}</p>
+          <div
+            key={label}
+            className="border-border bg-panel rounded border p-5"
+          >
+            <p className="text-muted font-mono text-sm">{label}</p>
+            <p className="text-accent mt-3 text-4xl font-semibold">{value}</p>
           </div>
         ))}
       </section>
 
       <section className="mt-8 grid gap-5 lg:grid-cols-[1fr_20rem]">
-        <div className="rounded border border-border bg-panel">
-          <div className="border-b border-border p-5">
+        <div className="border-border bg-panel rounded border">
+          <div className="border-border border-b p-5">
             <h2 className="text-2xl font-semibold">Public ledger</h2>
-            <p className="mt-2 text-sm text-muted">
+            <p className="text-muted mt-2 text-sm">
               Only rows marked public in `agent_actions.payload` are shown here.
             </p>
           </div>
-          <div className="divide-y divide-border">
+          <div className="divide-border divide-y">
             {ledger.actions.length === 0 ? (
-              <p className="p-5 text-muted">
+              <p className="text-muted p-5">
                 No public agent actions returned. The mission page is live, but
-                Supabase public ledger access still needs configured data and RLS.
+                Supabase public ledger access still needs configured data and
+                RLS.
               </p>
             ) : (
               ledger.actions.map((action) => (
@@ -60,11 +64,11 @@ export default async function MissionPage() {
                     <h3 className="font-semibold">
                       {action.description ?? action.action_type}
                     </h3>
-                    <span className="font-mono text-xs uppercase text-accent">
+                    <span className="text-accent font-mono text-xs uppercase">
                       {action.status ?? "unknown"}
                     </span>
                   </div>
-                  <p className="mt-2 text-sm text-muted">
+                  <p className="text-muted mt-2 text-sm">
                     {action.agent_id ?? "unknown"} / {action.action_type}
                   </p>
                 </article>
@@ -76,23 +80,23 @@ export default async function MissionPage() {
         <aside className="space-y-4">
           <Link
             href="/en/hermes-usb"
-            className="block rounded border border-accent bg-accent px-5 py-4 font-semibold text-background"
+            className="border-accent bg-accent text-background block rounded border px-5 py-4 font-semibold"
           >
             Hermes USB
           </Link>
           <Link
             href="/en/ops"
-            className="block rounded border border-border bg-panel px-5 py-4 font-semibold"
+            className="border-border bg-panel block rounded border px-5 py-4 font-semibold"
           >
             Operations portal
           </Link>
           {ledger.error ? (
-            <p className="rounded border border-warm/40 bg-warm/10 p-4 text-sm text-warm">
+            <p className="border-warm/40 bg-warm/10 text-warm rounded border p-4 text-sm">
               {ledger.error}
             </p>
           ) : null}
           {ledger.missing.length > 0 ? (
-            <p className="rounded border border-warm/40 bg-warm/10 p-4 text-sm text-warm">
+            <p className="border-warm/40 bg-warm/10 text-warm rounded border p-4 text-sm">
               Missing public Supabase env: {ledger.missing.join(", ")}
             </p>
           ) : null}

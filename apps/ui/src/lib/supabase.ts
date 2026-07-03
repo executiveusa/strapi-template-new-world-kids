@@ -1,4 +1,14 @@
-import { createClient } from "@supabase/supabase-js"
+import { type SupabaseClient, createClient } from "@supabase/supabase-js"
+
+/**
+ * Frontend Supabase access — ANON ONLY.
+ *
+ * Hard rule (AGENTS.md): the frontend builds and runs without any backend
+ * secrets. The service role key lives in `services/hermes` exclusively.
+ * These factories return `null` when env is missing instead of throwing,
+ * so server components can render graceful empty states and the build
+ * never fails for lack of credentials.
+ */
 
 export function hasSupabasePublicEnv() {
   return Boolean(
@@ -7,37 +17,39 @@ export function hasSupabasePublicEnv() {
   )
 }
 
+/**
+ * @deprecated Kept for backward compatibility. Server-side access should go
+ * through `readAgentActions` in `agent-actions.ts`, which is anon-only and
+ * returns graceful empty states. Returns null if env is missing.
+ */
 export function hasSupabaseServerEnv() {
   return Boolean(
-    (process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL) &&
-    (process.env.SUPABASE_SERVICE_ROLE_KEY ??
-      process.env.SUPABASE_ANON_KEY ??
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   )
 }
 
-export function createSupabaseBrowserClient() {
+export function createSupabaseBrowserClient(): SupabaseClient | null {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
   if (!url || !key) {
-    throw new Error("Supabase browser environment variables are missing.")
+    return null
   }
 
   return createClient(url, key)
 }
 
-export function createSupabaseServerClient() {
-  const url =
-    process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL ?? ""
-  const key =
-    process.env.SUPABASE_SERVICE_ROLE_KEY ??
-    process.env.SUPABASE_ANON_KEY ??
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
-    ""
+/**
+ * Server-side Supabase client — anon key only. No service role. Returns null
+ * if the anon env is missing so callers can render an empty state.
+ */
+export function createSupabaseServerClient(): SupabaseClient | null {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
   if (!url || !key) {
-    throw new Error("Supabase server environment variables are missing.")
+    return null
   }
 
   return createClient(url, key)

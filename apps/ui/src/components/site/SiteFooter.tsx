@@ -178,6 +178,22 @@ export default function SiteFooter({ locale }: { readonly locale: Locale }) {
           </div>
         </div>
       </div>
+
+      {/* Quiet studio credit — professional, not promotional.
+          The Pauli Effect built this site. NWKids is a client. */}
+      <div className="border-t border-white/5 px-4 py-4 text-center sm:px-6 lg:px-8">
+        <span className="text-[11px] text-[#E8DEC7]/30">
+          Site built by{" "}
+          <a
+            href="https://thepaulieffect.com"
+            className="transition-colors hover:text-[#C9A84C]/70"
+            target="_blank"
+            rel="noreferrer"
+          >
+            The Pauli Effect
+          </a>
+        </span>
+      </div>
     </footer>
   )
 }
