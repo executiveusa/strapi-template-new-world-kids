@@ -1,7 +1,19 @@
 export function TrustSection() {
   return (
-    <section id="proof" className="bg-[#060e08] px-6 py-20 md:px-10">
+    <section
+      id="proof"
+      className="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-6 py-20 md:px-10"
+    >
       <div className="mx-auto max-w-4xl">
+        {/* Trust pill badges */}
+        <div className="mb-8 flex flex-wrap justify-center gap-3">
+          <span className="rounded-full border border-[#c9a84c]/30 bg-[#c9a84c]/10 px-4 py-1.5 text-xs font-semibold text-[#c9a84c]">
+            501(c)(3) Nonprofit
+          </span>
+          <span className="rounded-full border border-[#c9a84c]/30 bg-[#c9a84c]/10 px-4 py-1.5 text-xs font-semibold text-[#c9a84c]">
+            EIN 46-4779591
+          </span>
+        </div>
 
         {/* Header */}
         <div className="text-center">
@@ -53,26 +65,17 @@ export function TrustSection() {
           ].map((item) => (
             <div
               key={item.label}
-              className="rounded-2xl border border-white/8 bg-[#0d1610] p-5"
+              className="rounded-2xl border border-white/8 bg-[var(--color-surface-raised)] p-5"
             >
               <p className="text-xs tracking-[0.18em] text-[#c9a84c]/70 uppercase">
                 {item.label}
               </p>
-              <p className="mt-2 text-sm font-semibold text-white">{item.value}</p>
+              <p className="mt-2 text-sm font-semibold text-white">
+                {item.value}
+              </p>
               <p className="mt-1 text-xs text-white/40">{item.note}</p>
             </div>
           ))}
-        </div>
-
-        {/* Proverb anchor */}
-        <div className="mt-16 rounded-3xl border border-[#c9a84c]/15 bg-[#c9a84c]/5 px-8 py-10 text-center">
-          <p className="font-serif text-lg italic leading-relaxed text-white/80 md:text-xl">
-            &ldquo;If you think you&apos;re too small to make a difference,
-            try going to sleep with a mosquito in the room.&rdquo;
-          </p>
-          <p className="mt-3 text-xs tracking-[0.22em] text-[#c9a84c]/70 uppercase">
-            West African Proverb · A small reminder to keep showing up.
-          </p>
         </div>
       </div>
     </section>

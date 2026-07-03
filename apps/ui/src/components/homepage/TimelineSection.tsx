@@ -190,11 +190,14 @@ export function TimelineSection() {
     return () => window.removeEventListener("keydown", onKey)
   }, [activeEntry])
 
+  const pastCount = timelineEntries.filter((e) => e.status === "past").length
+  const currentEntry = timelineEntries.find((e) => e.status === "current")
+
   return (
     <>
       <section
         id="timeline"
-        className="bg-[var(--color-bg)] px-4 py-20 md:px-8"
+        className="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-4 py-20 md:px-8"
       >
         <div className="mx-auto max-w-7xl">
           {/* Header */}
@@ -208,6 +211,12 @@ export function TimelineSection() {
             <p className="mt-4 text-sm text-white/50 md:text-base">
               6 seasons of documented, continuous work. Every chapter is real.
             </p>
+            {currentEntry && (
+              <p className="mt-3 text-sm font-medium text-[var(--color-gold)]/80">
+                {pastCount} of {total} chapters complete. We&apos;re in{" "}
+                {currentEntry.season} now.
+              </p>
+            )}
           </div>
 
           {/* Chapter indicator + progress bar + arrows (single row) */}

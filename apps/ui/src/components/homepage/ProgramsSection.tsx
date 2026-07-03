@@ -12,7 +12,10 @@ const cardLinks = ["/blog", "/gallery", "/work-with-us"] as const
 
 export function ProgramsSection() {
   return (
-    <section id="programs" className="bg-[var(--color-bg)] px-6 py-28 md:px-10">
+    <section
+      id="programs"
+      className="border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)] px-6 py-28 md:px-10"
+    >
       <div className="mx-auto max-w-7xl">
         {/* Section header */}
         <div className="max-w-3xl">

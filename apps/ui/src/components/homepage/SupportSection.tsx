@@ -2,13 +2,25 @@ import Link from "next/link"
 
 const donateOptions = [
   { amount: "$25", label: "Plant a tree", detail: "at Proyecto Indigo Azul" },
-  { amount: "$50", label: "Sponsor a child", detail: "for one month of programs", featured: true },
-  { amount: "$100", label: "Fund language classes", detail: "for 4 weeks of instruction" },
+  {
+    amount: "$50",
+    label: "Sponsor a child",
+    detail: "for one month of programs",
+    featured: true,
+  },
+  {
+    amount: "$100",
+    label: "Fund language classes",
+    detail: "for 4 weeks of instruction",
+  },
 ]
 
 export function SupportSection() {
   return (
-    <section id="support" className="bg-[#08110a] px-6 py-20 md:px-10">
+    <section
+      id="support"
+      className="border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)] px-6 py-20 md:px-10"
+    >
       <div className="mx-auto max-w-4xl">
         <div className="text-center">
           <p className="text-xs tracking-[0.24em] text-[#c9a84c] uppercase">
@@ -40,14 +52,18 @@ export function SupportSection() {
               <p className="font-serif text-4xl font-semibold text-[#c9a84c]">
                 {opt.amount}
               </p>
-              <p className="mt-2 text-sm font-semibold text-white">{opt.label}</p>
+              <p className="mt-2 text-sm font-semibold text-white">
+                {opt.label}
+              </p>
               <p className="mt-1 text-xs text-white/50">{opt.detail}</p>
-              <div className={[
-                "mt-4 rounded-full py-2 text-xs font-semibold transition",
-                opt.featured
-                  ? "bg-[#c8400e] text-white group-hover:bg-[#d9500f]"
-                  : "bg-white/8 text-white/70 group-hover:bg-white/15",
-              ].join(" ")}>
+              <div
+                className={[
+                  "mt-4 rounded-full py-2 text-xs font-semibold transition",
+                  opt.featured
+                    ? "bg-[#c8400e] text-white group-hover:bg-[#d9500f]"
+                    : "bg-white/8 text-white/70 group-hover:bg-white/15",
+                ].join(" ")}
+              >
                 Give {opt.amount} →
               </div>
             </Link>
@@ -56,7 +72,8 @@ export function SupportSection() {
 
         {/* Recurring toggle note */}
         <p className="mt-6 text-center text-xs text-white/40">
-          On the donate page, toggle &ldquo;Make this monthly&rdquo; to become a sustaining supporter.
+          On the donate page, toggle &ldquo;Make this monthly&rdquo; to become a
+          sustaining supporter.
         </p>
 
         {/* Secondary CTAs */}
@@ -68,9 +85,30 @@ export function SupportSection() {
             Volunteer
           </Link>
           <div className="flex items-center gap-4 text-sm text-white/40">
-            <a href="https://www.instagram.com/proyectoindigoazul/" target="_blank" rel="noreferrer" className="transition hover:text-white/70">Instagram</a>
-            <a href="https://www.facebook.com/nwkidsorg" target="_blank" rel="noreferrer" className="transition hover:text-white/70">Facebook</a>
-            <a href="https://www.linkedin.com/company/nwkids/" target="_blank" rel="noreferrer" className="transition hover:text-white/70">LinkedIn</a>
+            <a
+              href="https://www.instagram.com/proyectoindigoazul/"
+              target="_blank"
+              rel="noreferrer"
+              className="transition hover:text-white/70"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://www.facebook.com/nwkidsorg"
+              target="_blank"
+              rel="noreferrer"
+              className="transition hover:text-white/70"
+            >
+              Facebook
+            </a>
+            <a
+              href="https://www.linkedin.com/company/nwkids/"
+              target="_blank"
+              rel="noreferrer"
+              className="transition hover:text-white/70"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
       </div>
