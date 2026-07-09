@@ -77,7 +77,7 @@ export function NonprofitHero() {
         >
           Most kids graduate
           <br className="hidden md:block" /> without ever learning
-          <br className="hidden md:block" /> how to grow food.
+          <br className="hidden md:block" /> the most important life skills.
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -95,10 +95,20 @@ export function NonprofitHero() {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-8 max-w-2xl text-base leading-8 text-white/70 md:text-lg"
         >
-          New World Kids is a Seattle-based nonprofit. Our Culture Shock program
-          and Proyecto Indigo Azul food forest teach inner-city and rural youth
-          the core four: food, water, energy, and shelter. Hands in the dirt.
-          Not a workshop. A real job.
+          New World Kids is a Seattle-based nonprofit. We create projects and
+          programs that teach inner-city and rural youth life skills. No matter
+          the situation, we meet them where they are — then inspire them with
+          the possibilities and skills to go beyond.
+        </motion.p>
+
+        {/* Core four callout */}
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-4 font-serif text-sm tracking-wide text-[#c9a84c]/80"
+        >
+          Our framework: Food · Water · Energy · Shelter. Every program teaches all four.
         </motion.p>
 
         {/* CTAs — donate is dominant primary; timeline is a quiet text link */}

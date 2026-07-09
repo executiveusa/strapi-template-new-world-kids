@@ -128,9 +128,9 @@ const rawTimelineEntries: TimelineEntry[] = [
     year: "2020-2021",
     status: "past",
     capturedAt: "2021-04-10",
-    title: "The ground gets repaired first",
-    tagline: "Before a school can teach, it has to hold life.",
-    body: "The first chapter is soil work, water discipline, and land repair. That is where the public story begins, because the learning site only matters if the ground can support it.",
+    title: "The soil gets repaired first",
+    tagline: "The beginning.",
+    body: "Before a school can teach, it has to hold life. The first chapter is soil work, water discipline, and land repair. That is where the public story begins, because the learning site only matters if the ground can support it.",
     highlights: [
       "1.5 acres secured",
       "Soil restoration started",
@@ -148,8 +148,8 @@ const rawTimelineEntries: TimelineEntry[] = [
     year: "2021-2022",
     status: "past",
     capturedAt: "2021-04-18",
-    title: "The community starts coming back",
-    tagline: "A site becomes real when people begin to return.",
+    title: "The community starts to return",
+    tagline: "The idea became real when people began to return.",
     body: "Families, neighbors, and students turn the project from an idea into a weekly rhythm. The story becomes less about intention and more about repetition, trust, and presence.",
     highlights: [
       "Weekly community sessions",
@@ -169,12 +169,13 @@ const rawTimelineEntries: TimelineEntry[] = [
     status: "past",
     capturedAt: "2023-04-08",
     title: "The food forest takes root",
-    tagline: "Biodiversity stops being a hope and becomes a pattern.",
-    body: "The land matures into a dependable classroom where food grows, students return, and the project starts to prove that the model can hold its own.",
+    tagline: "THE STORM.",
+    body: "Biodiversity stops being a hope and becomes a pattern. On October 10, 2023, Hurricane Lidia hit Puerto Vallarta directly. We lost a significant number of trees and the fish pond. The food forest survived, adapted, and came back stronger — proof that regenerative systems can absorb what nature throws at them.",
     highlights: [
       "200+ plant varieties",
       "Soilless agriculture active",
       "Volunteer network stabilized",
+      "Hurricane Lidia recovery (Oct 2023)",
     ],
     photo:
       "https://drive.google.com/uc?export=view&id=1kAUrUyzSqJTCxMXRCLqqtIkkkxiNCFI5",
@@ -270,34 +271,28 @@ export const clarityCards = [
 
 export const programCards = [
   {
-    title: "Culture Shock Program",
-    eyebrow: "Seattle to Puerto Vallarta",
-    body: "5 young adults, 18-25, earn-while-you-learn stipends, international travel, second language acquisition. Not a training program — a real job.",
+    title: "From survival mode to purpose.",
+    eyebrow: "Inner city youth · Culture Shock Program",
+    body: "After graduation most inner-city youth are thrown into an economy that values financial gain over creativity, and success over service. Without the right life skills, young people with raw talent and real potential get stuck in a desperate loop just trying to survive. Those pressures lead to poor decisions and the ever-present trap of crime, drugs, and destructive behavior.\n\nOur Culture Shock program uses mentors with backgrounds in art, sports, and urban agriculture to help youth discover their full potential, find meaningful employment, avoid the traps and pitfalls of street life, and contribute their gifts to the world.",
     bullets: [
-      "Small-group language and cultural immersion",
       "Earn-while-you-learn stipends",
-      "Real application in Mexico, not a classroom simulation",
+      "Mentors in art, sports, and urban agriculture",
+      "International travel and cultural immersion",
+      "Second language acquisition, job placement",
     ],
+    badge: "PILOT PROGRAM COMING 2027",
   },
   {
-    title: "Proyecto Indigo Azul",
-    eyebrow: "The living classroom",
-    body: "Our 1.5-acre food forest and regenerative learning site where students practice soil restoration, water capture, off-grid systems, and natural building.",
+    title: "The ability to grow your own food changes everything.",
+    eyebrow: "Rural youth · Proyecto Indigo Azul",
+    body: "The ability and knowledge of how to grow your food is a priceless yet undervalued and almost forgotten skill. Our Indigo Azul project is a 1.5-acre food forest demonstration site started in 2020. Based in the rural hills of Puerto Vallarta, Mexico, we have created sustainable and thoughtful solutions for what we call the core four: Food, Water, Energy, and Shelter. We are now ready to create certified training courses for youth interested in our programs. All knowledge and lessons learned will be documented on our blog. Human written, nature approved, and free forever.\n\nYouth in rural areas face different challenges than youth in the city. Many families live day to day, markets are far away and expensive, and the basics — food, water, shelter — are never guaranteed. Knowing how to produce your own can be life-changing. We're now raising funds to get the site government-certified and launch our first pilot program.",
     bullets: [
-      "1.5 acres. 200+ plant species. 15-20 local children weekly. Free. No exceptions.",
-      "Syntropic agriculture and low-water methods",
-      "Designed to become 85% food self-sufficient over time",
+      "200+ plant species, fruit trees, and medicinal herbs",
+      "Techniques practiced and documented year-round",
+      "Sustainable systems designed to be replicated anywhere",
+      "Free for every student, no exceptions",
     ],
-  },
-  {
-    title: "Media and AI Revenue Studio",
-    eyebrow: "Earned revenue for free education",
-    body: "Design, media, and AI services help fund tuition-free programming so support does not rely on one funding source alone.",
-    bullets: [
-      "Creative services that produce cash flow",
-      "Grant support and operational systems that run behind the scenes",
-      "A model built for resilience, not dependence",
-    ],
+    badge: "",
   },
 ] as const
 
