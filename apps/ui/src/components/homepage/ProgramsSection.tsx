@@ -20,7 +20,7 @@ export function ProgramsSection() {
         {/* Section header */}
         <div className="max-w-3xl">
           <p className="text-xs tracking-[0.26em] text-[var(--color-gold)] uppercase">
-            Three programs. Two communities. One mission.
+            Two programs. Two communities. One mission.
           </p>
           <h2 className="mt-4 font-serif text-3xl font-semibold tracking-tight text-white md:text-5xl">
             We meet youth where they are.
@@ -28,7 +28,7 @@ export function ProgramsSection() {
         </div>
 
         {/* Program cards — driven by shared data */}
-        <div className="mt-14 grid gap-8 lg:grid-cols-3">
+        <div className="mt-14 grid gap-8 lg:grid-cols-2">
           {programCards.map((program, index) => {
             const linkHref = cardLinks[index] ?? "/work-with-us"
             const isFeatured = index === 1 // Indigo Azul highlighted
@@ -37,12 +37,17 @@ export function ProgramsSection() {
               <article
                 key={program.title}
                 className={[
-                  "flex flex-col rounded-[30px] border bg-white/[0.03] p-8",
+                  "relative flex flex-col rounded-[30px] border bg-white/[0.03] p-8",
                   isFeatured
                     ? "border-[var(--color-gold)]/30"
                     : "border-white/10",
                 ].join(" ")}
               >
+                {"badge" in program && program.badge ? (
+                  <span className="absolute right-5 top-5 rounded-full border border-[var(--color-coral)]/40 bg-[var(--color-coral)]/10 px-3 py-1 text-[10px] font-semibold tracking-wider text-[var(--color-coral)] uppercase">
+                    {program.badge}
+                  </span>
+                ) : null}
                 <p className="text-xs tracking-[0.24em] text-[var(--color-gold)] uppercase">
                   {program.eyebrow}
                 </p>
