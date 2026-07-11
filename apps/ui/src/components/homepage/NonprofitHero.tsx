@@ -35,13 +35,13 @@ export function NonprofitHero() {
             muted
             loop
             playsInline
-            className="h-full w-full object-cover opacity-40"
+            className="h-full w-full object-cover opacity-60"
           />
         ) : (
           <img
             src={PHOTO_SRC}
             alt="Proyecto Indigo Azul food forest"
-            className="h-full w-full object-cover opacity-30"
+            className="h-full w-full object-cover opacity-50"
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-b from-[#060e08]/60 via-[#060e08]/30 to-[#060e08]" />
