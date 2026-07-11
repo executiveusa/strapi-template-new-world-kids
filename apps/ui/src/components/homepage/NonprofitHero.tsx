@@ -1,17 +1,30 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
+import { useState, useEffect } from "react"
 
-// ─────────────────────────────────────────────────
-// VIDEO HERO SWAP — set SHOW_VIDEO = true and drop
-// hero.mp4 into apps/ui/public/videos/hero.mp4
-// ─────────────────────────────────────────────────
-const SHOW_VIDEO = false
-const VIDEO_SRC = "/videos/hero.mp4"
-const PHOTO_SRC =
-  "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80"
-// TODO: swap above with "/images/hero.jpg" once real field photo is uploaded
+const heroImages = [
+  {
+    src: "/images/hero-clouds.jpg",
+    alt: "Sunset clouds over Puerto Vallarta",
+    duration: 5000, // 5 seconds for first image
+  },
+  { src: "/images/hero-bananas.jpg", alt: "Banana plants" },
+  { src: "/images/hero-garden.jpg", alt: "Garden with various plants" },
+  { src: "/images/hero-baby-mangos.jpg", alt: "Baby mangos on tree" },
+  { src: "/images/hero-hibiscus.jpg", alt: "Hibiscus flowers" },
+  { src: "/images/hero-mango-tree.jpg", alt: "Mango tree with fruit" },
+  { src: "/images/hero-papaya.jpg", alt: "Papaya tree" },
+  { src: "/images/hero-bamboo.jpg", alt: "Bamboo forest" },
+  { src: "/images/hero-red-bananas.jpg", alt: "Red bananas" },
+  { src: "/images/hero-prickly-pear.jpg", alt: "Prickly pear cactus" },
+  { src: "/images/hero-seeds.jpg", alt: "Seeds and botanical specimen" },
+  { src: "/images/hero-flower.jpg", alt: "Yellow flower" },
+]
+
+const ROTATION_INTERVAL = 3500 // 3.5 seconds
+const FIRST_IMAGE_DURATION = 5000 // 5 seconds
 
 const stats = [
   { value: "200+", label: "plant varieties growing" },
@@ -21,29 +34,45 @@ const stats = [
 ]
 
 export function NonprofitHero() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isFirstImage, setIsFirstImage] = useState(true)
+
+  useEffect(() => {
+    const timer = isFirstImage
+      ? setTimeout(() => {
+          setIsFirstImage(false)
+          setCurrentImageIndex(1)
+        }, FIRST_IMAGE_DURATION)
+      : setTimeout(() => {
+          setCurrentImageIndex(
+            (prev) => (prev + 1) % (heroImages.length - 1) // Skip first image after initial display
+          )
+        }, ROTATION_INTERVAL)
+
+    return () => clearTimeout(timer)
+  }, [currentImageIndex, isFirstImage])
+
+  const displayIndex = isFirstImage ? 0 : currentImageIndex + 1
+
   return (
     <section
       data-hero
       className="relative min-h-screen overflow-hidden bg-[#060e08]"
     >
-      {/* Background media */}
+      {/* Background image carousel */}
       <div className="absolute inset-0 z-0">
-        {SHOW_VIDEO ? (
-          <video
-            src={VIDEO_SRC}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="h-full w-full object-cover opacity-60"
-          />
-        ) : (
-          <img
-            src={PHOTO_SRC}
-            alt="Proyecto Indigo Azul food forest"
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={displayIndex}
+            src={heroImages[displayIndex]?.src || heroImages[0].src}
+            alt={heroImages[displayIndex]?.alt || heroImages[0].alt}
             className="h-full w-full object-cover opacity-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.5 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
           />
-        )}
+        </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-b from-[#060e08]/60 via-[#060e08]/30 to-[#060e08]" />
       </div>
 
