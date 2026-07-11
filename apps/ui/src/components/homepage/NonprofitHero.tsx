@@ -4,56 +4,55 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 
-// Replace URLs with local /images/ paths once images are uploaded to apps/ui/public/images/
 const heroImages = [
   {
-    src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80",
-    alt: "Sunset clouds over Puerto Vallarta",
+    src: "/images/hero-clouds.jpg",
+    alt: "Sunset clouds over the New World Kids garden",
     duration: 5000, // 5 seconds for first image
   },
   {
-    src: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1600&q=80",
+    src: "/images/hero-bananas.jpg",
     alt: "Banana plants",
   },
   {
-    src: "https://images.unsplash.com/photo-1464454709131-ffd692591ee5?w=1600&q=80",
-    alt: "Garden with various plants",
+    src: "/images/hero-garden.jpg",
+    alt: "Garden with bougainvillea, papaya, moringa, banana, ginger, and guava",
   },
   {
-    src: "https://images.unsplash.com/photo-1585518419759-66f3a4b73bab?w=1600&q=80",
+    src: "/images/hero-mango-baby.jpg",
     alt: "Baby mangos on tree",
   },
   {
-    src: "https://images.unsplash.com/photo-1568284067316-1b1d0f1d0c3c?w=1600&q=80",
+    src: "/images/hero-hibiscus.jpg",
     alt: "Hibiscus flowers",
   },
   {
-    src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80",
+    src: "/images/hero-mango-tree.jpg",
     alt: "Mango tree with fruit",
   },
   {
-    src: "https://images.unsplash.com/photo-1590540189549-336d36e2e3f0?w=1600&q=80",
-    alt: "Papaya tree",
+    src: "/images/hero-papaya.jpg",
+    alt: "Papaya and banana trees",
   },
   {
-    src: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1600&q=80",
-    alt: "Bamboo forest",
+    src: "/images/hero-bamboo.jpg",
+    alt: "Bamboo grove",
   },
   {
-    src: "https://images.unsplash.com/photo-1488459716781-6918f33427d7?w=1600&q=80",
+    src: "/images/hero-red-bananas.jpg",
     alt: "Red bananas",
   },
   {
-    src: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1600&q=80",
-    alt: "Prickly pear cactus",
+    src: "/images/hero-nopales.jpg",
+    alt: "Prickly pear cactus (nopales)",
   },
   {
-    src: "https://images.unsplash.com/photo-1599599810694-b5ac4dd64e90?w=1600&q=80",
-    alt: "Seeds and botanical specimen",
+    src: "/images/hero-seed.jpg",
+    alt: "Seed and botanical specimen",
   },
   {
-    src: "https://images.unsplash.com/photo-1490147868817-67c285e3585a?w=1600&q=80",
-    alt: "Yellow flower",
+    src: "/images/hero-flower.jpg",
+    alt: "Hand-pollinating a squash flower",
   },
 ]
 
