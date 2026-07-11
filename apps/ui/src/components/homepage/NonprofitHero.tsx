@@ -108,8 +108,7 @@ export function NonprofitHero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-4 font-serif text-sm tracking-wide text-[#c9a84c]/80"
         >
-          Our framework: Food · Water · Energy · Shelter. Every program teaches
-          all four.
+          Our framework: Food · Water · Energy · Shelter. Every program teaches all four.
         </motion.p>
 
         {/* CTAs — donate is dominant primary; timeline is a quiet text link */}
