@@ -33,11 +33,11 @@ export function StickyDonateMobile() {
       ].join(" ")}
       aria-hidden={!visible}
     >
-      <div className="pb-safe rounded-2xl border border-white/10 bg-[#060e08]/80 backdrop-blur">
+      <div className="pb-safe rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-bg)]/80 backdrop-blur">
         <Link
           href="/donate"
           tabIndex={visible ? 0 : -1}
-          className="block rounded-2xl bg-[#c8400e] py-4 text-center text-sm font-semibold text-white shadow-xl shadow-[#c8400e]/30 transition hover:bg-[#d9500f]"
+          className="block rounded-2xl bg-[var(--color-accent-coral)] py-4 text-center text-sm font-semibold text-[var(--color-text-primary)] shadow-[var(--color-accent-coral)]/30 shadow-xl transition hover:bg-[var(--color-accent-coral-hover)]"
         >
           Plant a seed — give $25 →
         </Link>

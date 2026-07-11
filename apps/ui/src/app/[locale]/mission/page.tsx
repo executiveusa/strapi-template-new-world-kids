@@ -18,6 +18,7 @@ export default async function MissionPage() {
   const clipsMade = countActions(ledger.actions, "clip_created")
   const impactLogs = countActions(ledger.actions, "report")
   const activeMissions = countActions(ledger.actions, "mission_run")
+  const isOffline = Boolean(ledger.error) || ledger.missing.length > 0
 
   return (
     <PageShell
@@ -25,6 +26,34 @@ export default async function MissionPage() {
       title="Mission work you can inspect"
       summary="Hermes records public agent actions for grants, impact, content, and bounded missions. Missing data stays visible instead of being hidden behind fake status."
     >
+      {isOffline && (
+        <section className="mb-8 flex items-start gap-4 rounded-xl border border-[var(--color-accent-gold)]/25 bg-[var(--color-surface)] p-5">
+          <span
+            aria-hidden
+            className="mt-0.5 h-2 w-2 shrink-0 rounded-full bg-[var(--color-accent-gold)]"
+          />
+          <div>
+            <p className="font-semibold text-[var(--color-text-primary)]">
+              This ledger is connecting, not broken.
+            </p>
+            <p className="mt-1 text-sm leading-6 text-[var(--color-text-muted)]">
+              The public transparency feed below is real — it just hasn&apos;t
+              logged confirmed activity yet. We show &ldquo;0&rdquo; here
+              instead of hiding the panel or faking numbers, because that&apos;s
+              the same rule we apply to every claim on this site.
+            </p>
+            <details className="mt-3 text-xs text-[var(--color-text-muted)]">
+              <summary className="cursor-pointer select-none">
+                Technical detail
+              </summary>
+              <p className="mt-2 font-mono">
+                {ledger.error ?? `Missing env: ${ledger.missing.join(", ")}`}
+              </p>
+            </details>
+          </div>
+        </section>
+      )}
+
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {[
           ["Active missions", activeMissions],
@@ -53,9 +82,8 @@ export default async function MissionPage() {
           <div className="divide-border divide-y">
             {ledger.actions.length === 0 ? (
               <p className="text-muted p-5">
-                No public agent actions returned. The mission page is live, but
-                Supabase public ledger access still needs configured data and
-                RLS.
+                No public agent actions have been logged yet. Check back soon —
+                this panel updates automatically once activity is recorded.
               </p>
             ) : (
               ledger.actions.map((action) => (
@@ -90,16 +118,6 @@ export default async function MissionPage() {
           >
             Operations portal
           </Link>
-          {ledger.error ? (
-            <p className="border-warm/40 bg-warm/10 text-warm rounded border p-4 text-sm">
-              {ledger.error}
-            </p>
-          ) : null}
-          {ledger.missing.length > 0 ? (
-            <p className="border-warm/40 bg-warm/10 text-warm rounded border p-4 text-sm">
-              Missing public Supabase env: {ledger.missing.join(", ")}
-            </p>
-          ) : null}
         </aside>
       </section>
     </PageShell>

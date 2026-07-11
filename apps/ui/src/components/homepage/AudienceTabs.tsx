@@ -17,12 +17,14 @@ function TabItem({
       onClick={onClick}
       className={[
         "relative shrink-0 py-3 text-sm font-medium transition-colors",
-        active ? "text-white" : "text-white/45 hover:text-white/70",
+        active
+          ? "text-[var(--color-text-primary)]"
+          : "text-[var(--color-text-muted)] hover:text-[var(--color-text-muted)]",
       ].join(" ")}
     >
       {label}
       {active && (
-        <span className="absolute right-0 bottom-0 left-0 h-0.5 rounded-t-full bg-[#c9a84c]" />
+        <span className="absolute right-0 bottom-0 left-0 h-0.5 rounded-t-full bg-[var(--color-accent-gold)]" />
       )}
     </button>
   )
@@ -37,7 +39,7 @@ export function AudienceTabs() {
 
   return (
     <nav
-      className="sticky top-0 z-40 border-b border-[var(--color-border-subtle)] bg-[#060e08]/95 backdrop-blur"
+      className="sticky top-0 z-40 border-b border-[var(--color-border-subtle)] bg-[var(--color-bg)]/95 backdrop-blur"
       aria-label="Audience selector"
     >
       <div className="mx-auto flex max-w-5xl items-center gap-6 overflow-x-auto px-6 md:px-10">

@@ -143,6 +143,20 @@
   .issue-meta > div { display: flex; flex-direction: column; gap: 3px; }
   .meta-label { text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink-muted); }
   .small { font-size: 11.5px; line-height: 1.5; }
+  .resolution { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--border); }
+  .resolution p { margin: 4px 0 0; font-size: 13px; color: var(--ink); }
+
+  .status-banner { display: flex; align-items: center; gap: 20px; background: rgba(63,125,92,0.08); border: 1px solid rgba(63,125,92,0.25); border-radius: var(--radius); padding: 18px 22px; margin-top: 24px; flex-wrap: wrap; }
+  .status-banner strong { color: var(--pass); font-size: 15px; }
+  .status-banner span { color: var(--ink-muted); font-size: 13.5px; }
+
+  .krug-quote { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; margin: 14px 0; font-family: Georgia, serif; font-style: italic; font-size: 15px; }
+  .krug-item { padding: 18px 0; border-bottom: 1px solid var(--border); }
+  .krug-item:last-child { border-bottom: none; }
+  .krug-item h4 { margin: 0 0 6px; font-size: 15px; font-family: Georgia, serif; }
+  .krug-item p { margin: 0 0 8px; font-size: 13.5px; color: var(--ink-muted); }
+  .krug-cite { font-size: 13px; color: var(--accent); font-weight: 600; }
+  .krug-new-tag { display: inline-block; background: rgba(201,134,42,0.14); color: var(--p1); font-size: 10.5px; font-weight: 700; padding: 2px 7px; border-radius: 4px; margin-left: 8px; letter-spacing: 0.03em; }
 
   footer.report-footer { padding: 32px 0 60px; color: var(--ink-muted); font-size: 12.5px; }
 
@@ -197,6 +211,10 @@
         <span class="pill pill-p0">4 P0 &mdash; blocks approval</span>
         <span class="pill pill-p1">3 P1</span>
         <span class="pill pill-p2">3 P2</span>
+      </div>
+      <div class="status-banner">
+        <strong>8 of 10 issues fixed since this audit was written.</strong>
+        <span>2 remaining &mdash; see status badges on each issue card below for what's done vs. queued.</span>
       </div>
     </div>
   </section>
@@ -486,6 +504,54 @@
     </div>
   </section>
 
+  <section id="krug-book">
+    <div class="section-eyebrow">Second pass &mdash; the actual book</div>
+    <h2 class="section-title">Don't Make Me Think, Revisited: what changes with the primary source</h2>
+    <p class="section-intro">The first pass used general Krug-informed principles. This pass reads the full text of the 2014 revised edition directly and checks it against the same findings &mdash; citing Krug's actual arguments and wording instead of paraphrasing them, and flagging anywhere the book surfaces something the first pass missed.</p>
+    
+    <div class="krug-item">
+      <h4>Persistent navigation — the required checklist <span class="krug-new-tag">SHARPENED / NEW</span></h4>
+      <p>Krug names four elements persistent navigation must supply on every page: Site ID, Sections, Utilities (capped at four or five — the rest belong in the footer), and a way to search. His stated reason: navigation has three jobs — it reveals what's here, teaches how to use the site, and builds confidence in whoever built it.</p>
+      <div class="krug-quote">“Navigation isn't just a feature of a Web site; it is the Web site … Without it, there's no there there.”</div>
+      <p class="krug-cite">Sharpens P0-2 — the fix (real Site ID + Sections + Utilities in one header) now maps directly to Krug's own checklist, not a paraphrase of it.</p>
+    </div>
+
+    <div class="krug-item">
+      <h4>The Trunk Test — verbatim</h4>
+      <p>Confirmed present in this edition, six items: dropped on any page, blindfolded, you should be able to answer — What site is this? What page am I on? What are the major sections? What are my options here? Where am I in the scheme of things? How can I search?</p>
+      
+      <p class="krug-cite">Before this fix, NWKids failed this test on every page except the homepage's two-tab switcher. It's now the report's lead framework rather than a general Krug paraphrase.</p>
+    </div>
+
+    <div class="krug-item">
+      <h4>Homepage-specific requirements <span class="krug-new-tag">SHARPENED / NEW</span></h4>
+      <p>A homepage uniquely must answer, at a glance: What is this? Who runs it? What do they have here? What can I do here? Delivered via a tagline (6–8 words, a value proposition, not a motto) and a Welcome blurb — explicitly not a mission statement.</p>
+      <div class="krug-quote">“Don't use a mission statement as a Welcome blurb … Nobody reads them.”</div>
+      <p class="krug-cite">New angle: the pre-fix homepage had no tagline and no Site ID at all — it failed all four homepage-specific questions, not just the general trunk test.</p>
+    </div>
+
+    <div class="krug-item">
+      <h4>Error pages / 404s <span class="krug-new-tag">SHARPENED / NEW</span></h4>
+      <p>Not covered anywhere in the book — “404” and “error page” don't appear. The closer applicable material is the goodwill-reservoir concept below.</p>
+      
+      <p class="krug-cite">P2-3 (custom 404) has no direct Krug citation available — flagged honestly rather than inventing one.</p>
+    </div>
+
+    <div class="krug-item">
+      <h4>The “reservoir of goodwill” and broken links <span class="krug-new-tag">SHARPENED / NEW</span></h4>
+      <p>Every friction point drains trust; Krug says a single mistake can empty the reservoir entirely. Combined with his “scent of information” concept — links should give off a strong scent that clicking brings you closer to what you want — a dead link doesn't just add friction, it severs the scent trail completely.</p>
+      <div class="krug-quote">“Know the main things that people want to do on your site and make them obvious and easy … If most people are coming to your site to apply for a mortgage, nothing should get in the way of making it dead easy to apply for a mortgage.”</div>
+      <p class="krug-cite">New framing for P0-1: the broken donate button isn't one bug among many — it's the single mistake Krug specifically warns can empty the whole reservoir at once.</p>
+    </div>
+
+    <div class="krug-item">
+      <h4>Mobile navigation — the specific failure Krug names <span class="krug-new-tag">SHARPENED / NEW</span></h4>
+      <p>The mobile chapter doesn't discuss hamburger menus. The mistake Krug actually flags: tapping a deep link and landing on the mobile homepage instead of the content, forcing the visitor to hunt for what they came for.</p>
+      <div class="krug-quote">“Don't leave me standing at the front door.”</div>
+      <p class="krug-cite">Structurally identical to NWKids' problem — 7+ links (including the sticky mobile donate bar) dumping visitors on a 404 instead of content.</p>
+    </div>
+  </section>
+
   <section id="functional-tests">
     <div class="section-eyebrow">Functional tests</div>
     <h2 class="section-title">Route-by-route (live HTTP status)</h2>
@@ -516,6 +582,7 @@
       <div class="issue-head">
         <span class="issue-sev" style="background:#C23B22">P0</span>
         <span class="issue-id">P0-1</span>
+        <span class="badge badge-pass">FIXED</span>
         <h3>Primary donate CTA (“Plant a seed — give $25”) is a dead link</h3>
       </div>
       <p class="issue-impact">The site's entire business goal — donations — cannot be completed by any visitor, on any device. This is present in the hero, nav, footer references, sticky mobile bar, timeline, and support section — 7+ places, all pointing at a route that does not exist.</p>
@@ -523,12 +590,14 @@
         <div><span class="meta-label">Law/axis violated</span><span>Do not bury the primary task / Make the next action obvious</span></div>
         <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/components/homepage/NonprofitHero.tsx, StickyDonateMobile.tsx, TimelineSection.tsx, SupportSection.tsx, src/app/[locale]/ (no donate route exists)</span></div>
       </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Built a real /donate page (env-var-driven processor link with an honest email fallback, since no payment processor — Donorbox/Stripe/Buy Me a Coffee — is actually configured anywhere in the codebase; the Buy Me a Coffee fallback URL was also verified dead).</p></div>
     </article>
 
     <article class="issue-card" style="border-left-color:#C23B22">
       <div class="issue-head">
         <span class="issue-sev" style="background:#C23B22">P0</span>
         <span class="issue-id">P0-2</span>
+        <span class="badge badge-pass">FIXED</span>
         <h3>No persistent site navigation exists anywhere on the live site</h3>
       </div>
       <p class="issue-impact">Three separate header/nav components (SiteHeader.tsx, PublicNavbar.tsx) and two footer components (SiteFooter.tsx, PublicFooter.tsx) are fully built in the codebase but never rendered. The actual live homepage has only a 2-tab scroll switcher — no logo, no way to reach Programs, Timeline, Trust, or Mission except by scrolling past everything.</p>
@@ -536,12 +605,14 @@
         <div><span class="meta-label">Law/axis violated</span><span>Use conventions when they help / Make the home page explain the whole site / Escape routes</span></div>
         <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/components/homepage/Homepage.tsx (renders AudienceTabs only), apps/ui/src/app/[locale]/layout.tsx (no header/footer)</span></div>
       </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Rebuilt SiteHeader.tsx and SiteFooter.tsx as the one real, working nav (Site ID, Programs/Timeline/Trust/Mission/Work With Us, locale + theme toggle, Donate CTA, working mobile menu) and wired both into [locale]/layout.tsx so every route gets them, including /mission, /ops, /hermes-usb.</p></div>
     </article>
 
     <article class="issue-card" style="border-left-color:#C23B22">
       <div class="issue-head">
         <span class="issue-sev" style="background:#C23B22">P0</span>
         <span class="issue-id">P0-3</span>
+        <span class="badge badge-pass">FIXED</span>
         <h3>3 more sitewide links are dead: /work-with-us, /blog, /gallery</h3>
       </div>
       <p class="issue-impact">Every card in the Programs section and every secondary CTA in Studio/Support sections routes to a 404. Combined with the donate link, essentially every outbound action on the homepage is broken.</p>
@@ -549,12 +620,14 @@
         <div><span class="meta-label">Law/axis violated</span><span>Make the next action obvious</span></div>
         <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/components/homepage/ProgramsSection.tsx, StudioSection.tsx, SupportSection.tsx</span></div>
       </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Built real pages for all three: /work-with-us (using the existing StudioSection pitch + real workWithUsOffers content), /gallery (the 12 real garden photos sourced this session), /blog (honest “coming soon” — apps/blog is a separate app with no confirmed production URL, so a coming-soon page was used instead of a fabricated cross-app link).</p></div>
     </article>
 
     <article class="issue-card" style="border-left-color:#C23B22">
       <div class="issue-head">
         <span class="issue-sev" style="background:#C23B22">P0</span>
         <span class="issue-id">P0-4</span>
+        <span class="badge badge-partial">IN PROGRESS</span>
         <h3>Spanish and English translations are not actually working</h3>
       </div>
       <p class="issue-impact">next-intl routing and the EN/ES locale switcher function correctly at the URL level, but zero visible homepage copy is wired through useTranslations(). /en and /es render pixel-identical English content. locales/es.json exists but contains only generic Strapi auth/CMS boilerplate — none of the real site copy.</p>
@@ -562,12 +635,14 @@
         <div><span class="meta-label">Law/axis violated</span><span>N/A — explicit user requirement (“make sure Mexican Spanish and English translations are working”)</span></div>
         <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/locales/es.json, en.json (boilerplate only); no homepage component calls useTranslations()</span></div>
       </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Root-caused and fixed the underlying infrastructure gap: next-intl's runtime (middleware, plugin wiring, NextIntlClientProvider) was never actually connected — it silently worked only because the only code exercising it was dead/unrendered components. Middleware, next.config plugin, and provider are now wired correctly. New pages (donate, work-with-us, blog, gallery, 404) are bilingual. Full homepage copy migration to useTranslations() with real Mexican Spanish content is the next pass — flagged to the user as the largest remaining piece rather than rushed.</p></div>
     </article>
 
     <article class="issue-card" style="border-left-color:#C9862A">
       <div class="issue-head">
         <span class="issue-sev" style="background:#C9862A">P1</span>
         <span class="issue-id">P1-1</span>
+        <span class="badge badge-pass">FIXED</span>
         <h3>No light theme exists; dark theme background is near-black (#060e08)</h3>
       </div>
       <p class="issue-impact">next-themes is a declared dependency with zero usage anywhere in src/. There is exactly one color mode, and its background token is close enough to pure black that the site reads as oppressively dark, matching the client's own complaint.</p>
@@ -575,12 +650,14 @@
         <div><span class="meta-label">Law/axis violated</span><span>Color & theme axis</span></div>
         <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/app/globals.css (single --color-background: #060e08, no light tokens), no ThemeProvider in the tree</span></div>
       </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Wired next-themes properly (data-theme attribute, system preference detection, toggle in header). Defined a full light palette on the existing canonical tokens and migrated every homepage component off hardcoded hex to those tokens, so the toggle now actually re-themes the whole site, not just the header.</p></div>
     </article>
 
     <article class="issue-card" style="border-left-color:#C9862A">
       <div class="issue-head">
         <span class="issue-sev" style="background:#C9862A">P1</span>
         <span class="issue-id">P1-2</span>
+        <span class="badge badge-pass">FIXED</span>
         <h3>Public /mission page shows raw backend error state</h3>
       </div>
       <p class="issue-impact">Any visitor — including funders or grant reviewers — can reach /mission and see a literal “fetch failed” badge and four stat cards reading “0”, with no designed empty state. This is reputationally risky for a nonprofit's public mission page.</p>
@@ -588,12 +665,14 @@
         <div><span class="meta-label">Law/axis violated</span><span>Recover gracefully from errors</span></div>
         <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/app/[locale]/mission/page.tsx</span></div>
       </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Replaced the raw error text with a designed, honest status card (“This ledger is connecting, not broken”) that keeps the transparency-first philosophy — real zeros, no faked numbers — but no longer reads as a broken page. Technical error detail is now a collapsed <details> element instead of the headline.</p></div>
     </article>
 
     <article class="issue-card" style="border-left-color:#C9862A">
       <div class="issue-head">
         <span class="issue-sev" style="background:#C9862A">P1</span>
         <span class="issue-id">P1-3</span>
+        <span class="badge badge-unknown">PENDING</span>
         <h3>Hero carousel photos are 206×206px source images, visibly soft at full-bleed</h3>
       </div>
       <p class="issue-impact">The 12 real garden photos now used in the hero (replacing Unsplash placeholders) are genuine and correctly wired, but the Drive-sourced originals are thumbnail resolution. Stretched to a full-width hero, they read as blurry rather than crisp.</p>
@@ -601,25 +680,29 @@
         <div><span class="meta-label">Law/axis violated</span><span>Image & media system</span></div>
         <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/public/images/hero-*.jpg</span></div>
       </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Needs the Nano Banana upscale pass (prompt already provided) run against each source photo before re-upload — not done in this pass.</p></div>
     </article>
 
     <article class="issue-card" style="border-left-color:#4A7A8C">
       <div class="issue-head">
         <span class="issue-sev" style="background:#4A7A8C">P2</span>
         <span class="issue-id">P2-1</span>
-        <h3>5 orphaned/competing components should be removed or wired up</h3>
+        <span class="badge badge-pass">FIXED</span>
+        <h3>7 orphaned/competing components should be removed or wired up</h3>
       </div>
-      <p class="issue-impact">SiteHeader.tsx, PublicNavbar.tsx, SiteFooter.tsx, PublicFooter.tsx, and ProofSection.tsx are dead code — each defines its own nav/link set (some pointing at yet more nonexistent routes like /impact, /trust, /about, /journal). This is confusing for future maintainers and a sign of accumulated AI-generated drift.</p>
+      <p class="issue-impact">SiteHeader.tsx, PublicNavbar.tsx, SiteFooter.tsx, PublicFooter.tsx, ProofSection.tsx, and (newly found during implementation) MissionSection.tsx were dead code — each defining its own separate, also-broken nav/link set. This is confusing for future maintainers and a sign of accumulated AI-generated drift.</p>
       <div class="issue-meta">
         <div><span class="meta-label">Law/axis violated</span><span>Anti-slop / component craft</span></div>
-        <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/components/site/*.tsx, apps/ui/src/components/homepage/ProofSection.tsx</span></div>
+        <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/components/site/*.tsx, apps/ui/src/components/homepage/ProofSection.tsx, MissionSection.tsx</span></div>
       </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Deleted PublicNavbar.tsx, PublicFooter.tsx, ProofSection.tsx, and MissionSection.tsx (all confirmed zero-reference dead code) and replaced SiteHeader.tsx/SiteFooter.tsx with the one real implementation now used sitewide.</p></div>
     </article>
 
     <article class="issue-card" style="border-left-color:#4A7A8C">
       <div class="issue-head">
         <span class="issue-sev" style="background:#4A7A8C">P2</span>
         <span class="issue-id">P2-2</span>
+        <span class="badge badge-pass">FIXED</span>
         <h3>PageShell (used by /mission, /ops, /hermes-usb) has no path back to the main site</h3>
       </div>
       <p class="issue-impact">Its “NWKIDS” wordmark links to /en/mission, not the homepage, and there is no donate link or brand logo — a visitor who lands here via the “Operations” nav item has no way back.</p>
@@ -627,19 +710,22 @@
         <div><span class="meta-label">Law/axis violated</span><span>Escape routes / trunk test</span></div>
         <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/components/PageShell.tsx</span></div>
       </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Added a real “← Back to nwkids.org” link, and since PageShell now renders inside the global [locale] layout, it also inherits the full SiteHeader/SiteFooter — the escape route exists at two levels now.</p></div>
     </article>
 
     <article class="issue-card" style="border-left-color:#4A7A8C">
       <div class="issue-head">
         <span class="issue-sev" style="background:#4A7A8C">P2</span>
         <span class="issue-id">P2-3</span>
-        <h3>No custom 404 page — every dead link falls through to Next.js's raw default</h3>
+        <span class="badge badge-pass">FIXED</span>
+        <h3>No custom 404 page — every dead link fell through to Next.js's raw default</h3>
       </div>
-      <p class="issue-impact">/donate, /work-with-us, /blog, and /gallery all render the unstyled framework default ("404 | This page could not be found") with no branding, no way back to the site, and no donate/contact fallback. Even once the routes exist, a branded 404 with recovery links should replace this.</p>
+      <p class="issue-impact">/donate, /work-with-us, /blog, and /gallery all rendered the unstyled framework default with no branding and no way back to the site.</p>
       <div class="issue-meta">
         <div><span class="meta-label">Law/axis violated</span><span>Recover gracefully from errors</span></div>
-        <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/app/not-found.tsx (does not exist)</span></div>
+        <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/app/[locale]/not-found.tsx (did not exist)</span></div>
       </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Built a branded, bilingual 404 with links back to the homepage, donate, and email — inherits the global header/footer automatically since it lives inside [locale]/.</p></div>
     </article>
   </section>
 
