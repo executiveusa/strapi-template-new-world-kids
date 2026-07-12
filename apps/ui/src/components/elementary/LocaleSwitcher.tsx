@@ -1,7 +1,7 @@
 "use client"
 
-import type { Locale } from "next-intl"
 import { usePathname } from "next/navigation"
+import type { Locale } from "next-intl"
 
 import { Link } from "@/lib/navigation"
 
@@ -10,10 +10,15 @@ function stripLocale(pathname: string) {
   if (segments.length > 2 && (segments[1] === "en" || segments[1] === "es")) {
     return `/${segments.slice(2).join("/")}`.replace(/\/$/, "") || "/"
   }
+
   return pathname || "/"
 }
 
-export default function LocaleSwitcher({ locale }: { readonly locale: Locale }) {
+export default function LocaleSwitcher({
+  locale,
+}: {
+  readonly locale: Locale
+}) {
   const pathname = usePathname()
   const basePath = stripLocale(pathname)
   const nextLocale: Locale = locale === "es" ? "en" : "es"

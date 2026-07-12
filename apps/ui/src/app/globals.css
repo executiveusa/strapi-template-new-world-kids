@@ -48,7 +48,11 @@
      These alias the values above so every homepage section reads from the
      same names. Hardcoded hex (e.g. bg-[#060e08], bg-[#071008], bg-[#08110a],
      bg-[#060c07]) is being swept out in favor of these tokens so the six
-     competing darks collapse to one system. */
+     competing darks collapse to one system.
+
+     Theme-reactive: overridden under [data-theme="light"] below. Components
+     must use these utility classes (bg-bg, bg-surface, text-text-primary…)
+     rather than arbitrary hex so the light/dark toggle actually works. */
   --color-bg: #060e08; /* page background — deepest dark */
   --color-surface: #0d1610; /* card / panel background */
   --color-surface-raised: #111c18; /* elevated panel (modals, hover) */
@@ -56,11 +60,93 @@
   --color-gold-bright: #f0d98a; /* link hover, brighter gold accents */
   --color-text-primary: #f7f2e8;
   --color-text-muted: #a8b7ad;
+
+  /* Accent tokens — same hue family in both themes, contrast-adjusted per
+     theme via the override block below (a gold light enough to read on
+     near-black is too pale to read on cream). */
+  --color-accent-gold: #c9a84c;
+  --color-accent-coral: #c8400e;
+  --color-accent-coral-hover: #d9500f;
+
+  /* Elevation — tinted with the brand forest hue instead of flat black, so
+     shadows read as "this site's light" rather than a generic UI shadow. */
+  --shadow-color: 150 45% 4%;
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.4);
+  --shadow-md:
+    0 4px 12px hsl(var(--shadow-color) / 0.28),
+    0 1px 2px hsl(var(--shadow-color) / 0.3);
+  --shadow-lg:
+    0 16px 40px hsl(var(--shadow-color) / 0.32),
+    0 2px 8px hsl(var(--shadow-color) / 0.24);
+}
+
+/* === Light theme === */
+:root[data-theme="light"] {
+  --color-background: #f5f0e8;
+  --color-panel: #ffffff;
+  --color-panel-light: #fbf8f2;
+  --color-border: #e4dbc8;
+  --color-border-light: rgba(44, 44, 42, 0.1);
+
+  --color-foreground: #2c2c2a;
+  --color-muted: #6b6a5f;
+  --color-accent: #9c7a1f;
+  --color-warm: #b8863a;
+  --color-water: #2f7d8c;
+
+  --color-bg: #f5f0e8;
+  --color-surface: #ffffff;
+  --color-surface-raised: #fbf8f2;
+  --color-border-subtle: rgba(44, 44, 42, 0.1);
+  --color-gold-bright: #7a5c17;
+  --color-text-primary: #211f1a;
+  --color-text-muted: #5c5a4f;
+
+  /* Gold needs to darken substantially to stay legible on cream; coral
+     already has enough contrast on both grounds and stays put. */
+  --color-accent-gold: #9c7a1f;
+  --color-accent-coral: #c8400e;
+  --color-accent-coral-hover: #b0380c;
+
+  --shadow-color: 38 25% 55%;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --color-background: #f5f0e8;
+    --color-panel: #ffffff;
+    --color-panel-light: #fbf8f2;
+    --color-border: #e4dbc8;
+    --color-border-light: rgba(44, 44, 42, 0.1);
+
+    --color-foreground: #2c2c2a;
+    --color-muted: #6b6a5f;
+    --color-accent: #9c7a1f;
+    --color-warm: #b8863a;
+    --color-water: #2f7d8c;
+
+    --color-bg: #f5f0e8;
+    --color-surface: #ffffff;
+    --color-surface-raised: #fbf8f2;
+    --color-border-subtle: rgba(44, 44, 42, 0.1);
+    --color-gold-bright: #7a5c17;
+    --color-text-primary: #211f1a;
+    --color-text-muted: #5c5a4f;
+
+    --color-accent-gold: #9c7a1f;
+    --color-accent-coral: #c8400e;
+    --color-accent-coral-hover: #b0380c;
+
+    --shadow-color: 38 25% 55%;
+  }
 }
 
 html {
   background: var(--color-background);
   color: var(--color-foreground);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 body {
@@ -69,6 +155,20 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 a {

@@ -7,23 +7,23 @@ export function TrustSection() {
       <div className="mx-auto max-w-4xl">
         {/* Trust pill badges */}
         <div className="mb-8 flex flex-wrap justify-center gap-3">
-          <span className="rounded-full border border-[#c9a84c]/30 bg-[#c9a84c]/10 px-4 py-1.5 text-xs font-semibold text-[#c9a84c]">
+          <span className="rounded-full border border-[var(--color-accent-gold)]/30 bg-[var(--color-accent-gold)]/10 px-4 py-1.5 text-xs font-semibold text-[var(--color-accent-gold)]">
             501(c)(3) Nonprofit
           </span>
-          <span className="rounded-full border border-[#c9a84c]/30 bg-[#c9a84c]/10 px-4 py-1.5 text-xs font-semibold text-[#c9a84c]">
+          <span className="rounded-full border border-[var(--color-accent-gold)]/30 bg-[var(--color-accent-gold)]/10 px-4 py-1.5 text-xs font-semibold text-[var(--color-accent-gold)]">
             EIN 46-4779591
           </span>
         </div>
 
         {/* Header */}
         <div className="text-center">
-          <p className="text-xs tracking-[0.24em] text-[#c9a84c] uppercase">
+          <p className="text-xs tracking-[0.24em] text-[var(--color-accent-gold)] uppercase">
             Verified & transparent
           </p>
-          <h2 className="mt-3 font-serif text-3xl text-white md:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl text-[var(--color-text-primary)] md:text-4xl">
             We build in public.
           </h2>
-          <p className="mt-4 text-sm leading-7 text-white/55 md:text-base">
+          <p className="mt-4 text-sm leading-7 text-[var(--color-text-muted)] md:text-base">
             Your donations help keep all our resources, solutions, and programs
             100% free for every student who finds them.
           </p>
@@ -65,15 +65,17 @@ export function TrustSection() {
           ].map((item) => (
             <div
               key={item.label}
-              className="rounded-2xl border border-white/8 bg-[var(--color-surface-raised)] p-5"
+              className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-raised)] p-5"
             >
-              <p className="text-xs tracking-[0.18em] text-[#c9a84c]/70 uppercase">
+              <p className="text-xs tracking-[0.18em] text-[var(--color-accent-gold)]/70 uppercase">
                 {item.label}
               </p>
-              <p className="mt-2 text-sm font-semibold text-white">
+              <p className="mt-2 text-sm font-semibold text-[var(--color-text-primary)]">
                 {item.value}
               </p>
-              <p className="mt-1 text-xs text-white/40">{item.note}</p>
+              <p className="mt-1 text-xs text-[var(--color-text-muted)]">
+                {item.note}
+              </p>
             </div>
           ))}
         </div>

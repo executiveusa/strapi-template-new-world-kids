@@ -1,3 +1,6 @@
+"use client"
+
+import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 
@@ -22,7 +25,7 @@ export function ProgramsSection() {
           <p className="text-xs tracking-[0.26em] text-[var(--color-gold)] uppercase">
             Two programs. Two communities. One mission.
           </p>
-          <h2 className="mt-4 font-serif text-3xl font-semibold tracking-tight text-white md:text-5xl">
+          <h2 className="mt-4 font-serif text-3xl font-semibold tracking-tight text-[var(--color-text-primary)] md:text-5xl">
             We meet youth where they are.
           </h2>
         </div>
@@ -34,34 +37,40 @@ export function ProgramsSection() {
             const isFeatured = index === 1 // Indigo Azul highlighted
 
             return (
-              <article
+              <motion.article
                 key={program.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                style={{ boxShadow: "var(--shadow-sm)" }}
                 className={[
-                  "relative flex flex-col rounded-[30px] border bg-white/[0.03] p-8",
+                  "relative flex flex-col rounded-[30px] border bg-[var(--color-border-subtle)] p-8 transition-shadow duration-300 hover:shadow-[var(--shadow-lg)]",
                   isFeatured
                     ? "border-[var(--color-gold)]/30"
-                    : "border-white/10",
+                    : "border-[var(--color-border-subtle)]",
                 ].join(" ")}
               >
                 {"badge" in program && program.badge ? (
-                  <span className="absolute right-5 top-5 rounded-full border border-[var(--color-coral)]/40 bg-[var(--color-coral)]/10 px-3 py-1 text-[10px] font-semibold tracking-wider text-[var(--color-coral)] uppercase">
+                  <span className="absolute top-5 right-5 rounded-full border border-[var(--color-coral)]/40 bg-[var(--color-coral)]/10 px-3 py-1 text-[10px] font-semibold tracking-wider text-[var(--color-coral)] uppercase">
                     {program.badge}
                   </span>
                 ) : null}
                 <p className="text-xs tracking-[0.24em] text-[var(--color-gold)] uppercase">
                   {program.eyebrow}
                 </p>
-                <h3 className="mt-4 font-serif text-2xl font-semibold text-white md:text-3xl">
+                <h3 className="mt-4 font-serif text-2xl font-semibold text-[var(--color-text-primary)] md:text-3xl">
                   {program.title}
                 </h3>
-                <p className="mt-5 text-base leading-8 text-white/65">
+                <p className="mt-5 text-base leading-8 text-[var(--color-text-muted)]">
                   {program.body}
                 </p>
                 <ul className="mt-6 space-y-3">
                   {program.bullets.map((bullet) => (
                     <li
                       key={bullet}
-                      className="flex items-start gap-3 text-sm leading-6 text-white/58"
+                      className="flex items-start gap-3 text-sm leading-6 text-[var(--color-text-muted)]"
                     >
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-gold)]" />
                       <span>{bullet}</span>
@@ -79,7 +88,7 @@ export function ProgramsSection() {
                     <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </div>
-              </article>
+              </motion.article>
             )
           })}
         </div>

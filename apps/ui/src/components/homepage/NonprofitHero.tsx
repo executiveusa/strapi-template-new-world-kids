@@ -4,56 +4,55 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 
-// Replace URLs with local /images/ paths once images are uploaded to apps/ui/public/images/
 const heroImages = [
   {
-    src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80",
-    alt: "Sunset clouds over Puerto Vallarta",
+    src: "/images/hero-clouds.jpg",
+    alt: "Sunset clouds over the New World Kids garden",
     duration: 5000, // 5 seconds for first image
   },
   {
-    src: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1600&q=80",
+    src: "/images/hero-bananas.jpg",
     alt: "Banana plants",
   },
   {
-    src: "https://images.unsplash.com/photo-1464454709131-ffd692591ee5?w=1600&q=80",
-    alt: "Garden with various plants",
+    src: "/images/hero-garden.jpg",
+    alt: "Garden with bougainvillea, papaya, moringa, banana, ginger, and guava",
   },
   {
-    src: "https://images.unsplash.com/photo-1585518419759-66f3a4b73bab?w=1600&q=80",
+    src: "/images/hero-mango-baby.jpg",
     alt: "Baby mangos on tree",
   },
   {
-    src: "https://images.unsplash.com/photo-1568284067316-1b1d0f1d0c3c?w=1600&q=80",
+    src: "/images/hero-hibiscus.jpg",
     alt: "Hibiscus flowers",
   },
   {
-    src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80",
+    src: "/images/hero-mango-tree.jpg",
     alt: "Mango tree with fruit",
   },
   {
-    src: "https://images.unsplash.com/photo-1590540189549-336d36e2e3f0?w=1600&q=80",
-    alt: "Papaya tree",
+    src: "/images/hero-papaya.jpg",
+    alt: "Papaya and banana trees",
   },
   {
-    src: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1600&q=80",
-    alt: "Bamboo forest",
+    src: "/images/hero-bamboo.jpg",
+    alt: "Bamboo grove",
   },
   {
-    src: "https://images.unsplash.com/photo-1488459716781-6918f33427d7?w=1600&q=80",
+    src: "/images/hero-red-bananas.jpg",
     alt: "Red bananas",
   },
   {
-    src: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1600&q=80",
-    alt: "Prickly pear cactus",
+    src: "/images/hero-nopales.jpg",
+    alt: "Prickly pear cactus (nopales)",
   },
   {
-    src: "https://images.unsplash.com/photo-1599599810694-b5ac4dd64e90?w=1600&q=80",
-    alt: "Seeds and botanical specimen",
+    src: "/images/hero-seed.jpg",
+    alt: "Seed and botanical specimen",
   },
   {
-    src: "https://images.unsplash.com/photo-1490147868817-67c285e3585a?w=1600&q=80",
-    alt: "Yellow flower",
+    src: "/images/hero-flower.jpg",
+    alt: "Hand-pollinating a squash flower",
   },
 ]
 
@@ -91,7 +90,7 @@ export function NonprofitHero() {
   return (
     <section
       data-hero
-      className="relative min-h-screen overflow-hidden bg-[#060e08]"
+      className="relative min-h-screen overflow-hidden bg-[var(--color-bg)]"
     >
       {/* Background image carousel */}
       <div className="absolute inset-0 z-0">
@@ -107,7 +106,7 @@ export function NonprofitHero() {
             transition={{ duration: 0.8 }}
           />
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060e08]/60 via-[#060e08]/30 to-[#060e08]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg)]/60 via-[var(--color-bg)]/30 to-[var(--color-bg)]" />
       </div>
 
       {/* Content */}
@@ -117,7 +116,7 @@ export function NonprofitHero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-serif text-base leading-relaxed text-[#c9a84c] italic md:text-xl"
+          className="font-serif text-base leading-relaxed text-[var(--color-accent-gold)] italic md:text-xl"
         >
           &ldquo;If you ever think you&apos;re too small to make a difference,
           try going to sleep with a mosquito in the room.&rdquo;
@@ -126,7 +125,7 @@ export function NonprofitHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="mt-2 text-xs tracking-[0.28em] text-[#c9a84c]/70 uppercase"
+          className="mt-2 text-xs tracking-[0.28em] text-[var(--color-accent-gold)]/70 uppercase"
         >
           West African Proverb
         </motion.p>
@@ -136,7 +135,7 @@ export function NonprofitHero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="mt-10 font-serif text-4xl leading-tight font-semibold text-white md:text-6xl lg:text-7xl"
+          className="mt-10 font-serif text-4xl leading-tight font-semibold text-[var(--color-text-primary)] md:text-6xl lg:text-7xl"
         >
           Most kids graduate
           <br className="hidden md:block" /> without ever learning
@@ -146,7 +145,7 @@ export function NonprofitHero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.35 }}
-          className="mt-5 font-serif text-xl text-[#c9a84c] md:text-2xl"
+          className="mt-5 font-serif text-xl text-[var(--color-accent-gold)] md:text-2xl"
         >
           We fix that. Free. No exceptions.
         </motion.p>
@@ -156,7 +155,7 @@ export function NonprofitHero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-8 max-w-2xl text-base leading-8 text-white/70 md:text-lg"
+          className="mt-8 max-w-2xl text-base leading-8 text-[var(--color-text-muted)] md:text-lg"
         >
           New World Kids is a Seattle-based nonprofit. We create projects and
           programs that teach inner-city and rural youth life skills. No matter
@@ -169,7 +168,7 @@ export function NonprofitHero() {
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-4 font-serif text-sm tracking-wide text-[#c9a84c]/80"
+          className="mt-4 font-serif text-sm tracking-wide text-[var(--color-accent-gold)]/80"
         >
           Our framework: Food · Water · Energy · Shelter. Every program teaches
           all four.
@@ -184,13 +183,13 @@ export function NonprofitHero() {
         >
           <Link
             href="/donate"
-            className="rounded-full bg-[#c8400e] px-12 py-4 text-base font-semibold text-white shadow-xl shadow-[#c8400e]/25 transition hover:bg-[#d9500f] hover:shadow-[#c8400e]/40"
+            className="rounded-full bg-[var(--color-accent-coral)] px-12 py-4 text-base font-semibold text-[var(--color-text-primary)] shadow-[var(--color-accent-coral)]/25 shadow-xl transition hover:bg-[var(--color-accent-coral-hover)] hover:shadow-[var(--color-accent-coral)]/40"
           >
             Plant a seed — give $25 →
           </Link>
           <Link
             href="/#timeline"
-            className="text-sm text-[#c9a84c]/55 transition hover:text-[#c9a84c]"
+            className="text-sm text-[var(--color-accent-gold)]/55 transition hover:text-[var(--color-accent-gold)]"
           >
             or see 5 years of work →
           </Link>
@@ -201,14 +200,16 @@ export function NonprofitHero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.9 }}
-          className="mt-16 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 text-center sm:grid-cols-4"
+          className="mt-16 grid grid-cols-2 gap-6 border-t border-[var(--color-border-subtle)] pt-10 text-center sm:grid-cols-4"
         >
           {stats.map((stat) => (
             <div key={stat.label}>
-              <p className="font-serif text-3xl font-semibold text-[#c9a84c] md:text-4xl">
+              <p className="font-serif text-3xl font-semibold text-[var(--color-accent-gold)] md:text-4xl">
                 {stat.value}
               </p>
-              <p className="mt-1 text-xs text-white/55">{stat.label}</p>
+              <p className="mt-1 text-xs text-[var(--color-text-muted)]">
+                {stat.label}
+              </p>
             </div>
           ))}
         </motion.div>
@@ -216,8 +217,8 @@ export function NonprofitHero() {
 
       {/* Scroll hint */}
       <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
-        <div className="mx-auto h-6 w-px bg-[#c9a84c]/40" />
-        <div className="mx-auto mt-1 h-1.5 w-1.5 rounded-full bg-[#c9a84c]/60" />
+        <div className="mx-auto h-6 w-px bg-[var(--color-accent-gold)]/40" />
+        <div className="mx-auto mt-1 h-1.5 w-1.5 rounded-full bg-[var(--color-accent-gold)]/60" />
       </div>
     </section>
   )

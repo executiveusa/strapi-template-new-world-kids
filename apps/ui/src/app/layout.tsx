@@ -1,5 +1,8 @@
+import { MotionConfig } from "framer-motion"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
+
+import { ThemeProvider } from "@/components/providers/ThemeProvider"
 
 import "./globals.css"
 
@@ -24,8 +27,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable}`}
+      suppressHydrationWarning
+    >
+      <body>
+        <ThemeProvider>
+          <MotionConfig reducedMotion="user">{children}</MotionConfig>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }

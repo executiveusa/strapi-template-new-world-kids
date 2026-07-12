@@ -1,192 +1,104 @@
-import { ArrowUpRight, Heart, ShieldCheck } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import type { Locale } from "next-intl"
 
-import { Button } from "@/components/ui/button"
-import {
-  copyForLocale,
-  fiscalSponsor,
-  socialLinks,
-  supportRails,
-  trustDocuments,
-  workWithUsOffers,
-  type SocialLink,
-  type TrustDocument,
-} from "@/content/site"
+import { socialLinks } from "@/components/site/siteData"
+import { fiscalSponsor } from "@/content/site"
 import { Link } from "@/lib/navigation"
 
-export default function SiteFooter({ locale }: { readonly locale: Locale }) {
+const explore = {
+  en: [
+    { href: "/#programs", label: "Programs" },
+    { href: "/#timeline", label: "Timeline" },
+    { href: "/#proof", label: "Trust" },
+    { href: "/mission", label: "Mission" },
+    { href: "/work-with-us", label: "Work With Us" },
+  ],
+  es: [
+    { href: "/#programs", label: "Programas" },
+    { href: "/#timeline", label: "Cronología" },
+    { href: "/#proof", label: "Confianza" },
+    { href: "/mission", label: "Misión" },
+    { href: "/work-with-us", label: "Trabaja con nosotros" },
+  ],
+}
+
+export function SiteFooter({ locale }: { readonly locale: Locale }) {
+  const items = locale === "es" ? explore.es : explore.en
+
   return (
-    <footer className="border-t border-white/10 bg-[#07100B]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.2fr_0.8fr_0.9fr] lg:px-8">
+    <footer className="border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.2fr_0.8fr_0.9fr]">
         <div className="space-y-5">
-          <div className="font-serif text-3xl font-bold tracking-tight text-white">
+          <div className="font-serif text-2xl font-bold tracking-tight text-[var(--color-text-primary)] md:text-3xl">
             {locale === "es"
               ? "Construimos confianza antes de pedir dinero."
               : "We earn trust before we ask for money."}
           </div>
-          <p className="max-w-xl text-sm leading-7 text-[#E8DEC7]/62">
+          <p className="max-w-xl text-sm leading-7 text-[var(--color-text-muted)]">
             {locale === "es"
-              ? "New World Kids opera con patrocinio fiscal, publica documentos de verificacion y construye en publico. Nuestra meta es simple: que cualquier persona entienda la mision, vea la prueba y pueda apoyar sin friccion."
-              : "New World Kids operates under fiscal sponsorship, publishes verification documents, and builds in public. The goal is simple: anyone should understand the mission, see the proof, and support it without friction."}
+              ? "New World Kids opera con patrocinio fiscal y construye en público. La meta es simple: que cualquier persona entienda la misión, vea la prueba y pueda apoyar sin fricción."
+              : "New World Kids operates under fiscal sponsorship and builds in public. The goal is simple: anyone should understand the mission, see the proof, and support it without friction."}
           </p>
 
-          <div className="flex flex-wrap gap-3">
-            <a
-              href={supportRails.buyMeACoffee}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Button className="rounded-sm bg-[#C9A84C] text-[#08100B] hover:bg-[#D7B867]">
-                <Heart className="mr-2 h-4 w-4" />
-                Buy Me a Coffee
-              </Button>
-            </a>
-            <Link href="/donate" locale={locale}>
-              <Button
-                variant="outline"
-                className="rounded-sm border-white/15 bg-transparent text-white hover:bg-white/5"
-              >
-                {locale === "es" ? "Donar ahora" : "Donate now"}
-              </Button>
-            </Link>
-          </div>
+          <Link href="/donate" locale={locale}>
+            <span className="inline-flex h-10 items-center rounded-full bg-[var(--color-accent-coral)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-colors duration-150 hover:bg-[var(--color-accent-coral-hover)]">
+              {locale === "es" ? "Donar ahora" : "Donate now"}
+            </span>
+          </Link>
 
-          <div className="rounded-sm border border-[#C9A84C]/20 bg-[#0C1811] p-4 text-xs leading-6 text-[#E8DEC7]/70">
-            <div className="mb-2 flex items-center gap-2 text-[#C9A84C]">
-              <ShieldCheck className="h-3.5 w-3.5" />
-              <span className="font-semibold tracking-[0.18em] uppercase">
-                {locale === "es" ? "Verificacion" : "Verification"}
-              </span>
-            </div>
-            <div>
-              {locale === "es"
-                ? `Patrocinio fiscal: ${fiscalSponsor.name}. EIN ${fiscalSponsor.ein}.`
-                : `Fiscal sponsor: ${fiscalSponsor.name}. EIN ${fiscalSponsor.ein}.`}
-            </div>
+          <div className="rounded-xl border border-[var(--color-accent-gold)]/20 bg-[var(--color-surface)] p-4 text-xs leading-6 text-[var(--color-text-muted)]">
+            {locale === "es"
+              ? `Patrocinio fiscal: ${fiscalSponsor.name}. EIN ${fiscalSponsor.ein}.`
+              : `Fiscal sponsor: ${fiscalSponsor.name}. EIN ${fiscalSponsor.ein}.`}
           </div>
         </div>
 
-        <div className="space-y-6">
-          <div>
-            <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
-              {locale === "es" ? "Enlaces" : "Explore"}
-            </div>
-            <div className="space-y-3 text-sm text-[#E8DEC7]/68">
-              <Link
-                href="/impact"
-                locale={locale}
-                className="block hover:text-white"
-              >
-                {locale === "es" ? "Impacto" : "Impact"}
-              </Link>
-              <Link
-                href="/trust"
-                locale={locale}
-                className="block hover:text-white"
-              >
-                {locale === "es" ? "Centro de confianza" : "Trust Center"}
-              </Link>
-              <Link
-                href="/work-with-us"
-                locale={locale}
-                className="block hover:text-white"
-              >
-                {locale === "es" ? "Trabaja con nosotros" : "Work With Us"}
-              </Link>
-              <Link
-                href="/about"
-                locale={locale}
-                className="block hover:text-white"
-              >
-                {locale === "es" ? "Nosotros" : "About"}
-              </Link>
-              <Link
-                href="/journal"
-                locale={locale}
-                className="block hover:text-white"
-              >
-                {locale === "es" ? "Bitacora" : "Journal"}
-              </Link>
-            </div>
+        <div>
+          <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[var(--color-accent-gold)] uppercase">
+            {locale === "es" ? "Explorar" : "Explore"}
           </div>
-
-          <div>
-            <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
-              {locale === "es" ? "Redes" : "Social"}
-            </div>
-            <div className="space-y-3 text-sm text-[#E8DEC7]/68">
-              {socialLinks.map((link: SocialLink) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 hover:text-white"
-                >
-                  <span>{link.label}</span>
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
-              ))}
-            </div>
+          <div className="space-y-3 text-sm text-[var(--color-text-muted)]">
+            {items.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                locale={locale}
+                className="block transition-colors hover:text-[var(--color-text-primary)]"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
 
-        <div className="space-y-6">
-          <div>
-            <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
-              {locale === "es" ? "Documentos publicos" : "Public Documents"}
-            </div>
-            <div className="space-y-3">
-              {trustDocuments.slice(0, 3).map((doc: TrustDocument) => (
-                <a
-                  key={doc.slug}
-                  href={doc.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block rounded-sm border border-white/10 bg-white/[0.02] p-3 transition-colors hover:border-[#C9A84C]/30 hover:bg-white/[0.04]"
-                >
-                  <div className="text-sm font-medium text-white">
-                    {copyForLocale(locale, doc.title)}
-                  </div>
-                  <div className="mt-1 text-xs leading-5 text-[#E8DEC7]/58">
-                    {copyForLocale(locale, doc.summary)}
-                  </div>
-                </a>
-              ))}
-            </div>
+        <div>
+          <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[var(--color-accent-gold)] uppercase">
+            {locale === "es" ? "Redes y contacto" : "Social & Contact"}
           </div>
-
-          <div>
-            <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[#C9A84C] uppercase">
-              {locale === "es"
-                ? "Servicios que financian la mision"
-                : "Services Funding the Mission"}
-            </div>
-            <div className="space-y-3 text-sm text-[#E8DEC7]/62">
-              {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-              {(workWithUsOffers as any[]).slice(0, 2).map((offer: any) => (
-                <div key={offer.title.en}>
-                  <div className="font-medium text-white">
-                    {copyForLocale(locale, offer.title)}
-                  </div>
-                  <div className="mt-1 leading-6">
-                    {copyForLocale(locale, offer.body)}
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="space-y-3 text-sm text-[var(--color-text-muted)]">
+            {socialLinks.map((link) => (
+              <a
+                key={link.key}
+                href={link.href}
+                target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                className="flex items-center gap-2 transition-colors hover:text-[var(--color-text-primary)]"
+              >
+                <span>{link.label}</span>
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Quiet studio credit — professional, not promotional.
-          The Pauli Effect built this site. NWKids is a client. */}
-      <div className="border-t border-white/5 px-4 py-4 text-center sm:px-6 lg:px-8">
-        <span className="text-[11px] text-[#E8DEC7]/30">
-          Site built by{" "}
+      <div className="border-t border-[var(--color-border-subtle)] px-5 py-4 text-center sm:px-8">
+        <span className="text-[11px] text-[var(--color-text-muted)]">
+          &copy; {new Date().getFullYear()} New World Kids &middot; Site built
+          by{" "}
           <a
             href="https://thepaulieffect.com"
-            className="transition-colors hover:text-[#C9A84C]/70"
+            className="transition-colors hover:text-[var(--color-accent-gold)]"
             target="_blank"
             rel="noreferrer"
           >

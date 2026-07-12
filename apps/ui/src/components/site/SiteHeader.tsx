@@ -1,64 +1,67 @@
 "use client"
 
-import { Menu, ShieldCheck, X } from "lucide-react"
+import { AnimatePresence, motion } from "framer-motion"
+import { Menu, X } from "lucide-react"
 import Image from "next/image"
 import type { Locale } from "next-intl"
 import { useState } from "react"
 
 import LocaleSwitcher from "@/components/elementary/LocaleSwitcher"
-import { Button } from "@/components/ui/button"
-import { fiscalSponsor } from "@/content/site"
+import { ThemeToggle } from "@/components/elementary/ThemeToggle"
 import { Link } from "@/lib/navigation"
 
 const navigation = {
   en: [
-    { href: "/impact", label: "Impact" },
-    { href: "/trust", label: "Trust" },
+    { href: "/#programs", label: "Programs" },
+    { href: "/#timeline", label: "Timeline" },
+    { href: "/#proof", label: "Trust" },
+    { href: "/mission", label: "Mission" },
     { href: "/work-with-us", label: "Work With Us" },
-    { href: "/about", label: "About" },
   ],
   es: [
-    { href: "/impact", label: "Impacto" },
-    { href: "/trust", label: "Confianza" },
+    { href: "/#programs", label: "Programas" },
+    { href: "/#timeline", label: "Cronología" },
+    { href: "/#proof", label: "Confianza" },
+    { href: "/mission", label: "Misión" },
     { href: "/work-with-us", label: "Trabaja con nosotros" },
-    { href: "/about", label: "Nosotros" },
   ],
 }
 
-export default function SiteHeader({ locale }: { readonly locale: Locale }) {
+export function SiteHeader({ locale }: { readonly locale: Locale }) {
   const items = locale === "es" ? navigation.es : navigation.en
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#08100B]/95 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
-        <div className="flex min-w-0 items-center gap-3">
-          <Link
-            href="/"
-            locale={locale}
-            className="flex items-center gap-3"
-            onClick={() => setMobileOpen(false)}
-          >
-            <Image
-              src="/images/nwkids-logo.png"
-              alt="New World Kids"
-              width={44}
-              height={44}
-              className="h-10 w-10 shrink-0 rounded-sm object-cover"
-              priority
-            />
-            <div className="min-w-0">
-              <div className="font-serif text-lg font-bold tracking-tight text-white">
-                New World Kids
-              </div>
-              <div className="hidden text-xs text-[#E8DEC7]/55 sm:block">
-                {locale === "es"
-                  ? "Alimentos, agua, energia y refugio"
-                  : "Food, water, energy, and shelter"}
-              </div>
+    <header
+      data-site-header
+      className="sticky top-0 z-50 border-b border-[var(--color-border-subtle)] bg-[var(--color-bg)]/85 backdrop-blur-md transition-colors duration-300"
+    >
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
+        <Link
+          href="/"
+          locale={locale}
+          className="flex min-w-0 items-center gap-2.5"
+          onClick={() => setMobileOpen(false)}
+        >
+          <Image
+            src="/images/nwkids-logo.png"
+            alt="New World Kids"
+            width={36}
+            height={36}
+            className="h-9 w-9 shrink-0 rounded-md object-cover"
+            priority
+          />
+          <div className="min-w-0 leading-tight">
+            <div className="font-serif text-base font-bold tracking-tight text-[var(--color-text-primary)]">
+              New World Kids
             </div>
-          </Link>
-        </div>
+            <div className="hidden text-[11px] text-[var(--color-text-muted)] sm:block">
+              {locale === "es"
+                ? "Alimento, agua, energía y refugio"
+                : "Food, water, energy, and shelter"}
+            </div>
+          </div>
+        </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
           {items.map((item) => (
@@ -66,33 +69,35 @@ export default function SiteHeader({ locale }: { readonly locale: Locale }) {
               key={item.href}
               href={item.href}
               locale={locale}
-              className="text-sm text-[#E8DEC7]/72 transition-colors hover:text-white"
+              className="text-sm text-[var(--color-text-muted)] transition-colors duration-150 hover:text-[var(--color-text-primary)]"
             >
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/journal"
-            locale={locale}
-            className="text-sm text-[#E8DEC7]/72 transition-colors hover:text-white"
-          >
-            {locale === "es" ? "Bitacora" : "Journal"}
-          </Link>
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
           <div className="hidden md:block">
             <LocaleSwitcher locale={locale} />
           </div>
-          <Link href="/donate" locale={locale}>
-            <Button className="h-10 rounded-sm bg-[#C9A84C] px-4 text-sm font-semibold text-[#08100B] hover:bg-[#D7B867]">
+          <ThemeToggle />
+          <Link
+            href="/donate"
+            locale={locale}
+            className="hidden sm:inline-flex"
+          >
+            <motion.span
+              whileHover={{ y: -1 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex h-9 items-center rounded-full bg-[var(--color-accent-coral)] px-4 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-colors duration-150 hover:bg-[var(--color-accent-coral-hover)]"
+            >
               {locale === "es" ? "Donar" : "Donate"}
-            </Button>
+            </motion.span>
           </Link>
           <button
             type="button"
             onClick={() => setMobileOpen((value) => !value)}
-            className="flex h-10 w-10 items-center justify-center rounded-sm border border-white/10 text-[#E8DEC7]/65 lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--color-border-subtle)] text-[var(--color-text-muted)] transition-transform duration-150 active:scale-90 lg:hidden"
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? "Close navigation" : "Open navigation"}
           >
@@ -105,66 +110,46 @@ export default function SiteHeader({ locale }: { readonly locale: Locale }) {
         </div>
       </div>
 
-      <div className="border-t border-white/5 bg-[#0B1510]">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-2 text-xs text-[#E8DEC7]/60 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="h-3.5 w-3.5 text-[#C9A84C]" />
-            <span>
-              {locale === "es"
-                ? `Patrocinio fiscal: ${fiscalSponsor.name} | EIN ${fiscalSponsor.ein}`
-                : `Fiscal sponsor: ${fiscalSponsor.name} | EIN ${fiscalSponsor.ein}`}
-            </span>
-          </div>
-          <Link
-            href="/trust"
-            locale={locale}
-            className="text-[#C9A84C] transition-colors hover:text-[#E3C573]"
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="overflow-hidden border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)] lg:hidden"
           >
-            {locale === "es" ? "Ver documentos" : "View verification docs"}
-          </Link>
-        </div>
-      </div>
+            <div className="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-5 sm:px-8">
+              <div className="space-y-4">
+                {items.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    locale={locale}
+                    className="block text-base text-[var(--color-text-primary)]"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
 
-      {mobileOpen && (
-        <div className="border-t border-white/10 bg-[#08100B] lg:hidden">
-          <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-5 sm:px-6">
-            <div className="space-y-3">
-              {items.map((item) => (
+              <div className="flex items-center justify-between gap-4 border-t border-[var(--color-border-subtle)] pt-4">
+                <LocaleSwitcher locale={locale} />
                 <Link
-                  key={item.href}
-                  href={item.href}
+                  href="/donate"
                   locale={locale}
-                  className="block text-base text-white"
                   onClick={() => setMobileOpen(false)}
                 >
-                  {item.label}
+                  <span className="inline-flex h-10 items-center rounded-full bg-[var(--color-accent-coral)] px-5 text-sm font-semibold text-white">
+                    {locale === "es" ? "Donar ahora" : "Donate now"}
+                  </span>
                 </Link>
-              ))}
-              <Link
-                href="/journal"
-                locale={locale}
-                className="block text-base text-white"
-                onClick={() => setMobileOpen(false)}
-              >
-                {locale === "es" ? "Bitacora" : "Journal"}
-              </Link>
+              </div>
             </div>
-
-            <div className="flex items-center justify-between gap-4 border-t border-white/10 pt-4">
-              <LocaleSwitcher locale={locale} />
-              <Link
-                href="/donate"
-                locale={locale}
-                onClick={() => setMobileOpen(false)}
-              >
-                <Button className="rounded-sm bg-[#C9A84C] text-[#08100B] hover:bg-[#D7B867]">
-                  {locale === "es" ? "Donar ahora" : "Donate now"}
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
