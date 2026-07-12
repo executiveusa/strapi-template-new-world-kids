@@ -26,7 +26,7 @@ export function SupportSection() {
     >
       <div className="mx-auto max-w-4xl">
         <div className="text-center">
-          <p className="text-xs tracking-[0.24em] text-[var(--color-accent-gold)] uppercase">
+          <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">
             Support the mission
           </p>
           <h2 className="mt-3 font-serif text-3xl text-[var(--color-text-primary)] md:text-4xl">
@@ -35,7 +35,7 @@ export function SupportSection() {
         </div>
 
         {/* Amount-anchored donation options */}
-        <div className="mt-10 grid gap-4 sm:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-3">
           {donateOptions.map((opt, i) => (
             <motion.div
               key={opt.amount}
@@ -43,16 +43,18 @@ export function SupportSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -6 }}
               whileTap={{ scale: 0.97 }}
+              style={{ boxShadow: "var(--shadow-sm)" }}
+              className="transition-shadow duration-300 hover:shadow-[var(--shadow-md)]"
             >
               <Link
                 href="/donate"
                 className={[
-                  "group relative flex h-full flex-col rounded-2xl border p-6 text-center transition-colors duration-200",
+                  "group relative flex h-full flex-col rounded-2xl border p-8 text-center transition-colors duration-200",
                   opt.featured
                     ? "border-[var(--color-accent-coral)] bg-[var(--color-accent-coral)]/10 hover:bg-[var(--color-accent-coral)]/20"
-                    : "border-[var(--color-border-subtle)] bg-[var(--color-surface)] hover:border-[var(--color-accent-gold)]/40",
+                    : "border-[var(--color-border-subtle)] bg-[var(--color-surface)] hover:border-[var(--color-sage)]/40",
                 ].join(" ")}
               >
                 {opt.featured && (
@@ -74,7 +76,7 @@ export function SupportSection() {
                     "mt-4 rounded-full py-2 text-xs font-semibold transition-colors duration-200",
                     opt.featured
                       ? "bg-[var(--color-accent-coral)] text-white group-hover:bg-[var(--color-accent-coral-hover)]"
-                      : "bg-[var(--color-border-subtle)] text-[var(--color-text-muted)] group-hover:bg-[var(--color-accent-gold)]/15 group-hover:text-[var(--color-text-primary)]",
+                      : "bg-[var(--color-border-subtle)] text-[var(--color-text-muted)] group-hover:bg-[var(--color-sage)]/15 group-hover:text-[var(--color-text-primary)]",
                   ].join(" ")}
                 >
                   Give {opt.amount} →

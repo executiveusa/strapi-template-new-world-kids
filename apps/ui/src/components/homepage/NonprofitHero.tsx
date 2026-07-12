@@ -1,9 +1,9 @@
 "use client"
 
-import { AnimatePresence, motion } from "framer-motion"
+import { AnimatePresence, animate, motion, useInView } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const stats = [
   { value: "200+", label: "plant varieties growing" },
@@ -56,6 +56,29 @@ const carouselImages = [
 ]
 
 const SLIDE_DURATION_MS = 3500
+
+function StatNumber({ value }: { value: string }) {
+  const match = /^(\$?)(\d+(?:\.\d+)?)(\+?)$/.exec(value)
+  const ref = useRef<HTMLSpanElement>(null)
+  const isInView = useInView(ref, { once: true, margin: "-60px" })
+  const [display, setDisplay] = useState(match ? "0" : value)
+
+  useEffect(() => {
+    if (!isInView || !match) return
+    const [, prefix, numStr, suffix] = match
+    const target = Number.parseFloat(numStr)
+    const decimals = numStr.includes(".") ? 1 : 0
+    const controls = animate(0, target, {
+      duration: 1.4,
+      ease: "easeOut",
+      onUpdate: (v) => setDisplay(`${prefix}${v.toFixed(decimals)}${suffix}`),
+    })
+
+    return () => controls.stop()
+  }, [isInView, match])
+
+  return <span ref={ref}>{display}</span>
+}
 
 function HeroImageCarousel() {
   const [index, setIndex] = useState(0)
@@ -131,7 +154,7 @@ export function NonprofitHero() {
               &ldquo;If you ever think you&apos;re too small to make a
               difference, try going to sleep with a mosquito in the room.&rdquo;
             </p>
-            <p className="mt-2 text-xs tracking-[0.28em] text-[var(--color-accent-gold)]/70 uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
+            <p className="mt-2 text-xs tracking-[0.28em] text-white/70 uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
               West African Proverb
             </p>
           </motion.div>
@@ -227,7 +250,7 @@ export function NonprofitHero() {
           {stats.map((stat) => (
             <div key={stat.label}>
               <p className="font-serif text-3xl font-semibold text-[var(--color-accent-gold)] md:text-4xl">
-                {stat.value}
+                <StatNumber value={stat.value} />
               </p>
               <p className="mt-1 text-xs text-[var(--color-text-muted)]">
                 {stat.label}

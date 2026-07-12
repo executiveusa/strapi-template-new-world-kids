@@ -53,31 +53,39 @@
      Theme-reactive: overridden under [data-theme="light"] below. Components
      must use these utility classes (bg-bg, bg-surface, text-text-primary…)
      rather than arbitrary hex so the light/dark toggle actually works. */
-  --color-bg: #060e08; /* page background — deepest dark */
-  --color-surface: #0d1610; /* card / panel background */
-  --color-surface-raised: #111c18; /* elevated panel (modals, hover) */
-  --color-border-subtle: rgba(255, 255, 255, 0.1);
+  --color-bg: #14120f; /* page background — ink, not forest-black */
+  --color-surface: #1c1a15; /* card / panel background */
+  --color-surface-raised: #24211a; /* elevated panel (modals, hover) */
+  --color-border-subtle: rgba(255, 250, 240, 0.14);
   --color-gold-bright: #f0d98a; /* link hover, brighter gold accents */
   --color-text-primary: #f7f2e8;
-  --color-text-muted: #a8b7ad;
+  --color-text-muted: #a89e8f;
 
   /* Accent tokens — same hue family in both themes, contrast-adjusted per
      theme via the override block below (a gold light enough to read on
-     near-black is too pale to read on cream). */
-  --color-accent-gold: #c9a84c;
-  --color-accent-coral: #c8400e;
-  --color-accent-coral-hover: #d9500f;
+     near-black is too pale to read on cream).
 
-  /* Elevation — tinted with the brand forest hue instead of flat black, so
+     Usage rule (Pass 3 audit): gold is reserved for numerals/prices/stats
+     only — never for repeated eyebrow labels. Eyebrow labels use
+     --color-eyebrow (a quiet neutral). Sage is a single controlled accent
+     (active nav state, one badge/bullet family) — it does not become a
+     second background color. Coral/terracotta stays the one CTA color. */
+  --color-accent-gold: #c9a84c;
+  --color-accent-coral: #c1602e;
+  --color-accent-coral-hover: #d1753f;
+  --color-eyebrow: #9c9186;
+  --color-sage: #7f9478;
+
+  /* Elevation — tinted with the brand ink hue instead of flat black, so
      shadows read as "this site's light" rather than a generic UI shadow. */
-  --shadow-color: 150 45% 4%;
-  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.4);
+  --shadow-color: 30 20% 4%;
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.45);
   --shadow-md:
-    0 4px 12px hsl(var(--shadow-color) / 0.28),
-    0 1px 2px hsl(var(--shadow-color) / 0.3);
+    0 6px 16px hsl(var(--shadow-color) / 0.32),
+    0 1px 3px hsl(var(--shadow-color) / 0.35);
   --shadow-lg:
-    0 16px 40px hsl(var(--shadow-color) / 0.32),
-    0 2px 8px hsl(var(--shadow-color) / 0.24);
+    0 20px 48px hsl(var(--shadow-color) / 0.36),
+    0 2px 10px hsl(var(--shadow-color) / 0.28);
 }
 
 /* === Light theme === */
@@ -94,19 +102,21 @@
   --color-warm: #b8863a;
   --color-water: #2f7d8c;
 
-  --color-bg: #f5f0e8;
-  --color-surface: #ffffff;
-  --color-surface-raised: #fbf8f2;
-  --color-border-subtle: rgba(44, 44, 42, 0.1);
+  --color-bg: #f3ebdd;
+  --color-surface: #fdfbf7;
+  --color-surface-raised: #ffffff;
+  --color-border-subtle: rgba(44, 40, 34, 0.14);
   --color-gold-bright: #7a5c17;
   --color-text-primary: #211f1a;
-  --color-text-muted: #5c5a4f;
+  --color-text-muted: #6b6154;
 
   /* Gold needs to darken substantially to stay legible on cream; coral
      already has enough contrast on both grounds and stays put. */
   --color-accent-gold: #9c7a1f;
-  --color-accent-coral: #c8400e;
-  --color-accent-coral-hover: #b0380c;
+  --color-accent-coral: #b8542a;
+  --color-accent-coral-hover: #a3491f;
+  --color-eyebrow: #8f8578;
+  --color-sage: #64795f;
 
   --shadow-color: 38 25% 55%;
 }
@@ -125,17 +135,19 @@
     --color-warm: #b8863a;
     --color-water: #2f7d8c;
 
-    --color-bg: #f5f0e8;
-    --color-surface: #ffffff;
-    --color-surface-raised: #fbf8f2;
-    --color-border-subtle: rgba(44, 44, 42, 0.1);
+    --color-bg: #f3ebdd;
+    --color-surface: #fdfbf7;
+    --color-surface-raised: #ffffff;
+    --color-border-subtle: rgba(44, 40, 34, 0.14);
     --color-gold-bright: #7a5c17;
     --color-text-primary: #211f1a;
-    --color-text-muted: #5c5a4f;
+    --color-text-muted: #6b6154;
 
     --color-accent-gold: #9c7a1f;
-    --color-accent-coral: #c8400e;
-    --color-accent-coral-hover: #b0380c;
+    --color-accent-coral: #b8542a;
+    --color-accent-coral-hover: #a3491f;
+    --color-eyebrow: #8f8578;
+    --color-sage: #64795f;
 
     --shadow-color: 38 25% 55%;
   }
