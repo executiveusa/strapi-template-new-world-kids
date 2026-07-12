@@ -218,7 +218,7 @@
       <p><strong>Pass 3 &mdash; requested by the client directly: "the color scheme is tacky and doesn't look prime."</strong> All four Pass 1 functional P0s are now fixed or reclassified (see below), so this pass evaluates the site with working navigation, working donation, and a real light theme in place. The verdict on the client's specific complaint: <strong>the color scheme critique is correct.</strong> It is not a taste-only nitpick &mdash; it's evidence-backed by real screenshots (below) and it caps the score.</p>
       <p>The problem is not the presence of green &mdash; the site is a garden/agriculture nonprofit, so green photography is correct. The problem is that <strong>the UI chrome stacks green on top of green photography on top of a brassy "harvest gold" accent used for every eyebrow label</strong>, producing a flat, monochrome, low-contrast wall of forest tones with almost no relief. Combined with tight card padding, thin near-invisible borders (1px at 10% opacity), and minimal variation in section pacing, the result reads heavier and more dated than the quality of the copy and photography underneath it deserves.</p>
       <p>Microinteractions are present (Framer Motion whileInView reveals, button hover states) but subtle to the point of being invisible in normal use, and there is no single signature moment &mdash; nothing that would read as deliberately, distinctively "this site" versus a competent template. That is the gap between where the site is now (7.1, usable but not client-ready) and an awwwards-tier bar (9+).</p>
-      <p>Recommended direction below (not yet implemented &mdash; audit only, per phase gating): let the photography carry the greens, and shift the UI shell to a warmer, quieter neutral palette (ink/charcoal instead of forest-black, sand/stone instead of cream, terracotta reserved for the one CTA color, gold reserved for numbers only). Add real elevation and section-to-section pacing variation. Add a couple of signature microinteractions instead of many small identical fades.</p>
+      <p>Recommended direction below, <strong>approved and implemented in this PR</strong>: let the photography carry the greens, and shift the UI shell to a warmer, quieter neutral palette (ink instead of forest-black, sand instead of cream, terracotta reserved for the one CTA color, gold reserved for numbers only). Real elevation and section-to-section pacing variation were added to the Trust and Support card grids. A stats count-up and staggered Programs card reveal were added as the motion signature moment.</p>
       <div class="pill-row">
         <span class="pill pill-p2">0 P0 &mdash; all functional blockers fixed/reclassified</span>
         <span class="pill pill-p1">7 P1 &mdash; 3 new this pass</span>
@@ -655,51 +655,6 @@
     <h2 class="section-title">Builder-ready issue list</h2>
     <p class="section-intro">Ordered P0 &rarr; P2. Full fix plan, file allowlist, and acceptance criteria will be in prd.html after this audit is approved.</p>
     
-    <article class="issue-card" style="border-left-color:#C9862A">
-      <div class="issue-head">
-        <span class="issue-sev" style="background:#C9862A">P1</span>
-        <span class="issue-id">P1-5</span>
-        <span class="badge badge-unknown">PENDING</span>
-        <h3>Color system reads tacky/dated &mdash; forest-green chrome stacked on green photography stacked on brassy gold</h3>
-      </div>
-      <p class="issue-impact">Client-reported directly: "the color scheme is very tacky and doesn't look prime." Verified against fresh screenshots (Pass 3, above): dark theme, light theme, and every card section share the same forest/guayabo/gold family, producing a flat, low-contrast, monochrome effect rather than a premium "natural" feel. Gold specifically is overused as the default eyebrow-label color across every section.</p>
-      <div class="issue-meta">
-        <div><span class="meta-label">Law/axis violated</span><span>Color & theme axis / Design must have a point of view / Contrast is more than color</span></div>
-        <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/app/globals.css (--color-forest, --color-guayabo, --color-gold family), all homepage components using --color-accent-gold for eyebrow labels</span></div>
-      </div>
-      <div class="resolution"><span class="meta-label">Resolution</span><p>Proposed direction documented in Pass 3 above (ink/sand/sage/terracotta/ochre palette, gold reserved for numerals only). Not implemented &mdash; needs human approval before any source edits, per phase gating.</p></div>
-    </article>
-
-    <article class="issue-card" style="border-left-color:#C9862A">
-      <div class="issue-head">
-        <span class="issue-sev" style="background:#C9862A">P1</span>
-        <span class="issue-id">P1-6</span>
-        <span class="badge badge-unknown">PENDING</span>
-        <h3>Card grids and section pacing are too dense &mdash; low whitespace, near-invisible borders</h3>
-      </div>
-      <p class="issue-impact">Trust section (6 cards) and donation tiers (3 cards) both use tight internal padding and 1px/10%-opacity borders that barely register against the background. No section-to-section pacing variation exists &mdash; every section uses the same background value and vertical rhythm from hero to footer.</p>
-      <div class="issue-meta">
-        <div><span class="meta-label">Law/axis violated</span><span>Spacing is a trust cue / Pages need pacing, not just stacked sections</span></div>
-        <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/components/homepage/TrustSection.tsx, SupportSection.tsx (donation tiers)</span></div>
-      </div>
-      <div class="resolution"><span class="meta-label">Resolution</span><p>Not implemented &mdash; needs human approval. Proposed: increase card padding, add visible border/shadow, cap Trust cards at 3 per row on desktop, vary section background/padding for pacing.</p></div>
-    </article>
-
-    <article class="issue-card" style="border-left-color:#C9862A">
-      <div class="issue-head">
-        <span class="issue-sev" style="background:#C9862A">P1</span>
-        <span class="issue-id">P1-7</span>
-        <span class="badge badge-unknown">PENDING</span>
-        <h3>Motion has no signature moment &mdash; every section uses the identical fade+slide reveal</h3>
-      </div>
-      <p class="issue-impact">Framer Motion entrances are consistent and functionally correct, but every section uses the same opacity+y-12px pattern. There is no distinctive interaction that would read as deliberately "this site" rather than a competent template &mdash; the gap between the current 7.1 and an awwwards-tier bar.</p>
-      <div class="issue-meta">
-        <div><span class="meta-label">Law/axis violated</span><span>Motion readiness / Native interaction quality</span></div>
-        <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/components/homepage/*.tsx (all use the same whileInView pattern)</span></div>
-      </div>
-      <div class="resolution"><span class="meta-label">Resolution</span><p>Not implemented &mdash; needs human approval. Proposed: magnetic/lift hover on the donate CTA, number count-up on the stats strip, staggered (not simultaneous) card-grid reveals. Per the brief's own motion laws, kept restrained &mdash; no parallax or scroll-hijacking.</p></div>
-    </article>
-
     <article class="issue-card" style="border-left-color:#C23B22">
       <div class="issue-head">
         <span class="issue-sev" style="background:#C23B22">P0</span>
@@ -805,6 +760,52 @@
       </div>
       <div class="resolution"><span class="meta-label">Resolution</span><p>Needs the Nano Banana upscale pass (prompt already provided) run against each source photo before re-upload — not done in this pass.</p></div>
     </article>
+
+    <article class="issue-card" style="border-left-color:#C9862A">
+      <div class="issue-head">
+        <span class="issue-sev" style="background:#C9862A">P1</span>
+        <span class="issue-id">P1-5</span>
+        <span class="badge badge-pass">FIXED</span>
+        <h3>Color system reads tacky/dated &mdash; forest-green chrome stacked on green photography stacked on brassy gold</h3>
+      </div>
+      <p class="issue-impact">Client-reported directly: "the color scheme is very tacky and doesn't look prime." Verified against fresh screenshots (Pass 3, above): dark theme, light theme, and every card section share the same forest/guayabo/gold family, producing a flat, low-contrast, monochrome effect rather than a premium "natural" feel. Gold specifically is overused as the default eyebrow-label color across every section.</p>
+      <div class="issue-meta">
+        <div><span class="meta-label">Law/axis violated</span><span>Color & theme axis / Design must have a point of view / Contrast is more than color</span></div>
+        <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/app/globals.css (--color-forest, --color-guayabo, --color-gold family), all homepage components using --color-accent-gold for eyebrow labels</span></div>
+      </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Implemented: dark bg/surface shifted from forest-black to ink, light bg/surface shifted to sand, new --color-eyebrow (quiet neutral) and --color-sage (single controlled accent) tokens added, coral shifted toward terracotta. Gold swept off every repeated eyebrow label (Trust, Support, Programs, Timeline, hero proverb label) onto --color-eyebrow — gold now appears only on dollar amounts and stat numbers.</p></div>
+    </article>
+
+    <article class="issue-card" style="border-left-color:#C9862A">
+      <div class="issue-head">
+        <span class="issue-sev" style="background:#C9862A">P1</span>
+        <span class="issue-id">P1-6</span>
+        <span class="badge badge-pass">FIXED</span>
+        <h3>Card grids and section pacing are too dense &mdash; low whitespace, near-invisible borders</h3>
+      </div>
+      <p class="issue-impact">Trust section (6 cards) and donation tiers (3 cards) both use tight internal padding and 1px/10%-opacity borders that barely register against the background. No section-to-section pacing variation exists &mdash; every section uses the same background value and vertical rhythm from hero to footer.</p>
+      <div class="issue-meta">
+        <div><span class="meta-label">Law/axis violated</span><span>Spacing is a trust cue / Pages need pacing, not just stacked sections</span></div>
+        <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/components/homepage/TrustSection.tsx, SupportSection.tsx (donation tiers)</span></div>
+      </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Implemented: increased card padding, added a visible border with a hover shadow (var(--shadow-sm)/var(--shadow-md)) to Trust cards and donation tiers, and increased grid gaps. Border-subtle opacity was also raised sitewide (10% &rarr; 14%) so borders register instead of nearly disappearing.</p></div>
+    </article>
+
+    <article class="issue-card" style="border-left-color:#C9862A">
+      <div class="issue-head">
+        <span class="issue-sev" style="background:#C9862A">P1</span>
+        <span class="issue-id">P1-7</span>
+        <span class="badge badge-pass">FIXED</span>
+        <h3>Motion has no signature moment &mdash; every section uses the identical fade+slide reveal</h3>
+      </div>
+      <p class="issue-impact">Framer Motion entrances are consistent and functionally correct, but every section uses the same opacity+y-12px pattern. There is no distinctive interaction that would read as deliberately "this site" rather than a competent template &mdash; the gap between the current 7.1 and an awwwards-tier bar.</p>
+      <div class="issue-meta">
+        <div><span class="meta-label">Law/axis violated</span><span>Motion readiness / Native interaction quality</span></div>
+        <div><span class="meta-label">Likely files</span><span class="mono small">apps/ui/src/components/homepage/*.tsx (all use the same whileInView pattern)</span></div>
+      </div>
+      <div class="resolution"><span class="meta-label">Resolution</span><p>Implemented: the hero stats strip now counts up from zero on scroll-into-view (with a prefers-reduced-motion fallback that shows the final value immediately), and Programs cards now reveal with a staggered delay instead of fading in simultaneously. Kept restrained per the brief's own motion laws &mdash; no parallax or scroll-hijacking.</p></div>
+    </article>
+
 
     <article class="issue-card" style="border-left-color:#4A7A8C">
       <div class="issue-head">

@@ -60,9 +60,14 @@ const SLIDE_DURATION_MS = 3500
 function StatNumber({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-60px" })
-  const [display, setDisplay] = useState(() =>
-    /^\$?\d+(?:\.\d+)?\+?$/.test(value) ? "0" : value
-  )
+  const zeroed = (() => {
+    const m = /^(\$?)(\d+(?:\.\d+)?)(\+?)$/.exec(value)
+    if (!m) return value
+    const [, prefix, numStr, suffix] = m
+
+    return `${prefix}${numStr.includes(".") ? "0.0" : "0"}${suffix}`
+  })()
+  const [display, setDisplay] = useState(zeroed)
 
   useEffect(() => {
     if (!isInView) return
@@ -71,8 +76,12 @@ function StatNumber({ value }: { value: string }) {
     const [, prefix, numStr, suffix] = match
     const target = Number.parseFloat(numStr)
     const decimals = numStr.includes(".") ? 1 : 0
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
+
     const controls = animate(0, target, {
-      duration: 1.4,
+      duration: prefersReducedMotion ? 0 : 1.4,
       ease: "easeOut",
       onUpdate: (v) => setDisplay(`${prefix}${v.toFixed(decimals)}${suffix}`),
     })
