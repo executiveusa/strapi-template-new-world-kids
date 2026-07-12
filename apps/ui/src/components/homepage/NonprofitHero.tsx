@@ -58,13 +58,16 @@ const carouselImages = [
 const SLIDE_DURATION_MS = 3500
 
 function StatNumber({ value }: { value: string }) {
-  const match = /^(\$?)(\d+(?:\.\d+)?)(\+?)$/.exec(value)
   const ref = useRef<HTMLSpanElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-60px" })
-  const [display, setDisplay] = useState(match ? "0" : value)
+  const [display, setDisplay] = useState(() =>
+    /^\$?\d+(?:\.\d+)?\+?$/.test(value) ? "0" : value
+  )
 
   useEffect(() => {
-    if (!isInView || !match) return
+    if (!isInView) return
+    const match = /^(\$?)(\d+(?:\.\d+)?)(\+?)$/.exec(value)
+    if (!match) return
     const [, prefix, numStr, suffix] = match
     const target = Number.parseFloat(numStr)
     const decimals = numStr.includes(".") ? 1 : 0
@@ -75,7 +78,7 @@ function StatNumber({ value }: { value: string }) {
     })
 
     return () => controls.stop()
-  }, [isInView, match])
+  }, [isInView, value])
 
   return <span ref={ref}>{display}</span>
 }
