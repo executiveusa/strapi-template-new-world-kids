@@ -1,7 +1,9 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { AnimatePresence, motion } from "framer-motion"
+import Image from "next/image"
 import Link from "next/link"
+import { useEffect, useState } from "react"
 
 const stats = [
   { value: "200+", label: "plant varieties growing" },
@@ -9,6 +11,97 @@ const stats = [
   { value: "5+", label: "years of operation" },
   { value: "$0", label: "cost to every student" },
 ]
+
+const carouselImages = [
+  {
+    src: "/images/hero-carousel/tropical_garden_with_red_tassels.webp",
+    alt: "Tropical garden with red tassel flowers",
+  },
+  {
+    src: "/images/hero-carousel/tropical_garden_with_guava_lime_mango.webp",
+    alt: "Garden bed with guava, lime, and mango trees",
+  },
+  {
+    src: "/images/hero-carousel/tropical_garden_with_banana_plant_and_flowers.webp",
+    alt: "Banana plant surrounded by tropical flowers",
+  },
+  {
+    src: "/images/hero-carousel/tropical_banana_grove_under_soft_skies.webp",
+    alt: "Banana grove under soft evening skies",
+  },
+  {
+    src: "/images/hero-carousel/seedling_comparison_on_textured_concrete.webp",
+    alt: "Seedling growth comparison on a concrete potting bench",
+  },
+  {
+    src: "/images/hero-carousel/mango_and_papaya_garden_scene.webp",
+    alt: "Mango and papaya trees in the garden",
+  },
+  {
+    src: "/images/hero-carousel/lush_bamboo_grove_in_tropical_greenery.webp",
+    alt: "Lush bamboo grove in tropical greenery",
+  },
+  {
+    src: "/images/hero-carousel/labeled_garden_plot_with_tropical_plants.webp",
+    alt: "Labeled garden plot with tropical plants",
+  },
+  {
+    src: "/images/hero-carousel/green_chili_plant_in_garden_setting.webp",
+    alt: "Green chili plant growing in the garden",
+  },
+  {
+    src: "/images/hero-carousel/bamboo_and_hibiscus_tropical_garden.webp",
+    alt: "Bamboo and hibiscus in the tropical garden",
+  },
+]
+
+const SLIDE_DURATION_MS = 3500
+
+function HeroImageCarousel() {
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % carouselImages.length)
+    }, SLIDE_DURATION_MS)
+
+    return () => clearInterval(timer)
+  }, [])
+
+  return (
+    <div className="relative h-[45vh] min-h-[280px] w-full overflow-hidden sm:h-[55vh] md:h-[70vh]">
+      <AnimatePresence>
+        <motion.div
+          key={carouselImages[index].src}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={carouselImages[index].src}
+            alt={carouselImages[index].alt}
+            fill
+            sizes="100vw"
+            priority={index === 0}
+            className="object-cover"
+          />
+        </motion.div>
+      </AnimatePresence>
+      <div className="absolute right-0 bottom-4 left-0 flex justify-center gap-1.5">
+        {carouselImages.map((image, i) => (
+          <span
+            key={image.src}
+            className={`h-1.5 w-1.5 rounded-full transition-colors ${
+              i === index ? "bg-white" : "bg-white/40"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export function NonprofitHero() {
   return (
@@ -44,6 +137,9 @@ export function NonprofitHero() {
           </motion.div>
         </div>
       </div>
+
+      {/* Photo slideshow — plays after the video, one image every 3.5s, looping */}
+      <HeroImageCarousel />
 
       {/* Content — below the video */}
       <div className="mx-auto flex max-w-5xl flex-col items-center px-6 py-20 text-center md:px-10 md:py-28">
