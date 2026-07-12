@@ -1,63 +1,7 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import Link from "next/link"
-import { useState, useEffect } from "react"
-
-const heroImages = [
-  {
-    src: "/images/hero-clouds.jpg",
-    alt: "Sunset clouds over the New World Kids garden",
-    duration: 5000, // 5 seconds for first image
-  },
-  {
-    src: "/images/hero-bananas.jpg",
-    alt: "Banana plants",
-  },
-  {
-    src: "/images/hero-garden.jpg",
-    alt: "Garden with bougainvillea, papaya, moringa, banana, ginger, and guava",
-  },
-  {
-    src: "/images/hero-mango-baby.jpg",
-    alt: "Baby mangos on tree",
-  },
-  {
-    src: "/images/hero-hibiscus.jpg",
-    alt: "Hibiscus flowers",
-  },
-  {
-    src: "/images/hero-mango-tree.jpg",
-    alt: "Mango tree with fruit",
-  },
-  {
-    src: "/images/hero-papaya.jpg",
-    alt: "Papaya and banana trees",
-  },
-  {
-    src: "/images/hero-bamboo.jpg",
-    alt: "Bamboo grove",
-  },
-  {
-    src: "/images/hero-red-bananas.jpg",
-    alt: "Red bananas",
-  },
-  {
-    src: "/images/hero-nopales.jpg",
-    alt: "Prickly pear cactus (nopales)",
-  },
-  {
-    src: "/images/hero-seed.jpg",
-    alt: "Seed and botanical specimen",
-  },
-  {
-    src: "/images/hero-flower.jpg",
-    alt: "Hand-pollinating a squash flower",
-  },
-]
-
-const ROTATION_INTERVAL = 3500 // 3.5 seconds
-const FIRST_IMAGE_DURATION = 5000 // 5 seconds
 
 const stats = [
   { value: "200+", label: "plant varieties growing" },
@@ -67,54 +11,29 @@ const stats = [
 ]
 
 export function NonprofitHero() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [isFirstImage, setIsFirstImage] = useState(true)
-
-  useEffect(() => {
-    const timer = isFirstImage
-      ? setTimeout(() => {
-          setIsFirstImage(false)
-          setCurrentImageIndex(1)
-        }, FIRST_IMAGE_DURATION)
-      : setTimeout(() => {
-          setCurrentImageIndex(
-            (prev) => (prev + 1) % (heroImages.length - 1) // Skip first image after initial display
-          )
-        }, ROTATION_INTERVAL)
-
-    return () => clearTimeout(timer)
-  }, [currentImageIndex, isFirstImage])
-
-  const displayIndex = isFirstImage ? 0 : currentImageIndex + 1
-
   return (
-    <section
-      data-hero
-      className="relative min-h-screen overflow-hidden bg-[var(--color-bg)]"
-    >
-      {/* Background image carousel */}
-      <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={displayIndex}
-            src={heroImages[displayIndex]?.src || heroImages[0].src}
-            alt={heroImages[displayIndex]?.alt || heroImages[0].alt}
-            className="h-full w-full object-cover opacity-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-          />
-        </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg)]/60 via-[var(--color-bg)]/30 to-[var(--color-bg)]" />
+    <section data-hero className="bg-[var(--color-bg)]">
+      {/* Video — full width, no text overlay */}
+      <div className="relative h-[62vh] min-h-[380px] w-full overflow-hidden sm:h-[75vh] md:h-screen">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/videos/hero-garden-poster.jpg"
+          className="h-full w-full object-cover"
+        >
+          <source src="/videos/hero-garden.mp4" type="video/mp4" />
+        </video>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 py-24 text-center md:px-10">
+      {/* Content — below the video, not on top of it */}
+      <div className="mx-auto flex max-w-5xl flex-col items-center px-6 py-20 text-center md:px-10 md:py-28">
         {/* Proverb */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8 }}
           className="font-serif text-base leading-relaxed text-[var(--color-accent-gold)] italic md:text-xl"
         >
@@ -123,7 +42,8 @@ export function NonprofitHero() {
         </motion.p>
         <motion.p
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, delay: 0.1 }}
           className="mt-2 text-xs tracking-[0.28em] text-[var(--color-accent-gold)]/70 uppercase"
         >
@@ -133,7 +53,8 @@ export function NonprofitHero() {
         {/* Headline — problem-first rewrite */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.9, delay: 0.2 }}
           className="mt-10 font-serif text-4xl leading-tight font-semibold text-[var(--color-text-primary)] md:text-6xl lg:text-7xl"
         >
@@ -143,7 +64,8 @@ export function NonprofitHero() {
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, delay: 0.35 }}
           className="mt-5 font-serif text-xl text-[var(--color-accent-gold)] md:text-2xl"
         >
@@ -153,7 +75,8 @@ export function NonprofitHero() {
         {/* Body */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-8 max-w-2xl text-base leading-8 text-[var(--color-text-muted)] md:text-lg"
         >
@@ -166,7 +89,8 @@ export function NonprofitHero() {
         {/* Core four callout */}
         <motion.p
           initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-4 font-serif text-sm tracking-wide text-[var(--color-accent-gold)]/80"
         >
@@ -177,15 +101,19 @@ export function NonprofitHero() {
         {/* CTAs — donate is dominant primary; timeline is a quiet text link */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, delay: 0.65 }}
           className="mt-10 flex flex-col items-center gap-3"
         >
-          <Link
-            href="/donate"
-            className="rounded-full bg-[var(--color-accent-coral)] px-12 py-4 text-base font-semibold text-[var(--color-text-primary)] shadow-[var(--color-accent-coral)]/25 shadow-xl transition hover:bg-[var(--color-accent-coral-hover)] hover:shadow-[var(--color-accent-coral)]/40"
-          >
-            Plant a seed — give $25 →
+          <Link href="/donate">
+            <motion.span
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              className="inline-block rounded-full bg-[var(--color-accent-coral)] px-12 py-4 text-base font-semibold text-white shadow-[var(--color-accent-coral)]/25 shadow-xl transition-colors hover:bg-[var(--color-accent-coral-hover)] hover:shadow-[var(--color-accent-coral)]/40"
+            >
+              Plant a seed — give $25 →
+            </motion.span>
           </Link>
           <Link
             href="/#timeline"
@@ -195,10 +123,11 @@ export function NonprofitHero() {
           </Link>
         </motion.div>
 
-        {/* Stats strip — moved up to above fold */}
+        {/* Stats strip */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 1, delay: 0.9 }}
           className="mt-16 grid grid-cols-2 gap-6 border-t border-[var(--color-border-subtle)] pt-10 text-center sm:grid-cols-4"
         >
@@ -213,12 +142,6 @@ export function NonprofitHero() {
             </div>
           ))}
         </motion.div>
-      </div>
-
-      {/* Scroll hint */}
-      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
-        <div className="mx-auto h-6 w-px bg-[var(--color-accent-gold)]/40" />
-        <div className="mx-auto mt-1 h-1.5 w-1.5 rounded-full bg-[var(--color-accent-gold)]/60" />
       </div>
     </section>
   )
