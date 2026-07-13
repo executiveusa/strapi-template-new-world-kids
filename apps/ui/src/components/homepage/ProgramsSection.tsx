@@ -22,7 +22,7 @@ export function ProgramsSection() {
       <div className="mx-auto max-w-7xl">
         {/* Section header */}
         <div className="max-w-3xl">
-          <p className="text-xs tracking-[0.26em] text-[var(--color-gold)] uppercase">
+          <p className="text-xs tracking-[0.26em] text-[var(--color-eyebrow)] uppercase">
             Two programs. Two communities. One mission.
           </p>
           <h2 className="mt-4 font-serif text-3xl font-semibold tracking-tight text-[var(--color-text-primary)] md:text-5xl">
@@ -43,12 +43,16 @@ export function ProgramsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 whileHover={{ y: -4 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                  delay: index * 0.12,
+                }}
                 style={{ boxShadow: "var(--shadow-sm)" }}
                 className={[
                   "relative flex flex-col rounded-[30px] border bg-[var(--color-border-subtle)] p-8 transition-shadow duration-300 hover:shadow-[var(--shadow-lg)]",
                   isFeatured
-                    ? "border-[var(--color-gold)]/30"
+                    ? "border-[var(--color-sage)]/35"
                     : "border-[var(--color-border-subtle)]",
                 ].join(" ")}
               >
@@ -57,7 +61,7 @@ export function ProgramsSection() {
                     {program.badge}
                   </span>
                 ) : null}
-                <p className="text-xs tracking-[0.24em] text-[var(--color-gold)] uppercase">
+                <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">
                   {program.eyebrow}
                 </p>
                 <h3 className="mt-4 font-serif text-2xl font-semibold text-[var(--color-text-primary)] md:text-3xl">
@@ -72,7 +76,7 @@ export function ProgramsSection() {
                       key={bullet}
                       className="flex items-start gap-3 text-sm leading-6 text-[var(--color-text-muted)]"
                     >
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-gold)]" />
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-sage)]" />
                       <span>{bullet}</span>
                     </li>
                   ))}
@@ -97,7 +101,7 @@ export function ProgramsSection() {
         <div className="mt-12 text-center">
           <Link
             href={siteLinks.donate}
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--color-gold)]/60 px-8 py-4 text-sm font-semibold text-[var(--color-gold)] transition hover:bg-[var(--color-gold)]/10"
+            className="inline-flex items-center gap-2 rounded-full border border-[var(--color-sage)]/60 px-8 py-4 text-sm font-semibold text-[var(--color-sage)] transition hover:bg-[var(--color-sage)]/10"
           >
             Support all three programs →
           </Link>

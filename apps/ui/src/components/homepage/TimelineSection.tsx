@@ -204,7 +204,7 @@ export function TimelineSection() {
         <div className="mx-auto max-w-7xl">
           {/* Header */}
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs tracking-[0.24em] text-[var(--color-gold)] uppercase">
+            <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">
               A story in chapters
             </p>
             <h2 className="mt-3 font-serif text-3xl text-[var(--color-text-primary)] md:text-5xl">

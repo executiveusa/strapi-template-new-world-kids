@@ -1,9 +1,8 @@
 "use client"
 
-import { AnimatePresence, motion } from "framer-motion"
-import Image from "next/image"
+import { animate, motion, useInView } from "framer-motion"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const stats = [
   { value: "200+", label: "plant varieties growing" },
@@ -12,134 +11,146 @@ const stats = [
   { value: "$0", label: "cost to every student" },
 ]
 
-const carouselImages = [
-  {
-    src: "/images/hero-carousel/tropical_garden_with_red_tassels.webp",
-    alt: "Tropical garden with red tassel flowers",
-  },
-  {
-    src: "/images/hero-carousel/tropical_garden_with_guava_lime_mango.webp",
-    alt: "Garden bed with guava, lime, and mango trees",
-  },
-  {
-    src: "/images/hero-carousel/tropical_garden_with_banana_plant_and_flowers.webp",
-    alt: "Banana plant surrounded by tropical flowers",
-  },
-  {
-    src: "/images/hero-carousel/tropical_banana_grove_under_soft_skies.webp",
-    alt: "Banana grove under soft evening skies",
-  },
-  {
-    src: "/images/hero-carousel/seedling_comparison_on_textured_concrete.webp",
-    alt: "Seedling growth comparison on a concrete potting bench",
-  },
-  {
-    src: "/images/hero-carousel/mango_and_papaya_garden_scene.webp",
-    alt: "Mango and papaya trees in the garden",
-  },
-  {
-    src: "/images/hero-carousel/lush_bamboo_grove_in_tropical_greenery.webp",
-    alt: "Lush bamboo grove in tropical greenery",
-  },
-  {
-    src: "/images/hero-carousel/labeled_garden_plot_with_tropical_plants.webp",
-    alt: "Labeled garden plot with tropical plants",
-  },
-  {
-    src: "/images/hero-carousel/green_chili_plant_in_garden_setting.webp",
-    alt: "Green chili plant growing in the garden",
-  },
-  {
-    src: "/images/hero-carousel/bamboo_and_hibiscus_tropical_garden.webp",
-    alt: "Bamboo and hibiscus in the tropical garden",
-  },
-]
+const HERO_VIDEO_SRC = "/videos/hero-garden.mp4"
+const CROSSFADE_SECONDS = 0.9
 
-const SLIDE_DURATION_MS = 3500
-
-function HeroImageCarousel() {
-  const [index, setIndex] = useState(0)
+/**
+ * Two copies of the same clip, crossfaded into each other just before the
+ * end of the active one, so the loop point never shows a hard cut/jump —
+ * the standby copy is already playing from frame 0 by the time it fades in.
+ */
+function LoopingHeroVideo({ poster }: { poster: string }) {
+  const videoARef = useRef<HTMLVideoElement>(null)
+  const videoBRef = useRef<HTMLVideoElement>(null)
+  const activeRef = useRef<"a" | "b">("a")
+  const [aOpacity, setAOpacity] = useState(1)
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % carouselImages.length)
-    }, SLIDE_DURATION_MS)
+    const a = videoARef.current
+    const b = videoBRef.current
+    if (!a || !b) return
 
-    return () => clearInterval(timer)
+    let raf: number
+
+    function tick() {
+      if (!a || !b) return
+      const active = activeRef.current === "a" ? a : b
+      const standby = activeRef.current === "a" ? b : a
+
+      if (
+        active.duration &&
+        !Number.isNaN(active.duration) &&
+        active.currentTime >= active.duration - CROSSFADE_SECONDS &&
+        standby.paused
+      ) {
+        standby.currentTime = 0
+        standby.play().catch(() => {})
+        activeRef.current = activeRef.current === "a" ? "b" : "a"
+        setAOpacity(activeRef.current === "a" ? 1 : 0)
+      }
+
+      raf = requestAnimationFrame(tick)
+    }
+
+    a.play().catch(() => {})
+    raf = requestAnimationFrame(tick)
+
+    return () => cancelAnimationFrame(raf)
   }, [])
 
   return (
-    <div className="relative h-[45vh] min-h-[280px] w-full overflow-hidden sm:h-[55vh] md:h-[70vh]">
-      <AnimatePresence>
-        <motion.div
-          key={carouselImages[index].src}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={carouselImages[index].src}
-            alt={carouselImages[index].alt}
-            fill
-            sizes="100vw"
-            priority={index === 0}
-            className="object-cover"
-          />
-        </motion.div>
-      </AnimatePresence>
-      <div className="absolute right-0 bottom-4 left-0 flex justify-center gap-1.5">
-        {carouselImages.map((image, i) => (
-          <span
-            key={image.src}
-            className={`h-1.5 w-1.5 rounded-full transition-colors ${
-              i === index ? "bg-white" : "bg-white/40"
-            }`}
-          />
-        ))}
-      </div>
-    </div>
+    <>
+      <video
+        ref={videoARef}
+        muted
+        playsInline
+        preload="auto"
+        poster={poster}
+        className="absolute inset-0 h-full w-full object-cover transition-opacity ease-linear"
+        style={{
+          opacity: aOpacity,
+          transitionDuration: `${CROSSFADE_SECONDS}s`,
+        }}
+      >
+        <source src={HERO_VIDEO_SRC} type="video/mp4" />
+      </video>
+      <video
+        ref={videoBRef}
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover transition-opacity ease-linear"
+        style={{
+          opacity: 1 - aOpacity,
+          transitionDuration: `${CROSSFADE_SECONDS}s`,
+        }}
+      >
+        <source src={HERO_VIDEO_SRC} type="video/mp4" />
+      </video>
+    </>
   )
+}
+
+function StatNumber({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const isInView = useInView(ref, { once: true, margin: "-60px" })
+  const zeroed = (() => {
+    const m = /^(\$?)(\d+(?:\.\d+)?)(\+?)$/.exec(value)
+    if (!m) return value
+    const [, prefix, numStr, suffix] = m
+
+    return `${prefix}${numStr.includes(".") ? "0.0" : "0"}${suffix}`
+  })()
+  const [display, setDisplay] = useState(zeroed)
+
+  useEffect(() => {
+    if (!isInView) return
+    const match = /^(\$?)(\d+(?:\.\d+)?)(\+?)$/.exec(value)
+    if (!match) return
+    const [, prefix, numStr, suffix] = match
+    const target = Number.parseFloat(numStr)
+    const decimals = numStr.includes(".") ? 1 : 0
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
+
+    const controls = animate(0, target, {
+      duration: prefersReducedMotion ? 0 : 1.4,
+      ease: "easeOut",
+      onUpdate: (v) => setDisplay(`${prefix}${v.toFixed(decimals)}${suffix}`),
+    })
+
+    return () => controls.stop()
+  }, [isInView, value])
+
+  return <span ref={ref}>{display}</span>
 }
 
 export function NonprofitHero() {
   return (
     <section data-hero className="bg-[var(--color-bg)]">
-      {/* Video — quote centered on top, everything else below */}
+      {/* Video — quote centered on top, nothing underneath it */}
       <div className="relative h-[62vh] min-h-[380px] w-full overflow-hidden sm:h-[75vh] md:h-screen">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/videos/hero-garden-poster.jpg"
-          className="h-full w-full object-cover"
-        >
-          <source src="/videos/hero-garden.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black/20" />
+        <LoopingHeroVideo poster="/videos/hero-garden-poster.jpg" />
+        <div className="absolute inset-0 bg-black/25" />
         <div className="absolute inset-0 flex items-center justify-center px-6">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl text-center"
+            className="max-w-4xl text-center"
           >
-            <p className="font-serif text-[1.2rem] leading-relaxed text-[var(--color-accent-gold)] italic drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)] md:text-[1.5rem]">
+            <p className="font-serif text-[1.75rem] leading-tight text-white italic drop-shadow-[0_4px_18px_rgba(0,0,0,0.75)] sm:text-[2.25rem] md:text-[3.25rem] lg:text-[4.5rem]">
               &ldquo;If you ever think you&apos;re too small to make a
               difference, try going to sleep with a mosquito in the room.&rdquo;
             </p>
-            <p className="mt-2 text-xs tracking-[0.28em] text-[var(--color-accent-gold)]/70 uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
+            <p className="mt-4 text-xs tracking-[0.28em] text-white/70 uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
               West African Proverb
             </p>
           </motion.div>
         </div>
       </div>
-
-      {/* Photo slideshow — plays after the video, one image every 3.5s, looping */}
-      <HeroImageCarousel />
 
       {/* Content — below the video */}
       <div className="mx-auto flex max-w-5xl flex-col items-center px-6 py-20 text-center md:px-10 md:py-28">
@@ -227,7 +238,7 @@ export function NonprofitHero() {
           {stats.map((stat) => (
             <div key={stat.label}>
               <p className="font-serif text-3xl font-semibold text-[var(--color-accent-gold)] md:text-4xl">
-                {stat.value}
+                <StatNumber value={stat.value} />
               </p>
               <p className="mt-1 text-xs text-[var(--color-text-muted)]">
                 {stat.label}

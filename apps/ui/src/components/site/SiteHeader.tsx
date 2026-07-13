@@ -13,6 +13,7 @@ import { Link } from "@/lib/navigation"
 const navigation = {
   en: [
     { href: "/#programs", label: "Programs" },
+    { href: "/gallery", label: "Gallery" },
     { href: "/#timeline", label: "Timeline" },
     { href: "/#proof", label: "Trust" },
     { href: "/mission", label: "Mission" },
@@ -20,6 +21,7 @@ const navigation = {
   ],
   es: [
     { href: "/#programs", label: "Programas" },
+    { href: "/gallery", label: "Galería" },
     { href: "/#timeline", label: "Cronología" },
     { href: "/#proof", label: "Confianza" },
     { href: "/mission", label: "Misión" },

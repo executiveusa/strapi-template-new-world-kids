@@ -24,7 +24,7 @@ function TabItem({
     >
       {label}
       {active && (
-        <span className="absolute right-0 bottom-0 left-0 h-0.5 rounded-t-full bg-[var(--color-accent-gold)]" />
+        <span className="absolute right-0 bottom-0 left-0 h-0.5 rounded-t-full bg-[var(--color-sage)]" />
       )}
     </button>
   )
