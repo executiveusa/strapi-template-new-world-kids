@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion"
 import Image from "next/image"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 interface GalleryPhoto {
   src: string
@@ -121,6 +121,9 @@ function ProgramCover({
   )
 }
 
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+
 function ProgramGalleryModal({
   program,
   onClose,
@@ -128,13 +131,43 @@ function ProgramGalleryModal({
   program: ProgramGallery
   onClose: () => void
 }) {
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const titleId = `gallery-modal-${program.id}`
+
   useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null
+    dialogRef.current?.focus()
+
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") onClose()
+      if (e.key === "Escape") {
+        onClose()
+
+        return
+      }
+      if (e.key !== "Tab" || !dialogRef.current) return
+
+      const focusable = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+      )
+      if (focusable.length === 0) return
+      const first = focusable[0]
+      // Safe: the length check above guarantees at least one element.
+      const last = focusable.at(-1)!
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
     }
     window.addEventListener("keydown", onKey)
 
-    return () => window.removeEventListener("keydown", onKey)
+    return () => {
+      window.removeEventListener("keydown", onKey)
+      previouslyFocused?.focus()
+    }
   }, [onClose])
 
   return (
@@ -149,7 +182,12 @@ function ProgramGalleryModal({
         onClick={onClose}
       />
       <motion.div
-        className="relative z-10 max-h-[85vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-6 md:p-10"
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        tabIndex={-1}
+        className="relative z-10 max-h-[85vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] p-6 outline-none md:p-10"
         initial={{ scale: 0.95, opacity: 0, y: 20 }}
         animate={{ scale: 1, opacity: 1, y: 0 }}
         exit={{ scale: 0.95, opacity: 0, y: 20 }}
@@ -157,7 +195,10 @@ function ProgramGalleryModal({
       >
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className="font-serif text-2xl font-semibold text-[var(--color-text-primary)] uppercase md:text-3xl">
+            <h3
+              id={titleId}
+              className="font-serif text-2xl font-semibold text-[var(--color-text-primary)] uppercase md:text-3xl"
+            >
               {program.title}
             </h3>
             <p className="mt-1 text-sm text-[var(--color-eyebrow)] uppercase">
