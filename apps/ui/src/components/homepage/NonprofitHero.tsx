@@ -30,6 +30,11 @@ function LoopingHeroVideo({ poster }: { poster: string }) {
     const b = videoBRef.current
     if (!a || !b) return
 
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // Stay on the poster frame — skip autoplay and the crossfade loop.
+      return
+    }
+
     let raf: number
 
     function tick() {
@@ -91,23 +96,30 @@ function LoopingHeroVideo({ poster }: { poster: string }) {
   )
 }
 
+function parseStat(value: string) {
+  const match = /^(\$?)(\d+(?:\.\d+)?)(\+?)$/.exec(value)
+  if (!match) return null
+  const [, prefix, numStr, suffix] = match
+
+  return { prefix, numStr, suffix }
+}
+
 function StatNumber({ value }: { value: string }) {
   const ref = useRef<HTMLSpanElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-60px" })
   const zeroed = (() => {
-    const m = /^(\$?)(\d+(?:\.\d+)?)(\+?)$/.exec(value)
-    if (!m) return value
-    const [, prefix, numStr, suffix] = m
+    const parsed = parseStat(value)
+    if (!parsed) return value
 
-    return `${prefix}${numStr.includes(".") ? "0.0" : "0"}${suffix}`
+    return `${parsed.prefix}${parsed.numStr.includes(".") ? "0.0" : "0"}${parsed.suffix}`
   })()
   const [display, setDisplay] = useState(zeroed)
 
   useEffect(() => {
     if (!isInView) return
-    const match = /^(\$?)(\d+(?:\.\d+)?)(\+?)$/.exec(value)
-    if (!match) return
-    const [, prefix, numStr, suffix] = match
+    const parsed = parseStat(value)
+    if (!parsed) return
+    const { prefix, numStr, suffix } = parsed
     const target = Number.parseFloat(numStr)
     const decimals = numStr.includes(".") ? 1 : 0
     const prefersReducedMotion = window.matchMedia(
