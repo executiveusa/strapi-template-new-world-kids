@@ -9,7 +9,6 @@ import { siteLinks, programCards } from "../site/siteData"
 // Per the design system: this section consumes `programCards` from shared
 // siteData, which is reconciled against docs/copy/homepage/06-programs.md.
 // The copy folder is the single source of truth for program content.
-// The third card (Mission-Funded Studio) is restored here per owner decision.
 
 const cardLinks = ["/blog", "/gallery", "/work-with-us"] as const
 
@@ -103,7 +102,7 @@ export function ProgramsSection() {
             href={siteLinks.donate}
             className="inline-flex items-center gap-2 rounded-full border border-[var(--color-sage)]/60 px-8 py-4 text-sm font-semibold text-[var(--color-sage)] transition hover:bg-[var(--color-sage)]/10"
           >
-            Support all three programs →
+            Support both programs →
           </Link>
         </div>
       </div>
