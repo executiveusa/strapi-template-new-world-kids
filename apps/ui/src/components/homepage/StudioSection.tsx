@@ -19,7 +19,7 @@ export function StudioSection() {
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr]">
           {/* Left — pitch */}
           <div>
-            <p className="text-xs tracking-[0.24em] text-[var(--color-accent-gold)] uppercase">
+            <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">
               Mission-Funded Studio
             </p>
             <h2 className="mt-4 font-serif text-3xl text-[var(--color-text-primary)] md:text-4xl">
@@ -42,7 +42,7 @@ export function StudioSection() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/work-with-us"
-                className="rounded-full bg-[var(--color-accent-gold)] px-6 py-3 text-sm font-semibold text-[var(--color-bg)] transition hover:bg-[var(--color-accent-gold)]"
+                className="rounded-full bg-[var(--color-accent-gold)] px-6 py-3 text-sm font-semibold text-[var(--color-bg)] transition hover:brightness-110"
               >
                 Work with the studio →
               </Link>

@@ -27,6 +27,9 @@ function statusLabel(status: TimelineEntry["status"]) {
 /* ─────────────────────────────────────────────────────────
    DETAIL MODAL
 ───────────────────────────────────────────────────────── */
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+
 function TimelineModal({
   entry,
   onClose,
@@ -34,14 +37,38 @@ function TimelineModal({
   entry: TimelineEntry
   onClose: () => void
 }) {
-  // Close on Escape key
+  const dialogRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null
+    dialogRef.current?.focus()
+
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") onClose()
+      if (e.key === "Escape") {
+        onClose()
+        return
+      }
+      if (e.key !== "Tab" || !dialogRef.current) return
+      const focusable = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+      )
+      if (focusable.length === 0) return
+      const first = focusable[0]
+      const last = focusable.at(-1)!
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
     }
     window.addEventListener("keydown", onKey)
 
-    return () => window.removeEventListener("keydown", onKey)
+    return () => {
+      window.removeEventListener("keydown", onKey)
+      previouslyFocused?.focus()
+    }
   }, [onClose])
 
   return (
@@ -59,7 +86,12 @@ function TimelineModal({
 
       {/* Modal */}
       <motion.div
-        className="relative z-10 mx-4 mb-4 w-full max-w-2xl overflow-hidden rounded-3xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] sm:mx-6 sm:mb-0"
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={entry.title}
+        tabIndex={-1}
+        className="relative z-10 mx-4 mb-4 w-full max-w-2xl overflow-hidden rounded-3xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] outline-none sm:mx-6 sm:mb-0"
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 60, opacity: 0 }}
@@ -208,7 +240,7 @@ export function TimelineSection() {
               A story in chapters
             </p>
             <h2 className="mt-3 font-serif text-3xl text-[var(--color-text-primary)] md:text-5xl">
-              From bare soil to a living school
+              From bare soil to a living ecosystem
             </h2>
             <p className="mt-4 text-sm text-[var(--color-text-muted)] md:text-base">
               6 seasons of documented, continuous work. Every chapter is real.
@@ -266,6 +298,15 @@ export function TimelineSection() {
                 viewport={{ amount: 0.3, once: true }}
                 transition={{ delay: i * 0.05, duration: 0.5 }}
                 onClick={() => setActiveEntry(entry)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault()
+                    setActiveEntry(entry)
+                  }
+                }}
+                tabIndex={0}
+                role="button"
+                aria-label={`${entry.title} — tap to explore`}
                 className={[
                   "group relative max-w-[88vw] min-w-[88vw] cursor-pointer snap-center rounded-2xl border p-5",
                   "md:max-w-[400px] md:min-w-[400px] lg:max-w-[440px] lg:min-w-[440px]",

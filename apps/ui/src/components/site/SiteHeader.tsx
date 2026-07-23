@@ -86,7 +86,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
           <Link
             href="/donate"
             locale={locale}
-            className="hidden sm:inline-flex"
+            className="inline-flex"
           >
             <motion.span
               whileHover={{ y: -1 }}
