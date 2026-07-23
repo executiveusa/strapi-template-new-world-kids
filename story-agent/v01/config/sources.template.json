@@ -1,0 +1,32 @@
+{
+  "_instructions": "Copy this file to E:\\NWK_STORY_SYSTEM\\config\\sources.json and replace all FILL_IN values with real paths. All roots are read-only — the agent will never modify originals.",
+  "sources": [
+    {
+      "id": "root-1",
+      "label": "Main Footage Root",
+      "path": "FILL_IN — e.g. E:\\NWK_Footage\\Main",
+      "program": "indigo-azul",
+      "location": "Puerto Vallarta, MX",
+      "readonly": true,
+      "note": "Primary organized month-by-month archive on E:"
+    },
+    {
+      "id": "root-2",
+      "label": "Secondary Footage Folder",
+      "path": "FILL_IN — second footage path",
+      "program": "indigo-azul",
+      "location": "Puerto Vallarta, MX",
+      "readonly": true,
+      "note": "Ask Bambu for exact path"
+    },
+    {
+      "id": "root-3",
+      "label": "Tertiary Footage Folder",
+      "path": "FILL_IN — third footage path",
+      "program": "indigo-azul",
+      "location": "Puerto Vallarta, MX",
+      "readonly": true,
+      "note": "Ask Bambu for exact path"
+    }
+  ]
+}
