@@ -3,13 +3,17 @@
 **Owner:** Bambu / New World Kids  
 **Repo:** `executiveusa/strapi-template-new-world-kids`  
 **Mode:** Brownfield, local-first, human-in-the-loop  
-**Priority:** Higher than Moltbook/Open-Molt expansion until Pilot 0 proves the system  
+**Priority:** Higher than Moltbook/Open-Molt expansion until Pilot 0 proves the
+system
 
 ## Mission
 
-Build the first working local New World Kids Story System on Bambu's Windows laptop without creating another SaaS, replacing the existing site, or rewriting StoryToolkitAI.
+Build the first working local New World Kids Story System on Bambu's Windows
+laptop without creating another SaaS, replacing the existing site, or rewriting
+StoryToolkitAI.
 
-The system must turn Bambu's already-organized month-by-month footage archive into this hierarchy:
+The system must turn Bambu's already-organized month-by-month footage archive
+into this hierarchy:
 
 `FILE -> MONTH STORY -> QUARTER/SEASON STORY -> YEAR STORY -> 5-YEAR MASTER STORY`
 
@@ -34,7 +38,8 @@ The same approved story/evidence records must later support:
 
 ### Hard local-storage rule
 
-Install/store all new Story System runtime data on `E:` unless a dependency absolutely requires a small launcher on `C:`.
+Install/store all new Story System runtime data on `E:` unless a dependency
+absolutely requires a small launcher on `C:`.
 
 Preferred root:
 
@@ -62,19 +67,23 @@ Do not move, rename, overwrite, or delete any original footage.
 
 Bambu already has footage organized month-by-month and metadata includes dates.
 
-The Story Agent must support multiple read-only source roots. At least three roots are expected:
+The Story Agent must support multiple read-only source roots. At least three
+roots are expected:
 
 1. the main footage root on `E:`;
 2. a second footage folder;
 3. a third footage folder.
 
-Do not invent the two unknown paths. If they are not discoverable from existing config, ask Bambu once for the exact paths, then persist them in a human-readable source registry such as:
+Do not invent the two unknown paths. If they are not discoverable from existing
+config, ask Bambu once for the exact paths, then persist them in a
+human-readable source registry such as:
 
 `E:\NWK_STORY_SYSTEM\config\sources.json`
 
 Each source root must be treated as read-only.
 
 Allowed:
+
 - read;
 - hash;
 - index;
@@ -82,6 +91,7 @@ Allowed:
 - create proxies/transcripts/derived files under `E:\NWK_STORY_SYSTEM`.
 
 Forbidden:
+
 - rename originals;
 - move originals;
 - delete originals;
@@ -92,7 +102,8 @@ Forbidden:
 
 Read `AGENTS.md` first.
 
-The repo's Graphify Law is non-negotiable. `graphify-out/GRAPH_REPORT.md` was missing when this handoff was created.
+The repo's Graphify Law is non-negotiable. `graphify-out/GRAPH_REPORT.md` was
+missing when this handoff was created.
 
 ### Gate 0
 
@@ -121,11 +132,13 @@ Existing repo boundaries from `AGENTS.md`:
 
 Strapi is not the intended runtime.
 
-Do not create a second orchestration stack if Hermes or existing local ICM infrastructure can own the function safely.
+Do not create a second orchestration stack if Hermes or existing local ICM
+infrastructure can own the function safely.
 
 ## Local execution preference
 
-Use the existing ICM/local-agent harness already installed in Bambu's workflow where applicable.
+Use the existing ICM/local-agent harness already installed in Bambu's workflow
+where applicable.
 
 Preferred execution pattern:
 
@@ -153,7 +166,8 @@ Use it for capabilities it already provides, such as:
 
 ### Critical architectural rule
 
-Do not fork or rewrite StoryToolkitAI unless a minimal adapter cannot solve the requirement.
+Do not fork or rewrite StoryToolkitAI unless a minimal adapter cannot solve the
+requirement.
 
 Preferred boundary:
 
@@ -165,13 +179,16 @@ Bambu / StoryFoundry UI
         -> original footage + derived metadata
 ```
 
-If StoryToolkitAI is already installed on the laptop, detect and reuse it. Do not blindly reinstall.
+If StoryToolkitAI is already installed on the laptop, detect and reuse it. Do
+not blindly reinstall.
 
-If it must be installed or relocated, prefer `E:\NWK_STORY_SYSTEM\StoryToolkitAI` and keep generated caches on `E:`.
+If it must be installed or relocated, prefer
+`E:\NWK_STORY_SYSTEM\StoryToolkitAI` and keep generated caches on `E:`.
 
 ## Canonical chronology
 
-Bambu's existing monthly folder organization plus original capture metadata is the chronology source.
+Bambu's existing monthly folder organization plus original capture metadata is
+the chronology source.
 
 Do not reorganize the originals.
 
@@ -204,8 +221,8 @@ E:\NWK_STORY_SYSTEM\story-memory\
       SEASON_STORY.md
 ```
 
-Month is the canonical history/storage unit.
-Story arcs may span multiple months.
+Month is the canonical history/storage unit. Story arcs may span multiple
+months.
 
 ## Minimal Story Agent v0.1
 
@@ -258,7 +275,8 @@ Do not guess performance. Benchmark one real clip/month and record timing.
 
 Start with **October 2023 only**.
 
-Why: it is part of the known Hurricane Lidia story and provides a strong test of chronology, evidence, visual change, and narrative reconstruction.
+Why: it is part of the known Hurricane Lidia story and provides a strong test of
+chronology, evidence, visual change, and narrative reconstruction.
 
 ### October 2023 proof slice
 
@@ -303,11 +321,13 @@ Each month should eventually summarize:
 - possible story beats;
 - human approval state.
 
-Do not publish or convert an AI interpretation into a factual claim without human approval/evidence.
+Do not publish or convert an AI interpretation into a factual claim without
+human approval/evidence.
 
 ## New World Kids metadata layer
 
-Keep institutional/story metadata separate from StoryToolkitAI internals so the upstream tool can be upgraded/replaced.
+Keep institutional/story metadata separate from StoryToolkitAI internals so the
+upstream tool can be upgraded/replaced.
 
 Minimum conceptual fields:
 
@@ -332,8 +352,9 @@ editorial_status
 public_status
 ```
 
-Prefer human-readable JSON/Markdown as canonical artifacts.
-SQLite may be used as a disposable/rebuildable local job/cache index, not as the only source of truth.
+Prefer human-readable JSON/Markdown as canonical artifacts. SQLite may be used
+as a disposable/rebuildable local job/cache index, not as the only source of
+truth.
 
 ## Human-in-the-loop law
 
@@ -360,12 +381,13 @@ Bambu controls:
 
 ## Gallery/public-site boundary
 
-The current `/gallery` implementation is hardcoded and is not the source of truth.
+The current `/gallery` implementation is hardcoded and is not the source of
+truth.
 
 Do not immediately redesign it.
 
-First prove one approved Story Record.
-Then wire one approved story item into the gallery as the first vertical slice.
+First prove one approved Story Record. Then wire one approved story item into
+the gallery as the first vertical slice.
 
 Target eventual gallery model:
 
@@ -380,9 +402,11 @@ Target eventual gallery model:
 
 Do not make DaVinci Resolve a hard dependency for the first Story Agent slice.
 
-If Resolve is already installed and usable, configure cache/proxy/export storage on `E:` rather than filling `C:`.
+If Resolve is already installed and usable, configure cache/proxy/export storage
+on `E:` rather than filling `C:`.
 
-The local machine's integrated Intel GPU may limit recent Resolve performance. StoryToolkitAI/StoryFoundry must remain useful independently of Resolve.
+The local machine's integrated Intel GPU may limit recent Resolve performance.
+StoryToolkitAI/StoryFoundry must remain useful independently of Resolve.
 
 Preserve export paths for EDL/XML or other NLE handoff where supported.
 
@@ -400,7 +424,8 @@ Required:
 - no secrets committed;
 - no automatic upload of private raw footage to cloud services.
 
-If any cloud AI is proposed, pause for explicit Bambu approval and explain exactly what data would leave the laptop.
+If any cloud AI is proposed, pause for explicit Bambu approval and explain
+exactly what data would leave the laptop.
 
 ## ICM stage contracts to add after Graphify gate
 
@@ -420,7 +445,8 @@ systems/sovereignty/
   09_learning/
 ```
 
-For story/media, create a similarly bounded local workflow rather than mixing all media logic into those funding folders.
+For story/media, create a similarly bounded local workflow rather than mixing
+all media logic into those funding folders.
 
 Every stage contract must declare:
 
@@ -438,18 +464,25 @@ Do not create an agent swarm.
 
 Use/extend existing Hermes/worker patterns for four logical roles:
 
-1. **Sovereignty Navigator** — overall need -> opportunity -> relationship -> approved action orchestration.
-2. **Grant Scout** — funding research/evidence; cannot self-attest qualification.
-3. **Relationship Steward** — maps needs to contacts and drafts asks; never sends without approval.
-4. **Story Steward** — chronology, evidence-linked story proposals, captions, editorial state; cannot silently rewrite approved history.
+1. **Sovereignty Navigator** — overall need -> opportunity -> relationship ->
+   approved action orchestration.
+2. **Grant Scout** — funding research/evidence; cannot self-attest
+   qualification.
+3. **Relationship Steward** — maps needs to contacts and drafts asks; never
+   sends without approval.
+4. **Story Steward** — chronology, evidence-linked story proposals, captions,
+   editorial state; cannot silently rewrite approved history.
 
-For this handoff, implement only the Story Steward/local Story Agent slice needed for October 2023 plus the ICM/sovereignty scaffolding required by repo architecture.
+For this handoff, implement only the Story Steward/local Story Agent slice
+needed for October 2023 plus the ICM/sovereignty scaffolding required by repo
+architecture.
 
 ## Acceptance criteria for first local slice
 
 Do not claim completion until all are demonstrated:
 
-1. `E:\NWK_STORY_SYSTEM` exists and generated data is kept off nearly-full `C:` where practical.
+1. `E:\NWK_STORY_SYSTEM` exists and generated data is kept off nearly-full `C:`
+   where practical.
 2. Three read-only source roots can be registered without moving originals.
 3. A read-only scan completes and produces an inventory.
 4. Checksums identify duplicates across roots.
@@ -460,36 +493,56 @@ Do not claim completion until all are demonstrated:
 9. `MONTH_STORY.md` is produced as a proposal, clearly marked unapproved.
 10. No original media changed.
 11. Bambu can review the output before any publishing step.
-12. Exact verification commands and evidence are recorded in `ops/reports` or the ICM output artifact.
+12. Exact verification commands and evidence are recorded in `ops/reports` or
+    the ICM output artifact.
 
 ## Required final handoff from local agent
 
 When the first slice is complete, report exactly:
 
 ### DECISION
+
 What architecture was actually used and why.
 
 ### CHANGES
+
 Files/folders/scripts/config created or changed.
 
 ### PROOF
-Commands run, scan counts, hashes/manifest location, transcript test, job-resume test, disk usage, and evidence that originals were untouched.
+
+Commands run, scan counts, hashes/manifest location, transcript test, job-resume
+test, disk usage, and evidence that originals were untouched.
 
 ### STATUS
+
 What works now vs. what remains proposed.
 
 ### RISKS
+
 Performance, disk, upstream StoryToolkitAI issues, rights/consent gaps.
 
 ### ROLLBACK
+
 How to remove generated system data without touching originals.
 
 ### NEXT
+
 One bounded next slice only.
 
 ### HUMAN APPROVAL
+
 Anything Bambu must decide before proceeding.
 
 ## Start instruction for local Codex/agent
 
-> You are now the local execution agent for New World Kids Story System Pilot 0. Read `AGENTS.md`, this handoff, current repo `STATUS.md`/`CONTEXT.md` if present, and the Graphify map before modifying architecture or code. Obey the Graphify gate. Inspect and reuse existing Hermes/ICM infrastructure before creating new components. Your first goal is not to process five years of media. Your first goal is to prove the smallest safe end-to-end slice for October 2023 on Bambu's Windows laptop, with all generated data on `E:\NWK_STORY_SYSTEM` where practical and all original footage treated as immutable/read-only. Work one verifiable stage at a time, update durable status/evidence artifacts, and stop at human approval gates. Do not publish, send, upload private footage, or make destructive changes autonomously.
+> You are now the local execution agent for New World Kids Story System Pilot 0.
+> Read `AGENTS.md`, this handoff, current repo `STATUS.md`/`CONTEXT.md` if
+> present, and the Graphify map before modifying architecture or code. Obey the
+> Graphify gate. Inspect and reuse existing Hermes/ICM infrastructure before
+> creating new components. Your first goal is not to process five years of
+> media. Your first goal is to prove the smallest safe end-to-end slice for
+> October 2023 on Bambu's Windows laptop, with all generated data on
+> `E:\NWK_STORY_SYSTEM` where practical and all original footage treated as
+> immutable/read-only. Work one verifiable stage at a time, update durable
+> status/evidence artifacts, and stop at human approval gates. Do not publish,
+> send, upload private footage, or make destructive changes autonomously.
