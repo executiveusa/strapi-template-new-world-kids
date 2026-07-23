@@ -103,6 +103,7 @@ Do not reinstall or fork StoryToolkitAI — report missing dependency to Bambu.
 ## Rollback
 
 To remove all generated Story System data without touching originals:
+
 ```
 rmdir /s /q E:\NWK_STORY_SYSTEM\indexes
 rmdir /s /q E:\NWK_STORY_SYSTEM\story-memory
@@ -111,4 +112,5 @@ rmdir /s /q E:\NWK_STORY_SYSTEM\thumbnails
 rmdir /s /q E:\NWK_STORY_SYSTEM\proxies
 rmdir /s /q E:\NWK_STORY_SYSTEM\temp
 ```
+
 Originals at all source roots remain untouched.

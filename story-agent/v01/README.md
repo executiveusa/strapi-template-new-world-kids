@@ -18,15 +18,15 @@ python story-agent\v01\story_agent.py pilot0
 
 ## Commands
 
-| Command | Purpose |
-|---------|---------|
-| `pilot0` | Run full October 2023 pipeline |
-| `register` | Verify source roots |
-| `scan` | Catalog all media files (read-only) |
-| `dedupe` | Find duplicate files via SHA-256 |
-| `manifest` | Write SOURCE_MANIFEST.json |
-| `month-story` | Draft MONTH_STORY.md |
-| `status` | Show pipeline state |
+| Command       | Purpose                             |
+| ------------- | ----------------------------------- |
+| `pilot0`      | Run full October 2023 pipeline      |
+| `register`    | Verify source roots                 |
+| `scan`        | Catalog all media files (read-only) |
+| `dedupe`      | Find duplicate files via SHA-256    |
+| `manifest`    | Write SOURCE_MANIFEST.json          |
+| `month-story` | Draft MONTH_STORY.md                |
+| `status`      | Show pipeline state                 |
 
 ## Output location
 

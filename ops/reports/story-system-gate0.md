@@ -10,14 +10,14 @@
 
 ### Graphify Law Compliance
 
-| Check | Result |
-|-------|--------|
-| `graphify-out/GRAPH_REPORT.md` exists | ✓ Created this session |
-| Graph nodes | 3,687 |
-| Graph edges | 5,815 |
-| Communities | 384 |
-| Extraction mode | AST-only (no LLM — NIM proxy unreachable from cloud environment) |
-| GOD NODES inspected | ✓ (see community hubs in GRAPH_REPORT.md) |
+| Check                                 | Result                                                           |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| `graphify-out/GRAPH_REPORT.md` exists | ✓ Created this session                                           |
+| Graph nodes                           | 3,687                                                            |
+| Graph edges                           | 5,815                                                            |
+| Communities                           | 384                                                              |
+| Extraction mode                       | AST-only (no LLM — NIM proxy unreachable from cloud environment) |
+| GOD NODES inspected                   | ✓ (see community hubs in GRAPH_REPORT.md)                        |
 
 Note: Community labels used placeholder names (`Community N`) because the LLM
 labeling step requires a valid API key from the cloud environment. On Bambu's
@@ -29,6 +29,7 @@ refresh the graph with local API access if available, or accept AST-only labels.
 ## Reuse Audit
 
 ### Existing Hermes agents inspected
+
 - `services/hermes/agents/content-engine/` — content publication
 - `services/hermes/agents/grant-hunter/` — funding research
 - `services/hermes/agents/trust-steward/` — trust/transparency layer
@@ -38,6 +39,7 @@ refresh the graph with local API access if available, or accept AST-only labels.
 stuffing media logic into existing agents.
 
 ### agent-skills/local/ inspected
+
 - 13 local skills (a2ui-standard, pi-review, post-maxx-sitewide, etc.)
 - None provide local media scanning/transcription capabilities
 - StoryToolkitAI not present in repo — expected to be installed locally on E:
@@ -48,19 +50,20 @@ stuffing media logic into existing agents.
 
 ### New files
 
-| Path | Purpose |
-|------|---------|
-| `story-agent/v01/story_agent.py` | Local Python agent — runs on Windows |
-| `story-agent/v01/setup_windows.bat` | One-time setup of E:\NWK_STORY_SYSTEM |
-| `story-agent/v01/config/sources.template.json` | Source registry template |
-| `services/hermes/agents/story-steward/SOUL.md` | Story Steward identity |
-| `services/hermes/agents/story-steward/PLAYBOOK.md` | 6-stage pipeline contracts |
-| `systems/sovereignty/README.md` | ICM stage structure (00–09) |
-| `systems/story-steward/README.md` | Story pipeline summary |
-| `graphify-out/` | AST knowledge graph (3,687 nodes) |
-| `ops/reports/story-system-gate0.md` | This file |
+| Path                                               | Purpose                               |
+| -------------------------------------------------- | ------------------------------------- |
+| `story-agent/v01/story_agent.py`                   | Local Python agent — runs on Windows  |
+| `story-agent/v01/setup_windows.bat`                | One-time setup of E:\NWK_STORY_SYSTEM |
+| `story-agent/v01/config/sources.template.json`     | Source registry template              |
+| `services/hermes/agents/story-steward/SOUL.md`     | Story Steward identity                |
+| `services/hermes/agents/story-steward/PLAYBOOK.md` | 6-stage pipeline contracts            |
+| `systems/sovereignty/README.md`                    | ICM stage structure (00–09)           |
+| `systems/story-steward/README.md`                  | Story pipeline summary                |
+| `graphify-out/`                                    | AST knowledge graph (3,687 nodes)     |
+| `ops/reports/story-system-gate0.md`                | This file                             |
 
 ### Directories created
+
 - `systems/sovereignty/00_truth` through `09_learning`
 - `systems/story-steward/00_register` through `05_human_review`
 
@@ -70,15 +73,15 @@ stuffing media logic into existing agents.
 
 The `story_agent.py` can execute on Bambu's Windows machine:
 
-| Command | What it does |
-|---------|-------------|
-| `register` | Verify all source roots exist and are readable |
-| `scan` | Walk source roots, catalog all media files (read-only) |
-| `dedupe` | SHA-256 checksum October 2023 files; find duplicates |
-| `manifest` | Write `SOURCE_MANIFEST.json` for October 2023 |
-| `month-story` | Draft `MONTH_STORY.md` (marked UNAPPROVED) |
-| `status` | Print pipeline state |
-| `pilot0` | Run all of the above in sequence |
+| Command       | What it does                                           |
+| ------------- | ------------------------------------------------------ |
+| `register`    | Verify all source roots exist and are readable         |
+| `scan`        | Walk source roots, catalog all media files (read-only) |
+| `dedupe`      | SHA-256 checksum October 2023 files; find duplicates   |
+| `manifest`    | Write `SOURCE_MANIFEST.json` for October 2023          |
+| `month-story` | Draft `MONTH_STORY.md` (marked UNAPPROVED)             |
+| `status`      | Print pipeline state                                   |
+| `pilot0`      | Run all of the above in sequence                       |
 
 ---
 
@@ -88,6 +91,7 @@ The `story_agent.py` can execute on Bambu's Windows machine:
 before the `register` stage can complete.**
 
 Known:
+
 - Root 1: Main footage root on E: — **path needed**
 - Root 2: Second footage folder — **path needed**
 - Root 3: Third footage folder — **path needed**

@@ -45,6 +45,7 @@ Each level requires Bambu approval before the next level is synthesized.
 ## Core Four — always tag
 
 Every story record must indicate which pillars the content supports:
+
 - Food
 - Water
 - Energy
@@ -52,10 +53,10 @@ Every story record must indicate which pillars the content supports:
 
 ## Approval model
 
-| State          | Meaning                                    |
-|----------------|--------------------------------------------|
-| UNAPPROVED     | AI draft, no human has reviewed            |
-| UNDER REVIEW   | Bambu is actively reviewing                |
-| APPROVED       | Bambu has signed off — may proceed         |
-| REJECTED       | Bambu rejected — do not proceed            |
-| PUBLISHED      | Approved and live on public site           |
+| State        | Meaning                            |
+| ------------ | ---------------------------------- |
+| UNAPPROVED   | AI draft, no human has reviewed    |
+| UNDER REVIEW | Bambu is actively reviewing        |
+| APPROVED     | Bambu has signed off — may proceed |
+| REJECTED     | Bambu rejected — do not proceed    |
+| PUBLISHED    | Approved and live on public site   |
