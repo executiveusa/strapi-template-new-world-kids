@@ -1,14 +1,17 @@
 # Phase Receipt — 00-fresh-clone-truth-baseline
 
-**Status:** READY_FOR_MERGE (pre-merge receipt; update SHA after squash)  
+**Status:** MERGED + POST-MERGE VERIFIED  
 **Date:** 2026-07-23  
 **Builder:** Grok 4.5 local  
 **Risk:** low  
+**PR:** https://github.com/executiveusa/strapi-template-new-world-kids/pull/83  
 
 ## Baseline
 
 - main SHA at phase start: `39f0eaac43d1d4f9bef00b1c83c6dfbd225aee58`
 - branch: `phase/00-fresh-clone-truth-baseline`
+- squash merge main SHA: `b071bc3ac9199783b55e8881438d58e4197655eb`
+- post-merge: HEAD == origin/main; artifacts present; source media root exists unmodified
 
 ## Outcomes
 
