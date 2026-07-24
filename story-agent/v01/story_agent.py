@@ -477,18 +477,31 @@ def sha256_file(path: Path, progress_every: int = 100) -> str:
 
 
 def cmd_dedupe(pilot_month_only: bool = True) -> None:
+    # Phase 03 Architect Contract §"Safety precondition — harden broad scan":
+    # heavy month-hashing MUST require explicit approved month and reject
+    # empty/wildcard/all-archive scope. The archive-wide path is therefore
+    # not reachable from the CLI; internal callers may not pass False.
+    if not pilot_month_only:
+        log.error(
+            "Archive-wide dedupe is forbidden by Phase 03 contract "
+            "(ops/a2a/PHASE_03_MONTH_VERTICAL_SLICE_CONTRACT.md). "
+            "Set NWK_PILOT_MONTH=YYYY-MM and use `dedupe` (pilot month only) "
+            "or `pilot03-manifest`."
+        )
+        sys.exit(2)
+    if not PILOT_YEAR or not PILOT_MONTH_NUM:
+        log.error(
+            "NWK_PILOT_MONTH unset; month hash requires an explicit approved "
+            "month (YYYY-MM). Aborting per Phase 03 §Safety precondition."
+        )
+        sys.exit(2)
     records = load_raw_scan()
 
-    target = records
-    if pilot_month_only:
-        if not PILOT_YEAR or not PILOT_MONTH_NUM:
-            log.error("NWK_PILOT_MONTH unset; cannot limit dedupe to pilot month. Set YYYY-MM or pass full-scan mode later.")
-            sys.exit(1)
-        target = [
-            r for r in records
-            if r.get("year") == PILOT_YEAR and r.get("month") == PILOT_MONTH_NUM
-        ]
-        log.info("Dedupe limited to %s: %d files", PILOT_MONTH, len(target))
+    target = [
+        r for r in records
+        if r.get("year") == PILOT_YEAR and r.get("month") == PILOT_MONTH_NUM
+    ]
+    log.info("Dedupe limited to %s: %d files", PILOT_MONTH, len(target))
 
     checksums: dict[str, list[str]] = {}
     for i, rec in enumerate(target, 1):
@@ -776,7 +789,47 @@ COMMANDS = {
     "month-story": cmd_month_story,
     "status": cmd_status,
     "pilot0": cmd_pilot0,
+    # Phase 03 — month vertical slice (ops/a2a/PHASE_03_MONTH_VERTICAL_SLICE_CONTRACT.md)
+    "pilot03-preflight": None,
+    "pilot03-baseline": None,
+    "pilot03-manifest": None,
+    "pilot03-media-info": None,
+    "pilot03-stai-bridge": None,
+    "pilot03-transcribe": None,
+    "pilot03-story": None,
+    "pilot03-verify-source": None,
+    "pilot03-run": None,
 }
+
+try:
+    from . import pilot03 as _pilot03  # type: ignore
+    _pilot03.setup_logging()
+    COMMANDS["pilot03-preflight"] = _pilot03.cmd_preflight
+    COMMANDS["pilot03-baseline"] = _pilot03.cmd_baseline
+    COMMANDS["pilot03-manifest"] = _pilot03.cmd_manifest
+    COMMANDS["pilot03-media-info"] = _pilot03.cmd_media_info
+    COMMANDS["pilot03-stai-bridge"] = _pilot03.cmd_stai_bridge
+    COMMANDS["pilot03-transcribe"] = _pilot03.cmd_transcribe
+    COMMANDS["pilot03-story"] = _pilot03.cmd_story
+    COMMANDS["pilot03-verify-source"] = _pilot03.cmd_verify_source
+    COMMANDS["pilot03-run"] = _pilot03.cmd_run
+except ImportError:
+    # Fall back to direct import (running as a script, not a package)
+    try:
+        import pilot03 as _pilot03  # type: ignore
+        _pilot03.setup_logging()
+        COMMANDS["pilot03-preflight"] = _pilot03.cmd_preflight
+        COMMANDS["pilot03-baseline"] = _pilot03.cmd_baseline
+        COMMANDS["pilot03-manifest"] = _pilot03.cmd_manifest
+        COMMANDS["pilot03-media-info"] = _pilot03.cmd_media_info
+        COMMANDS["pilot03-stai-bridge"] = _pilot03.cmd_stai_bridge
+        COMMANDS["pilot03-transcribe"] = _pilot03.cmd_transcribe
+        COMMANDS["pilot03-story"] = _pilot03.cmd_story
+        COMMANDS["pilot03-verify-source"] = _pilot03.cmd_verify_source
+        COMMANDS["pilot03-run"] = _pilot03.cmd_run
+    except ImportError as _exc:
+        log = logging.getLogger("story_agent")
+        log.warning("pilot03 module unavailable: %s", _exc)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
@@ -793,4 +846,17 @@ if __name__ == "__main__":
 
     SYSTEM_ROOT.mkdir(parents=True, exist_ok=True)
     setup_logging()
-    COMMANDS[args.command]()
+    handler = COMMANDS.get(args.command)
+    if handler is None:
+        # Phase 03 pilot03 module import failed at startup — give a clean error
+        # instead of raising TypeError on a None placeholder.
+        if args.command.startswith("pilot03-"):
+            sys.stderr.write(
+                f"error: command '{args.command}' is registered but the pilot03 "
+                f"module could not be imported (see warnings above). "
+                f"Run from story-agent/v01/ or set PYTHONPATH.\n"
+            )
+            sys.exit(2)
+        sys.stderr.write(f"error: unknown command '{args.command}'\n")
+        sys.exit(2)
+    handler()
