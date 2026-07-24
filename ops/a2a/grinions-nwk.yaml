@@ -1,0 +1,93 @@
+version: 1
+project: new-world-kids-story-system
+owner: Bambu
+architect:
+  role: architect
+  provider: OpenAI
+  responsibilities:
+    - architecture
+    - phase_contracts
+    - acceptance_criteria
+    - boundaries
+    - risk_policy
+builder:
+  role: builder
+  model: Grok 4.5
+  environment: local_windows
+  long_phase_runs: true
+  may_merge_low_medium_after_gates: true
+review:
+  executor_cannot_self_verify: true
+  max_parallel_reviewers: 3
+  required:
+    - architecture_repo_guardian
+    - breaker_qa
+    - phase_specific_specialist
+merge:
+  canonical_branch: main
+  one_phase_one_pr: true
+  method: squash
+  post_merge_verify_required: true
+  high_risk_requires_owner_approval: true
+repair_budgets:
+  local_loops: 5
+  ci_rounds: 2
+  review_rounds: 3
+  identical_failure_circuit_breaker: 3
+paths:
+  local_project_root: 'E:\ACTIVE PROJECTS-PIPELINE\ACTIVE PROJECTS-PIPELINE\NEW WORLD KIDS 2026'
+  confirmed_source_root: 'E:\ACTIVE PROJECTS-PIPELINE\ACTIVE PROJECTS-PIPELINE\CULTURE SHOCK PROGRAM\CULTURE SHOCK FOOTAGE -VIDEO'
+  repo_relative_handoff: ops/handoffs/FRESH_CLONE_E_DRIVE_HANDOFF.md
+  story_system_relative: story-system
+source_policy:
+  originals_read_only: true
+  allow_read: true
+  allow_hash: true
+  allow_index: true
+  allow_metadata_extract: true
+  allow_derived_files_outside_source: true
+  allow_rename: false
+  allow_move: false
+  allow_delete: false
+  allow_overwrite: false
+  cloud_upload_requires_owner_approval: true
+phase_policy:
+  default_phases:
+    - id: '00'
+      name: fresh-clone-truth-baseline
+    - id: '01'
+      name: local-story-runtime-foundation
+    - id: '02'
+      name: read-only-source-registry-inventory
+    - id: '03'
+      name: one-month-processing-vertical-slice
+    - id: '04'
+      name: one-quarter-season
+    - id: '05'
+      name: storyfoundry-review-surface
+    - id: '06'
+      name: gallery-vertical-slice
+    - id: '07'
+      name: batch-processing-resume-recovery
+    - id: '08'
+      name: funding-evidence-bridge
+    - id: '09'
+      name: final-system-verification-owner-handoff
+stop_conditions:
+  - truth_conflict
+  - destructive_source_media_action
+  - private_media_cloud_transfer
+  - unresolved_rights_consent
+  - irreversible_high_risk_change
+  - blast_radius_over_3_major_subsystems
+  - rollback_unproven
+  - required_access_missing
+  - repair_budget_exhausted
+  - tests_cannot_prove_safety
+  - branch_protection_bypass_required
+artifacts:
+  handshake: ops/a2a/A2A_GROK_BUILDER_HANDSHAKE.md
+  harness: ops/workflows/GRINIONS_NWK_STORY_HARNESS.md
+  receipts_dir: ops/receipts
+  reports_dir: ops/reports
+  rollback_dir: ops/rollback
