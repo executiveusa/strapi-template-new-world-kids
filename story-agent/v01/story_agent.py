@@ -1,19 +1,21 @@
 """
 New World Kids Story Agent v0.1
 ================================
-STORY-MISSION-0001 — October 2023 Pilot
+Local Story Runtime for Pilot 0 (Story System).
 
 Run on Bambu's Windows machine (TABLET-RV7J0DA1).
-All generated data is written under E:\\NWK_STORY_SYSTEM\\
+All generated data is written under NWK_STORY_ROOT (default:
+E:\\ACTIVE PROJECTS-PIPELINE\\ACTIVE PROJECTS-PIPELINE\\NEW WORLD KIDS 2026\\story-system).
 All source roots are treated as READ-ONLY.
 
 Usage:
     python story_agent.py register          # persist/verify sources.json
+    python story_agent.py health            # runtime/dependency health check
     python story_agent.py scan              # walk source roots, catalog files
     python story_agent.py manifest          # write SOURCE_MANIFEST.json
     python story_agent.py dedupe            # compute checksums and find duplicates
     python story_agent.py status            # print current pipeline state
-    python story_agent.py pilot0            # run all steps for October 2023
+    python story_agent.py pilot0            # bounded pilot for NWK_PILOT_MONTH
 
 Requirements: Python 3.8+, standard library only.
 Optional:     pip install exifread pillow   (for EXIF/embedded-date extraction)
@@ -26,6 +28,7 @@ import hashlib
 import json
 import logging
 import os
+import shutil
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -35,27 +38,65 @@ from typing import Any
 # Constants
 # ---------------------------------------------------------------------------
 
-SYSTEM_ROOT = Path(os.environ.get("NWK_STORY_ROOT", r"E:\NWK_STORY_SYSTEM"))
+_DEFAULT_STORY_ROOT = (
+    r"E:\ACTIVE PROJECTS-PIPELINE\ACTIVE PROJECTS-PIPELINE"
+    r"\NEW WORLD KIDS 2026\story-system"
+)
+SYSTEM_ROOT = Path(os.environ.get("NWK_STORY_ROOT", _DEFAULT_STORY_ROOT))
 SOURCES_FILE = SYSTEM_ROOT / "config" / "sources.json"
+STAI_CONFIG_FILE = SYSTEM_ROOT / "config" / "storytoolkitai.json"
+RUNTIME_FILE = SYSTEM_ROOT / "config" / "runtime.json"
 MANIFEST_FILE = SYSTEM_ROOT / "story-memory" / "SOURCE_MANIFEST.json"
 LOG_FILE = SYSTEM_ROOT / "logs" / "story_agent.log"
 
 MIN_FREE_GB = 5.0  # abort if less than this free on system root drive
 
+REQUIRED_DIRS = (
+    "StoryToolkitAI",
+    "bridge",
+    "config",
+    "story-memory",
+    "transcripts",
+    "indexes",
+    "thumbnails",
+    "proxies",
+    "temp",
+    "exports",
+    "logs",
+    "cache",
+)
+
 MEDIA_EXTENSIONS = {
-    "video": {".mp4", ".mov", ".avi", ".mkv", ".mts", ".m2ts", ".mpg", ".mpeg", ".wmv"},
-    "photo": {".jpg", ".jpeg", ".png", ".raw", ".cr2", ".cr3", ".nef", ".arw", ".dng", ".heic", ".heif", ".tif", ".tiff"},
-    "audio": {".wav", ".mp3", ".aac", ".m4a", ".flac", ".ogg"},
+    "video": {".mp4", ".mov", ".avi", ".mkv", ".mts", ".m2ts", ".mpg", ".mpeg", ".wmv", ".m4v", ".webm"},
+    "photo": {".jpg", ".jpeg", ".png", ".raw", ".cr2", ".cr3", ".nef", ".arw", ".dng", ".heic", ".heif", ".tif", ".tiff", ".webp", ".gif", ".bmp"},
+    "audio": {".wav", ".mp3", ".aac", ".m4a", ".flac", ".ogg", ".wma", ".aif", ".aiff"},
 }
 ALL_MEDIA = {ext for exts in MEDIA_EXTENSIONS.values() for ext in exts}
 
-OCTOBER_2023_YEAR = 2023
-OCTOBER_2023_MONTH = 10
+# Bounded pilot month is configurable. Do not assume October 2023 is present.
+# Format: YYYY-MM via NWK_PILOT_MONTH. Default left empty until Phase 02 inventory.
+_PILOT_RAW = os.environ.get("NWK_PILOT_MONTH", "").strip()
+if _PILOT_RAW and len(_PILOT_RAW) == 7 and _PILOT_RAW[4] == "-":
+    PILOT_YEAR = int(_PILOT_RAW[:4])
+    PILOT_MONTH_NUM = int(_PILOT_RAW[5:7])
+else:
+    PILOT_YEAR = 0
+    PILOT_MONTH_NUM = 0
+PILOT_MONTH = f"{PILOT_YEAR}-{PILOT_MONTH_NUM:02d}" if PILOT_YEAR else "UNSET"
+_QMAP = {1: "Q1", 2: "Q1", 3: "Q1", 4: "Q2", 5: "Q2", 6: "Q2", 7: "Q3", 8: "Q3", 9: "Q3", 10: "Q4", 11: "Q4", 12: "Q4"}
+_MMAP = {
+    1: "01-january", 2: "02-february", 3: "03-march", 4: "04-april",
+    5: "05-may", 6: "06-june", 7: "07-july", 8: "08-august",
+    9: "09-september", 10: "10-october", 11: "11-november", 12: "12-december",
+}
+if PILOT_YEAR and PILOT_MONTH_NUM in _QMAP:
+    PILOT_OUTPUT_DIR = (
+        SYSTEM_ROOT / "story-memory" / str(PILOT_YEAR) / _QMAP[PILOT_MONTH_NUM] / _MMAP[PILOT_MONTH_NUM]
+    )
+else:
+    PILOT_OUTPUT_DIR = SYSTEM_ROOT / "story-memory" / "_unset_pilot"
 
-PILOT_MONTH = f"{OCTOBER_2023_YEAR}-{OCTOBER_2023_MONTH:02d}"
-PILOT_OUTPUT_DIR = (
-    SYSTEM_ROOT / "story-memory" / str(OCTOBER_2023_YEAR) / "Q4" / "10-october"
-)
+
 
 
 # ---------------------------------------------------------------------------
@@ -113,14 +154,39 @@ def load_sources() -> list[dict]:
     return sources
 
 
+def ensure_runtime_dirs() -> None:
+    for name in REQUIRED_DIRS:
+        (SYSTEM_ROOT / name).mkdir(parents=True, exist_ok=True)
+
+
+def _is_placeholder_path(path: str) -> bool:
+    p = (path or "").strip().upper()
+    return (not p) or p.startswith("FILL_IN") or "FILL_IN" in p
+
+
+def active_sources(sources: list[dict]) -> list[dict]:
+    """Return only non-placeholder source roots (optional roots may remain FILL_IN)."""
+    active = []
+    for s in sources:
+        path = str(s.get("path", ""))
+        if _is_placeholder_path(path):
+            log.info("SKIP placeholder source %s (%s)", s.get("id", "?"), s.get("label", "?"))
+            continue
+        if s.get("enabled") is False:
+            log.info("SKIP disabled source %s", s.get("id", "?"))
+            continue
+        active.append(s)
+    return active
+
+
 def cmd_register() -> None:
-    """Verify source roots exist and are readable."""
+    """Verify source roots exist and are readable. Never mutates source trees."""
+    ensure_runtime_dirs()
     SOURCES_FILE.parent.mkdir(parents=True, exist_ok=True)
 
     if not SOURCES_FILE.exists():
         template = Path(__file__).parent / "config" / "sources.template.json"
         if template.exists():
-            import shutil
             shutil.copy(template, SOURCES_FILE)
             log.info("Copied sources.template.json -> %s", SOURCES_FILE)
             log.info("NEXT: Open %s and set real footage paths, then re-run `register`.", SOURCES_FILE)
@@ -129,9 +195,18 @@ def cmd_register() -> None:
         sys.exit(1)
 
     sources = load_sources()
+    active = active_sources(sources)
+    if not active:
+        log.error("No active source roots. Set at least one real path in %s", SOURCES_FILE)
+        sys.exit(1)
+
     ok = True
-    for s in sources:
+    for s in active:
         p = Path(s["path"])
+        if not s.get("readonly", True):
+            log.error("Source root must be readonly=true: %s", p)
+            ok = False
+            continue
         if not p.exists():
             log.error("Source root NOT FOUND: %s (%s)", p, s.get("label", "?"))
             ok = False
@@ -139,12 +214,131 @@ def cmd_register() -> None:
             log.error("Source root is not a directory: %s", p)
             ok = False
         else:
-            log.info("OK  %s  (%s)", p, s.get("label", "unlabeled"))
+            log.info("OK  %s  (%s) readonly=%s", p, s.get("label", "unlabeled"), s.get("readonly", True))
 
     if not ok:
-        log.error("One or more source roots are missing. Fix sources.json and re-run.")
+        log.error("One or more active source roots are missing. Fix sources.json and re-run.")
         sys.exit(1)
-    log.info("All %d source roots verified as read-only directories.", len(sources))
+    log.info("Verified %d active read-only source root(s).", len(active))
+
+
+def cmd_health() -> None:
+    """Runtime foundation health check for Phase 01."""
+    ensure_runtime_dirs()
+    failures: list[str] = []
+    print("\n=== NWK Story Runtime Health ===\n")
+    print(f"SYSTEM_ROOT: {SYSTEM_ROOT}")
+    print(f"PILOT_MONTH: {PILOT_MONTH}")
+    print(f"Python: {sys.version.split()[0]}")
+
+    # dirs
+    for name in REQUIRED_DIRS:
+        p = SYSTEM_ROOT / name
+        mark = "OK" if p.is_dir() else "FAIL"
+        print(f"  [{mark}] dir {name}")
+        if mark != "OK":
+            failures.append(f"missing dir {p}")
+
+    # disk
+    try:
+        total, used, free = shutil.disk_usage(SYSTEM_ROOT.anchor)
+        free_gb = free / (1024 ** 3)
+        mark = "OK" if free_gb >= MIN_FREE_GB else "FAIL"
+        print(f"  [{mark}] free_gb={free_gb:.2f} (min {MIN_FREE_GB})")
+        if mark != "OK":
+            failures.append(f"low disk {free_gb:.2f} GB")
+    except Exception as exc:
+        failures.append(f"disk check failed: {exc}")
+        print(f"  [FAIL] disk check: {exc}")
+
+    # sources
+    if SOURCES_FILE.exists():
+        print(f"  [OK] sources.json")
+        try:
+            sources = active_sources(load_sources())
+            if not sources:
+                failures.append("no active sources")
+                print("  [FAIL] no active sources")
+            for s in sources:
+                p = Path(s["path"])
+                mark = "OK" if p.is_dir() else "FAIL"
+                print(f"  [{mark}] source {s.get('id')} -> {p}")
+                if mark != "OK":
+                    failures.append(f"source missing {p}")
+                if not s.get("readonly", True):
+                    failures.append(f"source not readonly {p}")
+                    print(f"  [FAIL] source not readonly: {p}")
+        except Exception as exc:
+            failures.append(f"sources parse: {exc}")
+            print(f"  [FAIL] sources parse: {exc}")
+    else:
+        failures.append("sources.json missing")
+        print("  [FAIL] sources.json missing")
+
+    # optional deps
+    for mod in ("exifread", "PIL"):
+        try:
+            __import__(mod if mod != "PIL" else "PIL")
+            print(f"  [OK] python:{mod}")
+        except Exception:
+            print(f"  [WARN] python:{mod} not installed (optional)")
+
+    # ffmpeg
+    ffmpeg = shutil.which("ffmpeg")
+    if ffmpeg:
+        print(f"  [OK] ffmpeg -> {ffmpeg}")
+    else:
+        print("  [WARN] ffmpeg not on PATH (needed for proxies later)")
+
+    # StoryToolkitAI engine pointer
+    engine_path = None
+    if STAI_CONFIG_FILE.exists():
+        try:
+            cfg = json.loads(STAI_CONFIG_FILE.read_text(encoding="utf-8"))
+            engine_path = cfg.get("engine_path")
+            print(f"  [OK] storytoolkitai.json present")
+        except Exception as exc:
+            failures.append(f"stai config: {exc}")
+            print(f"  [FAIL] storytoolkitai.json: {exc}")
+    else:
+        print("  [WARN] storytoolkitai.json missing (engine not linked yet)")
+
+    if engine_path:
+        ep = Path(engine_path)
+        mark = "OK" if ep.exists() else "FAIL"
+        print(f"  [{mark}] STAI engine_path -> {ep}")
+        if mark != "OK":
+            failures.append(f"STAI engine missing {ep}")
+        else:
+            # thin presence check only — do not import/run full STAI UI
+            marker = ep / "core" / "storytoolkitai.py"
+            if not marker.exists() and not (ep / "__main__.py").exists():
+                print(f"  [WARN] STAI markers not found under {ep} (may still be valid install root)")
+
+    local_stai = SYSTEM_ROOT / "StoryToolkitAI"
+    print(f"  [OK] local STAI slot -> {local_stai} exists={local_stai.exists()}")
+
+    # write runtime snapshot (derived only)
+    RUNTIME_FILE.parent.mkdir(parents=True, exist_ok=True)
+    snapshot = {
+        "checked_at": datetime.now().isoformat(timespec="seconds"),
+        "system_root": str(SYSTEM_ROOT),
+        "pilot_month": PILOT_MONTH,
+        "python": sys.version.split()[0],
+        "ffmpeg": ffmpeg,
+        "stai_engine_path": engine_path,
+        "failures": failures,
+        "ok": len(failures) == 0,
+    }
+    RUNTIME_FILE.write_text(json.dumps(snapshot, indent=2), encoding="utf-8")
+    print(f"\nRuntime snapshot -> {RUNTIME_FILE}")
+
+    if failures:
+        print("\nHEALTH: FAIL")
+        for f in failures:
+            print(f"  - {f}")
+        sys.exit(1)
+    print("\nHEALTH: PASS")
 
 
 # ---------------------------------------------------------------------------
@@ -239,7 +433,10 @@ def scan_source(source: dict, include_all: bool = False) -> list[dict]:
 
 
 def cmd_scan() -> list[dict]:
-    sources = load_sources()
+    sources = active_sources(load_sources())
+    if not sources:
+        log.error("No active sources to scan.")
+        sys.exit(1)
     all_records: list[dict] = []
     for source in sources:
         records = scan_source(source)
@@ -284,9 +481,12 @@ def cmd_dedupe(pilot_month_only: bool = True) -> None:
 
     target = records
     if pilot_month_only:
+        if not PILOT_YEAR or not PILOT_MONTH_NUM:
+            log.error("NWK_PILOT_MONTH unset; cannot limit dedupe to pilot month. Set YYYY-MM or pass full-scan mode later.")
+            sys.exit(1)
         target = [
             r for r in records
-            if r.get("year") == OCTOBER_2023_YEAR and r.get("month") == OCTOBER_2023_MONTH
+            if r.get("year") == PILOT_YEAR and r.get("month") == PILOT_MONTH_NUM
         ]
         log.info("Dedupe limited to %s: %d files", PILOT_MONTH, len(target))
 
@@ -326,7 +526,12 @@ def cmd_dedupe(pilot_month_only: bool = True) -> None:
 # Source manifest
 # ---------------------------------------------------------------------------
 
-def cmd_manifest(year: int = OCTOBER_2023_YEAR, month: int = OCTOBER_2023_MONTH) -> None:
+def cmd_manifest(year: int | None = None, month: int | None = None) -> None:
+    year = year if year is not None else PILOT_YEAR
+    month = month if month is not None else PILOT_MONTH_NUM
+    if not year or not month:
+        log.error("NWK_PILOT_MONTH unset; cannot build month manifest.")
+        sys.exit(1)
     all_records = load_raw_scan()
     month_records = [
         r for r in all_records
@@ -372,12 +577,12 @@ def cmd_manifest(year: int = OCTOBER_2023_YEAR, month: int = OCTOBER_2023_MONTH)
 # ---------------------------------------------------------------------------
 
 MONTH_STORY_TEMPLATE = """\
-# Month Story: October 2023
+# Month Story: {pilot_month}
 ## APPROVAL STATUS: UNAPPROVED DRAFT — DO NOT PUBLISH
 
-**Mission:** STORY-MISSION-0001
-**Pilot month:** October 2023
-**Program:** Indigo Azul Project, Puerto Vallarta MX
+**Mission:** NWK-STORY-PILOT
+**Pilot month:** {pilot_month}
+**Program:** (fill from source registry / Bambu)
 **Generated:** {generated_at}
 
 ---
@@ -393,11 +598,9 @@ MONTH_STORY_TEMPLATE = """\
 
 ---
 
-## Known Context (Hurricane Lidia — October 2023)
+## Known Context
 
-Hurricane Lidia made landfall near Puerto Vallarta in October 2023. This month
-likely documents the storm's impact on the Indigo Azul growing site and the
-community response.
+*Do not invent events. Use only inventory evidence and Bambu-confirmed context.*
 
 **Bambu: Please verify the above and correct any errors before approving.**
 
@@ -405,13 +608,13 @@ community response.
 
 ## Suggested Story Beats
 
-*These are AI-generated proposals. Bambu must verify each claim.*
+*These are draft proposals only. Bambu must verify each claim against source media.*
 
-1. **Before** — What the site looked like prior to the storm.
-2. **During** — Any documentation of the storm itself or immediate response.
-3. **Damage** — Evidence of what was lost or damaged.
-4. **Recovery** — Early recovery actions and community effort.
-5. **Resilience** — Signs of the site bouncing back.
+1. **Setting** — Where and what is being documented this month.
+2. **People** — Who appears (consent/rights still required before publish).
+3. **Work** — What work/actions are visible.
+4. **Change** — What changed during the month (if evidenced).
+5. **Open questions** — Gaps needing Bambu clarification.
 
 ---
 
@@ -497,6 +700,7 @@ def cmd_month_story() -> None:
         dup_count = sum(len(v) - 1 for v in dedupe.get("duplicates", {}).values())
 
     content = MONTH_STORY_TEMPLATE.format(
+        pilot_month=manifest.get("pilot_month", PILOT_MONTH),
         generated_at=datetime.now().strftime("%Y-%m-%d %H:%M"),
         file_count=manifest["file_count"],
         photo_count=manifest.get("by_media_type", {}).get("photo", 0),
@@ -520,16 +724,20 @@ def cmd_month_story() -> None:
 
 def cmd_status() -> None:
     def check(path: Path, label: str) -> None:
-        mark = "✓" if path.exists() else "✗"
-        print(f"  {mark}  {label}")
-        print(f"       {path}")
+        mark = "OK" if path.exists() else "--"
+        print(f"  [{mark}]  {label}")
+        print(f"         {path}")
 
-    print("\n=== New World Kids Story Agent — STORY-MISSION-0001 Status ===\n")
+    print("\n=== New World Kids Story Agent — Runtime Status ===\n")
+    print(f"SYSTEM_ROOT: {SYSTEM_ROOT}")
+    print(f"PILOT_MONTH: {PILOT_MONTH}")
     check(SOURCES_FILE, "Source registry (sources.json)")
+    check(STAI_CONFIG_FILE, "StoryToolkitAI config")
+    check(RUNTIME_FILE, "Runtime health snapshot")
     check(SYSTEM_ROOT / "indexes" / "raw_scan.json", "Raw scan cache")
     check(SYSTEM_ROOT / "indexes" / "dedupe_map.json", "Dedupe map")
-    check(PILOT_OUTPUT_DIR / "SOURCE_MANIFEST.json", "SOURCE_MANIFEST.json (October 2023)")
-    check(PILOT_OUTPUT_DIR / "MONTH_STORY.md", "MONTH_STORY.md (October 2023)")
+    check(PILOT_OUTPUT_DIR / "SOURCE_MANIFEST.json", f"SOURCE_MANIFEST.json ({PILOT_MONTH})")
+    check(PILOT_OUTPUT_DIR / "MONTH_STORY.md", f"MONTH_STORY.md ({PILOT_MONTH})")
     print()
 
 
@@ -538,14 +746,20 @@ def cmd_status() -> None:
 # ---------------------------------------------------------------------------
 
 def cmd_pilot0() -> None:
-    log.info("=== STORY-MISSION-0001: October 2023 Pilot — starting ===")
+    if not PILOT_YEAR or not PILOT_MONTH_NUM:
+        log.error(
+            "NWK_PILOT_MONTH is not set (expected YYYY-MM). "
+            "Choose a month from Phase 02 inventory evidence before pilot0."
+        )
+        sys.exit(1)
+    log.info("=== Bounded pilot %s — starting ===", PILOT_MONTH)
     check_disk_space(SYSTEM_ROOT)
     cmd_register()
     cmd_scan()
     cmd_dedupe(pilot_month_only=True)
-    cmd_manifest(OCTOBER_2023_YEAR, OCTOBER_2023_MONTH)
+    cmd_manifest(PILOT_YEAR, PILOT_MONTH_NUM)
     cmd_month_story()
-    log.info("=== Pilot-0 complete. HUMAN GATE: Review MONTH_STORY.md before proceeding. ===")
+    log.info("=== Pilot complete. HUMAN GATE: Review MONTH_STORY.md before proceeding. ===")
     cmd_status()
 
 
@@ -555,6 +769,7 @@ def cmd_pilot0() -> None:
 
 COMMANDS = {
     "register": cmd_register,
+    "health": cmd_health,
     "scan": cmd_scan,
     "manifest": cmd_manifest,
     "dedupe": cmd_dedupe,
