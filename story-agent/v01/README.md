@@ -1,7 +1,11 @@
-# Story Agent v0.1 — STORY-MISSION-0001
+# Story Agent v0.1 — Local Story Runtime
 
-**Run on:** Bambu's Windows laptop (TABLET-RV7J0DA1)
-**Pilot:** October 2023, Indigo Azul Project, Puerto Vallarta MX
+**Run on:** Bambu's Windows laptop (TABLET-RV7J0DA1)  
+**Runtime root (default):**  
+`E:\ACTIVE PROJECTS-PIPELINE\ACTIVE PROJECTS-PIPELINE\NEW WORLD KIDS 2026\story-system`
+
+Override with env `NWK_STORY_ROOT` if needed.  
+Bounded pilot month via `NWK_PILOT_MONTH=YYYY-MM` (set only after Phase 02 inventory).
 
 ## Quick Start
 
@@ -9,43 +13,44 @@
 REM 1. One-time setup
 story-agent\v01\setup_windows.bat
 
-REM 2. Fill in footage paths
-notepad E:\NWK_STORY_SYSTEM\config\sources.json
+REM 2. Verify sources + runtime
+python story-agent\v01\story_agent.py register
+python story-agent\v01\story_agent.py health
 
-REM 3. Run the full pilot pipeline
+REM 3. Phase 02+ only (after inventory + Bambu month approval)
+set NWK_PILOT_MONTH=2024-07
 python story-agent\v01\story_agent.py pilot0
 ```
 
 ## Commands
 
-| Command       | Purpose                             |
-| ------------- | ----------------------------------- |
-| `pilot0`      | Run full October 2023 pipeline      |
-| `register`    | Verify source roots                 |
-| `scan`        | Catalog all media files (read-only) |
-| `dedupe`      | Find duplicate files via SHA-256    |
-| `manifest`    | Write SOURCE_MANIFEST.json          |
-| `month-story` | Draft MONTH_STORY.md                |
-| `status`      | Show pipeline state                 |
+| Command       | Purpose                                      |
+| ------------- | -------------------------------------------- |
+| `register`    | Verify active read-only source roots         |
+| `health`      | Runtime dirs, disk, ffmpeg, STAI pointer     |
+| `scan`        | Catalog media files (read-only)              |
+| `dedupe`      | SHA-256 duplicates for pilot month           |
+| `manifest`    | Write SOURCE_MANIFEST.json                   |
+| `month-story` | Draft MONTH_STORY.md (UNAPPROVED)            |
+| `status`      | Show pipeline state                          |
+| `pilot0`      | Bounded pilot for `NWK_PILOT_MONTH` only     |
 
-## Output location
+## StoryToolkitAI
 
-All generated data: `E:\NWK_STORY_SYSTEM\`
+Upstream engine. Do not rewrite.  
+Configure `config/storytoolkitai.json` with `engine_path` pointing at an existing install (default template references `pauli-story-tool-kit-main\storytoolkitai`).  
+Thin bridge slot: `story-system/bridge/` and `story-system/StoryToolkitAI/`.
 
-October 2023 pilot output: `E:\NWK_STORY_SYSTEM\story-memory\2023\Q4\10-october\`
-
-## Safety guarantees
+## Safety
 
 - Source roots are never modified
-- MONTH_STORY.md is always marked UNAPPROVED until Bambu signs off
-- Disk space is checked before generating derived files (min 5 GB free)
-- Same failure 3x = abort
+- MONTH_STORY.md is always UNAPPROVED until Bambu signs off
+- Disk space checked before derived work (min 5 GB free on E:)
+- Same failure 3x = abort (caller/harness)
+- No cloud upload of private footage without Bambu approval
 
 ## Optional dependency
 
 ```
-pip install exifread
+pip install exifread pillow
 ```
-
-Improves capture date extraction from EXIF metadata. Falls back to filesystem
-dates if not installed.
