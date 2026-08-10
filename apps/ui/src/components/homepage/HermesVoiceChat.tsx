@@ -146,8 +146,8 @@ export function HermesVoiceChat() {
               className={[
                 "max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-7",
                 msg.role === "user"
-                  ? "bg-[#1a3a2a] text-[#c9a84c]"
-                  : "border border-white/8 bg-white/5 text-white/80",
+                  ? "bg-[var(--color-forest)] text-[var(--color-accent-gold)]"
+                  : "border border-[var(--color-border-subtle)] bg-[var(--color-border-subtle)] text-[var(--color-text-muted)]",
               ].join(" ")}
             >
               {msg.content}
@@ -156,8 +156,8 @@ export function HermesVoiceChat() {
         ))}
         {loading && (
           <div className="flex justify-start">
-            <div className="rounded-2xl border border-white/8 bg-white/5 px-4 py-3">
-              <Loader2 className="h-4 w-4 animate-spin text-[#c9a84c]" />
+            <div className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-border-subtle)] px-4 py-3">
+              <Loader2 className="h-4 w-4 animate-spin text-[var(--color-accent-gold)]" />
             </div>
           </div>
         )}
@@ -165,15 +165,15 @@ export function HermesVoiceChat() {
       </div>
 
       {/* Input */}
-      <div className="border-t border-white/8 p-4">
+      <div className="border-t border-[var(--color-border-subtle)] p-4">
         <div className="flex items-center gap-2">
           <button
             onClick={toggleVoice}
             className={[
               "shrink-0 rounded-full p-2.5 transition",
               listening
-                ? "bg-[#c8400e] text-white"
-                : "border border-white/10 text-white/40 hover:border-white/25 hover:text-white",
+                ? "bg-[var(--color-accent-coral)] text-[var(--color-text-primary)]"
+                : "border border-[var(--color-border-subtle)] text-[var(--color-text-muted)] hover:border-[var(--color-border-subtle)] hover:text-[var(--color-text-primary)]",
             ].join(" ")}
             title={listening ? "Stop listening" : "Start voice input"}
           >
@@ -192,20 +192,20 @@ export function HermesVoiceChat() {
               e.key === "Enter" && !e.shiftKey && void send(input)
             }
             placeholder={listening ? "Listening…" : "Ask Hermes anything…"}
-            className="flex-1 rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/25 focus:border-[#c9a84c]/40 focus:outline-none"
+            className="flex-1 rounded-full border border-[var(--color-border-subtle)] bg-[var(--color-border-subtle)] px-4 py-2.5 text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:border-[var(--color-accent-gold)]/40 focus:outline-none"
           />
 
           <button
             onClick={() => void send(input)}
             disabled={!input.trim() || loading}
-            className="shrink-0 rounded-full bg-[#c9a84c] p-2.5 text-[#060e08] transition hover:bg-[#e0bc6a] disabled:opacity-40"
+            className="shrink-0 rounded-full bg-[var(--color-accent-gold)] p-2.5 text-[var(--color-bg)] transition hover:bg-[var(--color-accent-gold)] disabled:opacity-40"
           >
             <Send className="h-4 w-4" />
           </button>
         </div>
 
         {listening && (
-          <p className="mt-2 text-center text-xs text-[#c8400e]">
+          <p className="mt-2 text-center text-xs text-[var(--color-accent-coral)]">
             Listening — speak now
           </p>
         )}

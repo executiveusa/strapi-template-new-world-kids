@@ -1,64 +1,8 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
+import { animate, motion, useInView } from "framer-motion"
 import Link from "next/link"
-import { useState, useEffect } from "react"
-
-// Replace URLs with local /images/ paths once images are uploaded to apps/ui/public/images/
-const heroImages = [
-  {
-    src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80",
-    alt: "Sunset clouds over Puerto Vallarta",
-    duration: 5000, // 5 seconds for first image
-  },
-  {
-    src: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1600&q=80",
-    alt: "Banana plants",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1464454709131-ffd692591ee5?w=1600&q=80",
-    alt: "Garden with various plants",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1585518419759-66f3a4b73bab?w=1600&q=80",
-    alt: "Baby mangos on tree",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1568284067316-1b1d0f1d0c3c?w=1600&q=80",
-    alt: "Hibiscus flowers",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&q=80",
-    alt: "Mango tree with fruit",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1590540189549-336d36e2e3f0?w=1600&q=80",
-    alt: "Papaya tree",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=1600&q=80",
-    alt: "Bamboo forest",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1488459716781-6918f33427d7?w=1600&q=80",
-    alt: "Red bananas",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1600&q=80",
-    alt: "Prickly pear cactus",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1599599810694-b5ac4dd64e90?w=1600&q=80",
-    alt: "Seeds and botanical specimen",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1490147868817-67c285e3585a?w=1600&q=80",
-    alt: "Yellow flower",
-  },
-]
-
-const ROTATION_INTERVAL = 3500 // 3.5 seconds
-const FIRST_IMAGE_DURATION = 5000 // 5 seconds
+import { useEffect, useRef, useState } from "react"
 
 const stats = [
   { value: "200+", label: "plant varieties growing" },
@@ -67,76 +11,168 @@ const stats = [
   { value: "$0", label: "cost to every student" },
 ]
 
-export function NonprofitHero() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [isFirstImage, setIsFirstImage] = useState(true)
+const HERO_VIDEO_SRC = "/videos/hero-garden.mp4"
+const CROSSFADE_SECONDS = 0.9
+
+/**
+ * Two copies of the same clip, crossfaded into each other just before the
+ * end of the active one, so the loop point never shows a hard cut/jump —
+ * the standby copy is already playing from frame 0 by the time it fades in.
+ */
+function LoopingHeroVideo({ poster }: { poster: string }) {
+  const videoARef = useRef<HTMLVideoElement>(null)
+  const videoBRef = useRef<HTMLVideoElement>(null)
+  const activeRef = useRef<"a" | "b">("a")
+  const [aOpacity, setAOpacity] = useState(1)
 
   useEffect(() => {
-    const timer = isFirstImage
-      ? setTimeout(() => {
-          setIsFirstImage(false)
-          setCurrentImageIndex(1)
-        }, FIRST_IMAGE_DURATION)
-      : setTimeout(() => {
-          setCurrentImageIndex(
-            (prev) => (prev + 1) % (heroImages.length - 1) // Skip first image after initial display
-          )
-        }, ROTATION_INTERVAL)
+    const a = videoARef.current
+    const b = videoBRef.current
+    if (!a || !b) return
 
-    return () => clearTimeout(timer)
-  }, [currentImageIndex, isFirstImage])
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // Stay on the poster frame — skip autoplay and the crossfade loop.
+      return
+    }
 
-  const displayIndex = isFirstImage ? 0 : currentImageIndex + 1
+    let raf: number
+
+    function tick() {
+      if (!a || !b) return
+      const active = activeRef.current === "a" ? a : b
+      const standby = activeRef.current === "a" ? b : a
+
+      if (
+        active.duration &&
+        !Number.isNaN(active.duration) &&
+        active.currentTime >= active.duration - CROSSFADE_SECONDS &&
+        standby.paused
+      ) {
+        standby.currentTime = 0
+        standby.play().catch(() => {})
+        activeRef.current = activeRef.current === "a" ? "b" : "a"
+        setAOpacity(activeRef.current === "a" ? 1 : 0)
+      }
+
+      raf = requestAnimationFrame(tick)
+    }
+
+    a.play().catch(() => {})
+    raf = requestAnimationFrame(tick)
+
+    return () => cancelAnimationFrame(raf)
+  }, [])
 
   return (
-    <section
-      data-hero
-      className="relative min-h-screen overflow-hidden bg-[#060e08]"
-    >
-      {/* Background image carousel */}
-      <div className="absolute inset-0 z-0">
-        <AnimatePresence mode="wait">
-          <motion.img
-            key={displayIndex}
-            src={heroImages[displayIndex]?.src || heroImages[0].src}
-            alt={heroImages[displayIndex]?.alt || heroImages[0].alt}
-            className="h-full w-full object-cover opacity-50"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            exit={{ opacity: 0 }}
+    <>
+      <video
+        ref={videoARef}
+        muted
+        playsInline
+        preload="auto"
+        poster={poster}
+        className="absolute inset-0 h-full w-full object-cover transition-opacity ease-linear"
+        style={{
+          opacity: aOpacity,
+          transitionDuration: `${CROSSFADE_SECONDS}s`,
+        }}
+      >
+        <source src={HERO_VIDEO_SRC} type="video/mp4" />
+      </video>
+      <video
+        ref={videoBRef}
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 h-full w-full object-cover transition-opacity ease-linear"
+        style={{
+          opacity: 1 - aOpacity,
+          transitionDuration: `${CROSSFADE_SECONDS}s`,
+        }}
+      >
+        <source src={HERO_VIDEO_SRC} type="video/mp4" />
+      </video>
+    </>
+  )
+}
+
+function parseStat(value: string) {
+  const match = /^(\$?)(\d+(?:\.\d+)?)(\+?)$/.exec(value)
+  if (!match) return null
+  const [, prefix, numStr, suffix] = match
+
+  return { prefix, numStr, suffix }
+}
+
+function StatNumber({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const isInView = useInView(ref, { once: true, margin: "-60px" })
+  const zeroed = (() => {
+    const parsed = parseStat(value)
+    if (!parsed) return value
+
+    return `${parsed.prefix}${parsed.numStr.includes(".") ? "0.0" : "0"}${parsed.suffix}`
+  })()
+  const [display, setDisplay] = useState(zeroed)
+
+  useEffect(() => {
+    if (!isInView) return
+    const parsed = parseStat(value)
+    if (!parsed) return
+    const { prefix, numStr, suffix } = parsed
+    const target = Number.parseFloat(numStr)
+    const decimals = numStr.includes(".") ? 1 : 0
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
+
+    const controls = animate(0, target, {
+      duration: prefersReducedMotion ? 0 : 1.4,
+      ease: "easeOut",
+      onUpdate: (v) => setDisplay(`${prefix}${v.toFixed(decimals)}${suffix}`),
+    })
+
+    return () => controls.stop()
+  }, [isInView, value])
+
+  return <span ref={ref}>{display}</span>
+}
+
+export function NonprofitHero() {
+  return (
+    <section data-hero className="bg-[var(--color-bg)]">
+      {/* Video — quote centered on top, nothing underneath it */}
+      <div className="relative h-[62vh] min-h-[380px] w-full overflow-hidden sm:h-[75vh] md:h-screen">
+        <LoopingHeroVideo poster="/videos/hero-garden-poster.jpg" />
+        <div className="absolute inset-0 bg-black/25" />
+        <div className="absolute inset-0 flex items-center justify-center px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.8 }}
-          />
-        </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#060e08]/60 via-[#060e08]/30 to-[#060e08]" />
+            className="max-w-4xl text-center"
+          >
+            <p className="font-serif text-[1.75rem] leading-tight text-white italic drop-shadow-[0_4px_18px_rgba(0,0,0,0.75)] sm:text-[2.25rem] md:text-[3.25rem] lg:text-[4.5rem]">
+              &ldquo;If you ever think you&apos;re too small to make a
+              difference, try going to sleep with a mosquito in the room.&rdquo;
+            </p>
+            <p className="mt-4 text-xs tracking-[0.28em] text-white/70 uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
+              West African Proverb
+            </p>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-screen max-w-5xl flex-col items-center justify-center px-6 py-24 text-center md:px-10">
-        {/* Proverb */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="font-serif text-base leading-relaxed text-[#c9a84c] italic md:text-xl"
-        >
-          &ldquo;If you ever think you&apos;re too small to make a difference,
-          try going to sleep with a mosquito in the room.&rdquo;
-        </motion.p>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="mt-2 text-xs tracking-[0.28em] text-[#c9a84c]/70 uppercase"
-        >
-          West African Proverb
-        </motion.p>
-
+      {/* Content — below the video */}
+      <div className="mx-auto flex max-w-5xl flex-col items-center px-6 py-20 text-center md:px-10 md:py-28">
         {/* Headline — problem-first rewrite */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="mt-10 font-serif text-4xl leading-tight font-semibold text-white md:text-6xl lg:text-7xl"
+          className="font-serif text-4xl leading-tight font-semibold text-[var(--color-text-primary)] md:text-6xl lg:text-7xl"
         >
           Most kids graduate
           <br className="hidden md:block" /> without ever learning
@@ -144,9 +180,10 @@ export function NonprofitHero() {
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, delay: 0.35 }}
-          className="mt-5 font-serif text-xl text-[#c9a84c] md:text-2xl"
+          className="mt-5 font-serif text-xl text-[var(--color-accent-gold)] md:text-2xl"
         >
           We fix that. Free. No exceptions.
         </motion.p>
@@ -154,9 +191,10 @@ export function NonprofitHero() {
         {/* Body */}
         <motion.p
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-8 max-w-2xl text-base leading-8 text-white/70 md:text-lg"
+          className="mt-8 max-w-2xl text-base leading-8 text-[var(--color-text-muted)] md:text-lg"
         >
           New World Kids is a Seattle-based nonprofit. We create projects and
           programs that teach inner-city and rural youth life skills. No matter
@@ -167,9 +205,10 @@ export function NonprofitHero() {
         {/* Core four callout */}
         <motion.p
           initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-4 font-serif text-sm tracking-wide text-[#c9a84c]/80"
+          className="mt-4 font-serif text-sm tracking-wide text-[var(--color-accent-gold)]/80"
         >
           Our framework: Food · Water · Energy · Shelter. Every program teaches
           all four.
@@ -178,46 +217,47 @@ export function NonprofitHero() {
         {/* CTAs — donate is dominant primary; timeline is a quiet text link */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.8, delay: 0.65 }}
           className="mt-10 flex flex-col items-center gap-3"
         >
-          <Link
-            href="/donate"
-            className="rounded-full bg-[#c8400e] px-12 py-4 text-base font-semibold text-white shadow-xl shadow-[#c8400e]/25 transition hover:bg-[#d9500f] hover:shadow-[#c8400e]/40"
-          >
-            Plant a seed — give $25 →
+          <Link href="/donate">
+            <motion.span
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.96 }}
+              className="inline-block rounded-full bg-[var(--color-accent-coral)] px-12 py-4 text-base font-semibold text-white shadow-[var(--color-accent-coral)]/25 shadow-xl transition-colors hover:bg-[var(--color-accent-coral-hover)] hover:shadow-[var(--color-accent-coral)]/40"
+            >
+              Plant a seed — give $25 →
+            </motion.span>
           </Link>
           <Link
             href="/#timeline"
-            className="text-sm text-[#c9a84c]/55 transition hover:text-[#c9a84c]"
+            className="text-sm text-[var(--color-accent-gold)]/55 transition hover:text-[var(--color-accent-gold)]"
           >
             or see 5 years of work →
           </Link>
         </motion.div>
 
-        {/* Stats strip — moved up to above fold */}
+        {/* Stats strip */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 1, delay: 0.9 }}
-          className="mt-16 grid grid-cols-2 gap-6 border-t border-white/10 pt-10 text-center sm:grid-cols-4"
+          className="mt-16 grid grid-cols-2 gap-6 border-t border-[var(--color-border-subtle)] pt-10 text-center sm:grid-cols-4"
         >
           {stats.map((stat) => (
             <div key={stat.label}>
-              <p className="font-serif text-3xl font-semibold text-[#c9a84c] md:text-4xl">
-                {stat.value}
+              <p className="font-serif text-3xl font-semibold text-[var(--color-accent-gold)] md:text-4xl">
+                <StatNumber value={stat.value} />
               </p>
-              <p className="mt-1 text-xs text-white/55">{stat.label}</p>
+              <p className="mt-1 text-xs text-[var(--color-text-muted)]">
+                {stat.label}
+              </p>
             </div>
           ))}
         </motion.div>
-      </div>
-
-      {/* Scroll hint */}
-      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-bounce">
-        <div className="mx-auto h-6 w-px bg-[#c9a84c]/40" />
-        <div className="mx-auto mt-1 h-1.5 w-1.5 rounded-full bg-[#c9a84c]/60" />
       </div>
     </section>
   )

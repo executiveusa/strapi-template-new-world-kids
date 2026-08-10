@@ -14,7 +14,7 @@ function statusStyles(status: TimelineEntry["status"]) {
   if (status === "current")
     return "bg-[var(--color-gold)]/20 text-[var(--color-gold-bright)]"
 
-  return "bg-white/10 text-white/60"
+  return "bg-[var(--color-border-subtle)] text-[var(--color-text-muted)]"
 }
 
 function statusLabel(status: TimelineEntry["status"]) {
@@ -27,6 +27,9 @@ function statusLabel(status: TimelineEntry["status"]) {
 /* ─────────────────────────────────────────────────────────
    DETAIL MODAL
 ───────────────────────────────────────────────────────── */
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+
 function TimelineModal({
   entry,
   onClose,
@@ -34,14 +37,38 @@ function TimelineModal({
   entry: TimelineEntry
   onClose: () => void
 }) {
-  // Close on Escape key
+  const dialogRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
+    const previouslyFocused = document.activeElement as HTMLElement | null
+    dialogRef.current?.focus()
+
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") onClose()
+      if (e.key === "Escape") {
+        onClose()
+        return
+      }
+      if (e.key !== "Tab" || !dialogRef.current) return
+      const focusable = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+      )
+      if (focusable.length === 0) return
+      const first = focusable[0]
+      const last = focusable.at(-1)!
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
     }
     window.addEventListener("keydown", onKey)
 
-    return () => window.removeEventListener("keydown", onKey)
+    return () => {
+      window.removeEventListener("keydown", onKey)
+      previouslyFocused?.focus()
+    }
   }, [onClose])
 
   return (
@@ -59,7 +86,12 @@ function TimelineModal({
 
       {/* Modal */}
       <motion.div
-        className="relative z-10 mx-4 mb-4 w-full max-w-2xl overflow-hidden rounded-3xl border border-white/10 bg-[var(--color-surface)] sm:mx-6 sm:mb-0"
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={entry.title}
+        tabIndex={-1}
+        className="relative z-10 mx-4 mb-4 w-full max-w-2xl overflow-hidden rounded-3xl border border-[var(--color-border-subtle)] bg-[var(--color-surface)] outline-none sm:mx-6 sm:mb-0"
         initial={{ y: 60, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 60, opacity: 0 }}
@@ -85,7 +117,7 @@ function TimelineModal({
               <span className="inline-block rounded-full bg-[var(--color-gold)] px-3 py-1 text-xs font-semibold text-[var(--color-bg)]">
                 {entry.season} · {entry.year}
               </span>
-              <h3 className="mt-3 font-serif text-2xl font-semibold text-white">
+              <h3 className="mt-3 font-serif text-2xl font-semibold text-[var(--color-text-primary)]">
                 {entry.title}
               </h3>
               <p className="mt-1 text-sm text-[var(--color-gold)]">
@@ -95,19 +127,21 @@ function TimelineModal({
             <button
               onClick={onClose}
               aria-label="Close chapter detail"
-              className="mt-1 shrink-0 rounded-full border border-white/10 p-2 text-white/50 transition hover:border-white/30 hover:text-white"
+              className="mt-1 shrink-0 rounded-full border border-[var(--color-border-subtle)] p-2 text-[var(--color-text-muted)] transition hover:border-[var(--color-border-subtle)] hover:text-[var(--color-text-primary)]"
             >
               <X className="h-4 w-4" />
             </button>
           </div>
 
-          <p className="mt-5 text-sm leading-7 text-white/70">{entry.body}</p>
+          <p className="mt-5 text-sm leading-7 text-[var(--color-text-muted)]">
+            {entry.body}
+          </p>
 
           <ul className="mt-5 space-y-2">
             {entry.highlights.map((h) => (
               <li
                 key={h}
-                className="flex items-center gap-3 text-sm text-white/80"
+                className="flex items-center gap-3 text-sm text-[var(--color-text-muted)]"
               >
                 <span className="h-1 w-1 rounded-full bg-[var(--color-gold)]" />
                 {h}
@@ -124,7 +158,7 @@ function TimelineModal({
             {entry.status === "current" && (
               <a
                 href="/donate"
-                className="rounded-full bg-[var(--color-coral)] px-5 py-2 text-xs font-semibold text-white transition hover:bg-[var(--color-coral-hover)]"
+                className="rounded-full bg-[var(--color-coral)] px-5 py-2 text-xs font-semibold text-[var(--color-text-primary)] transition hover:bg-[var(--color-coral-hover)]"
               >
                 Support this phase →
               </a>
@@ -202,13 +236,13 @@ export function TimelineSection() {
         <div className="mx-auto max-w-7xl">
           {/* Header */}
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs tracking-[0.24em] text-[var(--color-gold)] uppercase">
+            <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">
               A story in chapters
             </p>
-            <h2 className="mt-3 font-serif text-3xl text-white md:text-5xl">
-              From bare soil to a living school
+            <h2 className="mt-3 font-serif text-3xl text-[var(--color-text-primary)] md:text-5xl">
+              From bare soil to a living ecosystem
             </h2>
-            <p className="mt-4 text-sm text-white/50 md:text-base">
+            <p className="mt-4 text-sm text-[var(--color-text-muted)] md:text-base">
               6 seasons of documented, continuous work. Every chapter is real.
             </p>
             {currentEntry && (
@@ -221,10 +255,10 @@ export function TimelineSection() {
 
           {/* Chapter indicator + progress bar + arrows (single row) */}
           <div className="mt-8 flex items-center gap-4 px-2">
-            <span className="shrink-0 font-mono text-xs tracking-widest text-white/50 uppercase">
+            <span className="shrink-0 font-mono text-xs tracking-widest text-[var(--color-text-muted)] uppercase">
               Chapter {activeIndex + 1} / {total}
             </span>
-            <div className="relative h-1 flex-1 overflow-hidden rounded-full bg-white/10">
+            <div className="relative h-1 flex-1 overflow-hidden rounded-full bg-[var(--color-border-subtle)]">
               <div
                 className="absolute inset-y-0 left-0 rounded-full bg-[var(--color-gold)] transition-[width] duration-150"
                 style={{ width: `${Math.max(8, progress * 100)}%` }}
@@ -233,7 +267,7 @@ export function TimelineSection() {
             <div className="flex shrink-0 items-center gap-2">
               <button
                 onClick={() => scroll("left")}
-                className="rounded-full border border-white/10 p-2 text-white/50 transition hover:border-white/30 hover:text-white disabled:opacity-30"
+                className="rounded-full border border-[var(--color-border-subtle)] p-2 text-[var(--color-text-muted)] transition hover:border-[var(--color-border-subtle)] hover:text-[var(--color-text-primary)] disabled:opacity-30"
                 aria-label="Previous chapter"
                 disabled={activeIndex === 0}
               >
@@ -241,7 +275,7 @@ export function TimelineSection() {
               </button>
               <button
                 onClick={() => scroll("right")}
-                className="rounded-full border border-white/10 p-2 text-white/50 transition hover:border-white/30 hover:text-white disabled:opacity-30"
+                className="rounded-full border border-[var(--color-border-subtle)] p-2 text-[var(--color-text-muted)] transition hover:border-[var(--color-border-subtle)] hover:text-[var(--color-text-primary)] disabled:opacity-30"
                 aria-label="Next chapter"
                 disabled={activeIndex === total - 1}
               >
@@ -264,13 +298,22 @@ export function TimelineSection() {
                 viewport={{ amount: 0.3, once: true }}
                 transition={{ delay: i * 0.05, duration: 0.5 }}
                 onClick={() => setActiveEntry(entry)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault()
+                    setActiveEntry(entry)
+                  }
+                }}
+                tabIndex={0}
+                role="button"
+                aria-label={`${entry.title} — tap to explore`}
                 className={[
                   "group relative max-w-[88vw] min-w-[88vw] cursor-pointer snap-center rounded-2xl border p-5",
                   "md:max-w-[400px] md:min-w-[400px] lg:max-w-[440px] lg:min-w-[440px]",
                   "bg-[var(--color-surface)] transition-all duration-200",
                   entry.status === "current"
                     ? "border-[var(--color-gold)] shadow-[var(--color-gold)]/10 shadow-lg"
-                    : "border-white/10 hover:border-white/25",
+                    : "border-[var(--color-border-subtle)] hover:border-[var(--color-border-subtle)]",
                 ].join(" ")}
               >
                 {/* Season connector dot — pulsing on current chapter */}
@@ -282,7 +325,7 @@ export function TimelineSection() {
                         ? "bg-emerald-400"
                         : entry.status === "current"
                           ? "pulse-gold bg-[var(--color-gold)]"
-                          : "bg-white/20",
+                          : "bg-[var(--color-border-subtle)]",
                     ].join(" ")}
                   />
                 </div>
@@ -292,7 +335,7 @@ export function TimelineSection() {
                   {entry.season} · {entry.year}
                 </div>
 
-                <h3 className="mt-3 font-serif text-xl text-white md:text-2xl">
+                <h3 className="mt-3 font-serif text-xl text-[var(--color-text-primary)] md:text-2xl">
                   {entry.title}
                 </h3>
                 <p className="mt-1 text-sm text-[var(--color-gold)]/80">
@@ -314,7 +357,7 @@ export function TimelineSection() {
                   {entry.highlights.slice(0, 3).map((h) => (
                     <li
                       key={h}
-                      className="flex items-center gap-2.5 text-xs text-white/70"
+                      className="flex items-center gap-2.5 text-xs text-[var(--color-text-muted)]"
                     >
                       <span className="h-1 w-1 shrink-0 rounded-full bg-[var(--color-gold)]" />
                       {h}
@@ -329,7 +372,7 @@ export function TimelineSection() {
                   >
                     {statusLabel(entry.status)}
                   </span>
-                  <span className="text-xs text-white/30 transition group-hover:text-[var(--color-gold)]/70">
+                  <span className="text-xs text-[var(--color-text-muted)] transition group-hover:text-[var(--color-gold)]/70">
                     Tap to explore →
                   </span>
                 </div>
@@ -338,7 +381,7 @@ export function TimelineSection() {
           </div>
 
           {/* Mobile swipe hint */}
-          <p className="mt-2 text-center text-xs text-white/30 md:hidden">
+          <p className="mt-2 text-center text-xs text-[var(--color-text-muted)] md:hidden">
             Swipe or use ← → to explore all chapters
           </p>
         </div>

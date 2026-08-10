@@ -29,10 +29,12 @@ New World Kids is a Seattle-based nonprofit. We create projects and programs tha
 Our framework: Food · Water · Energy · Shelter. Every program teaches all four.
 
 **CTAs:**
+
 - Primary (coral, dominant): Plant a seed — give $25 →
 - Secondary (small text link below): or see 5 years of work →
 
 **Stat strip:**
+
 - 200+ — plant varieties growing
 - 1.5 — acres in Puerto Vallarta
 - 5+ — years of operation
@@ -60,6 +62,7 @@ After graduation most inner-city youth are thrown into an economy that values fi
 Our Culture Shock program uses mentors with backgrounds in art, sports, and urban agriculture to help youth discover their full potential, find meaningful employment, avoid the traps and pitfalls of street life, and contribute their gifts to the world.
 
 **Bullets:**
+
 - Earn-while-you-learn stipends
 - Mentors in art, sports, and urban agriculture
 - International travel and cultural immersion
@@ -79,6 +82,7 @@ The ability and knowledge of how to grow your food is a priceless yet undervalue
 Youth in rural areas face different challenges than youth in the city. Many families live day to day, markets are far away and expensive, and the basics — food, water, shelter — are never guaranteed. Knowing how to produce your own can be life-changing. We're now raising funds to get the site government-certified and launch our first pilot program.
 
 **Bullets:**
+
 - 200+ plant species, fruit trees, and medicinal herbs
 - Techniques practiced and documented year-round
 - Sustainable systems designed to be replicated anywhere
@@ -100,66 +104,78 @@ Youth in rural areas face different challenges than youth in the city. Many fami
 **Summary line (above cards):** 4 of 6 chapters complete. We're in Chapter 5 now.
 
 ### Chapter 1 · 2020-2021
+
 **Title:** The soil gets repaired first
 **Tagline:** The beginning.
 **Photo alt:** Field documentation from April 10, 2021
 **Highlights:**
+
 - 1.5 acres secured
 - Soil restoration started
 - First planting cycles completed
-**Status:** ✓ Complete
+  **Status:** ✓ Complete
 
 ### Chapter 2 · 2021-2022
+
 **Title:** The community starts to return
 **Tagline:** The idea became real when people began to return.
 **Photo alt:** Community documentation from April 18, 2021
 **Highlights:**
+
 - Weekly planting sessions
 - Youth participation increased
 - Water systems piloted
-**Status:** ✓ Complete
+  **Status:** ✓ Complete
 
 ### Chapter 3 · 2023-2024
+
 **Title:** The food forest takes root
 **Tagline:** THE STORM.
 **Body (expanded):** Biodiversity stops being a hope and becomes a pattern. On October 10, 2023, Hurricane Lidia hit Puerto Vallarta directly. We lost a significant number of trees and the fish pond. The food forest survived, adapted, and came back stronger — proof that regenerative systems can absorb what nature throws at them.
 **Photo alt:** Food forest documentation from April 8, 2023
 **Highlights:**
+
 - 200+ plant varieties established
 - Soilless agriculture put into practice
 - Volunteer network engaged
 - Hurricane Lidia recovery (Oct 2023)
-**Status:** ✓ Complete
+  **Status:** ✓ Complete
 
 ### Chapter 4 · 2024-2025
+
 **Title:** Infrastructure begins for the school
 **Tagline:** Trees and bamboo begin to reach harvest stage.
 **Photo alt:** Infrastructure documentation from April 8, 2023
 **Highlights:**
+
 - Learning spaces
 - Program structure formalized
 - Trust reporting improved
-**Status:** ✓ Complete
+  **Status:** ✓ Complete
 
 ### Chapter 5 · 2025-2026
+
 **Title:** Programs and operations concepts take shape
 **Tagline:** The public work and the backend have to stay in sync.
 **Photo alt:** Program documentation from May 1, 2023
 **Highlights:**
+
 - Active youth programs
 - Operations systems active
 - Public proof cadence live
-**Status:** ● Active now (pulsing gold dot)
+  **Status:** ● Active now (pulsing gold dot)
 
 ### Chapter 6 · 2027-2030
+
 **Title:** Scale without losing the heart
 **Tagline:** The model should grow without becoming abstract.
 **Photo alt:** Scale planning documentation from May 1, 2023
 **Highlights:**
+
 - Land ownership path
 - Program replication
 - Long-horizon financial resilience
-**Status:** ◌ Planned
+  **Status:** ◌ Planned
 
 **Mobile hint:** Swipe or use ← → to explore all chapters
 
@@ -172,6 +188,7 @@ Youth in rural areas face different challenges than youth in the city. Many fami
 **Sub-heading:** We build in public. Your donations help keep all our resources, solutions, and programs 100% free for every student who finds them.
 
 **Verification grid (render as gold pill badges, not body text):**
+
 - Fiscal sponsor → Humanitarian Social Innovations
 - Legal structure → 501(c)(3) fiscally sponsored program
 - Tax ID (EIN) → 46-4779591 — Verify at IRS Tax Exempt Search
@@ -189,6 +206,7 @@ Youth in rural areas face different challenges than youth in the city. Many fami
 **NOTE:** The proverb is REMOVED from this section. It lives in the hero only.
 
 **Donate tiers:**
+
 - $25 — Plant a tree — at Proyecto Indigo Azul — Give $25 →
 - $50 — Sponsor a child — for one month of programs — Most impactful — Give $50 →
 - $100 — Fund language classes — for 4 weeks of instruction — Give $100 →
@@ -196,6 +214,7 @@ Youth in rural areas face different challenges than youth in the city. Many fami
 **Recurring note:** On the donate page, toggle "Make this monthly" to become a sustaining supporter.
 
 **Secondary:**
+
 - Volunteer → /work-with-us
 - Instagram · Facebook · LinkedIn
 
@@ -211,10 +230,12 @@ Starting a nonprofit is overwhelming. Compliance, grant writing, fundraising, we
 Over the last two years we built AI systems that drive our mission. We now offer them to other nonprofits at a discounted rate — because we understand your challenges. We live them.
 
 **CTAs:**
+
 - Work with the studio → (/work-with-us)
 - See pricing → (/work-with-us#pricing)
 
 **What we offer (eyebrow):** Available to nonprofits and social purpose companies at a discounted rate.
+
 - AI agents that understand your mission
 - Automated social media and content creation
 - Grant support automation

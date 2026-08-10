@@ -59,3 +59,13 @@ browser-control/package-lock.json
 # Coolify deployment env files (contain real secrets when filled in)
 coolify.env
 *.tsbuildinfo
+
+# Python bytecode (prevents accidental commit of compiled pilot03/story_agent)
+__pycache__/
+*.pyc
+*.pyo
+
+# Phase 03+ local Story System artifacts (never commit private media-derived data)
+# NWK_STORY_ROOT points at ../story-system (sibling of repo); this is a safety net.
+story-system/
+.story-memory/

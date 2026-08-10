@@ -1,0 +1,1100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NWKids Design Audit — Phase 1 Report</title>
+<style>
+  :root {
+    --bg: #14120f;
+    --surface: #1c1a15;
+    --surface2: #242019;
+    --border: #2e2a22;
+    --text: #f7f2e8;
+    --muted: #a89e8f;
+    --gold: #c9a84c;
+    --coral: #c1602e;
+    --sage: #7a9e87;
+    --red: #e05c5c;
+    --yellow: #d4a843;
+    --green: #5fa874;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 0 0 80px;
+  }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Header */
+  .page-header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 40px 36px;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+  }
+  .page-header .badge {
+    display: inline-block;
+    background: var(--coral);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-bottom: 16px;
+  }
+  .page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .page-header .meta {
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .page-header .meta span { margin-right: 24px; }
+
+  /* Scorecard hero */
+  .score-hero {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0;
+    overflow: hidden;
+    max-width: 1100px;
+    margin: 0 auto 40px;
+  }
+  .score-hero .big-score {
+    background: var(--surface);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+    border-right: 1px solid var(--border);
+  }
+  .score-hero .big-score .num {
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--yellow);
+    line-height: 1;
+  }
+  .score-hero .big-score .denom { color: var(--muted); font-size: 20px; }
+  .score-hero .big-score .label { color: var(--muted); font-size: 12px; margin-top: 6px; text-transform: uppercase; letter-spacing: .06em; }
+  .score-hero .verdict {
+    padding: 28px 32px;
+  }
+  .score-hero .verdict h2 { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+  .score-hero .verdict p { color: var(--muted); font-size: 14px; margin-bottom: 6px; }
+  .score-hero .verdict .threshold-note {
+    display: inline-block;
+    margin-top: 12px;
+    background: rgba(224,92,92,.15);
+    border: 1px solid rgba(224,92,92,.4);
+    color: var(--red);
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+
+  /* Sections */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto 48px;
+  }
+  .section-title {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  th {
+    text-align: left;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(46,42,34,.6);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,.02); }
+
+  /* Score pill */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .pill-pass { background: rgba(95,168,116,.18); color: var(--green); }
+  .pill-warn { background: rgba(212,168,67,.18); color: var(--yellow); }
+  .pill-fail { background: rgba(224,92,92,.18); color: var(--red); }
+  .pill-partial { background: rgba(160,150,135,.15); color: var(--muted); }
+
+  /* Axis grid */
+  .axis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+  }
+  .axis-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .axis-card .axis-name { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .axis-card .axis-score {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .axis-card .axis-num { font-size: 22px; font-weight: 700; }
+  .axis-card .axis-bar-bg {
+    flex: 1;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .axis-card .axis-bar-fill { height: 100%; border-radius: 2px; }
+  .axis-card .axis-note { font-size: 12px; color: var(--muted); }
+
+  /* Priority badges */
+  .p1 { color: var(--red); font-weight: 700; }
+  .p2 { color: var(--yellow); font-weight: 600; }
+  .p3 { color: var(--muted); }
+
+  /* Code inline */
+  code {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    background: rgba(255,255,255,.06);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: var(--sage);
+  }
+
+  /* Fix card */
+  .fix-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+  }
+  .fix-card.p1-card { border-left-color: var(--red); }
+  .fix-card.p2-card { border-left-color: var(--yellow); }
+  .fix-card.p3-card { border-left-color: var(--muted); }
+  .fix-card .fix-id { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .fix-card.p1-card .fix-id { color: var(--red); }
+  .fix-card.p2-card .fix-id { color: var(--yellow); }
+  .fix-card.p3-card .fix-id { color: var(--muted); }
+  .fix-card .fix-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .fix-card .fix-detail { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .fix-card .fix-file { font-size: 12px; color: var(--sage); }
+
+  /* Comparison row */
+  .diff-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 10px 0; }
+  .diff-cell { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 10px 12px; font-size: 13px; }
+  .diff-cell .diff-label { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 4px; }
+  .diff-cell.bad { border-color: rgba(224,92,92,.4); }
+  .diff-cell.good { border-color: rgba(95,168,116,.4); }
+
+  .toc { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; max-width: 1100px; margin-left: auto; margin-right: auto; }
+  .toc li a {
+    display: inline-block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 4px;
+    transition: color .15s;
+  }
+  .toc li a:hover { color: var(--text); text-decoration: none; }
+
+  .callout {
+    background: rgba(201,168,76,.08);
+    border: 1px solid rgba(201,168,76,.3);
+    border-radius: 6px;
+    padding: 14px 18px;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 700px) {
+    .page-header { padding: 28px 20px 24px; }
+    .score-hero { grid-template-columns: 1fr; }
+    .score-hero .big-score { border-right: none; border-bottom: 1px solid var(--border); padding: 24px; }
+    .diff-row { grid-template-columns: 1fr; }
+    .axis-grid { grid-template-columns: 1fr; }
+    th, td { padding: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="page-header">
+  <div class="badge">A2A Universal Design Audit — Phase 1</div>
+  <h1>New World Kids — Site Design Audit</h1>
+  <div class="meta">
+    <span>Audited: 2026-07-23</span>
+    <span>Branch: <code>claude/activate-jcodemunch-rtk-qe5j98</code></span>
+    <span>Protocol: A2A v2 + Steve Krug 20 Laws</span>
+    <span>Canonical Copy: CANONICAL_COPY_v3.md (approved July 2026)</span>
+  </div>
+</div>
+
+<!-- Overall Score -->
+<div class="score-hero">
+  <div class="big-score">
+    <div class="num">7.2</div>
+    <div class="denom">/10</div>
+    <div class="label">Overall Score</div>
+  </div>
+  <div class="verdict">
+    <h2>Foundation is solid — critical bugs and accessibility blockers hold it back.</h2>
+    <p>Copy is genuinely strong (anti-slop 8.5/10). Visual design language is coherent and mission-appropriate. However, 5 P1 issues prevent approval: a factual copy error, a headline copy deviation from canonical, keyboard accessibility failures, a color system violation in a prominent position, and broken focus management.</p>
+    <p>Accessibility cap applied: axis 13 (keyboard nav) scores 6.5 → caps ceiling at 7.9 before other penalties. Final weighted score: <strong>7.2/10</strong>.</p>
+    <span class="threshold-note">Below 8.5 approval threshold — Phase 2 (PRD) blocked until P1 issues resolved</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<ul class="toc">
+  <li><a href="#axes">20-Axis Scorecard</a></li>
+  <li><a href="#krug">Krug 20 Laws</a></li>
+  <li><a href="#antislop">Anti-Slop Audit</a></li>
+  <li><a href="#color">Color System</a></li>
+  <li><a href="#copy">Copy Violations</a></li>
+  <li><a href="#a11y">Accessibility</a></li>
+  <li><a href="#functional">Functional Tests</a></li>
+  <li><a href="#p1">P1 Fixes</a></li>
+  <li><a href="#p2">P2 Fixes</a></li>
+  <li><a href="#p3">P3 Fixes</a></li>
+</ul>
+
+<!-- ─── 20-AXIS SCORECARD ─── -->
+<div class="section" id="axes">
+  <div class="section-title">20-Axis Scorecard</div>
+  <div class="axis-grid">
+
+    <div class="axis-card">
+      <div class="axis-name">1. First Impression (0–5s)</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--green)">8.0</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:80%;background:var(--green)"></div></div>
+      </div>
+      <div class="axis-note">Hero video crossfade + headline lands the mission immediately. Proverb adds soul without clutter.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">2. Visual Hierarchy</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.5</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:75%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">Gold stat treatment works well. Eyebrow labels lose distinction when same gold applied to footer column headers and studio eyebrow.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">3. Typography System</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--green)">8.0</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:80%;background:var(--green)"></div></div>
+      </div>
+      <div class="axis-note">Type scale is clean and consistent. Heading/body contrast is strong. No rogue font sizes spotted.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">4. Color System Compliance</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--red)">6.0</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:60%;background:var(--red)"></div></div>
+      </div>
+      <div class="axis-note">Gold token used in 8+ unauthorized locations (eyebrows, footer labels). Two legacy <code>--color-coral</code> vs <code>--color-accent-coral</code> discrepancies.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">5. Spacing &amp; Rhythm</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--green)">8.0</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:80%;background:var(--green)"></div></div>
+      </div>
+      <div class="axis-note">Section padding is consistent. Card grids breathe appropriately for a dark-mode layout.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">6. Messaging Clarity</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.5</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:75%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">Copy is direct and specific. Two copy deviations from CANONICAL_COPY_v3 hurt credibility (living ecosystem, "both" vs "all three").</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">7. CTA Effectiveness</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.0</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:70%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">Primary hero CTA is strong. Studio CTA has invisible hover state. Support tier "Give" buttons barely visible against dark background.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">8. Navigation Usability</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.0</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:70%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">7-item nav is at the upper limit of cognitive load. No active state. Donate button hidden at xs breakpoint. Hamburger missing aria-controls.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">9. Mobile Responsiveness</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.5</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:75%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">Layouts reflow adequately. Donate button invisible at xs is a functional gap for the primary conversion action.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">10. Trust &amp; Credibility</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.0</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:70%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">4 trust PDFs defined in shared-data but never wired to the Trust section. IRS verification mention is plain text, not a clickable link.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">11. Performance Signals</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.5</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:75%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">Timeline photos sourced from Google Drive URLs — fragile in production and slow on cold load. No LCP optimizations visible for video hero.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">12. Content Completeness</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.0</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:70%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">5th homepage stat never rendered. All 3 testimonials still flagged <code>status: "needs-review"</code>. Trust section doesn't surface the PDF documents.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">13. Keyboard Accessibility</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--red)">6.5</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:65%;background:var(--red)"></div></div>
+      </div>
+      <div class="axis-note">Timeline cards are <code>&lt;motion.article onClick&gt;</code> with no tabIndex, role, or onKeyDown. Modal has no focus trap. No skip-to-main link.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">14. Screen Reader Support</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.0</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:70%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">Hamburger nav missing aria-controls. Modal missing aria-modal and aria-label. Interactive timeline articles lack role="button".</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">15. Conversion Path Clarity</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.0</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:70%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">Support tier buttons link to <code>/donate</code> without pre-selecting the tier amount. Missed conversion optimization.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">16. Brand Consistency</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.5</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:75%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">Dark-earth palette is cohesive. Gold misuse dilutes the "stats only" semantic rule that gives the design system its precision.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">17. Copy Quality</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--green)">8.5</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:85%;background:var(--green)"></div></div>
+      </div>
+      <div class="axis-note">No filler adjectives, no AI slop. Specific verbs, real numbers. Bilingual copy is parallel. Canonical v3 is strong source of truth.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">18. Data Integrity</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.0</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:70%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">Hero stats hardcoded in component instead of sourced from <code>homepageStats</code> in siteData. Stale unused objects (heroFeatureCards, heroMedia) left in siteData.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">19. Code Maintainability</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--yellow)">7.5</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:75%;background:var(--yellow)"></div></div>
+      </div>
+      <div class="axis-note">Component structure is clear. Stale comment about "restored third card" in ProgramsSection is misleading dead code comment.</div>
+    </div>
+
+    <div class="axis-card">
+      <div class="axis-name">20. Mission Alignment</div>
+      <div class="axis-score">
+        <div class="axis-num" style="color:var(--green)">8.5</div>
+        <div class="axis-bar-bg"><div class="axis-bar-fill" style="width:85%;background:var(--green)"></div></div>
+      </div>
+      <div class="axis-note">The site feels like the mission, not a marketing exercise. Food/Water/Energy/Shelter pillars are grounded. Proof points are real and specific.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ─── KRUG 20 LAWS ─── -->
+<div class="section" id="krug">
+  <div class="section-title">Steve Krug "Don't Make Me Think" — 20-Law Checklist</div>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:30px">#</th>
+        <th>Law</th>
+        <th style="width:80px">Result</th>
+        <th>Evidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Don't make me think — obvious page purpose</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>Hero headline + proverb immediately communicates mission. No confusion about what the organization does.</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Self-evident site sections</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>Programs, Timeline, Trust, Support sections are labeled clearly. No mystery meat navigation.</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Clear visual hierarchy per page</td>
+        <td><span class="pill pill-partial">PARTIAL</span></td>
+        <td>Hierarchy is strong in hero and programs. Studio section eyebrow uses gold (should be muted) making it compete with stats semantically.</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Navigation is obvious and consistent</td>
+        <td><span class="pill pill-partial">PARTIAL</span></td>
+        <td>7 nav items is at the cognitive load ceiling. No active state indicator. Donate CTA hidden at mobile xs.</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>The home page answers: what is this place?</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>"Most kids graduate without ever learning the most important life skills. We fix that. Free. No exceptions." — answers in 2 sentences.</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Search or clear content pathway</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>Single-page layout with section anchors in nav. No need for search on this scale.</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>Breadcrumbs / wayfinding for deep pages</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>Single-page site; wayfinding not applicable at this scale.</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>Conventions honored (logo top-left, nav top)</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>Standard header layout. Logo top-left. Donate CTA top-right. Consistent with web conventions.</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>Content is scannable (headers, bullets, short paras)</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>Section headers, pillar cards, and timeline chapters support scanning. No wall-of-text paragraphs.</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>Omit needless words</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>Copy is tight. No filler phrases detected. "We fix that. Free. No exceptions." is a master class in brevity.</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>Happy path is obvious</td>
+        <td><span class="pill pill-partial">PARTIAL</span></td>
+        <td>Hero CTA leads to donation. But the Support section tier buttons barely look like buttons (transparent background). The path from interest to action has friction.</td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td>Forms and interactive elements are obvious</td>
+        <td><span class="pill pill-partial">PARTIAL</span></td>
+        <td>Timeline cards look like content cards but are interactive (click opens modal). No visual affordance (no hover cursor, no arrow indicator). Violates Krug's "obvious" principle.</td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td>Error messages are helpful</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>No form error states to audit on this page — external donation platforms handle this.</td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td>Minimize choices (Hick's Law)</td>
+        <td><span class="pill pill-partial">PARTIAL</span></td>
+        <td>7 nav items + donate = 8 simultaneous choices in header. 3 support tiers is appropriate. Programs section correctly limited to 2 cards.</td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td>Feedback on interactive actions</td>
+        <td><span class="pill pill-partial">PARTIAL</span></td>
+        <td>Studio CTA hover state is invisible (hover and base have identical colors). Non-featured support tier buttons barely change on hover.</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>Accessibility — can keyboard users navigate?</td>
+        <td><span class="pill pill-fail">FAIL</span></td>
+        <td>Timeline cards have no tabIndex, role, or onKeyDown. Modal has no focus trap. No skip-to-main link. This is a WCAG 2.1 AA failure.</td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td>Tested with real users (or equivalent usability signals)</td>
+        <td><span class="pill pill-fail">FAIL</span></td>
+        <td>All 3 testimonials flagged <code>status: "needs-review"</code> in siteData — real users' words are not shown, removing a critical trust signal.</td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td>Trust signals are prominent and verifiable</td>
+        <td><span class="pill pill-partial">PARTIAL</span></td>
+        <td>EIN is shown. Trust PDFs are defined in code but not linked from the Trust section. IRS verification mention is plain text, not a hyperlink.</td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td>Site works when things go wrong (fragile deps)</td>
+        <td><span class="pill pill-fail">FAIL</span></td>
+        <td>6 timeline photos use Google Drive sharing URLs. If Google Drive access changes, all 6 timeline chapter images break simultaneously.</td>
+      </tr>
+      <tr>
+        <td>20</td>
+        <td>Mobile experience is not an afterthought</td>
+        <td><span class="pill pill-partial">PARTIAL</span></td>
+        <td>Layouts reflow well. But Donate button is <code>hidden sm:inline-flex</code> — completely invisible at mobile XS, removing the primary conversion CTA from the most common screen size.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:16px;font-size:13px;color:var(--muted)">
+    Result: <strong style="color:var(--green)">10 PASS</strong> &nbsp;·&nbsp;
+    <strong style="color:var(--yellow)">7 PARTIAL</strong> &nbsp;·&nbsp;
+    <strong style="color:var(--red)">3 FAIL</strong>
+  </div>
+</div>
+
+<!-- ─── ANTI-SLOP AUDIT ─── -->
+<div class="section" id="antislop">
+  <div class="section-title">Anti-Slop Audit — Copy Quality &amp; Specificity</div>
+  <div class="callout">
+    Overall anti-slop score: <strong style="color:var(--green)">8.5/10</strong> — This is the site's strongest dimension. Copy reads like it was written by someone who has been in the field.
+  </div>
+  <table>
+    <thead>
+      <tr><th>Check</th><th>Result</th><th>Evidence</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>No filler adjectives ("amazing", "powerful", "robust")</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>Zero instances found across all component copy.</td>
+      </tr>
+      <tr>
+        <td>Specific numbers, not vague claims</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>"200+ plant varieties", "90% water reduction with clay-pot irrigation", "15-20 local children weekly". All claims are specific.</td>
+      </tr>
+      <tr>
+        <td>Active verbs, not passive or nominalized</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>"We teach", "We build", "Families eat from the systems they help build" — active throughout.</td>
+      </tr>
+      <tr>
+        <td>No mission statement clichés</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>No "world-class", "ecosystem of impact", "holistic approach", "synergize". Mission is stated plainly.</td>
+      </tr>
+      <tr>
+        <td>Proof points are real, not hypothetical</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>Timeline chapters reference actual events (first harvest, dome assembly). Not "we plan to" language.</td>
+      </tr>
+      <tr>
+        <td>No hedging language ("hope to", "aim to", "try to")</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>Copy is declarative throughout. "We fix that." not "We try to fix that."</td>
+      </tr>
+      <tr>
+        <td>No AI-generated filler patterns</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>No "In today's world", "It's no secret that", "At the end of the day" detected.</td>
+      </tr>
+      <tr>
+        <td>CTA copy is specific about the action</td>
+        <td><span class="pill pill-partial">PARTIAL</span></td>
+        <td>"Plant a seed — give $25 →" is excellent. "See pricing →" is generic and anchor is broken.</td>
+      </tr>
+      <tr>
+        <td>Testimonials are real and attributed</td>
+        <td><span class="pill pill-fail">FAIL</span></td>
+        <td>All 3 testimonials in siteData have <code>status: "needs-review"</code> — none are surfaced to users. Social proof section is empty.</td>
+      </tr>
+      <tr>
+        <td>Bilingual copy maintains meaning (not machine-translated)</td>
+        <td><span class="pill pill-pass">PASS</span></td>
+        <td>Spanish copy in shared-data reads naturally. "La comida es dignidad" — correct, not word-for-word machine output.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── COLOR SYSTEM AUDIT ─── -->
+<div class="section" id="color">
+  <div class="section-title">Color System Audit — Token Compliance</div>
+  <div class="callout" style="background:rgba(224,92,92,.08);border-color:rgba(224,92,92,.3)">
+    <strong style="color:var(--red)">Critical Rule:</strong> <code>--color-accent-gold</code> (#c9a84c) is RESERVED for stats and prices only. Using it for eyebrows, labels, or nav elements dilutes the semantic signal and violates the design system contract defined in <code>globals.css</code>.
+  </div>
+  <table>
+    <thead>
+      <tr><th>Location</th><th>File</th><th>Line</th><th>Violation</th><th>Fix</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Studio section eyebrow</td>
+        <td><code>StudioSection.tsx</code></td>
+        <td>22</td>
+        <td><span class="pill pill-fail">GOLD MISUSE</span> "Mission-Funded Studio" eyebrow uses <code>--color-accent-gold</code></td>
+        <td>Replace with <code>--color-eyebrow</code> (#9c9186)</td>
+      </tr>
+      <tr>
+        <td>Footer "Explore" column label</td>
+        <td><code>SiteFooter.tsx</code></td>
+        <td>57</td>
+        <td><span class="pill pill-fail">GOLD MISUSE</span> Column heading uses <code>text-[var(--color-accent-gold)]</code></td>
+        <td>Replace with <code>--color-eyebrow</code></td>
+      </tr>
+      <tr>
+        <td>Footer "Social &amp; Contact" column label</td>
+        <td><code>SiteFooter.tsx</code></td>
+        <td>75</td>
+        <td><span class="pill pill-fail">GOLD MISUSE</span> Column heading uses <code>text-[var(--color-accent-gold)]</code></td>
+        <td>Replace with <code>--color-eyebrow</code></td>
+      </tr>
+      <tr>
+        <td>Studio CTA button (base + hover)</td>
+        <td><code>StudioSection.tsx</code></td>
+        <td>45</td>
+        <td><span class="pill pill-warn">INVISIBLE HOVER</span> Base: <code>bg-[var(--color-accent-gold)]</code>, Hover: <code>hover:bg-[var(--color-accent-gold)]</code> — identical</td>
+        <td>Change hover to a lighter or darker gold variant, e.g. <code>hover:brightness-110</code></td>
+      </tr>
+      <tr>
+        <td>Timeline modal border</td>
+        <td><code>TimelineSection.tsx</code></td>
+        <td>129</td>
+        <td><span class="pill pill-warn">LEGACY TOKEN</span> Uses <code>--color-coral</code> instead of <code>--color-accent-coral</code></td>
+        <td>Replace with <code>--color-accent-coral</code> (#c1602e)</td>
+      </tr>
+      <tr>
+        <td>Support tier "Give" buttons</td>
+        <td><code>SupportSection.tsx</code></td>
+        <td>~85</td>
+        <td><span class="pill pill-warn">INVISIBLE BUTTON</span> Non-featured tiers use <code>bg-[var(--color-border-subtle)]</code> — nearly transparent on dark background</td>
+        <td>Use <code>bg-[var(--color-surface)]</code> with a visible border, or <code>bg-[var(--color-accent-coral)]</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── COPY VIOLATIONS ─── -->
+<div class="section" id="copy">
+  <div class="section-title">Copy Violations vs. CANONICAL_COPY_v3.md (approved July 2026)</div>
+
+  <div class="fix-card p1-card">
+    <div class="fix-id">COPY-01 · P1 · Critical</div>
+    <div class="fix-title">Programs section says "all three programs" — only two exist</div>
+    <div class="fix-detail">The CTA at the bottom of ProgramsSection renders "Support all three programs →" but <code>programCards</code> has exactly 2 entries. Canonical v3 states: <strong>"Support both programs →"</strong>. This is factually wrong and erodes donor trust.</div>
+    <div class="diff-row">
+      <div class="diff-cell bad"><div class="diff-label">Current (wrong)</div>"Support all three programs →"</div>
+      <div class="diff-cell good"><div class="diff-label">Canonical v3 (correct)</div>"Support both programs →"</div>
+    </div>
+    <div class="fix-file">apps/ui/src/components/homepage/ProgramsSection.tsx:106</div>
+  </div>
+
+  <div class="fix-card p1-card">
+    <div class="fix-id">COPY-02 · P1 · Critical</div>
+    <div class="fix-title">Timeline headline deviates from canonical</div>
+    <div class="fix-detail">Rendered headline: "From bare soil to a living school". Canonical v3 specifies: <strong>"From bare soil to a living ecosystem"</strong>. "School" undersells the site's ecological depth and breaks the continuity of the food/water/energy/shelter messaging.</div>
+    <div class="diff-row">
+      <div class="diff-cell bad"><div class="diff-label">Current (wrong)</div>"From bare soil to a living school"</div>
+      <div class="diff-cell good"><div class="diff-label">Canonical v3 (correct)</div>"From bare soil to a living ecosystem"</div>
+    </div>
+    <div class="fix-file">apps/ui/src/components/homepage/TimelineSection.tsx:211</div>
+  </div>
+
+  <div class="fix-card p2-card">
+    <div class="fix-id">COPY-03 · P2</div>
+    <div class="fix-title">Studio section "See pricing" CTA has wrong destination</div>
+    <div class="fix-detail">Links to <code>/work-with-us</code> but the pricing section has an anchor <code>#pricing</code>. Without the anchor, users land at the top of the page and must scroll to find pricing — friction that violates Krug's "make the next step obvious" principle.</div>
+    <div class="fix-file">apps/ui/src/components/homepage/StudioSection.tsx:50</div>
+  </div>
+
+  <div class="fix-card p2-card">
+    <div class="fix-id">COPY-04 · P2</div>
+    <div class="fix-title">Stale comment references a "restored third card" that doesn't exist</div>
+    <div class="fix-detail">Lines 9–12 of ProgramsSection contain a comment referencing a "restored third card" that does not exist in the component. This misleads future developers and implies the card count is temporary.</div>
+    <div class="fix-file">apps/ui/src/components/homepage/ProgramsSection.tsx:9-12</div>
+  </div>
+
+  <div class="fix-card p3-card">
+    <div class="fix-id">COPY-05 · P3</div>
+    <div class="fix-title">5th homepage stat ("15-20 local children engaged weekly") is never rendered</div>
+    <div class="fix-detail"><code>homepageStats</code> in siteData.ts has 5 entries but the hero component hardcodes a 4-stat array. Either render the 5th stat or remove it from siteData to keep data clean.</div>
+    <div class="fix-file">apps/ui/src/components/site/siteData.ts (homepageStats entry 5)</div>
+  </div>
+
+  <div class="fix-card p3-card">
+    <div class="fix-id">COPY-06 · P3</div>
+    <div class="fix-title">Hero stats are hardcoded, not sourced from homepageStats</div>
+    <div class="fix-detail">The NonprofitHero component hardcodes 4 stats inline instead of importing from <code>homepageStats</code> in siteData. Creates a dual-source-of-truth problem — someone could update siteData and not see any change on the page.</div>
+    <div class="fix-file">apps/ui/src/components/homepage/NonprofitHero.tsx (~stat array)</div>
+  </div>
+</div>
+
+<!-- ─── ACCESSIBILITY AUDIT ─── -->
+<div class="section" id="a11y">
+  <div class="section-title">Accessibility Audit — WCAG 2.1 AA</div>
+  <table>
+    <thead>
+      <tr><th>Issue</th><th>Priority</th><th>WCAG</th><th>Location</th><th>Fix</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Timeline cards are <code>&lt;motion.article onClick&gt;</code> with no keyboard access</td>
+        <td><span class="pill pill-fail">P1</span></td>
+        <td>2.1.1</td>
+        <td><code>TimelineSection.tsx</code></td>
+        <td>Add <code>tabIndex={0}</code>, <code>role="button"</code>, and <code>onKeyDown</code> handler for Enter/Space</td>
+      </tr>
+      <tr>
+        <td>Timeline modal has no focus trap</td>
+        <td><span class="pill pill-fail">P1</span></td>
+        <td>2.1.2</td>
+        <td><code>TimelineSection.tsx</code> modal</td>
+        <td>Implement focus trap using <code>focus-trap-react</code> or manual tabbing logic; move focus to modal on open</td>
+      </tr>
+      <tr>
+        <td>Modal missing <code>aria-modal="true"</code> and <code>role="dialog"</code></td>
+        <td><span class="pill pill-warn">P2</span></td>
+        <td>4.1.2</td>
+        <td><code>TimelineSection.tsx</code> modal</td>
+        <td>Add <code>role="dialog"</code>, <code>aria-modal="true"</code>, <code>aria-label</code> to the modal container</td>
+      </tr>
+      <tr>
+        <td>Hamburger nav missing <code>aria-controls</code></td>
+        <td><span class="pill pill-warn">P2</span></td>
+        <td>4.1.2</td>
+        <td><code>SiteHeader.tsx</code></td>
+        <td>Add <code>aria-controls="mobile-nav"</code> and matching <code>id</code> on the mobile nav panel</td>
+      </tr>
+      <tr>
+        <td>No skip-to-main-content link</td>
+        <td><span class="pill pill-warn">P2</span></td>
+        <td>2.4.1</td>
+        <td>Layout / <code>SiteHeader.tsx</code></td>
+        <td>Add visually-hidden "Skip to main content" link as first focusable element in the DOM</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ─── FUNCTIONAL TEST TABLE ─── -->
+<div class="section" id="functional">
+  <div class="section-title">Functional Test Matrix</div>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Test</th><th>Result</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>T01</td><td>Hero video crossfade loops without flash</td><td><span class="pill pill-pass">PASS</span></td><td>Framer Motion opacity crossfade is smooth per code inspection</td></tr>
+      <tr><td>T02</td><td>Programs section displays exactly 2 cards</td><td><span class="pill pill-pass">PASS</span></td><td>programCards has 2 entries; layout renders both</td></tr>
+      <tr><td>T03</td><td>Programs CTA copy matches canonical</td><td><span class="pill pill-fail">FAIL</span></td><td>"Support all three programs" — canonical says "both programs"</td></tr>
+      <tr><td>T04</td><td>Timeline headline matches canonical</td><td><span class="pill pill-fail">FAIL</span></td><td>"living school" — canonical says "living ecosystem"</td></tr>
+      <tr><td>T05</td><td>Timeline cards open modal on click</td><td><span class="pill pill-pass">PASS</span></td><td>onClick handler exists</td></tr>
+      <tr><td>T06</td><td>Timeline cards accessible via keyboard</td><td><span class="pill pill-fail">FAIL</span></td><td>No tabIndex, role, or onKeyDown — keyboard inaccessible</td></tr>
+      <tr><td>T07</td><td>Timeline modal closes on backdrop click</td><td><span class="pill pill-pass">PASS</span></td><td>Backdrop onClick handler present</td></tr>
+      <tr><td>T08</td><td>Timeline modal traps focus</td><td><span class="pill pill-fail">FAIL</span></td><td>No focus trap implementation</td></tr>
+      <tr><td>T09</td><td>Studio eyebrow uses correct color token</td><td><span class="pill pill-fail">FAIL</span></td><td>Uses gold instead of eyebrow token</td></tr>
+      <tr><td>T10</td><td>Studio CTA button has visible hover state</td><td><span class="pill pill-fail">FAIL</span></td><td>Base and hover color are identical</td></tr>
+      <tr><td>T11</td><td>"See pricing" links to correct anchor</td><td><span class="pill pill-warn">WARN</span></td><td>Links to /work-with-us without #pricing anchor</td></tr>
+      <tr><td>T12</td><td>Trust section links to PDF documents</td><td><span class="pill pill-warn">WARN</span></td><td>PDFs defined in shared-data but never wired to Trust section UI</td></tr>
+      <tr><td>T13</td><td>IRS verification is a clickable link</td><td><span class="pill pill-warn">WARN</span></td><td>Plain text only — not linked to IRS Tax Exempt Search</td></tr>
+      <tr><td>T14</td><td>Support tier "Give" buttons are visually distinct</td><td><span class="pill pill-warn">WARN</span></td><td>Non-featured tiers use near-transparent background</td></tr>
+      <tr><td>T15</td><td>Support tier CTAs pass amount to donate page</td><td><span class="pill pill-fail">FAIL</span></td><td>All link to /donate without amount query param</td></tr>
+      <tr><td>T16</td><td>Donate button visible on mobile XS</td><td><span class="pill pill-fail">FAIL</span></td><td>hidden sm:inline-flex — invisible below sm breakpoint</td></tr>
+      <tr><td>T17</td><td>Footer column labels use eyebrow color</td><td><span class="pill pill-fail">FAIL</span></td><td>Use gold token instead of eyebrow token (lines 57, 75)</td></tr>
+      <tr><td>T18</td><td>Hamburger button has aria-controls</td><td><span class="pill pill-fail">FAIL</span></td><td>Missing aria-controls attribute</td></tr>
+      <tr><td>T19</td><td>Timeline photos load from stable CDN</td><td><span class="pill pill-warn">WARN</span></td><td>Google Drive URLs — fragile in production</td></tr>
+      <tr><td>T20</td><td>Skip-to-main link present</td><td><span class="pill pill-fail">FAIL</span></td><td>No skip link in DOM</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:16px;font-size:13px;color:var(--muted)">
+    <strong style="color:var(--green)">7 PASS</strong> &nbsp;·&nbsp;
+    <strong style="color:var(--yellow)">5 WARN</strong> &nbsp;·&nbsp;
+    <strong style="color:var(--red)">8 FAIL</strong>
+  </div>
+</div>
+
+<!-- ─── P1 FIXES ─── -->
+<div class="section" id="p1">
+  <div class="section-title">Priority 1 — Must Fix Before Approval</div>
+
+  <div class="fix-card p1-card">
+    <div class="fix-id">P1-001 · Copy Error · Factual</div>
+    <div class="fix-title">"Support all three programs →" — only 2 programs exist</div>
+    <div class="fix-detail">Renders false information. Donors who count the cards will see the contradiction. Destroys credibility at the conversion moment.</div>
+    <div class="fix-file">ProgramsSection.tsx:106 — change "all three" to "both"</div>
+  </div>
+
+  <div class="fix-card p1-card">
+    <div class="fix-id">P1-002 · Copy Deviation · Canonical</div>
+    <div class="fix-title">Timeline headline: "living school" should be "living ecosystem"</div>
+    <div class="fix-detail">Deviates from CANONICAL_COPY_v3. "School" only captures one pillar (education). "Ecosystem" captures the full food/water/energy/shelter scope and ties back to the organization's ecological mission.</div>
+    <div class="fix-file">TimelineSection.tsx:211 — change "a living school" to "a living ecosystem"</div>
+  </div>
+
+  <div class="fix-card p1-card">
+    <div class="fix-id">P1-003 · Accessibility · WCAG 2.1.1 + 2.1.2</div>
+    <div class="fix-title">Timeline cards and modal are keyboard-inaccessible</div>
+    <div class="fix-detail">Interactive article cards have no tabIndex, role, or onKeyDown. The modal that opens has no focus trap. Keyboard-only and screen reader users cannot access any timeline content.</div>
+    <div class="fix-file">TimelineSection.tsx — add tabIndex={0}, role="button", onKeyDown to cards; add focus trap to modal</div>
+  </div>
+
+  <div class="fix-card p1-card">
+    <div class="fix-id">P1-004 · Color Violation · Design System</div>
+    <div class="fix-title">Studio section eyebrow uses gold token instead of eyebrow token</div>
+    <div class="fix-detail">Gold is reserved for stats and prices. Using it for a section eyebrow dilutes the semantic signal and makes the design system's rules meaningless at a prominent position.</div>
+    <div class="fix-file">StudioSection.tsx:22 — replace --color-accent-gold with --color-eyebrow</div>
+  </div>
+
+  <div class="fix-card p1-card">
+    <div class="fix-id">P1-005 · Accessibility · WCAG 2.1.2</div>
+    <div class="fix-title">Donate button hidden at XS breakpoint — primary conversion CTA disappears on mobile</div>
+    <div class="fix-detail">The most important action on the page (donate) is invisible to users on screens smaller than the sm breakpoint. Mobile is likely the majority traffic source for this demographic.</div>
+    <div class="fix-file">SiteHeader.tsx — change hidden sm:inline-flex to always visible, or add mobile-friendly donate path</div>
+  </div>
+</div>
+
+<!-- ─── P2 FIXES ─── -->
+<div class="section" id="p2">
+  <div class="section-title">Priority 2 — Fix in Next Iteration</div>
+
+  <div class="fix-card p2-card">
+    <div class="fix-id">P2-001 · Color Violation</div>
+    <div class="fix-title">Footer column labels use gold token (lines 57 + 75 in SiteFooter.tsx)</div>
+    <div class="fix-detail">Both "Explore" and "Social &amp; Contact" column labels use <code>text-[var(--color-accent-gold)]</code>. Should use <code>--color-eyebrow</code> per design system rules.</div>
+    <div class="fix-file">SiteFooter.tsx:57, 75</div>
+  </div>
+
+  <div class="fix-card p2-card">
+    <div class="fix-id">P2-002 · UX · Invisible Hover</div>
+    <div class="fix-title">Studio CTA button has no visible hover state</div>
+    <div class="fix-detail">Base color and hover color are both <code>--color-accent-gold</code> — no visual feedback on interaction. Add <code>hover:brightness-110</code> or a slightly lighter gold.</div>
+    <div class="fix-file">StudioSection.tsx:45</div>
+  </div>
+
+  <div class="fix-card p2-card">
+    <div class="fix-id">P2-003 · Navigation · Broken Anchor</div>
+    <div class="fix-title">"See pricing" links to /work-with-us instead of /work-with-us#pricing</div>
+    <div class="fix-detail">Users land at the page top and must scroll to find pricing. Change href to include the #pricing fragment.</div>
+    <div class="fix-file">StudioSection.tsx:50</div>
+  </div>
+
+  <div class="fix-card p2-card">
+    <div class="fix-id">P2-004 · Trust · Data Not Wired</div>
+    <div class="fix-title">Trust PDFs defined in shared-data but never linked from TrustSection</div>
+    <div class="fix-detail"><code>trustDocuments</code> defines 4 PDF links (Fiscal Sponsorship Letter, HSI Determination Letter, Federal Tax Exemption, Signed Agreement). TrustSection renders none of them. IRS verification is plain text, not a link.</div>
+    <div class="fix-file">TrustSection.tsx — import and map trustDocuments; link IRS text to IRS Tax Exempt Search</div>
+  </div>
+
+  <div class="fix-card p2-card">
+    <div class="fix-id">P2-005 · Conversion · Missing Amount Params</div>
+    <div class="fix-title">Support tier CTA buttons don't pass amount to donation page</div>
+    <div class="fix-detail">All 3 tier CTAs link to <code>/donate</code> without a query param (e.g. <code>?amount=25</code>). The donation platform almost certainly supports pre-selecting an amount — a significant conversion optimization.</div>
+    <div class="fix-file">SupportSection.tsx — add amount query params to each tier's href</div>
+  </div>
+
+  <div class="fix-card p2-card">
+    <div class="fix-id">P2-006 · UX · Invisible Buttons</div>
+    <div class="fix-title">Non-featured support tier "Give" buttons barely visible</div>
+    <div class="fix-detail">Using <code>bg-[var(--color-border-subtle)]</code> on a dark background makes the button nearly invisible. Swap to <code>bg-[var(--color-surface)]</code> with an explicit border, or use a visible action color.</div>
+    <div class="fix-file">SupportSection.tsx (~line 85)</div>
+  </div>
+
+  <div class="fix-card p2-card">
+    <div class="fix-id">P2-007 · Accessibility</div>
+    <div class="fix-title">Hamburger nav button missing aria-controls; modal missing role/aria-modal</div>
+    <div class="fix-detail">Hamburger needs <code>aria-controls="mobile-nav"</code> + matching id on the panel. Timeline modal needs <code>role="dialog"</code>, <code>aria-modal="true"</code>, <code>aria-label</code>.</div>
+    <div class="fix-file">SiteHeader.tsx; TimelineSection.tsx modal element</div>
+  </div>
+
+  <div class="fix-card p2-card">
+    <div class="fix-id">P2-008 · Accessibility</div>
+    <div class="fix-title">No skip-to-main-content link</div>
+    <div class="fix-detail">WCAG 2.4.1 requires a mechanism to bypass repeated navigation. Add a visually-hidden <code>&lt;a href="#main-content"&gt;Skip to main content&lt;/a&gt;</code> as the first focusable DOM element.</div>
+    <div class="fix-file">Layout or SiteHeader.tsx — add before the nav</div>
+  </div>
+</div>
+
+<!-- ─── P3 FIXES ─── -->
+<div class="section" id="p3">
+  <div class="section-title">Priority 3 — Improve Before Launch</div>
+
+  <div class="fix-card p3-card">
+    <div class="fix-id">P3-001 · Code Quality</div>
+    <div class="fix-title">Stale comment about "restored third card" in ProgramsSection</div>
+    <div class="fix-detail">Lines 9–12 reference a "restored third card" that doesn't exist. Remove or update the comment to reflect the current 2-program reality.</div>
+    <div class="fix-file">ProgramsSection.tsx:9-12</div>
+  </div>
+
+  <div class="fix-card p3-card">
+    <div class="fix-id">P3-002 · Data Hygiene</div>
+    <div class="fix-title">Stale unused objects in siteData.ts</div>
+    <div class="fix-detail"><code>heroFeatureCards</code>, <code>heroMedia</code>, <code>heroFactStrip</code>, <code>dataPriorities</code>, <code>clarityCards</code> are defined but never imported or rendered. Dead data that inflates bundle size and confuses contributors.</div>
+    <div class="fix-file">siteData.ts — remove or archive unused exports</div>
+  </div>
+
+  <div class="fix-card p3-card">
+    <div class="fix-id">P3-003 · Data Hygiene</div>
+    <div class="fix-title">5th homepageStats entry is defined but never rendered</div>
+    <div class="fix-detail">"15-20 local children engaged weekly" is a compelling stat that should either appear on the page or be removed from siteData to avoid confusion.</div>
+    <div class="fix-file">siteData.ts + NonprofitHero.tsx</div>
+  </div>
+
+  <div class="fix-card p3-card">
+    <div class="fix-id">P3-004 · Testimonials</div>
+    <div class="fix-title">All 3 testimonials are needs-review — social proof section is empty</div>
+    <div class="fix-detail">Testimonials in siteData all have <code>status: "needs-review"</code> — none are shown to visitors. Social proof is one of the most powerful conversion signals for a nonprofit. Priority: get approval on at least 1 testimonial.</div>
+    <div class="fix-file">siteData.ts testimonialCards — get copy approval, change status to "approved"</div>
+  </div>
+
+  <div class="fix-card p3-card">
+    <div class="fix-id">P3-005 · Performance · Fragile Dependencies</div>
+    <div class="fix-title">6 timeline photos use Google Drive sharing URLs</div>
+    <div class="fix-detail">Google Drive sharing URLs change without notice, require auth, and are slow to load. Move timeline photos to <code>public/</code> or a CDN (Cloudinary, Vercel Blob, or similar) before launch.</div>
+    <div class="fix-file">siteData.ts timelineEntries (all 6 image hrefs)</div>
+  </div>
+
+  <div class="fix-card p3-card">
+    <div class="fix-id">P3-006 · Navigation · UX</div>
+    <div class="fix-title">No active nav state on current section</div>
+    <div class="fix-detail">As users scroll through sections, the nav gives no visual feedback about their location. IntersectionObserver-based active state would improve orientation.</div>
+    <div class="fix-file">SiteHeader.tsx</div>
+  </div>
+
+  <div class="fix-card p3-card">
+    <div class="fix-id">P3-007 · Color · Legacy Token</div>
+    <div class="fix-title">Timeline modal border uses legacy --color-coral instead of --color-accent-coral</div>
+    <div class="fix-detail">Minor but creates two coral values in use. Consolidate to <code>--color-accent-coral</code> (#c1602e) everywhere.</div>
+    <div class="fix-file">TimelineSection.tsx:129</div>
+  </div>
+
+  <div class="fix-card p3-card">
+    <div class="fix-id">P3-008 · Data Architecture</div>
+    <div class="fix-title">Hero stats hardcoded in component instead of sourced from homepageStats</div>
+    <div class="fix-detail">Creates dual-source-of-truth problem. Wire NonprofitHero to import from <code>homepageStats</code> in siteData so stats are maintained in one place.</div>
+    <div class="fix-file">NonprofitHero.tsx — replace hardcoded array with import from siteData</div>
+  </div>
+</div>
+
+<!-- ─── PHASE GATE ─── -->
+<div class="section">
+  <div class="section-title">Phase 1 Gate — Approval Required to Proceed to Phase 2 (PRD)</div>
+  <div class="callout" style="background:rgba(224,92,92,.08);border-color:rgba(224,92,92,.3)">
+    <strong style="color:var(--red)">Current score: 7.2/10 — below the 8.5 threshold for Phase 2 approval.</strong><br><br>
+    Phase 2 (PRD) is blocked until the following P1 issues are resolved and re-scored:<br><br>
+    &nbsp;· <strong>P1-001</strong> — "Support all three programs" copy error<br>
+    &nbsp;· <strong>P1-002</strong> — Timeline headline deviation from canonical<br>
+    &nbsp;· <strong>P1-003</strong> — Timeline cards + modal keyboard accessibility<br>
+    &nbsp;· <strong>P1-004</strong> — Studio eyebrow gold token violation<br>
+    &nbsp;· <strong>P1-005</strong> — Donate CTA hidden at mobile XS<br><br>
+    Estimated score after P1 fixes: <strong style="color:var(--yellow)">8.3–8.7/10</strong> depending on implementation quality.<br>
+    Human approval required before any Phase 2 work begins.
+  </div>
+  <table>
+    <thead>
+      <tr><th>Phase</th><th>Status</th><th>Condition</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Phase 0 — Research</td><td><span class="pill pill-pass">COMPLETE</span></td><td>Codebase, canonical copy, and design system fully reviewed</td></tr>
+      <tr><td>Phase 1 — Audit (this document)</td><td><span class="pill pill-warn">AWAITING APPROVAL</span></td><td>Score 7.2/10 — needs human approval to proceed</td></tr>
+      <tr><td>Phase 2 — PRD</td><td><span class="pill pill-partial">BLOCKED</span></td><td>Requires Phase 1 approval + P1 fixes</td></tr>
+      <tr><td>Phases 3-7 — Implementation</td><td><span class="pill pill-partial">BLOCKED</span></td><td>Requires Phase 2 PRD approval</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="max-width:1100px;margin:0 auto;padding:24px 40px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)">
+  A2A Universal Design Audit — Phase 1 Report &nbsp;·&nbsp; New World Kids &nbsp;·&nbsp; 2026-07-23 &nbsp;·&nbsp;
+  Branch: <code>claude/activate-jcodemunch-rtk-qe5j98</code> &nbsp;·&nbsp;
+  Score: 7.2/10 (threshold: 8.5)
+</div>
+
+</body>
+</html>

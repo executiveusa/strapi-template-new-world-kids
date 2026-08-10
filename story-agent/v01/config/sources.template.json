@@ -1,0 +1,35 @@
+{
+  "_instructions": "Copy to NWK_STORY_ROOT/config/sources.json (default: .../NEW WORLD KIDS 2026/story-system/config/sources.json). Roots with path starting FILL_IN are skipped. Only confirmed roots should be enabled. All roots are READ-ONLY — the agent never modifies originals.",
+  "sources": [
+    {
+      "id": "culture-shock-footage-video",
+      "label": "Culture Shock Footage - VIDEO",
+      "path": "E:\\ACTIVE PROJECTS-PIPELINE\\ACTIVE PROJECTS-PIPELINE\\CULTURE SHOCK PROGRAM\\CULTURE SHOCK FOOTAGE -VIDEO",
+      "program": "culture-shock",
+      "location": "multi",
+      "readonly": true,
+      "enabled": true,
+      "note": "Confirmed Pilot 0 first source root (Bambu). Immutable."
+    },
+    {
+      "id": "root-2",
+      "label": "Secondary Footage Folder",
+      "path": "FILL_IN — second footage path",
+      "program": "unknown",
+      "location": "unknown",
+      "readonly": true,
+      "enabled": false,
+      "note": "Ask Bambu for exact path when available"
+    },
+    {
+      "id": "root-3",
+      "label": "Tertiary Footage Folder",
+      "path": "FILL_IN — third footage path",
+      "program": "unknown",
+      "location": "unknown",
+      "readonly": true,
+      "enabled": false,
+      "note": "Ask Bambu for exact path when available"
+    }
+  ]
+}

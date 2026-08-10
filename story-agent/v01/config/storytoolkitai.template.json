@@ -1,0 +1,14 @@
+{
+  "_instructions": "Copy to NWK_STORY_ROOT/config/storytoolkitai.json. Point engine_path at an existing StoryToolkitAI install. Do not rewrite or fork the engine. Derived caches stay under NWK_STORY_ROOT.",
+  "mode": "external_engine_reference",
+  "engine_path": "E:\\ACTIVE PROJECTS-PIPELINE\\ACTIVE PROJECTS-PIPELINE\\pauli-story-tool-kit-main\\storytoolkitai",
+  "local_slot": "StoryToolkitAI",
+  "bridge": "thin",
+  "rewrite_forbidden": true,
+  "cloud_upload": false,
+  "notes": [
+    "Preferred: reuse existing package tree via engine_path",
+    "Optional later: clone/install full STAI into local_slot under story-system if external path is unstable",
+    "All transcripts/proxies/indexes must remain under NWK_STORY_ROOT, never inside source footage roots"
+  ]
+}
