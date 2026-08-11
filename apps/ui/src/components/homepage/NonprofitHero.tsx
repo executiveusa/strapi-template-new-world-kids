@@ -1,6 +1,5 @@
 "use client"
 
-import { animate, motion, useInView } from "framer-motion"
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 
@@ -15,30 +14,37 @@ const HERO_VIDEO_SRC = "/videos/hero-garden.mp4"
 const CROSSFADE_SECONDS = 0.9
 
 /**
- * Two copies of the same clip, crossfaded into each other just before the
- * end of the active one, so the loop point never shows a hard cut/jump —
- * the standby copy is already playing from frame 0 by the time it fades in.
+ * Preserve the existing garden video while keeping the loop visually calm.
+ * Reduced-motion visitors stay on the poster frame.
  */
-function LoopingHeroVideo({ poster }: { poster: string }) {
+function LoopingHeroVideo({
+  poster,
+  paused,
+}: {
+  poster: string
+  paused: boolean
+}) {
   const videoARef = useRef<HTMLVideoElement>(null)
   const videoBRef = useRef<HTMLVideoElement>(null)
   const activeRef = useRef<"a" | "b">("a")
   const [aOpacity, setAOpacity] = useState(1)
+  const reducedMotionRef = useRef(false)
 
   useEffect(() => {
     const a = videoARef.current
     const b = videoBRef.current
     if (!a || !b) return
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      // Stay on the poster frame — skip autoplay and the crossfade loop.
-      return
-    }
+    reducedMotionRef.current = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches
 
-    let raf: number
+    if (reducedMotionRef.current) return
+
+    let raf = 0
 
     function tick() {
-      if (!a || !b) return
+      if (!a || !b || paused) return
       const active = activeRef.current === "a" ? a : b
       const standby = activeRef.current === "a" ? b : a
 
@@ -57,11 +63,18 @@ function LoopingHeroVideo({ poster }: { poster: string }) {
       raf = requestAnimationFrame(tick)
     }
 
-    a.play().catch(() => {})
+    if (paused) {
+      a.pause()
+      b.pause()
+      return
+    }
+
+    const active = activeRef.current === "a" ? a : b
+    active.play().catch(() => {})
     raf = requestAnimationFrame(tick)
 
     return () => cancelAnimationFrame(raf)
-  }, [])
+  }, [paused])
 
   return (
     <>
@@ -76,6 +89,7 @@ function LoopingHeroVideo({ poster }: { poster: string }) {
           opacity: aOpacity,
           transitionDuration: `${CROSSFADE_SECONDS}s`,
         }}
+        aria-hidden="true"
       >
         <source src={HERO_VIDEO_SRC} type="video/mp4" />
       </video>
@@ -89,6 +103,7 @@ function LoopingHeroVideo({ poster }: { poster: string }) {
           opacity: 1 - aOpacity,
           transitionDuration: `${CROSSFADE_SECONDS}s`,
         }}
+        aria-hidden="true"
       >
         <source src={HERO_VIDEO_SRC} type="video/mp4" />
       </video>
@@ -96,168 +111,89 @@ function LoopingHeroVideo({ poster }: { poster: string }) {
   )
 }
 
-function parseStat(value: string) {
-  const match = /^(\$?)(\d+(?:\.\d+)?)(\+?)$/.exec(value)
-  if (!match) return null
-  const [, prefix, numStr, suffix] = match
-
-  return { prefix, numStr, suffix }
-}
-
-function StatNumber({ value }: { value: string }) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-60px" })
-  const zeroed = (() => {
-    const parsed = parseStat(value)
-    if (!parsed) return value
-
-    return `${parsed.prefix}${parsed.numStr.includes(".") ? "0.0" : "0"}${parsed.suffix}`
-  })()
-  const [display, setDisplay] = useState(zeroed)
-
-  useEffect(() => {
-    if (!isInView) return
-    const parsed = parseStat(value)
-    if (!parsed) return
-    const { prefix, numStr, suffix } = parsed
-    const target = Number.parseFloat(numStr)
-    const decimals = numStr.includes(".") ? 1 : 0
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches
-
-    const controls = animate(0, target, {
-      duration: prefersReducedMotion ? 0 : 1.4,
-      ease: "easeOut",
-      onUpdate: (v) => setDisplay(`${prefix}${v.toFixed(decimals)}${suffix}`),
-    })
-
-    return () => controls.stop()
-  }, [isInView, value])
-
-  return <span ref={ref}>{display}</span>
-}
-
 export function NonprofitHero() {
+  const [paused, setPaused] = useState(false)
+
   return (
     <section data-hero className="bg-[var(--color-bg)]">
-      {/* Video — quote centered on top, nothing underneath it */}
-      <div className="relative h-[62vh] min-h-[380px] w-full overflow-hidden sm:h-[75vh] md:h-screen">
-        <LoopingHeroVideo poster="/videos/hero-garden-poster.jpg" />
-        <div className="absolute inset-0 bg-black/25" />
-        <div className="absolute inset-0 flex items-center justify-center px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8 }}
-            className="max-w-4xl text-center"
-          >
-            <p className="font-serif text-[1.75rem] leading-tight text-white italic drop-shadow-[0_4px_18px_rgba(0,0,0,0.75)] sm:text-[2.25rem] md:text-[3.25rem] lg:text-[4.5rem]">
-              &ldquo;If you ever think you&apos;re too small to make a
-              difference, try going to sleep with a mosquito in the room.&rdquo;
+      <div className="relative min-h-[620px] w-full overflow-hidden sm:min-h-[700px] md:min-h-[760px] lg:min-h-[820px]">
+        <LoopingHeroVideo
+          poster="/videos/hero-garden-poster.jpg"
+          paused={paused}
+        />
+
+        {/* Readability overlay: the footage stays visible, copy stays legible. */}
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,12,9,0.74)_0%,rgba(10,12,9,0.52)_48%,rgba(10,12,9,0.18)_100%)] max-md:bg-[linear-gradient(180deg,rgba(10,12,9,0.44)_0%,rgba(10,12,9,0.68)_72%,rgba(10,12,9,0.78)_100%)]" />
+
+        <div className="relative z-10 mx-auto flex min-h-[620px] max-w-7xl items-end px-6 pt-24 pb-12 sm:min-h-[700px] sm:px-8 sm:pb-16 md:min-h-[760px] md:items-center md:py-20 lg:min-h-[820px]">
+          <div className="max-w-3xl text-left text-white">
+            <p className="text-xs font-semibold tracking-[0.18em] text-white/78 uppercase sm:text-sm">
+              Free practical education · Seattle + Puerto Vallarta
             </p>
-            <p className="mt-4 text-xs tracking-[0.28em] text-white/70 uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
-              West African Proverb
+
+            <h1 className="mt-5 max-w-3xl font-serif text-5xl leading-[0.98] font-semibold tracking-[-0.035em] text-balance sm:text-6xl md:text-7xl lg:text-[5.25rem]">
+              Kids need more than a diploma. They need life skills.
+            </h1>
+
+            <p className="mt-6 max-w-2xl text-base leading-7 text-white/88 sm:text-lg sm:leading-8 md:text-xl">
+              We teach food, water, energy, and shelter through real projects.
+              Every student learns by doing.
             </p>
-          </motion.div>
+
+            <p className="mt-4 font-serif text-sm tracking-wide text-white/72 sm:text-base">
+              Food · Water · Energy · Shelter
+            </p>
+
+            <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+              <Link
+                href="/#timeline"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--color-surface)] px-7 py-3 text-base font-semibold text-[var(--color-text-primary)] shadow-lg shadow-black/15 transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:translate-y-0"
+              >
+                See 5 years of work ↓
+              </Link>
+              <Link
+                href="/donate"
+                className="inline-flex min-h-12 items-center text-sm font-semibold text-white underline decoration-white/35 underline-offset-4 transition-colors hover:decoration-white"
+              >
+                Ready to help? Donate →
+              </Link>
+            </div>
+          </div>
         </div>
+
+        <button
+          type="button"
+          onClick={() => setPaused((value) => !value)}
+          className="absolute right-4 bottom-4 z-20 inline-flex min-h-11 items-center rounded-full border border-white/30 bg-black/30 px-4 text-xs font-semibold text-white backdrop-blur-sm transition-colors hover:bg-black/45 focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-white sm:right-6 sm:bottom-6"
+          aria-pressed={paused}
+          aria-label={paused ? "Play background video" : "Pause background video"}
+        >
+          {paused ? "Play video" : "Pause video"}
+        </button>
       </div>
 
-      {/* Content — below the video */}
-      <div className="mx-auto flex max-w-5xl flex-col items-center px-6 py-20 text-center md:px-10 md:py-28">
-        {/* Headline — problem-first rewrite */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.9, delay: 0.2 }}
-          className="font-serif text-4xl leading-tight font-semibold text-[var(--color-text-primary)] md:text-6xl lg:text-7xl"
-        >
-          Most kids graduate
-          <br className="hidden md:block" /> without ever learning
-          <br className="hidden md:block" /> the most important life skills.
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8, delay: 0.35 }}
-          className="mt-5 font-serif text-xl text-[var(--color-accent-gold)] md:text-2xl"
-        >
-          We fix that. Free. No exceptions.
-        </motion.p>
-
-        {/* Body */}
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-8 max-w-2xl text-base leading-8 text-[var(--color-text-muted)] md:text-lg"
-        >
-          New World Kids is a Seattle-based nonprofit. We create projects and
-          programs that teach inner-city and rural youth life skills. No matter
-          the situation, we meet them where they are — then inspire them with
-          the possibilities and skills to go beyond.
-        </motion.p>
-
-        {/* Core four callout */}
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-4 font-serif text-sm tracking-wide text-[var(--color-accent-gold)]/80"
-        >
-          Our framework: Food · Water · Energy · Shelter. Every program teaches
-          all four.
-        </motion.p>
-
-        {/* CTAs — donate is dominant primary; timeline is a quiet text link */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8, delay: 0.65 }}
-          className="mt-10 flex flex-col items-center gap-3"
-        >
-          <Link href="/donate">
-            <motion.span
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.96 }}
-              className="inline-block rounded-full bg-[var(--color-accent-coral)] px-12 py-4 text-base font-semibold text-white shadow-[var(--color-accent-coral)]/25 shadow-xl transition-colors hover:bg-[var(--color-accent-coral-hover)] hover:shadow-[var(--color-accent-coral)]/40"
+      {/* Proof is immediate and static: no animated counters, no delayed meaning. */}
+      <div className="border-b border-[var(--color-border-subtle)] bg-[var(--color-bg)]">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 px-6 sm:px-8 lg:grid-cols-4">
+          {stats.map((stat, index) => (
+            <div
+              key={stat.label}
+              className={[
+                "py-6 text-left sm:py-7 lg:py-8",
+                index % 2 === 0 ? "pr-4" : "pl-4",
+                index > 1 ? "border-t border-[var(--color-border-subtle)] lg:border-t-0" : "",
+                index !== 0 ? "lg:border-l lg:border-[var(--color-border-subtle)] lg:pl-7" : "",
+              ].join(" ")}
             >
-              Plant a seed — give $25 →
-            </motion.span>
-          </Link>
-          <Link
-            href="/#timeline"
-            className="text-sm text-[var(--color-accent-gold)]/55 transition hover:text-[var(--color-accent-gold)]"
-          >
-            or see 5 years of work →
-          </Link>
-        </motion.div>
-
-        {/* Stats strip */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 1, delay: 0.9 }}
-          className="mt-16 grid grid-cols-2 gap-6 border-t border-[var(--color-border-subtle)] pt-10 text-center sm:grid-cols-4"
-        >
-          {stats.map((stat) => (
-            <div key={stat.label}>
-              <p className="font-serif text-3xl font-semibold text-[var(--color-accent-gold)] md:text-4xl">
-                <StatNumber value={stat.value} />
+              <p className="font-serif text-3xl font-semibold text-[var(--color-accent-gold)] sm:text-4xl">
+                {stat.value}
               </p>
-              <p className="mt-1 text-xs text-[var(--color-text-muted)]">
+              <p className="mt-1 max-w-[15rem] text-xs leading-5 text-[var(--color-text-muted)] sm:text-sm">
                 {stat.label}
               </p>
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
