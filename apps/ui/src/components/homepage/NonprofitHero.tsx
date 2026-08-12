@@ -13,10 +13,6 @@ const stats = [
 const HERO_VIDEO_SRC = "/videos/hero-garden.mp4"
 const CROSSFADE_SECONDS = 0.9
 
-/**
- * Preserve the existing garden video while keeping the loop visually calm.
- * Reduced-motion visitors stay on the poster frame.
- */
 function LoopingHeroVideo({
   poster,
   paused,
@@ -122,13 +118,12 @@ export function NonprofitHero() {
           paused={paused}
         />
 
-        {/* Readability overlay: the footage stays visible, copy stays legible. */}
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,12,9,0.74)_0%,rgba(10,12,9,0.52)_48%,rgba(10,12,9,0.18)_100%)] max-md:bg-[linear-gradient(180deg,rgba(10,12,9,0.44)_0%,rgba(10,12,9,0.68)_72%,rgba(10,12,9,0.78)_100%)]" />
 
         <div className="relative z-10 mx-auto flex min-h-[620px] max-w-7xl items-end px-6 pt-24 pb-12 sm:min-h-[700px] sm:px-8 sm:pb-16 md:min-h-[760px] md:items-center md:py-20 lg:min-h-[820px]">
           <div className="max-w-3xl text-left text-white">
             <p className="text-xs font-semibold tracking-[0.18em] text-white/78 uppercase sm:text-sm">
-              Free practical education · Seattle + Puerto Vallarta
+              Practical life skills · Food · Water · Energy · Shelter
             </p>
 
             <h1 className="mt-5 max-w-3xl font-serif text-5xl leading-[0.98] font-semibold tracking-[-0.035em] text-balance sm:text-6xl md:text-7xl lg:text-[5.25rem]">
@@ -136,12 +131,7 @@ export function NonprofitHero() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-white/88 sm:text-lg sm:leading-8 md:text-xl">
-              We teach food, water, energy, and shelter through real projects.
-              Every student learns by doing.
-            </p>
-
-            <p className="mt-4 font-serif text-sm tracking-wide text-white/72 sm:text-base">
-              Food · Water · Energy · Shelter
+              Students learn food, water, energy, and shelter through real projects. Learning happens by doing.
             </p>
 
             <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
@@ -172,7 +162,6 @@ export function NonprofitHero() {
         </button>
       </div>
 
-      {/* Proof is immediate and static: no animated counters, no delayed meaning. */}
       <div className="border-b border-[var(--color-border-subtle)] bg-[var(--color-bg)]">
         <div className="mx-auto grid max-w-7xl grid-cols-2 px-6 sm:px-8 lg:grid-cols-4">
           {stats.map((stat, index) => (

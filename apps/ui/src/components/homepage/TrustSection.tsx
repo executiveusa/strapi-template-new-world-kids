@@ -7,13 +7,13 @@ export function TrustSection() {
       <div className="mx-auto max-w-5xl">
         <div className="max-w-3xl">
           <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">
-            What we can document
+            Public records
           </p>
           <h2 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-[var(--color-text-primary)] md:text-6xl">
-            Trust should come from records, not badges.
+            What the paperwork actually proves.
           </h2>
           <p className="mt-5 text-base leading-8 text-[var(--color-text-muted)] md:text-lg">
-            This page separates New World Kids&apos; Washington nonprofit incorporation from its fiscal sponsorship agreement. We do not present one document as proof of the other.
+            Two records matter here: our Washington nonprofit incorporation and our fiscal sponsorship agreement. We show them separately so you can see exactly what each one proves.
           </p>
         </div>
 
