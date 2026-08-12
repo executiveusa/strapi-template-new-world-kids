@@ -3,9 +3,6 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
-// Appears on mobile (≤768px) once the hero section is scrolled out of view.
-// Uses IntersectionObserver on the hero section sentinel; fixed positioning
-// is the only reliable way to achieve viewport-bottom attachment after scroll.
 export function StickyDonateMobile() {
   const [visible, setVisible] = useState(false)
 
@@ -37,9 +34,9 @@ export function StickyDonateMobile() {
         <Link
           href="/donate"
           tabIndex={visible ? 0 : -1}
-          className="block rounded-2xl bg-[var(--color-accent-coral)] py-4 text-center text-sm font-semibold text-[var(--color-text-primary)] shadow-[var(--color-accent-coral)]/30 shadow-xl transition hover:bg-[var(--color-accent-coral-hover)]"
+          className="block rounded-2xl bg-[var(--color-accent-coral)] py-4 text-center text-sm font-semibold text-white shadow-[var(--color-accent-coral)]/30 shadow-xl transition hover:bg-[var(--color-accent-coral-hover)]"
         >
-          Plant a seed — give $25 →
+          Support New World Kids →
         </Link>
       </div>
     </div>

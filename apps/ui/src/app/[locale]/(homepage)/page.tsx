@@ -3,13 +3,13 @@ import type { Metadata } from "next"
 import { Homepage } from "@/components/homepage/Homepage"
 
 export const metadata: Metadata = {
-  title: "New World Kids — Regenerative Education for a Post-Scarcity Future",
+  title: "New World Kids — Practical Life Skills Through Real Projects",
   description:
-    "Food, water, energy, shelter. Free regenerative education in rural Mexico — teaching kids to build the future they deserve. 501(c)(3) nonprofit, EIN 46-4779591.",
+    "New World Kids teaches practical food, water, energy, and shelter skills through hands-on projects and documents the work publicly.",
   openGraph: {
-    title: "New World Kids — Regenerative Education",
+    title: "New World Kids — Practical Life Skills Through Real Projects",
     description:
-      "Free regenerative education in rural Mexico. Food forests, off-grid energy, natural building. Donate or volunteer today.",
+      "See the programs, field archive, gallery, public records, and services offered by New World Kids.",
     type: "website",
   },
 }
