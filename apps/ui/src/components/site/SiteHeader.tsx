@@ -17,7 +17,7 @@ const navigation = {
     { href: "/#timeline", label: "Timeline" },
     { href: "/#proof", label: "Trust" },
     { href: "/mission", label: "Mission" },
-    { href: "/work-with-us", label: "Work With Us" },
+    { href: "/work-with-us", label: "Services" },
   ],
   es: [
     { href: "/#programs", label: "Programas" },
@@ -25,7 +25,7 @@ const navigation = {
     { href: "/#timeline", label: "Cronología" },
     { href: "/#proof", label: "Confianza" },
     { href: "/mission", label: "Misión" },
-    { href: "/work-with-us", label: "Trabaja con nosotros" },
+    { href: "/work-with-us", label: "Servicios" },
   ],
 }
 
@@ -83,11 +83,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
             <LocaleSwitcher locale={locale} />
           </div>
           <ThemeToggle />
-          <Link
-            href="/donate"
-            locale={locale}
-            className="inline-flex"
-          >
+          <Link href="/donate" locale={locale} className="inline-flex">
             <motion.span
               whileHover={{ y: -1 }}
               whileTap={{ scale: 0.95 }}

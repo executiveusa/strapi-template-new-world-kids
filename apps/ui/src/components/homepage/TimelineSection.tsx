@@ -29,10 +29,10 @@ export function TimelineSection() {
             Field archive
           </p>
           <h2 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-[var(--color-text-primary)] md:text-6xl">
-            Show the work in order.
+            What happened, in order.
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--color-text-muted)] md:text-lg">
-            These entries are shown from records currently marked confirmed in the project data. Future work is separated and labeled as planned.
+            A year-by-year record of the work we can document. Future plans stay separate until they are real.
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export function TimelineSection() {
         {plannedEntry ? (
           <div className="mt-12 border-l-2 border-[var(--color-gold)]/50 pl-6 md:pl-8">
             <p className="text-xs font-semibold tracking-[0.2em] text-[var(--color-gold)] uppercase">
-              Planned — not presented as completed work
+              Planned — not completed
             </p>
             <h3 className="mt-3 font-serif text-2xl font-semibold text-[var(--color-text-primary)] md:text-3xl">
               {plannedEntry.title}

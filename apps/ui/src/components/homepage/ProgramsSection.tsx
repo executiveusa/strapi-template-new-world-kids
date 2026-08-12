@@ -8,14 +8,14 @@ const programs = [
   {
     name: "Culture Shock",
     eyebrow: "Seattle · practical life-skills program",
-    body: "A youth program centered on practical life skills, mentorship, art, sports, and urban agriculture.",
+    body: "Culture Shock brings practical life skills into mentorship, art, sports, and urban agriculture.",
     href: "/blog",
     action: "Read the field notes",
   },
   {
     name: "Proyecto Indigo Azul",
     eyebrow: "Puerto Vallarta · food forest demonstration site",
-    body: "A 1.5-acre food forest demonstration site started in 2020 and organized around Food, Water, Energy, and Shelter.",
+    body: "A 1.5-acre food forest where Food, Water, Energy, and Shelter are practiced in the same place.",
     href: "/gallery",
     action: "See the field gallery",
   },
@@ -36,7 +36,7 @@ export function ProgramsSection() {
             Learn by doing.
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--color-text-muted)] md:text-lg">
-            Food. Water. Energy. Shelter. The public site should show the work first and keep claims tied to evidence.
+            Two places, same idea: young people learn practical skills by working on real projects.
           </p>
         </div>
 

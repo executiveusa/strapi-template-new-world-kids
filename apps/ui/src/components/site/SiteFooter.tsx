@@ -11,14 +11,14 @@ const explore = {
     { href: "/#timeline", label: "Timeline" },
     { href: "/#proof", label: "Trust" },
     { href: "/mission", label: "Mission" },
-    { href: "/work-with-us", label: "Work With Us" },
+    { href: "/work-with-us", label: "Services" },
   ],
   es: [
     { href: "/#programs", label: "Programas" },
     { href: "/#timeline", label: "Cronología" },
     { href: "/#proof", label: "Confianza" },
     { href: "/mission", label: "Misión" },
-    { href: "/work-with-us", label: "Trabaja con nosotros" },
+    { href: "/work-with-us", label: "Servicios" },
   ],
 }
 
@@ -31,25 +31,34 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
         <div className="space-y-5">
           <div className="font-serif text-2xl font-bold tracking-tight text-[var(--color-text-primary)] md:text-3xl">
             {locale === "es"
-              ? "Construimos confianza antes de pedir dinero."
-              : "We earn trust before we ask for money."}
+              ? "Mira el trabajo. Luego decide si vale la pena apoyarlo."
+              : "See the work. Then decide if it is worth backing."}
           </div>
           <p className="max-w-xl text-sm leading-7 text-[var(--color-text-muted)]">
             {locale === "es"
-              ? "New World Kids opera con patrocinio fiscal y construye en público. La meta es simple: que cualquier persona entienda la misión, vea la prueba y pueda apoyar sin fricción."
-              : "New World Kids operates under fiscal sponsorship and builds in public. The goal is simple: anyone should understand the mission, see the proof, and support it without friction."}
+              ? "New World Kids muestra el trabajo en público y también ofrece servicios a otros equipos con misión. Las dos cosas siguen la misma regla: menos promesas, más evidencia."
+              : "New World Kids shows the work in public and also provides services to other mission-driven teams. Both sides follow the same rule: fewer promises, more proof."}
           </p>
 
-          <Link href="/donate" locale={locale}>
-            <span className="inline-flex h-10 items-center rounded-full bg-[var(--color-accent-coral)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-colors duration-150 hover:bg-[var(--color-accent-coral-hover)]">
-              {locale === "es" ? "Donar ahora" : "Donate now"}
-            </span>
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/donate" locale={locale}>
+              <span className="inline-flex h-10 items-center rounded-full bg-[var(--color-accent-coral)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-colors duration-150 hover:bg-[var(--color-accent-coral-hover)]">
+                {locale === "es" ? "Donar ahora" : "Donate now"}
+              </span>
+            </Link>
+            <Link
+              href="/work-with-us"
+              locale={locale}
+              className="inline-flex h-10 items-center rounded-full border border-[var(--color-border-subtle)] px-5 text-sm font-semibold text-[var(--color-text-primary)] transition hover:bg-[var(--color-surface)]"
+            >
+              {locale === "es" ? "Ver servicios" : "See services"}
+            </Link>
+          </div>
 
           <div className="rounded-xl border border-[var(--color-accent-gold)]/20 bg-[var(--color-surface)] p-4 text-xs leading-6 text-[var(--color-text-muted)]">
             {locale === "es"
-              ? `Patrocinio fiscal: ${fiscalSponsor.name}. EIN ${fiscalSponsor.ein}.`
-              : `Fiscal sponsor: ${fiscalSponsor.name}. EIN ${fiscalSponsor.ein}.`}
+              ? `Patrocinio fiscal documentado con ${fiscalSponsor.name}. Consulta la sección de confianza para los documentos públicos.`
+              : `Fiscal sponsorship documented with ${fiscalSponsor.name}. See the Trust section for the public records.`}
           </div>
         </div>
 
