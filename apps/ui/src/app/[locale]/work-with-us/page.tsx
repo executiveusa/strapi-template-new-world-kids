@@ -5,26 +5,26 @@ import { copyForLocale, workWithUsOffers } from "@/content/site"
 
 const copy = {
   en: {
-    eyebrow: "Mission-funded studio",
-    title: "We are not built to beg.",
-    titleAccent: "We are built to produce.",
+    eyebrow: "Services for nonprofits and social-purpose teams",
+    title: "We do not sell AI.",
+    titleAccent: "We remove repetitive work.",
     body1:
-      "Starting a nonprofit is overwhelming. Compliance, grant writing, fundraising, website design, social media — it crushes great ideas before they do any good. We know. We've been through all of it.",
+      "Small mission-driven teams lose too many hours to grant research, reporting, donor updates, content, and website maintenance. That work matters, but it should not swallow the week.",
     body2:
-      "Over two years we built AI systems that drive our own mission. We now offer them to other nonprofits at a discounted rate — because we understand your challenges. We live them.",
-    offersEyebrow: "What we offer",
-    cta: "Start a conversation",
+      "We build practical systems that reduce the manual searching, copying, chasing, and re-entering behind those jobs. We start with the bottleneck, measure the before-and-after workload, and automate only what is worth automating.",
+    offersEyebrow: "What gets easier",
+    cta: "Tell us what is eating your time",
   },
   es: {
-    eyebrow: "Estudio financiado por la misión",
-    title: "No estamos hechos para mendigar.",
-    titleAccent: "Estamos hechos para producir.",
+    eyebrow: "Servicios para organizaciones sociales y equipos con propósito",
+    title: "No vendemos IA.",
+    titleAccent: "Quitamos trabajo repetitivo.",
     body1:
-      "Comenzar una organización sin fines de lucro es abrumador. Cumplimiento, redacción de propuestas, recaudación de fondos, diseño web, redes sociales — todo eso aplasta las buenas ideas antes de que hagan algún bien. Lo sabemos. Ya pasamos por todo esto.",
+      "Los equipos pequeños pierden demasiadas horas buscando convocatorias, preparando reportes, actualizando donantes, publicando contenido y manteniendo el sitio web. Ese trabajo importa, pero no debería comerse toda la semana.",
     body2:
-      "En dos años construimos sistemas de IA que impulsan nuestra propia misión. Ahora los ofrecemos a otras organizaciones sociales con una tarifa reducida — porque entendemos tus retos. Los vivimos.",
-    offersEyebrow: "Qué ofrecemos",
-    cta: "Iniciar una conversación",
+      "Construimos sistemas prácticos que reducen la búsqueda manual, el copiar y pegar, los seguimientos y la captura repetida de información. Empezamos por el cuello de botella, medimos la carga antes y después, y automatizamos solo lo que vale la pena automatizar.",
+    offersEyebrow: "Lo que se vuelve más fácil",
+    cta: "Cuéntanos qué te está quitando tiempo",
   },
 }
 
@@ -71,9 +71,15 @@ export default async function WorkWithUsPage({
         ))}
       </div>
 
+      <p className="mt-10 max-w-2xl text-sm leading-7 text-[var(--color-text-muted)]">
+        {locale === "es"
+          ? "No prometemos una cifra inventada de horas ahorradas. Primero medimos cuánto tiempo consume hoy el proceso y usamos esa línea base para demostrar qué cambió."
+          : "We do not promise a made-up number of hours saved. We measure how long the process takes now, then use that baseline to show what actually changed."}
+      </p>
+
       <a
         href={siteLinks.email}
-        className="mt-14 inline-flex h-11 items-center rounded-full bg-[var(--color-accent-gold)] px-6 text-sm font-semibold text-[var(--color-bg)] shadow-[var(--shadow-sm)] transition-colors duration-150 hover:bg-[var(--color-accent-gold)]/85"
+        className="mt-8 inline-flex h-11 items-center rounded-full bg-[var(--color-accent-coral)] px-6 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-colors duration-150 hover:bg-[var(--color-accent-coral-hover)]"
       >
         {t.cta} →
       </a>
