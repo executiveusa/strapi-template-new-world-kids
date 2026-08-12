@@ -3,12 +3,11 @@
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 
-const stats = [
-  { value: "200+", label: "plant varieties growing" },
-  { value: "1.5", label: "acres in Puerto Vallarta" },
-  { value: "5+", label: "years of operation" },
-  { value: "$0", label: "cost to every student" },
-]
+const proofLinks = [
+  { label: "Field archive", href: "/#timeline", detail: "See the work in order" },
+  { label: "Field gallery", href: "/gallery", detail: "See documented images" },
+  { label: "Public records", href: "/#proof", detail: "See the paperwork" },
+] as const
 
 const HERO_VIDEO_SRC = "/videos/hero-garden.mp4"
 const CROSSFADE_SECONDS = 0.9
@@ -139,7 +138,7 @@ export function NonprofitHero() {
                 href="/#timeline"
                 className="inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--color-surface)] px-7 py-3 text-base font-semibold text-[var(--color-text-primary)] shadow-lg shadow-black/15 transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:translate-y-0"
               >
-                See 5 years of work ↓
+                See the field archive ↓
               </Link>
               <Link
                 href="/donate"
@@ -163,24 +162,31 @@ export function NonprofitHero() {
       </div>
 
       <div className="border-b border-[var(--color-border-subtle)] bg-[var(--color-bg)]">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 px-6 sm:px-8 lg:grid-cols-4">
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
+        <div className="mx-auto grid max-w-7xl md:grid-cols-3">
+          {proofLinks.map((item, index) => (
+            <Link
+              key={item.label}
+              href={item.href}
               className={[
-                "py-6 text-left sm:py-7 lg:py-8",
-                index % 2 === 0 ? "pr-4" : "pl-4",
-                index > 1 ? "border-t border-[var(--color-border-subtle)] lg:border-t-0" : "",
-                index !== 0 ? "lg:border-l lg:border-[var(--color-border-subtle)] lg:pl-7" : "",
+                "group flex min-h-28 items-center justify-between gap-5 border-t border-[var(--color-border-subtle)] px-6 py-6 transition-colors hover:bg-[var(--color-surface)] md:border-t-0 sm:px-8",
+                index > 0 ? "md:border-l" : "",
               ].join(" ")}
             >
-              <p className="font-serif text-3xl font-semibold text-[var(--color-accent-gold)] sm:text-4xl">
-                {stat.value}
-              </p>
-              <p className="mt-1 max-w-[15rem] text-xs leading-5 text-[var(--color-text-muted)] sm:text-sm">
-                {stat.label}
-              </p>
-            </div>
+              <div>
+                <p className="font-serif text-xl font-semibold text-[var(--color-text-primary)]">
+                  {item.label}
+                </p>
+                <p className="mt-1 text-sm text-[var(--color-text-muted)]">
+                  {item.detail}
+                </p>
+              </div>
+              <span
+                aria-hidden="true"
+                className="text-lg text-[var(--color-accent-gold)] transition-transform group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </Link>
           ))}
         </div>
       </div>

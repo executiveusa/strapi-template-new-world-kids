@@ -24,10 +24,10 @@ export default function GalleryPage() {
             Field gallery
           </p>
           <h1 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-[var(--color-text-primary)] md:text-6xl">
-            Documented work from the field.
+            See the work up close.
           </h1>
           <p className="mt-5 text-base leading-8 text-[var(--color-text-muted)] md:text-lg">
-            This gallery only displays field images that are currently marked confirmed in the project record. Empty program placeholders and future-program imagery are intentionally excluded.
+            Photos from work we can document, with dates and source notes so you can see where each image came from.
           </p>
         </div>
 
@@ -62,7 +62,7 @@ export default function GalleryPage() {
         {documentedPhotos.length === 0 && (
           <div className="mt-14 border-y border-[var(--color-border-subtle)] py-12">
             <p className="text-sm text-[var(--color-text-muted)]">
-              No confirmed field images are available yet.
+              No documented field images are available yet.
             </p>
           </div>
         )}
