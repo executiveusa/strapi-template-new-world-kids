@@ -2,83 +2,58 @@ export function TrustSection() {
   return (
     <section
       id="proof"
-      className="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-6 py-20 md:px-10"
+      className="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-6 py-24 md:px-10 md:py-32"
     >
-      <div className="mx-auto max-w-4xl">
-        {/* Trust pill badges */}
-        <div className="mb-8 flex flex-wrap justify-center gap-3">
-          <span className="rounded-full border border-[var(--color-sage)]/35 bg-[var(--color-sage)]/10 px-4 py-1.5 text-xs font-semibold text-[var(--color-sage)]">
-            501(c)(3) Nonprofit
-          </span>
-          <span className="rounded-full border border-[var(--color-sage)]/35 bg-[var(--color-sage)]/10 px-4 py-1.5 text-xs font-semibold text-[var(--color-sage)]">
-            EIN 46-4779591
-          </span>
-        </div>
-
-        {/* Header */}
-        <div className="text-center">
+      <div className="mx-auto max-w-5xl">
+        <div className="max-w-3xl">
           <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">
-            Verified & transparent
+            What we can document
           </p>
-          <h2 className="mt-3 font-serif text-3xl text-[var(--color-text-primary)] md:text-4xl">
-            We build in public.
+          <h2 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-[var(--color-text-primary)] md:text-6xl">
+            Trust should come from records, not badges.
           </h2>
-          <p className="mt-4 text-sm leading-7 text-[var(--color-text-muted)] md:text-base">
-            Your donations help keep all our resources, solutions, and programs
-            100% free for every student who finds them.
+          <p className="mt-5 text-base leading-8 text-[var(--color-text-muted)] md:text-lg">
+            This page separates New World Kids&apos; Washington nonprofit incorporation from its fiscal sponsorship agreement. We do not present one document as proof of the other.
           </p>
         </div>
 
-        {/* Trust badges grid */}
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              label: "Fiscal sponsor",
-              value: "Humanitarian Social Innovations",
-              note: "Established 501(c)(3) partner",
-            },
-            {
-              label: "Legal structure",
-              value: "501(c)(3) fiscally sponsored program",
-              note: "Tax-deductible contributions",
-            },
-            {
-              label: "Tax ID (EIN)",
-              value: "46-4779591",
-              note: "Verify at IRS Tax Exempt Search",
-            },
-            {
-              label: "Indigo Azul site",
-              value: "Azucena 1112, Paso de Guayabo",
-              note: "Puerto Vallarta, MX 48373",
-            },
-            {
-              label: "Seattle office",
-              value: "6725 S 116th Pl",
-              note: "Seattle, WA 98178",
-            },
-            {
-              label: "Contact",
-              value: "info@nwkids.org",
-              note: "Response within 48 hours",
-            },
-          ].map((item) => (
-            <div
-              key={item.label}
-              style={{ boxShadow: "var(--shadow-sm)" }}
-              className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-surface-raised)] p-7 transition-shadow duration-300 hover:shadow-[var(--shadow-md)]"
-            >
-              <p className="text-xs tracking-[0.18em] text-[var(--color-eyebrow)] uppercase">
-                {item.label}
+        <div className="mt-14 border-y border-[var(--color-border-subtle)]">
+          <div className="grid gap-6 border-b border-[var(--color-border-subtle)] py-8 md:grid-cols-[220px_1fr] md:py-10">
+            <p className="text-xs tracking-[0.2em] text-[var(--color-eyebrow)] uppercase">
+              Washington record
+            </p>
+            <div>
+              <h3 className="font-serif text-2xl font-semibold text-[var(--color-text-primary)] md:text-3xl">
+                THE NORTH WEST KIDS
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)] md:text-base">
+                Washington nonprofit corporation. Effective May 16, 2022. UBI 604 917 764.
               </p>
-              <p className="mt-2 text-sm font-semibold text-[var(--color-text-primary)]">
-                {item.value}
-              </p>
-              <p className="mt-1 text-xs text-[var(--color-text-muted)]">
-                {item.note}
+              <p className="mt-3 text-xs text-[var(--color-text-muted)]">
+                Source: Washington Secretary of State Articles of Incorporation certificate.
               </p>
             </div>
-          ))}
+          </div>
+
+          <div className="grid gap-6 py-8 md:grid-cols-[220px_1fr] md:py-10">
+            <p className="text-xs tracking-[0.2em] text-[var(--color-eyebrow)] uppercase">
+              Fiscal sponsorship
+            </p>
+            <div>
+              <h3 className="font-serif text-2xl font-semibold text-[var(--color-text-primary)] md:text-3xl">
+                Humanitarian Social Innovations
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)] md:text-base">
+                A fiscal sponsorship grant agreement dated April 13, 2023 identifies Humanitarian Social Innovations as Grantor and NW Kids as Grantee for the sponsored program.
+              </p>
+              <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)] md:text-base">
+                The agreement also states that funding sources approached and fundraising text are subject to the Grantor&apos;s prior written approval.
+              </p>
+              <p className="mt-3 text-xs text-[var(--color-text-muted)]">
+                Source: signed NW Kids Fiscal Sponsorship Grant Agreement.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
