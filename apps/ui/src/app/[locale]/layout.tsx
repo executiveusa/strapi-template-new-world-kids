@@ -15,14 +15,13 @@ export default async function LocaleLayout({
 }>) {
   const { locale } = await params
 
-  if (!hasLocale(routing.locales, locale)) {
-    notFound()
-  }
+  if (!hasLocale(routing.locales, locale)) notFound()
 
   const messages = await getMessages()
 
   return (
     <NextIntlClientProvider locale={locale as Locale} messages={messages}>
+      <script dangerouslySetInnerHTML={{ __html: `document.documentElement.lang=${JSON.stringify(locale)}` }} />
       <div data-locale={locale} className="flex min-h-screen flex-col">
         <SiteHeader locale={locale as Locale} />
         <main className="flex-1">{children}</main>
