@@ -21,7 +21,6 @@ export default function LocaleSwitcher({
 }) {
   const pathname = usePathname()
   const basePath = stripLocale(pathname)
-  const nextLocale: Locale = locale === "es" ? "en" : "es"
 
   return (
     <div className="inline-flex items-center rounded-sm border border-white/10 bg-white/[0.03] p-1 text-xs">
@@ -36,7 +35,7 @@ export default function LocaleSwitcher({
       </Link>
       <Link
         href={basePath}
-        locale={nextLocale}
+        locale="es"
         className={`rounded px-2.5 py-1.5 transition-colors ${
           locale === "es" ? "bg-white/10 text-white" : "text-white/65"
         }`}
