@@ -2,26 +2,61 @@
 
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
-import Link from "next/link"
+import { useLocale } from "next-intl"
 
-const programs = [
-  {
-    name: "Culture Shock",
-    eyebrow: "Seattle · practical life-skills program",
-    body: "Culture Shock brings practical life skills into mentorship, art, sports, and urban agriculture.",
-    href: "/blog",
-    action: "Read the field notes",
+import { Link } from "@/lib/navigation"
+
+const copy = {
+  en: {
+    eyebrow: "Two programs. One practical framework.",
+    title: "Learn by doing.",
+    body: "Two places, same idea: young people learn practical skills by working on real projects.",
+    timeline: "See the documented timeline ↓",
+    programs: [
+      {
+        name: "Culture Shock",
+        eyebrow: "Seattle · practical life-skills program",
+        body: "Culture Shock brings practical life skills into mentorship, art, sports, and urban agriculture.",
+        href: "/blog",
+        action: "Read the field notes",
+      },
+      {
+        name: "Proyecto Indigo Azul",
+        eyebrow: "Puerto Vallarta · food forest demonstration site",
+        body: "A food forest demonstration site where Food, Water, Energy, and Shelter are practiced in the same place.",
+        href: "/gallery",
+        action: "See the field gallery",
+      },
+    ],
   },
-  {
-    name: "Proyecto Indigo Azul",
-    eyebrow: "Puerto Vallarta · food forest demonstration site",
-    body: "A 1.5-acre food forest where Food, Water, Energy, and Shelter are practiced in the same place.",
-    href: "/gallery",
-    action: "See the field gallery",
+  es: {
+    eyebrow: "Dos programas. Un marco práctico.",
+    title: "Aprender haciendo.",
+    body: "Dos lugares, una misma idea: los jóvenes aprenden habilidades prácticas trabajando en proyectos reales.",
+    timeline: "Ver la cronología documentada ↓",
+    programs: [
+      {
+        name: "Culture Shock",
+        eyebrow: "Seattle · programa de habilidades prácticas",
+        body: "Culture Shock integra habilidades prácticas con mentoría, arte, deportes y agricultura urbana.",
+        href: "/blog",
+        action: "Leer las notas de campo",
+      },
+      {
+        name: "Proyecto Indigo Azul",
+        eyebrow: "Puerto Vallarta · sitio demostrativo de bosque de alimentos",
+        body: "Un sitio demostrativo donde Alimento, Agua, Energía y Refugio se practican en un mismo lugar.",
+        href: "/gallery",
+        action: "Ver la galería de campo",
+      },
+    ],
   },
-] as const
+} as const
 
 export function ProgramsSection() {
+  const locale = useLocale()
+  const t = locale === "es" ? copy.es : copy.en
+
   return (
     <section
       id="programs"
@@ -30,18 +65,18 @@ export function ProgramsSection() {
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <p className="text-xs tracking-[0.26em] text-[var(--color-eyebrow)] uppercase">
-            Two programs. One practical framework.
+            {t.eyebrow}
           </p>
           <h2 className="mt-4 font-serif text-4xl font-semibold tracking-tight text-[var(--color-text-primary)] md:text-6xl">
-            Learn by doing.
+            {t.title}
           </h2>
           <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--color-text-muted)] md:text-lg">
-            Two places, same idea: young people learn practical skills by working on real projects.
+            {t.body}
           </p>
         </div>
 
         <div className="mt-14 grid border-y border-[var(--color-border-subtle)] lg:grid-cols-2">
-          {programs.map((program, index) => (
+          {t.programs.map((program, index) => (
             <motion.article
               key={program.name}
               initial={{ opacity: 0, y: 12 }}
@@ -69,6 +104,7 @@ export function ProgramsSection() {
 
               <Link
                 href={program.href}
+                locale={locale}
                 className="mt-10 inline-flex w-fit items-center gap-2 text-sm font-semibold text-[var(--color-sage)] transition hover:text-[var(--color-text-primary)]"
               >
                 {program.action}
@@ -81,9 +117,10 @@ export function ProgramsSection() {
         <div className="mt-10">
           <Link
             href="/#timeline"
+            locale={locale}
             className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-text-primary)] underline decoration-[var(--color-gold)]/50 underline-offset-8 transition hover:decoration-[var(--color-gold)]"
           >
-            See the documented timeline ↓
+            {t.timeline}
           </Link>
         </div>
       </div>
