@@ -1,0 +1,59 @@
+name: ICM Closeout
+
+on:
+  push:
+    branches:
+      - feat/icm-fundraising-hermes-9-5
+
+permissions:
+  contents: write
+
+jobs:
+  normalize-and-refresh:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: feat/icm-fundraising-hermes-9-5
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Normalize changed files
+        run: |
+          pnpm exec prettier --write AGENTS.md agents/hermes/SOUL.md "icm/**/*.md" .env.example "apps/ui/src/app/[locale]/donate/page.tsx" apps/ui/src/components/site/SiteFooter.tsx
+
+      - name: Install Graphify
+        run: python -m pip install --disable-pip-version-check graphifyy
+
+      - name: Refresh Graphify
+        run: graphify update .
+
+      - name: Normalize graph report
+        run: pnpm exec prettier --write graphify-out/GRAPH_REPORT.md
+
+      - name: Commit closeout artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add AGENTS.md agents/hermes/SOUL.md icm .env.example apps/ui/src/app/[locale]/donate/page.tsx apps/ui/src/components/site/SiteFooter.tsx graphify-out
+          if git diff --cached --quiet; then
+            echo "No closeout changes required."
+            exit 0
+          fi
+          git commit -m "chore(icm): format and refresh graph"
+          git push origin HEAD:feat/icm-fundraising-hermes-9-5
