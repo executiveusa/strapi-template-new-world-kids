@@ -8,20 +8,18 @@ const copy = {
   en: {
     eyebrow: "Support the mission",
     title: "Support New World Kids.",
-    body: "Choose an amount below. We do not attach made-up impact claims to a dollar amount.",
+    body: "Choose $25, $50, or $100, then email us for the current donation instructions.",
     ctaTitle: "Ready to give?",
-    ctaBody:
-      "Email us and we will send the current donation instructions.",
+    ctaBody: "Email us and we will send the current donation instructions.",
     ctaButton: "Email us to donate",
     sponsor: "Fiscal sponsorship agreement with",
   },
   es: {
     eyebrow: "Apoya la misión",
     title: "Apoya a New World Kids.",
-    body: "Elige una cantidad. No atribuimos resultados inventados a una cantidad de dinero.",
+    body: "Elige $25, $50 o $100 y escríbenos para recibir las instrucciones actuales para donar.",
     ctaTitle: "¿Listo para donar?",
-    ctaBody:
-      "Escríbenos y te enviaremos las instrucciones actuales para donar.",
+    ctaBody: "Escríbenos y te enviaremos las instrucciones actuales para donar.",
     ctaButton: "Escríbenos para donar",
     sponsor: "Acuerdo de patrocinio fiscal con",
   },
