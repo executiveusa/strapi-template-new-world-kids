@@ -2,7 +2,6 @@ import { ArrowUpRight } from "lucide-react"
 import type { Locale } from "next-intl"
 
 import { socialLinks } from "@/components/site/siteData"
-import { fiscalSponsor } from "@/content/site"
 import { Link } from "@/lib/navigation"
 
 const explore = {
@@ -21,6 +20,9 @@ const explore = {
     { href: "/work-with-us", label: "Servicios" },
   ],
 }
+
+const hsiDisclosure =
+  "New World Kids is a nonprofit program through fiscal sponsorship with Humanitarian Social Innovations, a 501(c)3 public charity. (46-4779591) Questions regarding the relationship should be directed to office@hsifiscalsponsor.org."
 
 export function SiteFooter({ locale }: { readonly locale: Locale }) {
   const items = locale === "es" ? explore.es : explore.en
@@ -56,9 +58,18 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
           </div>
 
           <div className="rounded-xl border border-[var(--color-accent-gold)]/20 bg-[var(--color-surface)] p-4 text-xs leading-6 text-[var(--color-text-muted)]">
-            {locale === "es"
-              ? `Patrocinio fiscal documentado con ${fiscalSponsor.name}. Consulta la sección de confianza para los documentos públicos.`
-              : `Fiscal sponsorship documented with ${fiscalSponsor.name}. See the Trust section for the public records.`}
+            <img
+              src="https://hsifiscalsponsor.org/wp-content/uploads/2024/05/HSI-Program-Footer-Logo-no-bg-1.png"
+              alt="Humanitarian Social Innovations fiscal sponsorship"
+              loading="lazy"
+              className="mb-3 h-auto w-40 max-w-full"
+            />
+            <p>{hsiDisclosure}</p>
+            {locale === "es" ? (
+              <p className="mt-2 text-[11px] leading-5">
+                New World Kids participa como programa bajo patrocinio fiscal de Humanitarian Social Innovations. El texto en inglés anterior es la divulgación requerida por HSI.
+              </p>
+            ) : null}
           </div>
         </div>
 
@@ -94,7 +105,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
                 className="flex items-center gap-2 transition-colors hover:text-[var(--color-text-primary)]"
               >
                 <span>{link.label}</span>
-                <ArrowUpRight className="h-3.5 w-3.5" />
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
               </a>
             ))}
           </div>
