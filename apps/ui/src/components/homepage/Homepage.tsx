@@ -6,14 +6,14 @@ import { SupportSection } from "./SupportSection"
 import { TimelineSection } from "./TimelineSection"
 import { TrustSection } from "./TrustSection"
 
-// Front-door flow (hero slice):
-// 1. Hero — video + immediate mission clarity + one dominant "see the work" action
-// 2. Proof strip — static evidence, no animated counters
-// 3. Programs — Culture Shock + Indigo Azul
-// 4. Timeline — documented seasons
-// 5. Trust — fiscal sponsor, EIN, addresses
-// 6. Support — donation choices; proverb moves here in a later bounded slice
-// 7. Studio — separate earned-revenue story
+// Public homepage flow:
+// 1. Hero — mission clarity + field-archive action
+// 2. Proof strip — field archive, gallery, and public records
+// 3. Programs — Culture Shock + Proyecto Indigo Azul
+// 4. Timeline — dated field documentation + clearly separated future plans
+// 5. Trust — Washington incorporation + fiscal sponsorship records
+// 6. Support — proverb + $25 / $50 / $100 choices without invented impact claims
+// 7. Studio — separate earned-revenue services story
 
 export function Homepage() {
   return (
