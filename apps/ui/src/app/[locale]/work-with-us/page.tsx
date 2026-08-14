@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import type { Locale } from "next-intl"
 
 import { siteLinks } from "@/components/site/siteData"
@@ -15,6 +16,9 @@ const copy = {
     cta: "Tell us what is eating your time",
     baseline:
       "We do not promise a made-up number of hours saved. We measure how long the process takes now, then use that baseline to show what actually changed.",
+    metaTitle: "Services for Mission-Driven Teams | New World Kids",
+    metaDescription:
+      "Practical systems for nonprofits and social-purpose teams that reduce repetitive grant research, reporting, donor updates, content, and administrative work.",
     offers: [
       {
         title: "Find grants without living in grant databases",
@@ -42,6 +46,9 @@ const copy = {
     cta: "Cuéntanos qué te está quitando tiempo",
     baseline:
       "No prometemos una cifra inventada de horas ahorradas. Primero medimos cuánto tiempo consume hoy el proceso y usamos esa línea base para demostrar qué cambió.",
+    metaTitle: "Servicios para equipos con misión | New World Kids",
+    metaDescription:
+      "Sistemas prácticos para organizaciones sociales que reducen la búsqueda repetitiva de fondos, reportes, actualizaciones a donantes, contenido y trabajo administrativo.",
     offers: [
       {
         title: "Encuentra fondos sin vivir en bases de datos",
@@ -52,11 +59,22 @@ const copy = {
         body: "Reutiliza fotos, notas y resultados aprobados en reportes, páginas y campañas sin reconstruir la misma actualización cada vez.",
       },
       {
-        title: "Mantén el trabajo administrativo avanzando con un equipo pequeño",
+        title:
+          "Mantén el trabajo administrativo avanzando con un equipo pequeño",
         body: "Automatiza seguimientos, recordatorios, reportes, publicaciones y tareas repetitivas para que el trabajo importante no se quede detenido.",
       },
     ],
   },
+} as const
+
+export async function generateMetadata({
+  params,
+}: {
+  readonly params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = (await params) as { locale: Locale }
+  const t = locale === "es" ? copy.es : copy.en
+  return { title: t.metaTitle, description: t.metaDescription }
 }
 
 export default async function WorkWithUsPage({
