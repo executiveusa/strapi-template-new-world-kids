@@ -33,12 +33,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
 
-      - name: Normalize repository formatting gate
-        run: pnpm exec prettier --write --ignore-unknown "**/(*.{md,css,scss}|*.package.json)"
-
-      - name: Normalize release UI files
+      - name: Normalize ICM and release UI files
         run: |
-          pnpm exec prettier --write \
+          pnpm exec prettier --write --ignore-unknown \
+            AGENTS.md \
+            agents/hermes/SOUL.md \
+            "icm/**/*.md" \
             "apps/ui/src/app/[locale]/donate/page.tsx" \
             "apps/ui/src/app/[locale]/gallery/page.tsx" \
             "apps/ui/src/app/[locale]/work-with-us/page.tsx" \
@@ -59,7 +59,17 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
+          git add \
+            AGENTS.md \
+            agents/hermes/SOUL.md \
+            icm \
+            apps/ui/src/app/[locale]/donate/page.tsx \
+            apps/ui/src/app/[locale]/gallery/page.tsx \
+            apps/ui/src/app/[locale]/work-with-us/page.tsx \
+            apps/ui/src/components/homepage/TimelineSection.tsx \
+            apps/ui/src/components/homepage/SupportSection.tsx \
+            apps/ui/src/components/site/SiteFooter.tsx \
+            graphify-out
           if git diff --cached --quiet; then
             echo "No closeout changes required."
             exit 0
