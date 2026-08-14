@@ -41,6 +41,7 @@ jobs:
           pnpm exec prettier --write \
             "apps/ui/src/app/[locale]/donate/page.tsx" \
             "apps/ui/src/app/[locale]/gallery/page.tsx" \
+            "apps/ui/src/app/[locale]/work-with-us/page.tsx" \
             "apps/ui/src/components/homepage/TimelineSection.tsx" \
             "apps/ui/src/components/homepage/SupportSection.tsx" \
             apps/ui/src/components/site/SiteFooter.tsx
@@ -63,5 +64,5 @@ jobs:
             echo "No closeout changes required."
             exit 0
           fi
-          git commit -m "chore(icm): normalize release and refresh graph"
+          HUSKY=0 git -c core.hooksPath=/dev/null commit -m "chore(icm): normalize release and refresh graph"
           git push origin HEAD:feat/icm-fundraising-hermes-9-5
