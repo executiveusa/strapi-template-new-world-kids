@@ -28,9 +28,12 @@ const copy = {
     title: "What happened, in order.",
     body: "A dated record of the work we can document. Future plans stay separate until they are completed.",
     record: "Record",
+    fieldRecord: "Field record",
     documented: "Documented",
-    source: "Source note",
+    source: "Archive note",
+    sourceValue: "Documented field image, ordered by capture date.",
     captured: "Field documentation captured",
+    imageAlt: "New World Kids field documentation",
     planned: "Planned — not completed",
   },
   es: {
@@ -38,9 +41,12 @@ const copy = {
     title: "Lo que ocurrió, en orden.",
     body: "Un registro fechado del trabajo que podemos documentar. Los planes futuros permanecen separados hasta que se completen.",
     record: "Registro",
+    fieldRecord: "Registro de campo",
     documented: "Documentado",
-    source: "Fuente",
+    source: "Nota de archivo",
+    sourceValue: "Imagen de campo documentada, ordenada por fecha de captura.",
     captured: "Documentación de campo capturada",
+    imageAlt: "Documentación de campo de New World Kids",
     planned: "Planeado — no completado",
   },
 } as const
@@ -106,7 +112,7 @@ export function TimelineSection() {
 
                 <div>
                   <p className="text-xs tracking-[0.18em] text-[var(--color-eyebrow)] uppercase">
-                    {entry.season} · {entry.year}
+                    {t.fieldRecord}
                   </p>
                   <h3 className="mt-3 font-serif text-2xl font-semibold leading-tight text-[var(--color-text-primary)] md:text-3xl">
                     {localizedTitles[index] ?? entry.title}
@@ -115,7 +121,7 @@ export function TimelineSection() {
                     {t.captured} {captureDate}.
                   </p>
                   <p className="mt-4 text-xs text-[var(--color-text-muted)]/80">
-                    {t.source}: {entry.sourceNote}
+                    {t.source}: {t.sourceValue}
                   </p>
                 </div>
 
@@ -123,7 +129,7 @@ export function TimelineSection() {
                   <figure className="overflow-hidden rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-bg)]">
                     <img
                       src={entry.photo}
-                      alt={entry.photoAlt ?? `${t.captured} ${captureDate}`}
+                      alt={`${t.imageAlt} — ${captureDate}`}
                       loading="lazy"
                       className="h-48 w-full object-cover md:h-52"
                     />
