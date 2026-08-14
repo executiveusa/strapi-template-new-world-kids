@@ -13,7 +13,8 @@ const copy = {
     fallbackBody:
       "Our FundRazr campaign link is still being configured. Email us for the current donation instructions.",
     ctaTitle: "Ready to give?",
-    ctaBody: "Continue to FundRazr to make your donation through the HSI-supported fundraising platform.",
+    ctaBody:
+      "Continue to FundRazr to make your donation through the HSI-supported fundraising platform.",
     fallbackCtaBody:
       "Email us and we will send the current donation instructions while FundRazr setup is being completed.",
     ctaButton: "Donate on FundRazr",

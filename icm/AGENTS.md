@@ -4,18 +4,18 @@ This folder is the agent-readable operating map for New World Kids. It is a rout
 
 ## Where to go
 
-| Task | Read first |
-|---|---|
-| Understand the mission and programs | `_shared/mission.md` |
-| Check legal/fiscal-sponsor rules | `_shared/legal-and-fiscal-sponsor.md` |
-| See available fundraising/grant resources | `_shared/resources.md` |
-| Decide what AI/browser automation is allowed | `_shared/agent-automation-policy.md` |
-| Build or improve a FundRazr campaign | `01_fundraising/CONTEXT.md` |
-| Research grant opportunities | `02_grant-research/CONTEXT.md` |
-| Draft a grant | `03_grant-drafting/CONTEXT.md` |
-| Prepare mandatory HSI review | `04_hsi-review/CONTEXT.md` |
-| Drive traffic and donor follow-up | `05_campaign-traffic/CONTEXT.md` |
-| Report results and learn | `06_reporting/CONTEXT.md` |
+| Task                                         | Read first                            |
+| -------------------------------------------- | ------------------------------------- |
+| Understand the mission and programs          | `_shared/mission.md`                  |
+| Check legal/fiscal-sponsor rules             | `_shared/legal-and-fiscal-sponsor.md` |
+| See available fundraising/grant resources    | `_shared/resources.md`                |
+| Decide what AI/browser automation is allowed | `_shared/agent-automation-policy.md`  |
+| Build or improve a FundRazr campaign         | `01_fundraising/CONTEXT.md`           |
+| Research grant opportunities                 | `02_grant-research/CONTEXT.md`        |
+| Draft a grant                                | `03_grant-drafting/CONTEXT.md`        |
+| Prepare mandatory HSI review                 | `04_hsi-review/CONTEXT.md`            |
+| Drive traffic and donor follow-up            | `05_campaign-traffic/CONTEXT.md`      |
+| Report results and learn                     | `06_reporting/CONTEXT.md`             |
 
 ## Rules
 

@@ -66,7 +66,9 @@ export function TimelineSection() {
   const documentedEntries = timelineEntries.filter(
     (entry) => entry.sourceStatus === "confirmed" && entry.status !== "future"
   )
-  const plannedEntry = timelineEntries.find((entry) => entry.status === "future")
+  const plannedEntry = timelineEntries.find(
+    (entry) => entry.status === "future"
+  )
 
   return (
     <section
@@ -95,7 +97,11 @@ export function TimelineSection() {
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.45, ease: "easeOut", delay: Math.min(index * 0.05, 0.2) }}
+                transition={{
+                  duration: 0.45,
+                  ease: "easeOut",
+                  delay: Math.min(index * 0.05, 0.2),
+                }}
                 className="grid gap-7 border-b border-[var(--color-border-subtle)] py-10 md:grid-cols-[180px_minmax(0,1fr)_320px] md:items-center"
               >
                 <div>
@@ -114,7 +120,7 @@ export function TimelineSection() {
                   <p className="text-xs tracking-[0.18em] text-[var(--color-eyebrow)] uppercase">
                     {t.fieldRecord}
                   </p>
-                  <h3 className="mt-3 font-serif text-2xl font-semibold leading-tight text-[var(--color-text-primary)] md:text-3xl">
+                  <h3 className="mt-3 font-serif text-2xl leading-tight font-semibold text-[var(--color-text-primary)] md:text-3xl">
                     {localizedTitles[index] ?? entry.title}
                   </h3>
                   <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-text-muted)]">
@@ -146,7 +152,9 @@ export function TimelineSection() {
               {t.planned}
             </p>
             <h3 className="mt-3 font-serif text-2xl font-semibold text-[var(--color-text-primary)] md:text-3xl">
-              {locale === "es" ? "Crecer sin perder el enfoque local" : plannedEntry.title}
+              {locale === "es"
+                ? "Crecer sin perder el enfoque local"
+                : plannedEntry.title}
             </h3>
           </div>
         ) : null}

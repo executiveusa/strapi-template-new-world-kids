@@ -59,7 +59,8 @@ const copy = {
         body: "Reutiliza fotos, notas y resultados aprobados en reportes, páginas y campañas sin reconstruir la misma actualización cada vez.",
       },
       {
-        title: "Mantén el trabajo administrativo avanzando con un equipo pequeño",
+        title:
+          "Mantén el trabajo administrativo avanzando con un equipo pequeño",
         body: "Automatiza seguimientos, recordatorios, reportes, publicaciones y tareas repetitivas para que el trabajo importante no se quede detenido.",
       },
     ],

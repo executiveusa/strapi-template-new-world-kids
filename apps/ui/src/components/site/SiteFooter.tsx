@@ -67,7 +67,9 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
             <p>{hsiDisclosure}</p>
             {locale === "es" ? (
               <p className="mt-2 text-[11px] leading-5">
-                New World Kids participa como programa bajo patrocinio fiscal de Humanitarian Social Innovations. El texto en inglés anterior es la divulgación requerida por HSI.
+                New World Kids participa como programa bajo patrocinio fiscal de
+                Humanitarian Social Innovations. El texto en inglés anterior es
+                la divulgación requerida por HSI.
               </p>
             ) : null}
           </div>

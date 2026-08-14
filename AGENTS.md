@@ -10,7 +10,7 @@ Mission-first monorepo for the New World Kids donor site, separate journal, Herm
 | `apps/blog`            | Separate journal for field notes and proof                            |
 | `services/hermes`      | Backend harness for trust APIs, article chat, and agent orchestration |
 | `packages/shared-data` | Shared mission data, trust docs, and taxonomy                         |
-| `icm`                  | Agent-readable mission, governance, fundraising, grants, and traffic |
+| `icm`                  | Agent-readable mission, governance, fundraising, grants, and traffic  |
 | `agent-skills`         | Local skill kit plus cloned external references                       |
 | `ops/reports`          | Durable local report sink for agent-visible output                    |
 
