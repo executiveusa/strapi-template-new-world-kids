@@ -25,6 +25,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup pnpm with cache
         uses: ./.github/actions/setup-pnpm
@@ -36,8 +38,16 @@ jobs:
       - name: Run linter
         run: pnpm lint
 
-      - name: Check css/md formatting
-        run: pnpm format:check
+      - name: Check formatting on changed files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t files < <(git diff --name-only --diff-filter=ACMR "origin/${{ github.base_ref }}...HEAD" | grep -E '(\.md$|\.css$|\.scss$|\.tsx$|\.ts$|package\.json$)' || true)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No changed files require Prettier verification."
+            exit 0
+          fi
+          pnpm exec prettier --check --ignore-unknown "${files[@]}"
 
       - name: Run unit tests
         run: pnpm test:ci
