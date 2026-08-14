@@ -1,4 +1,5 @@
 import { ArrowUpRight, Mail } from "lucide-react"
+import type { Metadata } from "next"
 import type { Locale } from "next-intl"
 
 import { siteLinks } from "@/components/site/siteData"
@@ -18,6 +19,9 @@ const copy = {
     ctaButton: "Donate on FundRazr",
     fallbackButton: "Email us to donate",
     sponsor: "Fiscal sponsorship agreement with",
+    metaTitle: "Support New World Kids",
+    metaDescription:
+      "Support New World Kids mission work in practical food, water, energy, shelter, and youth programs through our fiscal-sponsorship fundraising process.",
   },
   es: {
     eyebrow: "Apoya la misión",
@@ -33,10 +37,23 @@ const copy = {
     ctaButton: "Donar en FundRazr",
     fallbackButton: "Escríbenos para donar",
     sponsor: "Acuerdo de patrocinio fiscal con",
+    metaTitle: "Apoya a New World Kids",
+    metaDescription:
+      "Apoya el trabajo de New World Kids en alimentos, agua, energía, vivienda y programas juveniles mediante nuestro proceso de patrocinio fiscal.",
   },
-}
+} as const
 
 const amounts = ["$25", "$50", "$100"] as const
+
+export async function generateMetadata({
+  params,
+}: {
+  readonly params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = (await params) as { locale: Locale }
+  const t = locale === "es" ? copy.es : copy.en
+  return { title: t.metaTitle, description: t.metaDescription }
+}
 
 export default async function DonatePage({
   params,
