@@ -7,11 +7,11 @@ import { Link } from "@/lib/navigation"
 
 const copy = {
   en: {
-    eyebrow: "Practical life skills · Food · Water · Energy · Shelter",
-    title: "Kids need more than a diploma. They need life skills.",
-    body: "Students learn food, water, energy, and shelter through real projects. Learning happens by doing.",
-    archive: "See the field archive ↓",
-    donate: "Ready to help? Donate →",
+    eyebrow: "New World Kids · Seattle + Puerto Vallarta",
+    title: "Help us put 12 young people to work.",
+    body: "We're building a six-week Seattle pilot where young adults work on real community projects with mentors and leave with experience they can show and people who can vouch for them.",
+    archive: "See how it works ↓",
+    donate: "Back the Seattle pilot →",
     pause: "Pause video",
     play: "Play video",
     proof: [
@@ -21,11 +21,11 @@ const copy = {
     ],
   },
   es: {
-    eyebrow: "Habilidades prácticas · Alimento · Agua · Energía · Refugio",
-    title: "Los jóvenes necesitan más que un diploma. Necesitan habilidades para la vida.",
-    body: "Aprenden sobre alimento, agua, energía y refugio mediante proyectos reales. Se aprende haciendo.",
-    archive: "Ver el archivo de campo ↓",
-    donate: "¿Quieres ayudar? Donar →",
+    eyebrow: "New World Kids · Seattle + Puerto Vallarta",
+    title: "Ayúdanos a poner a 12 jóvenes a trabajar.",
+    body: "Estamos preparando un piloto de seis semanas en Seattle donde jóvenes adultos trabajarán en proyectos comunitarios reales con mentores y saldrán con experiencia que puedan mostrar y personas que puedan recomendarlos.",
+    archive: "Ver cómo funciona ↓",
+    donate: "Apoyar el piloto de Seattle →",
     pause: "Pausar video",
     play: "Reproducir video",
     proof: [
@@ -94,7 +94,7 @@ export function NonprofitHero() {
             <h1 className="mt-5 max-w-3xl font-serif text-5xl leading-[0.98] font-semibold tracking-[-0.035em] text-balance sm:text-6xl md:text-7xl lg:text-[5.25rem]">{t.title}</h1>
             <p className="mt-6 max-w-2xl text-base leading-7 text-white/88 sm:text-lg sm:leading-8 md:text-xl">{t.body}</p>
             <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-              <Link href="/#timeline" locale={locale} className="inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--color-surface)] px-7 py-3 text-base font-semibold text-[var(--color-text-primary)] shadow-lg shadow-black/15 transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:translate-y-0">{t.archive}</Link>
+              <Link href="/#programs" locale={locale} className="inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--color-surface)] px-7 py-3 text-base font-semibold text-[var(--color-text-primary)] shadow-lg shadow-black/15 transition-transform duration-150 hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white active:translate-y-0">{t.archive}</Link>
               <Link href="/donate" locale={locale} className="inline-flex min-h-12 items-center text-sm font-semibold text-white underline decoration-white/35 underline-offset-4 transition-colors hover:decoration-white">{t.donate}</Link>
             </div>
           </div>
