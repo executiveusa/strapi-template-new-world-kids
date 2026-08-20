@@ -9,13 +9,17 @@ const donateAmounts = ["$25", "$50", "$100"]
 const copy = {
   en: {
     eyebrow: "Seattle is next",
-    title: "Help fund the first Seattle cohort.",
-    body: "We're building the next Culture Shock pilot for 12 young people. Your donation helps us get the cohort funded and ready to run.",
+    title: "Help us start with 12 young people.",
+    body: "We're building the first Seattle Culture Shock cohort around art, sports, mentors, and real projects. Your support helps us pay young people, bring in mentors, run projects, and connect participants to what comes next.",
+    quote: "If you ever think you're too small to make a difference, try going to sleep with a mosquito in the room.",
+    source: "Proverb",
   },
   es: {
     eyebrow: "Seattle es el siguiente paso",
-    title: "Ayuda a financiar el primer grupo de Seattle.",
-    body: "Estamos preparando el próximo piloto de Culture Shock para 12 jóvenes. Tu donación nos ayuda a financiar el grupo y dejarlo listo para comenzar.",
+    title: "Ayúdanos a empezar con 12 jóvenes.",
+    body: "Estamos preparando el primer grupo de Culture Shock en Seattle alrededor del arte, los deportes, los mentores y proyectos reales. Tu apoyo nos ayuda a pagar a los jóvenes, incorporar mentores, realizar proyectos y conectar a los participantes con lo que sigue.",
+    quote: "Si alguna vez piensas que eres demasiado pequeño para hacer una diferencia, intenta dormir con un mosquito en la habitación.",
+    source: "Proverbio",
   },
 } as const
 
@@ -86,6 +90,14 @@ export function SupportSection() {
           >
             LinkedIn
           </a>
+        </div>
+        <div className="mt-14 text-center">
+          <blockquote className="mx-auto max-w-3xl font-serif text-3xl leading-tight text-[var(--color-text-primary)] italic md:text-5xl">
+            “{t.quote}”
+          </blockquote>
+          <p className="mt-4 text-xs tracking-[0.2em] text-[var(--color-text-muted)] uppercase">
+            {t.source}
+          </p>
         </div>
       </div>
     </section>
