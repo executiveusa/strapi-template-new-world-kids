@@ -4,14 +4,16 @@ import { Homepage } from "@/components/homepage/Homepage"
 
 const metadataByLocale = {
   en: {
-    title: "New World Kids — Practical Life Skills Through Real Projects",
-    description: "New World Kids teaches practical food, water, energy, and shelter skills through hands-on projects and documents the work publicly.",
-    social: "See the programs, field archive, gallery, public records, and services offered by New World Kids.",
+    title: "New World Kids — Real work. Real mentors. Real next steps.",
+    description:
+      "New World Kids gives young people real project experience, mentors to learn from, and a path toward work, school, or training.",
+    social: "See the Seattle pilot, Culture Shock, Proyecto Indigo Azul, field archive, gallery, and public records.",
   },
   es: {
-    title: "New World Kids — Habilidades prácticas mediante proyectos reales",
-    description: "New World Kids enseña habilidades prácticas de alimento, agua, energía y refugio mediante proyectos reales y documenta el trabajo públicamente.",
-    social: "Conoce los programas, el archivo de campo, la galería, los documentos públicos y los servicios de New World Kids.",
+    title: "New World Kids — Trabajo real. Mentores reales. Próximos pasos reales.",
+    description:
+      "New World Kids da a jóvenes experiencia en proyectos reales, mentores de quienes aprender y un camino hacia el trabajo, la escuela o la capacitación.",
+    social: "Conoce el piloto de Seattle, Culture Shock, Proyecto Indigo Azul, el archivo de campo, la galería y los documentos públicos.",
   },
 } as const
 
