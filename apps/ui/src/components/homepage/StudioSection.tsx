@@ -5,58 +5,58 @@ import { useLocale } from "next-intl"
 
 const copy = {
   en: {
-    eyebrow: "Services for mission-driven teams",
-    title: "Stop losing your week to admin.",
+    eyebrow: "Built for teams doing too much by hand",
+    title: "Spend less time chasing the work. More time doing it.",
     bodyOne:
-      "We build practical systems around the work that steals time from the mission: grant research, reporting, donor updates, content publishing, and website upkeep.",
+      "We know what it is like to run mission-driven work with a small team. Grants have to be found. Donors need updates. Reports need to get written. Websites need attention. Follow-ups get missed. We started building systems to solve those problems for ourselves. Now we help other teams do the same.",
     bodyTwo:
-      "The outcome is simple: less hunting, copying, chasing, and re-entering information. More time running programs, raising money, and doing the work people came to you for.",
-    cta: "See what we can take off your plate →",
-    problems: "Problems we solve",
+      "The goal is not more software. It is fewer things your team has to remember, repeat, copy, chase, or do by hand.",
+    cta: "Tell us what's eating your time →",
+    problems: "Problems we remove",
     outcomes: [
       {
-        title: "Find better-fit grants faster",
-        body: "Automate grant research and organize opportunities before your team loses hours searching databases by hand.",
+        title: "Stop spending hours hunting for grants",
+        body: "We help find, sort, and track opportunities so your team can spend its time deciding what is worth pursuing instead of searching databases.",
       },
       {
-        title: "Turn field work into donor-ready proof",
-        body: "Reuse approved photos, notes, and updates across reports, pages, and campaigns instead of rewriting the same story from scratch.",
+        title: "Stop rewriting the same story five times",
+        body: "Turn approved photos, notes, and program updates into material you can reuse for donors, reports, fundraising, and your website.",
       },
       {
-        title: "Keep recurring admin moving",
-        body: "Automate handoffs, reminders, reporting, and publishing so fewer tasks depend on someone remembering to push them forward.",
+        title: "Stop relying on somebody to remember everything",
+        body: "We build simple follow-ups, reminders, and handoffs around recurring work so fewer things disappear between people.",
       },
       {
-        title: "Make your website do the explaining",
-        body: "Build a clear public site that answers donor and partner questions before they become another email or meeting.",
+        title: "Stop answering the same questions over and over",
+        body: "Your website should make it easy for donors, partners, and supporters to understand what you do, what you need, and how to act.",
       },
     ],
   },
   es: {
-    eyebrow: "Servicios para equipos con misión",
-    title: "Deja de perder tu semana en tareas administrativas.",
+    eyebrow: "Hecho para equipos que todavía hacen demasiado a mano",
+    title: "Menos tiempo persiguiendo tareas. Más tiempo haciendo el trabajo.",
     bodyOne:
-      "Construimos sistemas prácticos para el trabajo que le quita tiempo a la misión: investigación de subvenciones, informes, actualizaciones para donantes, publicación de contenido y mantenimiento del sitio web.",
+      "Sabemos lo que es llevar trabajo con propósito con un equipo pequeño. Hay que encontrar subvenciones. Los donantes necesitan noticias. Los informes hay que escribirlos. El sitio web necesita atención. Los seguimientos se olvidan. Empezamos a construir sistemas para resolver esos problemas en nuestro propio trabajo. Ahora ayudamos a otros equipos a hacer lo mismo.",
     bodyTwo:
-      "El resultado es simple: menos tiempo buscando, copiando, persiguiendo pendientes y volviendo a ingresar información. Más tiempo ejecutando programas, recaudando fondos y haciendo el trabajo principal.",
-    cta: "Ver qué podemos quitarte de encima →",
-    problems: "Problemas que resolvemos",
+      "La meta no es tener más software. Es que tu equipo tenga menos cosas que recordar, repetir, copiar, perseguir o hacer a mano.",
+    cta: "Cuéntanos qué te está quitando tiempo →",
+    problems: "Problemas que quitamos del camino",
     outcomes: [
       {
-        title: "Encontrar subvenciones adecuadas más rápido",
-        body: "Automatiza la investigación de subvenciones y organiza oportunidades antes de perder horas buscando manualmente en bases de datos.",
+        title: "Deja de pasar horas buscando subvenciones",
+        body: "Ayudamos a encontrar, ordenar y dar seguimiento a oportunidades para que tu equipo decida qué vale la pena perseguir en vez de pasar horas buscando en bases de datos.",
       },
       {
-        title: "Convertir el trabajo de campo en evidencia para donantes",
-        body: "Reutiliza fotos, notas y actualizaciones aprobadas en informes, páginas y campañas sin reescribir la misma historia cada vez.",
+        title: "Deja de reescribir la misma historia cinco veces",
+        body: "Convierte fotos, notas y actualizaciones aprobadas en material reutilizable para donantes, informes, recaudación y tu sitio web.",
       },
       {
-        title: "Mantener en movimiento las tareas recurrentes",
-        body: "Automatiza entregas, recordatorios, informes y publicación para que menos tareas dependan de que alguien recuerde impulsarlas.",
+        title: "Deja de depender de que alguien recuerde todo",
+        body: "Creamos seguimientos, recordatorios y entregas simples alrededor del trabajo recurrente para que menos cosas se pierdan entre personas.",
       },
       {
-        title: "Hacer que tu sitio web explique el trabajo",
-        body: "Construye un sitio público claro que responda preguntas de donantes y socios antes de que se conviertan en otro correo o reunión.",
+        title: "Deja de responder las mismas preguntas una y otra vez",
+        body: "Tu sitio web debe facilitar que donantes, socios y personas que apoyan entiendan qué haces, qué necesitas y cómo pueden actuar.",
       },
     ],
   },

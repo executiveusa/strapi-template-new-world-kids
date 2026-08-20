@@ -8,18 +8,18 @@ import { Link } from "@/lib/navigation"
 const donateAmounts = ["$25", "$50", "$100"]
 const copy = {
   en: {
-    eyebrow: "Support the mission",
-    quote:
-      "If you ever think you're too small to make a difference, try going to sleep with a mosquito in the room.",
+    eyebrow: "Seattle is next",
+    title: "Help us start with 12 young people.",
+    body: "We're building the first Seattle Culture Shock cohort around art, sports, mentors, and real projects. Your support helps us pay young people, bring in mentors, run projects, and connect participants to what comes next.",
+    quote: "If you ever think you're too small to make a difference, try going to sleep with a mosquito in the room.",
     source: "Proverb",
-    services: "Services",
   },
   es: {
-    eyebrow: "Apoya la misión",
-    quote:
-      "Si alguna vez piensas que eres demasiado pequeño para hacer una diferencia, intenta dormir con un mosquito en la habitación.",
+    eyebrow: "Seattle es el siguiente paso",
+    title: "Ayúdanos a empezar con 12 jóvenes.",
+    body: "Estamos preparando el primer grupo de Culture Shock en Seattle alrededor del arte, los deportes, los mentores y proyectos reales. Tu apoyo nos ayuda a pagar a los jóvenes, incorporar mentores, realizar proyectos y conectar a los participantes con lo que sigue.",
+    quote: "Si alguna vez piensas que eres demasiado pequeño para hacer una diferencia, intenta dormir con un mosquito en la habitación.",
     source: "Proverbio",
-    services: "Servicios",
   },
 } as const
 
@@ -37,11 +37,11 @@ export function SupportSection() {
           <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">
             {t.eyebrow}
           </p>
-          <blockquote className="mx-auto mt-4 max-w-3xl font-serif text-3xl leading-tight text-[var(--color-text-primary)] italic md:text-5xl">
-            “{t.quote}”
-          </blockquote>
-          <p className="mt-4 text-xs tracking-[0.2em] text-[var(--color-text-muted)] uppercase">
-            {t.source}
+          <h2 className="mx-auto mt-4 max-w-3xl font-serif text-4xl leading-tight font-semibold text-[var(--color-text-primary)] md:text-6xl">
+            {t.title}
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[var(--color-text-muted)] md:text-lg">
+            {t.body}
           </p>
         </div>
         <div className="mt-12 flex flex-wrap justify-center gap-4">
@@ -65,40 +65,39 @@ export function SupportSection() {
             </motion.div>
           ))}
         </div>
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <Link
-            href="/work-with-us"
-            locale={locale}
-            className="rounded-full border border-[var(--color-border-subtle)] px-8 py-3 text-sm font-semibold text-[var(--color-text-muted)] transition hover:text-[var(--color-text-primary)]"
+        <div className="mt-10 flex justify-center gap-4 text-sm text-[var(--color-text-muted)]">
+          <a
+            href="https://www.instagram.com/proyectoindigoazul/"
+            target="_blank"
+            rel="noreferrer"
+            className="transition hover:text-[var(--color-text-primary)]"
           >
-            {t.services}
-          </Link>
-          <div className="flex items-center gap-4 text-sm text-[var(--color-text-muted)]">
-            <a
-              href="https://www.instagram.com/proyectoindigoazul/"
-              target="_blank"
-              rel="noreferrer"
-              className="transition hover:text-[var(--color-text-primary)]"
-            >
-              Instagram
-            </a>
-            <a
-              href="https://www.facebook.com/nwkidsorg"
-              target="_blank"
-              rel="noreferrer"
-              className="transition hover:text-[var(--color-text-primary)]"
-            >
-              Facebook
-            </a>
-            <a
-              href="https://www.linkedin.com/company/nwkids/"
-              target="_blank"
-              rel="noreferrer"
-              className="transition hover:text-[var(--color-text-primary)]"
-            >
-              LinkedIn
-            </a>
-          </div>
+            Instagram
+          </a>
+          <a
+            href="https://www.facebook.com/nwkidsorg"
+            target="_blank"
+            rel="noreferrer"
+            className="transition hover:text-[var(--color-text-primary)]"
+          >
+            Facebook
+          </a>
+          <a
+            href="https://www.linkedin.com/company/nwkids/"
+            target="_blank"
+            rel="noreferrer"
+            className="transition hover:text-[var(--color-text-primary)]"
+          >
+            LinkedIn
+          </a>
+        </div>
+        <div className="mt-14 text-center">
+          <blockquote className="mx-auto max-w-3xl font-serif text-3xl leading-tight text-[var(--color-text-primary)] italic md:text-5xl">
+            “{t.quote}”
+          </blockquote>
+          <p className="mt-4 text-xs tracking-[0.2em] text-[var(--color-text-muted)] uppercase">
+            {t.source}
+          </p>
         </div>
       </div>
     </section>
