@@ -8,44 +8,44 @@ import { Link } from "@/lib/navigation"
 
 const copy = {
   en: {
-    eyebrow: "Two programs. One practical framework.",
-    title: "Learn by doing.",
-    body: "Two places, same idea: young people learn practical skills by working on real projects.",
+    eyebrow: "Two places. One way of learning.",
+    title: "Do the work. Learn from someone good.",
+    body: "New World Kids gives young people real projects to work on and adults to learn from.",
     timeline: "See the documented timeline ↓",
     programs: [
       {
         name: "Culture Shock",
-        eyebrow: "Seattle · practical life-skills program",
-        body: "Culture Shock brings practical life skills into mentorship, art, sports, and urban agriculture.",
+        eyebrow: "Seattle · youth project program",
+        body: "Culture Shock starts in Seattle. Young adults work with mentors on real projects, build experience, and leave with a clearer next step.",
         href: "/blog",
         action: "Read the field notes",
       },
       {
         name: "Proyecto Indigo Azul",
-        eyebrow: "Puerto Vallarta · food forest demonstration site",
-        body: "A food forest demonstration site where Food, Water, Energy, and Shelter are practiced in the same place.",
+        eyebrow: "Puerto Vallarta · working food forest",
+        body: "A working food forest and learning site where young people can learn by helping grow, build, repair, and care for the land.",
         href: "/gallery",
         action: "See the field gallery",
       },
     ],
   },
   es: {
-    eyebrow: "Dos programas. Un marco práctico.",
-    title: "Aprender haciendo.",
-    body: "Dos lugares, una misma idea: los jóvenes aprenden habilidades prácticas trabajando en proyectos reales.",
+    eyebrow: "Dos lugares. Una forma de aprender.",
+    title: "Haz el trabajo. Aprende de alguien que sabe.",
+    body: "New World Kids da a jóvenes proyectos reales en los que trabajar y adultos de quienes aprender.",
     timeline: "Ver la cronología documentada ↓",
     programs: [
       {
         name: "Culture Shock",
-        eyebrow: "Seattle · programa de habilidades prácticas",
-        body: "Culture Shock integra habilidades prácticas con mentoría, arte, deportes y agricultura urbana.",
+        eyebrow: "Seattle · programa de proyectos para jóvenes",
+        body: "Culture Shock comienza en Seattle. Jóvenes adultos trabajan con mentores en proyectos reales, ganan experiencia y terminan con un próximo paso más claro.",
         href: "/blog",
         action: "Leer las notas de campo",
       },
       {
         name: "Proyecto Indigo Azul",
-        eyebrow: "Puerto Vallarta · sitio demostrativo de bosque de alimentos",
-        body: "Un sitio demostrativo donde Alimento, Agua, Energía y Refugio se practican en un mismo lugar.",
+        eyebrow: "Puerto Vallarta · bosque de alimentos en funcionamiento",
+        body: "Un bosque de alimentos y sitio de aprendizaje donde jóvenes aprenden ayudando a cultivar, construir, reparar y cuidar la tierra.",
         href: "/gallery",
         action: "Ver la galería de campo",
       },
