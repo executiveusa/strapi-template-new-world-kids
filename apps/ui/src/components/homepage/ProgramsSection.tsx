@@ -10,20 +10,20 @@ const copy = {
   en: {
     eyebrow: "Two communities. Different needs.",
     title: "Start with what matters here.",
-    body: "New World Kids builds around the community we're in. The setting changes, but the method stays simple: real work, good mentors, useful skills, and a next step.",
+    body: "New World Kids builds around the community we're in. In Seattle, we start with local youth interested in art, sports and urban gardening. In Puerto Vallarta, we started with land restoration, food systems and the needs of the local community.",
     timeline: "See the documented timeline ↓",
     programs: [
       {
         name: "Culture Shock",
         eyebrow: "Seattle · Art + Sports + Opportunity",
-        body: "Art and sports are the starting point. Young people work alongside artists, coaches, mentors, businesses, and community organizations on real projects. They build skills through the work and get connected to jobs, internships, training, school, or another opportunity.",
+        body: "Culture Shock is our Seattle pilot. We use sports, art and urban gardening to help underserved youth discover what they're good at, connect to paid opportunities, and work on projects that make a difference in their own community. Inclusive. Immersive. Impactful. Paint the mural. Produce the game. Grow the garden. Build something you can show.",
         href: "/blog",
         action: "See how Culture Shock works",
       },
       {
         name: "Proyecto Indigo Azul",
         eyebrow: "Puerto Vallarta · Land + Food + Community",
-        body: "Proyecto Indigo Azul is a working food forest and learning site. Local young people learn by growing food, caring for the land, building, repairing, and taking part in projects that matter in their own community.",
+        body: "Proyecto Indigo Azul is a working food forest and learning site. We're building a demonstration center to empower youth and work on real problems around food, water, energy and shelter.",
         href: "/gallery",
         action: "See the field gallery",
       },
@@ -32,20 +32,20 @@ const copy = {
   es: {
     eyebrow: "Dos comunidades. Necesidades diferentes.",
     title: "Empezamos con lo que importa aquí.",
-    body: "New World Kids se adapta a la comunidad donde trabaja. El entorno cambia, pero el método sigue siendo simple: trabajo real, buenos mentores, habilidades útiles y un siguiente paso.",
+    body: "New World Kids se adapta a la comunidad donde trabaja. En Seattle, empezamos con jóvenes locales interesados en el arte, los deportes y la jardinería urbana. En Puerto Vallarta, empezamos con la restauración de la tierra, los sistemas alimentarios y las necesidades de la comunidad local.",
     timeline: "Ver la cronología documentada ↓",
     programs: [
       {
         name: "Culture Shock",
         eyebrow: "Seattle · Arte + Deportes + Oportunidad",
-        body: "El arte y los deportes son el punto de partida. Los jóvenes trabajan junto a artistas, entrenadores, mentores, empresas y organizaciones comunitarias en proyectos reales. Desarrollan habilidades haciendo el trabajo y se conectan con empleos, prácticas, capacitación, estudios u otras oportunidades.",
+        body: "Culture Shock es nuestro programa piloto en Seattle. Usamos deportes, arte y jardinería urbana para ayudar a jóvenes con menos acceso a oportunidades a descubrir en qué son buenos, conectarse con oportunidades pagadas y trabajar en proyectos que marcan una diferencia en su propia comunidad. Inclusivo. Inmersivo. Con impacto. Pinta el mural. Produce el juego. Cultiva el jardín. Construye algo que puedas mostrar.",
         href: "/blog",
         action: "Ver cómo funciona Culture Shock",
       },
       {
         name: "Proyecto Indigo Azul",
         eyebrow: "Puerto Vallarta · Tierra + Alimentos + Comunidad",
-        body: "Proyecto Indigo Azul es un bosque de alimentos y sitio de aprendizaje en funcionamiento. Los jóvenes locales aprenden cultivando alimentos, cuidando la tierra, construyendo, reparando y participando en proyectos que importan en su propia comunidad.",
+        body: "Proyecto Indigo Azul es un bosque de alimentos y sitio de aprendizaje en funcionamiento. Estamos construyendo un centro de demostración para empoderar a jóvenes y trabajar en problemas reales alrededor de alimentos, agua, energía y vivienda.",
         href: "/gallery",
         action: "Ver la galería de campo",
       },
