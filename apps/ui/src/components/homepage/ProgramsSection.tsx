@@ -10,7 +10,7 @@ const copy = {
   en: {
     eyebrow: "Two communities. Different needs.",
     title: "Start with what matters here.",
-    body: "New World Kids builds around the community we're in. In Seattle, we start with local youth interested in art, sports and urban gardening. In Puerto Vallarta, we started with land restoration, food systems and the needs of the local community.",
+    body: "The Culture Shock program starts small with interests young people already care about: sports, art, and urban gardening. We connect those interests to mentors, real community projects, and paid opportunities so youth build skills, confidence, and something they can actually show. The first 12 in Seattle will prove the model; our Indigo Azul Project in Puerto Vallarta shows the larger vision of what place-based learning can become.",
     timeline: "See the documented timeline ↓",
     programs: [
       {
@@ -32,7 +32,7 @@ const copy = {
   es: {
     eyebrow: "Dos comunidades. Necesidades diferentes.",
     title: "Empezamos con lo que importa aquí.",
-    body: "New World Kids se adapta a la comunidad donde trabaja. En Seattle, empezamos con jóvenes locales interesados en el arte, los deportes y la jardinería urbana. En Puerto Vallarta, empezamos con la restauración de la tierra, los sistemas alimentarios y las necesidades de la comunidad local.",
+    body: "El programa Culture Shock empieza con intereses que ya les importan a los jóvenes: deportes, arte y jardinería urbana. Conectamos esos intereses con mentores, proyectos comunitarios reales y oportunidades pagadas para que desarrollen habilidades, confianza y algo que realmente puedan mostrar. Los primeros 12 en Seattle pondrán a prueba el modelo; nuestro Proyecto Indigo Azul en Puerto Vallarta muestra la visión más amplia de lo que puede llegar a ser el aprendizaje basado en un lugar real.",
     timeline: "Ver la cronología documentada ↓",
     programs: [
       {
