@@ -224,26 +224,6 @@ const rawTimelineEntries: TimelineEntry[] = [
     imageStatus: "confirmed",
     sourceNote: "Google Drive photo sorted by capture date",
   },
-  {
-    season: "Chapter 6",
-    year: "2027-2030",
-    status: "future",
-    capturedAt: "2023-05-01",
-    title: "Scale without losing the heart",
-    tagline: "The model should grow without becoming abstract.",
-    body: "The long-term story is land security, program replication, and a durable public model that still feels human, local, and hands-on.",
-    highlights: [
-      "Land ownership path",
-      "Program replication",
-      "Long-horizon financial resilience",
-    ],
-    photo:
-      "https://drive.google.com/uc?export=view&id=1F5-B4z7AJyMOorKR-xtQ49iDi8MLIQgv",
-    photoAlt: "Scale planning documentation from May 1, 2023",
-    sourceStatus: "planned",
-    imageStatus: "confirmed",
-    sourceNote: "Google Drive photo sorted by capture date",
-  },
 ] as const
 
 export const timelineEntries = [...rawTimelineEntries].sort(
@@ -260,11 +240,6 @@ export const clarityCards = [
   {
     title: "Who it helps",
     body: "Local children in Paso de Guayabo. Culture Shock students from Seattle. People who want to support work they can actually see.",
-    bullets: [] as string[],
-  },
-  {
-    title: "What to do next",
-    body: "Look at the timeline first. Then the programs. If it feels worth backing, donate or reach out directly.",
     bullets: [] as string[],
   },
 ] as const

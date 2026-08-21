@@ -44,7 +44,7 @@ export function TrustSection() {
         <div className="mt-14 border-y border-[var(--color-border-subtle)]">
           <div className="grid gap-6 border-b border-[var(--color-border-subtle)] py-8 md:grid-cols-[220px_1fr] md:py-10">
             <p className="text-xs tracking-[0.2em] text-[var(--color-eyebrow)] uppercase">{t.washington}</p>
-            <div><h3 className="font-serif text-2xl font-semibold text-[var(--color-text-primary)] md:text-3xl">THE NORTH WEST KIDS</h3><p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)] md:text-base">{t.washingtonBody}</p><p className="mt-3 text-xs text-[var(--color-text-muted)]">{t.washingtonSource}</p></div>
+            <div><h3 className="font-serif text-2xl font-semibold text-[var(--color-text-primary)] md:text-3xl">NEW WORLD KIDS</h3><p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)] md:text-base">{t.washingtonBody}</p><p className="mt-3 text-xs text-[var(--color-text-muted)]">{t.washingtonSource}</p></div>
           </div>
           <div className="grid gap-6 py-8 md:grid-cols-[220px_1fr] md:py-10">
             <p className="text-xs tracking-[0.2em] text-[var(--color-eyebrow)] uppercase">{t.sponsor}</p>
