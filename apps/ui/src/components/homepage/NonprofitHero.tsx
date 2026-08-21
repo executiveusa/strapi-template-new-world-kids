@@ -7,11 +7,11 @@ import { Link } from "@/lib/navigation"
 
 const copy = {
   en: {
-    eyebrow: "New World Kids · Seattle + Puerto Vallarta",
-    title: "Help us put 12 young people to work.",
-    body: "We're building a six-week Seattle pilot where young adults work on real community projects with mentors and leave with experience they can show and people who can vouch for them.",
-    archive: "See how it works ↓",
-    donate: "Back the Seattle pilot →",
+    eyebrow: "New World Kids · Two communities. One mission.",
+    title: "Help young people turn what they love into what comes next.",
+    body: "In Seattle, we connect youth to mentors and paid opportunities through sports, art and urban gardening. In Puerto Vallarta, we're building a food forest and community learning center that shows what's possible.",
+    archive: "See the programs ↓",
+    donate: "Support New World Kids →",
     pause: "Pause video",
     play: "Play video",
     proof: [
@@ -21,11 +21,11 @@ const copy = {
     ],
   },
   es: {
-    eyebrow: "New World Kids · Seattle + Puerto Vallarta",
-    title: "Ayúdanos a poner a 12 jóvenes a trabajar.",
-    body: "Estamos preparando un piloto de seis semanas en Seattle donde jóvenes adultos trabajarán en proyectos comunitarios reales con mentores y saldrán con experiencia que puedan mostrar y personas que puedan recomendarlos.",
-    archive: "Ver cómo funciona ↓",
-    donate: "Apoyar el piloto de Seattle →",
+    eyebrow: "New World Kids · Dos comunidades. Una misión.",
+    title: "Ayuda a los jóvenes a convertir lo que aman en lo que sigue.",
+    body: "En Seattle, conectamos a jóvenes con mentores y oportunidades pagadas a través del deporte, el arte y la jardinería urbana. En Puerto Vallarta, estamos construyendo un bosque de alimentos y centro de aprendizaje comunitario que muestra lo que es posible.",
+    archive: "Ver los programas ↓",
+    donate: "Apoyar New World Kids →",
     pause: "Pausar video",
     play: "Reproducir video",
     proof: [
