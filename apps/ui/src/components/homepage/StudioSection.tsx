@@ -6,7 +6,7 @@ import { useLocale } from "next-intl"
 const copy = {
   en: {
     eyebrow: "Built for teams doing too much by hand",
-    title: "Spend less time chasing the work. More time doing it.",
+    title: "Spend less time chasing the work. More time on the mission that matters.",
     bodyOne:
       "We know what it is like to run mission-driven work with a small team. Grants have to be found. Donors need updates. Reports need to get written. Websites need attention. Follow-ups get missed. We started building systems to solve those problems for ourselves. Now we help other teams do the same.",
     bodyTwo:
@@ -34,7 +34,7 @@ const copy = {
   },
   es: {
     eyebrow: "Hecho para equipos que todavía hacen demasiado a mano",
-    title: "Menos tiempo persiguiendo tareas. Más tiempo haciendo el trabajo.",
+    title: "Menos tiempo persiguiendo tareas. Más tiempo en la misión que importa.",
     bodyOne:
       "Sabemos lo que es llevar trabajo con propósito con un equipo pequeño. Hay que encontrar subvenciones. Los donantes necesitan noticias. Los informes hay que escribirlos. El sitio web necesita atención. Los seguimientos se olvidan. Empezamos a construir sistemas para resolver esos problemas en nuestro propio trabajo. Ahora ayudamos a otros equipos a hacer lo mismo.",
     bodyTwo:
