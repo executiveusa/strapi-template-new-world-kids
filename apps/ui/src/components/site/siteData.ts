@@ -2,7 +2,6 @@ export const primaryNavigation = [
   { label: "Timeline", href: "/#timeline" },
   { label: "Programs", href: "/#programs" },
   { label: "Trust", href: "/#proof" },
-  { label: "Studio", href: "/work-with-us" },
   { label: "Operations", href: "/ops" },
 ] as const
 
