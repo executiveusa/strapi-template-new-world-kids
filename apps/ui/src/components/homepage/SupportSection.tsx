@@ -10,14 +10,14 @@ const copy = {
   en: {
     eyebrow: "Seattle is next",
     title: "Help us start with 12 young people.",
-    body: "We're building the first Seattle Culture Shock cohort around art, sports, mentors, and real projects. Your support helps us pay young people, bring in mentors, run projects, and connect participants to what comes next.",
+    body: "We're building the first Seattle Culture Shock cohort around art, sports, urban gardening, mentors, and one real community project. Your support helps us pay young people, bring in mentors, run the project, and connect participants to what comes next.",
     quote: "If you ever think you're too small to make a difference, try going to sleep with a mosquito in the room.",
     source: "Proverb",
   },
   es: {
     eyebrow: "Seattle es el siguiente paso",
     title: "Ayúdanos a empezar con 12 jóvenes.",
-    body: "Estamos preparando el primer grupo de Culture Shock en Seattle alrededor del arte, los deportes, los mentores y proyectos reales. Tu apoyo nos ayuda a pagar a los jóvenes, incorporar mentores, realizar proyectos y conectar a los participantes con lo que sigue.",
+    body: "Estamos preparando el primer grupo de Culture Shock en Seattle alrededor del arte, los deportes, la jardinería urbana, los mentores y un proyecto comunitario real. Tu apoyo nos ayuda a pagar a los jóvenes, incorporar mentores, realizar el proyecto y conectar a los participantes con lo que sigue.",
     quote: "Si alguna vez piensas que eres demasiado pequeño para hacer una diferencia, intenta dormir con un mosquito en la habitación.",
     source: "Proverbio",
   },
