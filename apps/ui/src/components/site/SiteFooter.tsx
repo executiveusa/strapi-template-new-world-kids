@@ -6,18 +6,18 @@ import { Link } from "@/lib/navigation"
 
 const explore = {
   en: [
-    { href: "/#programs", label: "Programs" },
-    { href: "/#timeline", label: "Timeline" },
-    { href: "/#proof", label: "Trust" },
-    { href: "/mission", label: "Mission" },
-    { href: "/work-with-us", label: "Services" },
+    { href: "/#how", label: "How it works" },
+    { href: "/#first-12", label: "First 12" },
+    { href: "/#programs", label: "Sports · Art · Gardening" },
+    { href: "/#partners", label: "Partner" },
+    { href: "/gallery", label: "Indigo Azul" },
   ],
   es: [
-    { href: "/#programs", label: "Programas" },
-    { href: "/#timeline", label: "Cronología" },
-    { href: "/#proof", label: "Confianza" },
-    { href: "/mission", label: "Misión" },
-    { href: "/work-with-us", label: "Servicios" },
+    { href: "/#how", label: "Cómo funciona" },
+    { href: "/#first-12", label: "Primeros 12" },
+    { href: "/#programs", label: "Deporte · Arte · Jardinería" },
+    { href: "/#partners", label: "Colaborar" },
+    { href: "/gallery", label: "Indigo Azul" },
   ],
 }
 
@@ -33,27 +33,27 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
         <div className="space-y-5">
           <div className="font-serif text-2xl font-bold tracking-tight text-[var(--color-text-primary)] md:text-3xl">
             {locale === "es"
-              ? "Mira el trabajo. Luego decide si vale la pena apoyarlo."
-              : "See the work. Then decide if it is worth backing."}
+              ? "Ayudamos a los jóvenes a convertir lo que les importa en lo que sigue."
+              : "We help young people turn what they care about into what comes next."}
           </div>
           <p className="max-w-xl text-sm leading-7 text-[var(--color-text-muted)]">
             {locale === "es"
-              ? "New World Kids muestra el trabajo en público y también ofrece servicios a otros equipos con misión. Las dos cosas siguen la misma regla: menos promesas, más evidencia."
-              : "New World Kids shows the work in public and also provides services to other mission-driven teams. Both sides follow the same rule: fewer promises, more proof."}
+              ? "Empezamos en Seattle con los Primeros 12: conectar intereses con oportunidades reales y aprender dónde se rompe el camino."
+              : "We’re starting in Seattle with the First 12: connecting interests to real opportunities and learning where the pathway breaks."}
           </p>
 
           <div className="flex flex-wrap gap-3">
             <Link href="/donate" locale={locale}>
               <span className="inline-flex h-10 items-center rounded-full bg-[var(--color-accent-coral)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-colors duration-150 hover:bg-[var(--color-accent-coral-hover)]">
-                {locale === "es" ? "Donar ahora" : "Donate now"}
+                {locale === "es" ? "Apoyar a los Primeros 12" : "Support the First 12"}
               </span>
             </Link>
             <Link
-              href="/work-with-us"
+              href="/#partners"
               locale={locale}
               className="inline-flex h-10 items-center rounded-full border border-[var(--color-border-subtle)] px-5 text-sm font-semibold text-[var(--color-text-primary)] transition hover:bg-[var(--color-surface)]"
             >
-              {locale === "es" ? "Ver servicios" : "See services"}
+              {locale === "es" ? "Colaborar" : "Partner with us"}
             </Link>
           </div>
 
@@ -116,16 +116,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
 
       <div className="border-t border-[var(--color-border-subtle)] px-5 py-4 text-center sm:px-8">
         <span className="text-[11px] text-[var(--color-text-muted)]">
-          &copy; {new Date().getFullYear()} New World Kids &middot; Site built
-          by{" "}
-          <a
-            href="https://thepaulieffect.com"
-            className="transition-colors hover:text-[var(--color-accent-gold)]"
-            target="_blank"
-            rel="noreferrer"
-          >
-            The Pauli Effect
-          </a>
+          &copy; {new Date().getFullYear()} New World Kids
         </span>
       </div>
     </footer>
