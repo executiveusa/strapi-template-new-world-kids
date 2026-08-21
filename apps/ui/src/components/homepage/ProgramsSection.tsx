@@ -16,7 +16,7 @@ const copy = {
       {
         name: "Culture Shock",
         eyebrow: "Seattle · Art + Sports + Opportunity",
-        body: "Culture Shock is our Seattle pilot. We use sports, art and urban gardening to help underserved youth discover what they're good at, connect to paid opportunities, and work on projects that make a difference in their own community. Inclusive. Immersive. Impactful. Paint the mural. Produce the game. Grow the garden. Build something you can show.",
+        body: "Culture Shock is our Seattle pilot. We use sports, art and urban gardening to help underserved youth discover what they're good at, connect to paid opportunities, and work on projects that make a difference in their own community. Paint the mural. Produce the game. Grow the garden. Build something you can show.",
         href: "/blog",
         action: "See how Culture Shock works",
       },
@@ -38,7 +38,7 @@ const copy = {
       {
         name: "Culture Shock",
         eyebrow: "Seattle · Arte + Deportes + Oportunidad",
-        body: "Culture Shock es nuestro programa piloto en Seattle. Usamos deportes, arte y jardinería urbana para ayudar a jóvenes con menos acceso a oportunidades a descubrir en qué son buenos, conectarse con oportunidades pagadas y trabajar en proyectos que marcan una diferencia en su propia comunidad. Inclusivo. Inmersivo. Con impacto. Pinta el mural. Produce el juego. Cultiva el jardín. Construye algo que puedas mostrar.",
+        body: "Culture Shock es nuestro programa piloto en Seattle. Usamos deportes, arte y jardinería urbana para ayudar a jóvenes con menos acceso a oportunidades a descubrir en qué son buenos, conectarse con oportunidades pagadas y trabajar en proyectos que marcan una diferencia en su propia comunidad. Pinta el mural. Produce el juego. Cultiva el jardín. Construye algo que puedas mostrar.",
         href: "/blog",
         action: "Ver cómo funciona Culture Shock",
       },
