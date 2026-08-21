@@ -5,63 +5,70 @@ import { siteLinks } from "@/components/site/siteData"
 
 const copy = {
   en: {
-    eyebrow: "Services for nonprofits and social-purpose teams",
-    title: "We do not sell AI.",
-    titleAccent: "We remove repetitive work.",
+    eyebrow: "Built for teams doing too much by hand",
+    title: "Give your team more time for",
+    titleAccent: "the work that matters.",
     body1:
-      "Small mission-driven teams lose too many hours to grant research, reporting, donor updates, content, and website maintenance. That work matters, but it should not swallow the week.",
+      "We know what it is like to run mission-driven work with a small team. Grants have to be found. Donors need updates. Reports need to get written. Websites need attention. Follow-ups get missed. We started building systems to solve those problems for ourselves. Now we help other teams do the same.",
     body2:
-      "We build practical systems that reduce the manual searching, copying, chasing, and re-entering behind those jobs. We start with the bottleneck, measure the before-and-after workload, and automate only what is worth automating.",
-    offersEyebrow: "What gets easier",
-    cta: "Tell us what is eating your time",
+      "The goal is not more software. It is fewer things your team has to remember, repeat, copy, chase, or do by hand.",
+    offersEyebrow: "Problems we remove",
+    cta: "Tell us what's eating your time",
     baseline:
-      "We do not promise a made-up number of hours saved. We measure how long the process takes now, then use that baseline to show what actually changed.",
+      "We start with the work that is actually slowing your team down, measure the process as it works today, and build only what makes that process simpler.",
     metaTitle: "Services for Mission-Driven Teams | New World Kids",
     metaDescription:
-      "Practical systems for nonprofits and social-purpose teams that reduce repetitive grant research, reporting, donor updates, content, and administrative work.",
+      "Practical systems for mission-driven teams that reduce repetitive grant research, reporting, donor updates, content, and administrative work.",
     offers: [
       {
-        title: "Find grants without living in grant databases",
-        body: "Automate grant research, sort opportunities, and keep the best fits in one place before your team spends hours hunting by hand.",
+        title: "Stop spending hours hunting for grants",
+        body: "We help find, sort, and track opportunities so your team can spend its time deciding what is worth pursuing instead of searching databases.",
       },
       {
-        title: "Turn field updates into donor-ready proof",
-        body: "Reuse approved photos, notes, and results across reports, web pages, and campaigns instead of rebuilding the same update every time.",
+        title: "Stop rewriting the same story five times",
+        body: "Turn approved photos, notes, and program updates into material you can reuse for donors, reports, fundraising, and your website.",
       },
       {
-        title: "Keep the admin moving when the team is small",
-        body: "Automate recurring handoffs, reminders, reporting, publishing, and follow-up so important work is less likely to stall.",
+        title: "Stop relying on somebody to remember everything",
+        body: "We build simple follow-ups, reminders, and handoffs around recurring work so fewer things disappear between people.",
+      },
+      {
+        title: "Stop answering the same questions over and over",
+        body: "Your website should make it easy for donors, partners, and supporters to understand what you do, what you need, and how to act.",
       },
     ],
   },
   es: {
-    eyebrow: "Servicios para organizaciones sociales y equipos con propósito",
-    title: "No vendemos IA.",
-    titleAccent: "Quitamos trabajo repetitivo.",
+    eyebrow: "Para equipos que hacen demasiado trabajo a mano",
+    title: "Dale a tu equipo más tiempo para",
+    titleAccent: "el trabajo que importa.",
     body1:
-      "Los equipos pequeños pierden demasiadas horas buscando convocatorias, preparando reportes, actualizando donantes, publicando contenido y manteniendo el sitio web. Ese trabajo importa, pero no debería comerse toda la semana.",
+      "Sabemos lo que significa hacer trabajo con propósito con un equipo pequeño. Hay que encontrar fondos. Los donantes necesitan actualizaciones. Hay que escribir reportes. El sitio web necesita atención. Los seguimientos se pierden. Empezamos a construir sistemas para resolver esos problemas para nosotros mismos. Ahora ayudamos a otros equipos a hacer lo mismo.",
     body2:
-      "Construimos sistemas prácticos que reducen la búsqueda manual, el copiar y pegar, los seguimientos y la captura repetida de información. Empezamos por el cuello de botella, medimos la carga antes y después, y automatizamos solo lo que vale la pena automatizar.",
-    offersEyebrow: "Lo que se vuelve más fácil",
+      "La meta no es más software. Es tener menos cosas que tu equipo tenga que recordar, repetir, copiar, perseguir o hacer a mano.",
+    offersEyebrow: "Problemas que eliminamos",
     cta: "Cuéntanos qué te está quitando tiempo",
     baseline:
-      "No prometemos una cifra inventada de horas ahorradas. Primero medimos cuánto tiempo consume hoy el proceso y usamos esa línea base para demostrar qué cambió.",
+      "Empezamos por el trabajo que realmente está frenando a tu equipo, medimos cómo funciona hoy el proceso y construimos solo lo que lo hace más simple.",
     metaTitle: "Servicios para equipos con misión | New World Kids",
     metaDescription:
-      "Sistemas prácticos para organizaciones sociales que reducen la búsqueda repetitiva de fondos, reportes, actualizaciones a donantes, contenido y trabajo administrativo.",
+      "Sistemas prácticos para equipos con propósito que reducen la búsqueda repetitiva de fondos, reportes, actualizaciones a donantes, contenido y trabajo administrativo.",
     offers: [
       {
-        title: "Encuentra fondos sin vivir en bases de datos",
-        body: "Automatiza la búsqueda de convocatorias, ordena oportunidades y conserva las mejores opciones en un solo lugar antes de perder horas buscando a mano.",
+        title: "Deja de pasar horas buscando fondos",
+        body: "Ayudamos a encontrar, ordenar y dar seguimiento a oportunidades para que tu equipo pueda dedicar su tiempo a decidir cuáles vale la pena perseguir en lugar de buscar en bases de datos.",
       },
       {
-        title: "Convierte el trabajo de campo en evidencia para donantes",
-        body: "Reutiliza fotos, notas y resultados aprobados en reportes, páginas y campañas sin reconstruir la misma actualización cada vez.",
+        title: "Deja de reescribir la misma historia cinco veces",
+        body: "Convierte fotos, notas y actualizaciones de programas ya aprobadas en material reutilizable para donantes, reportes, recaudación y tu sitio web.",
       },
       {
-        title:
-          "Mantén el trabajo administrativo avanzando con un equipo pequeño",
-        body: "Automatiza seguimientos, recordatorios, reportes, publicaciones y tareas repetitivas para que el trabajo importante no se quede detenido.",
+        title: "Deja de depender de que alguien recuerde todo",
+        body: "Construimos seguimientos, recordatorios y traspasos simples alrededor del trabajo recurrente para que menos cosas se pierdan entre personas.",
+      },
+      {
+        title: "Deja de responder las mismas preguntas una y otra vez",
+        body: "Tu sitio web debe facilitar que donantes, aliados y seguidores entiendan qué haces, qué necesitas y cómo pueden actuar.",
       },
     ],
   },
@@ -104,7 +111,7 @@ export default async function WorkWithUsPage({
       <p className="mt-14 text-xs tracking-[0.2em] text-[var(--color-accent-gold)] uppercase">
         {t.offersEyebrow}
       </p>
-      <div className="mt-4 grid gap-4 sm:grid-cols-3">
+      <div className="mt-4 grid gap-4 sm:grid-cols-2">
         {t.offers.map((offer) => (
           <div
             key={offer.title}
