@@ -42,11 +42,13 @@ function LoopingHeroVideo({ poster, paused }: { poster: string; paused: boolean 
     const b = videoBRef.current
     if (!a || !b) return
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    const videoA = a
+    const videoB = b
     let raf = 0
     function tick() {
       if (paused) return
-      const active = activeRef.current === "a" ? a : b
-      const standby = activeRef.current === "a" ? b : a
+      const active = activeRef.current === "a" ? videoA : videoB
+      const standby = activeRef.current === "a" ? videoB : videoA
       if (active.duration && !Number.isNaN(active.duration) && active.currentTime >= active.duration - CROSSFADE_SECONDS && standby.paused) {
         standby.currentTime = 0
         standby.play().catch(() => {})
@@ -55,8 +57,8 @@ function LoopingHeroVideo({ poster, paused }: { poster: string; paused: boolean 
       }
       raf = requestAnimationFrame(tick)
     }
-    if (paused) { a.pause(); b.pause(); return }
-    ;(activeRef.current === "a" ? a : b).play().catch(() => {})
+    if (paused) { videoA.pause(); videoB.pause(); return }
+    ;(activeRef.current === "a" ? videoA : videoB).play().catch(() => {})
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
   }, [paused])
