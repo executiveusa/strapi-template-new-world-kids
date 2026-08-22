@@ -2,6 +2,7 @@
   "name": "@repo/blog",
   "version": "5.4.0",
   "private": true,
+  "nwkidsUiRevision": "a357f35",
   "description": "A blog system based on React and Next",
   "author": "sabertazimi",
   "license": "MIT",
