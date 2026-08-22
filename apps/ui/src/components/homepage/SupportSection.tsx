@@ -10,16 +10,16 @@ const copy = {
   en: {
     eyebrow: "The first-year goal",
     title: "Help us start with 12 young people.",
-    body: "The first year is intentionally small. Support will help cover the practical things that make participation possible: project materials, transportation, mentors, equipment, youth compensation when funding and the project allow for it, and follow-up after the project ends. The goal is not to run as many activities as possible. It is to learn what it takes to help 12 young people make meaningful progress.",
+    body: "The pilot program is intentionally small. Your support will help cover the practical things that make participation possible: project materials, transportation, mentors, equipment, and youth compensation when funding and the project allow for it. It also covers consistent follow-up with the student after the project ends. The goal is not to run as many activities as possible. It is to answer the question: can 12 youth from challenging situations reach their goals if given the right mentors, environment, and opportunities? These aren't always simple questions, but we believe they can, and we've seen it in the lives of our mentors, founders, and other youth along the way. If this resonates with you, we'd love to hear your thoughts — and if you want to help support our mission, all donations below go 100% to supporting our cause.",
     quote: "If you ever think you're too small to make a difference, try going to sleep with a mosquito in the room.",
-    source: "Proverb",
+    source: "West African Proverb",
   },
   es: {
     eyebrow: "La meta del primer año",
     title: "Ayúdanos a empezar con 12 jóvenes.",
-    body: "El primer año es pequeño a propósito. El apoyo ayudará a cubrir las cosas prácticas que hacen posible la participación: materiales para proyectos, transporte, mentores, equipo, compensación juvenil cuando el financiamiento y el proyecto lo permitan, y seguimiento después de que termine el proyecto. La meta no es ofrecer la mayor cantidad posible de actividades. Es aprender qué hace falta para ayudar a 12 jóvenes a avanzar de manera significativa.",
+    body: "El programa piloto es pequeño a propósito. Tu apoyo ayudará a cubrir las cosas prácticas que hacen posible la participación: materiales para proyectos, transporte, mentores, equipo y compensación juvenil cuando el financiamiento y el proyecto lo permitan. También cubre el seguimiento constante con el estudiante después de que el proyecto termina. La meta no es ofrecer la mayor cantidad posible de actividades. Es responder la pregunta: ¿pueden 12 jóvenes en situaciones difíciles alcanzar sus metas si reciben los mentores, el entorno y las oportunidades adecuadas? No son preguntas siempre sencillas, pero creemos que sí, y lo hemos visto en la vida de nuestros mentores, fundadores y otros jóvenes en el camino. Si esto resuena contigo, nos encantaría conocer tu opinión, y si quieres apoyar nuestra misión, todas las donaciones a continuación van 100% a nuestra causa.",
     quote: "Si alguna vez piensas que eres demasiado pequeño para hacer una diferencia, intenta dormir con un mosquito en la habitación.",
-    source: "Proverbio",
+    source: "Proverbio de África Occidental",
   },
 } as const
 
