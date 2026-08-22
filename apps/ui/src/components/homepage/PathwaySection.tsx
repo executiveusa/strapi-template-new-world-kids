@@ -7,76 +7,86 @@ import { Link } from "@/lib/navigation"
 const copy = {
   en: {
     problemEyebrow: "The problem",
-    problemTitle: "Knowing what you like is not the same as knowing what to do next.",
-    problemBody: "A young person may love sports, art, or growing food. The hard part is knowing where to go, who to talk to, how to get started, and what comes after that.",
-    problemClose: "That is the gap we are working on.",
+    problemTitle: "Knowing what you're interested in doesn't always tell you what to do with it.",
+    problemBody: "A young person may love basketball, drawing, growing food, or something completely different and still have no idea how that interest connects to work, education, or a future opportunity.",
+    problemClose: "Sometimes the missing piece is simple: someone gives them a chance to participate, expects something from them, and helps them figure out what comes next.",
     howEyebrow: "How it works",
-    howTitle: "We help build the bridge.",
+    howTitle: "Start with the young person, then put that interest to work.",
     steps: [
-      ["1", "Start with the young person", "What are you interested in? What would you like to try or get better at?"],
-      ["2", "Find the opportunity", "We look for real people, programs, projects, training, work, or experiences that match."],
-      ["3", "Help make the connection", "We help with the introduction, application, follow-up, or next step."],
-      ["4", "Stay involved", "We do not just hand someone a link and disappear. We follow the path and see what happens."],
-      ["5", "Learn where the path breaks", "If young people keep getting stuck in the same place, that tells us what New World Kids needs to help solve."],
+      ["1", "Start with what they care about", "What are they interested in? What would they actually like to try? What is getting in the way?"],
+      ["2", "Give them something useful to do", "That might mean helping build a garden, documenting a community event, working on a mural, helping with a sports project, or taking on another useful role."],
+      ["3", "Work alongside someone who knows the field", "A coach, artist, grower, organizer, or other experienced adult helps them learn through the work."],
+      ["4", "Stay involved when barriers show up", "New World Kids stays involved with transportation, applications, school, scheduling, communication, and other things that can keep a young person from moving forward."],
+      ["5", "Leave with something to point to", "By the end, the young person should be able to say, ‘I worked on that,’ and have a clearer idea of what they want to do next."],
     ],
     firstEyebrow: "The First 12",
-    firstTitle: "12 young people. One year. Real pathways.",
-    firstBody: "We are starting small on purpose. During our first year, New World Kids will work directly with 12 young people in Seattle and help each one move from an interest to a real opportunity.",
-    firstNote: "At the end of the year, we should know where young people actually get stuck — and what New World Kids should build around.",
-    frontsEyebrow: "Three front doors",
-    frontsTitle: "Start with what you already care about.",
+    firstTitle: "We're starting with 12 young people in Seattle over the first year.",
+    firstBody: "They will come in through interests like sports, art, and urban gardening and take part in projects where their work matters. Each young person will have an adult working alongside them, a role they are responsible for, and a next step we can follow up on.",
+    firstNote: "Starting with 12 gives us room to pay attention. We want to learn what actually helps a young person keep moving and where they tend to get stuck.",
+    frontsEyebrow: "Where they can start",
+    frontsTitle: "Start with what they already care about.",
+    frontsIntro: "We're beginning with sports, art, and urban gardening because they give young people different ways to participate. The activity isn't the point by itself. What matters is giving the young person responsibility, helping them learn through the work, and making sure the experience leads somewhere.",
     fronts: [
-      ["Sports", "Connect interests in sports to coaches, mentors, projects, training, and career pathways."],
-      ["Art", "Connect creative interests to working artists, public projects, portfolios, and paid opportunities."],
-      ["Urban Gardening", "Connect young people to real food-growing and stewardship projects — and build hands-on community projects directly where the pathway is missing."],
+      ["Sports", "A young person might help with a team, event, coaching activity, media project, health project, or work behind the scenes."],
+      ["Art", "A young person might work on a mural, design project, photography, storytelling, public art, event, or portfolio piece."],
+      ["Urban Gardening", "A young person might help build or maintain a garden, grow food, work on landscaping, improve a community space, or learn stewardship skills."],
     ],
+    supportEyebrow: "The project is only part of the work",
+    supportTitle: "We work on the project and the next step at the same time.",
+    supportBody: "A young person might be helping build a garden, create a mural, organize an event, or work on a community project. At the same time, they may need help getting there, showing up consistently, applying for a job, finishing school, putting together a portfolio, or deciding what they want to try next. New World Kids works on both.",
+    supportClose: "The project gives the young person experience. Our job is to help make sure that experience leads somewhere.",
     proofEyebrow: "What we measure",
     proofTitle: "Did the young person actually move forward?",
-    proofBody: "We track what they cared about, what opportunity they found, what got in the way, whether they participated, what they completed, and what happened next.",
+    proofBody: "We want to know whether the young person showed up, contributed to something, learned something useful, and had a next step afterward. If they didn't move forward, we want to understand why.",
     partnerEyebrow: "For partners",
-    partnerTitle: "Already creating opportunities for young people?",
-    partnerBody: "We do not want to recreate what already works. If you have a place where one of the First 12 could learn, contribute, build, work, or grow, we want to know about it.",
-    partnerAction: "Become a pathway partner",
-    mexicoEyebrow: "What we already know",
-    mexicoTitle: "Hands-on learning changes when the work is real.",
-    mexicoBody: "In Puerto Vallarta, Proyecto Indigo Azul has grown into a working food forest and community learning site. It showed us what can happen when the place is real, the work is real, and people can see the result. Seattle is where we are now testing how that same principle can help young people move from interest to opportunity.",
+    partnerTitle: "Work with the First 12.",
+    partnerBody: "We're looking for Seattle organizations, businesses, artists, coaches, growers, and community groups with useful work young people can take part in. That might mean a project site, someone willing to teach a skill, equipment, an internship, a job lead, or simply a problem a young person can help solve. New World Kids stays involved with the young person instead of making an introduction and disappearing.",
+    partnerAction: "Bring us a project",
+    mexicoEyebrow: "What we learned in Puerto Vallarta",
+    mexicoTitle: "Proyecto Indigo Azul gave us an early look at learning through work that matters.",
+    mexicoBody: "In Puerto Vallarta, the work has centered on food, land, and community. Seattle will look different. The First 12 starts with sports, art, and urban gardening. The common idea is simple: young people learn differently when they are trusted with responsibility and can see the result of what they did.",
     mexicoAction: "See Proyecto Indigo Azul",
   },
   es: {
     problemEyebrow: "El problema",
-    problemTitle: "Saber lo que te gusta no es lo mismo que saber qué hacer después.",
-    problemBody: "A un joven le pueden gustar los deportes, el arte o cultivar alimentos. Lo difícil es saber adónde ir, con quién hablar, cómo empezar y qué viene después.",
-    problemClose: "Esa es la brecha en la que estamos trabajando.",
+    problemTitle: "Saber qué te interesa no siempre te dice qué hacer con ello.",
+    problemBody: "Un joven puede amar el básquetbol, dibujar, cultivar alimentos o algo totalmente distinto y aun así no saber cómo conectar ese interés con trabajo, educación o una oportunidad futura.",
+    problemClose: "A veces falta algo sencillo: que alguien le dé la oportunidad de participar, espere algo de su trabajo y le ayude a descubrir qué sigue.",
     howEyebrow: "Cómo funciona",
-    howTitle: "Ayudamos a construir el puente.",
+    howTitle: "Empezamos con el joven y luego ponemos ese interés a trabajar.",
     steps: [
-      ["1", "Empezar con el joven", "¿Qué te interesa? ¿Qué te gustaría probar o mejorar?"],
-      ["2", "Encontrar la oportunidad", "Buscamos personas, programas, proyectos, capacitación, trabajo o experiencias reales que encajen."],
-      ["3", "Ayudar a hacer la conexión", "Ayudamos con la presentación, solicitud, seguimiento o siguiente paso."],
-      ["4", "Seguir presentes", "No entregamos un enlace y desaparecemos. Seguimos el camino y vemos qué ocurre."],
-      ["5", "Aprender dónde se rompe el camino", "Si los jóvenes se atascan repetidamente en el mismo punto, eso nos dice qué debe ayudar a resolver New World Kids."],
+      ["1", "Empezar con lo que le importa", "¿Qué le interesa? ¿Qué le gustaría probar de verdad? ¿Qué se está interponiendo?"],
+      ["2", "Darle algo útil que hacer", "Puede ser ayudar a construir un jardín, documentar un evento comunitario, trabajar en un mural, apoyar un proyecto deportivo o asumir otro papel útil."],
+      ["3", "Trabajar junto a alguien con experiencia", "Un entrenador, artista, cultivador, organizador u otro adulto con experiencia le ayuda a aprender a través del trabajo."],
+      ["4", "Seguir presentes cuando aparecen barreras", "New World Kids sigue involucrado con transporte, solicitudes, escuela, horarios, comunicación y otras cosas que pueden impedir que un joven avance."],
+      ["5", "Terminar con algo que pueda mostrar", "Al final, el joven debería poder decir ‘yo trabajé en eso’ y tener una idea más clara de qué quiere hacer después."],
     ],
-    firstEyebrow: "Los primeros 12",
-    firstTitle: "12 jóvenes. Un año. Caminos reales.",
-    firstBody: "Estamos empezando en pequeño a propósito. Durante nuestro primer año, New World Kids trabajará directamente con 12 jóvenes en Seattle y ayudará a cada uno a pasar de un interés a una oportunidad real.",
-    firstNote: "Al final del año, debemos saber dónde se atascan realmente los jóvenes y alrededor de qué debe construir New World Kids.",
-    frontsEyebrow: "Tres puertas de entrada",
-    frontsTitle: "Empieza con lo que ya te importa.",
+    firstEyebrow: "Los Primeros 12",
+    firstTitle: "Empezamos con 12 jóvenes en Seattle durante el primer año.",
+    firstBody: "Entrarán por intereses como deportes, arte y jardinería urbana y participarán en proyectos donde su trabajo importe. Cada joven tendrá un adulto trabajando a su lado, un papel del que será responsable y un siguiente paso al que podremos dar seguimiento.",
+    firstNote: "Empezar con 12 nos da espacio para prestar atención. Queremos aprender qué ayuda de verdad a que un joven siga avanzando y dónde suele quedarse atascado.",
+    frontsEyebrow: "Dónde pueden empezar",
+    frontsTitle: "Empezamos con algo que ya les importe.",
+    frontsIntro: "Comenzamos con deportes, arte y jardinería urbana porque ofrecen distintas maneras de participar. La actividad por sí sola no es el punto. Lo importante es dar responsabilidad al joven, ayudarle a aprender haciendo y asegurarnos de que la experiencia conduzca a algo más.",
     fronts: [
-      ["Deportes", "Conectar intereses deportivos con entrenadores, mentores, proyectos, capacitación y caminos profesionales."],
-      ["Arte", "Conectar intereses creativos con artistas, proyectos públicos, portafolios y oportunidades pagadas."],
-      ["Jardinería urbana", "Conectar a jóvenes con proyectos reales de cultivo y cuidado del entorno, y crear proyectos comunitarios prácticos cuando falte ese camino."],
+      ["Deportes", "Un joven puede ayudar con un equipo, evento, actividad de entrenamiento, proyecto de medios, salud o trabajo detrás de escena."],
+      ["Arte", "Un joven puede trabajar en un mural, diseño, fotografía, narración, arte público, evento o pieza de portafolio."],
+      ["Jardinería urbana", "Un joven puede ayudar a construir o mantener un jardín, cultivar alimentos, trabajar en paisajismo, mejorar un espacio comunitario o aprender habilidades de cuidado del entorno."],
     ],
+    supportEyebrow: "El proyecto es solo una parte del trabajo",
+    supportTitle: "Trabajamos en el proyecto y en el siguiente paso al mismo tiempo.",
+    supportBody: "Un joven puede estar ayudando a construir un jardín, crear un mural, organizar un evento o trabajar en un proyecto comunitario. Al mismo tiempo, quizá necesite ayuda para llegar, asistir de forma constante, solicitar un empleo, terminar la escuela, armar un portafolio o decidir qué quiere intentar después. New World Kids trabaja en ambas cosas.",
+    supportClose: "El proyecto le da experiencia al joven. Nuestro trabajo es ayudar a que esa experiencia conduzca a algo más.",
     proofEyebrow: "Lo que medimos",
     proofTitle: "¿El joven realmente avanzó?",
-    proofBody: "Seguimos qué le importaba, qué oportunidad encontró, qué se interpuso, si participó, qué completó y qué ocurrió después.",
+    proofBody: "Queremos saber si el joven asistió, contribuyó a algo, aprendió algo útil y tuvo un siguiente paso después. Si no avanzó, queremos entender por qué.",
     partnerEyebrow: "Para aliados",
-    partnerTitle: "¿Ya estás creando oportunidades para jóvenes?",
-    partnerBody: "No queremos recrear lo que ya funciona. Si tienes un lugar donde uno de los primeros 12 pueda aprender, contribuir, construir, trabajar o crecer, queremos conocerte.",
-    partnerAction: "Conviértete en aliado",
-    mexicoEyebrow: "Lo que ya sabemos",
-    mexicoTitle: "El aprendizaje práctico cambia cuando el trabajo es real.",
-    mexicoBody: "En Puerto Vallarta, Proyecto Indigo Azul se ha convertido en un bosque de alimentos y sitio de aprendizaje comunitario en funcionamiento. Nos mostró lo que puede ocurrir cuando el lugar es real, el trabajo es real y la gente puede ver el resultado. Seattle es donde ahora estamos probando cómo ese mismo principio puede ayudar a jóvenes a pasar del interés a la oportunidad.",
+    partnerTitle: "Trabaja con los Primeros 12.",
+    partnerBody: "Buscamos organizaciones, negocios, artistas, entrenadores, cultivadores y grupos comunitarios de Seattle con trabajo útil en el que los jóvenes puedan participar. Puede ser un sitio para un proyecto, alguien dispuesto a enseñar una habilidad, equipo, una pasantía, una oportunidad de empleo o simplemente un problema que un joven pueda ayudar a resolver. New World Kids sigue involucrado con el joven en lugar de hacer una presentación y desaparecer.",
+    partnerAction: "Tráenos un proyecto",
+    mexicoEyebrow: "Lo que aprendimos en Puerto Vallarta",
+    mexicoTitle: "Proyecto Indigo Azul nos dio una primera mirada al aprendizaje a través de trabajo que importa.",
+    mexicoBody: "En Puerto Vallarta, el trabajo se ha centrado en alimentos, tierra y comunidad. Seattle será distinto. Los Primeros 12 empiezan con deportes, arte y jardinería urbana. La idea común es sencilla: los jóvenes aprenden de otra manera cuando se les confía responsabilidad y pueden ver el resultado de lo que hicieron.",
     mexicoAction: "Ver Proyecto Indigo Azul",
   },
 } as const
@@ -92,14 +102,14 @@ export function PathwaySection() {
           <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.problemEyebrow}</p>
           <h2 className="mt-4 max-w-4xl font-serif text-4xl font-semibold tracking-tight text-[var(--color-text-primary)] md:text-6xl">{t.problemTitle}</h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-text-muted)]">{t.problemBody}</p>
-          <p className="mt-4 font-serif text-2xl font-semibold text-[var(--color-text-primary)]">{t.problemClose}</p>
+          <p className="mt-4 max-w-3xl font-serif text-2xl font-semibold text-[var(--color-text-primary)]">{t.problemClose}</p>
         </div>
       </section>
 
       <section id="how" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-5xl">
           <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.howEyebrow}</p>
-          <h2 className="mt-4 font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.howTitle}</h2>
+          <h2 className="mt-4 max-w-4xl font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.howTitle}</h2>
           <div className="mt-12 divide-y divide-[var(--color-border-subtle)] border-y border-[var(--color-border-subtle)]">
             {t.steps.map(([number, title, body]) => (
               <div key={number} className="grid gap-3 py-6 md:grid-cols-[64px_260px_1fr] md:items-start">
@@ -115,7 +125,7 @@ export function PathwaySection() {
       <section id="first-12" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)] px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-5xl">
           <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.firstEyebrow}</p>
-          <h2 className="mt-4 font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.firstTitle}</h2>
+          <h2 className="mt-4 max-w-4xl font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.firstTitle}</h2>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]">{t.firstBody}</p>
           <p className="mt-5 max-w-3xl font-serif text-2xl leading-9 text-[var(--color-text-primary)]">{t.firstNote}</p>
         </div>
@@ -124,7 +134,8 @@ export function PathwaySection() {
       <section id="programs" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-5xl">
           <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.frontsEyebrow}</p>
-          <h2 className="mt-4 font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.frontsTitle}</h2>
+          <h2 className="mt-4 max-w-4xl font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.frontsTitle}</h2>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]">{t.frontsIntro}</p>
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {t.fronts.map(([title, body]) => (
               <article key={title} className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-bg)] p-7">
@@ -136,7 +147,16 @@ export function PathwaySection() {
         </div>
       </section>
 
-      <section id="results" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)] px-6 py-20 md:px-10 md:py-28">
+      <section id="support-path" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)] px-6 py-20 md:px-10 md:py-28">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.supportEyebrow}</p>
+          <h2 className="mt-4 max-w-4xl font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.supportTitle}</h2>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]">{t.supportBody}</p>
+          <p className="mt-5 max-w-3xl font-serif text-2xl leading-9 text-[var(--color-text-primary)]">{t.supportClose}</p>
+        </div>
+      </section>
+
+      <section id="results" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-5xl">
           <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.proofEyebrow}</p>
           <h2 className="mt-4 max-w-4xl font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.proofTitle}</h2>
@@ -144,7 +164,7 @@ export function PathwaySection() {
         </div>
       </section>
 
-      <section id="partners" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-6 py-20 md:px-10 md:py-28">
+      <section id="partners" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)] px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
           <div>
             <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.partnerEyebrow}</p>
