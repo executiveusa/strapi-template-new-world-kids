@@ -57,16 +57,22 @@ function LoopingHeroVideo({ poster, paused }: { poster: string; paused: boolean 
       }
       raf = requestAnimationFrame(tick)
     }
-    if (paused) { videoA.pause(); videoB.pause(); return }
+    if (paused) {
+      videoA.pause()
+      videoB.pause()
+      return
+    }
     ;(activeRef.current === "a" ? videoA : videoB).play().catch(() => {})
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
   }, [paused])
 
-  return <>
-    <video ref={videoARef} muted playsInline preload="auto" poster={poster} className="absolute inset-0 h-full w-full object-cover transition-opacity ease-linear" style={{opacity:aOpacity,transitionDuration:`${CROSSFADE_SECONDS}s`}} aria-hidden="true"><source src={HERO_VIDEO_SRC} type="video/mp4" /></video>
-    <video ref={videoBRef} muted playsInline preload="auto" className="absolute inset-0 h-full w-full object-cover transition-opacity ease-linear" style={{opacity:1-aOpacity,transitionDuration:`${CROSSFADE_SECONDS}s`}} aria-hidden="true"><source src={HERO_VIDEO_SRC} type="video/mp4" /></video>
-  </>
+  return (
+    <>
+      <video ref={videoARef} muted playsInline preload="auto" poster={poster} className="absolute inset-0 h-full w-full object-cover transition-opacity ease-linear" style={{ opacity: aOpacity, transitionDuration: `${CROSSFADE_SECONDS}s` }} aria-hidden="true"><source src={HERO_VIDEO_SRC} type="video/mp4" /></video>
+      <video ref={videoBRef} muted playsInline preload="auto" className="absolute inset-0 h-full w-full object-cover transition-opacity ease-linear" style={{ opacity: 1 - aOpacity, transitionDuration: `${CROSSFADE_SECONDS}s` }} aria-hidden="true"><source src={HERO_VIDEO_SRC} type="video/mp4" /></video>
+    </>
+  )
 }
 
 export function NonprofitHero() {
@@ -75,23 +81,31 @@ export function NonprofitHero() {
   const [paused, setPaused] = useState(false)
 
   return (
-    <section data-hero className="bg-[var(--color-bg)]">
-      <div className="relative min-h-[680px] w-full overflow-hidden md:min-h-[780px]">
+    <section data-hero className="bg-[#151515]">
+      <div className="relative min-h-[720px] w-full overflow-hidden md:min-h-[860px]">
         <LoopingHeroVideo poster="/videos/hero-garden-poster.jpg" paused={paused} />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,12,9,0.80)_0%,rgba(10,12,9,0.60)_54%,rgba(10,12,9,0.20)_100%)] max-md:bg-[linear-gradient(180deg,rgba(10,12,9,0.42)_0%,rgba(10,12,9,0.76)_72%,rgba(10,12,9,0.84)_100%)]" />
-        <div className="relative z-10 mx-auto flex min-h-[680px] max-w-7xl items-end px-6 pt-24 pb-14 md:min-h-[780px] md:items-center md:px-10 md:py-20">
-          <div className="max-w-4xl text-white">
-            <p className="text-xs font-semibold tracking-[0.18em] text-white/78 uppercase sm:text-sm">{t.eyebrow}</p>
-            <h1 className="mt-5 max-w-4xl font-serif text-5xl leading-[0.98] font-semibold tracking-[-0.035em] text-balance sm:text-6xl md:text-7xl lg:text-[5rem]">{t.title}</h1>
-            <p className="mt-6 max-w-3xl text-base leading-7 text-white/90 sm:text-lg sm:leading-8 md:text-xl">{t.body}</p>
-            <p className="mt-5 max-w-2xl text-sm font-semibold leading-6 text-white/90 sm:text-base">{t.first}</p>
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,10,10,0.80)_0%,rgba(10,10,10,0.58)_48%,rgba(10,10,10,0.12)_100%)] max-md:bg-[linear-gradient(180deg,rgba(10,10,10,0.22)_0%,rgba(10,10,10,0.52)_46%,rgba(10,10,10,0.88)_100%)]" />
+        <div className="absolute top-0 left-0 h-2 w-full bg-[#2457FF]" />
+
+        <div className="relative z-10 mx-auto flex min-h-[720px] max-w-[1440px] items-end px-6 pt-24 pb-12 md:min-h-[860px] md:items-center md:px-12 lg:px-16">
+          <div className="max-w-[1040px] text-white">
+            <p className="text-xs font-bold tracking-[0.22em] text-white uppercase sm:text-sm">{t.eyebrow}</p>
+            <h1 className="mt-5 max-w-[1000px] text-[clamp(3.4rem,8vw,7.9rem)] leading-[0.88] font-black tracking-[-0.055em] text-balance uppercase">{t.title}</h1>
+            <div className="mt-7 grid max-w-[980px] gap-5 md:grid-cols-[1.45fr_0.75fr] md:items-end">
+              <p className="max-w-3xl text-base leading-7 text-white/92 sm:text-lg sm:leading-8 md:text-xl">{t.body}</p>
+              <p className="border-l-2 border-[#2457FF] pl-4 text-sm font-semibold leading-6 text-white/90 sm:text-base">{t.first}</p>
+            </div>
             <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
               <Link href="/#how" locale={locale} className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-7 py-3 text-base font-semibold text-black transition-transform duration-150 hover:-translate-y-0.5">{t.primary}</Link>
               <Link href="/#support" locale={locale} className="inline-flex min-h-12 items-center text-sm font-semibold text-white underline decoration-white/35 underline-offset-4 hover:decoration-white">{t.secondary}</Link>
             </div>
           </div>
         </div>
-        <button type="button" onClick={() => setPaused(v => !v)} className="absolute right-4 bottom-4 z-20 inline-flex min-h-11 items-center rounded-full border border-white/30 bg-black/30 px-4 text-xs font-semibold text-white backdrop-blur-sm" aria-pressed={paused} aria-label={paused ? t.play : t.pause}>{paused ? t.play : t.pause}</button>
+
+        <div className="pointer-events-none absolute right-6 bottom-8 z-10 hidden text-right text-[10px] font-bold tracking-[0.28em] text-white/60 uppercase md:block">
+          First 12 / Seattle
+        </div>
+        <button type="button" onClick={() => setPaused(v => !v)} className="absolute right-4 bottom-4 z-20 inline-flex min-h-10 items-center border border-white/35 bg-black/25 px-4 text-[11px] font-bold tracking-[0.08em] text-white uppercase backdrop-blur-sm md:right-6 md:bottom-16" aria-pressed={paused} aria-label={paused ? t.play : t.pause}>{paused ? t.play : t.pause}</button>
       </div>
     </section>
   )

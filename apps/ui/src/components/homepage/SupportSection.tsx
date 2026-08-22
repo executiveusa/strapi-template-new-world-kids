@@ -28,28 +28,37 @@ export function SupportSection() {
   const t = locale === "es" ? copy.es : copy.en
 
   return (
-    <section id="support" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)] px-6 py-20 md:px-10">
-      <div className="mx-auto max-w-4xl">
-        <div className="text-center">
-          <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.eyebrow}</p>
-          <h2 className="mx-auto mt-4 max-w-3xl font-serif text-4xl leading-tight font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.title}</h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-[var(--color-text-muted)] md:text-lg">{t.body}</p>
+    <section id="support" className="bg-[var(--color-ink)] px-6 py-24 text-white md:px-10 md:py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+          <div>
+            <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase">{t.eyebrow}</p>
+            <h2 className="mt-5 max-w-5xl text-5xl leading-[0.94] font-black tracking-[-0.055em] sm:text-6xl md:text-7xl lg:text-[5.8rem]">{t.title}</h2>
+          </div>
+          <p className="max-w-2xl border-l-4 border-[var(--color-nwk-blue)] pl-6 text-base leading-8 text-white/70 md:pl-8 md:text-lg">{t.body}</p>
         </div>
-        <div className="mt-12 flex flex-wrap justify-center gap-4">
+
+        <div className="mt-14 grid gap-3 sm:grid-cols-3">
           {donateAmounts.map((amount, i) => (
-            <motion.div key={amount} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }} whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
-              <Link href="/donate" locale={locale} className="inline-flex min-w-28 items-center justify-center rounded-full border border-[var(--color-accent-coral)] bg-[var(--color-accent-coral)] px-8 py-4 font-serif text-2xl font-semibold text-white transition-colors hover:bg-[var(--color-accent-coral-hover)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent-coral)]">{amount}</Link>
+            <motion.div key={amount} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }} whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>
+              <Link href="/donate" locale={locale} className="flex min-h-28 items-center justify-between border-2 border-white px-6 py-5 text-white transition-colors hover:border-[var(--color-action-orange)] hover:bg-[var(--color-action-orange)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+                <span className="text-4xl font-black tracking-[-0.05em] md:text-5xl">{amount}</span>
+                <span aria-hidden="true" className="text-2xl">→</span>
+              </Link>
             </motion.div>
           ))}
         </div>
-        <div className="mt-10 flex justify-center gap-4 text-sm text-[var(--color-text-muted)]">
-          <a href="https://www.instagram.com/proyectoindigoazul/" target="_blank" rel="noreferrer" className="transition hover:text-[var(--color-text-primary)]">Instagram</a>
-          <a href="https://www.facebook.com/nwkidsorg" target="_blank" rel="noreferrer" className="transition hover:text-[var(--color-text-primary)]">Facebook</a>
-          <a href="https://www.linkedin.com/company/nwkids/" target="_blank" rel="noreferrer" className="transition hover:text-[var(--color-text-primary)]">LinkedIn</a>
-        </div>
-        <div className="mt-14 text-center">
-          <blockquote className="mx-auto max-w-3xl font-serif text-3xl leading-tight text-[var(--color-text-primary)] italic md:text-5xl">“{t.quote}”</blockquote>
-          <p className="mt-4 text-xs tracking-[0.2em] text-[var(--color-text-muted)] uppercase">{t.source}</p>
+
+        <div className="mt-16 grid gap-10 border-t border-white/20 pt-10 md:grid-cols-[1fr_auto] md:items-end">
+          <div>
+            <blockquote className="max-w-4xl text-2xl leading-tight font-bold tracking-[-0.025em] text-white/90 md:text-4xl">“{t.quote}”</blockquote>
+            <p className="mt-4 text-xs font-bold tracking-[0.2em] text-white/45 uppercase">{t.source}</p>
+          </div>
+          <div className="flex gap-5 text-xs font-bold tracking-[0.08em] text-white/55 uppercase">
+            <a href="https://www.instagram.com/proyectoindigoazul/" target="_blank" rel="noreferrer" className="transition hover:text-white">Instagram</a>
+            <a href="https://www.facebook.com/nwkidsorg" target="_blank" rel="noreferrer" className="transition hover:text-white">Facebook</a>
+            <a href="https://www.linkedin.com/company/nwkids/" target="_blank" rel="noreferrer" className="transition hover:text-white">LinkedIn</a>
+          </div>
         </div>
       </div>
     </section>
