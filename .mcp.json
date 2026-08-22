@@ -18,7 +18,9 @@
     "jcodemunch": {
       "type": "stdio",
       "command": "uvx",
-      "args": ["jcodemunch-mcp"],
+      "args": [
+        "jcodemunch-mcp"
+      ],
       "env": {}
     },
     "supabase": {
@@ -31,20 +33,37 @@
     "mcp2cli": {
       "type": "stdio",
       "command": "uvx",
-      "args": ["mcp2cli", "--mcp-stdio", "uvx mcp2cli --help"],
+      "args": [
+        "mcp2cli",
+        "--mcp-stdio",
+        "uvx mcp2cli --help"
+      ],
       "env": {}
     },
     "nwkids-infrastructure": {
       "type": "stdio",
       "command": "pnpm",
-      "args": ["--filter", "@nwkids/mcp", "start"],
+      "args": [
+        "--filter",
+        "@nwkids/mcp",
+        "start"
+      ],
       "env": {}
     },
     "gbrain": {
       "type": "stdio",
       "command": "gbrain",
-      "args": ["serve"],
+      "args": [
+        "serve"
+      ],
       "env": {}
+    },
+    "21st": {
+      "type": "http",
+      "url": "https://21st.dev/api/mcp",
+      "headers": {
+        "x-api-key": "${API_KEY_21ST}"
+      }
     }
   }
 }
