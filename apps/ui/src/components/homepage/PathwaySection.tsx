@@ -8,7 +8,7 @@ const copy = {
   en: {
     problemEyebrow: "The problem",
     problemTitle: "Knowing what you're interested in doesn't always tell you what to do with it.",
-    problemBody: "Often, the challenge isn't a lack of talent or ambition. It's that many young people are navigating important life decisions without the guidance, support, and opportunities that help them turn their interests into positive futures. Every day we see talented youth who may love basketball, drawing, growing food, or something completely different, but have no idea how that interest connects to work, education, or a future opportunity.",
+    problemBody: "Often, the challenge isn't a lack of talent or ambition. It's that many young people are navigating important life decisions without the guidance, support, and opportunities that help turn their interests into positive futures. Every day we see talented youth who may love basketball, drawing, growing food, or something completely different, but have no idea how that interest connects to work, education, or a future opportunity.",
     problemClose: "Sometimes the missing piece is simple: someone gives them a chance to participate, expects something from them, and stays with them through the process to help them find what comes next.",
     howEyebrow: "How it works",
     howTitle: "We start by understanding the interest, removing the blockers, and then matching it with paid opportunities and personal mentors.",
@@ -16,8 +16,8 @@ const copy = {
       ["1", "Lead with what they care about", "What are they already interested in? What would they actually like to try? What is getting in the way?"],
       ["2", "Give them something meaningful to do", "That might mean helping build a garden, documenting a community event, working on a mural, helping with a sports project, or taking on another useful role."],
       ["3", "Work alongside someone who knows the field", "A coach, artist, grower, organizer, or other experienced adult helps them learn through the work."],
-      ["4", "Stay involved when barriers show up", "We help remove blockers like transportation, applications, challenges with court, school, scheduling, communication, and many other things that can keep them from moving forward."],
-      ["5", "Leave with something to point to", "By the end, each of the 12 should be able to say, ‘I worked on that,’ and have a clearer idea of what they want to do next and the bridge to get there."],
+      ["4", "Stay involved when barriers show up", "We help remove blockers like transportation, applications, challenges with court, school, scheduling, communication, and other potential challenges that can keep them from moving forward."],
+      ["5", "Leave with something to point to", "When the program or project is completed, each of the 12 should be able to say, ‘I worked on that. I learned this,’ and have a clear idea of what's next and the bridge to get there."],
     ],
     firstEyebrow: "The First 12",
     firstTitle: "We saw the potential of place-based learning through our work in Puerto Vallarta.",
@@ -50,7 +50,7 @@ const copy = {
   es: {
     problemEyebrow: "El problema",
     problemTitle: "Saber qué te interesa no siempre te dice qué hacer con ello.",
-    problemBody: "A menudo, el reto no es falta de talento ni de ambición. Es que muchos jóvenes están tomando decisiones de vida importantes sin la guía, el apoyo y las oportunidades que les ayuden a convertir sus intereses en un futuro positivo. Todos los días vemos jóvenes talentosos a quienes puede encantarles el básquetbol, dibujar, cultivar alimentos u otra cosa totalmente distinta, pero que no saben cómo conectar ese interés con el trabajo, la educación o una oportunidad futura.",
+    problemBody: "A menudo, el reto no es falta de talento ni de ambición. Es que muchos jóvenes están tomando decisiones de vida importantes sin la guía, el apoyo y las oportunidades que ayuden a convertir sus intereses en un futuro positivo. Todos los días vemos jóvenes talentosos a quienes puede encantarles el básquetbol, dibujar, cultivar alimentos u otra cosa totalmente distinta, pero que no saben cómo conectar ese interés con el trabajo, la educación o una oportunidad futura.",
     problemClose: "A veces falta algo sencillo: que alguien le dé la oportunidad de participar, espere algo de su trabajo y se quede con él durante el proceso para ayudarle a descubrir qué sigue.",
     howEyebrow: "Cómo funciona",
     howTitle: "Empezamos por entender el interés, eliminar los obstáculos y luego lo relacionamos con oportunidades pagadas y mentores personales.",
@@ -58,8 +58,8 @@ const copy = {
       ["1", "Empezar con lo que le importa", "¿Qué le interesa? ¿Qué le gustaría probar de verdad? ¿Qué se está interponiendo?"],
       ["2", "Darle algo significativo que hacer", "Puede ser ayudar a construir un jardín, documentar un evento comunitario, trabajar en un mural, apoyar un proyecto deportivo o asumir otro papel útil."],
       ["3", "Trabajar junto a alguien con experiencia", "Un entrenador, artista, cultivador, organizador u otro adulto con experiencia le ayuda a aprender a través del trabajo."],
-      ["4", "Seguir presentes cuando aparecen barreras", "Ayudamos a eliminar obstáculos como transporte, solicitudes, dificultades con la corte, la escuela, horarios, comunicación y muchas otras cosas que pueden impedirles avanzar."],
-      ["5", "Terminar con algo que pueda mostrar", "Al final, cada uno de los 12 debería poder decir ‘yo trabajé en eso’ y tener una idea más clara de qué quiere hacer después y el puente para llegar ahí."],
+      ["4", "Seguir presentes cuando aparecen barreras", "Ayudamos a eliminar obstáculos como transporte, solicitudes, dificultades con la corte, la escuela, horarios, comunicación y otros posibles desafíos que pueden impedirles avanzar."],
+      ["5", "Terminar con algo que pueda mostrar", "Cuando el programa o proyecto termina, cada uno de los 12 debería poder decir ‘yo trabajé en eso, aprendí esto’ y tener una idea clara de qué sigue y el puente para llegar ahí."],
     ],
     firstEyebrow: "Los Primeros 12",
     firstTitle: "Vimos el potencial del aprendizaje basado en el lugar a través de nuestro trabajo en Puerto Vallarta.",
@@ -132,7 +132,7 @@ export function PathwaySection() {
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase">{t.firstEyebrow}</p>
           <div className="mt-5 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-            <div aria-hidden="true" className="select-none text-[10rem] leading-[0.72] font-black tracking-[-0.1em] text-[var(--color-nwk-blue)] sm:text-[14rem] md:text-[18rem] lg:text-[22rem]">12</div>
+            <div aria-hidden="true" className="select-none text-[6rem] leading-[0.72] font-black tracking-[-0.1em] text-[var(--color-nwk-blue)] sm:text-[10rem] md:text-[14rem] lg:text-[18rem] xl:text-[22rem]">12</div>
             <h2 className="pb-3 text-4xl leading-[0.98] font-black tracking-[-0.045em] sm:text-5xl md:text-6xl lg:text-7xl">{t.firstTitle}</h2>
           </div>
           <div className="mt-12 grid gap-8 border-t-2 border-[var(--color-ink)] pt-8 md:grid-cols-2 md:gap-16">
