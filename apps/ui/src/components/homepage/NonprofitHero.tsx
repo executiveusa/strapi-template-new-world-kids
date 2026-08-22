@@ -8,21 +8,21 @@ import { Link } from "@/lib/navigation"
 const copy = {
   en: {
     eyebrow: "New World Kids · Seattle",
-    title: "We help young people take the next step with something they already care about.",
-    body: "A lot of young people know what interests them. What they may not have is a chance to use that interest outside of school or turn it into experience. New World Kids creates projects where young people can take on responsibility, work alongside adults who know the field, build skills, and figure out where they want to go next.",
-    first: "We're starting in Seattle with the First 12: 12 young people over our first year.",
+    title: "We help youth take the next step with something they already care about.",
+    body: "Many young people already know what interests them. What they may not have is a chance to use that interest outside of school or turn it into a pathway to supporting themselves. New World Kids creates projects and programs that place them with mentors who know the field, help them earn a fair wage, complete something real, and then guide them through the next steps.",
+    first: "In 2027, we're starting in Seattle with the First 12: 12 youth will be given paid positions, one-on-one mentorship, and ongoing support working inside a project aligned with the skills they're already interested in.",
     primary: "See how it works ↓",
-    secondary: "Work with the First 12 →",
+    secondary: "Support our First 12 →",
     pause: "Pause video",
     play: "Play video",
   },
   es: {
     eyebrow: "New World Kids · Seattle",
     title: "Ayudamos a jóvenes a dar el siguiente paso con algo que ya les importa.",
-    body: "Muchos jóvenes saben qué les interesa. Lo que quizá no tienen es la oportunidad de usar ese interés fuera de la escuela o convertirlo en experiencia. New World Kids crea proyectos donde pueden asumir responsabilidades, trabajar junto a adultos con experiencia, desarrollar habilidades y descubrir qué quieren hacer después.",
-    first: "Estamos empezando en Seattle con los Primeros 12: 12 jóvenes durante nuestro primer año.",
+    body: "Muchos jóvenes ya saben qué les interesa. Lo que quizá no tienen es la oportunidad de usar ese interés fuera de la escuela o convertirlo en un camino hacia su propio sustento. New World Kids crea proyectos y programas que los ponen con mentores que conocen el campo, les ayudan a ganar un salario justo, completar algo real y luego los guían en los siguientes pasos.",
+    first: "En 2027, empezamos en Seattle con los Primeros 12: 12 jóvenes recibirán puestos pagados, mentoría uno a uno y apoyo continuo trabajando dentro de un proyecto alineado con las habilidades que ya les interesan.",
     primary: "Ver cómo funciona ↓",
-    secondary: "Trabaja con los Primeros 12 →",
+    secondary: "Apoya a los Primeros 12 →",
     pause: "Pausar video",
     play: "Reproducir video",
   },
@@ -96,8 +96,8 @@ export function NonprofitHero() {
               <p className="border-l-2 border-[#2457FF] pl-4 text-sm font-semibold leading-6 text-white/90 sm:text-base">{t.first}</p>
             </div>
             <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-              <Link href="/#how" locale={locale} className="inline-flex min-h-12 items-center justify-center bg-[#FF5A36] px-7 py-3 text-sm font-extrabold tracking-[0.04em] text-white uppercase transition-transform duration-150 hover:-translate-y-0.5 hover:bg-[#E94B29]">{t.primary}</Link>
-              <Link href="/#partners" locale={locale} className="inline-flex min-h-12 items-center border-b border-white/55 text-sm font-bold text-white hover:border-white">{t.secondary}</Link>
+              <Link href="/#how" locale={locale} className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-7 py-3 text-base font-semibold text-black transition-transform duration-150 hover:-translate-y-0.5">{t.primary}</Link>
+              <Link href="/#support" locale={locale} className="inline-flex min-h-12 items-center text-sm font-semibold text-white underline decoration-white/35 underline-offset-4 hover:decoration-white">{t.secondary}</Link>
             </div>
           </div>
         </div>
