@@ -53,7 +53,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
               locale={locale}
               className="inline-flex h-10 items-center rounded-full border border-[var(--color-border-subtle)] px-5 text-sm font-semibold text-[var(--color-text-primary)] transition hover:bg-[var(--color-surface)]"
             >
-              {locale === "es" ? "Trabaja con los Primeros 12" : "Work with the First 12"}
+              {locale === "es" ? "Sé mentor de los Primeros 12" : "Mentor with the First 12"}
             </Link>
           </div>
 
