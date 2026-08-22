@@ -25,7 +25,9 @@ const copy = {
     firstNote: "Starting with 12 gives us room to pay attention. We want to learn what actually helps keep a student moving and where they tend to get stuck.",
     frontsEyebrow: "Where they can start",
     frontsTitle: "Start with what they already care about.",
-    frontsIntro: "We're beginning with sports, art, and urban gardening because they give young people different ways to participate. The activity isn't the point by itself. What matters is giving them responsibility, a way to earn an income, and making sure the experience leads somewhere they actually want to go.",
+    frontsIntroPre: "We're beginning with sports, art, and urban gardening because they give young people different ways to participate.",
+    frontsIntroBold: "The activity isn't the point by itself.",
+    frontsIntroPost: "What matters is giving them responsibility, income, proper mentors, and using the experience to guide them in the direction they actually desire to go.",
     fronts: [
       ["Sports", "Youth might help with a team, event, coaching activity, media project, health project, or simply work behind the scenes."],
       ["Art", "Seattle has a huge existing art culture. Community restoration murals, design projects, photography, storytelling, and public art events are all possible pathways to inspire a young artist to follow their dreams and find paid work using their talents."],
@@ -67,7 +69,9 @@ const copy = {
     firstNote: "Empezar con 12 nos da espacio para prestar atención. Queremos aprender qué ayuda de verdad a que un estudiante siga avanzando y dónde suele quedarse atascado.",
     frontsEyebrow: "Dónde pueden empezar",
     frontsTitle: "Empezamos con algo que ya les importe.",
-    frontsIntro: "Comenzamos con deportes, arte y jardinería urbana porque ofrecen distintas maneras de participar. La actividad por sí sola no es el punto. Lo importante es darles responsabilidad, una forma de generar ingresos y asegurarnos de que la experiencia los lleve a donde realmente quieren llegar.",
+    frontsIntroPre: "Comenzamos con deportes, arte y jardinería urbana porque ofrecen distintas maneras de participar.",
+    frontsIntroBold: "La actividad por sí sola no es el punto.",
+    frontsIntroPost: "Lo importante es darles responsabilidad, ingresos, mentores adecuados y usar la experiencia para guiarlos en la dirección que realmente desean seguir.",
     fronts: [
       ["Deportes", "Los jóvenes pueden ayudar con un equipo, evento, actividad de entrenamiento, proyecto de medios, proyecto de salud o simplemente trabajar detrás de escena."],
       ["Arte", "Seattle tiene una enorme cultura artística ya existente. Murales de restauración comunitaria, proyectos de diseño, fotografía, narración, arte público y eventos son posibles caminos para inspirar a un joven artista a seguir sus sueños y encontrar trabajo remunerado usando su talento."],
@@ -146,7 +150,9 @@ export function PathwaySection() {
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase">{t.frontsEyebrow}</p>
           <h2 className="mt-5 max-w-5xl text-5xl leading-[0.95] font-black tracking-[-0.05em] sm:text-6xl md:text-7xl">{t.frontsTitle}</h2>
-          <p className="mt-7 max-w-3xl text-lg leading-8 text-white/70 md:text-xl md:leading-9">{t.frontsIntro}</p>
+          <p className="mt-7 max-w-3xl text-lg leading-8 text-white/70 md:text-xl md:leading-9">
+            {t.frontsIntroPre} <strong className="font-black text-white">{t.frontsIntroBold}</strong> {t.frontsIntroPost}
+          </p>
         </div>
         <div className="mt-14 border-y border-white/20">
           {t.fronts.map(([title, body], index) => (
