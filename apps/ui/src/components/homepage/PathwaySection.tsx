@@ -97,86 +97,103 @@ export function PathwaySection() {
 
   return (
     <>
-      <section id="problem" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)] px-6 py-20 md:px-10 md:py-28">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.problemEyebrow}</p>
-          <h2 className="mt-4 max-w-4xl font-serif text-4xl font-semibold tracking-tight text-[var(--color-text-primary)] md:text-6xl">{t.problemTitle}</h2>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-text-muted)]">{t.problemBody}</p>
-          <p className="mt-4 max-w-3xl font-serif text-2xl font-semibold text-[var(--color-text-primary)]">{t.problemClose}</p>
+      <section id="problem" className="bg-[var(--color-bg)] px-6 py-24 md:px-10 md:py-36">
+        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+          <div>
+            <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase">{t.problemEyebrow}</p>
+            <h2 className="mt-6 max-w-5xl text-5xl leading-[0.94] font-black tracking-[-0.055em] text-[var(--color-text-primary)] sm:text-6xl md:text-7xl lg:text-[5.6rem]">{t.problemTitle}</h2>
+          </div>
+          <div className="border-l-4 border-[var(--color-nwk-blue)] pl-6 md:pl-8">
+            <p className="text-lg leading-8 text-[var(--color-text-muted)] md:text-xl md:leading-9">{t.problemBody}</p>
+            <p className="mt-8 text-2xl leading-tight font-bold tracking-[-0.02em] text-[var(--color-text-primary)] md:text-3xl">{t.problemClose}</p>
+          </div>
         </div>
       </section>
 
-      <section id="how" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-6 py-20 md:px-10 md:py-28">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.howEyebrow}</p>
-          <h2 className="mt-4 max-w-4xl font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.howTitle}</h2>
-          <div className="mt-12 divide-y divide-[var(--color-border-subtle)] border-y border-[var(--color-border-subtle)]">
+      <section id="how" className="bg-[var(--color-nwk-blue)] px-6 py-24 text-white md:px-10 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <p className="text-xs font-bold tracking-[0.24em] text-white/70 uppercase">{t.howEyebrow}</p>
+            <h2 className="max-w-5xl text-4xl leading-[0.98] font-black tracking-[-0.045em] sm:text-5xl md:text-6xl lg:text-7xl">{t.howTitle}</h2>
+          </div>
+          <div className="mt-14 border-t border-white/30">
             {t.steps.map(([number, title, body]) => (
-              <div key={number} className="grid gap-3 py-6 md:grid-cols-[64px_260px_1fr] md:items-start">
-                <span className="font-serif text-2xl font-semibold text-[var(--color-accent-gold)]">{number}</span>
-                <h3 className="font-serif text-xl font-semibold text-[var(--color-text-primary)]">{title}</h3>
-                <p className="text-sm leading-7 text-[var(--color-text-muted)] md:text-base">{body}</p>
+              <div key={number} className="grid gap-4 border-b border-white/30 py-7 md:grid-cols-[96px_0.8fr_1.2fr] md:items-start md:py-9">
+                <span className="text-6xl leading-none font-black tracking-[-0.06em] text-white/35 md:text-7xl">{number}</span>
+                <h3 className="text-xl leading-tight font-bold tracking-[-0.02em] text-white md:text-2xl">{title}</h3>
+                <p className="max-w-2xl text-sm leading-7 text-white/80 md:text-base md:leading-8">{body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="first-12" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)] px-6 py-20 md:px-10 md:py-28">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.firstEyebrow}</p>
-          <h2 className="mt-4 max-w-4xl font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.firstTitle}</h2>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]">{t.firstBody}</p>
-          <p className="mt-5 max-w-3xl font-serif text-2xl leading-9 text-[var(--color-text-primary)]">{t.firstNote}</p>
-        </div>
-      </section>
-
-      <section id="programs" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-6 py-20 md:px-10 md:py-28">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.frontsEyebrow}</p>
-          <h2 className="mt-4 max-w-4xl font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.frontsTitle}</h2>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]">{t.frontsIntro}</p>
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {t.fronts.map(([title, body]) => (
-              <article key={title} className="rounded-2xl border border-[var(--color-border-subtle)] bg-[var(--color-bg)] p-7">
-                <h3 className="font-serif text-2xl font-semibold text-[var(--color-text-primary)]">{title}</h3>
-                <p className="mt-4 text-sm leading-7 text-[var(--color-text-muted)]">{body}</p>
-              </article>
-            ))}
+      <section id="first-12" className="overflow-hidden bg-white px-6 py-24 text-[var(--color-ink)] md:px-10 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase">{t.firstEyebrow}</p>
+          <div className="mt-5 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div aria-hidden="true" className="select-none text-[10rem] leading-[0.72] font-black tracking-[-0.1em] text-[var(--color-nwk-blue)] sm:text-[14rem] md:text-[18rem] lg:text-[22rem]">12</div>
+            <h2 className="pb-3 text-4xl leading-[0.98] font-black tracking-[-0.045em] sm:text-5xl md:text-6xl lg:text-7xl">{t.firstTitle}</h2>
+          </div>
+          <div className="mt-12 grid gap-8 border-t-2 border-[var(--color-ink)] pt-8 md:grid-cols-2 md:gap-16">
+            <p className="text-lg leading-8 text-black/70 md:text-xl md:leading-9">{t.firstBody}</p>
+            <p className="text-2xl leading-tight font-bold tracking-[-0.025em] md:text-3xl">{t.firstNote}</p>
           </div>
         </div>
       </section>
 
-      <section id="support-path" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)] px-6 py-20 md:px-10 md:py-28">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.supportEyebrow}</p>
-          <h2 className="mt-4 max-w-4xl font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.supportTitle}</h2>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]">{t.supportBody}</p>
-          <p className="mt-5 max-w-3xl font-serif text-2xl leading-9 text-[var(--color-text-primary)]">{t.supportClose}</p>
+      <section id="programs" className="bg-[var(--color-ink)] py-24 text-white md:py-32">
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+          <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase">{t.frontsEyebrow}</p>
+          <h2 className="mt-5 max-w-5xl text-5xl leading-[0.95] font-black tracking-[-0.05em] sm:text-6xl md:text-7xl">{t.frontsTitle}</h2>
+          <p className="mt-7 max-w-3xl text-lg leading-8 text-white/70 md:text-xl md:leading-9">{t.frontsIntro}</p>
+        </div>
+        <div className="mt-14 border-y border-white/20">
+          {t.fronts.map(([title, body], index) => (
+            <article key={title} className="group border-b border-white/20 last:border-b-0">
+              <div className="mx-auto grid max-w-7xl gap-6 px-6 py-10 md:grid-cols-[100px_0.8fr_1.2fr] md:items-center md:px-10 md:py-14">
+                <span className="text-sm font-bold tracking-[0.2em] text-white/35">0{index + 1}</span>
+                <h3 className="text-4xl leading-none font-black tracking-[-0.05em] text-white sm:text-5xl md:text-6xl">{title}</h3>
+                <p className="max-w-2xl text-base leading-8 text-white/65 md:text-lg">{body}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
-      <section id="results" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-surface)] px-6 py-20 md:px-10 md:py-28">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.proofEyebrow}</p>
-          <h2 className="mt-4 max-w-4xl font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-6xl">{t.proofTitle}</h2>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-text-muted)]">{t.proofBody}</p>
-        </div>
-      </section>
-
-      <section id="partners" className="border-t border-[var(--color-border-subtle)] bg-[var(--color-bg)] px-6 py-20 md:px-10 md:py-28">
-        <div className="mx-auto grid max-w-5xl gap-10 md:grid-cols-2">
-          <div>
-            <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.partnerEyebrow}</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-5xl">{t.partnerTitle}</h2>
-            <p className="mt-5 text-base leading-8 text-[var(--color-text-muted)]">{t.partnerBody}</p>
-            <a href="mailto:info@nwkids.org" className="mt-7 inline-flex min-h-11 items-center rounded-full bg-[var(--color-accent-coral)] px-6 py-3 text-sm font-semibold text-white">{t.partnerAction} →</a>
+      <section id="support-path" className="bg-[var(--color-paper)] px-6 py-24 text-[var(--color-ink)] md:px-10 md:py-32">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase">{t.supportEyebrow}</p>
+          <h2 className="mt-5 max-w-5xl text-5xl leading-[0.95] font-black tracking-[-0.05em] sm:text-6xl md:text-7xl">{t.supportTitle}</h2>
+          <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_auto_1fr] lg:items-start">
+            <p className="max-w-2xl text-lg leading-8 text-black/70 md:text-xl md:leading-9">{t.supportBody}</p>
+            <div aria-hidden="true" className="hidden text-8xl leading-none font-black text-[var(--color-nwk-blue)] lg:block">+</div>
+            <p className="max-w-2xl border-t-4 border-[var(--color-action-orange)] pt-6 text-2xl leading-tight font-bold tracking-[-0.025em] md:text-3xl">{t.supportClose}</p>
           </div>
-          <div>
-            <p className="text-xs tracking-[0.24em] text-[var(--color-eyebrow)] uppercase">{t.mexicoEyebrow}</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold text-[var(--color-text-primary)] md:text-5xl">{t.mexicoTitle}</h2>
-            <p className="mt-5 text-base leading-8 text-[var(--color-text-muted)]">{t.mexicoBody}</p>
-            <Link href="/gallery" locale={locale} className="mt-7 inline-flex text-sm font-semibold text-[var(--color-sage)] underline underline-offset-6">{t.mexicoAction} →</Link>
+        </div>
+      </section>
+
+      <section id="results" className="bg-[var(--color-ink)] px-6 py-24 text-white md:px-10 md:py-36">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase">{t.proofEyebrow}</p>
+          <h2 className="mt-6 max-w-6xl text-5xl leading-[0.94] font-black tracking-[-0.055em] sm:text-6xl md:text-7xl lg:text-[5.8rem]">{t.proofTitle}</h2>
+          <p className="mt-10 max-w-3xl border-l-4 border-[var(--color-action-orange)] pl-6 text-lg leading-8 text-white/72 md:pl-8 md:text-xl md:leading-9">{t.proofBody}</p>
+        </div>
+      </section>
+
+      <section id="partners" className="bg-white text-[var(--color-ink)]">
+        <div className="grid lg:grid-cols-2">
+          <div className="px-6 py-24 md:px-10 md:py-32 lg:pl-[max(2.5rem,calc((100vw-80rem)/2))] lg:pr-16">
+            <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase">{t.partnerEyebrow}</p>
+            <h2 className="mt-5 text-5xl leading-[0.95] font-black tracking-[-0.05em] sm:text-6xl">{t.partnerTitle}</h2>
+            <p className="mt-7 max-w-2xl text-base leading-8 text-black/65 md:text-lg">{t.partnerBody}</p>
+            <a href="mailto:info@nwkids.org" className="mt-9 inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--color-action-orange)] px-7 py-3 text-sm font-bold text-white transition-transform duration-150 hover:-translate-y-0.5">{t.partnerAction} →</a>
+          </div>
+          <div className="bg-[var(--color-nwk-blue)] px-6 py-24 text-white md:px-10 md:py-32 lg:pl-16 lg:pr-[max(2.5rem,calc((100vw-80rem)/2))]">
+            <p className="text-xs font-bold tracking-[0.24em] text-white/65 uppercase">{t.mexicoEyebrow}</p>
+            <h2 className="mt-5 text-4xl leading-[0.98] font-black tracking-[-0.045em] sm:text-5xl md:text-6xl">{t.mexicoTitle}</h2>
+            <p className="mt-7 max-w-2xl text-base leading-8 text-white/75 md:text-lg">{t.mexicoBody}</p>
+            <Link href="/gallery" locale={locale} className="mt-9 inline-flex text-sm font-bold text-white underline decoration-white/40 underline-offset-8 hover:decoration-white">{t.mexicoAction} →</Link>
           </div>
         </div>
       </section>
