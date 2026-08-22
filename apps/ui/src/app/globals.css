@@ -3,162 +3,97 @@
 @theme {
   --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
-  --font-serif: "Georgia", "Times New Roman", ui-serif, serif;
+  --font-serif: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
 
-  /* === SEED & SOIL COLOR SYSTEM === */
-  /* Forest Night — primary dark bg, nav, footer */
-  --color-forest: #1a3a2a;
-  --color-forest-light: #243f2f;
+  /* === NEW WORLD KIDS / COLLINS VISUAL SYSTEM V1 ===
+     One authored public identity: warm paper, ink, NWK blue, action orange.
+     Photography supplies the secondary color. */
+  --color-nwk-blue: #2457ff;
+  --color-nwk-blue-dark: #173ed1;
+  --color-action: #ff5a36;
+  --color-action-hover: #e94b29;
+  --color-paper: #f4f1e8;
+  --color-paper-bright: #fffdf8;
+  --color-ink: #151515;
+  --color-ink-soft: #2d2d2d;
+  --color-white: #ffffff;
 
-  /* Indigo Coral — CTA ONLY (donate buttons) */
-  --color-coral: #c8400e;
-  --color-coral-hover: #d9500f;
+  /* Legacy aliases retained for non-homepage routes. */
+  --color-forest: #151515;
+  --color-forest-light: #2d2d2d;
+  --color-coral: #ff5a36;
+  --color-coral-hover: #e94b29;
+  --color-guayabo: #2457ff;
+  --color-guayabo-light: #4f76ff;
+  --color-gold: #2457ff;
+  --color-gold-light: #4f76ff;
+  --color-gold-glow: rgba(36, 87, 255, 0.14);
+  --color-cream: #f4f1e8;
+  --color-cream-dark: #ebe6da;
+  --color-volcanic: #151515;
+  --color-background: #f4f1e8;
+  --color-panel: #fffdf8;
+  --color-panel-light: #ffffff;
+  --color-border: rgba(21, 21, 21, 0.16);
+  --color-border-light: rgba(21, 21, 21, 0.10);
+  --color-foreground: #151515;
+  --color-muted: #615f58;
+  --color-accent: #2457ff;
+  --color-warm: #ff5a36;
+  --color-water: #2457ff;
 
-  /* Guayabo Green — accent, links */
-  --color-guayabo: #4a8c5c;
-  --color-guayabo-light: #5aab72;
-
-  /* Harvest Gold — numbers, badges, current-season highlights */
-  --color-gold: #c9a84c;
-  --color-gold-light: #e0bc6a;
-  --color-gold-glow: rgba(201, 168, 76, 0.15);
-
-  /* Adobe Cream — page background, cards */
-  --color-cream: #f5f0e8;
-  --color-cream-dark: #ede8df;
-
-  /* Volcanic Black — body text, headings */
-  --color-volcanic: #2c2c2a;
-
-  /* Dark section surfaces */
-  --color-background: #060e08;
-  --color-panel: #0d1610;
-  --color-panel-light: #111c18;
-  --color-border: #1e3327;
-  --color-border-light: rgba(255, 255, 255, 0.1);
-
-  /* Legacy aliases (keep for ops/mission pages that use them) */
-  --color-foreground: #f7f2e8;
-  --color-muted: #a8b7ad;
-  --color-accent: #c9a84c;
-  --color-warm: #e5b75f;
-  --color-water: #67c7d8;
-
-  /* === CANONICAL HOMEPAGE TOKENS (single source for homepage components) ===
-     These alias the values above so every homepage section reads from the
-     same names. Hardcoded hex (e.g. bg-[#060e08], bg-[#071008], bg-[#08110a],
-     bg-[#060c07]) is being swept out in favor of these tokens so the six
-     competing darks collapse to one system.
-
-     Theme-reactive: overridden under [data-theme="light"] below. Components
-     must use these utility classes (bg-bg, bg-surface, text-text-primary…)
-     rather than arbitrary hex so the light/dark toggle actually works. */
-  --color-bg: #14120f; /* page background — ink, not forest-black */
-  --color-surface: #1c1a15; /* card / panel background */
-  --color-surface-raised: #24211a; /* elevated panel (modals, hover) */
-  --color-border-subtle: rgba(255, 250, 240, 0.14);
-  --color-gold-bright: #f0d98a; /* link hover, brighter gold accents */
-  --color-text-primary: #f7f2e8;
-  --color-text-muted: #a89e8f;
-
-  /* Accent tokens — same hue family in both themes, contrast-adjusted per
-     theme via the override block below (a gold light enough to read on
-     near-black is too pale to read on cream).
-
-     Usage rule (Pass 3 audit): gold is reserved for numerals/prices/stats
-     only — never for repeated eyebrow labels. Eyebrow labels use
-     --color-eyebrow (a quiet neutral). Sage is a single controlled accent
-     (active nav state, one badge/bullet family) — it does not become a
-     second background color. Coral/terracotta stays the one CTA color. */
-  --color-accent-gold: #c9a84c;
-  --color-accent-coral: #c1602e;
-  --color-accent-coral-hover: #d1753f;
-  --color-eyebrow: #9c9186;
-  --color-sage: #7f9478;
-
-  /* Elevation — tinted with the brand ink hue instead of flat black, so
-     shadows read as "this site's light" rather than a generic UI shadow. */
-  --shadow-color: 30 20% 4%;
-  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.45);
-  --shadow-md:
-    0 6px 16px hsl(var(--shadow-color) / 0.32),
-    0 1px 3px hsl(var(--shadow-color) / 0.35);
-  --shadow-lg:
-    0 20px 48px hsl(var(--shadow-color) / 0.36),
-    0 2px 10px hsl(var(--shadow-color) / 0.28);
-}
-
-/* === Light theme === */
-:root[data-theme="light"] {
-  --color-background: #f5f0e8;
-  --color-panel: #ffffff;
-  --color-panel-light: #fbf8f2;
-  --color-border: #e4dbc8;
-  --color-border-light: rgba(44, 44, 42, 0.1);
-
-  --color-foreground: #2c2c2a;
-  --color-muted: #6b6a5f;
-  --color-accent: #9c7a1f;
-  --color-warm: #b8863a;
-  --color-water: #2f7d8c;
-
-  --color-bg: #f3ebdd;
-  --color-surface: #fdfbf7;
+  /* Canonical homepage tokens. */
+  --color-bg: #f4f1e8;
+  --color-surface: #fffdf8;
   --color-surface-raised: #ffffff;
-  --color-border-subtle: rgba(44, 40, 34, 0.14);
-  --color-gold-bright: #7a5c17;
-  --color-text-primary: #211f1a;
-  --color-text-muted: #6b6154;
+  --color-border-subtle: rgba(21, 21, 21, 0.16);
+  --color-gold-bright: #2457ff;
+  --color-text-primary: #151515;
+  --color-text-muted: #615f58;
+  --color-accent-gold: #2457ff;
+  --color-accent-coral: #ff5a36;
+  --color-accent-coral-hover: #e94b29;
+  --color-eyebrow: #2457ff;
+  --color-sage: #2457ff;
 
-  /* Gold needs to darken substantially to stay legible on cream; coral
-     already has enough contrast on both grounds and stays put. */
-  --color-accent-gold: #9c7a1f;
-  --color-accent-coral: #b8542a;
-  --color-accent-coral-hover: #a3491f;
-  --color-eyebrow: #8f8578;
-  --color-sage: #64795f;
-
-  --shadow-color: 38 25% 55%;
+  --shadow-color: 0 0% 0%;
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.08);
+  --shadow-md: 0 8px 24px hsl(var(--shadow-color) / 0.10);
+  --shadow-lg: 0 24px 64px hsl(var(--shadow-color) / 0.14);
 }
 
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    --color-background: #f5f0e8;
-    --color-panel: #ffffff;
-    --color-panel-light: #fbf8f2;
-    --color-border: #e4dbc8;
-    --color-border-light: rgba(44, 44, 42, 0.1);
-
-    --color-foreground: #2c2c2a;
-    --color-muted: #6b6a5f;
-    --color-accent: #9c7a1f;
-    --color-warm: #b8863a;
-    --color-water: #2f7d8c;
-
-    --color-bg: #f3ebdd;
-    --color-surface: #fdfbf7;
-    --color-surface-raised: #ffffff;
-    --color-border-subtle: rgba(44, 40, 34, 0.14);
-    --color-gold-bright: #7a5c17;
-    --color-text-primary: #211f1a;
-    --color-text-muted: #6b6154;
-
-    --color-accent-gold: #9c7a1f;
-    --color-accent-coral: #b8542a;
-    --color-accent-coral-hover: #a3491f;
-    --color-eyebrow: #8f8578;
-    --color-sage: #64795f;
-
-    --shadow-color: 38 25% 55%;
-  }
+/* Public NWK brand is intentionally authored as one light identity.
+   Keep these overrides identical so legacy theme state cannot recolor the homepage. */
+:root,
+:root[data-theme="light"],
+:root[data-theme="dark"] {
+  --color-background: #f4f1e8;
+  --color-panel: #fffdf8;
+  --color-panel-light: #ffffff;
+  --color-border: rgba(21, 21, 21, 0.16);
+  --color-border-light: rgba(21, 21, 21, 0.10);
+  --color-foreground: #151515;
+  --color-muted: #615f58;
+  --color-accent: #2457ff;
+  --color-warm: #ff5a36;
+  --color-water: #2457ff;
+  --color-bg: #f4f1e8;
+  --color-surface: #fffdf8;
+  --color-surface-raised: #ffffff;
+  --color-border-subtle: rgba(21, 21, 21, 0.16);
+  --color-gold-bright: #2457ff;
+  --color-text-primary: #151515;
+  --color-text-muted: #615f58;
+  --color-accent-gold: #2457ff;
+  --color-accent-coral: #ff5a36;
+  --color-accent-coral-hover: #e94b29;
+  --color-eyebrow: #2457ff;
+  --color-sage: #2457ff;
 }
 
 html {
   background: var(--color-background);
   color: var(--color-foreground);
-  transition:
-    background-color 0.25s ease,
-    color 0.25s ease;
 }
 
 body {
@@ -169,10 +104,12 @@ body {
   font-family: var(--font-sans);
 }
 
+::selection {
+  background: var(--color-nwk-blue);
+  color: white;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  html {
-    transition: none;
-  }
   *,
   *::before,
   *::after {
@@ -193,7 +130,6 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Hide scrollbar but keep functionality */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -202,14 +138,13 @@ a {
   scrollbar-width: none;
 }
 
-/* Timeline progress dot pulse */
 @keyframes pulse-gold {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(201, 168, 76, 0.4);
+    box-shadow: 0 0 0 0 rgba(36, 87, 255, 0.35);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(201, 168, 76, 0);
+    box-shadow: 0 0 0 8px rgba(36, 87, 255, 0);
   }
 }
 .pulse-gold {
