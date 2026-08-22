@@ -33,13 +33,13 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
         <div className="space-y-5">
           <div className="font-serif text-2xl font-bold tracking-tight text-[var(--color-text-primary)] md:text-3xl">
             {locale === "es"
-              ? "Ayudamos a los jóvenes a convertir lo que les importa en lo que sigue."
-              : "We help young people turn what they care about into what comes next."}
+              ? "Ayudamos a jóvenes a poner en práctica algo que ya les importa."
+              : "We help young people put an interest they already have to work."}
           </div>
           <p className="max-w-xl text-sm leading-7 text-[var(--color-text-muted)]">
             {locale === "es"
-              ? "Empezamos en Seattle con los Primeros 12: conectar intereses con oportunidades reales y aprender dónde se rompe el camino."
-              : "We’re starting in Seattle with the First 12: connecting interests to real opportunities and learning where the pathway breaks."}
+              ? "Empezamos en Seattle con los Primeros 12: proyectos donde los jóvenes puedan contribuir, aprender junto a adultos con experiencia y salir con una idea más clara de qué sigue."
+              : "We're starting in Seattle with the First 12: projects where young people can contribute, learn alongside experienced adults, and leave with a clearer idea of what comes next."}
           </p>
 
           <div className="flex flex-wrap gap-3">
@@ -53,7 +53,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
               locale={locale}
               className="inline-flex h-10 items-center rounded-full border border-[var(--color-border-subtle)] px-5 text-sm font-semibold text-[var(--color-text-primary)] transition hover:bg-[var(--color-surface)]"
             >
-              {locale === "es" ? "Colaborar" : "Partner with us"}
+              {locale === "es" ? "Trabaja con los Primeros 12" : "Work with the First 12"}
             </Link>
           </div>
 
