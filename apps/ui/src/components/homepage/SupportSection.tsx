@@ -9,15 +9,15 @@ const donateAmounts = ["$25", "$50", "$100"]
 const copy = {
   en: {
     eyebrow: "The first-year goal",
-    title: "Help 12 Seattle young people reach a real opportunity.",
-    body: "Over our first year, New World Kids will work directly with 12 young people and help each one move from an interest to a real next step. Your support helps cover outreach, transportation, project materials, mentor support, applications, follow-up, and hands-on urban gardening work when we need to build the pathway ourselves.",
+    title: "Help us start with 12 young people.",
+    body: "The first year is intentionally small. Support will help cover the practical things that make participation possible: project materials, transportation, mentors, equipment, youth compensation when funding and the project allow for it, and follow-up after the project ends. The goal is not to run as many activities as possible. It is to learn what it takes to help 12 young people make meaningful progress.",
     quote: "If you ever think you're too small to make a difference, try going to sleep with a mosquito in the room.",
     source: "Proverb",
   },
   es: {
     eyebrow: "La meta del primer año",
-    title: "Ayuda a 12 jóvenes de Seattle a llegar a una oportunidad real.",
-    body: "Durante nuestro primer año, New World Kids trabajará directamente con 12 jóvenes y ayudará a cada uno a pasar de un interés a un siguiente paso real. Tu apoyo ayuda a cubrir alcance, transporte, materiales, apoyo de mentores, solicitudes, seguimiento y trabajo práctico de jardinería urbana cuando tengamos que construir el camino nosotros mismos.",
+    title: "Ayúdanos a empezar con 12 jóvenes.",
+    body: "El primer año es pequeño a propósito. El apoyo ayudará a cubrir las cosas prácticas que hacen posible la participación: materiales para proyectos, transporte, mentores, equipo, compensación juvenil cuando el financiamiento y el proyecto lo permitan, y seguimiento después de que termine el proyecto. La meta no es ofrecer la mayor cantidad posible de actividades. Es aprender qué hace falta para ayudar a 12 jóvenes a avanzar de manera significativa.",
     quote: "Si alguna vez piensas que eres demasiado pequeño para hacer una diferencia, intenta dormir con un mosquito en la habitación.",
     source: "Proverbio",
   },
