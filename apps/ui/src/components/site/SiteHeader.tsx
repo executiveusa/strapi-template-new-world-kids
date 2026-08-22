@@ -39,7 +39,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
           <div className="min-w-0 leading-tight">
             <div className="font-serif text-base font-bold tracking-tight text-[var(--color-text-primary)]">New World Kids</div>
             <div className="hidden text-[11px] text-[var(--color-text-muted)] sm:block">
-              {locale === "es" ? "Del interés a la oportunidad" : "From interest to opportunity"}
+              {locale === "es" ? "Pon tu interés a trabajar" : "Put your interest to work"}
             </div>
           </div>
         </Link>
