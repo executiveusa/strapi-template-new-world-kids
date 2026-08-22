@@ -1,0 +1,2 @@
+NWK Collins visual-system preview branch trigger.
+This file exists only to make Vercel's monorepo root detection treat the preview branch as affected while visual changes live under apps/ui.
