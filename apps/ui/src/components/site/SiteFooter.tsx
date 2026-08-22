@@ -8,14 +8,14 @@ const explore = {
   en: [
     { href: "/#how", label: "How it works" },
     { href: "/#first-12", label: "First 12" },
-    { href: "/#programs", label: "Sports · Art · Gardening" },
+    { href: "/projects", label: "Projects" },
     { href: "/#partners", label: "Partner" },
     { href: "/gallery", label: "Indigo Azul" },
   ],
   es: [
     { href: "/#how", label: "Cómo funciona" },
     { href: "/#first-12", label: "Primeros 12" },
-    { href: "/#programs", label: "Deporte · Arte · Jardinería" },
+    { href: "/projects", label: "Proyectos" },
     { href: "/#partners", label: "Colaborar" },
     { href: "/gallery", label: "Indigo Azul" },
   ],
