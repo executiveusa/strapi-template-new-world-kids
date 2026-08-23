@@ -38,14 +38,16 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
           </div>
           <p className="max-w-xl text-sm leading-7 text-[var(--color-text-muted)]">
             {locale === "es"
-              ? "Empezamos en Seattle con los Primeros 12: proyectos donde los jóvenes puedan contribuir, aprender junto a adultos con experiencia y salir con una idea más clara de qué sigue."
-              : "We're starting in Seattle with the First 12: projects where young people can contribute, learn alongside experienced adults, and leave with a clearer idea of what comes next."}
+              ? "Empezamos en Seattle con los Primeros 12: un piloto planeado donde los jóvenes pueden asumir un papel útil en un proyecto, aprender junto a adultos con experiencia y salir con un siguiente paso más claro."
+              : "We're starting in Seattle with the First 12 — a planned pilot where young people can take on useful project roles, learn alongside experienced adults, and leave with a clearer next step."}
           </p>
 
           <div className="flex flex-wrap gap-3">
             <Link href="/donate" locale={locale}>
               <span className="inline-flex h-10 items-center rounded-full bg-[var(--color-accent-coral)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-colors duration-150 hover:bg-[var(--color-accent-coral-hover)]">
-                {locale === "es" ? "Apoyar a los Primeros 12" : "Support the First 12"}
+                {locale === "es"
+                  ? "Apoyar a los Primeros 12"
+                  : "Support the First 12"}
               </span>
             </Link>
             <Link
@@ -53,7 +55,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
               locale={locale}
               className="inline-flex h-10 items-center rounded-full border border-[var(--color-border-subtle)] px-5 text-sm font-semibold text-[var(--color-text-primary)] transition hover:bg-[var(--color-surface)]"
             >
-              {locale === "es" ? "Sé mentor de los Primeros 12" : "Mentor with the First 12"}
+              {locale === "es" ? "Tráenos un proyecto" : "Bring us a project"}
             </Link>
           </div>
 
