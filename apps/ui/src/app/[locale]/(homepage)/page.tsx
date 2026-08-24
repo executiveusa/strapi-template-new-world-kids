@@ -4,16 +4,18 @@ import { Homepage } from "@/components/homepage/Homepage"
 
 const metadataByLocale = {
   en: {
-    title: "New World Kids — Real work. Real mentors. Real next steps.",
+    title: "New World Kids — We turn interests into opportunities.",
     description:
-      "New World Kids gives young people real project experience, mentors to learn from, and a path toward work, school, or training.",
-    social: "See the Seattle pilot, Culture Shock, Proyecto Indigo Azul, field archive, gallery, and public records.",
+      "New World Kids connects young people's interests to real projects, paid experiences, experienced mentors, and a next step forward.",
+    social:
+      "Meet the First 12 and explore four pathways into real projects, mentorship, paid experience, and a next step.",
   },
   es: {
-    title: "New World Kids — Trabajo real. Mentores reales. Próximos pasos reales.",
+    title: "New World Kids — Convertimos intereses en oportunidades.",
     description:
-      "New World Kids da a jóvenes experiencia en proyectos reales, mentores de quienes aprender y un camino hacia el trabajo, la escuela o la capacitación.",
-    social: "Conoce el piloto de Seattle, Culture Shock, Proyecto Indigo Azul, el archivo de campo, la galería y los documentos públicos.",
+      "New World Kids conecta los intereses de los jóvenes con proyectos reales, experiencias pagadas, mentores con experiencia y un siguiente paso.",
+    social:
+      "Conoce a los Primeros 12 y explora cuatro caminos hacia proyectos reales, mentoría, experiencia pagada y un siguiente paso.",
   },
 } as const
 
