@@ -8,16 +8,16 @@ import { Link } from "@/lib/navigation"
 const donateAmounts = ["$25", "$50", "$100"]
 const copy = {
   en: {
-    eyebrow: "The first-year goal",
-    title: "Help us start with 12 young people.",
-    body: "The pilot program is intentionally small. Your support will help cover the practical things that make participation possible: project materials, transportation, mentors, equipment, and youth compensation when funding and the project allow for it. It also covers consistent follow-up with the participant after the project ends. The goal is not to run as many activities as possible. It is to answer the question: can 12 youth from challenging situations reach their goals if given the right mentors, environment, and opportunities? These aren't always simple questions, but we believe they can, and we've seen it in the lives of our mentors, founders, and other youth along the way. If this resonates with you, we'd love to hear your thoughts — and if you want to help support our mission, you can donate below.",
+    eyebrow: "Support the pilot",
+    title: "Help us prove the First 12.",
+    body: "Funding covers the practical costs that make participation possible: participant wages, mentors, transportation, materials, equipment, coordination, and follow-up. The first-year goal is simple: give 12 participants real opportunities and measure whether they actually move forward.",
     quote: "If you ever think you're too small to make a difference, try going to sleep with a mosquito in the room.",
     source: "West African Proverb",
   },
   es: {
-    eyebrow: "La meta del primer año",
-    title: "Ayúdanos a empezar con 12 jóvenes.",
-    body: "El programa piloto es pequeño a propósito. Tu apoyo ayudará a cubrir las cosas prácticas que hacen posible la participación: materiales para proyectos, transporte, mentores, equipo y compensación juvenil cuando el financiamiento y el proyecto lo permitan. También cubre el seguimiento constante con el participante después de que el proyecto termina. La meta no es ofrecer la mayor cantidad posible de actividades. Es responder la pregunta: ¿pueden 12 jóvenes en situaciones difíciles alcanzar sus metas si reciben los mentores, el entorno y las oportunidades adecuadas? No son preguntas siempre sencillas, pero creemos que sí, y lo hemos visto en la vida de nuestros mentores, fundadores y otros jóvenes en el camino. Si esto resuena contigo, nos encantaría conocer tu opinión, y si quieres apoyar nuestra misión, puedes donar a continuación.",
+    eyebrow: "Apoya el piloto",
+    title: "Ayúdanos a demostrar los Primeros 12.",
+    body: "El financiamiento cubre los costos prácticos que hacen posible la participación: salarios de participantes, mentores, transporte, materiales, equipo, coordinación y seguimiento. La meta del primer año es sencilla: dar a 12 participantes oportunidades reales y medir si realmente avanzan.",
     quote: "Si alguna vez piensas que eres demasiado pequeño para hacer una diferencia, intenta dormir con un mosquito en la habitación.",
     source: "Proverbio de África Occidental",
   },
@@ -40,7 +40,15 @@ export function SupportSection() {
 
         <div className="mt-14 grid gap-3 sm:grid-cols-3">
           {donateAmounts.map((amount, i) => (
-            <motion.div key={amount} initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }} whileHover={{ y: -3 }} whileTap={{ scale: 0.98 }}>
+            <motion.div
+              key={amount}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
+              whileHover={{ y: -3 }}
+              whileTap={{ scale: 0.98 }}
+            >
               <Link href="/donate" locale={locale} className="flex min-h-28 items-center justify-between border-2 border-white px-6 py-5 text-white transition-colors hover:border-[var(--color-action-orange)] hover:bg-[var(--color-action-orange)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
                 <span className="text-4xl font-black tracking-[-0.05em] md:text-5xl">{amount}</span>
                 <span aria-hidden="true" className="text-2xl">→</span>
