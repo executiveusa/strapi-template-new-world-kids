@@ -1,3 +1,3 @@
 NWK Apple/Collins polish preview trigger.
-This file exists only to make Vercel's monorepo root detection treat the preview branch as affected while presentation changes live under apps/ui.
-Current slice: mobile shell + hero + pathways detail + support + footer polish.
+This file exists only to make Vercel's monorepo root detection treat shared apps/ui changes as affected by the apps/blog Vercel project.
+Current slice: footer copy refresh — Help turn interest into opportunity.
