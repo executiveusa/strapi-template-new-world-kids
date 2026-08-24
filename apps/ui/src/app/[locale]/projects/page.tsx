@@ -46,7 +46,6 @@ const copy = {
       },
     ],
     labels: {
-      what: "What it is",
       examples: "Example projects",
       leaves: "What the participant leaves with",
       need: "What we need from a partner",
@@ -101,7 +100,6 @@ const copy = {
       },
     ],
     labels: {
-      what: "Qué es",
       examples: "Proyectos de ejemplo",
       leaves: "Qué se lleva el participante",
       need: "Qué necesitamos de un aliado",
@@ -116,6 +114,8 @@ const copy = {
   },
 } as const
 
+const focusRing = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)]"
+
 export async function generateMetadata({ params }: { readonly params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = (await params) as { locale: Locale }
   const t = locale === "es" ? copy.es : copy.en
@@ -128,57 +128,55 @@ export default async function ProjectsPage({ params }: { readonly params: Promis
 
   return (
     <main className="bg-[var(--color-bg)]">
-      <section className="px-6 py-20 md:px-10 md:py-28">
+      <section className="px-5 py-16 sm:px-8 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase">{t.eyebrow}</p>
-          <h1 className="mt-5 max-w-5xl text-5xl leading-[0.95] font-black tracking-[-0.05em] text-[var(--color-text-primary)] sm:text-6xl md:text-7xl">{t.title}</h1>
-          <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-text-muted)] md:text-xl">{t.body}</p>
+          <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.eyebrow}</p>
+          <h1 className="mt-4 max-w-5xl text-[clamp(3rem,12vw,7rem)] leading-[0.9] font-black tracking-[-0.055em] text-balance text-[var(--color-text-primary)] sm:mt-5 sm:leading-[0.93]">{t.title}</h1>
+          <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8 md:text-xl">{t.body}</p>
         </div>
       </section>
 
-      <section className="border-t border-[var(--color-border-subtle)]">
+      <section className="border-t border-black/15">
         {t.pathways.map((pathway, index) => (
-          <article key={pathway.name} className="border-b border-[var(--color-border-subtle)] px-6 py-16 md:px-10 md:py-24">
+          <article key={pathway.name} className="border-b border-black/15 px-5 py-14 sm:px-8 sm:py-16 md:px-10 md:py-24">
             <div className="mx-auto max-w-7xl">
-              <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
+              <div className="grid gap-7 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
                 <div>
-                  <p className="text-xs font-bold tracking-[0.2em] text-[var(--color-action-orange)] uppercase">0{index + 1} · {pathway.category}</p>
-                  <h2 className="mt-5 text-4xl leading-[0.95] font-black tracking-[-0.045em] text-[var(--color-text-primary)] sm:text-5xl md:text-6xl">{pathway.name}</h2>
+                  <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-action-orange)] uppercase sm:text-xs">0{index + 1} · {pathway.category}</p>
+                  <h2 className="mt-4 text-[clamp(2.5rem,9vw,5.4rem)] leading-[0.92] font-black tracking-[-0.05em] text-balance text-[var(--color-text-primary)] sm:mt-5">{pathway.name}</h2>
                 </div>
-                <p className="max-w-3xl text-lg leading-8 text-[var(--color-text-muted)] md:text-xl">{pathway.what}</p>
+                <p className="max-w-3xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8 md:text-xl">{pathway.what}</p>
               </div>
 
-              <div className="mt-12 grid gap-px bg-[var(--color-border-subtle)] md:grid-cols-3">
-                <div className="bg-[var(--color-bg)] p-6 md:p-8">
-                  <p className="text-xs font-bold tracking-[0.15em] text-[var(--color-nwk-blue)] uppercase">{t.labels.examples}</p>
-                  <p className="mt-4 text-base leading-7 text-[var(--color-text-muted)]">{pathway.examples}</p>
-                </div>
-                <div className="bg-[var(--color-bg)] p-6 md:p-8">
-                  <p className="text-xs font-bold tracking-[0.15em] text-[var(--color-nwk-blue)] uppercase">{t.labels.leaves}</p>
-                  <p className="mt-4 text-base leading-7 text-[var(--color-text-muted)]">{pathway.leaves}</p>
-                </div>
-                <div className="bg-[var(--color-bg)] p-6 md:p-8">
-                  <p className="text-xs font-bold tracking-[0.15em] text-[var(--color-nwk-blue)] uppercase">{t.labels.need}</p>
-                  <p className="mt-4 text-base leading-7 text-[var(--color-text-muted)]">{pathway.need}</p>
-                </div>
-              </div>
+              <dl className="mt-10 grid border-y border-black/15 md:mt-12 md:grid-cols-3">
+                {[
+                  [t.labels.examples, pathway.examples],
+                  [t.labels.leaves, pathway.leaves],
+                  [t.labels.need, pathway.need],
+                ].map(([label, body], detailIndex) => (
+                  <div key={label} className={`py-6 md:min-h-56 md:px-7 md:py-8 ${detailIndex > 0 ? "border-t border-black/15 md:border-t-0 md:border-l" : ""}`}>
+                    <dt className="text-[10px] font-bold tracking-[0.15em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{label}</dt>
+                    <dd className="mt-3 max-w-md text-[15px] leading-7 text-[var(--color-text-muted)] sm:text-base">{body}</dd>
+                  </div>
+                ))}
+              </dl>
 
-              <a href="mailto:info@nwkids.org" className="mt-8 inline-flex text-sm font-bold text-[var(--color-text-primary)] underline decoration-black/30 underline-offset-8 hover:decoration-black">{t.labels.action}</a>
+              <a href="mailto:info@nwkids.org" className={`mt-8 inline-flex min-h-11 items-center rounded-full border border-black/20 px-5 text-sm font-bold text-[var(--color-text-primary)] transition-colors duration-200 hover:border-black/50 hover:bg-black/[0.03] ${focusRing}`}>{t.labels.action}</a>
             </div>
           </article>
         ))}
       </section>
 
-      <section className="bg-[var(--color-nwk-blue)] px-6 py-24 text-white md:px-10 md:py-32">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+      <section className="bg-[var(--color-nwk-blue)] px-5 py-20 text-white sm:px-8 md:px-10 md:py-28">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
           <div>
-            <p className="text-xs font-bold tracking-[0.24em] text-white/65 uppercase">{t.proofEyebrow}</p>
-            <h2 className="mt-5 text-4xl leading-[0.98] font-black tracking-[-0.045em] sm:text-5xl md:text-6xl">{t.proofTitle}</h2>
+            <p className="text-[10px] font-bold tracking-[0.24em] text-white/60 uppercase sm:text-xs">{t.proofEyebrow}</p>
+            <h2 className="mt-4 text-[clamp(2.5rem,9vw,5.4rem)] leading-[0.93] font-black tracking-[-0.05em] text-balance sm:mt-5">{t.proofTitle}</h2>
           </div>
-          <div>
-            <p className="text-lg leading-8 text-white/80 md:text-xl md:leading-9">{t.proofBody}</p>
-            <p className="mt-6 text-2xl font-black tracking-[-0.025em]">{t.proofClose}</p>
-            <Link href="/gallery" locale={locale} className="mt-8 inline-flex text-sm font-bold text-white underline decoration-white/40 underline-offset-8 hover:decoration-white">{t.proofAction}</Link>
+          <div className="border-t border-white/25 pt-6 lg:border-t-0 lg:pt-0">
+            <p className="text-base leading-7 text-white/78 sm:text-lg sm:leading-8 md:text-xl md:leading-9">{t.proofBody}</p>
+            <p className="mt-5 text-xl font-black tracking-[-0.025em] sm:text-2xl">{t.proofClose}</p>
+            <Link href="/gallery" locale={locale} className="mt-7 inline-flex min-h-11 items-center rounded-full border border-white/35 px-5 text-sm font-bold text-white transition-colors duration-200 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-nwk-blue)]">{t.proofAction}</Link>
           </div>
         </div>
       </section>
