@@ -35,7 +35,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
         <div className="grid gap-12 lg:grid-cols-[1.35fr_0.65fr_0.75fr] lg:gap-16">
           <div>
             <div className="max-w-2xl text-[clamp(2rem,7vw,4rem)] leading-[0.96] font-black tracking-[-0.045em] text-balance text-[var(--color-text-primary)]">
-              {locale === "es" ? "Convertimos intereses en oportunidades." : "We turn interests into opportunities."}
+              {locale === "es" ? "Convertimos intereses en oportunidades." : "Help turn interest into opportunity"}
             </div>
             <p className="mt-5 max-w-xl text-sm leading-7 text-[var(--color-text-muted)] sm:text-base">
               {locale === "es"
