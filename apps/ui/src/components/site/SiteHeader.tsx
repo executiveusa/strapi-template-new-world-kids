@@ -13,16 +13,16 @@ const navigation = {
   en: [
     { href: "/#how", label: "How it works" },
     { href: "/#first-12", label: "First 12" },
-    { href: "/projects", label: "Projects" },
+    { href: "/projects", label: "Pathways" },
     { href: "/#partners", label: "Partner" },
-    { href: "/gallery", label: "Indigo Azul" },
+    { href: "/#support", label: "Support" },
   ],
   es: [
     { href: "/#how", label: "Cómo funciona" },
     { href: "/#first-12", label: "Primeros 12" },
-    { href: "/projects", label: "Proyectos" },
+    { href: "/projects", label: "Caminos" },
     { href: "/#partners", label: "Colaborar" },
-    { href: "/gallery", label: "Indigo Azul" },
+    { href: "/#support", label: "Apoyar" },
   ],
 }
 
@@ -51,13 +51,9 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
             priority
           />
           <div className="min-w-0 leading-tight">
-            <div className="text-sm font-black tracking-[-0.025em] text-[var(--color-ink)] sm:text-base">
-              New World Kids
-            </div>
+            <div className="text-sm font-black tracking-[-0.025em] text-[var(--color-ink)] sm:text-base">New World Kids</div>
             <div className="hidden text-[10px] font-bold tracking-[0.08em] text-black/50 uppercase sm:block">
-              {locale === "es"
-                ? "Pon tu interés a trabajar"
-                : "Put your interest to work"}
+              {locale === "es" ? "Intereses en oportunidades" : "Interests into opportunities"}
             </div>
           </div>
         </Link>
@@ -76,9 +72,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
-          <div className="hidden md:block">
-            <LocaleSwitcher locale={locale} />
-          </div>
+          <div className="hidden md:block"><LocaleSwitcher locale={locale} /></div>
           <Link href="/donate" locale={locale} className="inline-flex">
             <motion.span
               whileHover={{ y: -1 }}
@@ -93,21 +87,9 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
             onClick={() => setMobileOpen((value) => !value)}
             className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-[var(--color-ink)] text-[var(--color-ink)] transition-transform duration-150 active:scale-90 lg:hidden"
             aria-expanded={mobileOpen}
-            aria-label={
-              mobileOpen
-                ? locale === "es"
-                  ? "Cerrar navegación"
-                  : "Close navigation"
-                : locale === "es"
-                  ? "Abrir navegación"
-                  : "Open navigation"
-            }
+            aria-label={mobileOpen ? (locale === "es" ? "Cerrar navegación" : "Close navigation") : (locale === "es" ? "Abrir navegación" : "Open navigation")}
           >
-            {mobileOpen ? (
-              <X className="h-4 w-4" />
-            ) : (
-              <Menu className="h-4 w-4" />
-            )}
+            {mobileOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
       </div>
@@ -131,23 +113,15 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
                     className="grid grid-cols-[40px_1fr] items-center border-b border-black/15 py-3 text-base font-black tracking-[-0.02em] text-[var(--color-ink)] last:border-b-0"
                     onClick={() => setMobileOpen(false)}
                   >
-                    <span className="text-xs font-bold text-[var(--color-nwk-blue)]">
-                      0{index + 1}
-                    </span>
+                    <span className="text-xs font-bold text-[var(--color-nwk-blue)]">0{index + 1}</span>
                     <span>{item.label}</span>
                   </Link>
                 ))}
               </div>
               <div className="flex items-center justify-between gap-4 border-t-2 border-[var(--color-ink)] pt-4">
                 <LocaleSwitcher locale={locale} />
-                <Link
-                  href="/donate"
-                  locale={locale}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <span className="inline-flex h-10 items-center rounded-full bg-[var(--color-action-orange)] px-5 text-xs font-black tracking-[0.06em] text-white uppercase">
-                    {locale === "es" ? "Apoyar" : "Support"}
-                  </span>
+                <Link href="/donate" locale={locale} onClick={() => setMobileOpen(false)}>
+                  <span className="inline-flex h-10 items-center rounded-full bg-[var(--color-action-orange)] px-5 text-xs font-black tracking-[0.06em] text-white uppercase">{locale === "es" ? "Apoyar" : "Support"}</span>
                 </Link>
               </div>
             </div>
