@@ -8,16 +8,16 @@ const explore = {
   en: [
     { href: "/#how", label: "How it works" },
     { href: "/#first-12", label: "First 12" },
-    { href: "/projects", label: "Projects" },
+    { href: "/projects", label: "Pathways" },
     { href: "/#partners", label: "Partner" },
-    { href: "/gallery", label: "Indigo Azul" },
+    { href: "/#support", label: "Support" },
   ],
   es: [
     { href: "/#how", label: "Cómo funciona" },
     { href: "/#first-12", label: "Primeros 12" },
-    { href: "/projects", label: "Proyectos" },
+    { href: "/projects", label: "Caminos" },
     { href: "/#partners", label: "Colaborar" },
-    { href: "/gallery", label: "Indigo Azul" },
+    { href: "/#support", label: "Apoyar" },
   ],
 }
 
@@ -32,22 +32,18 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.2fr_0.8fr_0.9fr]">
         <div className="space-y-5">
           <div className="font-serif text-2xl font-bold tracking-tight text-[var(--color-text-primary)] md:text-3xl">
-            {locale === "es"
-              ? "Ayudamos a jóvenes a poner en práctica algo que ya les importa."
-              : "We help young people put an interest they already have to work."}
+            {locale === "es" ? "Convertimos intereses en oportunidades." : "We turn interests into opportunities."}
           </div>
           <p className="max-w-xl text-sm leading-7 text-[var(--color-text-muted)]">
             {locale === "es"
-              ? "Empezamos en Seattle con los Primeros 12: un piloto planeado donde los jóvenes pueden asumir un papel útil en un proyecto, aprender junto a adultos con experiencia y salir con un siguiente paso más claro."
-              : "We're starting in Seattle with the First 12 — a planned pilot where young people can take on useful project roles, learn alongside experienced adults, and leave with a clearer next step."}
+              ? "Empezamos en Seattle con los Primeros 12: 12 participantes conectados con proyectos reales, mentores con experiencia y un siguiente paso claro."
+              : "We're starting in Seattle with the First 12: 12 participants connected to real projects, experienced mentors, and a clear next step."}
           </p>
 
           <div className="flex flex-wrap gap-3">
             <Link href="/donate" locale={locale}>
               <span className="inline-flex h-10 items-center rounded-full bg-[var(--color-accent-coral)] px-5 text-sm font-semibold text-white shadow-[var(--shadow-sm)] transition-colors duration-150 hover:bg-[var(--color-accent-coral-hover)]">
-                {locale === "es"
-                  ? "Apoyar a los Primeros 12"
-                  : "Support the First 12"}
+                {locale === "es" ? "Apoyar a los Primeros 12" : "Support the First 12"}
               </span>
             </Link>
             <Link
@@ -55,7 +51,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
               locale={locale}
               className="inline-flex h-10 items-center rounded-full border border-[var(--color-border-subtle)] px-5 text-sm font-semibold text-[var(--color-text-primary)] transition hover:bg-[var(--color-surface)]"
             >
-              {locale === "es" ? "Tráenos un proyecto" : "Bring us a project"}
+              {locale === "es" ? "Traer una oportunidad" : "Bring an opportunity"}
             </Link>
           </div>
 
@@ -69,36 +65,23 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
             <p>{hsiDisclosure}</p>
             {locale === "es" ? (
               <p className="mt-2 text-[11px] leading-5">
-                New World Kids participa como programa bajo patrocinio fiscal de
-                Humanitarian Social Innovations. El texto en inglés anterior es
-                la divulgación requerida por HSI.
+                New World Kids participa como programa bajo patrocinio fiscal de Humanitarian Social Innovations. El texto en inglés anterior es la divulgación requerida por HSI.
               </p>
             ) : null}
           </div>
         </div>
 
         <div>
-          <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[var(--color-accent-gold)] uppercase">
-            {locale === "es" ? "Explorar" : "Explore"}
-          </div>
+          <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[var(--color-accent-gold)] uppercase">{locale === "es" ? "Explorar" : "Explore"}</div>
           <div className="space-y-3 text-sm text-[var(--color-text-muted)]">
             {items.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                locale={locale}
-                className="block transition-colors hover:text-[var(--color-text-primary)]"
-              >
-                {item.label}
-              </Link>
+              <Link key={item.href} href={item.href} locale={locale} className="block transition-colors hover:text-[var(--color-text-primary)]">{item.label}</Link>
             ))}
           </div>
         </div>
 
         <div>
-          <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[var(--color-accent-gold)] uppercase">
-            {locale === "es" ? "Redes y contacto" : "Social & Contact"}
-          </div>
+          <div className="mb-3 font-mono text-xs tracking-[0.18em] text-[var(--color-accent-gold)] uppercase">{locale === "es" ? "Redes y contacto" : "Social & Contact"}</div>
           <div className="space-y-3 text-sm text-[var(--color-text-muted)]">
             {socialLinks.map((link) => (
               <a
@@ -117,9 +100,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
       </div>
 
       <div className="border-t border-[var(--color-border-subtle)] px-5 py-4 text-center sm:px-8">
-        <span className="text-[11px] text-[var(--color-text-muted)]">
-          &copy; {new Date().getFullYear()} New World Kids
-        </span>
+        <span className="text-[11px] text-[var(--color-text-muted)]">&copy; {new Date().getFullYear()} New World Kids</span>
       </div>
     </footer>
   )
