@@ -27,7 +27,7 @@ const copy = {
     pathwaysEyebrow: "Four pathways",
     pathwaysTitle: "Four ways to start. One model underneath.",
     pathwaysIntro:
-      "These are four entry points into the same youth-development model: real work, an experienced mentor, and a next step.",
+      "These are four entry points into the same youth-development model: paid opportunities, an experienced mentor, and a next step.",
     pathways: [
       ["01", "Built for Good", "Technology", "Solve a real digital problem for a nonprofit, community group, or social-purpose business."],
       ["02", "Beyond the Game", "Sports", "Use existing sports environments to expose participants to the work and economy around the game."],
