@@ -3,6 +3,6 @@
   "framework": "nextjs",
   "installCommand": "pnpm install --no-frozen-lockfile",
   "buildCommand": "pnpm run build:ui",
-  "outputDirectory": "../ui/.next",
+  "outputDirectory": "apps/ui/.next",
   "ignoreCommand": "exit 1"
 }
