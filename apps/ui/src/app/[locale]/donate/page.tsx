@@ -45,6 +45,7 @@ const copy = {
 } as const
 
 const amounts = ["$25", "$50", "$100"] as const
+const DEFAULT_FUNDRAZR_URL = "https://fundrazr.com/nwkids.org"
 
 export async function generateMetadata({
   params,
@@ -63,7 +64,8 @@ export default async function DonatePage({
 }) {
   const { locale } = (await params) as { locale: Locale }
   const t = locale === "es" ? copy.es : copy.en
-  const fundRazrUrl = process.env.FUNDRAZR_CAMPAIGN_URL?.trim()
+  const fundRazrUrl =
+    process.env.FUNDRAZR_CAMPAIGN_URL?.trim() || DEFAULT_FUNDRAZR_URL
   const donationHref = fundRazrUrl || siteLinks.email
 
   return (
