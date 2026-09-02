@@ -5,12 +5,13 @@ import { useLocale } from "next-intl"
 
 import { Link } from "@/lib/navigation"
 
-const donateAmounts = ["$25", "$50", "$100"]
 const copy = {
   en: {
     eyebrow: "Support the pilot",
     title: "Help us prove the First 12.",
     body: "Funding covers the practical costs that make participation possible: participant wages, mentors, transportation, materials, equipment, coordination, and follow-up. The first-year goal is simple: give 12 participants real opportunities and measure whether they actually move forward.",
+    cta: "Support the First 12",
+    note: "Donations continue to our FundRazr campaign.",
     quote: "If you ever think you're too small to make a difference, try going to sleep with a mosquito in the room.",
     source: "West African Proverb",
   },
@@ -18,6 +19,8 @@ const copy = {
     eyebrow: "Apoya el piloto",
     title: "Ayúdanos a demostrar los Primeros 12.",
     body: "El financiamiento cubre los costos prácticos que hacen posible la participación: salarios de participantes, mentores, transporte, materiales, equipo, coordinación y seguimiento. La meta del primer año es sencilla: dar a 12 participantes oportunidades reales y medir si realmente avanzan.",
+    cta: "Apoya a los Primeros 12",
+    note: "Las donaciones continúan en nuestra campaña de FundRazr.",
     quote: "Si alguna vez piensas que eres demasiado pequeño para hacer una diferencia, intenta dormir con un mosquito en la habitación.",
     source: "Proverbio de África Occidental",
   },
@@ -39,25 +42,25 @@ export function SupportSection() {
           <p className="max-w-2xl border-t border-white/20 pt-6 text-[15px] leading-7 text-white/68 sm:text-base md:border-t-0 md:border-l-2 md:border-[var(--color-nwk-blue)] md:pt-0 md:pl-7 md:text-lg md:leading-8">{t.body}</p>
         </div>
 
-        <div className="mt-10 grid border-y border-white/20 sm:mt-14 sm:grid-cols-3">
-          {donateAmounts.map((amount, i) => (
-            <motion.div
-              key={amount}
-              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.22, 1, 0.36, 1], delay: reduceMotion ? 0 : i * 0.04 }}
-              whileHover={reduceMotion ? undefined : { y: -1 }}
-              whileTap={reduceMotion ? undefined : { scale: 0.99 }}
-              className="border-b border-white/20 last:border-b-0 sm:border-r sm:border-b-0 sm:last:border-r-0"
-            >
-              <Link href="/donate" locale={locale} className="group flex min-h-20 items-center justify-between px-2 py-5 text-white transition-colors duration-200 hover:bg-white/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white sm:min-h-32 sm:px-6">
-                <span className="text-4xl font-black tracking-[-0.055em] sm:text-5xl">{amount}</span>
-                <span aria-hidden="true" className="text-xl text-white/45 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-white">→</span>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-10 border-y border-white/20 py-6 sm:mt-14 sm:flex sm:items-center sm:justify-between sm:gap-8 sm:py-8"
+        >
+          <div>
+            <p className="text-lg font-bold text-white sm:text-xl">{t.cta}</p>
+            <p className="mt-1 text-sm leading-6 text-white/55">{t.note}</p>
+          </div>
+          <Link
+            href="/donate"
+            locale={locale}
+            className="mt-5 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-white px-7 text-sm font-black text-[var(--color-ink)] transition-transform duration-200 hover:-translate-y-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-ink)] sm:mt-0 sm:w-auto"
+          >
+            {t.cta} →
+          </Link>
+        </motion.div>
 
         <div className="mt-12 grid gap-8 border-t border-white/20 pt-8 md:mt-16 md:grid-cols-[1fr_auto] md:items-end md:pt-10">
           <div>
