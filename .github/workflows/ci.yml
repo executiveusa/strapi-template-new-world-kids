@@ -28,6 +28,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Verify First 12 pathway model
+        run: node scripts/verify-nwk-pathways.mjs
+
       - name: Setup pnpm with cache
         uses: ./.github/actions/setup-pnpm
 
