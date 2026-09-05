@@ -150,8 +150,6 @@ const focusRing =
 export function PathwaySection() {
   const locale = useLocale()
   const t = locale === "es" ? copy.es : copy.en
-  const projectMail = `mailto:info@nwkids.org?subject=${encodeURIComponent(locale === "es" ? "Proyecto para los Primeros 12" : "First 12 project opportunity")}`
-  const mentorMail = `mailto:info@nwkids.org?subject=${encodeURIComponent(locale === "es" ? "Mentor para los Primeros 12" : "First 12 mentor interest")}`
 
   return (
     <>
@@ -347,18 +345,20 @@ export function PathwaySection() {
             </p>
           </div>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a
-              href={projectMail}
+            <Link
+              href="/opportunity"
+              locale={locale}
               className={`inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--color-ink)] px-7 text-sm font-black text-white transition-transform hover:-translate-y-px ${focusRing}`}
             >
               {t.projectAction}
-            </a>
-            <a
-              href={mentorMail}
+            </Link>
+            <Link
+              href="/mentor"
+              locale={locale}
               className={`inline-flex min-h-12 items-center justify-center rounded-full border border-black/20 px-7 text-sm font-black text-[var(--color-text-primary)] transition-colors hover:bg-black/[0.03] ${focusRing}`}
             >
               {t.mentorAction}
-            </a>
+            </Link>
           </div>
         </div>
       </section>

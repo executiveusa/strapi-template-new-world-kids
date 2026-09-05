@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 
 import { Homepage } from "@/components/homepage/Homepage"
 
+export const dynamic = "force-dynamic"
+
 const metadataByLocale = {
   en: {
     title: "New World Kids — Help turn interest into opportunity.",
@@ -34,6 +36,12 @@ export async function generateMetadata({
   }
 }
 
-export default function Page() {
-  return <Homepage />
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale: rawLocale } = await params
+  const locale = rawLocale === "es" ? "es" : "en"
+  return <Homepage locale={locale} />
 }
