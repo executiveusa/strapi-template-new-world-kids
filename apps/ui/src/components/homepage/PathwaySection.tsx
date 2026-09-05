@@ -6,241 +6,359 @@ import { Link } from "@/lib/navigation"
 
 const copy = {
   en: {
-    problemEyebrow: "The problem",
+    firstEyebrow: "The First 12",
+    firstTitle: "12 seats. Start small. Do it well.",
+    firstBody:
+      "In 2027, New World Kids will begin in Seattle with 12 participants.",
+    firstStatus:
+      "We are securing the projects and mentors before we fill the cohort.",
+    statusLine: "12 seats · 4 pathways · projects being built now",
     problemTitle: "Talent is everywhere. Opportunity is not.",
     problemBody:
-      "A young person may know what they care about and still have no clear way to turn it into experience, income, training, or work. That is the gap we are trying to close.",
+      "A young person can know what they care about and still have no clear way into useful experience, a mentor, or work.",
     howEyebrow: "How it works",
     howTitle: "Interest → Project → Mentor → Next Step",
     steps: [
-      ["01", "Find the interest", "Start with something the participant already cares about."],
-      ["02", "Put it to work", "Connect that interest to a real project with useful responsibility."],
-      ["03", "Learn beside someone", "Work alongside an experienced mentor who knows the field."],
-      ["04", "Build the next step", "Finish with proof of work, follow-up, and a concrete path forward."],
+      ["01", "Interest", "Start with what already matters."],
+      ["02", "Project", "Put that interest to useful work."],
+      ["03", "Mentor", "Work beside someone who knows the field."],
+      ["04", "Next Step", "Leave with proof and somewhere to go next."],
     ],
-    firstEyebrow: "The First 12",
-    firstTitle: "The First 12",
-    firstBody:
-      "We're starting with 12 participants in Seattle over the first year. Each will enter a real project, work with a mentor, earn through meaningful work, and leave with something they can point to.",
-    firstNote:
-      "Starting small lets us pay attention to the question that matters most: did they actually move forward?",
     pathwaysEyebrow: "Four pathways",
-    pathwaysTitle: "Four ways to start. One model underneath.",
-    pathwaysIntro:
-      "These are four entry points into the same youth-development model: paid opportunities, an experienced mentor, and a next step.",
+    pathwaysTitle: "Four interests. One operating model.",
     pathways: [
-      ["01", "Built for Good", "Technology", "Solve a real digital problem for a nonprofit, community group, or social-purpose business."],
-      ["02", "Beyond the Game", "Sports", "Use existing sports environments to expose participants to the work and economy around the game."],
-      ["03", "Ground Up", "Urban Gardening + Food Systems", "Build practical experience through food systems, sustainability, stewardship, and hands-on community projects."],
-      ["04", "Make Your Mark", "Art", "Turn restoration, design, public art, and documentation into paid work and visible community improvement."],
+      ["01", "Built for Good", "Technology", "Solve a real digital problem."],
+      [
+        "02",
+        "Beyond the Game",
+        "Sports",
+        "Work in the business and systems around sport.",
+      ],
+      [
+        "03",
+        "Ground Up",
+        "Urban Gardening + Food Systems",
+        "Build, grow, maintain, and document food systems.",
+      ],
+      [
+        "04",
+        "Make Your Mark",
+        "Art",
+        "Restore, design, create, and leave visible work behind.",
+      ],
     ],
     pathwaysAction: "Explore the pathways →",
-    mentorEyebrow: "Mentorship + follow-through",
-    mentorTitle: "The project gets them in the door. The relationship helps them move forward.",
-    mentorBody:
-      "Projects are the vehicle. Mentorship and follow-through are the intervention. New World Kids stays involved through the work, helps remove practical barriers, documents what was completed, and follows the participant into the next step.",
-    resultsEyebrow: "What we measure",
-    resultsTitle: "Did they actually move forward?",
-    resultsBody:
-      "We keep the measurement simple and useful. The point is not activity for activity's sake; it is movement toward a stronger next step.",
-    outcomes: [
-      "Showed up",
-      "Completed something",
-      "Learned something useful",
-      "Earned income where applicable",
-      "A next step exists",
-      "Moved into work, training, education, or another opportunity",
-    ],
-    proofEyebrow: "Where we started",
-    proofTitle: "We saw what happens when the work is real.",
+    proofEyebrow: "Proof of work",
+    proofTitle: "Where the idea was tested.",
     proofBody:
-      "Our Indigo Azul Project in Puerto Vallarta showed us the potential of place-based learning: people taking responsibility for real work, contributing to a place, and learning through doing.",
-    proofClose: "Seattle will look different. The principle stays the same.",
+      "Proyecto Indigo Azul gave young people a real place to contribute, learn by doing, and see the result of their work.",
+    proofClose: "Seattle is the next test of the model.",
     proofAction: "See the Indigo Azul field archive →",
-    partnerEyebrow: "For partners",
-    partnerTitle: "We're looking for projects, mentors, spaces, and partners.",
+    measureEyebrow: "What counts",
+    outcomes: [
+      "Completed useful work",
+      "Earned income where applicable",
+      "Built a mentor relationship",
+      "Left with proof",
+      "Has a next step",
+    ],
+    partnerEyebrow: "Join the work",
+    partnerTitle: "Bring one real opportunity.",
     partnerBody:
-      "New World Kids operates the opportunity layer: participant and project matching, mentor support, project structure, participant experience, documentation, measurement, and follow-up. Partners can bring the real environments and opportunities.",
-    partnerQuestion:
-      "Do you have a real project, mentor, space, or opportunity that one of our First 12 could contribute to?",
-    partnerAction: "Bring us an opportunity →",
+      "A project. A mentor. A supervised place to contribute. New World Kids handles the match, support, documentation, and follow-through.",
+    projectAction: "Bring a project",
+    mentorAction: "Become a mentor",
   },
   es: {
-    problemEyebrow: "El problema",
+    firstEyebrow: "Los Primeros 12",
+    firstTitle: "12 lugares. Empezar pequeño. Hacerlo bien.",
+    firstBody:
+      "En 2027, New World Kids comenzará en Seattle con 12 participantes.",
+    firstStatus:
+      "Estamos asegurando los proyectos y mentores antes de completar el grupo.",
+    statusLine: "12 lugares · 4 caminos · proyectos en construcción",
     problemTitle: "El talento está en todas partes. La oportunidad no.",
     problemBody:
-      "Un joven puede saber qué le importa y aun así no tener una forma clara de convertirlo en experiencia, ingresos, capacitación o trabajo. Esa es la brecha que buscamos cerrar.",
+      "Un joven puede saber qué le importa y aun así no tener una ruta clara hacia experiencia útil, un mentor o trabajo.",
     howEyebrow: "Cómo funciona",
     howTitle: "Interés → Proyecto → Mentor → Siguiente paso",
     steps: [
-      ["01", "Encontrar el interés", "Empezar con algo que ya le importa al participante."],
-      ["02", "Ponerlo a trabajar", "Conectar ese interés con un proyecto real y una responsabilidad útil."],
-      ["03", "Aprender junto a alguien", "Trabajar con un mentor con experiencia en el campo."],
-      ["04", "Construir el siguiente paso", "Terminar con evidencia del trabajo, seguimiento y un camino concreto."],
+      ["01", "Interés", "Empezar con lo que ya importa."],
+      ["02", "Proyecto", "Poner ese interés a trabajar en algo útil."],
+      ["03", "Mentor", "Trabajar al lado de alguien que conoce el campo."],
+      [
+        "04",
+        "Siguiente paso",
+        "Salir con evidencia y un lugar hacia dónde avanzar.",
+      ],
     ],
-    firstEyebrow: "Los Primeros 12",
-    firstTitle: "Los Primeros 12",
-    firstBody:
-      "Empezamos con 12 participantes en Seattle durante el primer año. Cada uno entrará en un proyecto real, trabajará con un mentor, ganará a través de trabajo significativo y saldrá con algo concreto que pueda mostrar.",
-    firstNote:
-      "Empezar con un grupo pequeño nos permite concentrarnos en la pregunta más importante: ¿realmente avanzó?",
     pathwaysEyebrow: "Cuatro caminos",
-    pathwaysTitle: "Cuatro formas de empezar. Un solo modelo.",
-    pathwaysIntro:
-      "Son cuatro puntos de entrada al mismo modelo de desarrollo juvenil: trabajo real, un mentor con experiencia y un siguiente paso.",
+    pathwaysTitle: "Cuatro intereses. Un solo modelo operativo.",
     pathways: [
-      ["01", "Built for Good", "Tecnología", "Resolver un problema digital real para una organización comunitaria, sin fines de lucro o de propósito social."],
-      ["02", "Beyond the Game", "Deportes", "Usar entornos deportivos existentes para mostrar el trabajo y la economía alrededor del juego."],
-      ["03", "Ground Up", "Jardinería urbana + sistemas alimentarios", "Crear experiencia práctica en alimentos, sostenibilidad, cuidado comunitario y proyectos reales."],
-      ["04", "Make Your Mark", "Arte", "Convertir restauración, diseño, arte público y documentación en trabajo pagado y mejora comunitaria visible."],
+      [
+        "01",
+        "Built for Good",
+        "Tecnología",
+        "Resolver un problema digital real.",
+      ],
+      [
+        "02",
+        "Beyond the Game",
+        "Deportes",
+        "Trabajar en el negocio y los sistemas alrededor del deporte.",
+      ],
+      [
+        "03",
+        "Ground Up",
+        "Jardinería urbana + sistemas alimentarios",
+        "Construir, cultivar, mantener y documentar sistemas alimentarios.",
+      ],
+      [
+        "04",
+        "Make Your Mark",
+        "Arte",
+        "Restaurar, diseñar, crear y dejar trabajo visible.",
+      ],
     ],
     pathwaysAction: "Explorar los caminos →",
-    mentorEyebrow: "Mentoría + seguimiento",
-    mentorTitle: "El proyecto abre la puerta. La relación ayuda a avanzar.",
-    mentorBody:
-      "Los proyectos son el vehículo. La mentoría y el seguimiento son la intervención. New World Kids permanece involucrado, ayuda con barreras prácticas, documenta lo realizado y acompaña al participante hacia el siguiente paso.",
-    resultsEyebrow: "Lo que medimos",
-    resultsTitle: "¿Realmente avanzó?",
-    resultsBody:
-      "Mantenemos la medición sencilla y útil. El objetivo no es acumular actividades, sino lograr movimiento hacia un siguiente paso más fuerte.",
-    outcomes: [
-      "Asistió",
-      "Completó algo",
-      "Aprendió algo útil",
-      "Ganó ingresos cuando correspondía",
-      "Existe un siguiente paso",
-      "Pasó a trabajo, capacitación, educación u otra oportunidad",
-    ],
-    proofEyebrow: "Dónde empezamos",
-    proofTitle: "Vimos lo que ocurre cuando el trabajo es real.",
+    proofEyebrow: "Evidencia del trabajo",
+    proofTitle: "Dónde se puso a prueba la idea.",
     proofBody:
-      "Nuestro Proyecto Indigo Azul en Puerto Vallarta nos mostró el potencial del aprendizaje basado en el lugar: personas asumiendo responsabilidad por trabajo real, contribuyendo a un lugar y aprendiendo al hacerlo.",
-    proofClose: "Seattle se verá diferente. El principio sigue siendo el mismo.",
+      "Proyecto Indigo Azul dio a jóvenes un lugar real para contribuir, aprender haciendo y ver el resultado de su trabajo.",
+    proofClose: "Seattle es la siguiente prueba del modelo.",
     proofAction: "Ver el archivo de campo de Indigo Azul →",
-    partnerEyebrow: "Para aliados",
-    partnerTitle: "Buscamos proyectos, mentores, espacios y aliados.",
+    measureEyebrow: "Lo que cuenta",
+    outcomes: [
+      "Completó trabajo útil",
+      "Generó ingresos cuando correspondía",
+      "Construyó una relación con un mentor",
+      "Salió con evidencia",
+      "Tiene un siguiente paso",
+    ],
+    partnerEyebrow: "Súmate al trabajo",
+    partnerTitle: "Trae una oportunidad real.",
     partnerBody:
-      "New World Kids opera la capa de oportunidad: conecta participantes con proyectos, apoya a mentores, estructura la experiencia, documenta, mide y da seguimiento. Los aliados pueden aportar los entornos y oportunidades reales.",
-    partnerQuestion:
-      "¿Tienes un proyecto real, mentor, espacio u oportunidad a la que uno de nuestros Primeros 12 pueda contribuir?",
-    partnerAction: "Tráenos una oportunidad →",
+      "Un proyecto. Un mentor. Un lugar supervisado donde contribuir. New World Kids maneja la conexión, el apoyo, la documentación y el seguimiento.",
+    projectAction: "Traer un proyecto",
+    mentorAction: "Ser mentor",
   },
 } as const
+
+const focusRing =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4"
 
 export function PathwaySection() {
   const locale = useLocale()
   const t = locale === "es" ? copy.es : copy.en
+  const projectMail = `mailto:info@nwkids.org?subject=${encodeURIComponent(locale === "es" ? "Proyecto para los Primeros 12" : "First 12 project opportunity")}`
+  const mentorMail = `mailto:info@nwkids.org?subject=${encodeURIComponent(locale === "es" ? "Mentor para los Primeros 12" : "First 12 mentor interest")}`
 
   return (
     <>
-      <section id="problem" className="bg-[var(--color-bg)] px-6 py-24 md:px-10 md:py-36">
-        <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-          <div>
-            <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase">{t.problemEyebrow}</p>
-            <h2 className="mt-6 max-w-5xl text-5xl leading-[0.94] font-black tracking-[-0.055em] text-[var(--color-text-primary)] sm:text-6xl md:text-7xl lg:text-[5.6rem]">{t.problemTitle}</h2>
-          </div>
-          <p className="border-l-4 border-[var(--color-nwk-blue)] pl-6 text-lg leading-8 text-[var(--color-text-muted)] md:pl-8 md:text-xl md:leading-9">{t.problemBody}</p>
-        </div>
-      </section>
-
-      <section id="how" className="bg-[var(--color-nwk-blue)] px-6 py-24 text-white md:px-10 md:py-32">
+      <section
+        id="first-12"
+        className="bg-[var(--color-bg)] px-5 py-20 sm:px-8 md:px-10 md:py-28"
+      >
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold tracking-[0.24em] text-white/70 uppercase">{t.howEyebrow}</p>
-          <h2 className="mt-5 max-w-6xl text-4xl leading-[0.98] font-black tracking-[-0.045em] sm:text-5xl md:text-6xl lg:text-7xl">{t.howTitle}</h2>
-          <div className="mt-14 border-t border-white/30">
-            {t.steps.map(([number, title, body]) => (
-              <div key={number} className="grid gap-4 border-b border-white/30 py-7 md:grid-cols-[96px_0.8fr_1.2fr] md:items-start md:py-9">
-                <span className="text-5xl leading-none font-black tracking-[-0.06em] text-white/35 md:text-6xl">{number}</span>
-                <h3 className="text-xl leading-tight font-bold tracking-[-0.02em] md:text-2xl">{title}</h3>
-                <p className="max-w-2xl text-sm leading-7 text-white/80 md:text-base md:leading-8">{body}</p>
-              </div>
-            ))}
+          <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase sm:text-xs">
+            {t.firstEyebrow}
+          </p>
+          <div className="mt-5 grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
+            <div
+              aria-hidden="true"
+              className="text-[7rem] leading-[0.72] font-black tracking-[-0.1em] text-[var(--color-nwk-blue)] select-none sm:text-[11rem] md:text-[15rem] lg:text-[19rem]"
+            >
+              12
+            </div>
+            <div className="pb-2">
+              <h2 className="max-w-4xl text-[clamp(3rem,9vw,6.5rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance text-[var(--color-text-primary)]">
+                {t.firstTitle}
+              </h2>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-text-muted)] md:text-xl">
+                {t.firstBody}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10 grid gap-7 border-t-2 border-[var(--color-ink)] pt-7 md:grid-cols-[1.05fr_0.95fr] md:gap-14">
+            <div>
+              <h3 className="text-3xl leading-tight font-black tracking-[-0.035em] text-[var(--color-text-primary)] md:text-4xl">
+                {t.problemTitle}
+              </h3>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--color-text-muted)] md:text-lg md:leading-8">
+                {t.problemBody}
+              </p>
+            </div>
+            <div>
+              <p className="text-xl leading-8 font-bold tracking-[-0.02em] text-[var(--color-text-primary)] md:text-2xl">
+                {t.firstStatus}
+              </p>
+              <p className="mt-5 text-[10px] font-bold tracking-[0.17em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
+                {t.statusLine}
+              </p>
+            </div>
+          </div>
+
+          <div id="how" className="mt-16 scroll-mt-24 md:mt-20">
+            <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
+              {t.howEyebrow}
+            </p>
+            <h3 className="mt-4 max-w-6xl text-[clamp(2.25rem,7vw,5rem)] leading-[0.96] font-black tracking-[-0.045em] text-[var(--color-text-primary)]">
+              {t.howTitle}
+            </h3>
+            <div className="mt-9 border-t border-black/15">
+              {t.steps.map(([number, title, body]) => (
+                <div
+                  key={number}
+                  className="grid gap-3 border-b border-black/15 py-6 md:grid-cols-[72px_0.75fr_1.25fr] md:items-center md:py-7"
+                >
+                  <span className="text-sm font-bold tracking-[0.16em] text-black/35">
+                    {number}
+                  </span>
+                  <h4 className="text-xl font-black tracking-[-0.025em] text-[var(--color-text-primary)] md:text-2xl">
+                    {title}
+                  </h4>
+                  <p className="text-base leading-7 text-[var(--color-text-muted)]">
+                    {body}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="first-12" className="overflow-hidden bg-white px-6 py-24 text-[var(--color-ink)] md:px-10 md:py-32">
-        <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase">{t.firstEyebrow}</p>
-          <div className="mt-5 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-            <div aria-hidden="true" className="text-[6rem] leading-[0.72] font-black tracking-[-0.1em] text-[var(--color-nwk-blue)] select-none sm:text-[10rem] md:text-[14rem] lg:text-[18rem] xl:text-[22rem]">12</div>
-            <h2 className="pb-3 text-4xl leading-[0.98] font-black tracking-[-0.045em] sm:text-5xl md:text-6xl lg:text-7xl">{t.firstTitle}</h2>
-          </div>
-          <div className="mt-12 grid gap-8 border-t-2 border-[var(--color-ink)] pt-8 md:grid-cols-2 md:gap-16">
-            <p className="text-lg leading-8 text-black/70 md:text-xl md:leading-9">{t.firstBody}</p>
-            <p className="text-2xl leading-tight font-bold tracking-[-0.025em] md:text-3xl">{t.firstNote}</p>
-          </div>
+      <section
+        id="programs"
+        className="bg-[var(--color-ink)] py-20 text-white md:py-28"
+      >
+        <div className="mx-auto max-w-7xl px-5 sm:px-8 md:px-10">
+          <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase sm:text-xs">
+            {t.pathwaysEyebrow}
+          </p>
+          <h2 className="mt-4 max-w-5xl text-[clamp(3rem,9vw,6.5rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance">
+            {t.pathwaysTitle}
+          </h2>
         </div>
-      </section>
 
-      <section id="programs" className="bg-[var(--color-ink)] py-24 text-white md:py-32">
-        <div className="mx-auto max-w-7xl px-6 md:px-10">
-          <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase">{t.pathwaysEyebrow}</p>
-          <h2 className="mt-5 max-w-5xl text-5xl leading-[0.95] font-black tracking-[-0.05em] sm:text-6xl md:text-7xl">{t.pathwaysTitle}</h2>
-          <p className="mt-7 max-w-3xl text-lg leading-8 text-white/70 md:text-xl md:leading-9">{t.pathwaysIntro}</p>
-        </div>
-        <div className="mt-14 border-y border-white/20">
+        <div className="mt-12 border-y border-white/20">
           {t.pathways.map(([number, name, category, body]) => (
-            <article key={number} className="border-b border-white/20 last:border-b-0">
-              <div className="mx-auto grid max-w-7xl gap-5 px-6 py-10 md:grid-cols-[90px_0.9fr_0.8fr_1.3fr] md:items-center md:px-10 md:py-12">
-                <span className="text-sm font-bold tracking-[0.2em] text-white/35">{number}</span>
-                <h3 className="text-3xl leading-none font-black tracking-[-0.04em] text-white sm:text-4xl md:text-5xl">{name}</h3>
-                <p className="text-xs font-bold tracking-[0.14em] text-[var(--color-action-orange)] uppercase">{category}</p>
-                <p className="max-w-2xl text-base leading-7 text-white/65">{body}</p>
+            <article
+              key={number}
+              className="border-b border-white/20 last:border-b-0"
+            >
+              <div className="mx-auto grid max-w-7xl gap-4 px-5 py-8 sm:px-8 md:grid-cols-[72px_0.9fr_0.7fr_1.2fr] md:items-center md:px-10 md:py-10">
+                <span className="text-xs font-bold tracking-[0.2em] text-white/35">
+                  {number}
+                </span>
+                <h3 className="text-3xl leading-none font-black tracking-[-0.04em] sm:text-4xl md:text-5xl">
+                  {name}
+                </h3>
+                <p className="text-[10px] font-bold tracking-[0.14em] text-[var(--color-action-orange)] uppercase sm:text-xs">
+                  {category}
+                </p>
+                <p className="max-w-xl text-base leading-7 text-white/68">
+                  {body}
+                </p>
               </div>
             </article>
           ))}
         </div>
-        <div className="mx-auto mt-10 max-w-7xl px-6 md:px-10">
-          <Link href="/projects" locale={locale} className="inline-flex text-sm font-bold text-white underline decoration-white/40 underline-offset-8 hover:decoration-white">{t.pathwaysAction}</Link>
+
+        <div className="mx-auto mt-9 max-w-7xl px-5 sm:px-8 md:px-10">
+          <Link
+            href="/projects"
+            locale={locale}
+            className="inline-flex min-h-11 items-center text-sm font-bold text-white underline decoration-white/40 underline-offset-8 hover:decoration-white focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+          >
+            {t.pathwaysAction}
+          </Link>
         </div>
       </section>
 
-      <section id="support-path" className="bg-[var(--color-paper)] px-6 py-24 text-[var(--color-ink)] md:px-10 md:py-32">
+      <section
+        id="proof"
+        className="bg-[var(--color-nwk-blue)] px-5 py-20 text-white sm:px-8 md:px-10 md:py-28"
+      >
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase">{t.mentorEyebrow}</p>
-          <h2 className="mt-5 max-w-6xl text-5xl leading-[0.95] font-black tracking-[-0.05em] sm:text-6xl md:text-7xl">{t.mentorTitle}</h2>
-          <p className="mt-10 max-w-3xl border-l-4 border-[var(--color-action-orange)] pl-6 text-lg leading-8 text-black/70 md:pl-8 md:text-xl md:leading-9">{t.mentorBody}</p>
+          <div className="grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
+            <div>
+              <p className="text-[10px] font-bold tracking-[0.24em] text-white/60 uppercase sm:text-xs">
+                {t.proofEyebrow}
+              </p>
+              <h2 className="mt-4 text-[clamp(3rem,9vw,6rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance">
+                {t.proofTitle}
+              </h2>
+            </div>
+            <div className="border-t border-white/25 pt-6 lg:border-t-0 lg:pt-0">
+              <p className="max-w-2xl text-lg leading-8 text-white/78 md:text-xl md:leading-9">
+                {t.proofBody}
+              </p>
+              <p className="mt-5 text-2xl font-black tracking-[-0.025em] md:text-3xl">
+                {t.proofClose}
+              </p>
+              <Link
+                href="/gallery"
+                locale={locale}
+                className="mt-7 inline-flex min-h-11 items-center rounded-full border border-white/35 px-5 text-sm font-bold text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none"
+              >
+                {t.proofAction}
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-14 border-t border-white/25 pt-8 md:mt-18">
+            <p className="text-[10px] font-bold tracking-[0.24em] text-white/55 uppercase sm:text-xs">
+              {t.measureEyebrow}
+            </p>
+            <div className="mt-5 grid sm:grid-cols-2 lg:grid-cols-5">
+              {t.outcomes.map((outcome, index) => (
+                <div
+                  key={outcome}
+                  className="border-t border-white/20 py-5 sm:border-r sm:px-5 sm:last:border-r-0 lg:border-t-0"
+                >
+                  <span className="text-[10px] font-bold tracking-[0.14em] text-white/35">
+                    0{index + 1}
+                  </span>
+                  <p className="mt-2 text-base leading-6 font-bold text-white/88">
+                    {outcome}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="results" className="bg-[var(--color-ink)] px-6 py-24 text-white md:px-10 md:py-36">
+      <section
+        id="partners"
+        className="bg-[var(--color-paper)] px-5 py-20 text-[var(--color-ink)] sm:px-8 md:px-10 md:py-28"
+      >
         <div className="mx-auto max-w-7xl">
-          <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase">{t.resultsEyebrow}</p>
-          <h2 className="mt-6 max-w-6xl text-5xl leading-[0.94] font-black tracking-[-0.055em] sm:text-6xl md:text-7xl lg:text-[5.8rem]">{t.resultsTitle}</h2>
-          <p className="mt-8 max-w-3xl text-lg leading-8 text-white/70 md:text-xl">{t.resultsBody}</p>
-          <div className="mt-12 grid gap-px bg-white/20 sm:grid-cols-2 lg:grid-cols-3">
-            {t.outcomes.map((outcome) => (
-              <div key={outcome} className="bg-[var(--color-ink)] px-6 py-7 text-base font-bold">{outcome}</div>
-            ))}
+          <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase sm:text-xs">
+            {t.partnerEyebrow}
+          </p>
+          <div className="mt-4 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:gap-16">
+            <h2 className="max-w-5xl text-[clamp(3rem,9vw,6.5rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance text-[var(--color-text-primary)]">
+              {t.partnerTitle}
+            </h2>
+            <p className="max-w-2xl border-t border-black/15 pt-6 text-lg leading-8 text-[var(--color-text-muted)] lg:border-t-0 lg:border-l-2 lg:border-[var(--color-nwk-blue)] lg:pt-0 lg:pl-7">
+              {t.partnerBody}
+            </p>
           </div>
-        </div>
-      </section>
-
-      <section id="indigo-proof" className="bg-[var(--color-nwk-blue)] px-6 py-24 text-white md:px-10 md:py-32">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-          <div>
-            <p className="text-xs font-bold tracking-[0.24em] text-white/65 uppercase">{t.proofEyebrow}</p>
-            <h2 className="mt-5 text-4xl leading-[0.98] font-black tracking-[-0.045em] sm:text-5xl md:text-6xl">{t.proofTitle}</h2>
-          </div>
-          <div>
-            <p className="text-lg leading-8 text-white/80 md:text-xl md:leading-9">{t.proofBody}</p>
-            <p className="mt-6 text-2xl font-black tracking-[-0.025em]">{t.proofClose}</p>
-            <Link href="/gallery" locale={locale} className="mt-8 inline-flex text-sm font-bold text-white underline decoration-white/40 underline-offset-8 hover:decoration-white">{t.proofAction}</Link>
-          </div>
-        </div>
-      </section>
-
-      <section id="partners" className="bg-white px-6 py-24 text-[var(--color-ink)] md:px-10 md:py-32">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-          <div>
-            <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase">{t.partnerEyebrow}</p>
-            <h2 className="mt-5 max-w-5xl text-5xl leading-[0.95] font-black tracking-[-0.05em] sm:text-6xl md:text-7xl">{t.partnerTitle}</h2>
-            <p className="mt-7 max-w-3xl text-base leading-8 text-black/65 md:text-lg">{t.partnerBody}</p>
-          </div>
-          <div className="border-l-4 border-[var(--color-nwk-blue)] pl-6 md:pl-8">
-            <p className="text-2xl leading-tight font-bold tracking-[-0.025em] md:text-3xl">{t.partnerQuestion}</p>
-            <a href="mailto:info@nwkids.org" className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--color-action-orange)] px-7 py-3 text-sm font-bold text-white transition-transform duration-150 hover:-translate-y-0.5">{t.partnerAction}</a>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a
+              href={projectMail}
+              className={`inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--color-ink)] px-7 text-sm font-black text-white transition-transform hover:-translate-y-px ${focusRing}`}
+            >
+              {t.projectAction}
+            </a>
+            <a
+              href={mentorMail}
+              className={`inline-flex min-h-12 items-center justify-center rounded-full border border-black/20 px-7 text-sm font-black text-[var(--color-text-primary)] transition-colors hover:bg-black/[0.03] ${focusRing}`}
+            >
+              {t.mentorAction}
+            </a>
           </div>
         </div>
       </section>
