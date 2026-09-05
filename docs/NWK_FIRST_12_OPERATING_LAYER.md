@@ -19,18 +19,22 @@ Turn the public First 12 story into an operating system that can receive real pr
 Supabase project: existing shared project, isolated in the `nwkids` schema.
 
 Private tables:
+
 - `nwkids.opportunity_intakes`
 - `nwkids.mentor_intakes`
 
 Operating tables:
+
 - `nwkids.first12_status`
 - `nwkids.proof_artifacts`
 
 The intake tables have RLS enabled, explicit deny-all policies for `anon` and `authenticated`, and no browser write grants. Server writes go through service-role-only RPC functions:
+
 - `public.nwkids_submit_opportunity(jsonb)`
 - `public.nwkids_submit_mentor(jsonb)`
 
 Public read surfaces:
+
 - `public.nwkids_first12_public`
 - `public.nwkids_proof_public`
 
@@ -53,6 +57,7 @@ A status change is an operating claim. Do not advance a seat unless the underlyi
 ## Proof of Work rule
 
 An artifact is public only when:
+
 - `verified = true`
 - `is_public = true`
 
@@ -63,6 +68,7 @@ Future Seattle proof can include project briefs, before/after work, screenshots,
 ## Environment variables
 
 The UI uses the existing Supabase variables documented in `apps/ui/.env.local.example`:
+
 - `SUPABASE_URL` or `NEXT_PUBLIC_SUPABASE_URL`
 - `SUPABASE_SERVICE_ROLE_KEY` for server-only intake writes
 - `SUPABASE_ANON_KEY` or `NEXT_PUBLIC_SUPABASE_ANON_KEY` for public status/proof reads
@@ -72,6 +78,7 @@ Never expose `SUPABASE_SERVICE_ROLE_KEY` to browser code.
 ## Truth boundary
 
 Do not use the operating layer to imply:
+
 - all 12 participants are recruited,
 - all 12 projects exist,
 - all 12 placements are paid,

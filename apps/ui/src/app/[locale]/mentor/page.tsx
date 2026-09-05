@@ -14,7 +14,8 @@ const copy = {
     submittedBody:
       "We will review fit, availability, pathway needs, and required screening before making any participant connection.",
     errorTitle: "We could not save that submission.",
-    errorBody: "Please check the required fields and try again, or email info@nwkids.org.",
+    errorBody:
+      "Please check the required fields and try again, or email info@nwkids.org.",
     name: "Your name",
     email: "Email",
     phone: "Phone · optional",
@@ -34,14 +35,16 @@ const copy = {
   },
   es: {
     eyebrow: "Primeros 12 · Registro de mentor",
-    title: "Trabaja al lado de alguien que está construyendo su siguiente paso.",
+    title:
+      "Trabaja al lado de alguien que está construyendo su siguiente paso.",
     intro:
       "Aquí la mentoría está conectada con trabajo real. Cuéntanos qué sabes, dónde puedes ayudar y cuánto tiempo puedes ofrecer de manera constante.",
     submittedTitle: "Interés de mentor recibido.",
     submittedBody:
       "Revisaremos el encaje, la disponibilidad, las necesidades del camino y la evaluación requerida antes de conectar a cualquier participante.",
     errorTitle: "No pudimos guardar el envío.",
-    errorBody: "Revisa los campos obligatorios e inténtalo de nuevo, o escribe a info@nwkids.org.",
+    errorBody:
+      "Revisa los campos obligatorios e inténtalo de nuevo, o escribe a info@nwkids.org.",
     name: "Tu nombre",
     email: "Correo electrónico",
     phone: "Teléfono · opcional",
@@ -80,7 +83,8 @@ const pathwayOptions = {
 
 const inputClass =
   "mt-2 min-h-12 w-full rounded-none border-0 border-b border-black/25 bg-transparent px-0 py-3 text-base text-[var(--color-text-primary)] outline-none transition-colors placeholder:text-black/30 focus:border-[var(--color-nwk-blue)] focus:ring-0"
-const labelClass = "block text-xs font-bold tracking-[0.12em] text-black/55 uppercase"
+const labelClass =
+  "block text-xs font-bold tracking-[0.12em] text-black/55 uppercase"
 
 export async function generateMetadata({
   params,
@@ -89,7 +93,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params
   return {
-    title: locale === "es" ? "Ser mentor · New World Kids" : "Become a mentor · New World Kids",
+    title:
+      locale === "es"
+        ? "Ser mentor · New World Kids"
+        : "Become a mentor · New World Kids",
     description:
       locale === "es"
         ? "Expresa interés en ser mentor de los Primeros 12 de New World Kids en Seattle."
@@ -132,9 +139,17 @@ export default async function MentorPage({
         <div className="mx-auto max-w-7xl">
           {submitted ? (
             <div className="max-w-3xl border-t-4 border-[var(--color-nwk-blue)] pt-7">
-              <h2 className="text-4xl font-black tracking-[-0.04em] md:text-5xl">{t.submittedTitle}</h2>
-              <p className="mt-5 text-lg leading-8 text-black/65">{t.submittedBody}</p>
-              <Link href="/" locale={locale} className="mt-8 inline-flex min-h-12 items-center rounded-full bg-[var(--color-ink)] px-7 text-sm font-black text-white">
+              <h2 className="text-4xl font-black tracking-[-0.04em] md:text-5xl">
+                {t.submittedTitle}
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-black/65">
+                {t.submittedBody}
+              </p>
+              <Link
+                href="/"
+                locale={locale}
+                className="mt-8 inline-flex min-h-12 items-center rounded-full bg-[var(--color-ink)] px-7 text-sm font-black text-white"
+              >
                 {t.back} →
               </Link>
             </div>
@@ -143,65 +158,149 @@ export default async function MentorPage({
               <input type="hidden" name="locale" value={locale} />
 
               {hasError && (
-                <div className="mb-10 border-l-4 border-[var(--color-action-orange)] bg-white p-5" role="alert">
+                <div
+                  className="mb-10 border-l-4 border-[var(--color-action-orange)] bg-white p-5"
+                  role="alert"
+                >
                   <p className="font-black">{t.errorTitle}</p>
-                  <p className="mt-1 text-sm leading-6 text-black/60">{t.errorBody}</p>
+                  <p className="mt-1 text-sm leading-6 text-black/60">
+                    {t.errorBody}
+                  </p>
                 </div>
               )}
 
               <div className="grid gap-x-10 gap-y-9 md:grid-cols-2">
                 <label className={labelClass}>
                   {t.name}
-                  <input className={inputClass} name="name" required minLength={2} maxLength={120} autoComplete="name" />
+                  <input
+                    className={inputClass}
+                    name="name"
+                    required
+                    minLength={2}
+                    maxLength={120}
+                    autoComplete="name"
+                  />
                 </label>
                 <label className={labelClass}>
                   {t.email}
-                  <input className={inputClass} name="email" type="email" required maxLength={254} autoComplete="email" />
+                  <input
+                    className={inputClass}
+                    name="email"
+                    type="email"
+                    required
+                    maxLength={254}
+                    autoComplete="email"
+                  />
                 </label>
                 <label className={labelClass}>
                   {t.phone}
-                  <input className={inputClass} name="phone" type="tel" maxLength={80} autoComplete="tel" />
+                  <input
+                    className={inputClass}
+                    name="phone"
+                    type="tel"
+                    maxLength={80}
+                    autoComplete="tel"
+                  />
                 </label>
                 <label className={labelClass}>
                   {t.organization}
-                  <input className={inputClass} name="organization" maxLength={160} autoComplete="organization" />
+                  <input
+                    className={inputClass}
+                    name="organization"
+                    maxLength={160}
+                    autoComplete="organization"
+                  />
                 </label>
                 <label className={`${labelClass} md:col-span-2`}>
                   {t.pathway}
-                  <select className={inputClass} name="pathway" required defaultValue="">
-                    <option value="" disabled>—</option>
-                    {options.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+                  <select
+                    className={inputClass}
+                    name="pathway"
+                    required
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      —
+                    </option>
+                    {options.map(([value, label]) => (
+                      <option key={value} value={value}>
+                        {label}
+                      </option>
+                    ))}
                   </select>
                 </label>
                 <label className={`${labelClass} md:col-span-2`}>
                   {t.expertise}
-                  <textarea className={`${inputClass} min-h-32 resize-y`} name="expertise" required minLength={20} maxLength={2500} />
+                  <textarea
+                    className={`${inputClass} min-h-32 resize-y`}
+                    name="expertise"
+                    required
+                    minLength={20}
+                    maxLength={2500}
+                  />
                 </label>
                 <label className={labelClass}>
                   {t.availability}
-                  <input className={inputClass} name="availability" required minLength={5} maxLength={1000} placeholder={locale === "es" ? "Ej. 2 horas cada dos semanas" : "e.g. 2 hours every other week"} />
+                  <input
+                    className={inputClass}
+                    name="availability"
+                    required
+                    minLength={5}
+                    maxLength={1000}
+                    placeholder={
+                      locale === "es"
+                        ? "Ej. 2 horas cada dos semanas"
+                        : "e.g. 2 hours every other week"
+                    }
+                  />
                 </label>
                 <label className={labelClass}>
                   {t.location}
-                  <input className={inputClass} name="location" required minLength={2} maxLength={240} />
+                  <input
+                    className={inputClass}
+                    name="location"
+                    required
+                    minLength={2}
+                    maxLength={240}
+                  />
                 </label>
                 <label className={`${labelClass} md:col-span-2`}>
                   {t.offer}
-                  <textarea className={`${inputClass} min-h-32 resize-y`} name="support_offer" required minLength={20} maxLength={2000} />
+                  <textarea
+                    className={`${inputClass} min-h-32 resize-y`}
+                    name="support_offer"
+                    required
+                    minLength={20}
+                    maxLength={2000}
+                  />
                 </label>
                 <label className={`${labelClass} md:col-span-2`}>
                   {t.notes}
-                  <textarea className={`${inputClass} min-h-24 resize-y`} name="notes" maxLength={2000} />
+                  <textarea
+                    className={`${inputClass} min-h-24 resize-y`}
+                    name="notes"
+                    maxLength={2000}
+                  />
                 </label>
               </div>
 
               <div className="mt-10 space-y-5">
                 <label className="flex max-w-3xl items-start gap-3 text-sm leading-6 text-black/65">
-                  <input className="mt-1 size-4 accent-[var(--color-nwk-blue)]" type="checkbox" name="screening_ack" required />
+                  <input
+                    className="mt-1 size-4 accent-[var(--color-nwk-blue)]"
+                    type="checkbox"
+                    name="screening_ack"
+                    required
+                  />
                   <span>{t.screening}</span>
                 </label>
                 <label className="flex max-w-3xl items-start gap-3 text-sm leading-6 text-black/65">
-                  <input className="mt-1 size-4 accent-[var(--color-nwk-blue)]" type="checkbox" name="consent" required />
+                  <input
+                    className="mt-1 size-4 accent-[var(--color-nwk-blue)]"
+                    type="checkbox"
+                    name="consent"
+                    required
+                  />
                   <span>{t.consent}</span>
                 </label>
               </div>

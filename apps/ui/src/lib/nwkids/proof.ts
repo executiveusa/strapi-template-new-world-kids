@@ -17,7 +17,8 @@ export type ProofArtifact = {
 
 export async function getProofArtifacts(limit = 6): Promise<ProofArtifact[]> {
   const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL
-  const anon = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const anon =
+    process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   if (!url || !anon) return []
 
   const client = createClient(url, anon, {
@@ -26,7 +27,9 @@ export async function getProofArtifacts(limit = 6): Promise<ProofArtifact[]> {
 
   const { data, error } = await client
     .from("nwkids_proof_public")
-    .select("id,project_key,title,pathway,artifact_type,summary,asset_url,captured_at,location,sort_order")
+    .select(
+      "id,project_key,title,pathway,artifact_type,summary,asset_url,captured_at,location,sort_order"
+    )
     .order("sort_order")
     .limit(limit)
 

@@ -59,13 +59,25 @@ function adminClient() {
 
 export async function saveOpportunity(formData: FormData) {
   const payload = {
-    organization_name: required(formData.get("organization_name"), "organization", 2),
+    organization_name: required(
+      formData.get("organization_name"),
+      "organization",
+      2
+    ),
     contact_name: required(formData.get("contact_name"), "contact name", 2),
     email: email(formData.get("email")),
     phone: optional(formData.get("phone")),
     pathway: pathway(formData.get("pathway")),
-    project_summary: required(formData.get("project_summary"), "project summary", 20),
-    participant_work: required(formData.get("participant_work"), "participant work", 20),
+    project_summary: required(
+      formData.get("project_summary"),
+      "project summary",
+      20
+    ),
+    participant_work: required(
+      formData.get("participant_work"),
+      "participant work",
+      20
+    ),
     location: required(formData.get("location"), "location", 2),
     timing: optional(formData.get("timing")),
     compensation: optional(formData.get("compensation")),
@@ -78,7 +90,8 @@ export async function saveOpportunity(formData: FormData) {
   const { data, error } = await adminClient().rpc("nwkids_submit_opportunity", {
     p_payload: payload,
   })
-  if (error || !data) throw new Error(error?.message || "Opportunity intake failed")
+  if (error || !data)
+    throw new Error(error?.message || "Opportunity intake failed")
   return data as string
 }
 
@@ -93,7 +106,10 @@ export async function saveMentor(formData: FormData) {
     availability: required(formData.get("availability"), "availability", 5),
     location: required(formData.get("location"), "location", 2),
     support_offer: required(formData.get("support_offer"), "support offer", 20),
-    screening_ack: consent(formData.get("screening_ack"), "screening acknowledgement"),
+    screening_ack: consent(
+      formData.get("screening_ack"),
+      "screening acknowledgement"
+    ),
     notes: optional(formData.get("notes")),
     locale: locale(formData.get("locale")),
     consent: consent(formData.get("consent"), "consent"),
@@ -116,7 +132,8 @@ export type First12PublicStatus = {
 
 export async function getFirst12Status(): Promise<First12PublicStatus[]> {
   const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL
-  const anon = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const anon =
+    process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   if (!url || !anon) return []
 
   const client = createClient(url, anon, {

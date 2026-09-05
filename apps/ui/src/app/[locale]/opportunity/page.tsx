@@ -14,7 +14,8 @@ const copy = {
     submittedBody:
       "We will review the fit, safety, supervision, timing, and pathway before anything is offered to a participant.",
     errorTitle: "We could not save that submission.",
-    errorBody: "Please check the required fields and try again, or email info@nwkids.org.",
+    errorBody:
+      "Please check the required fields and try again, or email info@nwkids.org.",
     organization: "Organization or business",
     contact: "Contact name",
     email: "Email",
@@ -41,7 +42,8 @@ const copy = {
     submittedBody:
       "Revisaremos el encaje, la seguridad, la supervisión, el tiempo y el camino antes de ofrecer algo a un participante.",
     errorTitle: "No pudimos guardar el envío.",
-    errorBody: "Revisa los campos obligatorios e inténtalo de nuevo, o escribe a info@nwkids.org.",
+    errorBody:
+      "Revisa los campos obligatorios e inténtalo de nuevo, o escribe a info@nwkids.org.",
     organization: "Organización o negocio",
     contact: "Nombre de contacto",
     email: "Correo electrónico",
@@ -80,7 +82,8 @@ const pathwayOptions = {
 
 const inputClass =
   "mt-2 min-h-12 w-full rounded-none border-0 border-b border-black/25 bg-transparent px-0 py-3 text-base text-[var(--color-text-primary)] outline-none transition-colors placeholder:text-black/30 focus:border-[var(--color-nwk-blue)] focus:ring-0"
-const labelClass = "block text-xs font-bold tracking-[0.12em] text-black/55 uppercase"
+const labelClass =
+  "block text-xs font-bold tracking-[0.12em] text-black/55 uppercase"
 
 export async function generateMetadata({
   params,
@@ -89,7 +92,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params
   return {
-    title: locale === "es" ? "Traer un proyecto · New World Kids" : "Bring a project · New World Kids",
+    title:
+      locale === "es"
+        ? "Traer un proyecto · New World Kids"
+        : "Bring a project · New World Kids",
     description:
       locale === "es"
         ? "Propón un proyecto real para los Primeros 12 de New World Kids en Seattle."
@@ -132,8 +138,12 @@ export default async function OpportunityPage({
         <div className="mx-auto max-w-7xl">
           {submitted ? (
             <div className="max-w-3xl border-t-4 border-[var(--color-nwk-blue)] pt-7">
-              <h2 className="text-4xl font-black tracking-[-0.04em] md:text-5xl">{t.submittedTitle}</h2>
-              <p className="mt-5 text-lg leading-8 text-black/65">{t.submittedBody}</p>
+              <h2 className="text-4xl font-black tracking-[-0.04em] md:text-5xl">
+                {t.submittedTitle}
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-black/65">
+                {t.submittedBody}
+              </p>
               <Link
                 href="/"
                 locale={locale}
@@ -147,47 +157,108 @@ export default async function OpportunityPage({
               <input type="hidden" name="locale" value={locale} />
 
               {hasError && (
-                <div className="mb-10 border-l-4 border-[var(--color-action-orange)] bg-white p-5" role="alert">
+                <div
+                  className="mb-10 border-l-4 border-[var(--color-action-orange)] bg-white p-5"
+                  role="alert"
+                >
                   <p className="font-black">{t.errorTitle}</p>
-                  <p className="mt-1 text-sm leading-6 text-black/60">{t.errorBody}</p>
+                  <p className="mt-1 text-sm leading-6 text-black/60">
+                    {t.errorBody}
+                  </p>
                 </div>
               )}
 
               <div className="grid gap-x-10 gap-y-9 md:grid-cols-2">
                 <label className={labelClass}>
                   {t.organization}
-                  <input className={inputClass} name="organization_name" required minLength={2} maxLength={160} autoComplete="organization" />
+                  <input
+                    className={inputClass}
+                    name="organization_name"
+                    required
+                    minLength={2}
+                    maxLength={160}
+                    autoComplete="organization"
+                  />
                 </label>
                 <label className={labelClass}>
                   {t.contact}
-                  <input className={inputClass} name="contact_name" required minLength={2} maxLength={120} autoComplete="name" />
+                  <input
+                    className={inputClass}
+                    name="contact_name"
+                    required
+                    minLength={2}
+                    maxLength={120}
+                    autoComplete="name"
+                  />
                 </label>
                 <label className={labelClass}>
                   {t.email}
-                  <input className={inputClass} name="email" type="email" required maxLength={254} autoComplete="email" />
+                  <input
+                    className={inputClass}
+                    name="email"
+                    type="email"
+                    required
+                    maxLength={254}
+                    autoComplete="email"
+                  />
                 </label>
                 <label className={labelClass}>
                   {t.phone}
-                  <input className={inputClass} name="phone" type="tel" maxLength={80} autoComplete="tel" />
+                  <input
+                    className={inputClass}
+                    name="phone"
+                    type="tel"
+                    maxLength={80}
+                    autoComplete="tel"
+                  />
                 </label>
                 <label className={`${labelClass} md:col-span-2`}>
                   {t.pathway}
-                  <select className={inputClass} name="pathway" required defaultValue="">
-                    <option value="" disabled>—</option>
-                    {options.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+                  <select
+                    className={inputClass}
+                    name="pathway"
+                    required
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      —
+                    </option>
+                    {options.map(([value, label]) => (
+                      <option key={value} value={value}>
+                        {label}
+                      </option>
+                    ))}
                   </select>
                 </label>
                 <label className={`${labelClass} md:col-span-2`}>
                   {t.project}
-                  <textarea className={`${inputClass} min-h-32 resize-y`} name="project_summary" required minLength={20} maxLength={2500} />
+                  <textarea
+                    className={`${inputClass} min-h-32 resize-y`}
+                    name="project_summary"
+                    required
+                    minLength={20}
+                    maxLength={2500}
+                  />
                 </label>
                 <label className={`${labelClass} md:col-span-2`}>
                   {t.work}
-                  <textarea className={`${inputClass} min-h-32 resize-y`} name="participant_work" required minLength={20} maxLength={2500} />
+                  <textarea
+                    className={`${inputClass} min-h-32 resize-y`}
+                    name="participant_work"
+                    required
+                    minLength={20}
+                    maxLength={2500}
+                  />
                 </label>
                 <label className={labelClass}>
                   {t.location}
-                  <input className={inputClass} name="location" required minLength={2} maxLength={240} />
+                  <input
+                    className={inputClass}
+                    name="location"
+                    required
+                    minLength={2}
+                    maxLength={240}
+                  />
                 </label>
                 <label className={labelClass}>
                   {t.timing}
@@ -195,20 +266,44 @@ export default async function OpportunityPage({
                 </label>
                 <label className={`${labelClass} md:col-span-2`}>
                   {t.compensation}
-                  <input className={inputClass} name="compensation" maxLength={500} placeholder={locale === "es" ? "Por ejemplo: pagado, estipendio, por definir" : "For example: paid, stipend, to be determined"} />
+                  <input
+                    className={inputClass}
+                    name="compensation"
+                    maxLength={500}
+                    placeholder={
+                      locale === "es"
+                        ? "Por ejemplo: pagado, estipendio, por definir"
+                        : "For example: paid, stipend, to be determined"
+                    }
+                  />
                 </label>
                 <label className={`${labelClass} md:col-span-2`}>
                   {t.supervision}
-                  <textarea className={`${inputClass} min-h-28 resize-y`} name="supervision" required minLength={10} maxLength={1500} />
+                  <textarea
+                    className={`${inputClass} min-h-28 resize-y`}
+                    name="supervision"
+                    required
+                    minLength={10}
+                    maxLength={1500}
+                  />
                 </label>
                 <label className={`${labelClass} md:col-span-2`}>
                   {t.notes}
-                  <textarea className={`${inputClass} min-h-24 resize-y`} name="notes" maxLength={2000} />
+                  <textarea
+                    className={`${inputClass} min-h-24 resize-y`}
+                    name="notes"
+                    maxLength={2000}
+                  />
                 </label>
               </div>
 
               <label className="mt-10 flex max-w-3xl items-start gap-3 text-sm leading-6 text-black/65">
-                <input className="mt-1 size-4 accent-[var(--color-nwk-blue)]" type="checkbox" name="consent" required />
+                <input
+                  className="mt-1 size-4 accent-[var(--color-nwk-blue)]"
+                  type="checkbox"
+                  name="consent"
+                  required
+                />
                 <span>{t.consent}</span>
               </label>
 
