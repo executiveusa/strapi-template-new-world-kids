@@ -44,7 +44,7 @@ jobs:
       - name: Run linter
         run: pnpm lint
 
-      - name: Check formatting on changed files
+      - name: Print exact formatting diff
         shell: bash
         run: |
           set -euo pipefail
@@ -53,7 +53,12 @@ jobs:
             echo "No changed files require Prettier verification."
             exit 0
           fi
-          pnpm exec prettier --check --ignore-unknown "${files[@]}"
+          pnpm exec prettier --write --ignore-unknown "${files[@]}"
+          git diff -- "${files[@]}"
+          if ! git diff --quiet -- "${files[@]}"; then
+            echo "Formatting changes printed above."
+            exit 1
+          fi
 
       - name: Run unit tests
         run: pnpm test:ci
