@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   CI: true
@@ -26,6 +26,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.head_ref }}
           fetch-depth: 0
 
       - name: Verify First 12 pathway model
@@ -47,31 +48,23 @@ jobs:
       - name: Run linter
         run: pnpm lint
 
-      - name: Format Phase 4 files
+      - name: Format and commit Phase 4 source
         shell: bash
         run: |
           set -euo pipefail
           mapfile -t files < <(git diff --name-only --diff-filter=ACMR "origin/${{ github.base_ref }}...HEAD" | grep -E '(\.md$|\.css$|\.scss$|\.tsx$|\.ts$|package\.json$)' || true)
-          if [ ${#files[@]} -gt 0 ]; then
-            pnpm exec prettier --write --ignore-unknown "${files[@]}"
+          if [ ${#files[@]} -eq 0 ]; then
+            exit 0
           fi
-
-      - name: Upload formatted Phase 4 source
-        uses: actions/upload-artifact@v4
-        with:
-          name: phase-4-formatted-source
-          path: |
-            apps/ui/src/app/[locale]/(homepage)/page.tsx
-            apps/ui/src/app/[locale]/opportunity
-            apps/ui/src/app/[locale]/mentor
-            apps/ui/src/components/homepage/Homepage.tsx
-            apps/ui/src/components/homepage/PathwaySection.tsx
-            apps/ui/src/components/homepage/First12OperatingBoard.tsx
-            apps/ui/src/components/homepage/ProofOfWorkFeed.tsx
-            apps/ui/src/lib/nwkids
-            apps/ui/README.md
-            docs/NWK_FIRST_12_OPERATING_LAYER.md
-          retention-days: 1
+          pnpm exec prettier --write --ignore-unknown "${files[@]}"
+          if git diff --quiet -- "${files[@]}"; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "${files[@]}"
+          git commit -m "style: apply canonical Phase 4 formatting"
+          git push origin "HEAD:${{ github.head_ref }}"
 
       - name: Run unit tests
         run: pnpm test:ci
