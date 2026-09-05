@@ -4,18 +4,18 @@ import { Homepage } from "@/components/homepage/Homepage"
 
 const metadataByLocale = {
   en: {
-    title: "New World Kids — We turn interests into opportunities.",
+    title: "New World Kids — Help turn interest into opportunity.",
     description:
-      "New World Kids connects young people's interests to real projects, paid experiences, experienced mentors, and a next step forward.",
+      "New World Kids is building the First 12 in Seattle: real projects, experienced mentors, proof of work, and a next step.",
     social:
-      "Meet the First 12 and explore four pathways into real projects, mentorship, paid experience, and a next step.",
+      "The First 12 starts in Seattle in 2027 across Technology, Sports, Food Systems, and Art.",
   },
   es: {
-    title: "New World Kids — Convertimos intereses en oportunidades.",
+    title: "New World Kids — Ayuda a convertir interés en oportunidad.",
     description:
-      "New World Kids conecta los intereses de los jóvenes con proyectos reales, experiencias pagadas, mentores con experiencia y un siguiente paso.",
+      "New World Kids está construyendo los Primeros 12 en Seattle: proyectos reales, mentores con experiencia, evidencia del trabajo y un siguiente paso.",
     social:
-      "Conoce a los Primeros 12 y explora cuatro caminos hacia proyectos reales, mentoría, experiencia pagada y un siguiente paso.",
+      "Los Primeros 12 comienzan en Seattle en 2027 con Tecnología, Deportes, Sistemas Alimentarios y Arte.",
   },
 } as const
 
