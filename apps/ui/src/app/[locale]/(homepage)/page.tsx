@@ -2,6 +2,8 @@ import type { Metadata } from "next"
 
 import { Homepage } from "@/components/homepage/Homepage"
 
+export const dynamic = "force-dynamic"
+
 const metadataByLocale = {
   en: {
     title: "New World Kids — Help turn interest into opportunity.",
