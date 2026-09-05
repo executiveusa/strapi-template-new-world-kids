@@ -31,7 +31,13 @@ const CROSSFADE_SECONDS = 0.9
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
 
-function LoopingHeroVideo({ poster, paused }: { poster: string; paused: boolean }) {
+function LoopingHeroVideo({
+  poster,
+  paused,
+}: {
+  poster: string
+  paused: boolean
+}) {
   const videoARef = useRef<HTMLVideoElement>(null)
   const videoBRef = useRef<HTMLVideoElement>(null)
   const activeRef = useRef<"a" | "b">("a")
@@ -84,7 +90,10 @@ function LoopingHeroVideo({ poster, paused }: { poster: string; paused: boolean 
         preload="metadata"
         poster={poster}
         className="absolute inset-0 h-full w-full object-cover transition-opacity ease-linear motion-reduce:hidden"
-        style={{ opacity: aOpacity, transitionDuration: `${CROSSFADE_SECONDS}s` }}
+        style={{
+          opacity: aOpacity,
+          transitionDuration: `${CROSSFADE_SECONDS}s`,
+        }}
         aria-hidden="true"
       >
         <source src={HERO_VIDEO_SRC} type="video/mp4" />
@@ -95,7 +104,10 @@ function LoopingHeroVideo({ poster, paused }: { poster: string; paused: boolean 
         playsInline
         preload="none"
         className="absolute inset-0 h-full w-full object-cover transition-opacity ease-linear motion-reduce:hidden"
-        style={{ opacity: 1 - aOpacity, transitionDuration: `${CROSSFADE_SECONDS}s` }}
+        style={{
+          opacity: 1 - aOpacity,
+          transitionDuration: `${CROSSFADE_SECONDS}s`,
+        }}
         aria-hidden="true"
       >
         <source src={HERO_VIDEO_SRC} type="video/mp4" />
@@ -116,13 +128,18 @@ export function NonprofitHero() {
   return (
     <section data-hero className="bg-[#111]">
       <div className="relative min-h-[max(660px,calc(100svh-64px))] w-full overflow-hidden md:min-h-[min(860px,calc(100svh-68px))]">
-        <LoopingHeroVideo poster="/videos/hero-garden-poster.jpg" paused={paused} />
+        <LoopingHeroVideo
+          poster="/videos/hero-garden-poster.jpg"
+          paused={paused}
+        />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,10,0.18)_0%,rgba(10,10,10,0.36)_34%,rgba(10,10,10,0.88)_100%)] md:bg-[linear-gradient(90deg,rgba(10,10,10,0.82)_0%,rgba(10,10,10,0.58)_50%,rgba(10,10,10,0.13)_100%)]" />
         <div className="absolute top-0 left-0 h-1 w-full bg-[#2457FF]" />
 
         <div className="relative z-10 mx-auto flex min-h-[max(660px,calc(100svh-64px))] max-w-[1440px] items-end px-5 pt-24 pb-8 sm:px-8 sm:pb-10 md:min-h-[min(860px,calc(100svh-68px))] md:items-center md:px-12 md:py-16 lg:px-16">
           <div className="max-w-[1040px] text-white">
-            <p className="text-[10px] font-bold tracking-[0.22em] text-white/75 uppercase sm:text-xs">{t.eyebrow}</p>
+            <p className="text-[10px] font-bold tracking-[0.22em] text-white/75 uppercase sm:text-xs">
+              {t.eyebrow}
+            </p>
             <h1 className="mt-4 max-w-[1000px] text-[clamp(2.6rem,12vw,7.9rem)] leading-[0.89] font-black tracking-[-0.052em] text-balance uppercase sm:mt-5 sm:leading-[0.88] md:text-[clamp(4.5rem,8vw,7.9rem)]">
               {t.title}
             </h1>
@@ -151,7 +168,7 @@ export function NonprofitHero() {
         <button
           type="button"
           onClick={() => setPaused((value) => !value)}
-          className={`absolute right-4 bottom-4 z-20 hidden min-h-11 items-center rounded-full border border-white/25 bg-black/30 px-4 text-[10px] font-bold tracking-[0.1em] text-white/85 uppercase backdrop-blur-md transition-colors duration-200 hover:bg-black/45 motion-reduce:hidden md:inline-flex md:right-6 md:bottom-16 ${focusRing}`}
+          className={`absolute right-4 bottom-4 z-20 hidden min-h-11 items-center rounded-full border border-white/25 bg-black/30 px-4 text-[10px] font-bold tracking-[0.1em] text-white/85 uppercase backdrop-blur-md transition-colors duration-200 hover:bg-black/45 motion-reduce:hidden md:right-6 md:bottom-16 md:inline-flex ${focusRing}`}
           aria-pressed={paused}
           aria-label={paused ? t.play : t.pause}
         >
