@@ -34,6 +34,12 @@ export async function generateMetadata({
   }
 }
 
-export default function Page() {
-  return <Homepage />
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}) {
+  const { locale: rawLocale } = await params
+  const locale = rawLocale === "es" ? "es" : "en"
+  return <Homepage locale={locale} />
 }
