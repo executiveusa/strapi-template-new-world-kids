@@ -44,25 +44,16 @@ jobs:
       - name: Run linter
         run: pnpm lint
 
-      - name: Format phase 3 files
+      - name: Check formatting on changed files
+        shell: bash
         run: |
-          pnpm exec prettier --write --ignore-unknown \
-            'apps/ui/src/app/[locale]/(homepage)/page.tsx' \
-            'apps/ui/src/components/homepage/NonprofitHero.tsx' \
-            'apps/ui/src/components/homepage/PathwaySection.tsx' \
-            'apps/ui/src/components/homepage/SupportSection.tsx'
-
-      - name: Upload formatted phase 3 source
-        uses: actions/upload-artifact@v4
-        with:
-          name: phase-3-formatted-source
-          path: |
-            apps/ui/src/app/[locale]/(homepage)/page.tsx
-            apps/ui/src/components/homepage/NonprofitHero.tsx
-            apps/ui/src/components/homepage/PathwaySection.tsx
-            apps/ui/src/components/homepage/SupportSection.tsx
-          if-no-files-found: error
-          retention-days: 1
+          set -euo pipefail
+          mapfile -t files < <(git diff --name-only --diff-filter=ACMR "origin/${{ github.base_ref }}...HEAD" | grep -E '(\.md$|\.css$|\.scss$|\.tsx$|\.ts$|package\.json$)' || true)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No changed files require Prettier verification."
+            exit 0
+          fi
+          pnpm exec prettier --check --ignore-unknown "${files[@]}"
 
       - name: Run unit tests
         run: pnpm test:ci
