@@ -10,12 +10,14 @@ const copy = {
     title: "Help turn interest into opportunity.",
     body: "Start with what they care about. Connect it to real work, a mentor, and a clear next action.",
     primary: "Join the work",
+    reserved: "Reserved for · 12–15 sec hero montage",
   },
   es: {
     eyebrow: "Seattle · Primeros 12 · 2027",
     title: "Ayuda a convertir interés en oportunidad.",
     body: "Empezamos con lo que les importa. Lo conectamos con trabajo real, un mentor y una próxima acción clara.",
     primary: "Súmate al trabajo",
+    reserved: "Reservado para · montaje principal de 12–15 s",
   },
 } as const
 
@@ -31,7 +33,7 @@ export function NonprofitHero() {
       <div className="relative min-h-[calc(100svh-64px)] w-full overflow-hidden md:min-h-[calc(100svh-68px)]">
         <div
           data-montage-slot="hero"
-          aria-label="Hero montage placeholder"
+          aria-label={t.reserved}
           className="absolute inset-0 bg-[#20201d]"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_28%,rgba(255,255,255,0.055),transparent_34%),linear-gradient(180deg,rgba(255,255,255,0.015),rgba(0,0,0,0.18))]" />
@@ -63,7 +65,7 @@ export function NonprofitHero() {
         </div>
 
         <div aria-hidden="true" className="absolute right-5 bottom-5 z-10 hidden text-[9px] font-semibold tracking-[0.2em] text-white/28 uppercase md:block">
-          12–15 sec montage slot
+          {t.reserved}
         </div>
       </div>
     </section>
