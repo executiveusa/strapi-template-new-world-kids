@@ -14,7 +14,7 @@ const copy = {
     howTitle: "Interest → Project → Mentor → Next Step",
     steps: [
       ["01", "Interest", "Begin with their interest."],
-      ["02", "Project", "Put that interest to useful work."],
+      ["02", "Project", "Match interest to paid opportunity."],
       ["03", "Mentor", "Work beside someone who knows the field."],
       ["04", "Next Step", "Leave with proof and somewhere to go next."],
     ],
