@@ -23,7 +23,7 @@ const copy = {
     proofClose: "Now we bring it home.",
     proofAction: "See where it started →",
     measureEyebrow: "What success looks like",
-    outcomes: ["Completed useful work", "Earned income where applicable", "Built a mentor relationship", "Left with proof", "Has a next step"],
+    outcomes: ["Completed real work they can show", "Earned income", "Built a mentor relationship", "Has a clear next action and ongoing support"],
     partnerEyebrow: "Join the work",
     partnerTitle: "Bring one real opportunity.",
     partnerBody: "A project. A mentor. A supervised place to contribute. New World Kids handles the match, support, documentation, and follow-through.",
@@ -48,7 +48,7 @@ const copy = {
     proofClose: "Ahora lo traemos a casa.",
     proofAction: "Mira dónde empezó →",
     measureEyebrow: "Cómo se ve el éxito",
-    outcomes: ["Completó trabajo útil", "Generó ingresos cuando correspondía", "Construyó una relación con un mentor", "Salió con evidencia", "Tiene un siguiente paso"],
+    outcomes: ["Completó trabajo real que puede mostrar", "Generó ingresos", "Construyó una relación con un mentor", "Tiene una próxima acción clara y apoyo continuo"],
     partnerEyebrow: "Súmate al trabajo",
     partnerTitle: "Trae una oportunidad real.",
     partnerBody: "Un proyecto. Un mentor. Un lugar supervisado donde contribuir. New World Kids maneja la conexión, el apoyo, la documentación y el seguimiento.",
@@ -108,7 +108,7 @@ export function PathwaySection() {
           </div>
           <div className="mt-14 border-t border-white/25 pt-8 md:mt-18">
             <p className="text-[10px] font-bold tracking-[0.24em] text-white/55 uppercase sm:text-xs">{t.measureEyebrow}</p>
-            <div className="mt-5 grid sm:grid-cols-2 lg:grid-cols-5">
+            <div className="mt-5 grid sm:grid-cols-2 lg:grid-cols-4">
               {t.outcomes.map((outcome, index) => (
                 <div key={outcome} className="border-t border-white/20 py-5 sm:border-r sm:px-5 sm:last:border-r-0 lg:border-t-0">
                   <span className="text-[10px] font-bold tracking-[0.14em] text-white/35">0{index + 1}</span>
