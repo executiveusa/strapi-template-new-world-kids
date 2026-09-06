@@ -73,21 +73,21 @@ function MediaLane({
   const dark = tone === "dark"
 
   return (
-    <div className="mt-10 grid gap-x-5 gap-y-8 border-t border-current/20 pt-8 md:grid-cols-12 md:gap-x-7 md:gap-y-10">
+    <div className="mt-12 grid gap-x-6 gap-y-10 border-t border-current/18 pt-10 md:grid-cols-12 md:gap-x-8 md:gap-y-12">
       {items.map((item, index) => (
         <figure key={item} className={aspectClasses[index % aspectClasses.length]}>
           <div
-            className={`flex h-full w-full items-end border border-current/20 p-4 ${
-              dark ? "bg-white/[0.04]" : "bg-black/[0.035]"
+            className={`flex h-full w-full items-end border border-current/16 p-5 ${
+              dark ? "bg-white/[0.025]" : "bg-black/[0.025]"
             }`}
           >
-            <span className="text-[10px] font-bold tracking-[0.16em] opacity-55 uppercase">
+            <span className="text-[10px] font-semibold tracking-[0.16em] opacity-42 uppercase">
               {placeholder}
             </span>
           </div>
-          <figcaption className="mt-3 flex items-baseline justify-between gap-4 border-t border-current/20 pt-3">
+          <figcaption className="mt-4 flex items-baseline justify-between gap-4 border-t border-current/16 pt-4">
             <span className="text-sm font-black">{item}</span>
-            <span className="text-[10px] font-bold tracking-[0.14em] opacity-45">0{index + 1}</span>
+            <span className="text-[10px] font-semibold tracking-[0.14em] opacity-38">0{index + 1}</span>
           </figcaption>
         </figure>
       ))}
@@ -115,27 +115,27 @@ export default async function GalleryPage({
 
   return (
     <main className="bg-[var(--color-bg)] text-[var(--color-text-primary)]">
-      <section className="px-5 py-16 sm:px-8 sm:py-20 md:px-10 md:py-28">
+      <section className="px-5 py-20 sm:px-8 sm:py-24 md:px-10 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.eyebrow}</p>
-          <h1 className="mt-4 max-w-6xl text-[clamp(3.25rem,10vw,7rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance">{t.title}</h1>
-          <p className="mt-7 max-w-3xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8 md:text-xl">{t.body}</p>
+          <p className="text-[10px] font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.eyebrow}</p>
+          <h1 className="mt-5 max-w-6xl text-[clamp(3.25rem,10vw,7rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance">{t.title}</h1>
+          <p className="mt-9 max-w-3xl border-t border-black/15 pt-7 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8 md:text-xl">{t.body}</p>
         </div>
       </section>
 
-      <section id="indigo" className="scroll-mt-20 border-t border-black/15 px-5 py-16 sm:px-8 md:px-10 md:py-24">
+      <section id="indigo" className="scroll-mt-20 border-t border-black/15 px-5 py-20 sm:px-8 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-7 md:grid-cols-[0.72fr_1.28fr] md:items-end md:gap-12">
+          <div className="grid gap-8 md:grid-cols-[0.72fr_1.28fr] md:items-end md:gap-16">
             <div>
-              <p className="text-[10px] font-bold tracking-[0.22em] text-[var(--color-action)] uppercase sm:text-xs">{t.indigoEyebrow}</p>
-              <h2 className="mt-4 text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.indigoTitle}</h2>
+              <p className="text-[10px] font-semibold tracking-[0.2em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.indigoEyebrow}</p>
+              <h2 className="mt-5 text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.indigoTitle}</h2>
             </div>
-            <div className="border-t border-black/15 pt-5">
+            <div className="border-t border-black/15 pt-6">
               <p className="max-w-2xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{t.indigoBody}</p>
-              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-                <a href={INDIGO_INSTAGRAM} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center border-y border-black/20 py-3 text-sm font-black transition-colors hover:border-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-3">{t.instagramAction}</a>
-                <a href={INDIGO_YOUTUBE} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center border-y border-black/20 py-3 text-sm font-black transition-colors hover:border-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-3">{t.youtubeAction}</a>
-                <a href={NWK_FACEBOOK} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center border-y border-black/20 py-3 text-sm font-black transition-colors hover:border-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-3">{t.facebookAction}</a>
+              <div className="mt-7 grid border-t border-black/18 sm:grid-cols-3">
+                <a href={INDIGO_INSTAGRAM} target="_blank" rel="noreferrer" className="group flex min-h-12 items-center justify-between border-b border-black/18 py-3 text-sm font-black sm:border-r sm:px-5">{t.instagramAction}<span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">↗</span></a>
+                <a href={INDIGO_YOUTUBE} target="_blank" rel="noreferrer" className="group flex min-h-12 items-center justify-between border-b border-black/18 py-3 text-sm font-black sm:border-r sm:px-5">{t.youtubeAction}<span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">↗</span></a>
+                <a href={NWK_FACEBOOK} target="_blank" rel="noreferrer" className="group flex min-h-12 items-center justify-between border-b border-black/18 py-3 text-sm font-black sm:px-5">{t.facebookAction}<span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">↗</span></a>
               </div>
             </div>
           </div>
@@ -143,27 +143,27 @@ export default async function GalleryPage({
         </div>
       </section>
 
-      <section id="seattle" className="scroll-mt-20 bg-[var(--color-nwk-blue)] px-5 py-16 text-white sm:px-8 md:px-10 md:py-24">
+      <section id="seattle" className="scroll-mt-20 bg-[#23231f] px-5 py-20 text-white sm:px-8 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-7 md:grid-cols-[0.72fr_1.28fr] md:items-end md:gap-12">
+          <div className="grid gap-8 md:grid-cols-[0.72fr_1.28fr] md:items-end md:gap-16">
             <div>
-              <p className="text-[10px] font-bold tracking-[0.22em] text-white/60 uppercase sm:text-xs">{t.seattleEyebrow}</p>
-              <h2 className="mt-4 text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.seattleTitle}</h2>
+              <p className="text-[10px] font-semibold tracking-[0.2em] text-white/46 uppercase sm:text-xs">{t.seattleEyebrow}</p>
+              <h2 className="mt-5 text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.seattleTitle}</h2>
             </div>
-            <p className="max-w-2xl border-t border-white/25 pt-5 text-base leading-7 text-white/78 sm:text-lg sm:leading-8">{t.seattleBody}</p>
+            <p className="max-w-2xl border-t border-white/18 pt-6 text-base leading-7 text-white/72 sm:text-lg sm:leading-8">{t.seattleBody}</p>
           </div>
           <MediaLane items={t.seattleSlots} placeholder={t.placeholder} tone="dark" />
         </div>
       </section>
 
-      <section id="build-in-public" className="scroll-mt-20 border-t border-black/15 px-5 py-16 sm:px-8 md:px-10 md:py-24">
+      <section id="build-in-public" className="scroll-mt-20 border-t border-black/15 px-5 py-20 sm:px-8 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-7 md:grid-cols-[0.72fr_1.28fr] md:items-end md:gap-12">
+          <div className="grid gap-8 md:grid-cols-[0.72fr_1.28fr] md:items-end md:gap-16">
             <div>
-              <p className="text-[10px] font-bold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.publicEyebrow}</p>
-              <h2 className="mt-4 text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.publicTitle}</h2>
+              <p className="text-[10px] font-semibold tracking-[0.2em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.publicEyebrow}</p>
+              <h2 className="mt-5 text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.publicTitle}</h2>
             </div>
-            <p className="max-w-2xl border-t border-black/15 pt-5 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{t.publicBody}</p>
+            <p className="max-w-2xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{t.publicBody}</p>
           </div>
           <MediaLane items={t.publicSlots} placeholder={t.placeholder} />
         </div>
