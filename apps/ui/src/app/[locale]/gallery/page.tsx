@@ -22,10 +22,10 @@ const copy = {
     publicEyebrow: "03 · Build in public",
     publicTitle: "Keep the story open.",
     publicBody: "Shorts, interviews, progress, setbacks, and next steps—as the work develops.",
-    placeholder: "Footage placeholder",
-    indigoSlots: ["Youth + community", "Nature + place", "Work in progress", "Long-form archive"],
-    seattleSlots: ["Seattle + neighborhood", "Boxing", "Basketball", "Mentors + projects"],
-    publicSlots: ["Shorts", "Interviews", "Progress", "What comes next"],
+    reserved: "Reserved for",
+    indigoSlots: ["Youth + community footage", "Nature + place footage", "Work in progress footage", "Long-form archive footage"],
+    seattleSlots: ["Seattle + neighborhood footage", "Boxing footage", "Basketball footage", "Mentors + projects footage"],
+    publicSlots: ["Short clips", "Interviews", "Progress updates", "Next-step updates"],
     metaTitle: "Story Archive | New World Kids",
     metaDescription: "A living visual archive connecting Proyecto Indigo Azul and the next New World Kids chapter in Seattle.",
   },
@@ -45,10 +45,10 @@ const copy = {
     publicEyebrow: "03 · Construir en público",
     publicTitle: "Mantener la historia abierta.",
     publicBody: "Shorts, entrevistas, avances, tropiezos y próximos pasos—mientras el trabajo evoluciona.",
-    placeholder: "Espacio para material",
-    indigoSlots: ["Jóvenes + comunidad", "Naturaleza + lugar", "Trabajo en proceso", "Archivo de formato largo"],
-    seattleSlots: ["Seattle + vecindario", "Boxeo", "Básquetbol", "Mentores + proyectos"],
-    publicSlots: ["Shorts", "Entrevistas", "Avances", "Lo que sigue"],
+    reserved: "Reservado para",
+    indigoSlots: ["material de jóvenes + comunidad", "material de naturaleza + lugar", "material de trabajo en proceso", "archivo de formato largo"],
+    seattleSlots: ["material de Seattle + vecindario", "material de boxeo", "material de básquetbol", "material de mentores + proyectos"],
+    publicSlots: ["clips cortos", "entrevistas", "actualizaciones de progreso", "actualizaciones de próximos pasos"],
     metaTitle: "Archivo de historias | New World Kids",
     metaDescription: "Un archivo visual vivo que conecta Proyecto Indigo Azul con el próximo capítulo de New World Kids en Seattle.",
   },
@@ -63,11 +63,11 @@ const aspectClasses = [
 
 function MediaLane({
   items,
-  placeholder,
+  reserved,
   tone = "light",
 }: {
   items: readonly string[]
-  placeholder: string
+  reserved: string
   tone?: "light" | "dark"
 }) {
   const dark = tone === "dark"
@@ -82,7 +82,7 @@ function MediaLane({
             }`}
           >
             <span className="text-[10px] font-semibold tracking-[0.16em] opacity-42 uppercase">
-              {placeholder}
+              {reserved} · {item}
             </span>
           </div>
           <figcaption className="mt-4 flex items-baseline justify-between gap-4 border-t border-current/16 pt-4">
@@ -139,7 +139,7 @@ export default async function GalleryPage({
               </div>
             </div>
           </div>
-          <MediaLane items={t.indigoSlots} placeholder={t.placeholder} />
+          <MediaLane items={t.indigoSlots} reserved={t.reserved} />
         </div>
       </section>
 
@@ -152,7 +152,7 @@ export default async function GalleryPage({
             </div>
             <p className="max-w-2xl border-t border-white/18 pt-6 text-base leading-7 text-white/72 sm:text-lg sm:leading-8">{t.seattleBody}</p>
           </div>
-          <MediaLane items={t.seattleSlots} placeholder={t.placeholder} tone="dark" />
+          <MediaLane items={t.seattleSlots} reserved={t.reserved} tone="dark" />
         </div>
       </section>
 
@@ -165,7 +165,7 @@ export default async function GalleryPage({
             </div>
             <p className="max-w-2xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{t.publicBody}</p>
           </div>
-          <MediaLane items={t.publicSlots} placeholder={t.placeholder} />
+          <MediaLane items={t.publicSlots} reserved={t.reserved} />
         </div>
       </section>
     </main>
