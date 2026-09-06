@@ -4,13 +4,13 @@ import { siteLinks } from "@/components/site/siteData"
 
 const copy = {
   en: {
-    eyebrow: "Field journal",
+    eyebrow: "Reserved for · Field journal",
     title: "The story keeps growing.",
     body: "Notes, lessons, and field updates from the work as it happens.",
     cta: "Get updates →",
   },
   es: {
-    eyebrow: "Bitácora de campo",
+    eyebrow: "Reservado para · Bitácora de campo",
     title: "La historia sigue creciendo.",
     body: "Notas, aprendizajes y actualizaciones del trabajo mientras sucede.",
     cta: "Recibir novedades →",
