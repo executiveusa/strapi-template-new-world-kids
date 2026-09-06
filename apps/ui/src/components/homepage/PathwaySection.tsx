@@ -67,23 +67,23 @@ export function PathwaySection() {
 
   return (
     <>
-      <section id="first-12" className="bg-[var(--color-bg)] px-5 py-20 sm:px-8 md:px-10 md:py-28">
+      <section id="first-12" className="bg-[var(--color-bg)] px-5 py-24 sm:px-8 md:px-10 md:py-32 lg:py-36">
         <div className="mx-auto max-w-7xl">
-          <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase sm:text-xs">{t.firstEyebrow}</p>
-          <div className="mt-5 grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
-            <div aria-hidden="true" className="text-[7rem] leading-[0.72] font-black tracking-[-0.1em] text-[var(--color-nwk-blue)] select-none sm:text-[11rem] md:text-[15rem] lg:text-[19rem]">12</div>
+          <p className="text-[10px] font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.firstEyebrow}</p>
+          <div className="mt-7 grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end lg:gap-16">
+            <div aria-hidden="true" className="text-[7rem] leading-[0.72] font-black tracking-[-0.1em] text-[var(--color-nwk-blue)]/78 select-none sm:text-[11rem] md:text-[15rem] lg:text-[19rem]">12</div>
             <div className="pb-2">
               <h2 className="max-w-4xl text-[clamp(3rem,9vw,6.5rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance text-[var(--color-text-primary)]">{t.firstTitle}</h2>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-text-muted)] md:text-xl">{t.firstBody}</p>
+              <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--color-text-muted)] md:text-xl">{t.firstBody}</p>
             </div>
           </div>
-          <div id="how" className="mt-16 scroll-mt-24 md:mt-20">
-            <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.howEyebrow}</p>
-            <h3 className="mt-4 max-w-6xl text-[clamp(2.25rem,7vw,5rem)] leading-[0.96] font-black tracking-[-0.045em] text-[var(--color-text-primary)]">{t.howTitle}</h3>
-            <div className="mt-9 border-t border-black/15">
+          <div id="how" className="mt-20 scroll-mt-24 border-t border-black/15 pt-16 md:mt-28 md:pt-20">
+            <p className="text-[10px] font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.howEyebrow}</p>
+            <h3 className="mt-5 max-w-6xl text-[clamp(2.25rem,7vw,5rem)] leading-[0.96] font-black tracking-[-0.045em] text-[var(--color-text-primary)]">{t.howTitle}</h3>
+            <div className="mt-10 border-t border-black/15">
               {t.steps.map(([number, title, body]) => (
-                <div key={number} className="grid gap-3 border-b border-black/15 py-6 md:grid-cols-[72px_0.75fr_1.25fr] md:items-center md:py-7">
-                  <span className="text-sm font-bold tracking-[0.16em] text-black/35">{number}</span>
+                <div key={number} className="grid gap-3 border-b border-black/15 py-7 md:grid-cols-[72px_0.75fr_1.25fr] md:items-center md:py-8">
+                  <span className="text-sm font-semibold tracking-[0.14em] text-black/32">{number}</span>
                   <h4 className="text-xl font-black tracking-[-0.025em] text-[var(--color-text-primary)] md:text-2xl">{title}</h4>
                   <p className="text-base leading-7 text-[var(--color-text-muted)]">{body}</p>
                 </div>
@@ -93,26 +93,26 @@ export function PathwaySection() {
         </div>
       </section>
 
-      <section id="proof" className="bg-[var(--color-nwk-blue)] px-5 py-20 text-white sm:px-8 md:px-10 md:py-28">
+      <section id="proof" className="bg-[#23231f] px-5 py-24 text-white sm:px-8 md:px-10 md:py-32 lg:py-36">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-9 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-20">
             <div>
-              <p className="text-[10px] font-bold tracking-[0.24em] text-white/60 uppercase sm:text-xs">{t.proofEyebrow}</p>
-              <h2 className="mt-4 text-[clamp(3rem,9vw,6rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance">{t.proofTitle}</h2>
+              <p className="text-[10px] font-semibold tracking-[0.22em] text-white/48 uppercase sm:text-xs">{t.proofEyebrow}</p>
+              <h2 className="mt-5 text-[clamp(3rem,9vw,6rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance">{t.proofTitle}</h2>
             </div>
-            <div className="border-t border-white/25 pt-6 lg:border-t-0 lg:pt-0">
-              <p className="max-w-2xl text-lg leading-8 text-white/78 md:text-xl md:leading-9">{t.proofBody}</p>
-              <p className="mt-5 text-2xl font-black tracking-[-0.025em] md:text-3xl">{t.proofClose}</p>
-              <Link href="/gallery#indigo" locale={locale} className="mt-7 inline-flex min-h-11 items-center border-y border-white/35 py-3 text-sm font-bold text-white transition-colors hover:border-white/70 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none">{t.proofAction}</Link>
+            <div className="border-t border-white/18 pt-7 lg:border-t-0 lg:pt-0">
+              <p className="max-w-2xl text-lg leading-8 text-white/72 md:text-xl md:leading-9">{t.proofBody}</p>
+              <p className="mt-6 text-2xl font-black tracking-[-0.025em] md:text-3xl">{t.proofClose}</p>
+              <Link href="/gallery#indigo" locale={locale} className="mt-8 inline-flex min-h-11 items-center border-y border-white/28 py-3 text-sm font-bold text-white transition-colors hover:border-white/60 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none">{t.proofAction}</Link>
             </div>
           </div>
-          <div className="mt-14 border-t border-white/25 pt-8 md:mt-18">
-            <p className="text-[10px] font-bold tracking-[0.24em] text-white/55 uppercase sm:text-xs">{t.measureEyebrow}</p>
-            <div className="mt-5 grid sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 border-t border-white/18 pt-10 md:mt-20">
+            <p className="text-[10px] font-semibold tracking-[0.22em] text-white/45 uppercase sm:text-xs">{t.measureEyebrow}</p>
+            <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4">
               {t.outcomes.map((outcome, index) => (
-                <div key={outcome} className="border-t border-white/20 py-5 sm:border-r sm:px-5 sm:last:border-r-0 lg:border-t-0">
-                  <span className="text-[10px] font-bold tracking-[0.14em] text-white/35">0{index + 1}</span>
-                  <p className="mt-2 text-base leading-6 font-bold text-white/88">{outcome}</p>
+                <div key={outcome} className="border-t border-white/15 py-6 sm:border-r sm:px-6 sm:last:border-r-0 lg:border-t-0">
+                  <span className="text-[10px] font-semibold tracking-[0.14em] text-white/28">0{index + 1}</span>
+                  <p className="mt-3 text-base leading-6 font-bold text-white/84">{outcome}</p>
                 </div>
               ))}
             </div>
@@ -120,19 +120,19 @@ export function PathwaySection() {
         </div>
       </section>
 
-      <section id="partners" className="bg-[var(--color-paper)] px-5 py-20 text-[var(--color-ink)] sm:px-8 md:px-10 md:py-28">
+      <section id="partners" className="bg-[var(--color-paper)] px-5 py-24 text-[var(--color-ink)] sm:px-8 md:px-10 md:py-32 lg:py-36">
         <div className="mx-auto max-w-7xl">
-          <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase sm:text-xs">{t.partnerEyebrow}</p>
-          <div className="mt-4 grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:gap-16">
+          <p className="text-[10px] font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.partnerEyebrow}</p>
+          <div className="mt-5 grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:gap-20">
             <h2 className="max-w-5xl text-[clamp(3rem,9vw,6.5rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance text-[var(--color-text-primary)]">{t.partnerTitle}</h2>
-            <p className="max-w-xl border-t border-black/15 pt-6 text-lg leading-8 text-[var(--color-text-muted)] lg:border-t-0 lg:border-l-2 lg:border-[var(--color-nwk-blue)] lg:pt-0 lg:pl-7">{t.partnerBody}</p>
+            <p className="max-w-xl border-t border-black/15 pt-7 text-lg leading-8 text-[var(--color-text-muted)] lg:border-t-0 lg:border-l lg:border-black/18 lg:pt-0 lg:pl-8">{t.partnerBody}</p>
           </div>
-          <div className="mt-10 grid border-t border-black/20 sm:grid-cols-2">
-            <a href={projectMail} className={`group flex min-h-16 items-center justify-between border-b border-black/20 py-4 text-base font-black sm:border-r sm:px-5 ${focusRing}`}>
-              <span>{t.projectAction}</span><span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+          <div className="mt-12 grid border-t border-black/18 sm:grid-cols-2">
+            <a href={projectMail} className={`group flex min-h-16 items-center justify-between border-b border-black/18 py-4 text-base font-black sm:border-r sm:px-6 ${focusRing}`}>
+              <span>{t.projectAction}</span><span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
-            <a href={mentorMail} className={`group flex min-h-16 items-center justify-between border-b border-black/20 py-4 text-base font-black sm:px-5 ${focusRing}`}>
-              <span>{t.mentorAction}</span><span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+            <a href={mentorMail} className={`group flex min-h-16 items-center justify-between border-b border-black/18 py-4 text-base font-black sm:px-6 ${focusRing}`}>
+              <span>{t.mentorAction}</span><span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">→</span>
             </a>
           </div>
         </div>
