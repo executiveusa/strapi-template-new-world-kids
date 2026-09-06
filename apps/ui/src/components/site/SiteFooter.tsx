@@ -71,7 +71,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
                   key={item.href}
                   href={item.href}
                   locale={locale}
-                  className={`group flex w-fit max-w-[calc(100%-3rem)] min-h-12 items-center gap-4 py-1 text-[clamp(1.65rem,8vw,4rem)] leading-[1.02] font-medium tracking-[-0.04em] text-white/72 transition-colors duration-200 hover:text-white sm:gap-5 sm:tracking-[-0.045em] ${offsetClasses[index]} ${focusRing}`}
+                  className={`group flex w-fit max-w-[calc(100%_-_3rem)] min-h-12 items-center gap-4 py-1 text-[clamp(1.65rem,8vw,4rem)] leading-[1.02] font-medium tracking-[-0.04em] text-white/72 transition-colors duration-200 hover:text-white sm:gap-5 sm:tracking-[-0.045em] ${offsetClasses[index]} ${focusRing}`}
                 >
                   <span>{item.label}</span>
                   <span aria-hidden="true" className="shrink-0 text-[0.45em] text-white/24 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-white/56">↗</span>
