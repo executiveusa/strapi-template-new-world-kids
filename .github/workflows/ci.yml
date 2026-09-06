@@ -34,6 +34,9 @@ jobs:
       - name: Verify First 12 public truth
         run: node scripts/verify-nwk-public-truth.mjs
 
+      - name: Verify First 12 operating layer
+        run: node scripts/verify-nwk-operating-layer.mjs
+
       - name: Setup pnpm with cache
         uses: ./.github/actions/setup-pnpm
 
