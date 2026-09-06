@@ -36,9 +36,16 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
   useEffect(() => {
     if (!mobileOpen) return
     const previous = document.body.style.overflow
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false)
+    }
+
     document.body.style.overflow = "hidden"
+    window.addEventListener("keydown", onKeyDown)
+
     return () => {
       document.body.style.overflow = previous
+      window.removeEventListener("keydown", onKeyDown)
     }
   }, [mobileOpen])
 
@@ -63,7 +70,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
             priority
           />
           <div className="min-w-0 leading-tight">
-            <div className="text-[15px] font-black tracking-[-0.025em] text-[var(--color-ink)] sm:text-base">New World Kids</div>
+            <div className="truncate text-[15px] font-black tracking-[-0.025em] text-[var(--color-ink)] sm:text-base">New World Kids</div>
             <div className="hidden text-[10px] font-bold tracking-[0.08em] text-black/45 uppercase sm:block">
               {locale === "es" ? "Interés → oportunidad" : "Interest → opportunity"}
             </div>
@@ -83,9 +90,9 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <div className="hidden md:block"><LocaleSwitcher locale={locale} /></div>
-          <Link href="/donate" locale={locale} className={`inline-flex ${focusRing}`}>
+          <Link href="/donate" locale={locale} className={`hidden sm:inline-flex ${focusRing}`}>
             <motion.span
               whileHover={reduceMotion ? undefined : { y: -1 }}
               whileTap={reduceMotion ? undefined : { scale: 0.98 }}
@@ -116,20 +123,20 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
             transition={{ duration: reduceMotion ? 0 : 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-0 top-16 h-[calc(100dvh-4rem)] overflow-y-auto border-t border-black/10 bg-[var(--color-paper)] md:top-[68px] md:h-[calc(100dvh-68px)] lg:hidden"
+            className="fixed inset-x-0 top-16 h-[calc(100dvh-4rem)] overflow-y-auto border-t border-black/10 bg-[var(--color-paper)] overscroll-contain md:top-[68px] md:h-[calc(100dvh-68px)] lg:hidden"
           >
-            <div className="mx-auto flex min-h-full max-w-7xl flex-col px-5 py-6 sm:px-8 sm:py-8">
+            <div className="mx-auto flex min-h-full max-w-7xl flex-col px-5 pt-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-8 sm:pt-8">
               <nav className="border-t border-black/15" aria-label={locale === "es" ? "Navegación móvil" : "Mobile navigation"}>
                 {items.map((item, index) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     locale={locale}
-                    className={`grid min-h-[64px] grid-cols-[42px_1fr_auto] items-center border-b border-black/15 py-3 text-[clamp(1.35rem,5.5vw,2rem)] font-black leading-none tracking-[-0.035em] text-[var(--color-ink)] ${focusRing}`}
+                    className={`grid min-h-[64px] grid-cols-[42px_minmax(0,1fr)_auto] items-center border-b border-black/15 py-3 text-[clamp(1.3rem,5.5vw,2rem)] font-black leading-none tracking-[-0.035em] text-[var(--color-ink)] ${focusRing}`}
                     onClick={() => setMobileOpen(false)}
                   >
                     <span className="text-[10px] font-bold tracking-[0.12em] text-[var(--color-nwk-blue)]">0{index + 1}</span>
-                    <span>{item.label}</span>
+                    <span className="min-w-0">{item.label}</span>
                     <span aria-hidden="true" className="text-base font-medium text-black/30">↗</span>
                   </Link>
                 ))}
@@ -137,7 +144,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
 
               <div className="mt-auto flex items-center justify-between gap-4 pt-8">
                 <LocaleSwitcher locale={locale} />
-                <Link href="/donate" locale={locale} onClick={() => setMobileOpen(false)} className={`inline-flex min-h-11 items-center border-y border-black/25 px-5 text-[11px] font-black tracking-[0.07em] text-[var(--color-ink)] uppercase ${focusRing}`}>
+                <Link href="/donate" locale={locale} onClick={() => setMobileOpen(false)} className={`inline-flex min-h-12 items-center border-y border-black/25 px-5 text-[11px] font-black tracking-[0.07em] text-[var(--color-ink)] uppercase ${focusRing}`}>
                   {locale === "es" ? "Apoyar" : "Support"}
                 </Link>
               </div>
