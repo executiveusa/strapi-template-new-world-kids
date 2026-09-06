@@ -7,7 +7,7 @@ import { Link } from "@/lib/navigation"
 const copy = {
   en: {
     firstEyebrow: "The First 12",
-    firstTitle: "12 seats. Start small. Do it well.",
+    firstTitle: "We are matching 12 local participants with mentors for a pilot program.",
     firstBody:
       "In 2027, New World Kids will begin in Seattle with 12 participants.",
     howEyebrow: "How it works",
