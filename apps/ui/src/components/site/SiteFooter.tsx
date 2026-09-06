@@ -6,18 +6,16 @@ import { Link } from "@/lib/navigation"
 
 const explore = {
   en: [
-    { href: "/#how", label: "How it works" },
     { href: "/#first-12", label: "First 12" },
-    { href: "/projects", label: "Pathways" },
-    { href: "/#partners", label: "Partner" },
-    { href: "/#support", label: "Support" },
+    { href: "/#how", label: "How it works" },
+    { href: "/gallery", label: "Story" },
+    { href: "/#partners", label: "Join" },
   ],
   es: [
-    { href: "/#how", label: "Cómo funciona" },
     { href: "/#first-12", label: "Primeros 12" },
-    { href: "/projects", label: "Caminos" },
-    { href: "/#partners", label: "Colaborar" },
-    { href: "/#support", label: "Apoyar" },
+    { href: "/#how", label: "Cómo funciona" },
+    { href: "/gallery", label: "Historia" },
+    { href: "/#partners", label: "Súmate" },
   ],
 }
 
@@ -26,35 +24,37 @@ const hsiDisclosure =
 
 const focusRing = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
 
+function socialLabel(key: string, fallback: string, locale: Locale) {
+  if (key === "instagram") return locale === "es" ? "Proyecto Indigo Azul · Instagram" : "Proyecto Indigo Azul · Instagram"
+  if (key === "youtube") return locale === "es" ? "Proyecto Indigo Azul · YouTube" : "Proyecto Indigo Azul · YouTube"
+  if (key === "facebook") return locale === "es" ? "New World Kids · Facebook" : "New World Kids · Facebook"
+  return fallback
+}
+
 export function SiteFooter({ locale }: { readonly locale: Locale }) {
   const items = locale === "es" ? explore.es : explore.en
+  const visibleSocialLinks = socialLinks.filter((link) => link.key !== "linkedin")
 
   return (
     <footer className="border-t border-black/15 bg-[var(--color-bg)]">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.35fr_0.65fr_0.75fr] lg:gap-16">
+        <div className="grid gap-12 lg:grid-cols-[1.25fr_0.7fr_1fr] lg:gap-16">
           <div>
-            <div className="max-w-2xl text-[clamp(2rem,7vw,4rem)] leading-[0.96] font-black tracking-[-0.045em] text-balance text-[var(--color-text-primary)]">
-              {locale === "es" ? "Convertimos intereses en oportunidades." : "Help turn interest into opportunity"}
+            <div className="max-w-xl text-[clamp(2rem,7vw,4rem)] leading-[0.96] font-black tracking-[-0.045em] text-balance text-[var(--color-text-primary)]">
+              {locale === "es" ? "Interés. Oportunidad. Siguiente paso." : "Interest. Opportunity. Next step."}
             </div>
-            <p className="mt-5 max-w-xl text-sm leading-7 text-[var(--color-text-muted)] sm:text-base">
+            <p className="mt-5 max-w-lg text-sm leading-7 text-[var(--color-text-muted)] sm:text-base">
               {locale === "es"
-                ? "Empezamos en Seattle con los Primeros 12: 12 participantes conectados con proyectos reales, mentores con experiencia y un siguiente paso claro."
-                : "We're starting in Seattle with the First 12: 12 participants connected to real projects, experienced mentors, and a clear next step."}
+                ? "Empezamos con los Primeros 12 en Seattle y seguimos involucrados después de la primera oportunidad."
+                : "We’re starting with the First 12 in Seattle and staying involved beyond the first opportunity."}
             </p>
 
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link href="/donate" locale={locale} className={`inline-flex rounded-full ${focusRing}`}>
-                <span className="inline-flex min-h-11 w-full items-center justify-center rounded-full bg-[var(--color-accent-coral)] px-6 text-sm font-bold text-white transition-colors duration-200 hover:bg-[var(--color-accent-coral-hover)] sm:w-auto">
-                  {locale === "es" ? "Apoyar a los Primeros 12" : "Support the First 12"}
-                </span>
+            <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+              <Link href="/#partners" locale={locale} className={`inline-flex min-h-11 items-center border-y border-black/25 py-3 text-sm font-black text-[var(--color-text-primary)] ${focusRing}`}>
+                {locale === "es" ? "Súmate al trabajo →" : "Join the work →"}
               </Link>
-              <Link
-                href="/#partners"
-                locale={locale}
-                className={`inline-flex min-h-11 items-center justify-center rounded-full border border-black/20 px-6 text-sm font-bold text-[var(--color-text-primary)] transition-colors duration-200 hover:border-black/40 hover:bg-black/[0.03] ${focusRing}`}
-              >
-                {locale === "es" ? "Traer una oportunidad" : "Bring an opportunity"}
+              <Link href="/donate" locale={locale} className={`inline-flex min-h-11 items-center border-y border-[var(--color-action-orange)] py-3 text-sm font-black text-[var(--color-action-orange)] ${focusRing}`}>
+                {locale === "es" ? "Apoyar →" : "Support →"}
               </Link>
             </div>
           </div>
@@ -69,9 +69,9 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
           </div>
 
           <div>
-            <div className="mb-4 text-[10px] font-bold tracking-[0.18em] text-[var(--color-action-orange)] uppercase sm:text-xs">{locale === "es" ? "Redes y contacto" : "Social & Contact"}</div>
+            <div className="mb-4 text-[10px] font-bold tracking-[0.18em] text-[var(--color-action-orange)] uppercase sm:text-xs">{locale === "es" ? "Historia y contacto" : "Story & Contact"}</div>
             <div className="border-t border-black/15">
-              {socialLinks.map((link) => (
+              {visibleSocialLinks.map((link) => (
                 <a
                   key={link.key}
                   href={link.href}
@@ -79,7 +79,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
                   rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
                   className={`flex min-h-11 items-center justify-between border-b border-black/10 text-sm font-semibold text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-text-primary)] ${focusRing}`}
                 >
-                  <span>{link.label}</span>
+                  <span>{socialLabel(link.key, link.label, locale)}</span>
                   <ArrowUpRight className="h-3.5 w-3.5 text-black/35" aria-hidden="true" />
                 </a>
               ))}
