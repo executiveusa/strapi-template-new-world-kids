@@ -5,61 +5,61 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-serif: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 
-  /* === NEW WORLD KIDS / EDITORIAL NATURE SYSTEM ===
-     Quiet paper, ink, stone, and one restrained botanical accent.
-     Photography and film provide the strong color. */
-  --color-nwk-blue: #66705a;
-  --color-nwk-blue-dark: #515a48;
-  --color-action: #66705a;
-  --color-action-hover: #515a48;
+  /* === NEW WORLD KIDS / EDITORIAL FIELD SYSTEM ===
+     Warm paper, warm ink, and one low-chroma botanical neutral.
+     Strong color belongs to photography and film. */
+  --color-nwk-blue: #70756b;
+  --color-nwk-blue-dark: #595e55;
+  --color-action: #70756b;
+  --color-action-hover: #595e55;
   --color-paper: #f2eee5;
   --color-paper-bright: #fbf9f4;
-  --color-ink: #191917;
-  --color-ink-soft: #30302c;
+  --color-ink: #191714;
+  --color-ink-soft: #302d29;
   --color-white: #ffffff;
 
   /* Legacy aliases retained so older routes inherit the same authored identity. */
-  --color-forest: #191917;
-  --color-forest-light: #30302c;
-  --color-coral: #66705a;
-  --color-coral-hover: #515a48;
-  --color-guayabo: #66705a;
-  --color-guayabo-light: #7c8670;
-  --color-gold: #66705a;
-  --color-gold-light: #7c8670;
-  --color-gold-glow: rgba(102, 112, 90, 0.12);
+  --color-forest: #191714;
+  --color-forest-light: #302d29;
+  --color-coral: #70756b;
+  --color-coral-hover: #595e55;
+  --color-guayabo: #70756b;
+  --color-guayabo-light: #868b80;
+  --color-gold: #70756b;
+  --color-gold-light: #868b80;
+  --color-gold-glow: rgba(112, 117, 107, 0.10);
   --color-cream: #f2eee5;
-  --color-cream-dark: #e8e2d7;
-  --color-volcanic: #191917;
+  --color-cream-dark: #e7e1d6;
+  --color-volcanic: #191714;
   --color-background: #f2eee5;
   --color-panel: #fbf9f4;
   --color-panel-light: #ffffff;
-  --color-border: rgba(25, 25, 23, 0.15);
-  --color-border-light: rgba(25, 25, 23, 0.09);
-  --color-foreground: #191917;
-  --color-muted: #6f6b62;
-  --color-accent: #66705a;
-  --color-warm: #66705a;
-  --color-water: #66705a;
+  --color-border: rgba(25, 23, 20, 0.14);
+  --color-border-light: rgba(25, 23, 20, 0.08);
+  --color-foreground: #191714;
+  --color-muted: #706b63;
+  --color-accent: #70756b;
+  --color-warm: #70756b;
+  --color-water: #70756b;
 
   /* Canonical public tokens. */
   --color-bg: #f2eee5;
   --color-surface: #fbf9f4;
   --color-surface-raised: #ffffff;
-  --color-border-subtle: rgba(25, 25, 23, 0.15);
-  --color-gold-bright: #66705a;
-  --color-text-primary: #191917;
-  --color-text-muted: #6f6b62;
-  --color-accent-gold: #66705a;
-  --color-accent-coral: #66705a;
-  --color-accent-coral-hover: #515a48;
-  --color-eyebrow: #66705a;
-  --color-sage: #66705a;
+  --color-border-subtle: rgba(25, 23, 20, 0.14);
+  --color-gold-bright: #70756b;
+  --color-text-primary: #191714;
+  --color-text-muted: #706b63;
+  --color-accent-gold: #70756b;
+  --color-accent-coral: #70756b;
+  --color-accent-coral-hover: #595e55;
+  --color-eyebrow: #70756b;
+  --color-sage: #70756b;
 
   --shadow-color: 0 0% 0%;
-  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.06);
-  --shadow-md: 0 8px 24px hsl(var(--shadow-color) / 0.08);
-  --shadow-lg: 0 24px 64px hsl(var(--shadow-color) / 0.10);
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.05);
+  --shadow-md: 0 8px 24px hsl(var(--shadow-color) / 0.07);
+  --shadow-lg: 0 24px 64px hsl(var(--shadow-color) / 0.09);
 }
 
 :root,
@@ -68,25 +68,25 @@
   --color-background: #f2eee5;
   --color-panel: #fbf9f4;
   --color-panel-light: #ffffff;
-  --color-border: rgba(25, 25, 23, 0.15);
-  --color-border-light: rgba(25, 25, 23, 0.09);
-  --color-foreground: #191917;
-  --color-muted: #6f6b62;
-  --color-accent: #66705a;
-  --color-warm: #66705a;
-  --color-water: #66705a;
+  --color-border: rgba(25, 23, 20, 0.14);
+  --color-border-light: rgba(25, 23, 20, 0.08);
+  --color-foreground: #191714;
+  --color-muted: #706b63;
+  --color-accent: #70756b;
+  --color-warm: #70756b;
+  --color-water: #70756b;
   --color-bg: #f2eee5;
   --color-surface: #fbf9f4;
   --color-surface-raised: #ffffff;
-  --color-border-subtle: rgba(25, 25, 23, 0.15);
-  --color-gold-bright: #66705a;
-  --color-text-primary: #191917;
-  --color-text-muted: #6f6b62;
-  --color-accent-gold: #66705a;
-  --color-accent-coral: #66705a;
-  --color-accent-coral-hover: #515a48;
-  --color-eyebrow: #66705a;
-  --color-sage: #66705a;
+  --color-border-subtle: rgba(25, 23, 20, 0.14);
+  --color-gold-bright: #70756b;
+  --color-text-primary: #191714;
+  --color-text-muted: #706b63;
+  --color-accent-gold: #70756b;
+  --color-accent-coral: #70756b;
+  --color-accent-coral-hover: #595e55;
+  --color-eyebrow: #70756b;
+  --color-sage: #70756b;
 }
 
 html {
@@ -106,7 +106,7 @@ body {
 }
 
 ::selection {
-  background: #d8ddcf;
+  background: #ddd8ce;
   color: var(--color-ink);
 }
 
