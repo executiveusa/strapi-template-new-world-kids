@@ -65,19 +65,20 @@ const copy = {
   },
   es: {
     firstEyebrow: "Los Primeros 12",
-    firstTitle: "12 lugares. Empezar pequeño. Hacerlo bien.",
+    firstTitle:
+      "Estamos conectando a 12 participantes locales con mentores para un programa piloto.",
     firstBody:
       "En 2027, New World Kids comenzará en Seattle con 12 participantes.",
     howEyebrow: "Cómo funciona",
-    howTitle: "Interés → Proyecto → Mentor → Siguiente paso",
+    howTitle: "Interés → Proyecto → Mentores → Siguiente paso",
     steps: [
-      ["01", "Interés", "Empezar con lo que ya importa."],
-      ["02", "Proyecto", "Poner ese interés a trabajar en algo útil."],
-      ["03", "Mentor", "Trabajar al lado de alguien que conoce el campo."],
+      ["01", "Interés", "Comenzar con sus intereses."],
+      ["02", "Proyecto", "Conectar sus intereses con una oportunidad remunerada."],
+      ["03", "Mentores", "Brindar apoyo y responsabilidad."],
       [
         "04",
         "Siguiente paso",
-        "Salir con evidencia y un lugar hacia dónde avanzar.",
+        "Apoyo continuo y planificación para objetivos a largo plazo.",
       ],
     ],
     pathwaysEyebrow: "Cuatro caminos",
