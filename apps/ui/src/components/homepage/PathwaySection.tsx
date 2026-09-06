@@ -25,9 +25,9 @@ const copy = {
     measureEyebrow: "What success looks like",
     outcomes: ["Completed real work they can show", "Earned income", "Built a mentor relationship", "Has a clear next action and ongoing support"],
     partnerEyebrow: "Join the work",
-    partnerTitle: "Bring one real opportunity.",
-    partnerBody: "A project. A mentor. A supervised place to contribute. New World Kids handles the match, support, documentation, and follow-through.",
-    projectAction: "Bring a project",
+    partnerTitle: "Provide a project. Become a mentor.",
+    partnerBody: "We stay involved—from the first opportunity to what comes next.",
+    projectAction: "Provide a project",
     mentorAction: "Become a mentor",
   },
   es: {
@@ -50,9 +50,9 @@ const copy = {
     measureEyebrow: "Cómo se ve el éxito",
     outcomes: ["Completó trabajo real que puede mostrar", "Generó ingresos", "Construyó una relación con un mentor", "Tiene una próxima acción clara y apoyo continuo"],
     partnerEyebrow: "Súmate al trabajo",
-    partnerTitle: "Trae una oportunidad real.",
-    partnerBody: "Un proyecto. Un mentor. Un lugar supervisado donde contribuir. New World Kids maneja la conexión, el apoyo, la documentación y el seguimiento.",
-    projectAction: "Traer un proyecto",
+    partnerTitle: "Aporta un proyecto. Conviértete en mentor.",
+    partnerBody: "Seguimos involucrados, desde la primera oportunidad hasta lo que viene después.",
+    projectAction: "Aportar un proyecto",
     mentorAction: "Ser mentor",
   },
 } as const
@@ -103,7 +103,7 @@ export function PathwaySection() {
             <div className="border-t border-white/25 pt-6 lg:border-t-0 lg:pt-0">
               <p className="max-w-2xl text-lg leading-8 text-white/78 md:text-xl md:leading-9">{t.proofBody}</p>
               <p className="mt-5 text-2xl font-black tracking-[-0.025em] md:text-3xl">{t.proofClose}</p>
-              <Link href="/gallery" locale={locale} className="mt-7 inline-flex min-h-11 items-center rounded-full border border-white/35 px-5 text-sm font-bold text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none">{t.proofAction}</Link>
+              <Link href="/gallery#indigo" locale={locale} className="mt-7 inline-flex min-h-11 items-center border-y border-white/35 py-3 text-sm font-bold text-white transition-colors hover:border-white/70 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none">{t.proofAction}</Link>
             </div>
           </div>
           <div className="mt-14 border-t border-white/25 pt-8 md:mt-18">
@@ -123,13 +123,17 @@ export function PathwaySection() {
       <section id="partners" className="bg-[var(--color-paper)] px-5 py-20 text-[var(--color-ink)] sm:px-8 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
           <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase sm:text-xs">{t.partnerEyebrow}</p>
-          <div className="mt-4 grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:gap-16">
+          <div className="mt-4 grid gap-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:gap-16">
             <h2 className="max-w-5xl text-[clamp(3rem,9vw,6.5rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance text-[var(--color-text-primary)]">{t.partnerTitle}</h2>
-            <p className="max-w-2xl border-t border-black/15 pt-6 text-lg leading-8 text-[var(--color-text-muted)] lg:border-t-0 lg:border-l-2 lg:border-[var(--color-nwk-blue)] lg:pt-0 lg:pl-7">{t.partnerBody}</p>
+            <p className="max-w-xl border-t border-black/15 pt-6 text-lg leading-8 text-[var(--color-text-muted)] lg:border-t-0 lg:border-l-2 lg:border-[var(--color-nwk-blue)] lg:pt-0 lg:pl-7">{t.partnerBody}</p>
           </div>
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <a href={projectMail} className={`inline-flex min-h-12 items-center justify-center rounded-full bg-[var(--color-ink)] px-7 text-sm font-black text-white transition-transform hover:-translate-y-px ${focusRing}`}>{t.projectAction}</a>
-            <a href={mentorMail} className={`inline-flex min-h-12 items-center justify-center rounded-full border border-black/20 px-7 text-sm font-black text-[var(--color-text-primary)] transition-colors hover:bg-black/[0.03] ${focusRing}`}>{t.mentorAction}</a>
+          <div className="mt-10 grid border-t border-black/20 sm:grid-cols-2">
+            <a href={projectMail} className={`group flex min-h-16 items-center justify-between border-b border-black/20 py-4 text-base font-black sm:border-r sm:px-5 ${focusRing}`}>
+              <span>{t.projectAction}</span><span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
+            <a href={mentorMail} className={`group flex min-h-16 items-center justify-between border-b border-black/20 py-4 text-base font-black sm:px-5 ${focusRing}`}>
+              <span>{t.mentorAction}</span><span aria-hidden="true" className="transition-transform group-hover:translate-x-1">→</span>
+            </a>
           </div>
         </div>
       </section>
