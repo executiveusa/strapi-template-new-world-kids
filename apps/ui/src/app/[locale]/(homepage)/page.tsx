@@ -4,18 +4,12 @@ import { Homepage } from "@/components/homepage/Homepage"
 
 const metadataByLocale = {
   en: {
-    title: "New World Kids — Help turn interest into opportunity.",
-    description:
-      "New World Kids is building the First 12 in Seattle: real projects, experienced mentors, proof of work, and a next step.",
-    social:
-      "The First 12 starts in Seattle in 2027 across Technology, Sports, Food Systems, and Art.",
+    title: "New World Kids — Interest into opportunity.",
+    description: "The First 12: real work, mentors, and a clear next step in Seattle.",
   },
   es: {
-    title: "New World Kids — Ayuda a convertir interés en oportunidad.",
-    description:
-      "New World Kids está construyendo los Primeros 12 en Seattle: proyectos reales, mentores con experiencia, evidencia del trabajo y un siguiente paso.",
-    social:
-      "Los Primeros 12 comienzan en Seattle en 2027 con Tecnología, Deportes, Sistemas Alimentarios y Arte.",
+    title: "New World Kids — Del interés a la oportunidad.",
+    description: "Los Primeros 12: trabajo real, mentores y un siguiente paso claro en Seattle.",
   },
 } as const
 
@@ -29,8 +23,8 @@ export async function generateMetadata({
   return {
     title: t.title,
     description: t.description,
-    openGraph: { title: t.title, description: t.social, type: "website" },
-    twitter: { card: "summary", title: t.title, description: t.social },
+    openGraph: { title: t.title, description: t.description, type: "website" },
+    twitter: { card: "summary", title: t.title, description: t.description },
   }
 }
 
