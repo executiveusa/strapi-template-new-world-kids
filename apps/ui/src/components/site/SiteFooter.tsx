@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react"
 import type { Locale } from "next-intl"
 
 import { socialLinks } from "@/components/site/siteData"
@@ -24,10 +23,10 @@ const hsiDisclosure =
 
 const focusRing = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
 
-function socialLabel(key: string, fallback: string, locale: Locale) {
-  if (key === "instagram") return locale === "es" ? "Proyecto Indigo Azul · Instagram" : "Proyecto Indigo Azul · Instagram"
-  if (key === "youtube") return locale === "es" ? "Proyecto Indigo Azul · YouTube" : "Proyecto Indigo Azul · YouTube"
-  if (key === "facebook") return locale === "es" ? "New World Kids · Facebook" : "New World Kids · Facebook"
+function socialLabel(key: string, fallback: string) {
+  if (key === "instagram") return "Proyecto Indigo Azul · Instagram"
+  if (key === "youtube") return "Proyecto Indigo Azul · YouTube"
+  if (key === "facebook") return "New World Kids · Facebook"
   return fallback
 }
 
@@ -37,39 +36,44 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
 
   return (
     <footer className="border-t border-black/15 bg-[var(--color-bg)]">
-      <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-16 lg:px-10 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.25fr_0.7fr_1fr] lg:gap-16">
+      <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
+        <div className="grid gap-16 lg:grid-cols-[1.2fr_0.65fr_1.05fr] lg:gap-20">
           <div>
-            <div className="max-w-xl text-[clamp(2rem,7vw,4rem)] leading-[0.96] font-black tracking-[-0.045em] text-balance text-[var(--color-text-primary)]">
+            <div className="max-w-xl text-[clamp(2.4rem,6vw,4.6rem)] leading-[0.94] font-black tracking-[-0.05em] text-balance text-[var(--color-text-primary)]">
               {locale === "es" ? "Interés. Oportunidad. Siguiente paso." : "Interest. Opportunity. Next step."}
             </div>
-            <p className="mt-5 max-w-lg text-sm leading-7 text-[var(--color-text-muted)] sm:text-base">
+            <p className="mt-7 max-w-lg text-sm leading-7 text-[var(--color-text-muted)] sm:text-base">
               {locale === "es"
                 ? "Empezamos con los Primeros 12 en Seattle y seguimos involucrados después de la primera oportunidad."
                 : "We’re starting with the First 12 in Seattle and staying involved beyond the first opportunity."}
             </p>
 
-            <div className="mt-7 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-              <Link href="/#partners" locale={locale} className={`inline-flex min-h-11 items-center border-y border-black/25 py-3 text-sm font-black text-[var(--color-text-primary)] ${focusRing}`}>
-                {locale === "es" ? "Súmate al trabajo →" : "Join the work →"}
+            <div className="mt-9 flex flex-col gap-4 sm:max-w-sm">
+              <Link href="/#partners" locale={locale} className={`group flex min-h-12 items-center justify-between border-y border-black/20 py-3 text-sm font-black text-[var(--color-text-primary)] ${focusRing}`}>
+                <span>{locale === "es" ? "Súmate al trabajo" : "Join the work"}</span>
+                <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
-              <Link href="/donate" locale={locale} className={`inline-flex min-h-11 items-center border-y border-[var(--color-action-orange)] py-3 text-sm font-black text-[var(--color-action-orange)] ${focusRing}`}>
-                {locale === "es" ? "Apoyar →" : "Support →"}
+              <Link href="/donate" locale={locale} className={`group flex min-h-12 items-center justify-between border-b border-black/20 py-3 text-sm font-black text-[var(--color-text-primary)] ${focusRing}`}>
+                <span>{locale === "es" ? "Apoyar" : "Support"}</span>
+                <span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
             </div>
           </div>
 
           <div>
-            <div className="mb-4 text-[10px] font-bold tracking-[0.18em] text-[var(--color-action-orange)] uppercase sm:text-xs">{locale === "es" ? "Explorar" : "Explore"}</div>
+            <div className="mb-5 text-[10px] font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{locale === "es" ? "Explorar" : "Explore"}</div>
             <nav className="border-t border-black/15" aria-label={locale === "es" ? "Enlaces del pie" : "Footer navigation"}>
               {items.map((item) => (
-                <Link key={item.href} href={item.href} locale={locale} className={`flex min-h-11 items-center border-b border-black/10 text-sm font-semibold text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-text-primary)] ${focusRing}`}>{item.label}</Link>
+                <Link key={item.href} href={item.href} locale={locale} className={`group flex min-h-12 items-center justify-between border-b border-black/10 text-sm font-semibold text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-text-primary)] ${focusRing}`}>
+                  <span>{item.label}</span>
+                  <span aria-hidden="true" className="text-black/30 transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </Link>
               ))}
             </nav>
           </div>
 
           <div>
-            <div className="mb-4 text-[10px] font-bold tracking-[0.18em] text-[var(--color-action-orange)] uppercase sm:text-xs">{locale === "es" ? "Historia y contacto" : "Story & Contact"}</div>
+            <div className="mb-5 text-[10px] font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{locale === "es" ? "Historia y contacto" : "Story & Contact"}</div>
             <div className="border-t border-black/15">
               {visibleSocialLinks.map((link) => (
                 <a
@@ -77,23 +81,23 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
                   href={link.href}
                   target={link.href.startsWith("mailto:") ? undefined : "_blank"}
                   rel={link.href.startsWith("mailto:") ? undefined : "noreferrer"}
-                  className={`flex min-h-11 items-center justify-between border-b border-black/10 text-sm font-semibold text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-text-primary)] ${focusRing}`}
+                  className={`group flex min-h-12 items-center justify-between gap-5 border-b border-black/10 text-sm font-semibold text-[var(--color-text-muted)] transition-colors duration-200 hover:text-[var(--color-text-primary)] ${focusRing}`}
                 >
-                  <span>{socialLabel(link.key, link.label, locale)}</span>
-                  <ArrowUpRight className="h-3.5 w-3.5 text-black/35" aria-hidden="true" />
+                  <span>{socialLabel(link.key, link.label)}</span>
+                  <span aria-hidden="true" className="shrink-0 text-black/30 transition-transform duration-200 group-hover:translate-x-1">↗</span>
                 </a>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-black/15 pt-7 sm:mt-16">
-          <div className="grid gap-5 md:grid-cols-[auto_1fr] md:items-start md:gap-6">
+        <div className="mt-20 border-t border-black/15 pt-9 sm:mt-24">
+          <div className="grid gap-7 md:grid-cols-[auto_1fr] md:items-start md:gap-8">
             <img
               src="https://hsifiscalsponsor.org/wp-content/uploads/2024/05/HSI-Program-Footer-Logo-no-bg-1.png"
               alt="Humanitarian Social Innovations fiscal sponsorship"
               loading="lazy"
-              className="h-auto w-32 max-w-full opacity-80"
+              className="h-auto w-28 max-w-full opacity-65 grayscale"
             />
             <div className="max-w-3xl text-[11px] leading-5 text-[var(--color-text-muted)] sm:text-xs sm:leading-6">
               <p>{hsiDisclosure}</p>
@@ -107,7 +111,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
         </div>
       </div>
 
-      <div className="border-t border-black/10 px-5 py-5 text-center sm:px-8">
+      <div className="border-t border-black/10 px-5 py-6 text-center sm:px-8">
         <span className="text-[10px] tracking-[0.08em] text-[var(--color-text-muted)] uppercase">&copy; {new Date().getFullYear()} New World Kids</span>
       </div>
     </footer>
