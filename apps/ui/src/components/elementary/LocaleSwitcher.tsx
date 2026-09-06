@@ -36,7 +36,7 @@ export default function LocaleSwitcher({
               : "color-mix(in srgb, var(--color-ink) 65%, transparent)",
           backgroundColor: locale === "en" ? "var(--color-ink)" : "transparent",
         }}
-        className="rounded px-2.5 py-1.5 font-bold transition-colors hover:!text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ink)]"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded px-3 font-bold transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ink)]"
       >
         EN
       </Link>
@@ -51,7 +51,7 @@ export default function LocaleSwitcher({
               : "color-mix(in srgb, var(--color-ink) 65%, transparent)",
           backgroundColor: locale === "es" ? "var(--color-ink)" : "transparent",
         }}
-        className="rounded px-2.5 py-1.5 font-bold transition-colors hover:!text-[var(--color-ink)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ink)]"
+        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded px-3 font-bold transition-opacity hover:opacity-70 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-ink)]"
       >
         ES
       </Link>
