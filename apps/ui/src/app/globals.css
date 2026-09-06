@@ -5,95 +5,94 @@
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --font-serif: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 
-  /* === NEW WORLD KIDS / COLLINS VISUAL SYSTEM V1 ===
-     One authored public identity: warm paper, ink, NWK blue, action orange.
-     Photography supplies the secondary color. */
-  --color-nwk-blue: #2457ff;
-  --color-nwk-blue-dark: #173ed1;
-  --color-action: #ff5a36;
-  --color-action-hover: #e94b29;
-  --color-paper: #f4f1e8;
-  --color-paper-bright: #fffdf8;
-  --color-ink: #151515;
-  --color-ink-soft: #2d2d2d;
+  /* === NEW WORLD KIDS / EDITORIAL NATURE SYSTEM ===
+     Quiet paper, ink, stone, and one restrained botanical accent.
+     Photography and film provide the strong color. */
+  --color-nwk-blue: #66705a;
+  --color-nwk-blue-dark: #515a48;
+  --color-action: #66705a;
+  --color-action-hover: #515a48;
+  --color-paper: #f2eee5;
+  --color-paper-bright: #fbf9f4;
+  --color-ink: #191917;
+  --color-ink-soft: #30302c;
   --color-white: #ffffff;
 
-  /* Legacy aliases retained for non-homepage routes. */
-  --color-forest: #151515;
-  --color-forest-light: #2d2d2d;
-  --color-coral: #ff5a36;
-  --color-coral-hover: #e94b29;
-  --color-guayabo: #2457ff;
-  --color-guayabo-light: #4f76ff;
-  --color-gold: #2457ff;
-  --color-gold-light: #4f76ff;
-  --color-gold-glow: rgba(36, 87, 255, 0.14);
-  --color-cream: #f4f1e8;
-  --color-cream-dark: #ebe6da;
-  --color-volcanic: #151515;
-  --color-background: #f4f1e8;
-  --color-panel: #fffdf8;
+  /* Legacy aliases retained so older routes inherit the same authored identity. */
+  --color-forest: #191917;
+  --color-forest-light: #30302c;
+  --color-coral: #66705a;
+  --color-coral-hover: #515a48;
+  --color-guayabo: #66705a;
+  --color-guayabo-light: #7c8670;
+  --color-gold: #66705a;
+  --color-gold-light: #7c8670;
+  --color-gold-glow: rgba(102, 112, 90, 0.12);
+  --color-cream: #f2eee5;
+  --color-cream-dark: #e8e2d7;
+  --color-volcanic: #191917;
+  --color-background: #f2eee5;
+  --color-panel: #fbf9f4;
   --color-panel-light: #ffffff;
-  --color-border: rgba(21, 21, 21, 0.16);
-  --color-border-light: rgba(21, 21, 21, 0.10);
-  --color-foreground: #151515;
-  --color-muted: #615f58;
-  --color-accent: #2457ff;
-  --color-warm: #ff5a36;
-  --color-water: #2457ff;
+  --color-border: rgba(25, 25, 23, 0.15);
+  --color-border-light: rgba(25, 25, 23, 0.09);
+  --color-foreground: #191917;
+  --color-muted: #6f6b62;
+  --color-accent: #66705a;
+  --color-warm: #66705a;
+  --color-water: #66705a;
 
-  /* Canonical homepage tokens. */
-  --color-bg: #f4f1e8;
-  --color-surface: #fffdf8;
+  /* Canonical public tokens. */
+  --color-bg: #f2eee5;
+  --color-surface: #fbf9f4;
   --color-surface-raised: #ffffff;
-  --color-border-subtle: rgba(21, 21, 21, 0.16);
-  --color-gold-bright: #2457ff;
-  --color-text-primary: #151515;
-  --color-text-muted: #615f58;
-  --color-accent-gold: #2457ff;
-  --color-accent-coral: #ff5a36;
-  --color-accent-coral-hover: #e94b29;
-  --color-eyebrow: #2457ff;
-  --color-sage: #2457ff;
+  --color-border-subtle: rgba(25, 25, 23, 0.15);
+  --color-gold-bright: #66705a;
+  --color-text-primary: #191917;
+  --color-text-muted: #6f6b62;
+  --color-accent-gold: #66705a;
+  --color-accent-coral: #66705a;
+  --color-accent-coral-hover: #515a48;
+  --color-eyebrow: #66705a;
+  --color-sage: #66705a;
 
   --shadow-color: 0 0% 0%;
-  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.08);
-  --shadow-md: 0 8px 24px hsl(var(--shadow-color) / 0.10);
-  --shadow-lg: 0 24px 64px hsl(var(--shadow-color) / 0.14);
+  --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.06);
+  --shadow-md: 0 8px 24px hsl(var(--shadow-color) / 0.08);
+  --shadow-lg: 0 24px 64px hsl(var(--shadow-color) / 0.10);
 }
 
-/* Public NWK brand is intentionally authored as one light identity.
-   Keep these overrides identical so legacy theme state cannot recolor the homepage. */
 :root,
 :root[data-theme="light"],
 :root[data-theme="dark"] {
-  --color-background: #f4f1e8;
-  --color-panel: #fffdf8;
+  --color-background: #f2eee5;
+  --color-panel: #fbf9f4;
   --color-panel-light: #ffffff;
-  --color-border: rgba(21, 21, 21, 0.16);
-  --color-border-light: rgba(21, 21, 21, 0.10);
-  --color-foreground: #151515;
-  --color-muted: #615f58;
-  --color-accent: #2457ff;
-  --color-warm: #ff5a36;
-  --color-water: #2457ff;
-  --color-bg: #f4f1e8;
-  --color-surface: #fffdf8;
+  --color-border: rgba(25, 25, 23, 0.15);
+  --color-border-light: rgba(25, 25, 23, 0.09);
+  --color-foreground: #191917;
+  --color-muted: #6f6b62;
+  --color-accent: #66705a;
+  --color-warm: #66705a;
+  --color-water: #66705a;
+  --color-bg: #f2eee5;
+  --color-surface: #fbf9f4;
   --color-surface-raised: #ffffff;
-  --color-border-subtle: rgba(21, 21, 21, 0.16);
-  --color-gold-bright: #2457ff;
-  --color-text-primary: #151515;
-  --color-text-muted: #615f58;
-  --color-accent-gold: #2457ff;
-  --color-accent-coral: #ff5a36;
-  --color-accent-coral-hover: #e94b29;
-  --color-eyebrow: #2457ff;
-  --color-sage: #2457ff;
+  --color-border-subtle: rgba(25, 25, 23, 0.15);
+  --color-gold-bright: #66705a;
+  --color-text-primary: #191917;
+  --color-text-muted: #6f6b62;
+  --color-accent-gold: #66705a;
+  --color-accent-coral: #66705a;
+  --color-accent-coral-hover: #515a48;
+  --color-eyebrow: #66705a;
+  --color-sage: #66705a;
 }
 
 html {
   background: var(--color-background);
   color: var(--color-foreground);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -102,11 +101,13 @@ body {
   background: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--color-nwk-blue);
-  color: white;
+  background: #d8ddcf;
+  color: var(--color-ink);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -136,17 +137,4 @@ a {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
-}
-
-@keyframes pulse-gold {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(36, 87, 255, 0.35);
-  }
-  50% {
-    box-shadow: 0 0 0 8px rgba(36, 87, 255, 0);
-  }
-}
-.pulse-gold {
-  animation: pulse-gold 2s ease-in-out infinite;
 }
