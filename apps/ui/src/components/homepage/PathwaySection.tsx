@@ -71,7 +71,7 @@ export function PathwaySection() {
         <div className="mx-auto max-w-7xl">
           <p className="text-[10px] font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.firstEyebrow}</p>
           <div className="mt-7 grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end lg:gap-16">
-            <div aria-hidden="true" className="text-[7rem] leading-[0.72] font-black tracking-[-0.1em] text-[var(--color-nwk-blue)]/78 select-none sm:text-[11rem] md:text-[15rem] lg:text-[19rem]">12</div>
+            <div aria-hidden="true" className="text-[7rem] leading-[0.72] font-black tracking-[-0.1em] text-[var(--color-ink)]/12 select-none sm:text-[11rem] md:text-[15rem] lg:text-[19rem]">12</div>
             <div className="pb-2">
               <h2 className="max-w-4xl text-[clamp(3rem,9vw,6.5rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance text-[var(--color-text-primary)]">{t.firstTitle}</h2>
               <p className="mt-7 max-w-2xl text-lg leading-8 text-[var(--color-text-muted)] md:text-xl">{t.firstBody}</p>
@@ -93,7 +93,7 @@ export function PathwaySection() {
         </div>
       </section>
 
-      <section id="proof" className="bg-[#23231f] px-5 py-24 text-white sm:px-8 md:px-10 md:py-32 lg:py-36">
+      <section id="proof" className="bg-[#1e1a17] px-5 py-24 text-white sm:px-8 md:px-10 md:py-32 lg:py-36">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-20">
             <div>
