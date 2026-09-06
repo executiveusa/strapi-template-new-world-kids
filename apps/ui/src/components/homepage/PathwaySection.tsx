@@ -11,7 +11,7 @@ const copy = {
     firstBody:
       "In 2027, New World Kids will begin in Seattle with 12 participants.",
     howEyebrow: "How it works",
-    howTitle: "Interest → Project → Mentor → Next Step",
+    howTitle: "Interest → Project → Mentors → Next Step",
     steps: [
       ["01", "Interest", "Begin with their interest."],
       ["02", "Project", "Match interest to paid opportunity."],
