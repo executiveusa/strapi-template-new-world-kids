@@ -2,22 +2,26 @@ import type { Metadata } from "next"
 import type { Locale } from "next-intl"
 
 const INDIGO_YOUTUBE = "https://www.youtube.com/@proyectoindigoazul"
+const INDIGO_INSTAGRAM = "https://www.instagram.com/proyectoindigoazul/"
+const NWK_FACEBOOK = "https://www.facebook.com/nwkidsorg"
 
 const copy = {
   en: {
     eyebrow: "Living archive",
     title: "Two places. One story still being written.",
-    body: "Proyecto Indigo Azul and Seattle are different communities with different challenges. We keep the footage separate, tell each story honestly, and connect the lessons over time.",
+    body: "Proyecto Indigo Azul and Seattle are different communities with different challenges. We keep their footage separate and connect the lessons over time.",
     indigoEyebrow: "01 · Proyecto Indigo Azul",
     indigoTitle: "Where it started.",
-    indigoBody: "The early work, the people, the land, and the years of footage that came before the Seattle chapter.",
-    indigoAction: "Watch Proyecto Indigo Azul on YouTube →",
+    indigoBody: "People, land, and years of footage from before the Seattle chapter.",
+    instagramAction: "Instagram →",
+    youtubeAction: "YouTube →",
+    facebookAction: "Facebook →",
     seattleEyebrow: "02 · Seattle",
     seattleTitle: "Next steps.",
-    seattleBody: "City life, boxing, basketball, mentors, projects, and the First 12—documented as the next chapter happens.",
+    seattleBody: "City, boxing, basketball, mentors, projects, and the First 12—as it happens.",
     publicEyebrow: "03 · Build in public",
     publicTitle: "Keep the story open.",
-    publicBody: "Short clips, interviews, progress, setbacks, and next steps will be added here as the work develops.",
+    publicBody: "Shorts, interviews, progress, setbacks, and next steps—as the work develops.",
     placeholder: "Footage placeholder",
     indigoSlots: ["Youth + community", "Nature + place", "Work in progress", "Long-form archive"],
     seattleSlots: ["Seattle + neighborhood", "Boxing", "Basketball", "Mentors + projects"],
@@ -28,17 +32,19 @@ const copy = {
   es: {
     eyebrow: "Archivo vivo",
     title: "Dos lugares. Una historia que sigue escribiéndose.",
-    body: "Proyecto Indigo Azul y Seattle son comunidades distintas con retos diferentes. Mantenemos el material separado, contamos cada historia con honestidad y conectamos los aprendizajes con el tiempo.",
+    body: "Proyecto Indigo Azul y Seattle son comunidades distintas con retos diferentes. Mantenemos el material separado y conectamos los aprendizajes con el tiempo.",
     indigoEyebrow: "01 · Proyecto Indigo Azul",
     indigoTitle: "Donde empezó.",
-    indigoBody: "El trabajo inicial, las personas, la tierra y los años de material que existieron antes del capítulo de Seattle.",
-    indigoAction: "Ver Proyecto Indigo Azul en YouTube →",
+    indigoBody: "Personas, tierra y años de material anteriores al capítulo de Seattle.",
+    instagramAction: "Instagram →",
+    youtubeAction: "YouTube →",
+    facebookAction: "Facebook →",
     seattleEyebrow: "02 · Seattle",
     seattleTitle: "Próximos pasos.",
-    seattleBody: "La ciudad, boxeo, básquetbol, mentores, proyectos y los Primeros 12—documentados mientras sucede el siguiente capítulo.",
+    seattleBody: "Ciudad, boxeo, básquetbol, mentores, proyectos y los Primeros 12—mientras sucede.",
     publicEyebrow: "03 · Construir en público",
     publicTitle: "Mantener la historia abierta.",
-    publicBody: "Clips cortos, entrevistas, avances, tropiezos y próximos pasos se agregarán aquí mientras el trabajo evoluciona.",
+    publicBody: "Shorts, entrevistas, avances, tropiezos y próximos pasos—mientras el trabajo evoluciona.",
     placeholder: "Espacio para material",
     indigoSlots: ["Jóvenes + comunidad", "Naturaleza + lugar", "Trabajo en proceso", "Archivo de formato largo"],
     seattleSlots: ["Seattle + vecindario", "Boxeo", "Básquetbol", "Mentores + proyectos"],
@@ -126,7 +132,11 @@ export default async function GalleryPage({
             </div>
             <div className="border-t border-black/15 pt-5">
               <p className="max-w-2xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{t.indigoBody}</p>
-              <a href={INDIGO_YOUTUBE} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-11 items-center border-y border-black/20 py-3 text-sm font-black transition-colors hover:border-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-3">{t.indigoAction}</a>
+              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+                <a href={INDIGO_INSTAGRAM} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center border-y border-black/20 py-3 text-sm font-black transition-colors hover:border-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-3">{t.instagramAction}</a>
+                <a href={INDIGO_YOUTUBE} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center border-y border-black/20 py-3 text-sm font-black transition-colors hover:border-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-3">{t.youtubeAction}</a>
+                <a href={NWK_FACEBOOK} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center border-y border-black/20 py-3 text-sm font-black transition-colors hover:border-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-3">{t.facebookAction}</a>
+              </div>
             </div>
           </div>
           <MediaLane items={t.indigoSlots} placeholder={t.placeholder} />
