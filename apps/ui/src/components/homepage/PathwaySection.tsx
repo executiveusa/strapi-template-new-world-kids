@@ -10,12 +10,6 @@ const copy = {
     firstTitle: "12 seats. Start small. Do it well.",
     firstBody:
       "In 2027, New World Kids will begin in Seattle with 12 participants.",
-    firstStatus:
-      "We are securing the projects and mentors before we fill the cohort.",
-    statusLine: "12 seats · 4 pathways · projects being built now",
-    problemTitle: "Talent is everywhere. Opportunity is not.",
-    problemBody:
-      "A young person can know what they care about and still have no clear way into useful experience, a mentor, or work.",
     howEyebrow: "How it works",
     howTitle: "Interest → Project → Mentor → Next Step",
     steps: [
@@ -74,12 +68,6 @@ const copy = {
     firstTitle: "12 lugares. Empezar pequeño. Hacerlo bien.",
     firstBody:
       "En 2027, New World Kids comenzará en Seattle con 12 participantes.",
-    firstStatus:
-      "Estamos asegurando los proyectos y mentores antes de completar el grupo.",
-    statusLine: "12 lugares · 4 caminos · proyectos en construcción",
-    problemTitle: "El talento está en todas partes. La oportunidad no.",
-    problemBody:
-      "Un joven puede saber qué le importa y aun así no tener una ruta clara hacia experiencia útil, un mentor o trabajo.",
     howEyebrow: "Cómo funciona",
     howTitle: "Interés → Proyecto → Mentor → Siguiente paso",
     steps: [
@@ -176,25 +164,6 @@ export function PathwaySection() {
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-[var(--color-text-muted)] md:text-xl">
                 {t.firstBody}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-10 grid gap-7 border-t-2 border-[var(--color-ink)] pt-7 md:grid-cols-[1.05fr_0.95fr] md:gap-14">
-            <div>
-              <h3 className="text-3xl leading-tight font-black tracking-[-0.035em] text-[var(--color-text-primary)] md:text-4xl">
-                {t.problemTitle}
-              </h3>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--color-text-muted)] md:text-lg md:leading-8">
-                {t.problemBody}
-              </p>
-            </div>
-            <div>
-              <p className="text-xl leading-8 font-bold tracking-[-0.02em] text-[var(--color-text-primary)] md:text-2xl">
-                {t.firstStatus}
-              </p>
-              <p className="mt-5 text-[10px] font-bold tracking-[0.17em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
-                {t.statusLine}
               </p>
             </div>
           </div>
