@@ -30,7 +30,7 @@ export function NonprofitHero() {
 
   return (
     <section data-hero className="bg-[#191917] text-white">
-      <div className="relative min-h-[calc(100svh-64px)] w-full overflow-hidden md:min-h-[calc(100svh-68px)]">
+      <div className="relative min-h-[calc(100dvh-64px)] w-full overflow-hidden md:min-h-[calc(100svh-68px)]">
         <div
           data-montage-slot="hero"
           aria-label={t.reserved}
@@ -40,32 +40,32 @@ export function NonprofitHero() {
           <div className="absolute inset-x-0 bottom-0 h-2/3 bg-[linear-gradient(180deg,transparent,rgba(10,10,9,0.72))]" />
         </div>
 
-        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-64px)] max-w-[1480px] items-end px-5 pt-28 pb-10 sm:px-8 sm:pb-14 md:min-h-[calc(100svh-68px)] md:px-12 md:pb-16 lg:px-16 lg:pb-20 xl:px-20">
+        <div aria-hidden="true" className="absolute top-5 right-5 z-10 max-w-[11rem] text-right text-[8px] font-semibold leading-4 tracking-[0.16em] text-white/30 uppercase sm:top-7 sm:right-8 sm:max-w-none sm:text-[9px] sm:tracking-[0.2em] md:right-12">
+          {t.reserved}
+        </div>
+
+        <div className="relative z-10 mx-auto flex min-h-[calc(100dvh-64px)] max-w-[1480px] items-end px-5 pt-24 pb-8 sm:px-8 sm:pt-28 sm:pb-14 md:min-h-[calc(100svh-68px)] md:px-12 md:pb-16 lg:px-16 lg:pb-20 xl:px-20">
           <div className="w-full max-w-[980px]">
             <p className="text-[10px] font-semibold tracking-[0.2em] text-white/62 uppercase sm:text-xs">
               {t.eyebrow}
             </p>
-            <h1 className="mt-5 max-w-[900px] text-[clamp(3.35rem,11vw,7.4rem)] leading-[0.89] font-black tracking-[-0.06em] text-balance sm:mt-6 md:text-[clamp(4.6rem,7.4vw,7.4rem)]">
+            <h1 className="mt-4 max-w-[900px] text-[clamp(2.9rem,12vw,7.4rem)] leading-[0.9] font-black tracking-[-0.055em] text-balance sm:mt-6 md:text-[clamp(4.6rem,7.4vw,7.4rem)] md:tracking-[-0.06em]">
               {t.title}
             </h1>
-            <div className="mt-8 grid gap-7 border-t border-white/22 pt-6 sm:mt-10 sm:max-w-3xl md:grid-cols-[1fr_auto] md:items-end md:gap-12">
-              <p className="max-w-xl text-base leading-7 text-white/78 sm:text-lg sm:leading-8 md:text-xl md:leading-9">
+            <div className="mt-7 grid gap-6 border-t border-white/22 pt-5 sm:mt-10 sm:max-w-3xl sm:gap-7 sm:pt-6 md:grid-cols-[1fr_auto] md:items-end md:gap-12">
+              <p className="max-w-xl text-[15px] leading-7 text-white/78 sm:text-lg sm:leading-8 md:text-xl md:leading-9">
                 {t.body}
               </p>
               <Link
                 href="/#partners"
                 locale={locale}
-                className={`group inline-flex min-h-12 min-w-48 items-center justify-between border-y border-white/30 py-3 text-sm font-black text-white transition-colors hover:border-white/70 ${focusRing}`}
+                className={`group inline-flex min-h-12 w-full items-center justify-between border-y border-white/30 py-3 text-sm font-black text-white transition-colors hover:border-white/70 sm:w-auto sm:min-w-48 ${focusRing}`}
               >
                 <span>{t.primary}</span>
                 <span aria-hidden="true" className="ml-8 transition-transform duration-200 group-hover:translate-x-1">→</span>
               </Link>
             </div>
           </div>
-        </div>
-
-        <div aria-hidden="true" className="absolute right-5 bottom-5 z-10 hidden text-[9px] font-semibold tracking-[0.2em] text-white/28 uppercase md:block">
-          {t.reserved}
         </div>
       </div>
     </section>
