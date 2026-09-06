@@ -136,7 +136,7 @@ export default async function ProjectsPage({ params }: { readonly params: Promis
             <div className="mx-auto max-w-7xl">
               <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
                 <div>
-                  <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-action-orange)] uppercase sm:text-xs">0{index + 1} · {pathway.category}</p>
+                  <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">0{index + 1} · {pathway.category}</p>
                   <h2 className="mt-3 text-[clamp(2.4rem,7vw,4.8rem)] leading-[0.94] font-black tracking-[-0.05em] text-[var(--color-text-primary)]">{pathway.name}</h2>
                 </div>
                 <p className="max-w-2xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{pathway.what}</p>
@@ -161,15 +161,15 @@ export default async function ProjectsPage({ params }: { readonly params: Promis
         ))}
       </section>
 
-      <section className="bg-[var(--color-nwk-blue)] px-5 py-16 text-white sm:px-8 md:px-10 md:py-24">
+      <section className="bg-[#1e1a17] px-5 py-16 text-white sm:px-8 md:px-10 md:py-24">
         <div className="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
           <div>
-            <p className="text-[10px] font-bold tracking-[0.24em] text-white/60 uppercase sm:text-xs">{t.proofEyebrow}</p>
+            <p className="text-[10px] font-bold tracking-[0.24em] text-white/52 uppercase sm:text-xs">{t.proofEyebrow}</p>
             <h2 className="mt-4 text-[clamp(2.6rem,8vw,5rem)] leading-[0.94] font-black tracking-[-0.05em]">{t.proofTitle}</h2>
           </div>
-          <div className="border-t border-white/25 pt-5 lg:border-t-0 lg:pt-0">
-            <p className="max-w-2xl text-base leading-7 text-white/80 sm:text-lg sm:leading-8">{t.proofBody}</p>
-            <Link href="/gallery" locale={locale} className="mt-6 inline-flex min-h-11 items-center border-y border-white/35 py-3 text-sm font-black text-white hover:border-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-nwk-blue)]">{t.proofAction}</Link>
+          <div className="border-t border-white/18 pt-5 lg:border-t-0 lg:pt-0">
+            <p className="max-w-2xl text-base leading-7 text-white/72 sm:text-lg sm:leading-8">{t.proofBody}</p>
+            <Link href="/gallery" locale={locale} className="mt-6 inline-flex min-h-11 items-center border-y border-white/28 py-3 text-sm font-black text-white hover:border-white/65 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[#1e1a17]">{t.proofAction}</Link>
           </div>
         </div>
       </section>
