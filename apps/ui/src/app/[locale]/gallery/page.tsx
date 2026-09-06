@@ -1,45 +1,92 @@
 import type { Metadata } from "next"
 import type { Locale } from "next-intl"
 
-import { timelineEntries } from "../../../components/site/siteData"
-
-const ARCHIVE_YEARS = ["2021", "2022", "2023", "2024", "2025", "2026"] as const
+const INDIGO_YOUTUBE = "https://www.youtube.com/@proyectoindigoazul"
 
 const copy = {
   en: {
-    eyebrow: "Proyecto Indigo Azul · Field archive",
-    title: "The work, year by year.",
-    body: "A living visual record of Proyecto Indigo Azul from 2021 through today. Every year stays visible so the archive can grow without losing the history of the work.",
-    empty: "No capture-dated field images have been added for this year yet.",
-    archiveNote: "Documented field image, ordered by capture date.",
-    imageAlt: "Proyecto Indigo Azul field documentation",
-    jumpLabel: "Jump to year",
-    yearLabel: "Archive year",
-    metaTitle: "Proyecto Indigo Azul Field Archive | New World Kids",
-    metaDescription:
-      "Explore Proyecto Indigo Azul year by year from 2021 through 2026 through dated field documentation.",
+    eyebrow: "Living archive",
+    title: "Two places. One story still being written.",
+    body: "Proyecto Indigo Azul and Seattle are different communities with different challenges. We keep the footage separate, tell each story honestly, and connect the lessons over time.",
+    indigoEyebrow: "01 · Proyecto Indigo Azul",
+    indigoTitle: "Where it started.",
+    indigoBody: "The early work, the people, the land, and the years of footage that came before the Seattle chapter.",
+    indigoAction: "Watch Proyecto Indigo Azul on YouTube →",
+    seattleEyebrow: "02 · Seattle",
+    seattleTitle: "Where it goes next.",
+    seattleBody: "City life, boxing, basketball, mentors, projects, and the First 12—documented as the next chapter happens.",
+    publicEyebrow: "03 · Build in public",
+    publicTitle: "Keep the story open.",
+    publicBody: "Short clips, interviews, progress, setbacks, and next steps will be added here as the work develops.",
+    placeholder: "Footage placeholder",
+    indigoSlots: ["Youth + community", "Nature + place", "Work in progress", "Long-form archive"],
+    seattleSlots: ["Seattle + neighborhood", "Boxing", "Basketball", "Mentors + projects"],
+    publicSlots: ["Shorts", "Interviews", "Progress", "What comes next"],
+    metaTitle: "Story Archive | New World Kids",
+    metaDescription: "A living visual archive connecting Proyecto Indigo Azul and the next New World Kids chapter in Seattle.",
   },
   es: {
-    eyebrow: "Proyecto Indigo Azul · Archivo de campo",
-    title: "El trabajo, año por año.",
-    body: "Un registro visual vivo de Proyecto Indigo Azul desde 2021 hasta hoy. Cada año permanece visible para que el archivo pueda crecer sin perder la historia del trabajo.",
-    empty: "Todavía no se han agregado imágenes de campo con fecha de captura para este año.",
-    archiveNote: "Imagen de campo documentada, ordenada por fecha de captura.",
-    imageAlt: "Documentación de campo de Proyecto Indigo Azul",
-    jumpLabel: "Ir al año",
-    yearLabel: "Año del archivo",
-    metaTitle: "Archivo de campo de Proyecto Indigo Azul | New World Kids",
-    metaDescription:
-      "Explora Proyecto Indigo Azul año por año desde 2021 hasta 2026 mediante documentación de campo fechada.",
+    eyebrow: "Archivo vivo",
+    title: "Dos lugares. Una historia que sigue escribiéndose.",
+    body: "Proyecto Indigo Azul y Seattle son comunidades distintas con retos diferentes. Mantenemos el material separado, contamos cada historia con honestidad y conectamos los aprendizajes con el tiempo.",
+    indigoEyebrow: "01 · Proyecto Indigo Azul",
+    indigoTitle: "Donde empezó.",
+    indigoBody: "El trabajo inicial, las personas, la tierra y los años de material que existieron antes del capítulo de Seattle.",
+    indigoAction: "Ver Proyecto Indigo Azul en YouTube →",
+    seattleEyebrow: "02 · Seattle",
+    seattleTitle: "Hacia dónde sigue.",
+    seattleBody: "La ciudad, boxeo, básquetbol, mentores, proyectos y los Primeros 12—documentados mientras sucede el siguiente capítulo.",
+    publicEyebrow: "03 · Construir en público",
+    publicTitle: "Mantener la historia abierta.",
+    publicBody: "Clips cortos, entrevistas, avances, tropiezos y próximos pasos se agregarán aquí mientras el trabajo evoluciona.",
+    placeholder: "Espacio para material",
+    indigoSlots: ["Jóvenes + comunidad", "Naturaleza + lugar", "Trabajo en proceso", "Archivo de formato largo"],
+    seattleSlots: ["Seattle + vecindario", "Boxeo", "Básquetbol", "Mentores + proyectos"],
+    publicSlots: ["Shorts", "Entrevistas", "Avances", "Lo que sigue"],
+    metaTitle: "Archivo de historias | New World Kids",
+    metaDescription: "Un archivo visual vivo que conecta Proyecto Indigo Azul con el próximo capítulo de New World Kids en Seattle.",
   },
 } as const
 
-function formatCaptureDate(value: string, locale: string) {
-  return new Intl.DateTimeFormat(locale === "es" ? "es-MX" : "en", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  }).format(new Date(`${value}T12:00:00`))
+const aspectClasses = [
+  "aspect-[16/10] md:col-span-7",
+  "aspect-[4/5] md:col-span-5",
+  "aspect-[4/3] md:col-span-5",
+  "aspect-[16/9] md:col-span-7",
+] as const
+
+function MediaLane({
+  items,
+  placeholder,
+  tone = "light",
+}: {
+  items: readonly string[]
+  placeholder: string
+  tone?: "light" | "dark"
+}) {
+  const dark = tone === "dark"
+
+  return (
+    <div className="mt-10 grid gap-x-5 gap-y-8 border-t border-current/20 pt-8 md:grid-cols-12 md:gap-x-7 md:gap-y-10">
+      {items.map((item, index) => (
+        <figure key={item} className={aspectClasses[index % aspectClasses.length]}>
+          <div
+            className={`flex h-full w-full items-end border border-current/20 p-4 ${
+              dark ? "bg-white/[0.04]" : "bg-black/[0.035]"
+            }`}
+          >
+            <span className="text-[10px] font-bold tracking-[0.16em] opacity-55 uppercase">
+              {placeholder}
+            </span>
+          </div>
+          <figcaption className="mt-3 flex items-baseline justify-between gap-4 border-t border-current/20 pt-3">
+            <span className="text-sm font-black">{item}</span>
+            <span className="text-[10px] font-bold tracking-[0.14em] opacity-45">0{index + 1}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  )
 }
 
 export async function generateMetadata({
@@ -59,119 +106,57 @@ export default async function GalleryPage({
 }) {
   const { locale } = (await params) as { locale: Locale }
   const t = locale === "es" ? copy.es : copy.en
-  const documentedPhotos = timelineEntries.filter(
-    (entry) =>
-      entry.sourceStatus === "confirmed" &&
-      entry.imageStatus === "confirmed" &&
-      entry.status !== "future"
-  )
-
-  const photosByYear = new Map(
-    ARCHIVE_YEARS.map((year) => [
-      year,
-      documentedPhotos.filter((entry) => entry.capturedAt.startsWith(year)),
-    ])
-  )
 
   return (
     <main className="bg-[var(--color-bg)] text-[var(--color-text-primary)]">
       <section className="px-5 py-16 sm:px-8 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
-          <div className="max-w-5xl">
-            <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
-              {t.eyebrow}
-            </p>
-            <h1 className="mt-4 max-w-5xl text-[clamp(3rem,12vw,7rem)] leading-[0.9] font-black tracking-[-0.055em] text-balance sm:mt-5 sm:leading-[0.93]">
-              {t.title}
-            </h1>
-            <p className="mt-6 max-w-3xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8 md:text-xl">
-              {t.body}
-            </p>
-          </div>
-
-          <nav
-            aria-label={t.jumpLabel}
-            className="mt-10 flex flex-wrap gap-x-2 gap-y-2 border-y border-black/15 py-4 sm:mt-12"
-          >
-            {ARCHIVE_YEARS.map((year) => (
-              <a
-                key={year}
-                href={`#year-${year}`}
-                className="inline-flex min-h-11 items-center justify-center rounded-full border border-black/15 px-5 text-sm font-bold transition-colors duration-200 hover:border-black/40 hover:bg-black/[0.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-bg)]"
-              >
-                {year}
-              </a>
-            ))}
-          </nav>
+          <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.eyebrow}</p>
+          <h1 className="mt-4 max-w-6xl text-[clamp(3.25rem,10vw,7rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance">{t.title}</h1>
+          <p className="mt-7 max-w-3xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8 md:text-xl">{t.body}</p>
         </div>
       </section>
 
-      <section className="border-t border-black/15">
-        {ARCHIVE_YEARS.map((year, yearIndex) => {
-          const photos = photosByYear.get(year) ?? []
+      <section id="indigo" className="scroll-mt-20 border-t border-black/15 px-5 py-16 sm:px-8 md:px-10 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-7 md:grid-cols-[0.72fr_1.28fr] md:items-end md:gap-12">
+            <div>
+              <p className="text-[10px] font-bold tracking-[0.22em] text-[var(--color-action)] uppercase sm:text-xs">{t.indigoEyebrow}</p>
+              <h2 className="mt-4 text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.indigoTitle}</h2>
+            </div>
+            <div className="border-t border-black/15 pt-5">
+              <p className="max-w-2xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{t.indigoBody}</p>
+              <a href={INDIGO_YOUTUBE} target="_blank" rel="noreferrer" className="mt-6 inline-flex min-h-11 items-center border-y border-black/20 py-3 text-sm font-black transition-colors hover:border-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-3">{t.indigoAction}</a>
+            </div>
+          </div>
+          <MediaLane items={t.indigoSlots} placeholder={t.placeholder} />
+        </div>
+      </section>
 
-          return (
-            <section
-              key={year}
-              id={`year-${year}`}
-              aria-labelledby={`year-${year}-heading`}
-              className="scroll-mt-24 border-b border-black/15 px-5 py-14 sm:px-8 sm:py-16 md:px-10 md:py-24"
-            >
-              <div className="mx-auto max-w-7xl">
-                <div className="grid gap-5 md:grid-cols-[160px_1fr] md:items-end md:gap-10">
-                  <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-action-orange)] uppercase sm:text-xs">
-                    {t.yearLabel} · {String(yearIndex + 1).padStart(2, "0")}
-                  </p>
-                  <h2
-                    id={`year-${year}-heading`}
-                    className="text-[clamp(4rem,17vw,10rem)] leading-[0.78] font-black tracking-[-0.075em]"
-                  >
-                    {year}
-                  </h2>
-                </div>
+      <section id="seattle" className="scroll-mt-20 bg-[var(--color-nwk-blue)] px-5 py-16 text-white sm:px-8 md:px-10 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-7 md:grid-cols-[0.72fr_1.28fr] md:items-end md:gap-12">
+            <div>
+              <p className="text-[10px] font-bold tracking-[0.22em] text-white/60 uppercase sm:text-xs">{t.seattleEyebrow}</p>
+              <h2 className="mt-4 text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.seattleTitle}</h2>
+            </div>
+            <p className="max-w-2xl border-t border-white/25 pt-5 text-base leading-7 text-white/78 sm:text-lg sm:leading-8">{t.seattleBody}</p>
+          </div>
+          <MediaLane items={t.seattleSlots} placeholder={t.placeholder} tone="dark" />
+        </div>
+      </section>
 
-                {photos.length > 0 ? (
-                  <div className="mt-10 grid gap-x-6 gap-y-12 border-t border-black/15 pt-8 sm:mt-12 sm:grid-cols-2 md:gap-x-8 md:pt-10">
-                    {photos.map((entry) => {
-                      const captureDate = formatCaptureDate(entry.capturedAt, locale)
-                      return (
-                        <figure key={`${entry.capturedAt}-${entry.title}`}>
-                          <div className="overflow-hidden bg-[var(--color-surface)]">
-                            <img
-                              src={entry.photo}
-                              alt={entry.photoAlt || `${t.imageAlt} — ${captureDate}`}
-                              loading="lazy"
-                              className="aspect-[4/3] h-full w-full object-cover"
-                            />
-                          </div>
-                          <figcaption className="mt-4 border-t border-black/15 pt-4">
-                            <div className="flex flex-wrap items-baseline justify-between gap-3">
-                              <h3 className="text-lg font-black tracking-[-0.025em] md:text-xl">
-                                {captureDate}
-                              </h3>
-                              <span className="text-[10px] font-bold tracking-[0.16em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
-                                {year}
-                              </span>
-                            </div>
-                            <p className="mt-2 text-sm leading-6 text-[var(--color-text-muted)]">
-                              {t.archiveNote}
-                            </p>
-                          </figcaption>
-                        </figure>
-                      )
-                    })}
-                  </div>
-                ) : (
-                  <div className="mt-10 border-y border-black/15 py-8 sm:mt-12 md:py-10">
-                    <p className="max-w-xl text-sm leading-6 text-[var(--color-text-muted)] sm:text-base sm:leading-7">
-                      {t.empty}
-                    </p>
-                  </div>
-                )}
-              </div>
-            </section>
-          )
-        })}
+      <section id="build-in-public" className="scroll-mt-20 border-t border-black/15 px-5 py-16 sm:px-8 md:px-10 md:py-24">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-7 md:grid-cols-[0.72fr_1.28fr] md:items-end md:gap-12">
+            <div>
+              <p className="text-[10px] font-bold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.publicEyebrow}</p>
+              <h2 className="mt-4 text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.publicTitle}</h2>
+            </div>
+            <p className="max-w-2xl border-t border-black/15 pt-5 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{t.publicBody}</p>
+          </div>
+          <MediaLane items={t.publicSlots} placeholder={t.placeholder} />
+        </div>
       </section>
     </main>
   )
