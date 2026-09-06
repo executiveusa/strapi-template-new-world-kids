@@ -1,0 +1,9 @@
+[build]
+  command = "pnpm --filter @repo/ui build"
+  publish = "apps/ui/.next"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
