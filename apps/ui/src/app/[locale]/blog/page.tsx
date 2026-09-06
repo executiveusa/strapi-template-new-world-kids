@@ -1,18 +1,19 @@
 import type { Locale } from "next-intl"
 
 import { siteLinks } from "@/components/site/siteData"
-import { journalTeaser } from "@/content/site"
 
 const copy = {
   en: {
     eyebrow: "Field journal",
-    title: "The blog is being built alongside the food forest.",
-    cta: "Get notified when it launches",
+    title: "The story keeps growing.",
+    body: "Notes, lessons, and field updates from the work as it happens.",
+    cta: "Get updates →",
   },
   es: {
     eyebrow: "Bitácora de campo",
-    title: "El blog se está construyendo junto con el bosque comestible.",
-    cta: "Avísenme cuando esté listo",
+    title: "La historia sigue creciendo.",
+    body: "Notas, aprendizajes y actualizaciones del trabajo mientras sucede.",
+    cta: "Recibir novedades →",
   },
 }
 
@@ -25,22 +26,18 @@ export default async function BlogComingSoonPage({
   const t = locale === "es" ? copy.es : copy.en
 
   return (
-    <div className="mx-auto max-w-2xl px-5 py-24 text-center sm:px-8">
-      <p className="text-xs tracking-[0.24em] text-[var(--color-accent-gold)] uppercase">
-        {t.eyebrow}
-      </p>
-      <h1 className="mt-4 font-serif text-3xl font-semibold text-[var(--color-text-primary)] md:text-4xl">
-        {t.title}
-      </h1>
-      <p className="mt-5 text-base leading-7 text-[var(--color-text-muted)]">
-        {locale === "es" ? journalTeaser.es : journalTeaser.en}
-      </p>
-      <a
-        href={siteLinks.email}
-        className="mt-10 inline-flex h-11 items-center rounded-full bg-[var(--color-accent-gold)] px-6 text-sm font-semibold text-[var(--color-bg)] shadow-[var(--shadow-sm)] transition-colors duration-150 hover:bg-[var(--color-accent-gold)]/85"
-      >
-        {t.cta} →
-      </a>
-    </div>
+    <main className="bg-[var(--color-bg)] px-5 py-20 text-[var(--color-text-primary)] sm:px-8 md:py-28">
+      <div className="mx-auto max-w-5xl">
+        <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.eyebrow}</p>
+        <h1 className="mt-4 max-w-4xl text-[clamp(3rem,10vw,6.5rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance">{t.title}</h1>
+        <p className="mt-6 max-w-2xl border-t border-black/15 pt-5 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{t.body}</p>
+        <a
+          href={siteLinks.email}
+          className="mt-8 inline-flex min-h-11 items-center border-y border-black/20 py-3 text-sm font-black transition-colors hover:border-black/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-3"
+        >
+          {t.cta}
+        </a>
+      </div>
+    </main>
   )
 }
