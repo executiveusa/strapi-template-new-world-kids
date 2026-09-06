@@ -11,18 +11,16 @@ import { Link } from "@/lib/navigation"
 
 const navigation = {
   en: [
-    { href: "/#how", label: "How it works" },
     { href: "/#first-12", label: "First 12" },
-    { href: "/projects", label: "Pathways" },
-    { href: "/#partners", label: "Partner" },
-    { href: "/#support", label: "Support" },
+    { href: "/#how", label: "How it works" },
+    { href: "/gallery", label: "Story" },
+    { href: "/#partners", label: "Join" },
   ],
   es: [
-    { href: "/#how", label: "Cómo funciona" },
     { href: "/#first-12", label: "Primeros 12" },
-    { href: "/projects", label: "Caminos" },
-    { href: "/#partners", label: "Colaborar" },
-    { href: "/#support", label: "Apoyar" },
+    { href: "/#how", label: "Cómo funciona" },
+    { href: "/gallery", label: "Historia" },
+    { href: "/#partners", label: "Súmate" },
   ],
 }
 
@@ -65,7 +63,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
           <div className="min-w-0 leading-tight">
             <div className="text-[15px] font-black tracking-[-0.025em] text-[var(--color-ink)] sm:text-base">New World Kids</div>
             <div className="hidden text-[10px] font-bold tracking-[0.08em] text-black/45 uppercase sm:block">
-              {locale === "es" ? "Intereses en oportunidades" : "Interests into opportunities"}
+              {locale === "es" ? "Interés → oportunidad" : "Interest → opportunity"}
             </div>
           </div>
         </Link>
@@ -85,12 +83,12 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
 
         <div className="flex items-center gap-2 sm:gap-3">
           <div className="hidden md:block"><LocaleSwitcher locale={locale} /></div>
-          <Link href="/donate" locale={locale} className={`inline-flex rounded-full ${focusRing}`}>
+          <Link href="/donate" locale={locale} className={`inline-flex ${focusRing}`}>
             <motion.span
               whileHover={reduceMotion ? undefined : { y: -1 }}
               whileTap={reduceMotion ? undefined : { scale: 0.98 }}
               transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-flex min-h-11 items-center rounded-full bg-[var(--color-action-orange)] px-5 text-[11px] font-black tracking-[0.07em] text-white uppercase transition-colors duration-200 hover:bg-[var(--color-action-orange-hover)]"
+              className="inline-flex min-h-11 items-center border-y border-[var(--color-action-orange)] px-4 text-[11px] font-black tracking-[0.07em] text-[var(--color-action-orange)] uppercase transition-colors duration-200 hover:text-[var(--color-ink)]"
             >
               {locale === "es" ? "Apoyar" : "Support"}
             </motion.span>
@@ -98,7 +96,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
           <button
             type="button"
             onClick={() => setMobileOpen((value) => !value)}
-            className={`flex h-11 w-11 items-center justify-center rounded-full border border-black/25 text-[var(--color-ink)] transition-colors duration-200 hover:bg-black/5 active:bg-black/10 lg:hidden ${focusRing}`}
+            className={`flex h-11 w-11 items-center justify-center border border-black/25 text-[var(--color-ink)] transition-colors duration-200 hover:bg-black/5 active:bg-black/10 lg:hidden ${focusRing}`}
             aria-expanded={mobileOpen}
             aria-controls="mobile-navigation"
             aria-label={mobileOpen ? (locale === "es" ? "Cerrar navegación" : "Close navigation") : (locale === "es" ? "Abrir navegación" : "Open navigation")}
@@ -137,10 +135,8 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
 
               <div className="mt-auto flex items-center justify-between gap-4 pt-8">
                 <LocaleSwitcher locale={locale} />
-                <Link href="/donate" locale={locale} onClick={() => setMobileOpen(false)} className={`rounded-full ${focusRing}`}>
-                  <span className="inline-flex min-h-11 items-center rounded-full bg-[var(--color-action-orange)] px-6 text-[11px] font-black tracking-[0.07em] text-white uppercase">
-                    {locale === "es" ? "Apoyar" : "Support"}
-                  </span>
+                <Link href="/donate" locale={locale} onClick={() => setMobileOpen(false)} className={`inline-flex min-h-11 items-center border-y border-[var(--color-action-orange)] px-5 text-[11px] font-black tracking-[0.07em] text-[var(--color-action-orange)] uppercase ${focusRing}`}>
+                  {locale === "es" ? "Apoyar" : "Support"}
                 </Link>
               </div>
             </div>
