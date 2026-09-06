@@ -17,15 +17,6 @@ const copy = {
       ["03", "Mentors", "Provide support and accountability."],
       ["04", "Next Step", "Ongoing support and planning for long-term goals."],
     ],
-    pathwaysEyebrow: "Four pathways",
-    pathwaysTitle: "Four interests. One operating model.",
-    pathways: [
-      ["01", "Built for Good", "Technology", "Solve a real digital problem."],
-      ["02", "Beyond the Game", "Sports", "Work in the business and systems around sport."],
-      ["03", "Ground Up", "Urban Gardening + Food Systems", "Build, grow, maintain, and document food systems."],
-      ["04", "Make Your Mark", "Art", "Restore, design, create, and leave visible work behind."],
-    ],
-    pathwaysAction: "Explore the pathways →",
     proofEyebrow: "Proof of work",
     proofTitle: "Where the idea was tested.",
     proofBody: "Proyecto Indigo Azul gave young people a real place to contribute, learn by doing, and see the result of their work.",
@@ -51,15 +42,6 @@ const copy = {
       ["03", "Mentores", "Brindar apoyo y responsabilidad."],
       ["04", "Siguiente paso", "Apoyo continuo y planificación para objetivos a largo plazo."],
     ],
-    pathwaysEyebrow: "Cuatro caminos",
-    pathwaysTitle: "Cuatro intereses. Un solo modelo operativo.",
-    pathways: [
-      ["01", "Built for Good", "Tecnología", "Resolver un problema digital real."],
-      ["02", "Beyond the Game", "Deportes", "Trabajar en el negocio y los sistemas alrededor del deporte."],
-      ["03", "Ground Up", "Jardinería urbana + sistemas alimentarios", "Construir, cultivar, mantener y documentar sistemas alimentarios."],
-      ["04", "Make Your Mark", "Arte", "Restaurar, diseñar, crear y dejar trabajo visible."],
-    ],
-    pathwaysAction: "Explorar los caminos →",
     proofEyebrow: "Evidencia del trabajo",
     proofTitle: "Dónde se puso a prueba la idea.",
     proofBody: "Proyecto Indigo Azul dio a jóvenes un lugar real para contribuir, aprender haciendo y ver el resultado de su trabajo.",
@@ -108,28 +90,6 @@ export function PathwaySection() {
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      <section id="programs" className="bg-[var(--color-ink)] py-20 text-white md:py-28">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8 md:px-10">
-          <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-action-orange)] uppercase sm:text-xs">{t.pathwaysEyebrow}</p>
-          <h2 className="mt-4 max-w-5xl text-[clamp(3rem,9vw,6.5rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance">{t.pathwaysTitle}</h2>
-        </div>
-        <div className="mt-12 border-y border-white/20">
-          {t.pathways.map(([number, name, category, body]) => (
-            <article key={number} className="border-b border-white/20 last:border-b-0">
-              <div className="mx-auto grid max-w-7xl gap-4 px-5 py-8 sm:px-8 md:grid-cols-[72px_0.9fr_0.7fr_1.2fr] md:items-center md:px-10 md:py-10">
-                <span className="text-xs font-bold tracking-[0.2em] text-white/35">{number}</span>
-                <h3 className="text-3xl leading-none font-black tracking-[-0.04em] sm:text-4xl md:text-5xl">{name}</h3>
-                <p className="text-[10px] font-bold tracking-[0.14em] text-[var(--color-action-orange)] uppercase sm:text-xs">{category}</p>
-                <p className="max-w-xl text-base leading-7 text-white/68">{body}</p>
-              </div>
-            </article>
-          ))}
-        </div>
-        <div className="mx-auto mt-9 max-w-7xl px-5 sm:px-8 md:px-10">
-          <Link href="/projects" locale={locale} className="inline-flex min-h-11 items-center text-sm font-bold text-white underline decoration-white/40 underline-offset-8 hover:decoration-white focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none">{t.pathwaysAction}</Link>
         </div>
       </section>
 
