@@ -15,7 +15,7 @@ const copy = {
     steps: [
       ["01", "Interest", "Begin with their interest."],
       ["02", "Project", "Match interest to paid opportunity."],
-      ["03", "Mentor", "Work beside someone who knows the field."],
+      ["03", "Mentors", "Provide support and accountability."],
       ["04", "Next Step", "Leave with proof and somewhere to go next."],
     ],
     pathwaysEyebrow: "Four pathways",
