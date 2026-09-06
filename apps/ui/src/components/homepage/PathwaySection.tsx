@@ -62,8 +62,6 @@ const focusRing = "focus-visible:outline-none focus-visible:ring-2 focus-visible
 export function PathwaySection() {
   const locale = useLocale()
   const t = locale === "es" ? copy.es : copy.en
-  const projectMail = `mailto:info@nwkids.org?subject=${encodeURIComponent(locale === "es" ? "Proyecto para los Primeros 12" : "First 12 project opportunity")}`
-  const mentorMail = `mailto:info@nwkids.org?subject=${encodeURIComponent(locale === "es" ? "Mentor para los Primeros 12" : "First 12 mentor interest")}`
 
   return (
     <>
@@ -128,12 +126,12 @@ export function PathwaySection() {
             <p className="max-w-xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:pt-7 sm:text-lg sm:leading-8 lg:border-t-0 lg:border-l lg:border-black/18 lg:pt-0 lg:pl-8">{t.partnerBody}</p>
           </div>
           <div className="mt-10 grid border-t border-black/18 sm:mt-12 sm:grid-cols-2">
-            <a href={projectMail} className={`group flex min-h-16 items-center justify-between border-b border-black/18 py-4 text-base font-black sm:border-r sm:px-6 ${focusRing}`}>
+            <Link href="/opportunity" locale={locale} className={`group flex min-h-16 items-center justify-between border-b border-black/18 py-4 text-base font-black sm:border-r sm:px-6 ${focusRing}`}>
               <span>{t.projectAction}</span><span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </a>
-            <a href={mentorMail} className={`group flex min-h-16 items-center justify-between border-b border-black/18 py-4 text-base font-black sm:px-6 ${focusRing}`}>
+            </Link>
+            <Link href="/mentor" locale={locale} className={`group flex min-h-16 items-center justify-between border-b border-black/18 py-4 text-base font-black sm:px-6 ${focusRing}`}>
               <span>{t.mentorAction}</span><span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">→</span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
