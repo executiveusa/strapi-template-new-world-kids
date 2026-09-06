@@ -10,14 +10,14 @@ const copy = {
     eyebrow: "Living archive",
     title: "Two places. One story still being written.",
     body: "Proyecto Indigo Azul and Seattle are different communities with different challenges. We keep their footage separate and connect the lessons over time.",
-    indigoEyebrow: "01 · Proyecto Indigo Azul",
-    indigoTitle: "Where it started.",
+    indigoEyebrow: "01 · Origin",
+    indigoTitle: "NEW WORLD KIDS X INDIGO AZUL PROJECT",
     indigoBody: "Follow the Indigo Azul Project",
-    instagramAction: "Instagram →",
-    youtubeAction: "YouTube →",
-    facebookAction: "Facebook →",
+    instagramAction: "Instagram",
+    youtubeAction: "YouTube",
+    facebookAction: "Facebook",
     seattleEyebrow: "02 · Seattle",
-    seattleTitle: "Next steps.",
+    seattleTitle: "NEW WORLD KIDS X FIRST 12",
     seattleBody: "First 12 Building in public",
     publicEyebrow: "03 · Build in public",
     publicTitle: "Keep the story open.",
@@ -33,14 +33,14 @@ const copy = {
     eyebrow: "Archivo vivo",
     title: "Dos lugares. Una historia que sigue escribiéndose.",
     body: "Proyecto Indigo Azul y Seattle son comunidades distintas con retos diferentes. Mantenemos el material separado y conectamos los aprendizajes con el tiempo.",
-    indigoEyebrow: "01 · Proyecto Indigo Azul",
-    indigoTitle: "Donde empezó.",
+    indigoEyebrow: "01 · Origen",
+    indigoTitle: "NEW WORLD KIDS X PROYECTO INDIGO AZUL",
     indigoBody: "Sigue el Proyecto Indigo Azul",
-    instagramAction: "Instagram →",
-    youtubeAction: "YouTube →",
-    facebookAction: "Facebook →",
+    instagramAction: "Instagram",
+    youtubeAction: "YouTube",
+    facebookAction: "Facebook",
     seattleEyebrow: "02 · Seattle",
-    seattleTitle: "Próximos pasos.",
+    seattleTitle: "NEW WORLD KIDS X PRIMEROS 12",
     seattleBody: "Primeros 12 Construyendo en público",
     publicEyebrow: "03 · Construir en público",
     publicTitle: "Mantener la historia abierta.",
@@ -54,11 +54,11 @@ const copy = {
   },
 } as const
 
-const aspectClasses = [
+const frameClasses = [
   "aspect-[16/10] md:col-span-7",
-  "aspect-[4/5] md:col-span-5",
-  "aspect-[4/3] md:col-span-5",
-  "aspect-[16/9] md:col-span-7",
+  "aspect-[4/5] md:col-span-4 md:col-start-9 md:mt-20",
+  "aspect-[4/5] md:col-span-4 md:col-start-2 md:mt-8",
+  "aspect-[16/10] md:col-span-7 md:col-start-6",
 ] as const
 
 function MediaLane({
@@ -73,22 +73,22 @@ function MediaLane({
   const dark = tone === "dark"
 
   return (
-    <div className="mt-12 grid gap-x-6 gap-y-10 border-t border-current/18 pt-10 md:grid-cols-12 md:gap-x-8 md:gap-y-12">
+    <div className="mt-14 grid gap-x-6 gap-y-12 border-t border-current/14 pt-10 md:grid-cols-12 md:gap-x-8 md:gap-y-16 md:pt-12">
       {items.map((item, index) => (
-        <figure key={item} className={aspectClasses[index % aspectClasses.length]}>
+        <figure key={item} className={frameClasses[index % frameClasses.length]}>
           <div
-            className={`flex h-full w-full items-end border border-current/16 p-5 ${
-              dark ? "bg-white/[0.025]" : "bg-black/[0.025]"
+            className={`relative flex h-full w-full items-end overflow-hidden p-5 sm:p-6 ${
+              dark ? "bg-white/[0.045]" : "bg-[#e2ded5]"
             }`}
           >
-            <span className="text-[10px] font-semibold tracking-[0.16em] opacity-42 uppercase">
-              {reserved} · {item}
+            <span className="absolute top-5 right-5 text-[9px] font-semibold tracking-[0.16em] opacity-34 sm:top-6 sm:right-6">
+              0{index + 1}
             </span>
+            <div>
+              <div className="text-[9px] font-semibold tracking-[0.2em] opacity-42 uppercase">{reserved}</div>
+              <div className="mt-2 max-w-[18rem] text-sm font-black tracking-[-0.015em] sm:text-base">{item}</div>
+            </div>
           </div>
-          <figcaption className="mt-4 flex items-baseline justify-between gap-4 border-t border-current/16 pt-4">
-            <span className="text-sm font-black">{item}</span>
-            <span className="text-[10px] font-semibold tracking-[0.14em] opacity-38">0{index + 1}</span>
-          </figcaption>
         </figure>
       ))}
     </div>
@@ -119,23 +119,23 @@ export default async function GalleryPage({
         <div className="mx-auto max-w-7xl">
           <p className="text-[10px] font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.eyebrow}</p>
           <h1 className="mt-5 max-w-6xl text-[clamp(3.25rem,10vw,7rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance">{t.title}</h1>
-          <p className="mt-9 max-w-3xl border-t border-black/15 pt-7 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8 md:text-xl">{t.body}</p>
+          <p className="mt-9 max-w-3xl border-t border-black/14 pt-7 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8 md:text-xl">{t.body}</p>
         </div>
       </section>
 
-      <section id="indigo" className="scroll-mt-20 border-t border-black/15 px-5 py-20 sm:px-8 md:px-10 md:py-28">
+      <section id="indigo" className="scroll-mt-20 border-t border-black/14 px-5 py-20 sm:px-8 md:px-10 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 md:grid-cols-[0.72fr_1.28fr] md:items-end md:gap-16">
+          <div className="grid gap-9 lg:grid-cols-[0.88fr_1.12fr] lg:items-end lg:gap-20">
             <div>
               <p className="text-[10px] font-semibold tracking-[0.2em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.indigoEyebrow}</p>
-              <h2 className="mt-5 text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.indigoTitle}</h2>
+              <h2 className="mt-5 max-w-4xl text-[clamp(2.8rem,7vw,6rem)] leading-[0.9] font-black tracking-[-0.055em] text-balance">{t.indigoTitle}</h2>
             </div>
-            <div className="border-t border-black/15 pt-6">
-              <p className="max-w-2xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{t.indigoBody}</p>
-              <div className="mt-7 grid border-t border-black/18 sm:grid-cols-3">
-                <a href={INDIGO_INSTAGRAM} target="_blank" rel="noreferrer" className="group flex min-h-12 items-center justify-between border-b border-black/18 py-3 text-sm font-black sm:border-r sm:px-5">{t.instagramAction}<span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">↗</span></a>
-                <a href={INDIGO_YOUTUBE} target="_blank" rel="noreferrer" className="group flex min-h-12 items-center justify-between border-b border-black/18 py-3 text-sm font-black sm:border-r sm:px-5">{t.youtubeAction}<span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">↗</span></a>
-                <a href={NWK_FACEBOOK} target="_blank" rel="noreferrer" className="group flex min-h-12 items-center justify-between border-b border-black/18 py-3 text-sm font-black sm:px-5">{t.facebookAction}<span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">↗</span></a>
+            <div className="border-t border-black/14 pt-6 lg:mb-1">
+              <p className="max-w-xl text-base leading-7 font-semibold text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{t.indigoBody}</p>
+              <div className="mt-7 grid border-t border-black/14 sm:grid-cols-3">
+                <a href={INDIGO_INSTAGRAM} target="_blank" rel="noreferrer" className="group flex min-h-12 items-center justify-between border-b border-black/14 py-3 text-sm font-black sm:border-r sm:px-5"><span>{t.instagramAction}</span><span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">↗</span></a>
+                <a href={INDIGO_YOUTUBE} target="_blank" rel="noreferrer" className="group flex min-h-12 items-center justify-between border-b border-black/14 py-3 text-sm font-black sm:border-r sm:px-5"><span>{t.youtubeAction}</span><span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">↗</span></a>
+                <a href={NWK_FACEBOOK} target="_blank" rel="noreferrer" className="group flex min-h-12 items-center justify-between border-b border-black/14 py-3 text-sm font-black sm:px-5"><span>{t.facebookAction}</span><span aria-hidden="true" className="transition-transform duration-200 group-hover:translate-x-1">↗</span></a>
               </div>
             </div>
           </div>
@@ -143,27 +143,27 @@ export default async function GalleryPage({
         </div>
       </section>
 
-      <section id="seattle" className="scroll-mt-20 bg-[#23231f] px-5 py-20 text-white sm:px-8 md:px-10 md:py-28">
+      <section id="seattle" className="scroll-mt-20 bg-[#1e1a17] px-5 py-20 text-white sm:px-8 md:px-10 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 md:grid-cols-[0.72fr_1.28fr] md:items-end md:gap-16">
+          <div className="grid gap-9 lg:grid-cols-[0.88fr_1.12fr] lg:items-end lg:gap-20">
             <div>
               <p className="text-[10px] font-semibold tracking-[0.2em] text-white/46 uppercase sm:text-xs">{t.seattleEyebrow}</p>
-              <h2 className="mt-5 text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.seattleTitle}</h2>
+              <h2 className="mt-5 max-w-4xl text-[clamp(2.8rem,7vw,6rem)] leading-[0.9] font-black tracking-[-0.055em] text-balance">{t.seattleTitle}</h2>
             </div>
-            <p className="max-w-2xl border-t border-white/18 pt-6 text-base leading-7 text-white/72 sm:text-lg sm:leading-8">{t.seattleBody}</p>
+            <p className="max-w-xl border-t border-white/16 pt-6 text-base leading-7 font-semibold text-white/72 sm:text-lg sm:leading-8">{t.seattleBody}</p>
           </div>
           <MediaLane items={t.seattleSlots} reserved={t.reserved} tone="dark" />
         </div>
       </section>
 
-      <section id="build-in-public" className="scroll-mt-20 border-t border-black/15 px-5 py-20 sm:px-8 md:px-10 md:py-28">
+      <section id="build-in-public" className="scroll-mt-20 border-t border-black/14 px-5 py-20 sm:px-8 md:px-10 md:py-32">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-8 md:grid-cols-[0.72fr_1.28fr] md:items-end md:gap-16">
+          <div className="grid gap-9 lg:grid-cols-[0.88fr_1.12fr] lg:items-end lg:gap-20">
             <div>
               <p className="text-[10px] font-semibold tracking-[0.2em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.publicEyebrow}</p>
-              <h2 className="mt-5 text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.publicTitle}</h2>
+              <h2 className="mt-5 max-w-4xl text-[clamp(3rem,8vw,6rem)] leading-[0.92] font-black tracking-[-0.05em]">{t.publicTitle}</h2>
             </div>
-            <p className="max-w-2xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{t.publicBody}</p>
+            <p className="max-w-xl border-t border-black/14 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">{t.publicBody}</p>
           </div>
           <MediaLane items={t.publicSlots} reserved={t.reserved} />
         </div>
