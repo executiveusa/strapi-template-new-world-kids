@@ -8,12 +8,14 @@ const explore = {
     { href: "/#first-12", label: "First 12" },
     { href: "/#how", label: "How it works" },
     { href: "/gallery", label: "Story" },
+    { href: "/blog", label: "Journal" },
     { href: "/#partners", label: "Join" },
   ],
   es: [
     { href: "/#first-12", label: "Primeros 12" },
     { href: "/#how", label: "Cómo funciona" },
     { href: "/gallery", label: "Historia" },
+    { href: "/blog", label: "Bitácora" },
     { href: "/#partners", label: "Súmate" },
   ],
 }
