@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "New World Kids",
-  description: "Food, water, energy, and shelter mission operations.",
+  description: "Turn interest into real work, mentorship, and a clear next step.",
 }
 
 export default function RootLayout({
