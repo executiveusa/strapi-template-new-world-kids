@@ -68,43 +68,31 @@ export const journalPosts: readonly JournalPost[] = [
     },
   },
   {
-    slug: "show-the-work-before-asking-for-trust",
+    slug: "show-your-work",
     date: "2026-09-06",
     category: "Lesson",
     tags: ["proof", "trust", "build in public"],
     sourceLabel: "Proyecto Indigo Azul + New World Kids field notes",
     en: {
-      title: "Show the work before asking for trust.",
-      dek: "Proof is stronger than a promise when people can see what actually happened.",
+      title: "Show your work.",
+      dek: "If the work is real, show it.",
       sections: [
         {
           paragraphs: [
-            "A polished claim is easy to make. A visible body of work is harder to fake.",
-            "That is why New World Kids keeps the archive close to the story. Proyecto Indigo Azul, Seattle, the First 12, mentors, projects, progress, setbacks, and next steps should be documented as separate facts—not blended into one convenient history.",
-          ],
-        },
-        {
-          heading: "The rule",
-          paragraphs: [
-            "Use media for what it actually proves. Nature can show continuity and place. Youth and community footage can show participation or interest when that is what occurred. Seattle footage should only represent Seattle activity after it is verified.",
+            "Document what happened. Keep the source close. Let people see the progress, the setbacks, the place, and the people without turning separate stories into one convenient claim.",
+            "The rule is simple: show what the evidence actually supports.",
           ],
         },
       ],
     },
     es: {
-      title: "Mostrar el trabajo antes de pedir confianza.",
-      dek: "La evidencia es más fuerte que una promesa cuando las personas pueden ver lo que realmente ocurrió.",
+      title: "Muestra tu trabajo.",
+      dek: "Si el trabajo es real, muéstralo.",
       sections: [
         {
           paragraphs: [
-            "Es fácil hacer una afirmación pulida. Es mucho más difícil fingir un cuerpo de trabajo visible.",
-            "Por eso New World Kids mantiene el archivo cerca de la historia. Proyecto Indigo Azul, Seattle, los Primeros 12, mentores, proyectos, avances, tropiezos y próximos pasos deben documentarse como hechos separados, no mezclarse en una sola historia conveniente.",
-          ],
-        },
-        {
-          heading: "La regla",
-          paragraphs: [
-            "Usar cada material para lo que realmente demuestra. La naturaleza puede mostrar continuidad y lugar. El material de jóvenes y comunidad puede mostrar participación o interés cuando eso fue lo que ocurrió. El material de Seattle solo debe representar actividad de Seattle después de ser verificado.",
+            "Documenta lo que ocurrió. Mantén la fuente cerca. Deja que las personas vean el avance, los tropiezos, el lugar y la gente sin convertir historias distintas en una sola afirmación conveniente.",
+            "La regla es simple: muestra lo que la evidencia realmente respalda.",
           ],
         },
       ],
