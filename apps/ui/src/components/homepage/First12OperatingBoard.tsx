@@ -44,33 +44,30 @@ export async function First12OperatingBoard({ locale }: Props) {
   const slots = await getFirst12Status()
 
   return (
-    <section className="border-t border-black/15 bg-[var(--color-paper)] px-5 py-20 text-[var(--color-ink)] sm:px-8 sm:py-24 md:px-10 md:py-32">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-end lg:gap-20">
-          <div>
-            <p className="text-[10px] font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">{t.eyebrow}</p>
-            <h2 className="mt-4 max-w-5xl text-[clamp(2.7rem,9vw,6rem)] leading-[0.93] font-black tracking-[-0.05em] text-balance sm:mt-5 sm:tracking-[-0.055em]">{t.title}</h2>
-          </div>
-          <p className="max-w-2xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8 lg:pt-7">{t.body}</p>
+    <div className="py-10 sm:py-12">
+      <div className="grid gap-5 lg:grid-cols-[0.88fr_1.12fr] lg:items-end lg:gap-16">
+        <div>
+          <p className="text-[11px] font-semibold tracking-[0.16em] text-[var(--color-text-muted)] uppercase">{t.eyebrow}</p>
+          <h3 className="mt-4 max-w-2xl text-[clamp(1.9rem,4vw,3rem)] leading-[1.08] font-bold tracking-[-0.04em] text-balance">{t.title}</h3>
         </div>
-
-        {slots.length === 0 ? (
-          <p className="mt-12 border-t border-black/15 pt-6 text-sm text-black/55">{t.empty}</p>
-        ) : (
-          <div className="mt-12 border-t border-black/15">
-            {slots.map((slot) => {
-              const label = t.stages[slot.status as keyof typeof t.stages] ?? slot.public_label ?? slot.status
-              return (
-                <article key={slot.slot_number} className="grid min-h-20 grid-cols-[48px_1fr] items-center gap-4 border-b border-black/15 py-5 sm:grid-cols-[72px_0.85fr_1.15fr] sm:gap-6">
-                  <span className="text-2xl font-black tracking-[-0.05em] text-black/28 sm:text-3xl">{String(slot.slot_number).padStart(2, "0")}</span>
-                  <span className="text-sm font-semibold tracking-[-0.01em] text-black/52 sm:text-base">{slot.pathway ? `${t.pathway} · ${slot.pathway.replaceAll("_", " ")}` : t.open}</span>
-                  <p className="col-start-2 text-lg leading-6 font-black tracking-[-0.025em] sm:col-start-3 sm:text-xl">{label}</p>
-                </article>
-              )
-            })}
-          </div>
-        )}
+        <p className="max-w-[62ch] text-base leading-[1.75] text-[var(--color-text-muted)] sm:text-lg">{t.body}</p>
       </div>
-    </section>
+      {slots.length === 0 ? (
+        <p role="status" className="mt-8 border-t border-black/15 pt-5 text-sm leading-6 text-[var(--color-text-muted)]">{t.empty}</p>
+      ) : (
+        <div className="mt-8 border-t border-black/15">
+          {slots.map((slot) => {
+            const label = t.stages[slot.status as keyof typeof t.stages] ?? slot.public_label ?? slot.status
+            return (
+              <article key={slot.slot_number} className="grid grid-cols-[2.5rem_minmax(0,1fr)] items-baseline gap-x-4 gap-y-2 border-b border-black/15 py-5 sm:grid-cols-[3.5rem_minmax(0,0.85fr)_minmax(0,1.15fr)] sm:gap-x-6 sm:py-6">
+                <span className="text-2xl font-semibold tabular-nums tracking-[-0.04em] text-[var(--color-text-muted)]">{String(slot.slot_number).padStart(2, "0")}</span>
+                <span className="min-w-0 text-sm leading-6 text-[var(--color-text-muted)] sm:text-base">{slot.pathway ? `${t.pathway} · ${slot.pathway.replaceAll("_", " ")}` : t.open}</span>
+                <p className="col-start-2 min-w-0 text-base leading-6 font-semibold tracking-[-0.02em] sm:col-start-3 sm:text-lg">{label}</p>
+              </article>
+            )
+          })}
+        </div>
+      )}
+    </div>
   )
 }

@@ -1,7 +1,6 @@
-import { First12OperatingBoard } from "./First12OperatingBoard"
+import { First12OperatingLayer } from "./First12OperatingLayer"
 import { NonprofitHero } from "./NonprofitHero"
 import { PathwaySection } from "./PathwaySection"
-import { ProofOfWorkFeed } from "./ProofOfWorkFeed"
 
 type HomepageProps = {
   locale: "en" | "es"
@@ -12,8 +11,7 @@ export function Homepage({ locale }: HomepageProps) {
     <main>
       <NonprofitHero />
       <PathwaySection />
-      <First12OperatingBoard locale={locale} />
-      <ProofOfWorkFeed locale={locale} />
+      <First12OperatingLayer locale={locale} />
     </main>
   )
 }
