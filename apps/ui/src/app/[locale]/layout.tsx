@@ -6,6 +6,8 @@ import { SiteFooter } from "@/components/site/SiteFooter"
 import { SiteHeader } from "@/components/site/SiteHeader"
 import { routing } from "@/lib/navigation"
 
+import { OrganizationJsonLd } from "@/components/seo/OrganizationJsonLd"
+
 export default async function LocaleLayout({
   children,
   params,
@@ -23,6 +25,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider locale={locale as Locale} messages={messages}>
       <script dangerouslySetInnerHTML={{ __html: `document.documentElement.lang=${JSON.stringify(locale)}` }} />
       <div data-locale={locale} className="flex min-h-screen flex-col">
+        <OrganizationJsonLd />
         <SiteHeader locale={locale as Locale} />
         <main className="flex-1">{children}</main>
         <SiteFooter locale={locale as Locale} />

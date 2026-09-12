@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { localeAlternates } from "@/lib/seo"
 import type { Locale } from "next-intl"
 
 const INDIGO_YOUTUBE = "https://www.youtube.com/@proyectoindigoazul"
@@ -102,7 +103,11 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = (await params) as { locale: Locale }
   const t = locale === "es" ? copy.es : copy.en
-  return { title: t.metaTitle, description: t.metaDescription }
+  return {
+    title: t.metaTitle,
+    description: t.metaDescription,
+    alternates: localeAlternates(locale, "/gallery"),
+  }
 }
 
 export default async function GalleryPage({

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { localeAlternates } from "@/lib/seo"
 
 import { Homepage } from "@/components/homepage/Homepage"
 
@@ -23,6 +24,7 @@ export async function generateMetadata({
   const { locale } = await params
   const t = locale === "es" ? metadataByLocale.es : metadataByLocale.en
   return {
+    alternates: localeAlternates(locale, ""),
     title: t.title,
     description: t.description,
     openGraph: { title: t.title, description: t.description, type: "website" },

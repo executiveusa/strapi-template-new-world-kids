@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { localeAlternates } from "@/lib/seo"
 import type { Locale } from "next-intl"
 
 import { Link } from "@/lib/navigation"
@@ -113,7 +114,11 @@ const focusRing = "focus-visible:outline-none focus-visible:ring-2 focus-visible
 export async function generateMetadata({ params }: { readonly params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = (await params) as { locale: Locale }
   const t = locale === "es" ? copy.es : copy.en
-  return { title: t.metaTitle, description: t.metaDescription }
+  return {
+    title: t.metaTitle,
+    description: t.metaDescription,
+    alternates: localeAlternates(locale, "/projects"),
+  }
 }
 
 export default async function ProjectsPage({ params }: { readonly params: Promise<{ locale: string }> }) {
