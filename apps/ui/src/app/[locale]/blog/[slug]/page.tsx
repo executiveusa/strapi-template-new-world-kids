@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { localeAlternates } from "@/lib/seo"
 import type { Locale } from "next-intl"
 import { notFound } from "next/navigation"
 
@@ -22,6 +23,7 @@ export async function generateMetadata({
   if (!post) return {}
   const article = getJournalCopy(post, locale)
   return {
+    alternates: localeAlternates(locale, `/blog/${slug}`),
     title: `${article.title} | New World Kids`,
     description: article.dek,
   }

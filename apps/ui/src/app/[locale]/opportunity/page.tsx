@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { localeAlternates } from "@/lib/seo"
 
 import { Link } from "@/lib/navigation"
 
@@ -66,6 +67,7 @@ const labelClass = "block text-[10px] font-semibold tracking-[0.14em] text-black
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   return {
+    alternates: localeAlternates(locale, "/opportunity"),
     title: locale === "es" ? "Traer un proyecto · New World Kids" : "Bring a project · New World Kids",
     description: locale === "es" ? "Propón un proyecto real para los Primeros 12 de New World Kids en Seattle." : "Propose a real project for the New World Kids First 12 in Seattle.",
   }

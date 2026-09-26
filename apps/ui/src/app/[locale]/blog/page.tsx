@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { localeAlternates } from "@/lib/seo"
 import type { Locale } from "next-intl"
 
 import { siteLinks } from "@/components/site/siteData"
@@ -35,7 +36,11 @@ const copy = {
 export async function generateMetadata({ params }: { readonly params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   const t = locale === "es" ? copy.es : copy.en
-  return { title: t.metaTitle, description: t.metaDescription }
+  return {
+    title: t.metaTitle,
+    description: t.metaDescription,
+    alternates: localeAlternates(locale, "/blog"),
+  }
 }
 
 export default async function BlogPage({
