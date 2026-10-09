@@ -10,7 +10,7 @@ export function ProgramHealth() {
     <div className="overflow-hidden rounded-xl border border-white/8 bg-[#0d1610]">
       <div className="flex items-center justify-between border-b border-white/8 px-4 py-3">
         <h2 className="text-sm font-medium text-white">Program health</h2>
-        <span className="cursor-pointer text-[10px] text-white/30 hover:text-white/60">
+        <span className="cursor-pointer text-xs text-white/30 hover:text-white/60">
           Details
         </span>
       </div>
@@ -26,7 +26,7 @@ export function ProgramHealth() {
                 style={{ width: `${p.pct}%`, background: p.color }}
               />
             </div>
-            <span className="w-8 text-right font-mono text-[10px] text-white/40">
+            <span className="w-8 text-right font-mono text-xs text-white/40">
               {p.pct}%
             </span>
           </div>

@@ -57,10 +57,10 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
       <div className="mx-auto max-w-[1480px] px-5 py-16 sm:px-8 sm:py-24 lg:px-12 lg:py-32 xl:px-16">
         <div className="grid gap-14 sm:gap-16 lg:grid-cols-[0.92fr_1.08fr] lg:gap-24">
           <div>
-            <div className="text-[10px] font-semibold tracking-[0.22em] text-white/60 uppercase sm:text-xs">
+            <div className="text-xs font-semibold tracking-[0.22em] text-white/60 uppercase sm:text-xs">
               New World Kids
             </div>
-            <div className="mt-7 max-w-2xl text-[clamp(2.35rem,12vw,6.4rem)] leading-[0.88] font-black tracking-[-0.055em] text-balance sm:mt-8 sm:tracking-[-0.06em]">
+            <div className="mt-7 max-w-2xl text-[clamp(2.35rem,12vw,6.4rem)] leading-[0.88] font-bold tracking-[-0.055em] text-balance sm:mt-8 sm:tracking-[-0.06em]">
               <div>{statement[0]}</div>
               <div className="ml-[5%] sm:ml-[8%]">{statement[1]}</div>
               <div className="ml-[10%] sm:ml-[16%]">{statement[2]}</div>
@@ -78,7 +78,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
             }
             className="self-end border-t border-white/16 pt-7 sm:pt-8 lg:pt-10"
           >
-            <div className="mb-4 text-[10px] font-semibold tracking-[0.2em] text-white/60 uppercase sm:mb-5 sm:text-xs">
+            <div className="mb-4 text-xs font-semibold tracking-[0.2em] text-white/60 uppercase sm:mb-5 sm:text-xs">
               {locale === "es" ? "Explorar" : "Explore"}
             </div>
             <div className="max-w-2xl">
@@ -104,7 +104,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
 
         <div className="mt-16 grid gap-10 border-t border-white/14 pt-8 sm:mt-24 sm:gap-12 sm:pt-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20 lg:pt-12">
           <div>
-            <div className="text-[10px] font-semibold tracking-[0.2em] text-white/60 uppercase sm:text-xs">
+            <div className="text-xs font-semibold tracking-[0.2em] text-white/60 uppercase sm:text-xs">
               {locale === "es" ? "Historia y contacto" : "Story & Contact"}
             </div>
             <div className="mt-5 border-t border-white/12">
@@ -135,7 +135,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
             <Link
               href="/donate"
               locale={locale}
-              className={`group mt-7 flex min-h-12 max-w-sm items-center justify-between border-y border-white/18 py-3 text-sm font-black text-white/84 ${focusRing}`}
+              className={`group mt-7 flex min-h-12 max-w-sm items-center justify-between border-y border-white/18 py-3 text-sm font-bold text-white/84 ${focusRing}`}
             >
               <span>{locale === "es" ? "Apoyar" : "Support"}</span>
               <span
@@ -148,16 +148,25 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
           </div>
 
           <div className="lg:pl-[10%]">
-            <div className="text-[10px] font-semibold tracking-[0.2em] text-white/60 uppercase sm:text-xs">
+            <div className="text-xs font-semibold tracking-[0.2em] text-white/60 uppercase sm:text-xs">
               {locale === "es" ? "Patrocinio fiscal" : "Fiscal sponsorship"}
             </div>
             <div className="mt-6 grid gap-6 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-8">
-              <img
-                src="https://hsifiscalsponsor.org/wp-content/uploads/2024/05/HSI-Program-Footer-Logo-no-bg-1.png"
-                alt="Humanitarian Social Innovations fiscal sponsorship"
-                loading="lazy"
-                className="h-auto w-20 max-w-full opacity-55 brightness-0 grayscale invert sm:w-24"
-              />
+              <div className="w-fit">
+                {/* HSI's required program logo, shown in its own colors on a paper plate so it
+                    stays visible on the dark footer. Hosted by HSI; the name below is the fallback. */}
+                <div className="bg-[var(--color-paper)] p-4 sm:p-5">
+                  <img
+                    src="https://hsifiscalsponsor.org/wp-content/uploads/2024/05/HSI-Program-Footer-Logo-no-bg-1.png"
+                    alt="Humanitarian Social Innovations"
+                    loading="lazy"
+                    className="block h-auto w-40 max-w-full sm:w-48"
+                  />
+                </div>
+                <p className="mt-2 text-sm font-semibold text-white/85">
+                  Humanitarian Social Innovations
+                </p>
+              </div>
               <div className="max-w-3xl text-xs leading-6 text-white/72">
                 <p>{hsiDisclosure}</p>
                 {locale === "es" ? (
@@ -184,7 +193,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
       </div>
 
       <div className="border-t border-white/10 px-5 py-5 sm:px-8 sm:py-6 lg:px-12 xl:px-16">
-        <div className="mx-auto flex max-w-[1480px] flex-col gap-2 text-[11px] leading-4 tracking-[0.08em] text-white/60 uppercase sm:flex-row sm:items-center sm:justify-between sm:tracking-[0.1em]">
+        <div className="mx-auto flex max-w-[1480px] flex-col gap-2 text-xs leading-4 tracking-[0.08em] text-white/60 uppercase sm:flex-row sm:items-center sm:justify-between sm:tracking-[0.1em]">
           <span>&copy; {new Date().getFullYear()} New World Kids</span>
           <Link
             href="/privacy"

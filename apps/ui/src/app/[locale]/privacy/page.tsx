@@ -1,10 +1,13 @@
 import type { Metadata } from "next"
 
 import { Link } from "@/lib/navigation"
+import { withCopyOverrides } from "@/lib/nwkids/copy"
 
 // Plain-language notice limited to what the code does today (forms store to our
 // database; donations are handled by HSI/FundRazr). Needs counsel and HSI review
 // before launch; do not add retention periods or legal claims without that review.
+
+export const revalidate = 60
 
 const copy = {
   en: {
@@ -86,24 +89,22 @@ export default async function PrivacyPage({
 }) {
   const { locale: rawLocale } = await params
   const locale = rawLocale === "es" ? "es" : "en"
-  const t = copy[locale]
+  const t = await withCopyOverrides("privacy", locale, copy[locale])
 
   return (
     <div className="bg-[var(--color-paper)] px-5 py-16 text-[var(--color-ink)] sm:px-8 sm:py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-3xl">
-        <p className="text-[11px] font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
+        <p className="text-xs font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
           {t.eyebrow}
         </p>
-        <h1 className="mt-4 text-[clamp(2.4rem,8vw,4.5rem)] leading-[0.98] font-black tracking-[-0.045em] text-balance">
-          {t.title}
-        </h1>
+        <h1 className="t-h1 mt-4 text-balance">{t.title}</h1>
         <p className="mt-7 border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
           {t.intro}
         </p>
         <div className="mt-10 divide-y divide-black/15 border-y border-black/15">
           {t.sections.map((section) => (
             <section key={section.h} className="py-7">
-              <h2 className="text-xl font-black tracking-[-0.02em]">
+              <h2 className="text-xl font-bold tracking-[-0.02em]">
                 {section.h}
               </h2>
               <p className="mt-2 text-base leading-7 text-[var(--color-text-muted)]">
@@ -115,7 +116,7 @@ export default async function PrivacyPage({
         <Link
           href="/"
           locale={locale}
-          className="mt-10 inline-flex min-h-12 items-center gap-3 border-y border-black/25 py-3 text-sm font-black focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:outline-none"
+          className="mt-10 inline-flex min-h-12 items-center gap-3 border-y border-black/25 py-3 text-sm font-bold focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-4 focus-visible:outline-none"
         >
           <span>{t.back}</span>
           <span aria-hidden="true">→</span>

@@ -248,3 +248,47 @@ end $$;
 
 revoke all on function public.nwkids_submit_referral(jsonb) from public, anon, authenticated;
 grant execute on function public.nwkids_submit_referral(jsonb) to service_role;
+
+-- 8. Editable page copy -------------------------------------------------------------------------
+-- Staff can change wording in the Supabase table editor with no developer: one row per
+-- page, language, and text key. The site merges these over the built-in text, refreshing about
+-- every minute. Only text keys that already exist in the page are used; anything else is ignored.
+-- Public content only: do not store anything private here.
+create table if not exists public.nwk_copy (
+  page text not null,
+  locale text not null check (locale in ('en', 'es')),
+  key text not null,
+  value text not null check (char_length(value) <= 4000),
+  updated_at timestamptz not null default now(),
+  updated_by text,
+  primary key (page, locale, key)
+);
+create trigger nwk_copy_touch before update on public.nwk_copy
+  for each row execute function public.nwk_touch_updated_at();
+alter table public.nwk_copy enable row level security;
+drop policy if exists nwk_copy_public_read on public.nwk_copy;
+create policy nwk_copy_public_read on public.nwk_copy for select to anon, authenticated using (true);
+
+-- 9. "Tell me when it is live" list for the coming-soon page ----------------------------------------
+create table if not exists public.nwk_waitlist (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  email text not null check (email ~* '^[^@\s]+@[^@\s]+\.[^@\s]+$' and char_length(email) <= 254),
+  locale text not null default 'en' check (locale in ('en', 'es')),
+  consent boolean not null check (consent),
+  unique (email)
+);
+alter table public.nwk_waitlist enable row level security;
+
+create or replace function public.nwkids_join_waitlist(p_email text, p_locale text, p_consent boolean) returns uuid
+language plpgsql security definer set search_path = public as $$
+declare new_id uuid;
+begin
+  insert into public.nwk_waitlist (email, locale, consent)
+  values (lower(trim(p_email)), coalesce(nullif(p_locale, ''), 'en'), coalesce(p_consent, false))
+  on conflict (email) do update set locale = excluded.locale
+  returning id into new_id;
+  return new_id;
+end $$;
+revoke all on function public.nwkids_join_waitlist(text, text, boolean) from public, anon, authenticated;
+grant execute on function public.nwkids_join_waitlist(text, text, boolean) to service_role;

@@ -2,6 +2,8 @@
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": ["**/.env", "**/.env.*local"],
   "globalEnv": [
+    "SITE_MODE",
+    "PREVIEW_KEY",
     "APP_PUBLIC_URL",
     "NEXT_PUBLIC_BLOG_PUBLIC_URL",
     "BLOG_PUBLIC_URL",

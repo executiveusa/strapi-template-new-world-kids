@@ -86,7 +86,7 @@ export default async function OpsPage() {
                 Voice interface
               </h2>
             </div>
-            <span className="rounded-full bg-[#1a3a2a] px-2 py-0.5 text-[10px] text-[#c9a84c]">
+            <span className="rounded-full bg-[#1a3a2a] px-2 py-0.5 text-xs text-[#c9a84c]">
               Private
             </span>
           </div>

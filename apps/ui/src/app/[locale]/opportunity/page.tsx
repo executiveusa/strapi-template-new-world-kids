@@ -88,7 +88,7 @@ const pathwayOptions = {
 } as const
 
 const inputClass =
-  "mt-2 min-h-12 w-full rounded-none border-0 border-b border-black/60 bg-transparent px-0 py-3 text-base text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-nwk-blue)] focus:ring-0"
+  "mt-2 min-h-12 w-full rounded-none border-0 border-b border-black/60 bg-transparent px-0 py-3 text-base text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-brand)] focus:ring-0"
 const labelClass =
   "block text-xs font-semibold tracking-[0.12em] text-black/70 uppercase"
 
@@ -125,13 +125,13 @@ export default async function OpportunityPage({
   const options = pathwayOptions[locale]
 
   return (
-    <main className="bg-[var(--color-paper)] text-[var(--color-ink)]">
+    <div className="bg-[var(--color-paper)] text-[var(--color-ink)]">
       <section className="border-b border-black/15 px-5 py-16 sm:px-8 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
-          <p className="text-[10px] font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
+          <p className="text-xs font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
             {t.eyebrow}
           </p>
-          <h1 className="mt-4 max-w-5xl text-[clamp(2.9rem,10vw,7rem)] leading-[0.92] font-black tracking-[-0.05em] text-balance sm:mt-5 sm:tracking-[-0.055em]">
+          <h1 className="t-h1 mt-4 max-w-5xl text-balance sm:mt-5">
             {t.title}
           </h1>
           <p className="mt-7 max-w-2xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
@@ -144,16 +144,14 @@ export default async function OpportunityPage({
         <div className="mx-auto max-w-7xl">
           {query.submitted === "1" ? (
             <div className="max-w-3xl border-t border-black/20 pt-7">
-              <h2 className="text-[clamp(2.4rem,8vw,4.5rem)] leading-[0.95] font-black tracking-[-0.045em]">
-                {t.submittedTitle}
-              </h2>
+              <h2 className="t-h2">{t.submittedTitle}</h2>
               <p className="mt-5 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
                 {t.submittedBody}
               </p>
               <Link
                 href="/"
                 locale={locale}
-                className="mt-8 inline-flex min-h-12 items-center border-y border-black/20 py-3 text-sm font-black"
+                className="mt-8 inline-flex min-h-12 items-center border-y border-black/20 py-3 text-sm font-bold"
               >
                 {t.back} →
               </Link>
@@ -172,7 +170,7 @@ export default async function OpportunityPage({
                   className="mb-10 border-y border-black/20 py-5 outline-none"
                   role="alert"
                 >
-                  <p className="font-black">{t.errorTitle}</p>
+                  <p className="font-bold">{t.errorTitle}</p>
                   <p className="mt-1 text-sm leading-6 text-[var(--color-text-muted)]">
                     {t.errorBody}
                   </p>
@@ -305,7 +303,7 @@ export default async function OpportunityPage({
 
               <label className="mt-10 flex max-w-3xl items-start gap-4 border-t border-black/15 pt-6 text-sm leading-6 text-[var(--color-text-muted)]">
                 <input
-                  className="mt-1 size-5 shrink-0 accent-[var(--color-nwk-blue)]"
+                  className="mt-1 size-5 shrink-0 accent-[var(--color-brand)]"
                   type="checkbox"
                   name="consent"
                   required
@@ -324,7 +322,7 @@ export default async function OpportunityPage({
               </p>
               <button
                 type="submit"
-                className="mt-6 inline-flex min-h-12 w-full items-center justify-between border-y border-black/25 py-3 text-sm font-black focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:outline-none sm:w-72"
+                className="btn-primary mt-6 w-full sm:w-auto sm:min-w-72"
               >
                 <span>{t.submit}</span>
                 <span aria-hidden="true">→</span>
@@ -333,6 +331,6 @@ export default async function OpportunityPage({
           )}
         </div>
       </section>
-    </main>
+    </div>
   )
 }

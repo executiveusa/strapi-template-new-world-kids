@@ -27,7 +27,7 @@ const navigation = {
 }
 
 const focusRing =
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-paper)]"
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-paper)]"
 
 export function SiteHeader({ locale }: { readonly locale: Locale }) {
   const items = locale === "es" ? navigation.es : navigation.en
@@ -91,22 +91,22 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
         <Link
           href="/"
           locale={locale}
-          className={`flex min-w-0 items-center gap-3 rounded-sm ${focusRing}`}
+          className={`flex min-h-11 min-w-0 items-center gap-3 rounded-sm ${focusRing}`}
           onClick={() => setMobileOpen(false)}
         >
           <Image
             src="/images/nwkids-logo.png"
             alt="New World Kids"
-            width={40}
-            height={40}
-            className="h-9 w-9 shrink-0 object-cover sm:h-10 sm:w-10"
+            width={1130}
+            height={694}
+            className="h-9 w-auto shrink-0 sm:h-10"
             priority
           />
           <div className="min-w-0 leading-tight">
-            <div className="truncate text-[15px] font-black tracking-[-0.025em] text-[var(--color-ink)] sm:text-base">
+            <div className="truncate text-[15px] font-bold tracking-[-0.025em] text-[var(--color-ink)] sm:text-base">
               New World Kids
             </div>
-            <div className="hidden text-[10px] font-bold tracking-[0.08em] text-black/62 uppercase sm:block">
+            <div className="hidden text-xs font-bold tracking-[0.08em] text-black/62 uppercase sm:block">
               {locale === "es"
                 ? "Interés → oportunidad"
                 : "Interest → opportunity"}
@@ -125,7 +125,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
               key={item.href}
               href={item.href}
               locale={locale}
-              className={`rounded-sm py-3 text-[11px] font-bold tracking-[0.08em] text-black/68 uppercase transition-colors duration-200 hover:text-[var(--color-ink)] ${focusRing}`}
+              className={`rounded-sm py-3 text-xs font-bold tracking-[0.08em] text-black/68 uppercase transition-colors duration-200 hover:text-[var(--color-ink)] ${focusRing}`}
             >
               {item.label}
             </Link>
@@ -133,28 +133,21 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <div className="hidden md:block">
+          <div className="hidden min-[340px]:block">
             <LocaleSwitcher locale={locale} />
           </div>
           <Link
             href="/donate"
             locale={locale}
-            className={`hidden sm:inline-flex ${focusRing}`}
+            className={`press hidden min-h-11 items-center px-2 text-xs font-bold tracking-[0.08em] text-black/75 uppercase underline decoration-black/25 underline-offset-[6px] transition-colors hover:text-[var(--color-brand)] hover:decoration-[var(--color-brand)] sm:inline-flex ${focusRing}`}
           >
-            <motion.span
-              whileHover={reduceMotion ? undefined : { y: -1 }}
-              whileTap={reduceMotion ? undefined : { scale: 0.98 }}
-              transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-flex min-h-11 items-center border-y border-black/25 px-4 text-[11px] font-black tracking-[0.07em] text-[var(--color-ink)] uppercase transition-colors duration-200 hover:border-black/55"
-            >
-              {locale === "es" ? "Apoyar" : "Support"}
-            </motion.span>
+            {locale === "es" ? "Apoyar" : "Support"}
           </Link>
           <button
             ref={toggleRef}
             type="button"
             onClick={() => setMobileOpen((value) => !value)}
-            className={`flex h-11 w-11 items-center justify-center border border-black/25 text-[var(--color-ink)] transition-colors duration-200 hover:bg-black/5 active:bg-black/10 lg:hidden ${focusRing}`}
+            className={`press flex h-11 w-11 items-center justify-center border border-black/25 text-[var(--color-ink)] hover:bg-black/5 lg:hidden ${focusRing}`}
             aria-expanded={mobileOpen}
             aria-controls="mobile-navigation"
             aria-label={
@@ -186,7 +179,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
             transition={{
               duration: reduceMotion ? 0 : 0.2,
-              ease: [0.22, 1, 0.36, 1],
+              ease: [0.32, 0.72, 0, 1],
             }}
             className="fixed inset-x-0 top-16 h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-black/10 bg-[var(--color-paper)] md:top-[68px] md:h-[calc(100dvh-68px)] lg:hidden"
           >
@@ -202,10 +195,10 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
                     key={item.href}
                     href={item.href}
                     locale={locale}
-                    className={`grid min-h-[64px] grid-cols-[42px_minmax(0,1fr)_auto] items-center border-b border-black/15 py-3 text-[clamp(1.3rem,5.5vw,2rem)] leading-none font-black tracking-[-0.035em] text-[var(--color-ink)] ${focusRing}`}
+                    className={`press grid min-h-[64px] grid-cols-[42px_minmax(0,1fr)_auto] items-center border-b border-black/15 py-3 text-[clamp(1.3rem,5.5vw,2rem)] leading-none font-bold tracking-[-0.035em] text-[var(--color-ink)] ${focusRing}`}
                     onClick={() => setMobileOpen(false)}
                   >
-                    <span className="text-[10px] font-bold tracking-[0.12em] text-[var(--color-nwk-blue)]">
+                    <span className="text-xs font-bold tracking-[0.12em] text-[var(--color-nwk-blue)]">
                       0{index + 1}
                     </span>
                     <span className="min-w-0">{item.label}</span>
@@ -219,16 +212,26 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
                 ))}
               </nav>
 
-              <div className="mt-auto flex items-center justify-between gap-4 pt-8">
-                <LocaleSwitcher locale={locale} />
+              <div className="mt-auto grid gap-4 pt-8">
                 <Link
                   href="/donate"
                   locale={locale}
                   onClick={() => setMobileOpen(false)}
-                  className={`inline-flex min-h-12 items-center border-y border-black/25 px-5 text-[11px] font-black tracking-[0.07em] text-[var(--color-ink)] uppercase ${focusRing}`}
+                  className="btn-primary w-full"
                 >
-                  {locale === "es" ? "Apoyar" : "Support"}
+                  <span>
+                    {locale === "es"
+                      ? "Apoya a los Primeros 12"
+                      : "Support the First 12"}
+                  </span>
+                  <span aria-hidden="true">→</span>
                 </Link>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold tracking-[0.12em] text-black/70 uppercase">
+                    {locale === "es" ? "Idioma" : "Language"}
+                  </span>
+                  <LocaleSwitcher locale={locale} />
+                </div>
               </div>
             </div>
           </motion.div>

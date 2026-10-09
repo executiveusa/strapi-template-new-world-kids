@@ -10,6 +10,7 @@ export const facts: {
   readonly schedule: Localized | null
   readonly pay: Localized | null
   readonly hoursAgreement: Localized
+  readonly employer: Localized
   readonly insurance: Localized
   readonly applyOpen: { readonly href: string } | null
   readonly safeguardingPolicyHref: string | null
@@ -26,6 +27,12 @@ export const facts: {
     en: "Pay is the applicable minimum wage plus $3 an hour. In 2026 that is $20.13 an hour statewide ($17.13 + $3), and $24.30 in Seattle ($21.30 + $3). Minimum wages change every January 1.",
     es: "El pago es el salario mínimo aplicable más $3 por hora. En 2026 eso es $20.13 por hora en todo el estado ($17.13 + $3) y $24.30 en Seattle ($21.30 + $3). Los salarios mínimos cambian cada 1 de enero.",
   },
+  // Founder decision 2026-10-09: New World Kids pays wages and is the employer.
+  // Pending HSI written OK to release payroll funds. See docs/NWK_YOUTH_EMPLOYMENT_COMPLIANCE.md.
+  employer: {
+    en: "New World Kids is the employer and pays participants’ wages.",
+    es: "New World Kids es el empleador y paga los salarios de los participantes.",
+  },
   hoursAgreement: {
     en: "Hours are set together by the young person, their parent or guardian, and the host program. All three must agree.",
     es: "Las horas las fijan juntos el joven, su madre, padre o tutor, y el programa anfitrión. Los tres deben estar de acuerdo.",
@@ -40,14 +47,22 @@ export const facts: {
     en: "All 12 places filled within 2027, after launch. Completion and other results targets will be set once the pilot ends.",
     es: "Los 12 lugares ocupados durante 2027, después del lanzamiento. Las metas de finalización y otros resultados se fijarán cuando termine el piloto.",
   },
-  // Roles below come from public records: the Washington Secretary of State
-  // record (governor) and the signed HSI agreement (program manager).
+  // Jeremy Bowers: Washington Secretary of State record (governor) and the signed HSI
+  // agreement (program manager). Stacy McSwain: role given by the founder on 2026-10-09;
+  // get her written OK to be listed publicly.
   team: [
     {
       name: "Jeremy Bowers",
       role: {
         en: "Governor (Washington record) and program manager (HSI agreement)",
         es: "Gobernador (registro de Washington) y gerente del programa (acuerdo con HSI)",
+      },
+    },
+    {
+      name: "Stacy McSwain",
+      role: {
+        en: "Sports mentor program lead",
+        es: "Líder del programa de mentoría deportiva",
       },
     },
   ],

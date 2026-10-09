@@ -19,11 +19,9 @@ function Metric({
 }) {
   return (
     <div className="rounded-xl border border-white/5 bg-[#0d1610] px-4 py-3">
-      <p className="text-[10px] tracking-widest text-white/35 uppercase">
-        {label}
-      </p>
+      <p className="text-xs tracking-widest text-white/35 uppercase">{label}</p>
       <p className="mt-1.5 text-2xl font-semibold text-white">{value}</p>
-      {sub && <p className="mt-0.5 text-[10px] text-white/30">{sub}</p>}
+      {sub && <p className="mt-0.5 text-xs text-white/30">{sub}</p>}
     </div>
   )
 }

@@ -2,10 +2,13 @@ import type { Metadata } from "next"
 
 import { FUNDRAZR_CAMPAIGN_URL } from "@/content/donation"
 import { Link } from "@/lib/navigation"
+import { withCopyOverrides } from "@/lib/nwkids/copy"
 
 // Wording mirrors the New World Kids FundRazr campaign and HSI's published
 // instructions. HSI must approve fundraising text in writing (sponsorship
 // agreement, section 3) before this page goes live.
+
+export const revalidate = 60
 
 const copy = {
   en: {
@@ -62,9 +65,9 @@ const copy = {
 } as const
 
 const eyebrow =
-  "text-[11px] font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs"
+  "text-xs font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs"
 const link =
-  "group inline-flex min-h-12 items-center gap-3 border-y border-black/25 py-3 text-sm font-black hover:border-black/55 focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:outline-none"
+  "group inline-flex min-h-12 items-center gap-3 border-y border-black/25 py-3 text-sm font-bold hover:border-black/55 focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-4 focus-visible:outline-none"
 
 export async function generateMetadata({
   params,
@@ -84,7 +87,7 @@ export default async function DonatePage({
 }) {
   const { locale: rawLocale } = await params
   const locale = rawLocale === "es" ? "es" : "en"
-  const t = copy[locale]
+  const t = await withCopyOverrides("donate", locale, copy[locale])
   const blocks = [
     [t.pays, t.paysBody],
     [t.who, t.whoBody],
@@ -95,16 +98,14 @@ export default async function DonatePage({
     <div className="bg-[var(--color-paper)] px-5 py-16 text-[var(--color-ink)] sm:px-8 sm:py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-3xl">
         <p className={eyebrow}>{t.eyebrow}</p>
-        <h1 className="mt-4 text-[clamp(2.4rem,8vw,4.5rem)] leading-[0.98] font-black tracking-[-0.045em] text-balance">
-          {t.title}
-        </h1>
+        <h1 className="t-h1 mt-4 text-balance">{t.title}</h1>
         <p className="mt-7 border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
           {t.intro}
         </p>
         <div className="mt-10 divide-y divide-black/15 border-y border-black/15">
           {blocks.map(([heading, body]) => (
             <section key={heading} className="py-7">
-              <h2 className="text-xl font-black tracking-[-0.02em]">
+              <h2 className="text-xl font-bold tracking-[-0.02em]">
                 {heading}
               </h2>
               <p className="mt-2 text-base leading-7 text-[var(--color-text-muted)]">
@@ -118,7 +119,7 @@ export default async function DonatePage({
             href={FUNDRAZR_CAMPAIGN_URL}
             target="_blank"
             rel="noreferrer"
-            className="flex min-h-14 w-full items-center justify-between bg-[var(--color-ink)] px-6 text-base font-black text-white focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:outline-none sm:w-auto sm:min-w-72"
+            className="btn-primary w-full sm:w-auto sm:min-w-72"
           >
             <span>{t.give}</span>
             <span aria-hidden="true">↗</span>
@@ -127,7 +128,7 @@ export default async function DonatePage({
             {t.giveNote}
           </p>
           <p className="mt-6 text-base leading-7">
-            <span className="font-black">{t.check} </span>
+            <span className="font-bold">{t.check} </span>
             <span className="text-[var(--color-text-muted)]">
               {t.checkBody}
             </span>

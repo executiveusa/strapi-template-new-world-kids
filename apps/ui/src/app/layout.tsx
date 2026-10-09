@@ -1,5 +1,5 @@
 import { MotionConfig } from "framer-motion"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { getLocale } from "next-intl/server"
 
@@ -17,7 +17,20 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
 })
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  interactiveWidget: "resizes-content",
+  themeColor: "#f2eee5",
+}
+
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.APP_PUBLIC_URL ?? "http://localhost:3000"),
+  openGraph: {
+    siteName: "New World Kids",
+    images: [{ url: "/images/og-nwkids.png", width: 1200, height: 630 }],
+  },
   title: "New World Kids",
   description:
     "Turn interest into real work, mentorship, and a clear next step.",

@@ -139,7 +139,7 @@ export const impactPillars: ImpactPillar[] = [
       es: "Ensenamos cultivo regenerativo, agricultura sintropica, resguardo de semillas y resiliencia alimentaria de barrio.",
     },
     proof: [
-      "200+ plant varieties in the food forest",
+      "A demonstration food forest at Proyecto Indigo Azul, started in 2020",
       "Hands-on teaching in real soil, not simulations",
       "Families eat from the systems they help build",
     ],
@@ -161,7 +161,7 @@ export const impactPillars: ImpactPillar[] = [
       es: "Ensenamos captacion de lluvia, riego con ollas de barro, almacenamiento y manejo practico del agua para la vida rural.",
     },
     proof: [
-      "Clay-pot irrigation can cut water use by up to 90%",
+      "Clay-pot irrigation is one of the water methods taught",
       "Ferro-cement cisterns and gravity-fed systems are part of the curriculum",
       "Students learn how to keep water, not just consume it",
     ],
@@ -212,39 +212,6 @@ export const impactPillars: ImpactPillar[] = [
   },
 ]
 
-export const workWithUsOffers = [
-  {
-    title: {
-      en: "AI operations for nonprofits",
-      es: "Operaciones de IA para organizaciones sociales",
-    },
-    body: {
-      en: "Grant support, automation, reporting, and public accountability systems for mission-driven teams.",
-      es: "Apoyo en grants, automatizacion, reportes y sistemas de rendicion de cuentas para equipos con mision.",
-    },
-  },
-  {
-    title: {
-      en: "Field storytelling and media systems",
-      es: "Narrativa de campo y sistemas de medios",
-    },
-    body: {
-      en: "Campaign storytelling, bilingual publishing, and content systems that turn real work into trust.",
-      es: "Narrativa de campana, publicacion bilingue y sistemas de contenido que convierten el trabajo real en confianza.",
-    },
-  },
-  {
-    title: {
-      en: "Transparency infrastructure",
-      es: "Infraestructura de transparencia",
-    },
-    body: {
-      en: "Trust centers, public ledgers, document portals, and lightweight mission dashboards.",
-      es: "Centros de confianza, libros publicos, portales de documentos y paneles ligeros para la mision.",
-    },
-  },
-]
-
 export const journalTeaser = {
   en: "Field notes, proof, and long-form stories from food, water, energy, and shelter work.",
   es: "Notas de campo, pruebas e historias largas sobre nuestro trabajo en alimentos, agua, energia y refugio.",
@@ -252,7 +219,6 @@ export const journalTeaser = {
 
 export type SupportRails = {
   donorbox: string
-  creem: string
   buyMeACoffee: string
   blog: string
 }
@@ -262,7 +228,6 @@ export function getSupportRails(
 ): SupportRails {
   return {
     donorbox: env.NEXT_PUBLIC_DONORBOX_URL || env.DONORBOX_URL || "/donate",
-    creem: env.NEXT_PUBLIC_CREEM_URL || env.CREEM_URL || "/work-with-us",
     buyMeACoffee:
       env.NEXT_PUBLIC_BUY_ME_A_COFFEE_URL ||
       env.BUY_ME_A_COFFEE_URL ||

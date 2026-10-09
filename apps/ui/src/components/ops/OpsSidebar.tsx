@@ -72,7 +72,7 @@ function NavItem({ item, active }: { item: NavItemData; active: boolean }) {
       <span className="flex-1 truncate">{item.label}</span>
       {item.badge && (
         <span
-          className={`rounded-full px-1.5 py-0.5 text-[10px] font-medium ${
+          className={`rounded-full px-1.5 py-0.5 text-xs font-medium ${
             item.badgeType === "warn"
               ? "bg-amber-500/20 text-amber-300"
               : "bg-[#c9a84c]/20 text-[#c9a84c]"
@@ -113,7 +113,7 @@ export function OpsSidebar() {
 
       {/* Tools */}
       <div className="mt-4 px-2">
-        <p className="px-2 pt-2 pb-1 text-[10px] tracking-widest text-white/25 uppercase">
+        <p className="px-2 pt-2 pb-1 text-xs tracking-widest text-white/25 uppercase">
           Tools
         </p>
         <div className="space-y-0.5">
@@ -125,7 +125,7 @@ export function OpsSidebar() {
 
       {/* Public */}
       <div className="mt-4 px-2">
-        <p className="px-2 pt-2 pb-1 text-[10px] tracking-widest text-white/25 uppercase">
+        <p className="px-2 pt-2 pb-1 text-xs tracking-widest text-white/25 uppercase">
           Public
         </p>
         <div className="space-y-0.5">
@@ -138,12 +138,12 @@ export function OpsSidebar() {
       {/* Footer */}
       <div className="mt-auto border-t border-white/5 px-3 pt-3">
         <div className="flex items-center gap-2">
-          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1a3a2a] text-[11px] font-medium text-[#c9a84c]">
+          <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1a3a2a] text-xs font-medium text-[#c9a84c]">
             B
           </div>
           <div className="min-w-0 flex-1">
             <p className="truncate text-xs font-medium text-white/80">Bambu</p>
-            <p className="truncate text-[10px] text-white/30">
+            <p className="truncate text-xs text-white/30">
               executiveusa@gmail.com
             </p>
           </div>

@@ -2,11 +2,14 @@ import type { Metadata } from "next"
 
 import { facts } from "@/content/facts"
 import { Link } from "@/lib/navigation"
+import { withCopyOverrides } from "@/lib/nwkids/copy"
 
 // Verified sources: the New World Kids FundRazr campaign text (program shape,
 // who it is for, what donations pay for), the intake forms (screening and
 // review commitments) and HSI's public progress-report requirement.
 // "How we will measure" is a proposal for the team to approve before launch.
+
+export const revalidate = 60
 
 const copy = {
   en: {
@@ -179,9 +182,9 @@ const copy = {
 } as const
 
 const eyebrow =
-  "text-[11px] font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs"
+  "text-xs font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs"
 const link =
-  "group inline-flex min-h-12 items-center gap-3 border-y border-black/25 py-3 text-sm font-black hover:border-black/55 focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:outline-none"
+  "group inline-flex min-h-12 items-center gap-3 border-y border-black/25 py-3 text-sm font-bold hover:border-black/55 focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-4 focus-visible:outline-none"
 
 export async function generateMetadata({
   params,
@@ -218,7 +221,7 @@ export default async function First12Page({
 }) {
   const { locale: rawLocale } = await params
   const locale = rawLocale === "es" ? "es" : "en"
-  const t = copy[locale]
+  const t = await withCopyOverrides("first-12", locale, copy[locale])
   const extra = [
     facts.ageRange && [t.ages, facts.ageRange[locale]],
     facts.cost && [t.cost, facts.cost[locale]],
@@ -231,7 +234,7 @@ export default async function First12Page({
       <section className="border-b border-black/15 px-5 py-16 sm:px-8 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
           <p className={eyebrow}>{t.eyebrow}</p>
-          <h1 className="mt-4 max-w-5xl text-[clamp(2.4rem,8vw,5.5rem)] leading-[0.96] font-black tracking-[-0.045em] text-balance sm:mt-5">
+          <h1 className="t-h1 mt-4 max-w-5xl text-balance sm:mt-5">
             {t.title}
           </h1>
           <p className="mt-7 max-w-2xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
@@ -266,6 +269,14 @@ export default async function First12Page({
         <p className="text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
           {t.applyNot}
         </p>
+        <Link
+          href="/refer"
+          locale={locale}
+          className="btn-primary mt-5 w-full sm:w-auto sm:min-w-72"
+        >
+          <span>{t.referAction}</span>
+          <span aria-hidden="true">→</span>
+        </Link>
         {facts.applyOpen ? (
           <a href={facts.applyOpen.href} className={link}>
             <span>{t.applyOpen}</span>
@@ -283,6 +294,13 @@ export default async function First12Page({
             {facts.pay[locale]}
           </p>
         ) : null}
+        <p className="mt-4 text-base leading-7 font-semibold">
+          {facts.employer[locale]}
+        </p>
+        <p className="mt-4 text-base leading-7 font-semibold">{t.hours}</p>
+        <p className="mt-4 text-sm leading-6 text-[var(--color-text-muted)]">
+          {facts.insurance[locale]}
+        </p>
       </Row>
 
       <Row label={t.lawEyebrow}>
@@ -326,10 +344,14 @@ export default async function First12Page({
           ))}
         </ul>
         {facts.safeguardingPolicyHref ? (
-          <a href={facts.safeguardingPolicyHref} className={`${link} mt-6`}>
+          <Link
+            href={facts.safeguardingPolicyHref}
+            locale={locale}
+            className={`${link} mt-6`}
+          >
             <span>{t.policy}</span>
-            <span aria-hidden="true">↗</span>
-          </a>
+            <span aria-hidden="true">→</span>
+          </Link>
         ) : null}
       </Row>
 
@@ -343,7 +365,7 @@ export default async function First12Page({
               key={label}
               className="grid gap-1 py-4 sm:grid-cols-[11rem_1fr] sm:gap-6"
             >
-              <dt className="text-base font-black">{label}</dt>
+              <dt className="text-base font-bold">{label}</dt>
               <dd className="text-base leading-7 text-[var(--color-text-muted)]">
                 {value}
               </dd>
@@ -351,7 +373,7 @@ export default async function First12Page({
           ))}
         </dl>
         <p className="mt-5 text-base leading-7">
-          <span className="font-black">{t.targets}. </span>
+          <span className="font-bold">{t.targets}. </span>
           <span className="text-[var(--color-text-muted)]">
             {facts.targets ? facts.targets[locale] : t.targetsNot}
           </span>

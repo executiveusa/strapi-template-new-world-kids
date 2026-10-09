@@ -2,11 +2,14 @@ import type { Metadata } from "next"
 
 import { IntakeForm } from "@/components/site/IntakeForm"
 import { Link } from "@/lib/navigation"
+import { withCopyOverrides } from "@/lib/nwkids/copy"
 
 import { submitReferral } from "./actions"
 
 // Referral only: the pilot does not take direct applications. We collect the referrer's details and
 // the young person's first name and age, never their history or contact details.
+
+export const revalidate = 60
 
 const copy = {
   en: {
@@ -118,13 +121,13 @@ const copy = {
 } as const
 
 const inputClass =
-  "mt-2 min-h-12 w-full rounded-none border-0 border-b border-black/60 bg-transparent px-0 py-3 text-base text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-nwk-blue)] focus:ring-0"
+  "mt-2 min-h-12 w-full rounded-none border-0 border-b border-black/60 bg-transparent px-0 py-3 text-base text-[var(--color-ink)] outline-none transition-colors focus:border-[var(--color-brand)] focus:ring-0"
 const labelClass =
   "block text-xs font-semibold tracking-[0.12em] text-black/70 uppercase"
 const eyebrow =
-  "text-[11px] font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs"
+  "text-xs font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs"
 const checkClass =
-  "flex max-w-3xl items-start gap-4 text-sm leading-6 text-[var(--color-text-muted)]"
+  "flex max-w-3xl min-h-11 items-start gap-4 py-1.5 text-sm leading-6 text-[var(--color-text-muted)]"
 
 export async function generateMetadata({
   params,
@@ -151,14 +154,14 @@ export default async function ReferPage({
   const { locale: rawLocale } = await params
   const query = await searchParams
   const locale = rawLocale === "es" ? "es" : "en"
-  const t = copy[locale]
+  const t = await withCopyOverrides("refer", locale, copy[locale])
 
   return (
-    <main className="bg-[var(--color-paper)] text-[var(--color-ink)]">
+    <div className="bg-[var(--color-paper)] text-[var(--color-ink)]">
       <section className="border-b border-black/15 px-5 py-16 sm:px-8 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
           <p className={eyebrow}>{t.eyebrow}</p>
-          <h1 className="mt-4 max-w-5xl text-[clamp(2.9rem,10vw,7rem)] leading-[0.92] font-black tracking-[-0.05em] text-balance sm:mt-5">
+          <h1 className="t-h1 mt-4 max-w-5xl text-balance sm:mt-5">
             {t.title}
           </h1>
           <p className="mt-7 max-w-2xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
@@ -172,16 +175,14 @@ export default async function ReferPage({
         <div className="mx-auto max-w-7xl">
           {query.submitted === "1" ? (
             <div className="max-w-3xl border-t border-black/20 pt-7">
-              <h2 className="text-[clamp(2.4rem,8vw,4.5rem)] leading-[0.95] font-black tracking-[-0.045em]">
-                {t.submittedTitle}
-              </h2>
+              <h2 className="t-h2">{t.submittedTitle}</h2>
               <p className="mt-5 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
                 {t.submittedBody}
               </p>
               <Link
                 href="/"
                 locale={locale}
-                className="mt-8 inline-flex min-h-12 items-center border-y border-black/20 py-3 text-sm font-black"
+                className="mt-8 inline-flex min-h-12 items-center border-y border-black/20 py-3 text-sm font-bold"
               >
                 {t.back} →
               </Link>
@@ -200,14 +201,14 @@ export default async function ReferPage({
                   className="mb-10 border-y border-black/20 py-5 outline-none"
                   role="alert"
                 >
-                  <p className="font-black">{t.errorTitle}</p>
+                  <p className="font-bold">{t.errorTitle}</p>
                   <p className="mt-1 text-sm leading-6 text-[var(--color-text-muted)]">
                     {t.errorBody}
                   </p>
                 </div>
               ) : null}
 
-              <h2 className="text-xl font-black tracking-[-0.02em]">
+              <h2 className="text-xl font-bold tracking-[-0.02em]">
                 {t.youthHeading}
               </h2>
               <div className="mt-6 grid gap-x-10 gap-y-9 md:grid-cols-2">
@@ -294,7 +295,7 @@ export default async function ReferPage({
                 </label>
               </div>
 
-              <h2 className="mt-14 text-xl font-black tracking-[-0.02em]">
+              <h2 className="mt-14 text-xl font-bold tracking-[-0.02em]">
                 {t.referrerHeading}
               </h2>
               <div className="mt-6 grid gap-x-10 gap-y-9 md:grid-cols-2">
@@ -361,7 +362,7 @@ export default async function ReferPage({
               <div className="mt-10 space-y-5 border-t border-black/15 pt-6">
                 <label className={checkClass}>
                   <input
-                    className="mt-1 size-5 shrink-0 accent-[var(--color-nwk-blue)]"
+                    className="mt-1 size-5 shrink-0 accent-[var(--color-brand)]"
                     type="checkbox"
                     name="youth_aware"
                     required
@@ -370,7 +371,7 @@ export default async function ReferPage({
                 </label>
                 <label className={checkClass}>
                   <input
-                    className="mt-1 size-5 shrink-0 accent-[var(--color-nwk-blue)]"
+                    className="mt-1 size-5 shrink-0 accent-[var(--color-brand)]"
                     type="checkbox"
                     name="guardian_aware"
                   />
@@ -378,7 +379,7 @@ export default async function ReferPage({
                 </label>
                 <label className={checkClass}>
                   <input
-                    className="mt-1 size-5 shrink-0 accent-[var(--color-nwk-blue)]"
+                    className="mt-1 size-5 shrink-0 accent-[var(--color-brand)]"
                     type="checkbox"
                     name="consent"
                     required
@@ -398,7 +399,7 @@ export default async function ReferPage({
               </p>
               <button
                 type="submit"
-                className="mt-6 inline-flex min-h-12 w-full items-center justify-between border-y border-black/25 py-3 text-sm font-black focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:outline-none sm:w-72"
+                className="btn-primary mt-6 w-full sm:w-auto sm:min-w-72"
               >
                 <span>{t.submit}</span>
                 <span aria-hidden="true">→</span>
@@ -407,6 +408,6 @@ export default async function ReferPage({
           )}
         </div>
       </section>
-    </main>
+    </div>
   )
 }

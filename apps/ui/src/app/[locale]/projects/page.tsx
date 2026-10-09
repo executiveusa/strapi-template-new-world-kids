@@ -122,7 +122,7 @@ const copy = {
 } as const
 
 const focusRing =
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)]"
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-4 focus-visible:ring-offset-[var(--color-bg)]"
 
 export async function generateMetadata({
   params,
@@ -144,13 +144,13 @@ export default async function ProjectsPage({
   const t = locale === "es" ? copy.es : copy.en
 
   return (
-    <main className="bg-[var(--color-bg)]">
+    <div className="bg-[var(--color-bg)]">
       <section className="px-5 py-16 sm:px-8 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
-          <p className="text-[10px] font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
+          <p className="text-xs font-bold tracking-[0.24em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
             {t.eyebrow}
           </p>
-          <h1 className="mt-4 max-w-5xl text-[clamp(3rem,10vw,6.5rem)] leading-[0.92] font-black tracking-[-0.055em] text-balance text-[var(--color-text-primary)]">
+          <h1 className="t-h1 mt-4 max-w-5xl text-balance text-[var(--color-text-primary)]">
             {t.title}
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8 md:text-xl">
@@ -168,10 +168,10 @@ export default async function ProjectsPage({
             <div className="mx-auto max-w-7xl">
               <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
                 <div>
-                  <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
+                  <p className="text-xs font-bold tracking-[0.2em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
                     0{index + 1} · {pathway.category}
                   </p>
-                  <h2 className="mt-3 text-[clamp(2.4rem,7vw,4.8rem)] leading-[0.94] font-black tracking-[-0.05em] text-[var(--color-text-primary)]">
+                  <h2 className="t-h2 mt-3 text-[var(--color-text-primary)]">
                     {pathway.name}
                   </h2>
                 </div>
@@ -190,7 +190,7 @@ export default async function ProjectsPage({
                     key={label}
                     className="grid gap-2 border-b border-black/10 py-4 md:grid-cols-[180px_1fr] md:gap-8"
                   >
-                    <dt className="text-[10px] font-bold tracking-[0.15em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
+                    <dt className="text-xs font-bold tracking-[0.15em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
                       {label}
                     </dt>
                     <dd className="text-[15px] leading-6 text-[var(--color-text-muted)] sm:text-base">
@@ -202,7 +202,7 @@ export default async function ProjectsPage({
 
               <a
                 href="mailto:info@nwkids.org"
-                className={`mt-7 inline-flex min-h-11 items-center border-y border-black/20 py-3 text-sm font-black text-[var(--color-text-primary)] transition-colors hover:border-black/55 ${focusRing}`}
+                className={`mt-7 inline-flex min-h-11 items-center border-y border-black/20 py-3 text-sm font-bold text-[var(--color-text-primary)] transition-colors hover:border-black/55 ${focusRing}`}
               >
                 {t.labels.action}
               </a>
@@ -214,12 +214,10 @@ export default async function ProjectsPage({
       <section className="bg-[#1e1a17] px-5 py-16 text-white sm:px-8 md:px-10 md:py-24">
         <div className="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
           <div>
-            <p className="text-[10px] font-bold tracking-[0.24em] text-white/52 uppercase sm:text-xs">
+            <p className="text-xs font-bold tracking-[0.24em] text-white/52 uppercase sm:text-xs">
               {t.proofEyebrow}
             </p>
-            <h2 className="mt-4 text-[clamp(2.6rem,8vw,5rem)] leading-[0.94] font-black tracking-[-0.05em]">
-              {t.proofTitle}
-            </h2>
+            <h2 className="t-h2 mt-4">{t.proofTitle}</h2>
           </div>
           <div className="border-t border-white/18 pt-5 lg:border-t-0 lg:pt-0">
             <p className="max-w-2xl text-base leading-7 text-white/72 sm:text-lg sm:leading-8">
@@ -228,13 +226,13 @@ export default async function ProjectsPage({
             <Link
               href="/gallery"
               locale={locale}
-              className="mt-6 inline-flex min-h-11 items-center border-y border-white/28 py-3 text-sm font-black text-white hover:border-white/65 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[#1e1a17] focus-visible:outline-none"
+              className="mt-6 inline-flex min-h-11 items-center border-y border-white/28 py-3 text-sm font-bold text-white hover:border-white/65 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-4 focus-visible:ring-offset-[#1e1a17] focus-visible:outline-none"
             >
               {t.proofAction}
             </Link>
           </div>
         </div>
       </section>
-    </main>
+    </div>
   )
 }

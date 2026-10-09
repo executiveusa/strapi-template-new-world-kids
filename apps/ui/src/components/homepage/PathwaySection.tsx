@@ -84,7 +84,7 @@ const copy = {
 } as const
 
 const focusRing =
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4"
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-4"
 
 export function PathwaySection() {
   const locale = useLocale()
@@ -97,18 +97,18 @@ export function PathwaySection() {
         className="bg-[var(--color-bg)] px-5 py-20 sm:px-8 sm:py-24 md:px-10 md:py-32 lg:py-36"
       >
         <div className="mx-auto max-w-7xl">
-          <p className="text-[10px] font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
+          <p className="text-xs font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
             {t.firstEyebrow}
           </p>
           <div className="mt-6 grid gap-8 sm:mt-7 sm:gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end lg:gap-16">
             <div
               aria-hidden="true"
-              className="text-[6.5rem] leading-[0.72] font-black tracking-[-0.1em] text-[var(--color-ink)]/12 select-none sm:text-[11rem] md:text-[15rem] lg:text-[19rem]"
+              className="text-[6.5rem] leading-[0.72] font-bold tracking-[-0.1em] text-[var(--color-ink)]/12 select-none sm:text-[11rem] md:text-[15rem] lg:text-[19rem]"
             >
               12
             </div>
             <div className="pb-1 sm:pb-2">
-              <h2 className="max-w-4xl text-[clamp(2.7rem,10vw,6.5rem)] leading-[0.93] font-black tracking-[-0.05em] text-balance text-[var(--color-text-primary)] sm:tracking-[-0.055em]">
+              <h2 className="t-h2 max-w-4xl text-balance text-[var(--color-text-primary)]">
                 {t.firstTitle}
               </h2>
               <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--color-text-muted)] sm:mt-7 sm:text-lg sm:leading-8 md:text-xl">
@@ -117,7 +117,7 @@ export function PathwaySection() {
               <Link
                 href="/first-12"
                 locale={locale}
-                className="mt-6 inline-flex min-h-12 items-center border-y border-black/25 py-3 text-sm font-bold text-[var(--color-text-primary)] transition-colors hover:border-black/55 focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:outline-none"
+                className="mt-6 inline-flex min-h-12 items-center border-y border-black/25 py-3 text-sm font-bold text-[var(--color-text-primary)] transition-colors hover:border-black/55 focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-4 focus-visible:outline-none"
               >
                 {t.detailsAction}
               </Link>
@@ -127,10 +127,10 @@ export function PathwaySection() {
             id="how"
             className="mt-16 scroll-mt-24 border-t border-black/15 pt-14 sm:mt-20 sm:pt-16 md:mt-28 md:pt-20"
           >
-            <p className="text-[10px] font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
+            <p className="text-xs font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
               {t.howEyebrow}
             </p>
-            <h3 className="mt-4 max-w-6xl text-[clamp(2.1rem,8vw,5rem)] leading-[0.97] font-black tracking-[-0.04em] text-[var(--color-text-primary)] sm:mt-5 sm:tracking-[-0.045em]">
+            <h3 className="t-h2 mt-4 max-w-6xl text-[var(--color-text-primary)] sm:mt-5">
               {t.howTitle}
             </h3>
             <div className="mt-8 border-t border-black/15 sm:mt-10">
@@ -142,7 +142,7 @@ export function PathwaySection() {
                   <span className="text-xs font-semibold tracking-[0.14em] text-black/60 sm:text-sm">
                     {number}
                   </span>
-                  <h4 className="text-xl font-black tracking-[-0.025em] text-[var(--color-text-primary)] md:text-2xl">
+                  <h4 className="text-xl font-bold tracking-[-0.025em] text-[var(--color-text-primary)] md:text-2xl">
                     {title}
                   </h4>
                   <p className="text-[15px] leading-7 text-[var(--color-text-muted)] sm:text-base">
@@ -162,18 +162,16 @@ export function PathwaySection() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 sm:gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-20">
             <div>
-              <p className="text-[10px] font-semibold tracking-[0.22em] text-white/48 uppercase sm:text-xs">
+              <p className="text-xs font-semibold tracking-[0.22em] text-white/48 uppercase sm:text-xs">
                 {t.proofEyebrow}
               </p>
-              <h2 className="mt-4 text-[clamp(2.7rem,10vw,6rem)] leading-[0.93] font-black tracking-[-0.05em] text-balance sm:mt-5 sm:tracking-[-0.055em]">
-                {t.proofTitle}
-              </h2>
+              <h2 className="t-h2 mt-4 text-balance sm:mt-5">{t.proofTitle}</h2>
             </div>
             <div className="border-t border-white/18 pt-6 sm:pt-7 lg:border-t-0 lg:pt-0">
               <p className="max-w-2xl text-base leading-7 text-white/72 sm:text-lg sm:leading-8 md:text-xl md:leading-9">
                 {t.proofBody}
               </p>
-              <p className="mt-5 text-2xl font-black tracking-[-0.025em] sm:mt-6 md:text-3xl">
+              <p className="mt-5 text-2xl font-bold tracking-[-0.025em] sm:mt-6 md:text-3xl">
                 {t.proofClose}
               </p>
               <Link
@@ -186,7 +184,7 @@ export function PathwaySection() {
             </div>
           </div>
           <div className="mt-14 border-t border-white/18 pt-9 sm:mt-16 sm:pt-10 md:mt-20">
-            <p className="text-[10px] font-semibold tracking-[0.22em] text-white/45 uppercase sm:text-xs">
+            <p className="text-xs font-semibold tracking-[0.22em] text-white/45 uppercase sm:text-xs">
               {t.measureEyebrow}
             </p>
             <div className="mt-5 grid sm:mt-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -195,7 +193,7 @@ export function PathwaySection() {
                   key={outcome}
                   className="border-t border-white/15 py-5 sm:border-r sm:px-6 sm:py-6 sm:last:border-r-0 lg:border-t-0"
                 >
-                  <span className="text-[10px] font-semibold tracking-[0.14em] text-white/28">
+                  <span className="text-xs font-semibold tracking-[0.14em] text-white/28">
                     0{index + 1}
                   </span>
                   <p className="mt-3 text-[15px] leading-6 font-bold text-white/84 sm:text-base">
@@ -213,11 +211,11 @@ export function PathwaySection() {
         className="bg-[var(--color-paper)] px-5 py-20 text-[var(--color-ink)] sm:px-8 sm:py-24 md:px-10 md:py-32 lg:py-36"
       >
         <div className="mx-auto max-w-7xl">
-          <p className="text-[10px] font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
+          <p className="text-xs font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
             {t.partnerEyebrow}
           </p>
           <div className="mt-4 grid gap-8 sm:mt-5 sm:gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:gap-20">
-            <h2 className="max-w-5xl text-[clamp(2.7rem,10vw,6.5rem)] leading-[0.93] font-black tracking-[-0.05em] text-balance text-[var(--color-text-primary)] sm:tracking-[-0.055em]">
+            <h2 className="t-h2 max-w-5xl text-balance text-[var(--color-text-primary)]">
               {t.partnerTitle}
             </h2>
             <p className="max-w-xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:pt-7 sm:text-lg sm:leading-8 lg:border-t-0 lg:border-l lg:border-black/18 lg:pt-0 lg:pl-8">
@@ -228,7 +226,7 @@ export function PathwaySection() {
             <Link
               href="/opportunity"
               locale={locale}
-              className={`group flex min-h-16 items-center justify-between border-b border-black/18 py-4 text-base font-black sm:border-r sm:px-6 ${focusRing}`}
+              className={`group flex min-h-16 items-center justify-between border-b border-black/18 py-4 text-base font-bold sm:border-r sm:px-6 ${focusRing}`}
             >
               <span>{t.projectAction}</span>
               <span
@@ -241,7 +239,7 @@ export function PathwaySection() {
             <Link
               href="/mentor"
               locale={locale}
-              className={`group flex min-h-16 items-center justify-between border-b border-black/18 py-4 text-base font-black sm:px-6 ${focusRing}`}
+              className={`group flex min-h-16 items-center justify-between border-b border-black/18 py-4 text-base font-bold sm:px-6 ${focusRing}`}
             >
               <span>{t.mentorAction}</span>
               <span

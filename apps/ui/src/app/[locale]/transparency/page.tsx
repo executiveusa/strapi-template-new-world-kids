@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 
 import { facts } from "@/content/facts"
 import { Link } from "@/lib/navigation"
+import { withCopyOverrides } from "@/lib/nwkids/copy"
 
 // Facts below come from public records checked on 2026-10-09:
 // - Washington Secretary of State CCFS record (UBI 604 917 764)
@@ -22,6 +23,8 @@ const documents = [
   { key: "audit", href: `${HSI}/2025/11/HSI-2024-Audited-Financials.pdf` },
   { key: "board", href: `${HSI}/2026-HSI-Governing-Board-.pdf` },
 ] as const
+
+export const revalidate = 60
 
 const copy = {
   en: {
@@ -190,9 +193,9 @@ const copy = {
 } as const
 
 const eyebrow =
-  "text-[11px] font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs"
+  "text-xs font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs"
 const linkClass =
-  "group inline-flex min-h-12 items-center gap-3 border-y border-black/25 py-3 text-sm font-black hover:border-black/55 focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:outline-none"
+  "group inline-flex min-h-12 items-center gap-3 border-y border-black/25 py-3 text-sm font-bold hover:border-black/55 focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-4 focus-visible:outline-none"
 
 export async function generateMetadata({
   params,
@@ -212,7 +215,7 @@ export default async function TransparencyPage({
 }) {
   const { locale: rawLocale } = await params
   const locale = rawLocale === "es" ? "es" : "en"
-  const t = copy[locale]
+  const t = await withCopyOverrides("transparency", locale, copy[locale])
   const fundrazr = "https://fundrazr.com/nwkids.org"
 
   return (
@@ -220,7 +223,7 @@ export default async function TransparencyPage({
       <section className="border-b border-black/15 px-5 py-16 sm:px-8 sm:py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-7xl">
           <p className={eyebrow}>{t.eyebrow}</p>
-          <h1 className="mt-4 max-w-5xl text-[clamp(2.4rem,8vw,5.5rem)] leading-[0.96] font-black tracking-[-0.045em] text-balance sm:mt-5">
+          <h1 className="t-h1 mt-4 max-w-5xl text-balance sm:mt-5">
             {t.title}
           </h1>
           <p className="mt-7 max-w-2xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
@@ -237,7 +240,7 @@ export default async function TransparencyPage({
           <p className={eyebrow}>{t.whoEyebrow}</p>
           <div className="max-w-3xl divide-y divide-black/15 border-y border-black/15">
             <div className="py-7">
-              <h2 className="text-2xl font-black tracking-[-0.03em]">
+              <h2 className="text-2xl font-bold tracking-[-0.03em]">
                 {t.nwkTitle}
               </h2>
               <p className="mt-3 text-base leading-7 text-[var(--color-text-muted)]">
@@ -257,7 +260,7 @@ export default async function TransparencyPage({
               </a>
             </div>
             <div className="py-7">
-              <h2 className="text-2xl font-black tracking-[-0.03em]">
+              <h2 className="text-2xl font-bold tracking-[-0.03em]">
                 {t.hsiTitle}
               </h2>
               <p className="mt-3 text-base leading-7 text-[var(--color-text-muted)]">
@@ -275,7 +278,7 @@ export default async function TransparencyPage({
               </a>
             </div>
             <div className="py-7">
-              <h2 className="text-2xl font-black tracking-[-0.03em]">
+              <h2 className="text-2xl font-bold tracking-[-0.03em]">
                 {t.peopleTitle}
               </h2>
               <ul className="mt-3 space-y-2">
@@ -294,7 +297,7 @@ export default async function TransparencyPage({
               </p>
             </div>
             <div className="py-7">
-              <h2 className="text-2xl font-black tracking-[-0.03em]">
+              <h2 className="text-2xl font-bold tracking-[-0.03em]">
                 {t.piaTitle}
               </h2>
               <p className="mt-3 text-base leading-7 text-[var(--color-text-muted)]">
@@ -302,7 +305,7 @@ export default async function TransparencyPage({
               </p>
             </div>
             <div className="py-7">
-              <h2 className="text-2xl font-black tracking-[-0.03em]">
+              <h2 className="text-2xl font-bold tracking-[-0.03em]">
                 {t.notClaimTitle}
               </h2>
               <p className="mt-3 text-base leading-7 text-[var(--color-text-muted)]">
@@ -318,7 +321,7 @@ export default async function TransparencyPage({
           <p className={eyebrow}>{t.giveEyebrow}</p>
           <div className="max-w-3xl divide-y divide-black/15 border-y border-black/15">
             <div className="py-7">
-              <h2 className="text-2xl font-black tracking-[-0.03em]">
+              <h2 className="text-2xl font-bold tracking-[-0.03em]">
                 {t.giveOnlineTitle}
               </h2>
               <p className="mt-3 text-base leading-7 text-[var(--color-text-muted)]">
@@ -336,7 +339,7 @@ export default async function TransparencyPage({
               </a>
             </div>
             <div className="py-7">
-              <h2 className="text-2xl font-black tracking-[-0.03em]">
+              <h2 className="text-2xl font-bold tracking-[-0.03em]">
                 {t.giveCheckTitle}
               </h2>
               <p className="mt-3 text-base leading-7 text-[var(--color-text-muted)]">
@@ -351,7 +354,7 @@ export default async function TransparencyPage({
               </address>
             </div>
             <div className="py-7">
-              <h2 className="text-2xl font-black tracking-[-0.03em]">
+              <h2 className="text-2xl font-bold tracking-[-0.03em]">
                 {t.supportsTitle}
               </h2>
               <p className="mt-3 text-base leading-7 text-[var(--color-text-muted)]">
@@ -381,10 +384,10 @@ export default async function TransparencyPage({
                     href={doc.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="group grid min-h-16 grid-cols-[1fr_auto] items-center gap-4 py-5 focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:outline-none"
+                    className="group grid min-h-16 grid-cols-[1fr_auto] items-center gap-4 py-5 focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-4 focus-visible:outline-none"
                   >
                     <span>
-                      <span className="block text-lg font-black tracking-[-0.02em]">
+                      <span className="block text-lg font-bold tracking-[-0.02em]">
                         {t.docs[doc.key].title}
                       </span>
                       <span className="mt-1 block text-sm leading-6 text-[var(--color-text-muted)]">
@@ -403,7 +406,7 @@ export default async function TransparencyPage({
               ))}
             </ul>
             <div className="border-t border-black/15 py-6">
-              <h2 className="text-lg font-black tracking-[-0.02em]">
+              <h2 className="text-lg font-bold tracking-[-0.02em]">
                 {t.agreementTitle}
               </h2>
               <p className="mt-1 text-sm leading-6 text-[var(--color-text-muted)]">

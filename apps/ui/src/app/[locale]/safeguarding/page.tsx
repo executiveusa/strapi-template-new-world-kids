@@ -1,11 +1,14 @@
 import type { Metadata } from "next"
 
 import { Link } from "@/lib/navigation"
+import { withCopyOverrides } from "@/lib/nwkids/copy"
 
 // Commitments here follow Washington and federal rules read on 2026-10-09 (see
 // docs/NWK_COMPLIANCE_CROSSWALK.md). Counsel and HSI should review before launch.
 
 type Item = { readonly h: string; readonly items: readonly string[] }
+
+export const revalidate = 60
 
 const copy = {
   en: {
@@ -184,24 +187,22 @@ export default async function SafeguardingPage({
 }) {
   const { locale: rawLocale } = await params
   const locale = rawLocale === "es" ? "es" : "en"
-  const t = copy[locale]
+  const t = await withCopyOverrides("safeguarding", locale, copy[locale])
 
   return (
     <div className="bg-[var(--color-paper)] px-5 py-16 text-[var(--color-ink)] sm:px-8 sm:py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-3xl">
-        <p className="text-[11px] font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
+        <p className="text-xs font-semibold tracking-[0.18em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
           {t.eyebrow}
         </p>
-        <h1 className="mt-4 text-[clamp(2.4rem,8vw,4.5rem)] leading-[0.98] font-black tracking-[-0.045em] text-balance">
-          {t.title}
-        </h1>
+        <h1 className="t-h1 mt-4 text-balance">{t.title}</h1>
         <p className="mt-7 border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
           {t.intro}
         </p>
         <div className="mt-10 divide-y divide-black/15 border-y border-black/15">
           {t.groups.map((group) => (
             <section key={group.h} className="py-7">
-              <h2 className="text-xl font-black tracking-[-0.02em]">
+              <h2 className="text-xl font-bold tracking-[-0.02em]">
                 {group.h}
               </h2>
               <ul className="mt-3 space-y-3">
@@ -217,7 +218,7 @@ export default async function SafeguardingPage({
             </section>
           ))}
         </div>
-        <h2 className="mt-10 text-xl font-black tracking-[-0.02em]">
+        <h2 className="mt-10 text-xl font-bold tracking-[-0.02em]">
           {t.linksH}
         </h2>
         <ul className="mt-3 divide-y divide-black/15 border-y border-black/15">
@@ -227,7 +228,7 @@ export default async function SafeguardingPage({
                 href={href}
                 target="_blank"
                 rel="noreferrer"
-                className="flex min-h-12 items-center justify-between gap-4 py-3 text-base font-semibold focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="flex min-h-12 items-center justify-between gap-4 py-3 text-base font-semibold focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-2 focus-visible:outline-none"
               >
                 <span>{label}</span>
                 <span aria-hidden="true">↗</span>
@@ -242,7 +243,7 @@ export default async function SafeguardingPage({
         <Link
           href="/first-12"
           locale={locale}
-          className="mt-8 inline-flex min-h-12 items-center gap-3 border-y border-black/25 py-3 text-sm font-black focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:outline-none"
+          className="mt-8 inline-flex min-h-12 items-center gap-3 border-y border-black/25 py-3 text-sm font-bold focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-4 focus-visible:outline-none"
         >
           <span>{t.back}</span>
           <span aria-hidden="true">→</span>

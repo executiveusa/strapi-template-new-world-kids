@@ -145,6 +145,22 @@ export async function saveReferral(formData: FormData) {
   return data as string
 }
 
+export async function saveWaitlist(formData: FormData) {
+  const payload = {
+    p_email: email(formData.get("email")),
+    p_locale: locale(formData.get("locale")),
+    p_consent: consent(formData.get("consent"), "consent"),
+  }
+
+  const { data, error } = await adminClient().rpc(
+    "nwkids_join_waitlist",
+    payload
+  )
+  if (error || !data) throw new Error(error?.message || "Waitlist failed")
+
+  return data as string
+}
+
 export async function saveMentor(formData: FormData) {
   const payload = {
     name: required(formData.get("name"), "name", 2),
