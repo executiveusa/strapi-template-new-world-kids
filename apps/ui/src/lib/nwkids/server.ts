@@ -100,6 +100,51 @@ export async function saveOpportunity(formData: FormData) {
   return data as string
 }
 
+const referralCounties = new Set(["king", "snohomish", "pierce", "skagit"])
+const referralPathways = new Set([...allowedPathways, "not_sure"])
+
+export async function saveReferral(formData: FormData) {
+  const age = Number(formData.get("youth_age"))
+  if (!Number.isInteger(age) || age < 16 || age > 19)
+    throw new Error("Invalid age")
+  const county = String(formData.get("county") ?? "")
+  const pathwayValue = String(formData.get("pathway") ?? "")
+  if (!referralCounties.has(county)) throw new Error("Invalid county")
+  if (!referralPathways.has(pathwayValue)) throw new Error("Invalid pathway")
+  const guardianAware = formData.get("guardian_aware") === "on"
+  if (age < 18 && !guardianAware) throw new Error("Guardian must know")
+
+  const payload = {
+    referrer_name: required(formData.get("referrer_name"), "referrer name", 2),
+    referrer_org: optional(formData.get("referrer_org")),
+    referrer_role: optional(formData.get("referrer_role")),
+    referrer_email: email(formData.get("referrer_email")),
+    referrer_phone: optional(formData.get("referrer_phone")),
+    youth_first_name: required(
+      formData.get("youth_first_name"),
+      "first name",
+      1
+    ),
+    youth_age: age,
+    county,
+    pathway: pathwayValue,
+    interests: required(formData.get("interests"), "interests", 10),
+    notes: optional(formData.get("notes")),
+    youth_aware: consent(formData.get("youth_aware"), "young person awareness"),
+    guardian_aware: guardianAware,
+    locale: locale(formData.get("locale")),
+    consent: consent(formData.get("consent"), "consent"),
+  }
+
+  const { data, error } = await adminClient().rpc("nwkids_submit_referral", {
+    p_payload: payload,
+  })
+  if (error || !data)
+    throw new Error(error?.message || "Referral intake failed")
+
+  return data as string
+}
+
 export async function saveMentor(formData: FormData) {
   const payload = {
     name: required(formData.get("name"), "name", 2),

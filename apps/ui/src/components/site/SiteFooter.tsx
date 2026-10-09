@@ -193,6 +193,13 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
           >
             {locale === "es" ? "Privacidad" : "Privacy"}
           </Link>
+          <Link
+            href="/safeguarding"
+            locale={locale}
+            className={`inline-flex min-h-11 items-center underline underline-offset-4 ${focusRing}`}
+          >
+            {locale === "es" ? "Protección" : "Safeguards"}
+          </Link>
           <span>Seattle · Proyecto Indigo Azul · Building in public</span>
         </div>
       </div>

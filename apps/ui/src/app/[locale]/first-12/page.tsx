@@ -34,10 +34,10 @@ const copy = {
     schedule: "Schedule",
     forEyebrow: "Who it is for",
     forBody:
-      "Young people ages 16 to 19 in King, Snohomish, Pierce, and Skagit counties who have real interests and talent but limited access to opportunity, including those affected by the justice system, foster care, or housing instability. Because this is a pilot, participants join by referral only. We start with 12 so we can do it well before we grow.",
+      "Young people ages 16 to 19 in King, Snohomish, Pierce, and Skagit counties who have real interests and talent but limited access to opportunity. You do not need to have been in the justice system, foster care, or unstable housing to take part, and no one has to share their history. We do support young people who have, because opportunity is hardest to find there. Because this is a pilot, participants join by referral only.",
     applyEyebrow: "How to apply",
     applyNot:
-      "Participation is by referral only for this pilot. We do not take direct applications. If you work with young people in King, Snohomish, Pierce, or Skagit County and want to refer someone, write to info@nwkids.org. It is free for the 12 young people we select.",
+      "Participation is by referral only for this pilot. We do not take direct applications. It takes about 3 minutes to refer someone. It is free for the 12 young people we select.",
     applyOpen: "Apply now",
     payEyebrow: "Pay and paid work",
     payBody:
@@ -62,7 +62,7 @@ const copy = {
       "Mentors must agree to complete our required screening before working directly with a participant.",
       "We do not publish participant names, schools, or schedules.",
     ],
-    policy: "Read our safeguarding policy",
+    policy: "Read our safeguards",
     measureEyebrow: "How we will measure it",
     measureIntro:
       "We will report totals only, never individual participants. We report progress to our fiscal sponsor each quarter.",
@@ -85,6 +85,9 @@ const copy = {
     targetsNot:
       "This is a pilot, so we are not setting outcome targets in advance. We will publish what we learn from the first 12, and set targets for later groups, once they finish.",
     pathwaysAction: "See the four project pathways",
+    referAction: "Refer a young person",
+    hours:
+      "Hours are set together by the young person, their parent or guardian, and the host program. All three must agree.",
     transparency: "Who we are and how to check",
     back: "Back to New World Kids",
   },
@@ -113,10 +116,10 @@ const copy = {
     schedule: "Horario",
     forEyebrow: "Para quién es",
     forBody:
-      "Jóvenes de 16 a 19 años en los condados de King, Snohomish, Pierce y Skagit con intereses y talento reales pero con poco acceso a oportunidades, incluidos quienes han sido afectados por el sistema de justicia, el sistema de acogida o la inestabilidad de vivienda. Como es un piloto, los participantes entran solo por referencia. Empezamos con 12 para hacerlo bien antes de crecer.",
+      "Jóvenes de 16 a 19 años en los condados de King, Snohomish, Pierce y Skagit con intereses y talento reales pero con poco acceso a oportunidades. No hace falta haber estado en el sistema de justicia, en acogida o en vivienda inestable para participar, y nadie tiene que contar su historia. Sí apoyamos a quienes lo han vivido, porque ahí es donde más cuesta encontrar oportunidades. Como es un piloto, los participantes entran solo por referencia.",
     applyEyebrow: "Cómo aplicar",
     applyNot:
-      "En este piloto la participación es solo por referencia. No recibimos solicitudes directas. Si trabajas con jóvenes en los condados de King, Snohomish, Pierce o Skagit y quieres referir a alguien, escribe a info@nwkids.org. Es gratis para los 12 jóvenes que seleccionemos.",
+      "En este piloto la participación es solo por referencia. No recibimos solicitudes directas. Referir a alguien toma unos 3 minutos. Es gratis para los 12 jóvenes que seleccionemos.",
     applyOpen: "Aplicar ahora",
     payEyebrow: "Pago y trabajo remunerado",
     payBody:
@@ -141,7 +144,7 @@ const copy = {
       "Los mentores deben aceptar completar nuestra evaluación requerida antes de trabajar directamente con un participante.",
       "No publicamos nombres, escuelas ni horarios de participantes.",
     ],
-    policy: "Lee nuestra política de protección",
+    policy: "Lee nuestras medidas de protección",
     measureEyebrow: "Cómo lo mediremos",
     measureIntro:
       "Informaremos solo totales, nunca participantes individuales. Informamos el avance a nuestro patrocinador fiscal cada trimestre.",
@@ -167,6 +170,9 @@ const copy = {
     targetsNot:
       "Este es un piloto, así que no fijamos metas de resultados de antemano. Publicaremos lo que aprendamos de los primeros 12 y fijaremos metas para grupos futuros cuando terminen.",
     pathwaysAction: "Ver los cuatro caminos de proyectos",
+    referAction: "Refiere a un joven",
+    hours:
+      "Las horas las fijan juntos el joven, su madre, padre o tutor, y el programa anfitrión. Los tres deben estar de acuerdo.",
     transparency: "Quiénes somos y cómo verificarlo",
     back: "Volver a New World Kids",
   },
@@ -258,7 +264,7 @@ export default async function First12Page({
 
       <Row label={t.applyEyebrow}>
         <p className="text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
-          {facts.applyOpen ? "" : t.applyNot}
+          {t.applyNot}
         </p>
         {facts.applyOpen ? (
           <a href={facts.applyOpen.href} className={link}>

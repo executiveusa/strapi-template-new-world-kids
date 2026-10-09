@@ -12,11 +12,11 @@ const copy = {
     eyebrow: "Privacy",
     title: "How we handle what you send us.",
     intro:
-      "This is a plain-language notice for the mentor and project forms on this site. Ask us anything at info@nwkids.org.",
+      "This is a plain-language notice for the mentor, project, and referral forms on this site. Ask us anything at info@nwkids.org.",
     sections: [
       {
         h: "What we collect",
-        p: "Only what you type into the form: name or organization, email, optional phone, location, and your answers about the work or help you can offer. We do not ask for information about young people on these forms.",
+        p: "Only what you type into the form: name or organization, email, optional phone, location, and your answers about the work or help you can offer. On the referral form we also ask for a young person’s first name, age, county, and interests, and who is referring them. We never ask about a young person’s health, legal, or family history.",
       },
       {
         h: "Why",
@@ -42,11 +42,11 @@ const copy = {
     eyebrow: "Privacidad",
     title: "Cómo manejamos lo que nos envías.",
     intro:
-      "Este es un aviso en lenguaje sencillo para los formularios de mentor y proyecto de este sitio. Pregúntanos lo que quieras en info@nwkids.org.",
+      "Este es un aviso en lenguaje sencillo para los formularios de mentor, proyecto y referencia de este sitio. Pregúntanos lo que quieras en info@nwkids.org.",
     sections: [
       {
         h: "Qué recopilamos",
-        p: "Solo lo que escribes en el formulario: nombre u organización, correo, teléfono opcional, ubicación y tus respuestas sobre el trabajo o la ayuda que puedes ofrecer. En estos formularios no pedimos información sobre jóvenes.",
+        p: "Solo lo que escribes en el formulario: nombre u organización, correo, teléfono opcional, ubicación y tus respuestas sobre el trabajo o la ayuda que puedes ofrecer. En el formulario de referencia también pedimos el nombre de pila, la edad, el condado y los intereses de un joven, y quién lo refiere. Nunca pedimos su historial de salud, legal ni familiar.",
       },
       {
         h: "Para qué",

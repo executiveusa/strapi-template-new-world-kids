@@ -40,3 +40,17 @@ the Transparency, First 12, Donate and Privacy pages.
 - Still open: schedule, employer of record and pay, the second person's name and role, board names,
   and whether Proyecto Indigo Azul is a program of New World Kids or a separate Mexican entity.
 - See `docs/NWK_BOARD_AND_GOVERNANCE_PLAN.md` and `docs/NWK_YOUTH_EMPLOYMENT_COMPLIANCE.md`.
+
+## Answered 2026-10-09 (second round)
+
+- Pay: applicable minimum wage plus $3 an hour. Hours: set together by the young person, their parent or guardian,
+  and the host program; all three must agree. Published on First 12, Projects, Opportunity, Safeguards.
+- Employer of record: you proposed New World Kids, because you pay the wages. Recommended, pending HSI's written OK.
+  It means New World Kids needs the minor work permit endorsement and an L&I workers' compensation account.
+- Insurance: stated as a pre-payment step on the First 12 page. Add liability insurance details when bought.
+- Safeguards: published at /safeguarding. Counsel and HSI should review.
+- Goal: all 12 places filled within 2027, after launch. Results targets come after the pilot.
+- Proyecto Indigo Azul: demonstration food forest built by New World Kids starting in 2020, designed to become a
+  learning center and cultural exchange program. A dated gallery is still to build.
+- Participant language: not required, but supported. Page says so.
+- Saved for the end: item 11 (people, advisers, second governor).

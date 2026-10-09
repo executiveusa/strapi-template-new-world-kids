@@ -10,7 +10,7 @@ const copy = {
     eyebrow: "First 12 · Project intake",
     title: "Bring one real opportunity.",
     intro:
-      "Tell us what needs to be done, what a young person could contribute, and who will supervise the work.",
+      "Tell us what needs to be done, what a young person could contribute, and who will supervise the work. Hours are set together by the young person, their parent or guardian, and the host program. All three must agree.",
     submittedTitle: "Project received.",
     submittedBody:
       "We will review fit, safety, supervision, timing, and pathway before anything is offered to a participant.",
@@ -41,7 +41,7 @@ const copy = {
     eyebrow: "Primeros 12 · Registro de proyecto",
     title: "Trae una oportunidad real.",
     intro:
-      "Cuéntanos qué necesita hacerse, cómo podría contribuir un joven y quién supervisará el trabajo.",
+      "Cuéntanos qué necesita hacerse, cómo podría contribuir un joven y quién supervisará el trabajo. Las horas las fijan juntos el joven, su madre, padre o tutor, y el programa anfitrión. Los tres deben estar de acuerdo.",
     submittedTitle: "Proyecto recibido.",
     submittedBody:
       "Revisaremos el encaje, la seguridad, la supervisión, el tiempo y el camino antes de ofrecer algo a un participante.",
