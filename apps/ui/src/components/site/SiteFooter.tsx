@@ -186,6 +186,13 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
       <div className="border-t border-white/10 px-5 py-5 sm:px-8 sm:py-6 lg:px-12 xl:px-16">
         <div className="mx-auto flex max-w-[1480px] flex-col gap-2 text-[11px] leading-4 tracking-[0.08em] text-white/60 uppercase sm:flex-row sm:items-center sm:justify-between sm:tracking-[0.1em]">
           <span>&copy; {new Date().getFullYear()} New World Kids</span>
+          <Link
+            href="/privacy"
+            locale={locale}
+            className={`inline-flex min-h-11 items-center underline underline-offset-4 ${focusRing}`}
+          >
+            {locale === "es" ? "Privacidad" : "Privacy"}
+          </Link>
           <span>Seattle · Proyecto Indigo Azul · Building in public</span>
         </div>
       </div>
