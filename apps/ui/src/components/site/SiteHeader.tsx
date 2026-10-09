@@ -26,7 +26,8 @@ const navigation = {
   ],
 }
 
-const focusRing = "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-paper)]"
+const focusRing =
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-paper)]"
 
 export function SiteHeader({ locale }: { readonly locale: Locale }) {
   const items = locale === "es" ? navigation.es : navigation.en
@@ -70,20 +71,29 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
             priority
           />
           <div className="min-w-0 leading-tight">
-            <div className="truncate text-[15px] font-black tracking-[-0.025em] text-[var(--color-ink)] sm:text-base">New World Kids</div>
-            <div className="hidden text-[10px] font-bold tracking-[0.08em] text-black/45 uppercase sm:block">
-              {locale === "es" ? "Interés → oportunidad" : "Interest → opportunity"}
+            <div className="truncate text-[15px] font-black tracking-[-0.025em] text-[var(--color-ink)] sm:text-base">
+              New World Kids
+            </div>
+            <div className="hidden text-[10px] font-bold tracking-[0.08em] text-black/62 uppercase sm:block">
+              {locale === "es"
+                ? "Interés → oportunidad"
+                : "Interest → opportunity"}
             </div>
           </div>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label={locale === "es" ? "Navegación principal" : "Primary navigation"}>
+        <nav
+          className="hidden items-center gap-6 lg:flex"
+          aria-label={
+            locale === "es" ? "Navegación principal" : "Primary navigation"
+          }
+        >
           {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               locale={locale}
-              className={`rounded-sm py-3 text-[11px] font-bold tracking-[0.08em] text-black/60 uppercase transition-colors duration-200 hover:text-[var(--color-ink)] ${focusRing}`}
+              className={`rounded-sm py-3 text-[11px] font-bold tracking-[0.08em] text-black/68 uppercase transition-colors duration-200 hover:text-[var(--color-ink)] ${focusRing}`}
             >
               {item.label}
             </Link>
@@ -91,8 +101,14 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
         </nav>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <div className="hidden md:block"><LocaleSwitcher locale={locale} /></div>
-          <Link href="/donate" locale={locale} className={`hidden sm:inline-flex ${focusRing}`}>
+          <div className="hidden md:block">
+            <LocaleSwitcher locale={locale} />
+          </div>
+          <Link
+            href="/donate"
+            locale={locale}
+            className={`hidden sm:inline-flex ${focusRing}`}
+          >
             <motion.span
               whileHover={reduceMotion ? undefined : { y: -1 }}
               whileTap={reduceMotion ? undefined : { scale: 0.98 }}
@@ -108,9 +124,21 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
             className={`flex h-11 w-11 items-center justify-center border border-black/25 text-[var(--color-ink)] transition-colors duration-200 hover:bg-black/5 active:bg-black/10 lg:hidden ${focusRing}`}
             aria-expanded={mobileOpen}
             aria-controls="mobile-navigation"
-            aria-label={mobileOpen ? (locale === "es" ? "Cerrar navegación" : "Close navigation") : (locale === "es" ? "Abrir navegación" : "Open navigation")}
+            aria-label={
+              mobileOpen
+                ? locale === "es"
+                  ? "Cerrar navegación"
+                  : "Close navigation"
+                : locale === "es"
+                  ? "Abrir navegación"
+                  : "Open navigation"
+            }
           >
-            {mobileOpen ? <X className="h-[18px] w-[18px]" /> : <Menu className="h-[18px] w-[18px]" />}
+            {mobileOpen ? (
+              <X className="h-[18px] w-[18px]" />
+            ) : (
+              <Menu className="h-[18px] w-[18px]" />
+            )}
           </button>
         </div>
       </div>
@@ -122,29 +150,49 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
             initial={reduceMotion ? false : { opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -6 }}
-            transition={{ duration: reduceMotion ? 0 : 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-0 top-16 h-[calc(100dvh-4rem)] overflow-y-auto border-t border-black/10 bg-[var(--color-paper)] overscroll-contain md:top-[68px] md:h-[calc(100dvh-68px)] lg:hidden"
+            transition={{
+              duration: reduceMotion ? 0 : 0.2,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="fixed inset-x-0 top-16 h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-black/10 bg-[var(--color-paper)] md:top-[68px] md:h-[calc(100dvh-68px)] lg:hidden"
           >
             <div className="mx-auto flex min-h-full max-w-7xl flex-col px-5 pt-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] sm:px-8 sm:pt-8">
-              <nav className="border-t border-black/15" aria-label={locale === "es" ? "Navegación móvil" : "Mobile navigation"}>
+              <nav
+                className="border-t border-black/15"
+                aria-label={
+                  locale === "es" ? "Navegación móvil" : "Mobile navigation"
+                }
+              >
                 {items.map((item, index) => (
                   <Link
                     key={item.href}
                     href={item.href}
                     locale={locale}
-                    className={`grid min-h-[64px] grid-cols-[42px_minmax(0,1fr)_auto] items-center border-b border-black/15 py-3 text-[clamp(1.3rem,5.5vw,2rem)] font-black leading-none tracking-[-0.035em] text-[var(--color-ink)] ${focusRing}`}
+                    className={`grid min-h-[64px] grid-cols-[42px_minmax(0,1fr)_auto] items-center border-b border-black/15 py-3 text-[clamp(1.3rem,5.5vw,2rem)] leading-none font-black tracking-[-0.035em] text-[var(--color-ink)] ${focusRing}`}
                     onClick={() => setMobileOpen(false)}
                   >
-                    <span className="text-[10px] font-bold tracking-[0.12em] text-[var(--color-nwk-blue)]">0{index + 1}</span>
+                    <span className="text-[10px] font-bold tracking-[0.12em] text-[var(--color-nwk-blue)]">
+                      0{index + 1}
+                    </span>
                     <span className="min-w-0">{item.label}</span>
-                    <span aria-hidden="true" className="text-base font-medium text-black/30">↗</span>
+                    <span
+                      aria-hidden="true"
+                      className="text-base font-medium text-black/30"
+                    >
+                      ↗
+                    </span>
                   </Link>
                 ))}
               </nav>
 
               <div className="mt-auto flex items-center justify-between gap-4 pt-8">
                 <LocaleSwitcher locale={locale} />
-                <Link href="/donate" locale={locale} onClick={() => setMobileOpen(false)} className={`inline-flex min-h-12 items-center border-y border-black/25 px-5 text-[11px] font-black tracking-[0.07em] text-[var(--color-ink)] uppercase ${focusRing}`}>
+                <Link
+                  href="/donate"
+                  locale={locale}
+                  onClick={() => setMobileOpen(false)}
+                  className={`inline-flex min-h-12 items-center border-y border-black/25 px-5 text-[11px] font-black tracking-[0.07em] text-[var(--color-ink)] uppercase ${focusRing}`}
+                >
                   {locale === "es" ? "Apoyar" : "Support"}
                 </Link>
               </div>
