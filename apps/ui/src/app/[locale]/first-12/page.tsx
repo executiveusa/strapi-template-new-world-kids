@@ -19,7 +19,10 @@ const copy = {
       "A pilot for 12 young people in Seattle, over one year. Each is matched with a mentor and a real community project based on their interests.",
     glanceLabel: "At a glance",
     glance: [
-      ["Where", "Seattle and surrounding areas"],
+      [
+        "Where",
+        "Seattle and surrounding areas: King, Snohomish, Pierce, and Skagit counties",
+      ],
       ["When", "2027, 12 participants spread over 1 year"],
       [
         "What",
@@ -31,14 +34,27 @@ const copy = {
     schedule: "Schedule",
     forEyebrow: "Who it is for",
     forBody:
-      "Young people in Seattle who have real interests and talent but limited access to opportunity, including those affected by the justice system, foster care, or housing instability. We start small, with 12, so we can do it well before we grow.",
+      "Young people ages 16 to 19 in King, Snohomish, Pierce, and Skagit counties who have real interests and talent but limited access to opportunity, including those affected by the justice system, foster care, or housing instability. Because this is a pilot, participants join by referral only. We start with 12 so we can do it well before we grow.",
     applyEyebrow: "How to apply",
     applyNot:
-      "We are not accepting participant applications yet. To be told when we do, or to ask about the program, write to info@nwkids.org.",
+      "Participation is by referral only for this pilot. We do not take direct applications. If you work with young people in King, Snohomish, Pierce, or Skagit County and want to refer someone, write to info@nwkids.org. It is free for the 12 young people we select.",
     applyOpen: "Apply now",
     payEyebrow: "Pay and paid work",
     payBody:
       "Participants earn income on real projects. Donations help cover participant wages, transportation, project materials, equipment, mentor support, and program coordination.",
+    lawEyebrow: "Paid work and the law",
+    lawIntro:
+      "Participants are paid employees, not volunteers. Everyone we place who is 16 or 17 is covered by Washington’s child labor rules, and we design every project to fit them:",
+    law: [
+      "Hours limits for 16 and 17 year olds: in a school week, up to 4 hours a day and 20 hours a week, between 7 a.m. and 10 p.m.; in a non-school week, up to 8 hours a day and 48 hours a week.",
+      "A signed parent and school authorization for each minor, renewed every school year, and proof of age on file.",
+      "A minor work permit endorsement on the employer’s business license for every worksite.",
+      "No prohibited duties for anyone under 18, such as roofing, demolition, mechanical excavation, or power-driven woodworking machines and saws.",
+      "Participants who are 18 or 19 are adults under these rules, and we still keep their projects to the same safety standard.",
+    ],
+    lawSource:
+      "Source: Washington Department of Labor and Industries and chapter 296-125 WAC. Rules changed on July 1, 2026.",
+    lawLink: "Read the L&I rules",
     safeEyebrow: "How we keep it safe",
     safe: [
       "Nothing is offered to a participant until we have reviewed the project for fit, safety, supervision, timing, and pathway.",
@@ -67,7 +83,7 @@ const copy = {
     ],
     targets: "Targets",
     targetsNot:
-      "We will publish targets before the pilot starts and results after each quarter.",
+      "This is a pilot, so we are not setting outcome targets in advance. We will publish what we learn from the first 12, and set targets for later groups, once they finish.",
     pathwaysAction: "See the four project pathways",
     transparency: "Who we are and how to check",
     back: "Back to New World Kids",
@@ -82,7 +98,10 @@ const copy = {
       "Un piloto para 12 jóvenes en Seattle, durante un año. Cada uno se conecta con un mentor y un proyecto comunitario real según sus intereses.",
     glanceLabel: "De un vistazo",
     glance: [
-      ["Dónde", "Seattle y áreas cercanas"],
+      [
+        "Dónde",
+        "Seattle y áreas cercanas: condados de King, Snohomish, Pierce y Skagit",
+      ],
       ["Cuándo", "2027, 12 participantes a lo largo de 1 año"],
       [
         "Qué",
@@ -94,14 +113,27 @@ const copy = {
     schedule: "Horario",
     forEyebrow: "Para quién es",
     forBody:
-      "Jóvenes de Seattle con intereses y talento reales pero con poco acceso a oportunidades, incluidos quienes han sido afectados por el sistema de justicia, el sistema de acogida o la inestabilidad de vivienda. Empezamos con 12 para hacerlo bien antes de crecer.",
+      "Jóvenes de 16 a 19 años en los condados de King, Snohomish, Pierce y Skagit con intereses y talento reales pero con poco acceso a oportunidades, incluidos quienes han sido afectados por el sistema de justicia, el sistema de acogida o la inestabilidad de vivienda. Como es un piloto, los participantes entran solo por referencia. Empezamos con 12 para hacerlo bien antes de crecer.",
     applyEyebrow: "Cómo aplicar",
     applyNot:
-      "Todavía no recibimos solicitudes de participantes. Para que te avisemos cuando abramos, o para preguntar sobre el programa, escribe a info@nwkids.org.",
+      "En este piloto la participación es solo por referencia. No recibimos solicitudes directas. Si trabajas con jóvenes en los condados de King, Snohomish, Pierce o Skagit y quieres referir a alguien, escribe a info@nwkids.org. Es gratis para los 12 jóvenes que seleccionemos.",
     applyOpen: "Aplicar ahora",
     payEyebrow: "Pago y trabajo remunerado",
     payBody:
       "Los participantes ganan ingresos en proyectos reales. Las donaciones ayudan a cubrir salarios de participantes, transporte, materiales de proyecto, equipo, apoyo a mentores y coordinación del programa.",
+    lawEyebrow: "Trabajo pagado y la ley",
+    lawIntro:
+      "Los participantes son empleados remunerados, no voluntarios. Todo joven de 16 o 17 años que ubiquemos está cubierto por las reglas de trabajo infantil de Washington, y diseñamos cada proyecto para cumplirlas:",
+    law: [
+      "Límites de horas para jóvenes de 16 y 17 años: en semana escolar, hasta 4 horas al día y 20 a la semana, entre las 7 a. m. y las 10 p. m.; en semana sin clases, hasta 8 horas al día y 48 a la semana.",
+      "Una autorización firmada de padres y escuela para cada menor, renovada cada año escolar, y prueba de edad en el expediente.",
+      "Un permiso de trabajo de menores en la licencia comercial del empleador para cada lugar de trabajo.",
+      "Ningún trabajo prohibido para menores de 18, como techado, demolición, excavación mecánica o máquinas y sierras de carpintería motorizadas.",
+      "Los participantes de 18 o 19 años son adultos según estas reglas, y aun así mantenemos sus proyectos con el mismo estándar de seguridad.",
+    ],
+    lawSource:
+      "Fuente: Departamento de Trabajo e Industrias de Washington y el capítulo 296-125 del WAC. Las reglas cambiaron el 1 de julio de 2026.",
+    lawLink: "Lee las reglas de L&I",
     safeEyebrow: "Cómo lo mantenemos seguro",
     safe: [
       "No se ofrece nada a un participante hasta revisar el proyecto en cuanto a encaje, seguridad, supervisión, tiempo y camino.",
@@ -133,7 +165,7 @@ const copy = {
     ],
     targets: "Metas",
     targetsNot:
-      "Publicaremos metas antes de que empiece el piloto y resultados después de cada trimestre.",
+      "Este es un piloto, así que no fijamos metas de resultados de antemano. Publicaremos lo que aprendamos de los primeros 12 y fijaremos metas para grupos futuros cuando terminen.",
     pathwaysAction: "Ver los cuatro caminos de proyectos",
     transparency: "Quiénes somos y cómo verificarlo",
     back: "Volver a New World Kids",
@@ -245,6 +277,35 @@ export default async function First12Page({
             {facts.pay[locale]}
           </p>
         ) : null}
+      </Row>
+
+      <Row label={t.lawEyebrow}>
+        <p className="text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
+          {t.lawIntro}
+        </p>
+        <ul className="mt-5 space-y-4">
+          {t.law.map((line) => (
+            <li
+              key={line}
+              className="border-l-2 border-black/30 pl-4 text-base leading-7 text-[var(--color-text-muted)]"
+            >
+              {line}
+            </li>
+          ))}
+        </ul>
+        <p className="mt-5 text-sm leading-6 text-[var(--color-text-muted)]">
+          {t.lawSource}
+        </p>
+        <a
+          href="https://www.lni.wa.gov/workers-rights/youth-employment/hours-of-work"
+          target="_blank"
+          rel="noreferrer"
+          className={`${link} mt-4`}
+        >
+          <span>{t.lawLink}</span>
+          <span aria-hidden="true">↗</span>
+          <span className="sr-only">(opens in a new tab)</span>
+        </a>
       </Row>
 
       <Row label={t.safeEyebrow}>

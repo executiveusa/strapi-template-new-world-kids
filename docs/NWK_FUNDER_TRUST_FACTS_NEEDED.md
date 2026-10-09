@@ -32,3 +32,11 @@ Until then, the pages say plainly that it is not available yet. Nothing here is 
 
 Sponsorship agreement section 3: fundraising text needs HSI's prior written approval. That covers
 the Transparency, First 12, Donate and Privacy pages.
+
+## Answered 2026-10-09
+
+- Ages 16 to 19; King, Snohomish, Pierce, Skagit counties; referral only; free to the 12 selected.
+- Outcome targets: to be set after the first 12 finish (the page now says so).
+- Still open: schedule, employer of record and pay, the second person's name and role, board names,
+  and whether Proyecto Indigo Azul is a program of New World Kids or a separate Mexican entity.
+- See `docs/NWK_BOARD_AND_GOVERNANCE_PLAN.md` and `docs/NWK_YOUTH_EMPLOYMENT_COMPLIANCE.md`.

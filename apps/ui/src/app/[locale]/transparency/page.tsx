@@ -48,7 +48,7 @@ const copy = {
       "Taken from the Washington record and our agreement with HSI. The Washington record lists one governor today.",
     piaTitle: "Proyecto Indigo Azul",
     piaBody:
-      "Our project in rural Puerto Vallarta, Mexico, where youth and community did real work and showed us what is possible. Its photos and film are shown as the story of where we started. They are never presented as results from Seattle.",
+      "What it is: New World Kids’ project in rural Puerto Vallarta, Mexico, where youth and community did real work. What it is not: the Seattle pilot. The First 12 has different participants, partners, and rules, and no results exist yet. How we use it: its photos and film tell the story of where we started and are always labeled as Proyecto Indigo Azul. They are never shown as Seattle participants or Seattle results.",
     notClaimTitle: "What we do not claim",
     notClaimBody:
       "New World Kids is not itself an IRS-recognized 501(c)(3). We operate under HSI’s fiscal sponsorship, and HSI is the legal recipient of gifts. The First 12 is a pilot planned for 2027, so there are no Seattle participant outcomes to report yet.",
@@ -129,7 +129,7 @@ const copy = {
       "Tomado del registro de Washington y de nuestro acuerdo con HSI. Hoy el registro de Washington lista un gobernador.",
     piaTitle: "Proyecto Indigo Azul",
     piaBody:
-      "Nuestro proyecto en el campo de Puerto Vallarta, México, donde jóvenes y comunidad hicieron trabajo real y nos mostraron lo que es posible. Sus fotos y videos se muestran como la historia de dónde empezamos. Nunca se presentan como resultados de Seattle.",
+      "Qué es: el proyecto de New World Kids en el campo de Puerto Vallarta, México, donde jóvenes y comunidad hicieron trabajo real. Qué no es: el piloto de Seattle. Los Primeros 12 tienen participantes, socios y reglas distintos, y todavía no hay resultados. Cómo lo usamos: sus fotos y videos cuentan dónde empezamos y siempre se identifican como Proyecto Indigo Azul. Nunca se muestran como participantes ni resultados de Seattle.",
     notClaimTitle: "Lo que no afirmamos",
     notClaimBody:
       "New World Kids no es, por sí misma, una organización 501(c)(3) reconocida por el IRS. Operamos bajo el patrocinio fiscal de HSI, y HSI es el destinatario legal de las donaciones. Los Primeros 12 son un piloto previsto para 2027, así que todavía no hay resultados de participantes en Seattle.",

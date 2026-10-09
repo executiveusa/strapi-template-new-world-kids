@@ -14,8 +14,11 @@ export const facts: {
   readonly targets: Localized | null
   readonly team: readonly { readonly name: string; readonly role: Localized }[]
 } = {
-  ageRange: null,
-  cost: null,
+  ageRange: { en: "16 to 19", es: "16 a 19 años" },
+  cost: {
+    en: "Free for the 12 selected young people",
+    es: "Gratis para los 12 jóvenes seleccionados",
+  },
   schedule: null,
   pay: null,
   applyOpen: null,
