@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 
+import { facts } from "@/content/facts"
 import { Link } from "@/lib/navigation"
 
 // Facts below come from public records checked on 2026-10-09:
@@ -42,6 +43,12 @@ const copy = {
     hsiBody:
       "Our fiscal sponsor. HSI is a 501(c)(3) public charity, EIN 46-4779591. Donations to the New World Kids fund are made to HSI.",
     hsiVerify: "Verify in the IRS Tax Exempt Organization Search",
+    peopleTitle: "Who is responsible",
+    peopleNote:
+      "Taken from the Washington record and our agreement with HSI. The Washington record lists one governor today.",
+    piaTitle: "Proyecto Indigo Azul",
+    piaBody:
+      "Our project in rural Puerto Vallarta, Mexico, where youth and community did real work and showed us what is possible. Its photos and film are shown as the story of where we started. They are never presented as results from Seattle.",
     notClaimTitle: "What we do not claim",
     notClaimBody:
       "New World Kids is not itself an IRS-recognized 501(c)(3). We operate under HSI’s fiscal sponsorship, and HSI is the legal recipient of gifts. The First 12 is a pilot planned for 2027, so there are no Seattle participant outcomes to report yet.",
@@ -117,6 +124,12 @@ const copy = {
     hsiBody:
       "Nuestro patrocinador fiscal. HSI es una organización benéfica pública 501(c)(3), EIN 46-4779591. Las donaciones al fondo de New World Kids se hacen a HSI.",
     hsiVerify: "Verifica en la búsqueda de organizaciones exentas del IRS",
+    peopleTitle: "Quién es responsable",
+    peopleNote:
+      "Tomado del registro de Washington y de nuestro acuerdo con HSI. Hoy el registro de Washington lista un gobernador.",
+    piaTitle: "Proyecto Indigo Azul",
+    piaBody:
+      "Nuestro proyecto en el campo de Puerto Vallarta, México, donde jóvenes y comunidad hicieron trabajo real y nos mostraron lo que es posible. Sus fotos y videos se muestran como la historia de dónde empezamos. Nunca se presentan como resultados de Seattle.",
     notClaimTitle: "Lo que no afirmamos",
     notClaimBody:
       "New World Kids no es, por sí misma, una organización 501(c)(3) reconocida por el IRS. Operamos bajo el patrocinio fiscal de HSI, y HSI es el destinatario legal de las donaciones. Los Primeros 12 son un piloto previsto para 2027, así que todavía no hay resultados de participantes en Seattle.",
@@ -260,6 +273,33 @@ export default async function TransparencyPage({
                 <span aria-hidden="true">↗</span>
                 <span className="sr-only">({t.opens})</span>
               </a>
+            </div>
+            <div className="py-7">
+              <h2 className="text-2xl font-black tracking-[-0.03em]">
+                {t.peopleTitle}
+              </h2>
+              <ul className="mt-3 space-y-2">
+                {facts.team.map((person) => (
+                  <li key={person.name} className="text-base leading-7">
+                    <span className="font-semibold">{person.name}</span>
+                    <span className="text-[var(--color-text-muted)]">
+                      {" "}
+                      · {person.role[locale]}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-3 text-sm leading-6 text-[var(--color-text-muted)]">
+                {t.peopleNote}
+              </p>
+            </div>
+            <div className="py-7">
+              <h2 className="text-2xl font-black tracking-[-0.03em]">
+                {t.piaTitle}
+              </h2>
+              <p className="mt-3 text-base leading-7 text-[var(--color-text-muted)]">
+                {t.piaBody}
+              </p>
             </div>
             <div className="py-7">
               <h2 className="text-2xl font-black tracking-[-0.03em]">

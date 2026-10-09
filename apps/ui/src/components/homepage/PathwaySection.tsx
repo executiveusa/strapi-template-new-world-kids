@@ -10,6 +10,7 @@ const copy = {
     firstTitle:
       "We are matching 12 local participants with mentors for a pilot program.",
     firstBody: "Seattle & Surrounding Areas · 2027",
+    detailsAction: "Read the program details →",
     howEyebrow: "How it works",
     howTitle: "Interest → Project → Mentor → Next Step",
     steps: [
@@ -19,9 +20,10 @@ const copy = {
       ["04", "Next Step", "Ongoing support and planning for long-term goals."],
     ],
     proofEyebrow: "Proof of work",
-    proofTitle: "We started here.",
-    proofBody: "Youth and community showed interest. We kept growing.",
-    proofClose: "Now we bring it home.",
+    proofTitle: "It started in Puerto Vallarta.",
+    proofBody:
+      "At Proyecto Indigo Azul in Mexico, youth and community showed interest. We kept growing.",
+    proofClose: "Now we bring it to Seattle.",
     proofAction: "See where it started →",
     measureEyebrow: "What success looks like",
     outcomes: [
@@ -42,6 +44,7 @@ const copy = {
     firstTitle:
       "Estamos conectando a 12 participantes locales con mentores para un programa piloto.",
     firstBody: "Seattle y Áreas Cercanas · 2027",
+    detailsAction: "Lee los detalles del programa →",
     howEyebrow: "Cómo funciona",
     howTitle: "Interés → Proyecto → Mentor → Siguiente paso",
     steps: [
@@ -59,10 +62,10 @@ const copy = {
       ],
     ],
     proofEyebrow: "Evidencia del trabajo",
-    proofTitle: "Empezamos aquí.",
+    proofTitle: "Empezó en Puerto Vallarta.",
     proofBody:
-      "Los jóvenes y la comunidad mostraron interés. Seguimos creciendo.",
-    proofClose: "Ahora lo traemos a casa.",
+      "En el Proyecto Indigo Azul, en México, los jóvenes y la comunidad mostraron interés. Seguimos creciendo.",
+    proofClose: "Ahora lo traemos a Seattle.",
     proofAction: "Mira dónde empezó →",
     measureEyebrow: "Cómo se ve el éxito",
     outcomes: [
@@ -111,6 +114,13 @@ export function PathwaySection() {
               <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--color-text-muted)] sm:mt-7 sm:text-lg sm:leading-8 md:text-xl">
                 {t.firstBody}
               </p>
+              <Link
+                href="/first-12"
+                locale={locale}
+                className="mt-6 inline-flex min-h-12 items-center border-y border-black/25 py-3 text-sm font-bold text-[var(--color-text-primary)] transition-colors hover:border-black/55 focus-visible:ring-2 focus-visible:ring-[var(--color-nwk-blue)] focus-visible:ring-offset-4 focus-visible:outline-none"
+              >
+                {t.detailsAction}
+              </Link>
             </div>
           </div>
           <div

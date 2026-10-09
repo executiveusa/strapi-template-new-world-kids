@@ -1,6 +1,7 @@
 import { MotionConfig } from "framer-motion"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
+import { getLocale } from "next-intl/server"
 
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
 
@@ -18,17 +19,20 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "New World Kids",
-  description: "Turn interest into real work, mentorship, and a clear next step.",
+  description:
+    "Turn interest into real work, mentorship, and a clear next step.",
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const locale = await getLocale()
+
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >

@@ -4,7 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
 import type { Locale } from "next-intl"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import LocaleSwitcher from "@/components/elementary/LocaleSwitcher"
 import { Link } from "@/lib/navigation"
@@ -33,12 +33,44 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
   const items = locale === "es" ? navigation.es : navigation.en
   const [mobileOpen, setMobileOpen] = useState(false)
   const reduceMotion = useReducedMotion()
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
+  const wasOpen = useRef(false)
 
   useEffect(() => {
-    if (!mobileOpen) return
+    if (!mobileOpen) {
+      // Return focus to the menu button after closing, but not on first render.
+      if (wasOpen.current) toggleRef.current?.focus()
+      wasOpen.current = false
+
+      return
+    }
+    wasOpen.current = true
     const previous = document.body.style.overflow
+    const focusables = () =>
+      Array.from(
+        panelRef.current?.querySelectorAll<HTMLElement>("a[href], button") ?? []
+      )
+    focusables()[0]?.focus()
+
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMobileOpen(false)
+      if (event.key === "Escape") {
+        setMobileOpen(false)
+
+        return
+      }
+      if (event.key !== "Tab") return
+      // Keep Tab inside the open menu (the menu button stays reachable as the first stop).
+      const items = [toggleRef.current, ...focusables()].filter(Boolean)
+      const first = items[0]
+      const last = items.at(-1)
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last?.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first?.focus()
+      }
     }
 
     document.body.style.overflow = "hidden"
@@ -119,6 +151,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
             </motion.span>
           </Link>
           <button
+            ref={toggleRef}
             type="button"
             onClick={() => setMobileOpen((value) => !value)}
             className={`flex h-11 w-11 items-center justify-center border border-black/25 text-[var(--color-ink)] transition-colors duration-200 hover:bg-black/5 active:bg-black/10 lg:hidden ${focusRing}`}
@@ -146,6 +179,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
       <AnimatePresence initial={false}>
         {mobileOpen && (
           <motion.div
+            ref={panelRef}
             id="mobile-navigation"
             initial={reduceMotion ? false : { opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
