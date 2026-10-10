@@ -1,5 +1,3 @@
-import Link from "next/link"
-
 import { HermesVoiceChat } from "../../../../components/homepage/HermesVoiceChat"
 import { ActivePrograms } from "../../../../components/ops/ActivePrograms"
 import { AgentLedger } from "../../../../components/ops/AgentLedger"
@@ -86,7 +84,7 @@ export default async function OpsPage() {
                 Voice interface
               </h2>
             </div>
-            <span className="rounded-full bg-[#1a3a2a] px-2 py-0.5 text-[10px] text-[#c9a84c]">
+            <span className="rounded-full bg-[#1a3a2a] px-2 py-0.5 text-xs text-[#c9a84c]">
               Private
             </span>
           </div>
@@ -102,22 +100,6 @@ export default async function OpsPage() {
 
       {/* Agent action ledger */}
       <AgentLedger actions={actions.actions} error={actions.error} />
-
-      {/* Quick links */}
-      <div className="flex flex-wrap gap-2 pt-2">
-        {[
-          { label: "Public mission ledger", href: "/mission" },
-          { label: "Hermes hardware", href: "/hermes-usb" },
-        ].map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className="rounded-full border border-white/10 px-4 py-1.5 text-xs text-white/50 transition hover:border-white/25 hover:text-white/80"
-          >
-            {link.label}
-          </Link>
-        ))}
-      </div>
     </div>
   )
 }

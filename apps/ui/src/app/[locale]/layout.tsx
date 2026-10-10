@@ -2,6 +2,8 @@ import { notFound } from "next/navigation"
 import { type Locale, hasLocale, NextIntlClientProvider } from "next-intl"
 import { getMessages } from "next-intl/server"
 
+import { ChromeGate } from "@/components/site/ChromeGate"
+import { OrganizationJsonLd } from "@/components/site/JsonLd"
 import { SiteFooter } from "@/components/site/SiteFooter"
 import { SiteHeader } from "@/components/site/SiteHeader"
 import { routing } from "@/lib/navigation"
@@ -21,11 +23,14 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale as Locale} messages={messages}>
-      <script dangerouslySetInnerHTML={{ __html: `document.documentElement.lang=${JSON.stringify(locale)}` }} />
+      <OrganizationJsonLd locale={locale as "en" | "es"} />
       <div data-locale={locale} className="flex min-h-screen flex-col">
-        <SiteHeader locale={locale as Locale} />
-        <main className="flex-1">{children}</main>
-        <SiteFooter locale={locale as Locale} />
+        <ChromeGate
+          header={<SiteHeader locale={locale as Locale} />}
+          footer={<SiteFooter locale={locale as Locale} />}
+        >
+          {children}
+        </ChromeGate>
       </div>
     </NextIntlClientProvider>
   )

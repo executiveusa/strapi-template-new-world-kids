@@ -8,10 +8,10 @@ type HomepageProps = {
 
 export function Homepage({ locale }: HomepageProps) {
   return (
-    <main>
+    <div>
       <NonprofitHero />
       <PathwaySection />
       <First12OperatingLayer locale={locale} />
-    </main>
+    </div>
   )
 }

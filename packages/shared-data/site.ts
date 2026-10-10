@@ -55,79 +55,65 @@ export const fiscalSponsor = {
 }
 
 export const socialLinks: SocialLink[] = [
-  { label: "Instagram", href: "https://www.instagram.com/newworldkids/" },
-  { label: "YouTube", href: "https://www.youtube.com/@newworldkids" },
-  { label: "Facebook", href: "https://www.facebook.com/newworldkids" },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/new-world-kids/",
-  },
+  { label: "Instagram", href: "https://www.instagram.com/proyectoindigoazul/" },
+  { label: "YouTube", href: "https://www.youtube.com/@proyectoindigoazul" },
+  { label: "Facebook", href: "https://www.facebook.com/nwkidsorg" },
 ]
 
+const hsiUploads = "https://hsifiscalsponsor.org/wp-content/uploads"
+
+// Public documents hosted by HSI (fiscal sponsor). Linked, not copied, so readers
+// always see HSI's current originals. The signed sponsorship agreement is
+// intentionally "on request" until HSI approves public posting.
 export const trustDocuments: TrustDocument[] = [
   {
-    slug: "fiscal-sponsorship-letter",
+    slug: "irs-letter-2023",
     title: {
-      en: "Fiscal Sponsorship Letter",
-      es: "Carta de patrocinio fiscal",
+      en: "IRS letter, November 2023",
+      es: "Carta del IRS, noviembre de 2023",
     },
     summary: {
-      en: "Public proof that New World Kids operates under the fiscal sponsorship of Humanitarian Social Innovations.",
-      es: "Prueba publica de que New World Kids opera bajo el patrocinio fiscal de Humanitarian Social Innovations.",
+      en: "Confirms Humanitarian Social Innovations' 501(c)(3) status and public charity classification.",
+      es: "Confirma el estatus 501(c)(3) de Humanitarian Social Innovations y su clasificacion como organizacion benefica publica.",
     },
-    category: {
-      en: "Verification",
-      es: "Verificacion",
-    },
-    href: "/trust/fiscal-sponsorship-letter.pdf",
+    category: { en: "Tax Status", es: "Estatus fiscal" },
+    href: `${hsiUploads}/2024/04/HSI-2023-Determination-Letter-3.pdf`,
   },
   {
-    slug: "hsi-determination-letter",
+    slug: "irs-determination-2014",
     title: {
-      en: "HSI Determination Letter",
-      es: "Carta de determinacion de HSI",
+      en: "IRS determination letter, December 2014",
+      es: "Carta de determinacion del IRS, diciembre de 2014",
     },
     summary: {
-      en: "Federal determination letter for the sponsoring organization behind New World Kids.",
-      es: "Carta federal de determinacion para la organizacion patrocinadora de New World Kids.",
+      en: "Original 501(c)(3) determination for HSI, effective February 18, 2014.",
+      es: "Determinacion original 501(c)(3) de HSI, vigente desde el 18 de febrero de 2014.",
     },
-    category: {
-      en: "Tax Status",
-      es: "Estatus fiscal",
-    },
-    href: "/trust/hsi-determination-letter.pdf",
+    category: { en: "Tax Status", es: "Estatus fiscal" },
+    href: `${hsiUploads}/2021/02/6-Federal-Tax-Exemption.pdf`,
   },
   {
-    slug: "federal-tax-exemption",
-    title: {
-      en: "Federal Tax Exemption Proof",
-      es: "Prueba de exencion fiscal federal",
-    },
+    slug: "hsi-form-990-2024",
+    title: { en: "HSI Form 990, 2024", es: "Formulario 990 de HSI, 2024" },
     summary: {
-      en: "Reference letter used to confirm tax-exempt status for donor confidence and due diligence.",
-      es: "Carta de referencia usada para confirmar el estatus exento de impuestos y fortalecer la confianza del donante.",
+      en: "HSI's annual return (redacted).",
+      es: "Declaracion anual de HSI (con datos tachados).",
     },
-    category: {
-      en: "Tax Status",
-      es: "Estatus fiscal",
-    },
-    href: "/trust/federal-tax-exemption.pdf",
+    category: { en: "Governance", es: "Gobernanza" },
+    href: `${hsiUploads}/2025/11/2024-990-HSI-Redacted-B.pdf`,
   },
   {
-    slug: "signed-fiscal-sponsorship-agreement",
+    slug: "hsi-audited-financials-2024",
     title: {
-      en: "Signed Fiscal Sponsorship Agreement",
-      es: "Convenio firmado de patrocinio fiscal",
+      en: "HSI audited financial statements, 2024",
+      es: "Estados financieros auditados de HSI, 2024",
     },
     summary: {
-      en: "Signed agreement showing the operating relationship between New World Kids and its fiscal sponsor.",
-      es: "Convenio firmado que muestra la relacion operativa entre New World Kids y su patrocinador fiscal.",
+      en: "Independent audit of HSI.",
+      es: "Auditoria independiente de HSI.",
     },
-    category: {
-      en: "Governance",
-      es: "Gobernanza",
-    },
-    href: "/trust/signed-fiscal-sponsorship-agreement.pdf",
+    category: { en: "Governance", es: "Gobernanza" },
+    href: `${hsiUploads}/2025/11/HSI-2024-Audited-Financials.pdf`,
   },
 ]
 
@@ -149,7 +135,7 @@ export const impactPillars: ImpactPillar[] = [
       es: "Ensenamos cultivo regenerativo, agricultura sintropica, resguardo de semillas y resiliencia alimentaria de barrio.",
     },
     proof: [
-      "200+ plant varieties in the food forest",
+      "A demonstration food forest at Proyecto Indigo Azul, started in 2020",
       "Hands-on teaching in real soil, not simulations",
       "Families eat from the systems they help build",
     ],
@@ -171,7 +157,7 @@ export const impactPillars: ImpactPillar[] = [
       es: "Ensenamos captacion de lluvia, riego con ollas de barro, almacenamiento y manejo practico del agua para la vida rural.",
     },
     proof: [
-      "Clay-pot irrigation can cut water use by up to 90%",
+      "Clay-pot irrigation is one of the water methods taught",
       "Ferro-cement cisterns and gravity-fed systems are part of the curriculum",
       "Students learn how to keep water, not just consume it",
     ],
@@ -222,39 +208,6 @@ export const impactPillars: ImpactPillar[] = [
   },
 ]
 
-export const workWithUsOffers = [
-  {
-    title: {
-      en: "AI operations for nonprofits",
-      es: "Operaciones de IA para organizaciones sociales",
-    },
-    body: {
-      en: "Grant support, automation, reporting, and public accountability systems for mission-driven teams.",
-      es: "Apoyo en grants, automatizacion, reportes y sistemas de rendicion de cuentas para equipos con mision.",
-    },
-  },
-  {
-    title: {
-      en: "Field storytelling and media systems",
-      es: "Narrativa de campo y sistemas de medios",
-    },
-    body: {
-      en: "Campaign storytelling, bilingual publishing, and content systems that turn real work into trust.",
-      es: "Narrativa de campana, publicacion bilingue y sistemas de contenido que convierten el trabajo real en confianza.",
-    },
-  },
-  {
-    title: {
-      en: "Transparency infrastructure",
-      es: "Infraestructura de transparencia",
-    },
-    body: {
-      en: "Trust centers, public ledgers, document portals, and lightweight mission dashboards.",
-      es: "Centros de confianza, libros publicos, portales de documentos y paneles ligeros para la mision.",
-    },
-  },
-]
-
 export const journalTeaser = {
   en: "Field notes, proof, and long-form stories from food, water, energy, and shelter work.",
   es: "Notas de campo, pruebas e historias largas sobre nuestro trabajo en alimentos, agua, energia y refugio.",
@@ -262,7 +215,6 @@ export const journalTeaser = {
 
 export type SupportRails = {
   donorbox: string
-  creem: string
   buyMeACoffee: string
   blog: string
 }
@@ -272,7 +224,6 @@ export function getSupportRails(
 ): SupportRails {
   return {
     donorbox: env.NEXT_PUBLIC_DONORBOX_URL || env.DONORBOX_URL || "/donate",
-    creem: env.NEXT_PUBLIC_CREEM_URL || env.CREEM_URL || "/work-with-us",
     buyMeACoffee:
       env.NEXT_PUBLIC_BUY_ME_A_COFFEE_URL ||
       env.BUY_ME_A_COFFEE_URL ||

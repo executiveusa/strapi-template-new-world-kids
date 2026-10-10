@@ -72,7 +72,7 @@ cp .env.example .env.production
 # Add these critical variables to .env.production:
 DATABASE_URL=postgresql://user:pass@localhost:5432/nwk
 SENTRY_DSN=https://xxx@sentry.io/xxx
-STRIPE_SECRET_KEY=sk_live_xxx
+STRIPE_SECRET_KEY=<stripe-secret-key>
 STRIPE_PUBLISHABLE_KEY=pk_live_xxx
 NEXT_PUBLIC_APP_URL=https://newworldkids.org
 NODE_ENV=production
@@ -170,7 +170,7 @@ yarn test:metrics
 # 1. Create Stripe account at https://stripe.com
 # 2. Get API keys from dashboard
 # 3. Add to Railway environment:
-#    STRIPE_SECRET_KEY=sk_live_xxx
+#    STRIPE_SECRET_KEY=<stripe-secret-key>
 #    STRIPE_PUBLISHABLE_KEY=pk_live_xxx
 
 # Test donation flow:

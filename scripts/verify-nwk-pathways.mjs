@@ -4,7 +4,7 @@ const projects = fs.readFileSync("apps/ui/src/app/[locale]/projects/page.tsx", "
 const required = [
   ["Built for Good", "Technology", "Tecnología"],
   ["Beyond the Game", "Sports", "Deportes"],
-  ["Ground Up", "Food + Place", "Alimentos + Lugar"],
+  ["Ground Up", "Food + Place", "Alimentos y espacios comunitarios"],
   ["Make Your Mark", "Art", "Arte"],
 ]
 

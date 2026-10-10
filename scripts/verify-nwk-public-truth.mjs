@@ -5,7 +5,6 @@ const files = {
   pathway: "apps/ui/src/components/homepage/PathwaySection.tsx",
   homepage: "apps/ui/src/components/homepage/Homepage.tsx",
   metadata: "apps/ui/src/app/[locale]/(homepage)/page.tsx",
-  mission: "apps/ui/src/app/[locale]/mission/page.tsx",
   footer: "apps/ui/src/components/site/SiteFooter.tsx",
   donation: "apps/ui/src/content/donation.ts",
   operating: "apps/ui/src/components/homepage/First12OperatingLayer.tsx",
@@ -23,11 +22,11 @@ for (const claim of ["12 paid opportunities", "one-on-one mentorship", "12 oport
 
 const requiredTruth = [
   ["hero", "Help turn interest into opportunity."],
-  ["pathway", "We are matching 12 local participants with mentors for a pilot program."],
+  ["pathway", "We are matching 12 young people in Seattle with mentors and paid projects."],
   ["pathway", "Match interest to paid opportunity."],
   ["pathway", "What success looks like"],
   ["pathway", "Ongoing support and planning for long-term goals."],
-  ["metadata", "The First 12: real work, mentors, and a clear next step in Seattle."],
+  ["metadata", "The First 12: paid, real work, mentors, and a clear next step for 12 young people ages 16 to 19 in the Seattle area, starting in 2027."],
   ["proof", "not presented as proof of Seattle outcomes"],
   ["footer", "Humanitarian Social Innovations"],
   ["donation", "https://fundrazr.com/nwkids.org"],
@@ -43,6 +42,7 @@ for (const token of ["<NonprofitHero />", "<PathwaySection />", "<First12Operati
 for (const token of ["<SupportSection", "<StickyDonateMobile"]) {
   if (sources.homepage.includes(token)) throw new Error(`removed homepage surface was restored: ${token}`)
 }
-if (!sources.mission.includes("notFound()")) throw new Error("Public /mission route must remain unavailable")
+if (fs.existsSync("apps/ui/src/app/[locale]/mission/page.tsx") && !fs.readFileSync("apps/ui/src/app/[locale]/mission/page.tsx", "utf8").includes("notFound()"))
+  throw new Error("Public /mission route must remain unavailable")
 
 console.log("NWK public truth verification passed: current First 12 story, provenance, fiscal sponsor, donation and public-route boundaries remain intact.")

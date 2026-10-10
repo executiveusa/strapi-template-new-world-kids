@@ -617,7 +617,7 @@ STRAPI_URL=https://cms.newworldkids.org
 STRAPI_TOKEN=your_token
 
 # Stripe
-STRIPE_SECRET_KEY=sk_live_xxx
+STRIPE_SECRET_KEY=<stripe-secret-key>
 STRIPE_WEBHOOK_SECRET=whsec_xxx
 
 # AI Orchestrator

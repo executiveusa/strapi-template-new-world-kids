@@ -25,7 +25,7 @@ function StatusTag({ status }: { status: string | null }) {
 
   return (
     <span
-      className={`rounded px-1.5 py-0.5 font-mono text-[10px] ${styles[s] ?? styles.unknown}`}
+      className={`rounded px-1.5 py-0.5 font-mono text-xs ${styles[s] ?? styles.unknown}`}
     >
       {s}
     </span>
@@ -54,11 +54,11 @@ export function AgentLedger({
           <h2 className="text-sm font-medium text-white">
             Agent action ledger
           </h2>
-          <p className="mt-0.5 text-[10px] text-white/30">
+          <p className="mt-0.5 text-xs text-white/30">
             Last 50 rows from Supabase agent_actions
           </p>
         </div>
-        <span className="text-[10px] text-white/30">{actions.length} rows</span>
+        <span className="text-xs text-white/30">{actions.length} rows</span>
       </div>
 
       {error && (
@@ -78,7 +78,7 @@ export function AgentLedger({
               key={action.id}
               className="grid grid-cols-[80px_1fr_80px] items-start gap-3 px-4 py-3 hover:bg-white/[0.02]"
             >
-              <p className="pt-0.5 font-mono text-[10px] text-white/30">
+              <p className="pt-0.5 font-mono text-xs text-white/30">
                 {formatTime(action.created_at)}
               </p>
               <div className="min-w-0">
@@ -87,7 +87,7 @@ export function AgentLedger({
                     ACTION_TYPE_LABELS[action.action_type] ??
                     action.action_type}
                 </p>
-                <p className="mt-0.5 text-[10px] text-white/35">
+                <p className="mt-0.5 text-xs text-white/35">
                   {action.agent_id ?? "hermes"} · {action.action_type}
                 </p>
               </div>

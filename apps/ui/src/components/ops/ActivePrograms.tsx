@@ -11,7 +11,7 @@ export function ActivePrograms() {
     <div className="overflow-hidden rounded-xl border border-white/8 bg-[#0d1610]">
       <div className="flex items-center justify-between border-b border-white/8 px-4 py-3">
         <h2 className="text-sm font-medium text-white">Active programs</h2>
-        <span className="cursor-pointer text-[10px] text-white/30 hover:text-white/60">
+        <span className="cursor-pointer text-xs text-white/30 hover:text-white/60">
           Manage
         </span>
       </div>
@@ -19,7 +19,7 @@ export function ActivePrograms() {
         {programs.map((p) => (
           <span
             key={p.label}
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/8 px-2.5 py-1 text-[11px] text-white/60"
+            className="inline-flex items-center gap-1.5 rounded-full border border-white/8 px-2.5 py-1 text-xs text-white/60"
           >
             <span
               className="h-1.5 w-1.5 shrink-0 rounded-full"

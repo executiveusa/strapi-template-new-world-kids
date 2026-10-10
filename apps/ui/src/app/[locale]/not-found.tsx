@@ -17,10 +17,10 @@ const copy = {
   es: {
     eyebrow: "404",
     title: "Esta página aún no ha sido sembrada.",
-    body: "El enlace que te trajo aquí apunta a algo que no existe — se movió, o todavía no está construido. Así puedes retomar el camino.",
+    body: "El enlace que lo trajo aquí apunta a algo que no existe: se movió o todavía no está construido. Así puede retomar el camino.",
     home: "Volver al inicio",
     donate: "Donar",
-    contact: "Escríbenos",
+    contact: "Escríbanos",
   },
 }
 

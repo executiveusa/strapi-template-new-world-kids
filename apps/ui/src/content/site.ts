@@ -7,7 +7,6 @@ export {
   journalTeaser,
   socialLinks,
   trustDocuments,
-  workWithUsOffers,
   type ImpactPillar,
   type PillarSlug,
   type SocialLink,

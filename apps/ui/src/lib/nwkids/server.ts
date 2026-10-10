@@ -10,28 +10,45 @@ const allowedPathways = new Set([
   "cross_pathway",
 ])
 
+const MAX_TEXT = 2500
+
 export type NwkLocale = "en" | "es"
 
 function required(value: FormDataEntryValue | null, name: string, min = 2) {
   const text = String(value ?? "").trim()
-  if (text.length < min) throw new Error(`Invalid ${name}`)
+  if (text.length < min || text.length > MAX_TEXT)
+    throw new Error(`Invalid ${name}`)
+
   return text
 }
 
 function optional(value: FormDataEntryValue | null) {
   const text = String(value ?? "").trim()
+  if (text.length > MAX_TEXT) throw new Error("Text too long")
+
   return text || null
 }
 
 function email(value: FormDataEntryValue | null) {
   const text = required(value, "email", 5).toLowerCase()
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text)) throw new Error("Invalid email")
+  const at = text.indexOf("@")
+  const domain = text.slice(at + 1)
+  const valid =
+    at > 0 &&
+    at === text.lastIndexOf("@") &&
+    domain.includes(".") &&
+    !domain.startsWith(".") &&
+    !domain.endsWith(".") &&
+    !/\s/.test(text)
+  if (!valid) throw new Error("Invalid email")
+
   return text
 }
 
 function pathway(value: FormDataEntryValue | null) {
   const text = String(value ?? "")
   if (!allowedPathways.has(text)) throw new Error("Invalid pathway")
+
   return text
 }
 
@@ -41,6 +58,7 @@ function locale(value: FormDataEntryValue | null): NwkLocale {
 
 function consent(value: FormDataEntryValue | null, name: string) {
   if (value !== "on" && value !== "true") throw new Error(`Missing ${name}`)
+
   return true
 }
 
@@ -48,7 +66,8 @@ function adminClient() {
   const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL
   const serviceRole = process.env.SUPABASE_SERVICE_ROLE_KEY
 
-  if (!url || !serviceRole) throw new Error("NWK intake storage is not configured")
+  if (!url || !serviceRole)
+    throw new Error("NWK intake storage is not configured")
 
   return createClient(url, serviceRole, {
     auth: { persistSession: false, autoRefreshToken: false },
@@ -57,13 +76,25 @@ function adminClient() {
 
 export async function saveOpportunity(formData: FormData) {
   const payload = {
-    organization_name: required(formData.get("organization_name"), "organization", 2),
+    organization_name: required(
+      formData.get("organization_name"),
+      "organization",
+      2
+    ),
     contact_name: required(formData.get("contact_name"), "contact name", 2),
     email: email(formData.get("email")),
     phone: optional(formData.get("phone")),
     pathway: pathway(formData.get("pathway")),
-    project_summary: required(formData.get("project_summary"), "project summary", 20),
-    participant_work: required(formData.get("participant_work"), "participant work", 20),
+    project_summary: required(
+      formData.get("project_summary"),
+      "project summary",
+      20
+    ),
+    participant_work: required(
+      formData.get("participant_work"),
+      "participant work",
+      20
+    ),
     location: required(formData.get("location"), "location", 2),
     timing: optional(formData.get("timing")),
     compensation: optional(formData.get("compensation")),
@@ -73,8 +104,73 @@ export async function saveOpportunity(formData: FormData) {
     consent: consent(formData.get("consent"), "consent"),
   }
 
-  const { data, error } = await adminClient().rpc("nwkids_submit_opportunity", { p_payload: payload })
-  if (error || !data) throw new Error(error?.message || "Opportunity intake failed")
+  const { data, error } = await adminClient().rpc("nwkids_submit_opportunity", {
+    p_payload: payload,
+  })
+  if (error || !data)
+    throw new Error(error?.message || "Opportunity intake failed")
+
+  return data as string
+}
+
+const referralCounties = new Set(["king", "snohomish", "pierce", "skagit"])
+const referralPathways = new Set([...allowedPathways, "not_sure"])
+
+export async function saveReferral(formData: FormData) {
+  const age = Number(formData.get("youth_age"))
+  if (!Number.isInteger(age) || age < 16 || age > 19)
+    throw new Error("Invalid age")
+  const county = String(formData.get("county") ?? "")
+  const pathwayValue = String(formData.get("pathway") ?? "")
+  if (!referralCounties.has(county)) throw new Error("Invalid county")
+  if (!referralPathways.has(pathwayValue)) throw new Error("Invalid pathway")
+  const guardianAware = formData.get("guardian_aware") === "on"
+  if (age < 18 && !guardianAware) throw new Error("Guardian must know")
+
+  const payload = {
+    referrer_name: required(formData.get("referrer_name"), "referrer name", 2),
+    referrer_org: optional(formData.get("referrer_org")),
+    referrer_role: optional(formData.get("referrer_role")),
+    referrer_email: email(formData.get("referrer_email")),
+    referrer_phone: optional(formData.get("referrer_phone")),
+    youth_first_name: required(
+      formData.get("youth_first_name"),
+      "first name",
+      1
+    ),
+    youth_age: age,
+    county,
+    pathway: pathwayValue,
+    interests: required(formData.get("interests"), "interests", 10),
+    notes: optional(formData.get("notes")),
+    youth_aware: consent(formData.get("youth_aware"), "young person awareness"),
+    guardian_aware: guardianAware,
+    locale: locale(formData.get("locale")),
+    consent: consent(formData.get("consent"), "consent"),
+  }
+
+  const { data, error } = await adminClient().rpc("nwkids_submit_referral", {
+    p_payload: payload,
+  })
+  if (error || !data)
+    throw new Error(error?.message || "Referral intake failed")
+
+  return data as string
+}
+
+export async function saveWaitlist(formData: FormData) {
+  const payload = {
+    p_email: email(formData.get("email")),
+    p_locale: locale(formData.get("locale")),
+    p_consent: consent(formData.get("consent"), "consent"),
+  }
+
+  const { data, error } = await adminClient().rpc(
+    "nwkids_join_waitlist",
+    payload
+  )
+  if (error || !data) throw new Error(error?.message || "Waitlist failed")
+
   return data as string
 }
 
@@ -89,14 +185,20 @@ export async function saveMentor(formData: FormData) {
     availability: required(formData.get("availability"), "availability", 5),
     location: required(formData.get("location"), "location", 2),
     support_offer: required(formData.get("support_offer"), "support offer", 20),
-    screening_ack: consent(formData.get("screening_ack"), "screening acknowledgement"),
+    screening_ack: consent(
+      formData.get("screening_ack"),
+      "screening acknowledgement"
+    ),
     notes: optional(formData.get("notes")),
     locale: locale(formData.get("locale")),
     consent: consent(formData.get("consent"), "consent"),
   }
 
-  const { data, error } = await adminClient().rpc("nwkids_submit_mentor", { p_payload: payload })
+  const { data, error } = await adminClient().rpc("nwkids_submit_mentor", {
+    p_payload: payload,
+  })
   if (error || !data) throw new Error(error?.message || "Mentor intake failed")
+
   return data as string
 }
 
@@ -110,7 +212,8 @@ export type First12PublicStatus = {
 
 export async function getFirst12Status(): Promise<First12PublicStatus[]> {
   const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL
-  const anon = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  const anon =
+    process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   if (!url || !anon) return []
 
   const client = createClient(url, anon, {
@@ -120,7 +223,9 @@ export async function getFirst12Status(): Promise<First12PublicStatus[]> {
     .from("nwkids_first12_public")
     .select("slot_number,pathway,status,public_label,updated_at")
     .order("slot_number")
+    .abortSignal(AbortSignal.timeout(4000))
 
   if (error) return []
+
   return (data ?? []) as First12PublicStatus[]
 }

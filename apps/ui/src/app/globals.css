@@ -8,7 +8,7 @@
   /* === NEW WORLD KIDS / EDITORIAL FIELD SYSTEM ===
      Warm paper, warm ink, and one low-chroma botanical neutral.
      Strong color belongs to photography and film. */
-  --color-nwk-blue: #70756b;
+  --color-nwk-blue: #5a5f56;
   --color-nwk-blue-dark: #595e55;
   --color-action: #70756b;
   --color-action-hover: #595e55;
@@ -27,7 +27,7 @@
   --color-guayabo-light: #868b80;
   --color-gold: #70756b;
   --color-gold-light: #868b80;
-  --color-gold-glow: rgba(112, 117, 107, 0.10);
+  --color-gold-glow: rgba(112, 117, 107, 0.1);
   --color-cream: #f2eee5;
   --color-cream-dark: #e7e1d6;
   --color-volcanic: #191714;
@@ -53,13 +53,28 @@
   --color-accent-gold: #70756b;
   --color-accent-coral: #70756b;
   --color-accent-coral-hover: #595e55;
-  --color-eyebrow: #70756b;
+  --color-eyebrow: #5a5f56;
   --color-sage: #70756b;
 
   --shadow-color: 0 0% 0%;
   --shadow-sm: 0 1px 2px hsl(var(--shadow-color) / 0.05);
   --shadow-md: 0 8px 24px hsl(var(--shadow-color) / 0.07);
   --shadow-lg: 0 24px 64px hsl(var(--shadow-color) / 0.09);
+
+  /* Brand accent, sampled from the NW KIDS logo. Used for the one primary action per view,
+     the focus ring, and text selection. Everything else stays paper, ink, and sage. */
+  --color-brand: #b3101a;
+  --color-brand-hover: #8f0d15;
+  --color-on-brand: #ffffff;
+  --color-paper-deep: #e7e1d6;
+  --color-ink-muted: #4a463f;
+
+  /* Motion: strong custom curves (built-in easings are too weak), short durations. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-press: 140ms;
+  --dur-ui: 200ms;
 }
 
 :root,
@@ -85,7 +100,7 @@
   --color-accent-gold: #70756b;
   --color-accent-coral: #70756b;
   --color-accent-coral-hover: #595e55;
-  --color-eyebrow: #70756b;
+  --color-eyebrow: #5a5f56;
   --color-sage: #70756b;
 }
 
@@ -106,8 +121,8 @@ body {
 }
 
 ::selection {
-  background: #ddd8ce;
-  color: var(--color-ink);
+  background: var(--color-brand);
+  color: var(--color-on-brand);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -137,4 +152,173 @@ a {
 .hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Type system. One scale, set here, so hierarchy is decided once and every page inherits it.
+   Display is rare and heavy; section titles are calmer; body stays 16px or larger; labels 12px+.
+   --------------------------------------------------------------------------------------------- */
+.t-h1 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 0.98;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+.t-h2 {
+  font-size: clamp(1.875rem, 4.4vw, 3.25rem);
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+.t-h3 {
+  font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.t-lead {
+  font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Controls: one primary action per view, quiet everywhere else.
+   Press feedback is a short, fast scale (transform only). Hover is gated to real pointers.
+   --------------------------------------------------------------------------------------------- */
+.btn-primary,
+.btn-quiet,
+.press {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  transition:
+    transform var(--dur-press) var(--ease-out),
+    background-color var(--dur-ui) var(--ease-out),
+    color var(--dur-ui) var(--ease-out),
+    border-color var(--dur-ui) var(--ease-out);
+}
+.btn-primary {
+  display: inline-flex;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+.btn-quiet {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid currentColor;
+  font-weight: 700;
+}
+.btn-primary:active,
+.btn-quiet:active,
+.press:active {
+  transform: scale(0.97);
+}
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    background: var(--color-brand-hover);
+  }
+  .btn-quiet:hover {
+    color: var(--color-brand);
+  }
+}
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Native-feeling mobile baseline (see emilkowalski/skills mobile-native).
+   --------------------------------------------------------------------------------------------- */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+input,
+textarea,
+select {
+  font-size: max(16px, 1rem);
+}
+button,
+[role="button"] {
+  touch-action: manipulation;
+}
+
+/* ---------------------------------------------------------------------------------------------
+   Gentle entrance for content blocks. Content is fully visible without it; where scroll-driven
+   animation exists, blocks rise 14px as they enter. Never fades text down, never blocks reading.
+   --------------------------------------------------------------------------------------------- */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .rise {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+    @keyframes rise {
+      from {
+        transform: translateY(14px);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+/* Coming-soon page: content settles in once on load (transform only, text always readable). */
+@media (prefers-reduced-motion: no-preference) {
+  .cs-in {
+    animation: cs-in 520ms var(--ease-out) both;
+  }
+  .cs-in-2 {
+    animation-delay: 90ms;
+  }
+  @keyframes cs-in {
+    from {
+      transform: translateY(14px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Checkboxes: obvious unchecked and checked states, brand color when checked. */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  display: inline-grid;
+  place-content: center;
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 2px;
+  background: transparent;
+  transition:
+    background-color var(--dur-press) var(--ease-out),
+    border-color var(--dur-press) var(--ease-out);
+}
+input[type="checkbox"]:checked {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+}
+input[type="checkbox"]:checked::after {
+  content: "";
+  width: 0.6rem;
+  height: 0.32rem;
+  border-left: 2px solid var(--color-on-brand);
+  border-bottom: 2px solid var(--color-on-brand);
+  transform: translateY(-1px) rotate(-45deg);
 }
