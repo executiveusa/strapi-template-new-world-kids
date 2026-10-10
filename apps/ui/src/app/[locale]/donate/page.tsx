@@ -42,23 +42,23 @@ const copy = {
     program: "Read the program details",
   },
   es: {
-    metaTitle: "Apoya a los Primeros 12 | New World Kids",
+    metaTitle: "Apoye a Los Primeros 12 | New World Kids",
     metaDescription:
-      "Qué paga tu donación, quién la recibe y cómo donar con tarjeta o cheque.",
-    eyebrow: "Apoya a los Primeros 12",
-    title: "Ayuda a comprobar los Primeros 12.",
+      "Qué paga su donación, quién la recibe y cómo donar con tarjeta o cheque.",
+    eyebrow: "Apoye a Los Primeros 12",
+    title: "Ayude a comprobar Los Primeros 12.",
     intro:
       "Un piloto para 12 jóvenes en Seattle en 2027. Cada uno se conecta con un mentor y un proyecto real, con experiencia pagada y un siguiente paso claro.",
-    pays: "Qué paga tu donación",
+    pays: "Qué paga su donación",
     paysBody:
       "Salarios de participantes, transporte, materiales de proyecto, equipo, apoyo a mentores y coordinación del programa.",
     who: "Quién la recibe",
     whoBody:
-      "Las donaciones se hacen a Humanitarian Social Innovations (HSI), nuestro patrocinador fiscal y organización benéfica pública 501(c)(3), EIN 46-4779591, para el fondo de New World Kids. Tu recibo mostrará a HSI. Eso es correcto.",
+      "Las donaciones se hacen a Humanitarian Social Innovations (HSI), nuestro patrocinador fiscal y organización benéfica pública 501(c)(3), EIN 46-4779591, para el fondo de New World Kids. Su recibo mostrará a HSI. Eso es correcto.",
     give: "Donar en línea",
     giveNote:
       "Abre nuestra campaña en la plataforma FundRazr de HSI, en una pestaña nueva.",
-    check: "¿Prefieres cheque?",
+    check: "¿Prefiere pagar con cheque?",
     checkBody: "Tres pasos:",
     checkSteps: [
       "Haga el cheque a nombre de “Humanitarian Social Innovations”.",
@@ -69,7 +69,7 @@ const copy = {
     proofBody:
       "Los Primeros 12 todavía no han empezado. Primero construimos proyectos reales y compromisos de mentores, y publicamos el avance.",
     more: "Quiénes somos y cómo verificarlo",
-    program: "Lee los detalles del programa",
+    program: "Lea los detalles del programa",
   },
 } as const
 

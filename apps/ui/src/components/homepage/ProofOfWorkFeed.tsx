@@ -13,12 +13,12 @@ const copy = {
     empty: "No verified public artifacts are available yet.",
   },
   es: {
-    eyebrow: "Evidencia del trabajo · Archivo verificado",
-    title: "Mostrar el trabajo. Decir exactamente qué demuestra.",
-    body: "Estas son imágenes de campo verificadas y fechadas de Proyecto Indigo Azul. Documentan el lugar y el trabajo con el tiempo; no se presentan como evidencia de resultados en Seattle.",
+    eyebrow: "Pruebas del trabajo · Archivo verificado",
+    title: "Mostramos el trabajo y aclaramos qué demuestra.",
+    body: "Estas son imágenes de campo verificadas y fechadas de Proyecto Indigo Azul. Documentan el lugar y el trabajo con el tiempo; no se presentan como prueba de resultados en Seattle.",
     verified: "Documentación de campo verificada",
     archive: "Abrir el archivo de campo completo",
-    empty: "Todavía no hay artefactos públicos verificados.",
+    empty: "Todavía no hay materiales públicos verificados.",
   },
 } as const
 

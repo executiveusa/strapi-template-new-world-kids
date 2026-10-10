@@ -18,9 +18,9 @@ const copy = {
   },
   es: {
     eyebrow: "Seattle · Primeros 12 · 2027",
-    title: "Ayuda a convertir interés en oportunidad.",
+    title: "Ayude a convertir el interés en oportunidad.",
     body: "Trabajo remunerado, un mentor y un siguiente paso para jóvenes de 16 a 19 años en Seattle.",
-    primary: "Súmate al trabajo",
+    primary: "Súmese al trabajo",
     caption:
       "Proyecto Indigo Azul · Puerto Vallarta, México. Donde empezó. El material de Seattle viene en camino.",
     alt: "Vista aérea de un bosque comestible con plantas de plátano y árboles jóvenes en Proyecto Indigo Azul, Puerto Vallarta, México",

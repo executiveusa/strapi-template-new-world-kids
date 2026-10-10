@@ -21,9 +21,9 @@ const copy = {
     open: "Open",
   },
   es: {
-    eyebrow: "Primeros 12 · Estado operativo",
-    title: "Construir las oportunidades antes de llenar los lugares.",
-    body: "Esto sigue la preparación de cada lugar sin publicar información de participantes. Un lugar avanza solo cuando el proyecto, mentor, supervisión y siguiente paso son reales.",
+    eyebrow: "Los Primeros 12 · Estado operativo",
+    title: "Construir las oportunidades antes de cubrir los cupos.",
+    body: "Esto sigue la preparación de cada cupo sin publicar información de participantes. Un cupo avanza solo cuando el proyecto, mentor, supervisión y siguiente paso son reales.",
     empty: "Los datos de estado no están disponibles temporalmente.",
     stages: {
       seeking_project: "Buscando proyecto",

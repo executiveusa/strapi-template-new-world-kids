@@ -67,44 +67,44 @@ const copy = {
     ],
   },
   es: {
-    eyebrow: "Primeros 12 · Referencia",
-    title: "Refiere a un joven.",
+    eyebrow: "Primeros 12 · Recomendación",
+    title: "Recomiende a un joven.",
     intro:
-      "En el piloto, los jóvenes entran solo por referencia, y las referencias vienen de adultos como entrenadores, consejeros y mentores. Cuéntanos quién podría encajar. Toma unos 3 minutos. Te contactamos primero a ti, y solo nos comunicamos con el joven cuando tú ya hablaste con él o ella.",
+      "En el piloto, los jóvenes entran solo por recomendación, y las recomendaciones vienen de adultos como entrenadores, consejeros y mentores. Cuéntenos a quién ve con el perfil adecuado. Toma unos 3 minutos. Nos comunicamos primero con usted, y solo contactamos al joven cuando usted ya habló con él o ella.",
     who: "De 16 a 19 años en los condados de King, Snohomish, Pierce o Skagit. Gratis para los 12 seleccionados.",
-    submittedTitle: "Referencia recibida.",
+    submittedTitle: "Recomendación recibida.",
     submittedBody:
-      "La revisaremos y te escribiremos. No contactamos al joven hasta que tú y él o ella estén listos.",
-    errorTitle: "No pudimos guardar la referencia.",
+      "La revisaremos y le escribiremos. No contactamos al joven hasta que usted y él o ella estén listos.",
+    errorTitle: "No pudimos guardar la recomendación.",
     errorBody:
-      "Revisa los campos obligatorios e inténtalo de nuevo, o escribe a info@nwkids.org.",
+      "Revise los campos obligatorios e inténtelo de nuevo, o escriba a info@nwkids.org.",
     youthHeading: "El joven",
     youthFirstName: "Nombre de pila",
     youthAge: "Edad",
     county: "Condado",
-    pathway: "Camino que mejor encaja",
-    interests: "¿Qué le interesa o en qué es bueno o buena?",
+    pathway: "Camino más adecuado",
+    interests: "¿Qué le interesa o en qué destaca?",
     interestsHint:
-      "No incluyas historial de salud, legal ni familiar. No lo necesitamos.",
+      "No incluya historial de salud, legal ni familiar. No lo necesitamos.",
     youthAware:
-      "El joven sabe de esta referencia y está abierto a saber de nosotros.",
+      "El joven sabe de esta recomendación y está de acuerdo en que lo contactemos.",
     guardianAware:
-      "Si es menor de 18: su madre, padre o tutor sabe de esta referencia.",
-    referrerHeading: "Tú",
-    referrerName: "Tu nombre",
-    referrerEmail: "Tu correo electrónico",
+      "Si es menor de 18 años: su madre, padre o tutor sabe de esta recomendación.",
+    referrerHeading: "Usted",
+    referrerName: "Su nombre",
+    referrerEmail: "Su correo electrónico",
     referrerPhone: "Teléfono · opcional",
     referrerOrg: "Organización · opcional",
-    referrerRole: "Tu cargo · opcional",
+    referrerRole: "Su cargo · opcional",
     notes: "¿Algo más que debamos saber? · opcional",
     consent:
-      "Entiendo que esto es una referencia, no un lugar garantizado, y que New World Kids la revisará.",
+      "Entiendo que esto es una recomendación, no un cupo garantizado, y que New World Kids la revisará.",
     privacyNote:
-      "Usamos lo que nos envías solo para revisar esta referencia y darte seguimiento. No lo vendemos.",
-    privacyLink: "Cómo manejamos tu información",
-    submit: "Enviar referencia",
+      "Usamos lo que nos envía solo para revisar esta recomendación y darle seguimiento. No lo vendemos.",
+    privacyLink: "Cómo manejamos su información",
+    submit: "Enviar recomendación",
     back: "Volver a New World Kids",
-    select: "Elige una",
+    select: "Elija una",
     counties: [
       ["king", "King"],
       ["snohomish", "Snohomish"],
@@ -114,9 +114,9 @@ const copy = {
     pathways: [
       ["technology", "Built for Good · Tecnología"],
       ["sports", "Beyond the Game · Deportes"],
-      ["food_systems", "Ground Up · Jardinería urbana + sistemas alimentarios"],
+      ["food_systems", "Ground Up · Alimentos y espacios comunitarios"],
       ["art", "Make Your Mark · Arte"],
-      ["not_sure", "Aún no estoy seguro"],
+      ["not_sure", "Todavía no lo sé"],
     ],
   },
 } as const
@@ -140,11 +140,11 @@ export async function generateMetadata({
   return {
     title:
       locale === "es"
-        ? "Refiere a un joven · New World Kids"
+        ? "Recomiende a un joven · New World Kids"
         : "Refer a young person · New World Kids",
     description:
       locale === "es"
-        ? "Recomienda a un joven de 16 a 19 años para Los Primeros 12 de New World Kids en Seattle. Solo por recomendación de un adulto."
+        ? "Recomiende a un joven de 16 a 19 años para Los Primeros 12 de New World Kids en Seattle. Solo por recomendación de un adulto."
         : "Refer a young person ages 16 to 19 for the New World Kids First 12 in Seattle. Referral only, from a coach, counselor, or mentor.",
     alternates: pageAlternates(locale, "/refer"),
   }

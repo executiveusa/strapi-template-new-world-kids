@@ -55,13 +55,9 @@ export const fiscalSponsor = {
 }
 
 export const socialLinks: SocialLink[] = [
-  { label: "Instagram", href: "https://www.instagram.com/newworldkids/" },
-  { label: "YouTube", href: "https://www.youtube.com/@newworldkids" },
-  { label: "Facebook", href: "https://www.facebook.com/newworldkids" },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/company/new-world-kids/",
-  },
+  { label: "Instagram", href: "https://www.instagram.com/proyectoindigoazul/" },
+  { label: "YouTube", href: "https://www.youtube.com/@proyectoindigoazul" },
+  { label: "Facebook", href: "https://www.facebook.com/nwkidsorg" },
 ]
 
 const hsiUploads = "https://hsifiscalsponsor.org/wp-content/uploads"

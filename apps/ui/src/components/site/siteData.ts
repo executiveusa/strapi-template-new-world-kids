@@ -7,14 +7,12 @@ export const siteLinks = {
   infoEmail: "info@nwkids.org",
   facebook: "https://www.facebook.com/nwkidsorg",
   instagram: "https://www.instagram.com/proyectoindigoazul/",
-  linkedin: "https://www.linkedin.com/company/nwkids/",
   youtube: "https://www.youtube.com/@proyectoindigoazul",
 } as const
 
 export const socialLinks = [
   { label: "Instagram", href: siteLinks.instagram, key: "instagram" },
   { label: "Facebook", href: siteLinks.facebook, key: "facebook" },
-  { label: "LinkedIn", href: siteLinks.linkedin, key: "linkedin" },
   { label: "YouTube", href: siteLinks.youtube, key: "youtube" },
   { label: "Email", href: siteLinks.email, key: "email" },
 ] as const

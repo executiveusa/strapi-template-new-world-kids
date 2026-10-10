@@ -76,7 +76,7 @@ const copy = {
         examples:
           "Sitios web · herramientas · automatizaciones · sistemas de contenido",
         leaves:
-          "Portafolio · experiencia pagada cuando exista · referencia de mentor",
+          "Portafolio · experiencia pagada cuando exista · carta de recomendación de su mentor",
         need: "Un problema real · un mentor · espacio para contribuir",
       },
       {
@@ -86,12 +86,12 @@ const copy = {
         examples:
           "Entrenamiento · medios · eventos · bienestar · estadísticas · contenido",
         leaves:
-          "Experiencia · exposición a la industria · relación con mentor · próxima oportunidad",
+          "Experiencia · contacto con la industria · relación con mentor · próxima oportunidad",
         need: "Equipos · entrenadores · eventos · negocios deportivos con roles reales",
       },
       {
         name: "Ground Up",
-        category: "Alimentos + Lugar",
+        category: "Alimentos y espacios comunitarios",
         what: "Construir habilidades prácticas con alimentos, sostenibilidad, construcción y cuidado del lugar.",
         examples:
           "Sistemas de cultivo · proyectos comunitarios · alimentos · mejora de espacios",
@@ -103,8 +103,10 @@ const copy = {
         name: "Make Your Mark",
         category: "Arte",
         what: "Restaurar un lugar, diseñar con la comunidad y crear algo visible.",
-        examples: "Limpieza · preparación de muros · murales · instalaciones",
-        leaves: "Trabajo público terminado · portafolio · referencia de mentor",
+        examples:
+          "Limpieza · preparación de muros · murales · instalaciones artísticas",
+        leaves:
+          "Trabajo público terminado · portafolio · carta de recomendación de su mentor",
         need: "Un sitio · mentor creativo · participación comunitaria · permiso para crear",
       },
     ],

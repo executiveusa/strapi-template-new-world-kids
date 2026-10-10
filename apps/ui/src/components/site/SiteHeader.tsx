@@ -22,7 +22,7 @@ const navigation = {
     { href: "/#how", label: "Cómo funciona" },
     { href: "/gallery", label: "Historia" },
     { href: "/blog", label: "Bitácora" },
-    { href: "/#partners", label: "Súmate" },
+    { href: "/#partners", label: "Súmese" },
   ],
 }
 
@@ -151,7 +151,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
             locale={locale}
             className={`press hidden min-h-11 items-center px-2 text-xs font-bold tracking-[0.08em] text-black/75 uppercase underline decoration-black/25 underline-offset-[6px] transition-colors hover:text-[var(--color-brand)] hover:decoration-[var(--color-brand)] sm:inline-flex ${focusRing}`}
           >
-            {locale === "es" ? "Apoyar" : "Support"}
+            {locale === "es" ? "Donar" : "Support"}
           </Link>
           <button
             ref={toggleRef}
@@ -197,7 +197,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
               <nav
                 className="border-t border-black/15"
                 aria-label={
-                  locale === "es" ? "Navegación móvil" : "Mobile navigation"
+                  locale === "es" ? "Menú de navegación" : "Mobile navigation"
                 }
               >
                 {items.map((item, index) => (
@@ -231,7 +231,7 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
                 >
                   <span>
                     {locale === "es"
-                      ? "Apoya a los Primeros 12"
+                      ? "Apoye a Los Primeros 12"
                       : "Support the First 12"}
                   </span>
                   <span aria-hidden="true">→</span>

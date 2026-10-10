@@ -40,20 +40,20 @@ const copy = {
   },
   es: {
     eyebrow: "Primeros 12 · Registro de proyecto",
-    title: "Trae una oportunidad real.",
+    title: "Traiga una oportunidad real.",
     intro:
-      "Cuéntanos qué necesita hacerse, cómo podría contribuir un joven y quién supervisará el trabajo. Las horas las fijan juntos el joven, su madre, padre o tutor, y el programa anfitrión. Los tres deben estar de acuerdo. Toma unos 7 minutos.",
+      "Cuéntenos qué necesita hacerse, cómo podría contribuir un joven y quién supervisará el trabajo. Las horas las fijan juntos el joven, su madre, padre o tutor, y el programa anfitrión. Los tres deben estar de acuerdo. Toma unos 7 minutos.",
     submittedTitle: "Proyecto recibido.",
     submittedBody:
-      "Revisaremos el encaje, la seguridad, la supervisión, el tiempo y el camino antes de ofrecer algo a un participante.",
+      "Revisaremos la compatibilidad, la seguridad, la supervisión, el tiempo y el camino antes de ofrecer algo a un participante.",
     errorTitle: "No pudimos guardar el envío.",
     errorBody:
-      "Revisa los campos obligatorios e inténtalo de nuevo, o escribe a info@nwkids.org.",
+      "Revise los campos obligatorios e inténtelo de nuevo, o escriba a info@nwkids.org.",
     organization: "Organización o negocio",
     contact: "Nombre de contacto",
     email: "Correo electrónico",
     phone: "Teléfono · opcional",
-    pathway: "Camino que mejor encaja",
+    pathway: "Camino más adecuado",
     project: "¿Cuál es el proyecto real?",
     work: "¿Qué podría hacer realmente un participante?",
     location: "¿Dónde se realizaría el trabajo?",
@@ -62,12 +62,12 @@ const copy = {
     supervision: "¿Quién supervisará y apoyará el trabajo?",
     notes: "¿Algo más que debamos saber? · opcional",
     consent:
-      "Entiendo que esta es una propuesta de oportunidad, no una colocación garantizada, y que New World Kids la revisará antes de hacer una conexión.",
+      "Entiendo que esta es una propuesta de oportunidad, no un cupo garantizado, y que New World Kids la revisará antes de hacer una conexión.",
     submit: "Enviar proyecto",
     back: "Volver a New World Kids",
     privacyNote:
-      "Usamos lo que nos envías solo para revisar el encaje y darte seguimiento. No lo vendemos.",
-    privacyLink: "Cómo manejamos tu información",
+      "Usamos lo que nos envía solo para revisar la compatibilidad y darle seguimiento. No lo vendemos.",
+    privacyLink: "Cómo manejamos su información",
   },
 } as const
 
@@ -107,7 +107,7 @@ export async function generateMetadata({
         : "Bring a project · New World Kids",
     description:
       locale === "es"
-        ? "Propón un proyecto real para los Primeros 12 de New World Kids en Seattle: trabajo con sueldo, supervisión y un mentor para jóvenes de 16 a 19 años."
+        ? "Proponga un proyecto real para Los Primeros 12 de New World Kids en Seattle: trabajo con sueldo, supervisión y un mentor para jóvenes de 16 a 19 años."
         : "Propose a real project for the New World Kids First 12 in Seattle: paid work, supervision, and a mentor for young people ages 16 to 19.",
     alternates: pageAlternates(locale, "/opportunity"),
   }

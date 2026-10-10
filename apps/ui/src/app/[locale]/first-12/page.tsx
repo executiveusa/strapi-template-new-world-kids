@@ -108,7 +108,7 @@ const copy = {
     glance: [
       [
         "Dónde",
-        "Seattle y áreas cercanas: condados de King, Snohomish, Pierce y Skagit",
+        "Seattle y zonas cercanas: condados de King, Snohomish, Pierce y Skagit",
       ],
       ["Cuándo", "2027, 12 participantes a lo largo de 1 año"],
       [
@@ -121,35 +121,35 @@ const copy = {
     schedule: "Horario",
     forEyebrow: "Para quién es",
     forBody:
-      "Jóvenes de 16 a 19 años en los condados de King, Snohomish, Pierce y Skagit con intereses y talento reales pero con poco acceso a oportunidades. No hace falta haber estado en el sistema de justicia, en acogida o en vivienda inestable para participar, y nadie tiene que contar su historia. Sí apoyamos a quienes lo han vivido, porque ahí es donde más cuesta encontrar oportunidades. Como es un piloto, los participantes entran solo por referencia.",
-    applyEyebrow: "Cómo aplicar",
+      "Jóvenes de 16 a 19 años en los condados de King, Snohomish, Pierce y Skagit con intereses y talento reales pero con poco acceso a oportunidades. No hace falta haber estado en el sistema de justicia, en cuidado de crianza temporal (foster care) o sin vivienda estable para participar, y nadie tiene que contar su historia. Sí apoyamos a quienes lo han vivido, porque ahí es donde más cuesta encontrar oportunidades. Como es un piloto, los participantes entran solo por recomendación.",
+    applyEyebrow: "Cómo participar",
     applyNot:
-      "En este piloto la participación es solo por referencia. No recibimos solicitudes directas. Referir a alguien toma unos 3 minutos. Es gratis para los 12 jóvenes que seleccionemos.",
-    applyOpen: "Aplicar ahora",
+      "En este piloto la participación es solo por recomendación. No recibimos solicitudes directas. Recomendar a alguien toma unos 3 minutos. Es gratis para los 12 jóvenes que seleccionemos.",
+    applyOpen: "Postúlese ahora",
     payEyebrow: "Pago y trabajo remunerado",
     payBody:
       "Los participantes ganan ingresos en proyectos reales. Las donaciones ayudan a cubrir salarios de participantes, transporte, materiales de proyecto, equipo, apoyo a mentores y coordinación del programa.",
     lawEyebrow: "Trabajo pagado y la ley",
     lawIntro:
-      "Los participantes son empleados con sueldo. Si tienes menos de 18 años, las reglas de trabajo infantil de Washington te protegen. Diseñamos cada proyecto para cumplirlas:",
+      "Los participantes son empleados con sueldo. Si el participante tiene menos de 18 años, las reglas de trabajo infantil de Washington lo protegen. Diseñamos cada proyecto para cumplirlas:",
     law: [
       "Límites de horas para jóvenes de 16 y 17 años: en semana escolar, hasta 4 horas al día y 20 a la semana, entre las 7 a. m. y las 10 p. m.; en semana sin clases, hasta 8 horas al día y 48 a la semana.",
-      "Una autorización firmada de padres y escuela para cada menor, renovada cada año escolar, y prueba de edad en el expediente.",
-      "Un permiso de trabajo de menores en la licencia comercial del empleador para cada lugar de trabajo.",
+      "Una autorización firmada por la madre, el padre o tutor y la escuela para cada menor, renovada cada año escolar, y prueba de edad en el expediente.",
+      "Una autorización para emplear a menores (minor work permit) agregada a la licencia comercial del empleador, para cada lugar de trabajo.",
       "Ningún trabajo prohibido para menores de 18, como techado, demolición, excavación mecánica o máquinas y sierras de carpintería motorizadas.",
       "Los participantes de 18 o 19 años son adultos según estas reglas, y aun así mantenemos sus proyectos con el mismo estándar de seguridad.",
     ],
     lawSource:
       "Fuente: Departamento de Trabajo e Industrias de Washington y el capítulo 296-125 del WAC. Las reglas cambiaron el 1 de julio de 2026.",
-    lawLink: "Lee las reglas de L&I",
+    lawLink: "Lea las reglas de L&I (en inglés)",
     safeEyebrow: "Cómo lo mantenemos seguro",
     safe: [
-      "No se ofrece nada a un participante hasta revisar el proyecto en cuanto a encaje, seguridad, supervisión, tiempo y camino.",
+      "No se ofrece nada a un participante hasta revisar el proyecto en cuanto a compatibilidad, seguridad, supervisión, tiempo y camino.",
       "Cada proyecto tiene una persona con nombre que supervisa y apoya el trabajo.",
       "Los mentores deben aceptar completar nuestra evaluación requerida antes de trabajar directamente con un participante.",
       "No publicamos nombres, escuelas ni horarios de participantes.",
     ],
-    policy: "Lee nuestras medidas de protección",
+    policy: "Lea nuestras medidas de protección",
     measureEyebrow: "Cómo lo mediremos",
     measureIntro:
       "Informaremos solo totales, nunca participantes individuales. Informamos el avance a nuestro patrocinador fiscal cada trimestre.",
@@ -175,7 +175,7 @@ const copy = {
     targetsNot:
       "Este es un piloto, así que no fijamos metas de resultados de antemano. Publicaremos lo que aprendamos de los primeros 12 y fijaremos metas para grupos futuros cuando terminen.",
     pathwaysAction: "Ver los cuatro caminos de proyectos",
-    referAction: "Refiere a un joven",
+    referAction: "Recomiende a un joven",
     jumpLabel: "En esta página",
     hours:
       "Las horas las fijan juntos el joven, su madre, padre o tutor, y el programa anfitrión. Los tres deben estar de acuerdo.",
@@ -367,7 +367,13 @@ export default async function First12Page({
         >
           <span>{t.lawLink}</span>
           <span aria-hidden="true">↗</span>
-          <span className="sr-only">(opens in a new tab)</span>
+          <span className="sr-only">
+            (
+            {locale === "es"
+              ? "se abre en una pestaña nueva"
+              : "opens in a new tab"}
+            )
+          </span>
         </a>
       </Row>
 

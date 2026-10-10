@@ -9,7 +9,7 @@ const copy = {
     title: "Building in public.",
   },
   es: {
-    eyebrow: "Primeros 12 · Construyendo en público",
+    eyebrow: "Los Primeros 12 · Construyendo en público",
     title: "Construyendo en público.",
   },
 } as const

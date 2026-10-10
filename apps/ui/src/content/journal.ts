@@ -55,13 +55,13 @@ export const journalPosts: readonly JournalPost[] = [
         {
           paragraphs: [
             "Un camino funciona mejor cuando comienza con un interés real, en lugar de pedirle a una persona joven que primero se interese por un programa.",
-            "La secuencia es simple: interés → proyecto → mentor → siguiente paso. El proyecto vuelve útil el interés. El mentor aporta apoyo y responsabilidad. El siguiente paso evita que la relación termine cuando acaba la primera tarea.",
+            "La secuencia es simple: interés → proyecto → mentor → siguiente paso. El proyecto vuelve útil el interés. El mentor aporta apoyo y seguimiento. El siguiente paso evita que la relación termine cuando acaba la primera tarea.",
           ],
         },
         {
           heading: "Qué cambia",
           paragraphs: [
-            "La meta no es fabricar motivación. Es reconocer la que ya existe y conectarla con trabajo útil, ingresos cuando sea posible, evidencia que puedan mostrar y una persona que siga involucrada.",
+            "La meta no es fabricar motivación. Es reconocer la que ya existe y conectarla con trabajo útil, ingresos cuando sea posible, pruebas que puedan mostrar y una persona que siga involucrada.",
           ],
         },
       ],
@@ -86,13 +86,13 @@ export const journalPosts: readonly JournalPost[] = [
       ],
     },
     es: {
-      title: "Muestra tu trabajo.",
-      dek: "Si el trabajo es real, muéstralo.",
+      title: "Muestre su trabajo.",
+      dek: "Si el trabajo es real, muéstrelo.",
       sections: [
         {
           paragraphs: [
-            "Documenta lo que ocurrió. Mantén la fuente cerca. Deja que las personas vean el avance, los tropiezos, el lugar y la gente sin convertir historias distintas en una sola afirmación conveniente.",
-            "La regla es simple: muestra lo que la evidencia realmente respalda.",
+            "Documente lo que ocurrió. Mantenga la fuente cerca. Deje que las personas vean el avance, los tropiezos, el lugar y la gente sin convertir historias distintas en una sola afirmación conveniente.",
+            "La regla es simple: muestre lo que la evidencia realmente respalda.",
           ],
         },
       ],
@@ -122,7 +122,7 @@ export const journalPosts: readonly JournalPost[] = [
       sections: [
         {
           paragraphs: [
-            "Los cuatro elementos básicos no son un eslogan abstracto de sostenibilidad. Son una forma de hacer preguntas prácticas: ¿Puedes cultivar algo útil? ¿Puedes entender de dónde viene el agua y cómo conservarla? ¿Puedes trabajar con sistemas sencillos de energía? ¿Puedes ayudar a crear y cuidar un lugar seguro?",
+            "Los cuatro elementos básicos no son un eslogan abstracto de sostenibilidad. Son una forma de hacer preguntas prácticas: ¿Puede cultivar algo útil? ¿Puede entender de dónde viene el agua y cómo conservarla? ¿Puede trabajar con sistemas sencillos de energía? ¿Puede ayudar a crear y cuidar un lugar seguro?",
             "Proyecto Indigo Azul ha sido un lugar de largo plazo para observar estas preguntas en el mundo real. La lección para New World Kids no es que Seattle deba copiar el mismo entorno. Es que el aprendizaje útil se entiende mejor cuando está conectado con lugares reales, límites reales y trabajo visible.",
           ],
         },

@@ -44,7 +44,7 @@ const copy = {
     firstTitle:
       "Estamos conectando a 12 jóvenes de Seattle con mentores y proyectos con sueldo.",
     firstBody: "Seattle y zonas cercanas · 2027",
-    detailsAction: "Lee los detalles del programa →",
+    detailsAction: "Lea los detalles del programa →",
     howEyebrow: "Cómo funciona",
     howTitle: "Interés → Proyecto → Mentor → Siguiente paso",
     steps: [
@@ -54,19 +54,19 @@ const copy = {
         "Proyecto",
         "Conectar sus intereses con una oportunidad remunerada.",
       ],
-      ["03", "Mentor", "Brindar apoyo y responsabilidad."],
+      ["03", "Mentor", "Brindar apoyo y seguimiento."],
       [
         "04",
         "Siguiente paso",
         "Apoyo continuo y planificación para objetivos a largo plazo.",
       ],
     ],
-    proofEyebrow: "Evidencia del trabajo",
+    proofEyebrow: "Pruebas del trabajo",
     proofTitle: "Empezó en Puerto Vallarta.",
     proofBody:
       "En el Proyecto Indigo Azul, en México, los jóvenes y la comunidad mostraron interés. Seguimos creciendo.",
     proofClose: "Ahora lo traemos a Seattle.",
-    proofAction: "Mira dónde empezó →",
+    proofAction: "Vea dónde empezó →",
     measureEyebrow: "Cómo se ve el éxito",
     outcomes: [
       "Completó trabajo real que puede mostrar",
@@ -74,8 +74,8 @@ const copy = {
       "Construyó una relación con un mentor",
       "Tiene una próxima acción clara y apoyo continuo",
     ],
-    partnerEyebrow: "Súmate al trabajo",
-    partnerTitle: "Aporta un proyecto. Conviértete en mentor.",
+    partnerEyebrow: "Súmese al trabajo",
+    partnerTitle: "Aporte un proyecto. Conviértase en mentor.",
     partnerBody:
       "Seguimos involucrados, desde la primera oportunidad hasta lo que viene después.",
     projectAction: "Aportar un proyecto",

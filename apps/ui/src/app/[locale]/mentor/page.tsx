@@ -40,34 +40,34 @@ const copy = {
   },
   es: {
     eyebrow: "Primeros 12 · Registro de mentor",
-    title: "Trabaja al lado de alguien que construye su siguiente paso.",
+    title: "Trabaje al lado de alguien que construye su siguiente paso.",
     intro:
-      "Aquí la mentoría está conectada con trabajo real. Cuéntanos qué sabes, dónde puedes ayudar y cuánto tiempo puedes ofrecer de manera constante. Toma unos 5 minutos.",
+      "Aquí la mentoría está conectada con trabajo real. Cuéntenos qué sabe hacer, dónde puede ayudar y cuánto tiempo puede ofrecer de manera constante. Toma unos 5 minutos.",
     submittedTitle: "Interés de mentor recibido.",
     submittedBody:
-      "Revisaremos el encaje, la disponibilidad, las necesidades del camino y la evaluación requerida antes de conectar a cualquier participante.",
+      "Revisaremos la compatibilidad, la disponibilidad, las necesidades del camino y la evaluación requerida antes de conectar a cualquier participante.",
     errorTitle: "No pudimos guardar el envío.",
     errorBody:
-      "Revisa los campos obligatorios e inténtalo de nuevo, o escribe a info@nwkids.org.",
-    name: "Tu nombre",
+      "Revise los campos obligatorios e inténtelo de nuevo, o escriba a info@nwkids.org.",
+    name: "Su nombre",
     email: "Correo electrónico",
     phone: "Teléfono · opcional",
     organization: "Organización o empresa · opcional",
-    pathway: "Camino que mejor encaja",
-    expertise: "¿Qué sabes hacer?",
-    availability: "¿Qué tiempo puedes ofrecer de forma constante?",
-    location: "¿Dónde estás ubicado?",
-    offer: "¿Qué podrías ayudar a un joven a aprender, completar o navegar?",
+    pathway: "Camino más adecuado",
+    expertise: "¿Qué sabe hacer?",
+    availability: "¿Qué tiempo puede ofrecer de forma constante?",
+    location: "¿En qué ciudad o zona se encuentra?",
+    offer: "¿En qué podría ayudar a un joven a aprender, completar o resolver?",
     notes: "¿Algo más que debamos saber? · opcional",
     screening:
-      "Estoy dispuesto a completar la evaluación requerida por New World Kids antes de trabajar directamente con un participante.",
+      "Acepto completar la evaluación requerida por New World Kids antes de trabajar directamente con un participante.",
     consent:
-      "Entiendo que esto expresa interés, no garantiza una colocación como mentor, y que New World Kids revisará el encaje antes de hacer una conexión.",
+      "Entiendo que esto expresa interés, no garantiza que sea asignado como mentor, y que New World Kids revisará la compatibilidad antes de hacer una conexión.",
     submit: "Enviar interés de mentor",
     back: "Volver a New World Kids",
     privacyNote:
-      "Usamos lo que nos envías solo para revisar el encaje y darte seguimiento. No lo vendemos.",
-    privacyLink: "Cómo manejamos tu información",
+      "Usamos lo que nos envía solo para revisar la compatibilidad y darle seguimiento. No lo vendemos.",
+    privacyLink: "Cómo manejamos su información",
   },
 } as const
 
@@ -107,7 +107,7 @@ export async function generateMetadata({
         : "Become a mentor · New World Kids",
     description:
       locale === "es"
-        ? "Expresa interés en ser mentor de los Primeros 12 de New World Kids en Seattle: trabajo real, jóvenes de 16 a 19 años y evaluación previa."
+        ? "Exprese interés en ser mentor de Los Primeros 12 de New World Kids en Seattle: trabajo real, jóvenes de 16 a 19 años y evaluación previa."
         : "Express interest in mentoring the New World Kids First 12 in Seattle: real work, young people ages 16 to 19, and screening first.",
     alternates: pageAlternates(locale, "/mentor"),
   }

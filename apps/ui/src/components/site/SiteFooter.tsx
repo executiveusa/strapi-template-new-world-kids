@@ -16,7 +16,7 @@ const explore = {
     { href: "/#how", label: "Cómo funciona" },
     { href: "/gallery", label: "Historia" },
     { href: "/blog", label: "Bitácora" },
-    { href: "/#partners", label: "Súmate" },
+    { href: "/#partners", label: "Súmese" },
   ],
 }
 
@@ -44,9 +44,6 @@ function socialLabel(key: string, fallback: string) {
 
 export function SiteFooter({ locale }: { readonly locale: Locale }) {
   const items = locale === "es" ? explore.es : explore.en
-  const visibleSocialLinks = socialLinks.filter(
-    (link) => link.key !== "linkedin"
-  )
   const statement =
     locale === "es"
       ? ["Interés.", "Oportunidad.", "Siguiente paso."]
@@ -74,7 +71,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
 
           <nav
             aria-label={
-              locale === "es" ? "Enlaces del pie" : "Footer navigation"
+              locale === "es" ? "Enlaces al pie de página" : "Footer navigation"
             }
             className="self-end border-t border-white/16 pt-7 sm:pt-8 lg:pt-10"
           >
@@ -108,7 +105,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
               {locale === "es" ? "Historia y contacto" : "Story & Contact"}
             </div>
             <div className="mt-5 border-t border-white/12">
-              {visibleSocialLinks.map((link) => (
+              {socialLinks.map((link) => (
                 <a
                   key={link.key}
                   href={link.href}
@@ -137,7 +134,7 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
               locale={locale}
               className={`group mt-7 flex min-h-12 max-w-sm items-center justify-between border-y border-white/18 py-3 text-sm font-bold text-white/84 ${focusRing}`}
             >
-              <span>{locale === "es" ? "Apoyar" : "Support"}</span>
+              <span>{locale === "es" ? "Donar" : "Support"}</span>
               <span
                 aria-hidden="true"
                 className="transition-transform duration-200 group-hover:translate-x-1"

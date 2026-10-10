@@ -30,7 +30,7 @@ const copy = {
       "Compartir el trabajo. Intercambiar ideas. Dar más voz al buen trabajo.",
     whyBody:
       "Esta bitácora no trata solo de nosotros. La usamos para estudiar y reconocer a personas que hacen trabajo útil, conectar ideas entre comunidades y ayudar a que más gente vea lo que ya es posible.",
-    invite: "¿Trabajas en algo parecido? Cuéntanos →",
+    invite: "¿Trabaja en algo parecido? Cuéntenos →",
     read: "Leer →",
     metaTitle: "Bitácora de campo | New World Kids",
     metaDescription:

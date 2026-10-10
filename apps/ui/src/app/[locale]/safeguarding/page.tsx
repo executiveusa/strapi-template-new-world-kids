@@ -92,11 +92,11 @@ const copy = {
     opens: "opens in a new tab",
   },
   es: {
-    metaTitle: "Protección | New World Kids",
+    metaTitle: "Protección de menores | New World Kids",
     metaDescription:
       "Cómo protegemos a los jóvenes en los Primeros 12: quién trabaja con ellos, las reglas del trabajo, cómo reportamos preocupaciones y cómo protegemos su información.",
-    eyebrow: "Protección",
-    policyLink: "Leer la política completa (borrador)",
+    eyebrow: "Protección de menores",
+    policyLink: "Lea la política completa (borrador)",
     title: "Cómo protegemos a los jóvenes.",
     intro:
       "Esto aplica a todas las personas que trabajan con los Primeros 12: personal, mentores y programas anfitriones. Los jóvenes tienen de 16 a 19 años.",
@@ -104,7 +104,7 @@ const copy = {
       {
         h: "Quién trabaja con ellos",
         items: [
-          "Los mentores y contactos anfitriones se aprueban antes de conocer a un participante. Les hacemos verificaciones de antecedentes de la Policía Estatal de Washington (RCW 43.43.830 a 43.43.838).",
+          "Los mentores y contactos anfitriones se aprueban antes de conocer a un participante. Les hacemos verificaciones de antecedentes de la Patrulla Estatal de Washington (RCW 43.43.830 a 43.43.838).",
           "Cada proyecto tiene un adulto supervisor con nombre que está presente durante el trabajo.",
           "Los mentores aceptan nuestra evaluación por escrito antes de ser asignados.",
         ],
@@ -113,7 +113,7 @@ const copy = {
         h: "El trabajo",
         items: [
           "Las horas las fijan juntos el joven, su madre, padre o tutor, y el programa anfitrión. Los tres deben estar de acuerdo.",
-          "Para menores de 18 seguimos las reglas de trabajo infantil de Washington: límites de horas, una autorización firmada de padres y escuela cada año escolar, prueba de edad y el permiso de trabajo de menores del empleador.",
+          "Para menores de 18 seguimos las reglas de trabajo infantil de Washington: límites de horas, una autorización firmada por la madre, el padre o tutor y la escuela cada año escolar, prueba de edad y la autorización del empleador para emplear a menores (minor work permit).",
           "Ningún menor de 18 hace trabajo prohibido, como techado, demolición, excavación mecánica o máquinas y sierras de carpintería motorizadas. Revisamos cada proyecto antes de ofrecerlo.",
           "A los participantes se les paga al menos el salario mínimo más $3 por hora.",
         ],
@@ -127,11 +127,11 @@ const copy = {
         ],
       },
       {
-        h: "Si algo te preocupa",
+        h: "Si algo le preocupa",
         items: [
-          "Si hay peligro inmediato, llama al 911.",
-          "El personal y los mentores deben reportar sospechas de abuso o negligencia. La ley de Washington (RCW 26.44.030) lo exige, incluso a quien supervise a personas que entrenan, enseñan o aconsejan a menores en una organización sin fines de lucro.",
-          "Cualquiera puede avisarnos en info@nwkids.org. Nadie recibe castigo por reportar de buena fe.",
+          "Si hay peligro inmediato, llame al 911.",
+          "El personal y los mentores están obligados por ley a reportar sospechas de abuso o negligencia. La ley de Washington (RCW 26.44.030) lo exige, incluso a quien supervise a personas que entrenan, enseñan o aconsejan a menores en una organización sin fines de lucro.",
+          "Cualquiera puede avisarnos en info@nwkids.org. Nadie sufre represalias por reportar de buena fe.",
         ],
       },
       {
@@ -139,35 +139,35 @@ const copy = {
         items: [
           "No publicamos nombres, escuelas ni horarios de participantes.",
           "Las fotos o videos de un participante requieren consentimiento por escrito de él o ella y, si es menor de 18, de su madre, padre o tutor. El consentimiento se puede retirar.",
-          "El material de Proyecto Indigo Azul nunca se muestra como participantes de Seattle.",
+          "Las imágenes de Proyecto Indigo Azul nunca se muestra como participantes de Seattle.",
         ],
       },
     ] as readonly Item[],
     linksH: "Fuentes oficiales",
     links: [
       [
-        "Horas de trabajo para menores en Washington (L&I)",
+        "Horas de trabajo para menores en Washington (L&I) (en inglés)",
         "https://www.lni.wa.gov/workers-rights/youth-employment/hours-of-work",
       ],
       [
-        "Trabajos prohibidos para menores (L&I)",
+        "Trabajos prohibidos para menores (L&I) (en inglés)",
         "https://www.lni.wa.gov/workers-rights/youth-employment/prohibited-duties",
       ],
       [
-        "Cómo reportar abuso o negligencia infantil (DCYF)",
+        "Cómo reportar abuso o negligencia infantil (DCYF) (en inglés)",
         "https://dcyf.wa.gov/safety/mandated-reporter",
       ],
       [
-        "Presentar una queja de trabajo infantil (L&I)",
+        "Presentar una queja de trabajo infantil (L&I) (en inglés)",
         "https://secure.lni.wa.gov/ChildLaborComplaint/#/",
       ],
       [
-        "Reglas federales de trabajo juvenil (Departamento de Trabajo de EE. UU.)",
+        "Reglas federales de trabajo juvenil (Departamento de Trabajo de EE. UU.) (en inglés)",
         "https://www.dol.gov/agencies/whd/youthrules",
       ],
     ] as readonly (readonly [string, string])[],
     reviewed: "Última revisión: 9 de octubre de 2026.",
-    back: "Volver a los Primeros 12",
+    back: "Volver a Los Primeros 12",
     opens: "se abre en una pestaña nueva",
   },
 } as const

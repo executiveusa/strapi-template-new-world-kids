@@ -1,4 +1,8 @@
-# Spanish copy review (Mexican Spanish): flags only, nothing changed
+# Spanish copy review (Mexican Spanish)
+
+**Status 2026-10-10: all edits below are applied, and the whole site now uses usted** (founder decision). The
+table is kept as the record of what changed and why. Social handles confirmed by the founder: facebook.com/nwkidsorg,
+instagram.com/proyectoindigoazul, youtube.com/@proyectoindigoazul (LinkedIn removed until confirmed).
 
 Reviewed 2026-10-10 by a read-only pass over every `es` string in `apps/ui`. Not covered: HermesVoiceChat, and the
 Spanish text inside IntakeForm and PageHero. Overall the Spanish is natural and safe for Mexico: no vosotros, no

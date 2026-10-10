@@ -107,6 +107,7 @@ const copy = {
     disclosure:
       "New World Kids is a nonprofit program through fiscal sponsorship with Humanitarian Social Innovations, a 501(c)3 public charity. (46-4779591) Questions regarding the relationship should be directed to office@hsifiscalsponsor.org.",
     back: "Back to New World Kids",
+    disclosureNote: "",
     opens: "opens in a new tab",
   },
   es: {
@@ -116,18 +117,18 @@ const copy = {
     eyebrow: "Transparencia",
     title: "Quiénes somos, quién custodia los fondos y cómo verificarlo.",
     intro:
-      "Cada dato de esta página se puede comprobar en un registro público. Si algo es incorrecto o está desactualizado, escribe a info@nwkids.org.",
+      "Cada dato de esta página se puede comprobar en un registro público. Si algo es incorrecto o está desactualizado, escriba a info@nwkids.org.",
     checked: "Última verificación: 9 de octubre de 2026.",
     whoEyebrow: "Quién es quién",
     nwkTitle: "New World Kids",
     nwkBody:
       "Corporación sin fines de lucro de Washington, constituida el 16 de mayo de 2022. UBI 604 917 764 (el número de identificación comercial de Washington). El registro del Secretario de Estado de Washington la muestra como Activa.",
-    nwkVerify: "Verifica en ccfs.sos.wa.gov",
-    nwkVerifyHint: "Busca el número UBI.",
+    nwkVerify: "Verifique en ccfs.sos.wa.gov",
+    nwkVerifyHint: "Busque el número UBI.",
     hsiTitle: "Humanitarian Social Innovations (HSI)",
     hsiBody:
       "Nuestro patrocinador fiscal: una organización benéfica que recibe el dinero donado y se encarga del papeleo por nosotros. HSI es una organización benéfica pública 501(c)(3), EIN 46-4779591 (el número de identificación del IRS para una organización). Las donaciones al fondo de New World Kids se hacen a HSI.",
-    hsiVerify: "Verifica en la búsqueda de organizaciones exentas del IRS",
+    hsiVerify: "Verifique en la búsqueda de organizaciones exentas del IRS",
     peopleTitle: "Quién es responsable",
     peopleNote:
       "Tomado del registro de Washington y de nuestro acuerdo con HSI. Hoy el registro de Washington lista a una persona con el cargo de “governor” (miembro de la mesa directiva).",
@@ -140,11 +141,11 @@ const copy = {
     giveEyebrow: "Cómo funcionan las donaciones",
     giveOnlineTitle: "En línea",
     giveOnlineBody:
-      "Nuestra campaña usa la plataforma FundRazr de HSI. Tu recibo mostrará Humanitarian Social Innovations. Eso es correcto.",
-    giveOnlineAction: "Apoya a los Primeros 12",
+      "Nuestra campaña usa la plataforma FundRazr de HSI. Su recibo mostrará Humanitarian Social Innovations. Eso es correcto.",
+    giveOnlineAction: "Apoye a Los Primeros 12",
     giveCheckTitle: "Con cheque",
     giveCheckBody:
-      "Hazlo a nombre de “Humanitarian Social Innovations” o “HSI” y escribe “New World Kids” en la línea de memo para que HSI acredite el fondo correcto. Envíalo a:",
+      "Haga el cheque a nombre de “Humanitarian Social Innovations” o “HSI” y escriba “New World Kids” en el renglón de memo (nota) para que HSI acredite el fondo correcto. Envíelo a:",
     giveCheckAddress: [
       "Humanitarian Social Innovations",
       "301 Broadway, Suite 115",
@@ -154,10 +155,10 @@ const copy = {
     supportsBody:
       "Salarios de los participantes, transporte, materiales de proyecto, equipo, apoyo a mentores y coordinación del programa.",
     taxNote:
-      "Las cartas del IRS que aparecen abajo indican que los donantes pueden deducir las contribuciones a HSI según la ley. Consulta a tu asesor fiscal sobre tu caso.",
+      "Las cartas del IRS que aparecen abajo indican que los donantes pueden deducir las contribuciones a HSI según la ley. Consulte a su asesor fiscal sobre su caso.",
     docsEyebrow: "Documentos",
     docsNote:
-      "Alojados por HSI para que siempre veas sus originales vigentes. Están en inglés.",
+      "Los aloja HSI para que usted siempre consulte los originales vigentes. Están en inglés.",
     docs: {
       irs2023: {
         title: "Carta del IRS, noviembre de 2023",
@@ -169,7 +170,7 @@ const copy = {
       },
       form990: {
         title: "Formulario 990 de HSI, 2024",
-        body: "Declaración anual de HSI (con datos tachados).",
+        body: "Declaración anual de HSI (con datos confidenciales omitidos).",
       },
       audit: {
         title: "Estados financieros auditados de HSI, 2024",
@@ -188,6 +189,8 @@ const copy = {
       "Sobre New World Kids: info@nwkids.org. Sobre la relación de patrocinio: office@hsifiscalsponsor.org.",
     disclosure:
       "New World Kids is a nonprofit program through fiscal sponsorship with Humanitarian Social Innovations, a 501(c)3 public charity. (46-4779591) Questions regarding the relationship should be directed to office@hsifiscalsponsor.org.",
+    disclosureNote:
+      "Este es el aviso requerido por HSI, en inglés. New World Kids es un programa bajo patrocinio fiscal de HSI.",
     back: "Volver a New World Kids",
     opens: "se abre en una pestaña nueva",
   },
@@ -432,6 +435,11 @@ export default async function TransparencyPage({
             <p className="mt-6 border-t border-black/15 pt-5 text-xs leading-6 text-[var(--color-text-muted)]">
               {t.disclosure}
             </p>
+            {t.disclosureNote ? (
+              <p className="mt-2 text-xs leading-6 text-[var(--color-text-muted)]">
+                {t.disclosureNote}
+              </p>
+            ) : null}
             <Link href="/" locale={locale} className={`${linkClass} mt-8`}>
               <span>{t.back}</span>
               <span aria-hidden="true">→</span>

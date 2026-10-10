@@ -45,7 +45,7 @@ export const facts: {
   safeguardingPolicyHref: "/safeguarding",
   targets: {
     en: "All 12 places filled within 2027, after launch. Completion and other results targets will be set once the pilot ends.",
-    es: "Los 12 lugares ocupados durante 2027, después del lanzamiento. Las metas de finalización y otros resultados se fijarán cuando termine el piloto.",
+    es: "Los 12 cupos cubiertos durante 2027, después del lanzamiento del programa. Las metas de finalización y otros resultados se fijarán cuando termine el piloto.",
   },
   // Jeremy Bowers: Washington Secretary of State record (governor) and the signed HSI
   // agreement (program manager). Stacy McSwain: role given by the founder on 2026-10-09;
@@ -55,7 +55,7 @@ export const facts: {
       name: "Jeremy Bowers",
       role: {
         en: "Governor (Washington record) and program manager (HSI agreement)",
-        es: "Gobernador (registro de Washington) y gerente del programa (acuerdo con HSI)",
+        es: "Miembro de la mesa directiva (cargo de “governor” en el registro de Washington) y gerente del programa (acuerdo con HSI)",
       },
     },
     {

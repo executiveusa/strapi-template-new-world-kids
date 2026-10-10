@@ -34,12 +34,7 @@ export function OrganizationJsonLd({ locale }: { locale: "en" | "es" }) {
       description: "Fiscal sponsor. 501(c)(3) public charity, EIN 46-4779591.",
       url: "https://hsifiscalsponsor.org",
     },
-    sameAs: [
-      siteLinks.facebook,
-      siteLinks.instagram,
-      siteLinks.linkedin,
-      siteLinks.youtube,
-    ],
+    sameAs: [siteLinks.facebook, siteLinks.instagram, siteLinks.youtube],
   }
 
   return (
