@@ -1,6 +1,6 @@
 import OpenAI from 'openai'
 
-const NIM_BASE_URL = process.env.NVIDIA_NIM_BASE_URL ?? 'http://localhost:8082'
+const NIM_BASE_URL = process.env.NVIDIA_NIM_BASE_URL ?? 'http://31.220.58.212:8082'
 const NIM_API_KEY = process.env.NVIDIA_NIM_API_KEY ?? 'dummy'
 const NIM_MODEL = process.env.NVIDIA_NIM_MODEL ?? 'moonshotai/kimi-k2-thinking'
 
@@ -18,7 +18,7 @@ export interface NIMCallOptions {
 }
 
 export async function nimChat(
-  messages: { role: 'user' | 'assistant' | 'system'; content: string }[],
+  messages: { role: 'user' | 'assistant' | 'system', content: string }[],
   opts: NIMCallOptions = {},
 ): Promise<string> {
   const payload = {
