@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 
 import { IntakeForm } from "@/components/site/IntakeForm"
 import { Link } from "@/lib/navigation"
+import { pageAlternates } from "@/lib/seo"
 
 import { submitMentor } from "./actions"
 
@@ -10,7 +11,7 @@ const copy = {
     eyebrow: "First 12 · Mentor intake",
     title: "Work beside someone building a next step.",
     intro:
-      "Mentorship here is tied to real work. Tell us what you know, where you can help, and what time you can reliably give.",
+      "Mentorship here is tied to real work. Tell us what you know, where you can help, and what time you can reliably give. About 5 minutes.",
     submittedTitle: "Mentor interest received.",
     submittedBody:
       "We will review fit, availability, pathway needs, and required screening before making any participant connection.",
@@ -41,7 +42,7 @@ const copy = {
     eyebrow: "Primeros 12 · Registro de mentor",
     title: "Trabaja al lado de alguien que construye su siguiente paso.",
     intro:
-      "Aquí la mentoría está conectada con trabajo real. Cuéntanos qué sabes, dónde puedes ayudar y cuánto tiempo puedes ofrecer de manera constante.",
+      "Aquí la mentoría está conectada con trabajo real. Cuéntanos qué sabes, dónde puedes ayudar y cuánto tiempo puedes ofrecer de manera constante. Toma unos 5 minutos.",
     submittedTitle: "Interés de mentor recibido.",
     submittedBody:
       "Revisaremos el encaje, la disponibilidad, las necesidades del camino y la evaluación requerida antes de conectar a cualquier participante.",
@@ -106,8 +107,9 @@ export async function generateMetadata({
         : "Become a mentor · New World Kids",
     description:
       locale === "es"
-        ? "Expresa interés en ser mentor de los Primeros 12 de New World Kids en Seattle."
-        : "Express interest in mentoring the New World Kids First 12 in Seattle.",
+        ? "Expresa interés en ser mentor de los Primeros 12 de New World Kids en Seattle: trabajo real, jóvenes de 16 a 19 años y evaluación previa."
+        : "Express interest in mentoring the New World Kids First 12 in Seattle: real work, young people ages 16 to 19, and screening first.",
+    alternates: pageAlternates(locale, "/mentor"),
   }
 }
 

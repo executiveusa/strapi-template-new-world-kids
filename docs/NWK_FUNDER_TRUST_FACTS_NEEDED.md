@@ -53,4 +53,21 @@ the Transparency, First 12, Donate and Privacy pages.
 - Proyecto Indigo Azul: demonstration food forest built by New World Kids starting in 2020, designed to become a
   learning center and cultural exchange program. A dated gallery is still to build.
 - Participant language: not required, but supported. Page says so.
-- Saved for the end: item 11 (people, advisers, second governor).
+- Saved for the end: item 11 (people, advisers, second governor). Still open.
+
+## Answered 2026-10-09 and 2026-10-10 (third round)
+
+- Team: Stacy McSwain, sports mentor program lead, is listed. Get her written OK to be named publicly.
+- Employer: New World Kids pays wages. The site calls this "the plan" and says details are being finalized with HSI,
+  so it stays accurate while the HSI written OK is pending. Remove "the plan" wording once HSI approves.
+- Schedule: set per host program (sports, art, and so on) by the young person, parent or guardian, and the host.
+  No fixed schedule is published.
+- Safeguarding policy: published as a labelled draft at `/safeguarding/policy` (English and Spanish), with every
+  undecided item marked "open". Replace it with the adopted version once the board and HSI approve.
+- Privacy policy: rewritten from a plain-language model (NTEN's policy structure). Retention periods are marked as to be
+  published. Needs counsel and HSI review.
+- Plant list: to come from you; the gallery has a collapsed "plant list" slot ready (`apps/ui/src/content/gallery.ts`).
+- Referrals come first from adults (coaches, mentors, counselors). No teen-facing page for the first test, by decision.
+- Photos and the 7-year timelapse: to come from you. See `docs/NWK_HERO_TIMELAPSE_PLAN.md`.
+- Database: schema applied to the Supabase project on 2026-10-10 (schema `nwkids`; four migrations).
+  The site needs `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` set on the host. Never commit them.

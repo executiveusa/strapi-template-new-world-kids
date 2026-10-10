@@ -24,14 +24,14 @@ export const facts: {
   },
   schedule: null,
   pay: {
-    en: "Pay is the applicable minimum wage plus $3 an hour. In 2026 that is $20.13 an hour statewide ($17.13 + $3), and $24.30 in Seattle ($21.30 + $3). Minimum wages change every January 1.",
-    es: "El pago es el salario mínimo aplicable más $3 por hora. En 2026 eso es $20.13 por hora en todo el estado ($17.13 + $3) y $24.30 en Seattle ($21.30 + $3). Los salarios mínimos cambian cada 1 de enero.",
+    en: "The planned pay is the applicable minimum wage plus $3 an hour. In 2026 that is $20.13 an hour statewide ($17.13 + $3), and $24.30 in Seattle ($21.30 + $3). Minimum wages change every January 1.",
+    es: "El pago planeado es el salario mínimo aplicable más $3 dólares por hora. En 2026 eso es $20.13 por hora en todo el estado ($17.13 + $3) y $24.30 en Seattle ($21.30 + $3). Los salarios mínimos cambian cada 1 de enero.",
   },
   // Founder decision 2026-10-09: New World Kids pays wages and is the employer.
   // Pending HSI written OK to release payroll funds. See docs/NWK_YOUTH_EMPLOYMENT_COMPLIANCE.md.
   employer: {
-    en: "New World Kids is the employer and pays participants’ wages.",
-    es: "New World Kids es el empleador y paga los salarios de los participantes.",
+    en: "The plan: New World Kids is the employer and pays participants’ wages. We are finalizing the details with our fiscal sponsor, so this may change before the pilot starts.",
+    es: "El plan: New World Kids será el empleador y pagará los salarios de los participantes. Estamos definiendo los detalles con nuestro patrocinador fiscal, así que esto puede cambiar antes de que inicie el piloto.",
   },
   hoursAgreement: {
     en: "Hours are set together by the young person, their parent or guardian, and the host program. All three must agree.",
@@ -39,7 +39,7 @@ export const facts: {
   },
   insurance: {
     en: "Before anyone is paid, the employer registers with Washington L&I for workers’ compensation coverage, as state law requires for employers.",
-    es: "Antes de pagar a cualquier persona, el empleador se registra en L&I de Washington para tener cobertura de compensación laboral, como exige la ley estatal.",
+    es: "Antes de pagar a cualquier persona, el empleador se registra ante el Departamento de Trabajo e Industrias de Washington (L&I) para tener seguro de compensación para trabajadores, como exige la ley estatal.",
   },
   applyOpen: null,
   safeguardingPolicyHref: "/safeguarding",

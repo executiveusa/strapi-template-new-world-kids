@@ -1,12 +1,15 @@
 -- New World Kids: First 12 referral, host, agreement, authorization, and hours tables.
+-- Private tables live in the existing `nwkids` schema (same as mentor_intakes); public.nwk_copy is public-read page copy.
 -- Plain Postgres 13+ (gen_random_uuid is built in); works on Supabase. All tables are private: row level security is on and
 -- there are no policies, so only the service role (server code and staff tools) can read or write.
 -- Rules encoded here come from Washington L&I (chapter 296-125 WAC, read 2026-10-09).
 -- Re-check the hour limits and the wage premium before launch; the rules changed on 2026-07-01.
 
 
+create schema if not exists nwkids;
+
 -- Shared updated_at trigger ---------------------------------------------------------------
-create or replace function public.nwk_touch_updated_at() returns trigger
+create or replace function nwkids.touch_updated_at() returns trigger
 language plpgsql as $$
 begin
   new.updated_at = now();
@@ -14,7 +17,7 @@ begin
 end $$;
 
 -- 1. Referrals: how a young person is considered (referral only, no direct applications) ---
-create table if not exists public.nwk_referrals (
+create table if not exists nwkids.referrals (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
@@ -48,13 +51,13 @@ create table if not exists public.nwk_referrals (
   reviewed_at timestamptz,
   decision_note text
 );
-create index if not exists nwk_referrals_status_idx on public.nwk_referrals (status, created_at desc);
-create index if not exists nwk_referrals_county_idx on public.nwk_referrals (county);
-create trigger nwk_referrals_touch before update on public.nwk_referrals
-  for each row execute function public.nwk_touch_updated_at();
+create index if not exists nwk_referrals_status_idx on nwkids.referrals (status, created_at desc);
+create index if not exists nwk_referrals_county_idx on nwkids.referrals (county);
+create trigger nwk_referrals_touch before update on nwkids.referrals
+  for each row execute function nwkids.touch_updated_at();
 
 -- 2. Hosts: the project or program where a participant works ---------------------------------
-create table if not exists public.nwk_hosts (
+create table if not exists nwkids.hosts (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
@@ -74,16 +77,16 @@ create table if not exists public.nwk_hosts (
   background_check_on date,                   -- date staff finished checks on host contacts
   status text not null default 'prospect' check (status in ('prospect', 'approved', 'paused', 'closed'))
 );
-create trigger nwk_hosts_touch before update on public.nwk_hosts
-  for each row execute function public.nwk_touch_updated_at();
+create trigger nwk_hosts_touch before update on nwkids.hosts
+  for each row execute function nwkids.touch_updated_at();
 
 -- 3. Placements: one young person, one host, one mentor ---------------------------------------
-create table if not exists public.nwk_placements (
+create table if not exists nwkids.placements (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
-  referral_id uuid not null references public.nwk_referrals (id),
-  host_id uuid not null references public.nwk_hosts (id),
+  referral_id uuid not null references nwkids.referrals (id),
+  host_id uuid not null references nwkids.hosts (id),
   slot_number int check (slot_number between 1 and 12),
   mentor_name text,
   mentor_background_check_on date,
@@ -94,17 +97,17 @@ create table if not exists public.nwk_placements (
   ended_on date,
   unique (slot_number)
 );
-create trigger nwk_placements_touch before update on public.nwk_placements
-  for each row execute function public.nwk_touch_updated_at();
+create trigger nwk_placements_touch before update on nwkids.placements
+  for each row execute function nwkids.touch_updated_at();
 
 -- 4. Agreements: the youth, parent or guardian, and host agree on hours and pay ------------------
 -- Hours are set together by the young person, their parent or guardian, and the host program.
 -- Minors (under 18) must stay within L&I limits; a special variance raises the school-week limit.
-create table if not exists public.nwk_agreements (
+create table if not exists nwkids.agreements (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
-  placement_id uuid not null references public.nwk_placements (id),
+  placement_id uuid not null references nwkids.placements (id),
   youth_is_minor boolean not null,
   special_variance boolean not null default false,
 
@@ -132,12 +135,12 @@ create table if not exists public.nwk_agreements (
     )
   )
 );
-create trigger nwk_agreements_touch before update on public.nwk_agreements
-  for each row execute function public.nwk_touch_updated_at();
+create trigger nwk_agreements_touch before update on nwkids.agreements
+  for each row execute function nwkids.touch_updated_at();
 
-create table if not exists public.nwk_agreement_signatures (
+create table if not exists nwkids.agreement_signatures (
   id uuid primary key default gen_random_uuid(),
-  agreement_id uuid not null references public.nwk_agreements (id) on delete cascade,
+  agreement_id uuid not null references nwkids.agreements (id) on delete cascade,
   signer_role text not null check (signer_role in ('youth', 'guardian', 'host')),
   signer_name text not null,
   signed_at timestamptz not null default now(),
@@ -147,28 +150,28 @@ create table if not exists public.nwk_agreement_signatures (
 
 -- An agreement can only become signed or active when the youth and host have signed,
 -- and a parent or guardian has too if the young person is under 18.
-create or replace function public.nwk_require_signatures() returns trigger
+create or replace function nwkids.require_signatures() returns trigger
 language plpgsql as $$
 begin
   if new.status in ('signed', 'active') then
-    if not exists (select 1 from public.nwk_agreement_signatures s where s.agreement_id = new.id and s.signer_role = 'youth')
-       or not exists (select 1 from public.nwk_agreement_signatures s where s.agreement_id = new.id and s.signer_role = 'host')
-       or (new.youth_is_minor and not exists (select 1 from public.nwk_agreement_signatures s where s.agreement_id = new.id and s.signer_role = 'guardian'))
+    if not exists (select 1 from nwkids.agreement_signatures s where s.agreement_id = new.id and s.signer_role = 'youth')
+       or not exists (select 1 from nwkids.agreement_signatures s where s.agreement_id = new.id and s.signer_role = 'host')
+       or (new.youth_is_minor and not exists (select 1 from nwkids.agreement_signatures s where s.agreement_id = new.id and s.signer_role = 'guardian'))
     then
       raise exception 'Agreement % needs signatures from the young person, the host, and a parent or guardian if under 18', new.id;
     end if;
   end if;
   return new;
 end $$;
-create trigger nwk_agreements_signatures before insert or update on public.nwk_agreements
-  for each row execute function public.nwk_require_signatures();
+create trigger nwk_agreements_signatures before insert or update on nwkids.agreements
+  for each row execute function nwkids.require_signatures();
 
 -- 5. Parent/School Authorization (L&I form F700-002-000) --------------------------------------
 -- Required per minor each school year; it expires every September 30. Emancipated minors do not need it.
-create table if not exists public.nwk_work_authorizations (
+create table if not exists nwkids.work_authorizations (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
-  placement_id uuid not null references public.nwk_placements (id),
+  placement_id uuid not null references nwkids.placements (id),
   emancipated boolean not null default false,
   form text not null default 'F700-002-000' check (form in ('F700-002-000', 'F700-168-000')),
   employer_signed_on date,
@@ -184,10 +187,10 @@ create table if not exists public.nwk_work_authorizations (
 );
 
 -- 6. Project safety screens: check each project against prohibited duties ----------------------
-create table if not exists public.nwk_project_screens (
+create table if not exists nwkids.project_screens (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
-  host_id uuid not null references public.nwk_hosts (id),
+  host_id uuid not null references nwkids.hosts (id),
   project_summary text not null,
   screened_by text not null,
   screened_on date not null default current_date,
@@ -201,10 +204,10 @@ create table if not exists public.nwk_project_screens (
 );
 
 -- 7. Hours log -----------------------------------------------------------------------------
-create table if not exists public.nwk_hours_log (
+create table if not exists nwkids.hours_log (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
-  placement_id uuid not null references public.nwk_placements (id),
+  placement_id uuid not null references nwkids.placements (id),
   work_date date not null,
   start_time time not null,
   end_time time not null,
@@ -215,21 +218,21 @@ create table if not exists public.nwk_hours_log (
 );
 
 -- Lock everything down. Server code uses the service role, which bypasses row level security.
-alter table public.nwk_referrals enable row level security;
-alter table public.nwk_hosts enable row level security;
-alter table public.nwk_placements enable row level security;
-alter table public.nwk_agreements enable row level security;
-alter table public.nwk_agreement_signatures enable row level security;
-alter table public.nwk_work_authorizations enable row level security;
-alter table public.nwk_project_screens enable row level security;
-alter table public.nwk_hours_log enable row level security;
+alter table nwkids.referrals enable row level security;
+alter table nwkids.hosts enable row level security;
+alter table nwkids.placements enable row level security;
+alter table nwkids.agreements enable row level security;
+alter table nwkids.agreement_signatures enable row level security;
+alter table nwkids.work_authorizations enable row level security;
+alter table nwkids.project_screens enable row level security;
+alter table nwkids.hours_log enable row level security;
 
 -- Public intake function: validates and inserts one referral. Called from the server with the service role.
 create or replace function public.nwkids_submit_referral(p_payload jsonb) returns uuid
-language plpgsql security definer set search_path = public as $$
+language plpgsql security definer set search_path = nwkids, public as $$
 declare new_id uuid;
 begin
-  insert into public.nwk_referrals (
+  insert into nwkids.referrals (
     locale, referrer_name, referrer_org, referrer_role, referrer_email, referrer_phone,
     youth_first_name, youth_age, county, pathway, interests, notes,
     youth_aware, guardian_aware, consent
@@ -264,13 +267,13 @@ create table if not exists public.nwk_copy (
   primary key (page, locale, key)
 );
 create trigger nwk_copy_touch before update on public.nwk_copy
-  for each row execute function public.nwk_touch_updated_at();
+  for each row execute function nwkids.touch_updated_at();
 alter table public.nwk_copy enable row level security;
 drop policy if exists nwk_copy_public_read on public.nwk_copy;
 create policy nwk_copy_public_read on public.nwk_copy for select to anon, authenticated using (true);
 
 -- 9. "Tell me when it is live" list for the coming-soon page ----------------------------------------
-create table if not exists public.nwk_waitlist (
+create table if not exists nwkids.waitlist (
   id uuid primary key default gen_random_uuid(),
   created_at timestamptz not null default now(),
   email text not null check (email ~* '^[^@\s]+@[^@\s]+\.[^@\s]+$' and char_length(email) <= 254),
@@ -278,13 +281,13 @@ create table if not exists public.nwk_waitlist (
   consent boolean not null check (consent),
   unique (email)
 );
-alter table public.nwk_waitlist enable row level security;
+alter table nwkids.waitlist enable row level security;
 
 create or replace function public.nwkids_join_waitlist(p_email text, p_locale text, p_consent boolean) returns uuid
-language plpgsql security definer set search_path = public as $$
+language plpgsql security definer set search_path = nwkids, public as $$
 declare new_id uuid;
 begin
-  insert into public.nwk_waitlist (email, locale, consent)
+  insert into nwkids.waitlist (email, locale, consent)
   values (lower(trim(p_email)), coalesce(nullif(p_locale, ''), 'en'), coalesce(p_consent, false))
   on conflict (email) do update set locale = excluded.locale
   returning id into new_id;
@@ -292,3 +295,14 @@ begin
 end $$;
 revoke all on function public.nwkids_join_waitlist(text, text, boolean) from public, anon, authenticated;
 grant execute on function public.nwkids_join_waitlist(text, text, boolean) to service_role;
+
+-- Staff tools and server code use the service role; the schema is not exposed through the public API ---------
+grant usage on schema nwkids to service_role;
+grant select, insert, update, delete on
+  nwkids.referrals, nwkids.hosts, nwkids.placements, nwkids.agreements,
+  nwkids.agreement_signatures, nwkids.work_authorizations, nwkids.project_screens,
+  nwkids.hours_log, nwkids.waitlist
+to service_role;
+alter function nwkids.touch_updated_at() set search_path = pg_catalog, public;
+alter function nwkids.require_signatures() set search_path = pg_catalog, nwkids, public;
+-- Applied to the live project as four migrations (nwkids_first12_part1 to part4) on 2026-10-10.

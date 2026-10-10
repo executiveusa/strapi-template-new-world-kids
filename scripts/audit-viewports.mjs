@@ -26,14 +26,23 @@ const argValue = (flag) => (args.includes(flag) ? args[args.indexOf(flag) + 1] :
 
 const ROUTES = (argValue("--routes")?.split(",") ?? [
   "/", "/es", "/first-12", "/es/first-12", "/projects", "/gallery", "/transparency", "/donate",
-  "/safeguarding", "/privacy", "/refer", "/mentor", "/opportunity", "/blog", "/coming-soon", "/es/coming-soon",
+  "/safeguarding", "/safeguarding/policy", "/privacy", "/refer", "/mentor", "/opportunity", "/blog", "/coming-soon", "/es/coming-soon",
 ]).map((r) => r.trim())
 
 const VIEWPORTS = [
   [320, 568], [360, 800], [375, 812], [390, 844], [414, 896], [430, 932], [768, 1024], [1024, 768], [1280, 800], [1440, 900],
 ]
 
-const { chromium } = await loadPlaywright()
+const playwright = await loadPlaywright()
+const { chromium } = playwright
+
+// --devices runs named phones and tablets from Playwright's open-source device list (viewport, pixel ratio,
+// touch, user agent) on Chromium. It is emulation: real Safari and Android still need a check on a phone.
+const DEVICES = ["iPhone SE", "iPhone 13", "iPhone 15 Pro Max", "Pixel 7", "Galaxy S9+", "Galaxy A55", "iPad Mini", "Galaxy Tab S9"]
+const useDevices = args.includes("--devices")
+const targets = useDevices
+  ? DEVICES.filter((name) => playwright.devices[name]).map((name) => ({ name, options: playwright.devices[name], w: playwright.devices[name].viewport.width, h: playwright.devices[name].viewport.height }))
+  : VIEWPORTS.map(([w, h]) => ({ name: `${w}x${h}`, w, h, options: { viewport: { width: w, height: h }, deviceScaleFactor: 1, hasTouch: w < 1000, isMobile: w < 800 } }))
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH ?? "/opt/pw-browsers/chromium" })
 
 const pageChecks = () => {
@@ -106,8 +115,8 @@ const pageChecks = () => {
 
 const rows = []
 for (const route of ROUTES) {
-  for (const [w, h] of VIEWPORTS) {
-    const context = await browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: 1, hasTouch: w < 1000, isMobile: w < 800 })
+  for (const { name, w, h, options } of targets) {
+    const context = await browser.newContext(options)
     const page = await context.newPage()
     const errors = []
     page.on("console", (m) => m.type() === "error" && errors.push(m.text().slice(0, 120)))
@@ -124,7 +133,7 @@ for (const route of ROUTES) {
         return { sw, iw, culprits }
       })
       const checks = await page.evaluate(pageChecks)
-      rows.push({ route, w, h, status, overflow, errors, ...checks })
+      rows.push({ route, w, h, name, status, overflow, errors, ...checks })
     } catch (e) {
       rows.push({ route, w, h, status, fatal: String(e).slice(0, 160) })
     }
@@ -133,9 +142,9 @@ for (const route of ROUTES) {
 }
 await browser.close()
 
-const phones = (r) => r.w < 800
+const phones = (r) => r.w < 1000
 const summary = {}
-const add = (key, row, items) => { if (!items?.length) return; ;(summary[key] ??= {}); for (const item of items) { const k = `${row.route}  ${item}`; (summary[key][k] ??= new Set()).add(row.w) } }
+const add = (key, row, items) => { if (!items?.length) return; ;(summary[key] ??= {}); for (const item of items) { const k = `${row.route}  ${item}`; (summary[key][k] ??= new Set()).add(row.name ?? row.w) } }
 for (const row of rows) {
   if (row.fatal) add("fatal", row, [row.fatal])
   if (row.status && row.status !== 200) add("status", row, [String(row.status)])

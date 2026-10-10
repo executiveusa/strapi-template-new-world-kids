@@ -5,7 +5,6 @@ import {
   Building2,
   ExternalLink,
   FileText,
-  Globe,
   Instagram,
   LayoutDashboard,
   Leaf,
@@ -41,7 +40,6 @@ const navTools = [
 ]
 
 const navPublic = [
-  { icon: Globe, label: "Mission ledger", href: "/mission", external: false },
   { icon: ExternalLink, label: "nwkids.org", href: "/", external: true },
 ]
 

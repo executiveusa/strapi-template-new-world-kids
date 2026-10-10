@@ -8,8 +8,8 @@ const copy = {
   en: {
     firstEyebrow: "The First 12",
     firstTitle:
-      "We are matching 12 local participants with mentors for a pilot program.",
-    firstBody: "Seattle & Surrounding Areas · 2027",
+      "We are matching 12 young people in Seattle with mentors and paid projects.",
+    firstBody: "Seattle and nearby · 2027",
     detailsAction: "Read the program details →",
     howEyebrow: "How it works",
     howTitle: "Interest → Project → Mentor → Next Step",
@@ -42,8 +42,8 @@ const copy = {
   es: {
     firstEyebrow: "Los Primeros 12",
     firstTitle:
-      "Estamos conectando a 12 participantes locales con mentores para un programa piloto.",
-    firstBody: "Seattle y Áreas Cercanas · 2027",
+      "Estamos conectando a 12 jóvenes de Seattle con mentores y proyectos con sueldo.",
+    firstBody: "Seattle y zonas cercanas · 2027",
     detailsAction: "Lee los detalles del programa →",
     howEyebrow: "Cómo funciona",
     howTitle: "Interés → Proyecto → Mentor → Siguiente paso",
@@ -96,7 +96,7 @@ export function PathwaySection() {
         id="first-12"
         className="bg-[var(--color-bg)] px-5 py-20 sm:px-8 sm:py-24 md:px-10 md:py-32 lg:py-36"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="rise mx-auto max-w-7xl">
           <p className="text-xs font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
             {t.firstEyebrow}
           </p>
@@ -159,7 +159,7 @@ export function PathwaySection() {
         id="proof"
         className="bg-[#1e1a17] px-5 py-20 text-white sm:px-8 sm:py-24 md:px-10 md:py-32 lg:py-36"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="rise mx-auto max-w-7xl">
           <div className="grid gap-8 sm:gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-20">
             <div>
               <p className="text-xs font-semibold tracking-[0.22em] text-white/48 uppercase sm:text-xs">
@@ -210,7 +210,7 @@ export function PathwaySection() {
         id="partners"
         className="bg-[var(--color-paper)] px-5 py-20 text-[var(--color-ink)] sm:px-8 sm:py-24 md:px-10 md:py-32 lg:py-36"
       >
-        <div className="mx-auto max-w-7xl">
+        <div className="rise mx-auto max-w-7xl">
           <p className="text-xs font-semibold tracking-[0.22em] text-[var(--color-nwk-blue)] uppercase sm:text-xs">
             {t.partnerEyebrow}
           </p>

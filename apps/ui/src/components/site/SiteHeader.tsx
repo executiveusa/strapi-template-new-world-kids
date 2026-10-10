@@ -29,16 +29,31 @@ const navigation = {
 const focusRing =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-brand)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-paper)]"
 
-export function SiteHeader({ locale }: { readonly locale: Locale }) {
-  const items = locale === "es" ? navigation.es : navigation.en
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const reduceMotion = useReducedMotion()
-  const toggleRef = useRef<HTMLButtonElement>(null)
-  const panelRef = useRef<HTMLDivElement>(null)
-  const wasOpen = useRef(false)
+// Keep Tab inside the open menu (the menu button stays reachable as the first stop).
+function trapTab(
+  event: KeyboardEvent,
+  toggle: HTMLButtonElement | null,
+  focusables: () => HTMLElement[]
+) {
+  const stops = [toggle, ...focusables()].filter(Boolean)
+  const first = stops[0]
+  const last = stops.at(-1)
+  const atStart = event.shiftKey && document.activeElement === first
+  const atEnd = !event.shiftKey && document.activeElement === last
+  if (!atStart && !atEnd) return
+  event.preventDefault()
+  ;(atStart ? last : first)?.focus()
+}
 
+function useMenuFocus(
+  open: boolean,
+  setOpen: (value: boolean) => void,
+  toggleRef: React.RefObject<HTMLButtonElement | null>,
+  panelRef: React.RefObject<HTMLDivElement | null>
+) {
+  const wasOpen = useRef(false)
   useEffect(() => {
-    if (!mobileOpen) {
+    if (!open) {
       // Return focus to the menu button after closing, but not on first render.
       if (wasOpen.current) toggleRef.current?.focus()
       wasOpen.current = false
@@ -54,23 +69,9 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
     focusables()[0]?.focus()
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMobileOpen(false)
-
-        return
-      }
-      if (event.key !== "Tab") return
-      // Keep Tab inside the open menu (the menu button stays reachable as the first stop).
-      const items = [toggleRef.current, ...focusables()].filter(Boolean)
-      const first = items[0]
-      const last = items.at(-1)
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault()
-        last?.focus()
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault()
-        first?.focus()
-      }
+      if (event.key === "Escape") setOpen(false)
+      else if (event.key === "Tab")
+        trapTab(event, toggleRef.current, focusables)
     }
 
     document.body.style.overflow = "hidden"
@@ -80,7 +81,16 @@ export function SiteHeader({ locale }: { readonly locale: Locale }) {
       document.body.style.overflow = previous
       window.removeEventListener("keydown", onKeyDown)
     }
-  }, [mobileOpen])
+  }, [open, setOpen, toggleRef, panelRef])
+}
+
+export function SiteHeader({ locale }: { readonly locale: Locale }) {
+  const items = locale === "es" ? navigation.es : navigation.en
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const reduceMotion = useReducedMotion()
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const panelRef = useRef<HTMLDivElement>(null)
+  useMenuFocus(mobileOpen, setMobileOpen, toggleRef, panelRef)
 
   return (
     <header

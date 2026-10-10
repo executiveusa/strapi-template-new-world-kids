@@ -3,13 +3,14 @@
 import Image from "next/image"
 import { useLocale } from "next-intl"
 
+import { heroTimelapse } from "@/content/hero"
 import { Link } from "@/lib/navigation"
 
 const copy = {
   en: {
     eyebrow: "Seattle · First 12 · 2027",
     title: "Help turn interest into opportunity.",
-    body: "Start with what they care about. Connect it to real work, a mentor, and a clear next action.",
+    body: "Paid work, a mentor, and a next step for young people ages 16 to 19 in Seattle.",
     primary: "Join the work",
     caption:
       "Proyecto Indigo Azul · Puerto Vallarta, Mexico. Where it started. Seattle footage is coming.",
@@ -18,7 +19,7 @@ const copy = {
   es: {
     eyebrow: "Seattle · Primeros 12 · 2027",
     title: "Ayuda a convertir interés en oportunidad.",
-    body: "Empezamos con lo que les importa. Lo conectamos con trabajo real, un mentor y una próxima acción clara.",
+    body: "Trabajo remunerado, un mentor y un siguiente paso para jóvenes de 16 a 19 años en Seattle.",
     primary: "Súmate al trabajo",
     caption:
       "Proyecto Indigo Azul · Puerto Vallarta, México. Donde empezó. El material de Seattle viene en camino.",
@@ -42,10 +43,30 @@ export function NonprofitHero() {
             sizes="100vw"
             className="object-cover object-center opacity-80"
           />
+          {heroTimelapse ? (
+            <video
+              className="absolute inset-0 h-full w-full object-cover opacity-80 motion-reduce:hidden"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={heroTimelapse.poster}
+              aria-hidden="true"
+              tabIndex={-1}
+            >
+              {heroTimelapse.webm ? (
+                <source src={heroTimelapse.webm} type="video/webm" />
+              ) : null}
+              <source src={heroTimelapse.mp4} type="video/mp4" />
+            </video>
+          ) : null}
           <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,9,0.35),rgba(10,10,9,0.15)_35%,rgba(10,10,9,0.82))]" />
         </div>
         <p className="absolute top-5 right-5 left-5 z-10 max-w-[22rem] text-xs leading-5 text-white/85 sm:top-7 sm:right-8 sm:left-auto sm:text-right md:right-12">
-          {t.caption}
+          {heroTimelapse
+            ? heroTimelapse.caption[locale === "es" ? "es" : "en"]
+            : t.caption}
         </p>
         <div className="relative z-10 mx-auto flex min-h-[calc(100svh-64px)] max-w-[1480px] items-end px-5 pt-24 pb-10 sm:px-8 sm:pt-28 sm:pb-14 md:min-h-[calc(100svh-68px)] md:px-12 md:pb-16 lg:px-16 lg:pb-20 xl:px-20">
           <div className="w-full max-w-[980px]">

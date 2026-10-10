@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { IntakeForm } from "@/components/site/IntakeForm"
 import { Link } from "@/lib/navigation"
 import { withCopyOverrides } from "@/lib/nwkids/copy"
+import { pageAlternates } from "@/lib/seo"
 
 import { submitReferral } from "./actions"
 
@@ -16,7 +17,7 @@ const copy = {
     eyebrow: "First 12 · Referral",
     title: "Refer a young person.",
     intro:
-      "For the pilot, young people join by referral only. You tell us who might be a good fit. We contact you first, and we only reach out to the young person once you have talked with them.",
+      "For the pilot, young people join by referral only, and referrals come from adults such as coaches, counselors, and mentors. You tell us who might be a good fit. About 3 minutes. We contact you first, and we only reach out to the young person once you have talked with them.",
     who: "Ages 16 to 19 in King, Snohomish, Pierce, or Skagit County. Free for the 12 selected.",
     submittedTitle: "Referral received.",
     submittedBody:
@@ -69,7 +70,7 @@ const copy = {
     eyebrow: "Primeros 12 · Referencia",
     title: "Refiere a un joven.",
     intro:
-      "En el piloto, los jóvenes entran solo por referencia. Cuéntanos quién podría encajar. Te contactamos primero a ti, y solo nos comunicamos con el joven cuando tú ya hablaste con él o ella.",
+      "En el piloto, los jóvenes entran solo por referencia, y las referencias vienen de adultos como entrenadores, consejeros y mentores. Cuéntanos quién podría encajar. Toma unos 3 minutos. Te contactamos primero a ti, y solo nos comunicamos con el joven cuando tú ya hablaste con él o ella.",
     who: "De 16 a 19 años en los condados de King, Snohomish, Pierce o Skagit. Gratis para los 12 seleccionados.",
     submittedTitle: "Referencia recibida.",
     submittedBody:
@@ -141,6 +142,11 @@ export async function generateMetadata({
       locale === "es"
         ? "Refiere a un joven · New World Kids"
         : "Refer a young person · New World Kids",
+    description:
+      locale === "es"
+        ? "Recomienda a un joven de 16 a 19 años para Los Primeros 12 de New World Kids en Seattle. Solo por recomendación de un adulto."
+        : "Refer a young person ages 16 to 19 for the New World Kids First 12 in Seattle. Referral only, from a coach, counselor, or mentor.",
+    alternates: pageAlternates(locale, "/refer"),
   }
 }
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 
 import { Link } from "@/lib/navigation"
 import { withCopyOverrides } from "@/lib/nwkids/copy"
+import { pageAlternates } from "@/lib/seo"
 
 // Commitments here follow Washington and federal rules read on 2026-10-09 (see
 // docs/NWK_COMPLIANCE_CROSSWALK.md). Counsel and HSI should review before launch.
@@ -16,6 +17,7 @@ const copy = {
     metaDescription:
       "How we keep young people safe in the First 12: who works with them, the work rules, how we report concerns, and how we protect their information.",
     eyebrow: "Safeguards",
+    policyLink: "Read the full policy (draft)",
     title: "How we keep young people safe.",
     intro:
       "These apply to everyone who works with the First 12: staff, mentors, and host programs. The young people are 16 to 19.",
@@ -94,6 +96,7 @@ const copy = {
     metaDescription:
       "Cómo protegemos a los jóvenes en los Primeros 12: quién trabaja con ellos, las reglas del trabajo, cómo reportamos preocupaciones y cómo protegemos su información.",
     eyebrow: "Protección",
+    policyLink: "Leer la política completa (borrador)",
     title: "Cómo protegemos a los jóvenes.",
     intro:
       "Esto aplica a todas las personas que trabajan con los Primeros 12: personal, mentores y programas anfitriones. Los jóvenes tienen de 16 a 19 años.",
@@ -177,7 +180,11 @@ export async function generateMetadata({
   const { locale } = await params
   const t = locale === "es" ? copy.es : copy.en
 
-  return { title: t.metaTitle, description: t.metaDescription }
+  return {
+    title: t.metaTitle,
+    description: t.metaDescription,
+    alternates: pageAlternates(locale, "/safeguarding"),
+  }
 }
 
 export default async function SafeguardingPage({
@@ -199,9 +206,17 @@ export default async function SafeguardingPage({
         <p className="mt-7 border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
           {t.intro}
         </p>
+        <Link
+          href="/safeguarding/policy"
+          locale={locale}
+          className="btn-quiet press mt-6 inline-flex"
+        >
+          <span>{t.policyLink}</span>
+          <span aria-hidden="true">→</span>
+        </Link>
         <div className="mt-10 divide-y divide-black/15 border-y border-black/15">
           {t.groups.map((group) => (
-            <section key={group.h} className="py-7">
+            <section key={group.h} className="rise py-7">
               <h2 className="text-xl font-bold tracking-[-0.02em]">
                 {group.h}
               </h2>

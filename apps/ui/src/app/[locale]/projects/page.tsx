@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import type { Locale } from "next-intl"
 
 import { Link } from "@/lib/navigation"
+import { pageAlternates } from "@/lib/seo"
 
 const copy = {
   en: {
@@ -132,7 +133,11 @@ export async function generateMetadata({
   const { locale } = (await params) as { locale: Locale }
   const t = locale === "es" ? copy.es : copy.en
 
-  return { title: t.metaTitle, description: t.metaDescription }
+  return {
+    title: t.metaTitle,
+    description: t.metaDescription,
+    alternates: pageAlternates(locale, "/projects"),
+  }
 }
 
 export default async function ProjectsPage({

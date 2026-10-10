@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { facts } from "@/content/facts"
 import { Link } from "@/lib/navigation"
 import { withCopyOverrides } from "@/lib/nwkids/copy"
+import { pageAlternates } from "@/lib/seo"
 
 // Verified sources: the New World Kids FundRazr campaign text (program shape,
 // who it is for, what donations pay for), the intake forms (screening and
@@ -47,7 +48,7 @@ const copy = {
       "Participants earn income on real projects. Donations help cover participant wages, transportation, project materials, equipment, mentor support, and program coordination.",
     lawEyebrow: "Paid work and the law",
     lawIntro:
-      "Participants are paid employees, not volunteers. Everyone we place who is 16 or 17 is covered by Washington’s child labor rules, and we design every project to fit them:",
+      "Participants are paid employees. If you are under 18, Washington’s child labor rules protect you. We build every project to fit them:",
     law: [
       "Hours limits for 16 and 17 year olds: in a school week, up to 4 hours a day and 20 hours a week, between 7 a.m. and 10 p.m.; in a non-school week, up to 8 hours a day and 48 hours a week.",
       "A signed parent and school authorization for each minor, renewed every school year, and proof of age on file.",
@@ -89,6 +90,7 @@ const copy = {
       "This is a pilot, so we are not setting outcome targets in advance. We will publish what we learn from the first 12, and set targets for later groups, once they finish.",
     pathwaysAction: "See the four project pathways",
     referAction: "Refer a young person",
+    jumpLabel: "On this page",
     hours:
       "Hours are set together by the young person, their parent or guardian, and the host program. All three must agree.",
     transparency: "Who we are and how to check",
@@ -129,7 +131,7 @@ const copy = {
       "Los participantes ganan ingresos en proyectos reales. Las donaciones ayudan a cubrir salarios de participantes, transporte, materiales de proyecto, equipo, apoyo a mentores y coordinación del programa.",
     lawEyebrow: "Trabajo pagado y la ley",
     lawIntro:
-      "Los participantes son empleados remunerados, no voluntarios. Todo joven de 16 o 17 años que ubiquemos está cubierto por las reglas de trabajo infantil de Washington, y diseñamos cada proyecto para cumplirlas:",
+      "Los participantes son empleados con sueldo. Si tienes menos de 18 años, las reglas de trabajo infantil de Washington te protegen. Diseñamos cada proyecto para cumplirlas:",
     law: [
       "Límites de horas para jóvenes de 16 y 17 años: en semana escolar, hasta 4 horas al día y 20 a la semana, entre las 7 a. m. y las 10 p. m.; en semana sin clases, hasta 8 horas al día y 48 a la semana.",
       "Una autorización firmada de padres y escuela para cada menor, renovada cada año escolar, y prueba de edad en el expediente.",
@@ -174,6 +176,7 @@ const copy = {
       "Este es un piloto, así que no fijamos metas de resultados de antemano. Publicaremos lo que aprendamos de los primeros 12 y fijaremos metas para grupos futuros cuando terminen.",
     pathwaysAction: "Ver los cuatro caminos de proyectos",
     referAction: "Refiere a un joven",
+    jumpLabel: "En esta página",
     hours:
       "Las horas las fijan juntos el joven, su madre, padre o tutor, y el programa anfitrión. Los tres deben estar de acuerdo.",
     transparency: "Quiénes somos y cómo verificarlo",
@@ -194,19 +197,28 @@ export async function generateMetadata({
   const { locale } = await params
   const t = locale === "es" ? copy.es : copy.en
 
-  return { title: t.metaTitle, description: t.metaDescription }
+  return {
+    title: t.metaTitle,
+    description: t.metaDescription,
+    alternates: pageAlternates(locale, "/first-12"),
+  }
 }
 
 function Row({
   label,
+  id,
   children,
 }: {
   readonly label: string
+  readonly id?: string
   readonly children: React.ReactNode
 }) {
   return (
-    <section className="border-b border-black/15 px-5 py-12 sm:px-8 md:px-10 md:py-16">
-      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
+    <section
+      id={id}
+      className="scroll-mt-20 border-b border-black/15 px-5 py-12 sm:px-8 md:px-10 md:py-16"
+    >
+      <div className="rise mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
         <h2 className={eyebrow}>{label}</h2>
         <div className="max-w-3xl">{children}</div>
       </div>
@@ -240,6 +252,33 @@ export default async function First12Page({
           <p className="mt-7 max-w-2xl border-t border-black/15 pt-6 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
             {t.intro}
           </p>
+          <Link
+            href="/refer"
+            locale={locale}
+            className="btn-primary mt-8 w-full sm:w-auto sm:min-w-72"
+          >
+            <span>{t.referAction}</span>
+            <span aria-hidden="true">→</span>
+          </Link>
+          <nav aria-label={t.jumpLabel} className="mt-8">
+            <ul className="flex flex-wrap gap-x-6 gap-y-1 text-sm font-semibold">
+              {[
+                ["for", t.forEyebrow],
+                ["pay", t.payEyebrow],
+                ["safe", t.safeEyebrow],
+                ["measure", t.measureEyebrow],
+              ].map(([id, label]) => (
+                <li key={id}>
+                  <a
+                    href={`#${id}`}
+                    className="inline-flex min-h-11 items-center underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand)]"
+                  >
+                    {label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </section>
 
@@ -259,7 +298,7 @@ export default async function First12Page({
         </dl>
       </Row>
 
-      <Row label={t.forEyebrow}>
+      <Row label={t.forEyebrow} id="for">
         <p className="text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
           {t.forBody}
         </p>
@@ -285,7 +324,7 @@ export default async function First12Page({
         ) : null}
       </Row>
 
-      <Row label={t.payEyebrow}>
+      <Row label={t.payEyebrow} id="pay">
         <p className="text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
           {t.payBody}
         </p>
@@ -332,7 +371,7 @@ export default async function First12Page({
         </a>
       </Row>
 
-      <Row label={t.safeEyebrow}>
+      <Row label={t.safeEyebrow} id="safe">
         <ul className="space-y-4">
           {t.safe.map((line) => (
             <li
@@ -355,7 +394,7 @@ export default async function First12Page({
         ) : null}
       </Row>
 
-      <Row label={t.measureEyebrow}>
+      <Row label={t.measureEyebrow} id="measure">
         <p className="text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
           {t.measureIntro}
         </p>
@@ -381,19 +420,32 @@ export default async function First12Page({
       </Row>
 
       <section className="px-5 py-12 sm:px-8 md:px-10 md:py-16">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 sm:flex-row">
-          <Link href="/projects" locale={locale} className={link}>
-            <span>{t.pathwaysAction}</span>
+        <div className="mx-auto max-w-7xl">
+          <Link
+            href="/refer"
+            locale={locale}
+            className="btn-primary w-full sm:w-auto sm:min-w-72"
+          >
+            <span>{t.referAction}</span>
             <span aria-hidden="true">→</span>
           </Link>
-          <Link href="/transparency" locale={locale} className={link}>
-            <span>{t.transparency}</span>
-            <span aria-hidden="true">→</span>
-          </Link>
-          <Link href="/" locale={locale} className={link}>
-            <span>{t.back}</span>
-            <span aria-hidden="true">→</span>
-          </Link>
+          <p className="mt-6 text-sm text-[var(--color-text-muted)]">
+            <Link
+              href="/projects"
+              locale={locale}
+              className="inline-flex min-h-11 items-center underline underline-offset-4"
+            >
+              {t.pathwaysAction}
+            </Link>
+            <span aria-hidden="true"> · </span>
+            <Link
+              href="/transparency"
+              locale={locale}
+              className="inline-flex min-h-11 items-center underline underline-offset-4"
+            >
+              {t.transparency}
+            </Link>
+          </p>
         </div>
       </section>
     </div>

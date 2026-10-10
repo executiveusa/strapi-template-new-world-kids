@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { facts } from "@/content/facts"
 import { Link } from "@/lib/navigation"
 import { withCopyOverrides } from "@/lib/nwkids/copy"
+import { pageAlternates } from "@/lib/seo"
 
 // Facts below come from public records checked on 2026-10-09:
 // - Washington Secretary of State CCFS record (UBI 604 917 764)
@@ -39,16 +40,16 @@ const copy = {
     whoEyebrow: "Who is who",
     nwkTitle: "New World Kids",
     nwkBody:
-      "A Washington nonprofit corporation formed May 16, 2022. UBI 604 917 764. Status shown as Active in the Washington Secretary of State record.",
+      "A Washington nonprofit corporation formed May 16, 2022. UBI 604 917 764 (Washington’s business ID number). Status shown as Active in the Washington Secretary of State record.",
     nwkVerify: "Verify at ccfs.sos.wa.gov",
     nwkVerifyHint: "Search the UBI number.",
     hsiTitle: "Humanitarian Social Innovations (HSI)",
     hsiBody:
-      "Our fiscal sponsor. HSI is a 501(c)(3) public charity, EIN 46-4779591. Donations to the New World Kids fund are made to HSI.",
+      "Our fiscal sponsor: a charity that holds donated money and does the paperwork for us. HSI is a 501(c)(3) public charity, EIN 46-4779591 (the IRS’s ID number for an organization). Donations to the New World Kids fund are made to HSI.",
     hsiVerify: "Verify in the IRS Tax Exempt Organization Search",
     peopleTitle: "Who is responsible",
     peopleNote:
-      "Taken from the Washington record and our agreement with HSI. The Washington record lists one governor today.",
+      "Taken from the Washington record and our agreement with HSI. The Washington record lists one governor (a board member) today.",
     piaTitle: "Proyecto Indigo Azul",
     piaBody:
       "What it is: a demonstration food forest that New World Kids built in rural Puerto Vallarta, Mexico, starting in 2020. It is designed to grow into a learning center and a cultural exchange program. What it is not: the Seattle pilot. The First 12 has different participants, partners, and rules, and no results exist yet. How we use it: its photos and film are the dated record of what we built, always labeled as Proyecto Indigo Azul, never shown as Seattle participants or results.",
@@ -120,16 +121,16 @@ const copy = {
     whoEyebrow: "Quién es quién",
     nwkTitle: "New World Kids",
     nwkBody:
-      "Corporación sin fines de lucro de Washington, constituida el 16 de mayo de 2022. UBI 604 917 764. El registro del Secretario de Estado de Washington la muestra como Activa.",
+      "Corporación sin fines de lucro de Washington, constituida el 16 de mayo de 2022. UBI 604 917 764 (el número de identificación comercial de Washington). El registro del Secretario de Estado de Washington la muestra como Activa.",
     nwkVerify: "Verifica en ccfs.sos.wa.gov",
     nwkVerifyHint: "Busca el número UBI.",
     hsiTitle: "Humanitarian Social Innovations (HSI)",
     hsiBody:
-      "Nuestro patrocinador fiscal. HSI es una organización benéfica pública 501(c)(3), EIN 46-4779591. Las donaciones al fondo de New World Kids se hacen a HSI.",
+      "Nuestro patrocinador fiscal: una organización benéfica que recibe el dinero donado y se encarga del papeleo por nosotros. HSI es una organización benéfica pública 501(c)(3), EIN 46-4779591 (el número de identificación del IRS para una organización). Las donaciones al fondo de New World Kids se hacen a HSI.",
     hsiVerify: "Verifica en la búsqueda de organizaciones exentas del IRS",
     peopleTitle: "Quién es responsable",
     peopleNote:
-      "Tomado del registro de Washington y de nuestro acuerdo con HSI. Hoy el registro de Washington lista un gobernador.",
+      "Tomado del registro de Washington y de nuestro acuerdo con HSI. Hoy el registro de Washington lista a una persona con el cargo de “governor” (miembro de la mesa directiva).",
     piaTitle: "Proyecto Indigo Azul",
     piaBody:
       "Qué es: un bosque comestible de demostración que New World Kids construyó en el campo de Puerto Vallarta, México, desde 2020. Está diseñado para convertirse en un centro de aprendizaje y un programa de intercambio cultural. Qué no es: el piloto de Seattle. Los Primeros 12 tienen participantes, socios y reglas distintos, y todavía no hay resultados. Cómo lo usamos: sus fotos y videos son el registro fechado de lo que construimos, siempre identificados como Proyecto Indigo Azul y nunca mostrados como participantes ni resultados de Seattle.",
@@ -205,7 +206,11 @@ export async function generateMetadata({
   const { locale } = await params
   const t = locale === "es" ? copy.es : copy.en
 
-  return { title: t.metaTitle, description: t.metaDescription }
+  return {
+    title: t.metaTitle,
+    description: t.metaDescription,
+    alternates: pageAlternates(locale, "/transparency"),
+  }
 }
 
 export default async function TransparencyPage({
@@ -236,7 +241,7 @@ export default async function TransparencyPage({
       </section>
 
       <section className="border-b border-black/15 px-5 py-14 sm:px-8 md:px-10 md:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
+        <div className="rise mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
           <p className={eyebrow}>{t.whoEyebrow}</p>
           <div className="max-w-3xl divide-y divide-black/15 border-y border-black/15">
             <div className="py-7">
@@ -317,7 +322,7 @@ export default async function TransparencyPage({
       </section>
 
       <section className="border-b border-black/15 px-5 py-14 sm:px-8 md:px-10 md:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
+        <div className="rise mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
           <p className={eyebrow}>{t.giveEyebrow}</p>
           <div className="max-w-3xl divide-y divide-black/15 border-y border-black/15">
             <div className="py-7">
@@ -369,7 +374,7 @@ export default async function TransparencyPage({
       </section>
 
       <section className="border-b border-black/15 px-5 py-14 sm:px-8 md:px-10 md:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
+        <div className="rise mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
           <div>
             <p className={eyebrow}>{t.docsEyebrow}</p>
             <p className="mt-3 max-w-xs text-sm leading-6 text-[var(--color-text-muted)]">
@@ -418,7 +423,7 @@ export default async function TransparencyPage({
       </section>
 
       <section className="px-5 py-14 sm:px-8 md:px-10 md:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
+        <div className="rise mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.6fr_1.4fr] lg:gap-20">
           <p className={eyebrow}>{t.contactEyebrow}</p>
           <div className="max-w-3xl">
             <p className="text-base leading-7 text-[var(--color-text-muted)]">

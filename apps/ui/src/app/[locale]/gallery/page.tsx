@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import type { Locale } from "next-intl"
 
 import { gallerySlots, indigoPlants, type GallerySlot } from "@/content/gallery"
+import { pageAlternates } from "@/lib/seo"
 
 const INDIGO_YOUTUBE = "https://www.youtube.com/@proyectoindigoazul"
 const INDIGO_INSTAGRAM = "https://www.instagram.com/proyectoindigoazul/"
@@ -195,7 +196,11 @@ export async function generateMetadata({
   const { locale } = (await params) as { locale: Locale }
   const t = locale === "es" ? copy.es : copy.en
 
-  return { title: t.metaTitle, description: t.metaDescription }
+  return {
+    title: t.metaTitle,
+    description: t.metaDescription,
+    alternates: pageAlternates(locale, "/gallery"),
+  }
 }
 
 export default async function GalleryPage({

@@ -60,7 +60,7 @@
 **Environment Variables Required:**
 
 ```
-STRIPE_SECRET_KEY=sk_live_...
+STRIPE_SECRET_KEY=<stripe-secret-key>
 STRIPE_WEBHOOK_SECRET=whsec_...
 ```
 

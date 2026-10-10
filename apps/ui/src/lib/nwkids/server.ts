@@ -10,24 +10,37 @@ const allowedPathways = new Set([
   "cross_pathway",
 ])
 
+const MAX_TEXT = 2500
+
 export type NwkLocale = "en" | "es"
 
 function required(value: FormDataEntryValue | null, name: string, min = 2) {
   const text = String(value ?? "").trim()
-  if (text.length < min) throw new Error(`Invalid ${name}`)
+  if (text.length < min || text.length > MAX_TEXT)
+    throw new Error(`Invalid ${name}`)
 
   return text
 }
 
 function optional(value: FormDataEntryValue | null) {
   const text = String(value ?? "").trim()
+  if (text.length > MAX_TEXT) throw new Error("Text too long")
 
   return text || null
 }
 
 function email(value: FormDataEntryValue | null) {
   const text = required(value, "email", 5).toLowerCase()
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text)) throw new Error("Invalid email")
+  const at = text.indexOf("@")
+  const domain = text.slice(at + 1)
+  const valid =
+    at > 0 &&
+    at === text.lastIndexOf("@") &&
+    domain.includes(".") &&
+    !domain.startsWith(".") &&
+    !domain.endsWith(".") &&
+    !/\s/.test(text)
+  if (!valid) throw new Error("Invalid email")
 
   return text
 }

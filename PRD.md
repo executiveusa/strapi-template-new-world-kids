@@ -24,8 +24,8 @@
 
 - Docker Compose at `infrastructure/hermes/docker-compose.yml` is valid
 - Services: paperclip (:3100), hermes-webui (:8787), postiz (:3200), postiz-db, postiz-redis
-- On VPS 31.220.58.212: `docker-compose up -d` starts all services
-- Acceptance: `curl http://31.220.58.212:3100/health` → 200, hermes-webui login page reachable at :8787
+- On VPS <vps-host>: `docker-compose up -d` starts all services
+- Acceptance: `curl http://<vps-host>:3100/health` → 200, hermes-webui login page reachable at :8787
 
 ## [P1] Configure Hermes in Paperclip UI
 

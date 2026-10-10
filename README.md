@@ -64,10 +64,12 @@ Code: `apps/ui/src/lib/site-mode.ts` and `apps/ui/src/middleware.ts`.
 
 ## Database
 
-Apply `supabase/migrations/*.sql` to the New World Kids Supabase project (in the SQL editor, or with the
-Supabase CLI). All tables are private: row level security is on, with no public policies except read-only
-`nwk_copy`. Server code uses the service role. The referral, mentor, project, and waitlist forms fail with a
-friendly error until the schema is applied.
+The New World Kids tables live in the `nwkids` schema of the Supabase project `cyxdevcjycmffhmwxojh`
+(applied 2026-10-10 from `supabase/migrations/*.sql`; the other project's tables are not touched). All tables
+are private: row level security is on with no public policies, except read-only `public.nwk_copy`. The website
+writes through two service-role-only functions, `nwkids_submit_referral` and `nwkids_join_waitlist`, plus the
+older mentor and project functions. Set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` on the host (never in
+git). Without them the forms show a friendly error.
 
 Rules built into the schema (checked in tests): 16 and 17 year olds cannot be scheduled over Washington's
 hour limits; pay must be at least the applicable minimum wage plus $3; a project with a prohibited duty
@@ -83,10 +85,20 @@ picks it up within about a minute. Gallery photos are added in `apps/ui/src/cont
 
 ## Quality checks
 
-`node scripts/audit-viewports.mjs` opens every route at ten sizes (320px phones through 1440px desktop) and
-reports overflow, small tap targets, tiny text, low contrast, missing alt text, and heading mistakes.
-Run the site with `SITE_MODE=live` first. See `docs/NWK_ELI5_AND_ADHD_AUDIT.md` for the reading and
-focus audit, and `docs/NWK_COMPLIANCE_CROSSWALK.md` for the Washington and federal rules.
+Run the site with `SITE_MODE=live`, then:
+
+- `node scripts/audit-viewports.mjs` opens every route at ten sizes (320px phones through 1440px desktop) and
+  reports overflow, small tap targets, tiny text, low contrast, missing alt text, and heading mistakes. Add
+  `--devices` to use named phones and tablets (iPhone, Pixel, Galaxy, iPad) from Playwright's open-source device
+  list. This is Chromium emulation; check real Safari and Android on a phone before launch.
+- `node scripts/check-seo.mjs` checks titles, descriptions, canonical and hreflang, Open Graph, structured data,
+  `robots.txt`, `sitemap.xml`, security headers, and the 404 page for every page in English and Spanish.
+- `scripts/build-timelapse.sh <photo-folder>` builds the homepage timelapse; see `docs/NWK_HERO_TIMELAPSE_PLAN.md`.
+
+Public forms are throttled per visitor (`apps/ui/src/lib/rate-limit.ts`) and the site sends security headers
+(`apps/ui/next.config.mjs`). See `docs/NWK_ELI5_AND_ADHD_AUDIT.md` for the reading and focus audit,
+`docs/NWK_SPANISH_REVIEW_ES_MX.md` for the Spanish review, and `docs/NWK_COMPLIANCE_CROSSWALK.md` for the
+Washington and federal rules.
 
 ## Rules that do not bend
 

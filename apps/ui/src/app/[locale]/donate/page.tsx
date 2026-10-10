@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { FUNDRAZR_CAMPAIGN_URL } from "@/content/donation"
 import { Link } from "@/lib/navigation"
 import { withCopyOverrides } from "@/lib/nwkids/copy"
+import { pageAlternates } from "@/lib/seo"
 
 // Wording mirrors the New World Kids FundRazr campaign and HSI's published
 // instructions. HSI must approve fundraising text in writing (sponsorship
@@ -28,8 +29,12 @@ const copy = {
     give: "Give online",
     giveNote: "Opens our campaign on HSI’s FundRazr platform in a new tab.",
     check: "Prefer a check?",
-    checkBody:
-      "Make it payable to Humanitarian Social Innovations and write “New World Kids” on the memo line. Details are on our transparency page.",
+    checkBody: "Three steps:",
+    checkSteps: [
+      "Write the check to “Humanitarian Social Innovations”.",
+      "Write “New World Kids” on the memo line.",
+      "Mail it to: 301 Broadway, Suite 115, Bethlehem, PA 18015.",
+    ],
     proof: "Where we are today",
     proofBody:
       "The First 12 has not started. We are building real projects and mentor commitments first, and we publish our progress as we go.",
@@ -54,8 +59,12 @@ const copy = {
     giveNote:
       "Abre nuestra campaña en la plataforma FundRazr de HSI, en una pestaña nueva.",
     check: "¿Prefieres cheque?",
-    checkBody:
-      "Hazlo a nombre de Humanitarian Social Innovations y escribe “New World Kids” en la línea de memo. Los detalles están en nuestra página de transparencia.",
+    checkBody: "Tres pasos:",
+    checkSteps: [
+      "Haga el cheque a nombre de “Humanitarian Social Innovations”.",
+      "Escriba “New World Kids” en el renglón de memo (nota).",
+      "Envíelo a: 301 Broadway, Suite 115, Bethlehem, PA 18015.",
+    ],
     proof: "Dónde estamos hoy",
     proofBody:
       "Los Primeros 12 todavía no han empezado. Primero construimos proyectos reales y compromisos de mentores, y publicamos el avance.",
@@ -77,7 +86,11 @@ export async function generateMetadata({
   const { locale } = await params
   const t = locale === "es" ? copy.es : copy.en
 
-  return { title: t.metaTitle, description: t.metaDescription }
+  return {
+    title: t.metaTitle,
+    description: t.metaDescription,
+    alternates: pageAlternates(locale, "/donate"),
+  }
 }
 
 export default async function DonatePage({
@@ -127,12 +140,17 @@ export default async function DonatePage({
           <p className="mt-3 text-sm text-[var(--color-text-muted)]">
             {t.giveNote}
           </p>
-          <p className="mt-6 text-base leading-7">
+          <p className="mt-8 text-base leading-7">
             <span className="font-bold">{t.check} </span>
             <span className="text-[var(--color-text-muted)]">
               {t.checkBody}
             </span>
           </p>
+          <ol className="mt-3 list-decimal space-y-2 pl-6 text-base leading-7 text-[var(--color-text-muted)]">
+            {t.checkSteps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
         </div>
         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
           <Link href="/transparency" locale={locale} className={link}>
