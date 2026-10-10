@@ -10,6 +10,23 @@ type Props = {
   readonly children: React.ReactNode
 }
 
+// Rendered by each page inside its success message, which replaces the form: removes the saved answers.
+export function ClearSavedForm({
+  storageKey,
+}: {
+  readonly storageKey: string
+}) {
+  useEffect(() => {
+    try {
+      sessionStorage.removeItem(storageKey)
+    } catch {
+      // storage unavailable: nothing was saved
+    }
+  }, [storageKey])
+
+  return null
+}
+
 // Keeps what the visitor typed if the server rejects a submission. Server
 // actions redirect on error, which would otherwise wipe long answers. Values
 // live in sessionStorage (this tab only) and are cleared on success.

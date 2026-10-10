@@ -24,10 +24,13 @@ const BASE = process.env.BASE_URL ?? "http://localhost:3100"
 const args = process.argv.slice(2)
 const argValue = (flag) => (args.includes(flag) ? args[args.indexOf(flag) + 1] : undefined)
 
-const ROUTES = (argValue("--routes")?.split(",") ?? [
-  "/", "/es", "/first-12", "/es/first-12", "/projects", "/gallery", "/transparency", "/donate",
-  "/safeguarding", "/safeguarding/policy", "/privacy", "/refer", "/mentor", "/opportunity", "/blog", "/coming-soon", "/es/coming-soon",
-]).map((r) => r.trim())
+const BASE_ROUTES = [
+  "/", "/first-12", "/projects", "/gallery", "/transparency", "/donate",
+  "/safeguarding", "/safeguarding/policy", "/privacy", "/refer", "/mentor", "/opportunity", "/blog", "/coming-soon",
+]
+// Every default route is audited in English and in Spanish.
+const withSpanish = BASE_ROUTES.flatMap((r) => [r, r === "/" ? "/es" : `/es${r}`])
+const ROUTES = (argValue("--routes")?.split(",") ?? withSpanish).map((r) => r.trim())
 
 const VIEWPORTS = [
   [320, 568], [360, 800], [375, 812], [390, 844], [414, 896], [430, 932], [768, 1024], [1024, 768], [1280, 800], [1440, 900],

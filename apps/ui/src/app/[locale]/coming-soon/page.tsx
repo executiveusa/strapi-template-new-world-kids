@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 
-import { IntakeForm } from "@/components/site/IntakeForm"
+import { ClearSavedForm, IntakeForm } from "@/components/site/IntakeForm"
 
 import { joinWaitlist } from "./actions"
 
@@ -145,6 +145,7 @@ export default async function ComingSoonPage({
           <div className="mt-9 max-w-xl border-t border-black/15 pt-7">
             {query.joined === "1" ? (
               <div role="status">
+                <ClearSavedForm storageKey="nwk-waitlist" />
                 <h2 className="t-h3">{t.joinedTitle}</h2>
                 <p className="mt-2 text-base leading-7 text-[var(--color-ink-muted)]">
                   {t.joinedBody}

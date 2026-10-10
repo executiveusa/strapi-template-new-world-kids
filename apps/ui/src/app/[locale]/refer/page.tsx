@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 
-import { IntakeForm } from "@/components/site/IntakeForm"
+import { ClearSavedForm, IntakeForm } from "@/components/site/IntakeForm"
 import { Link } from "@/lib/navigation"
 import { withCopyOverrides } from "@/lib/nwkids/copy"
 import { pageAlternates } from "@/lib/seo"
@@ -181,6 +181,7 @@ export default async function ReferPage({
         <div className="mx-auto max-w-7xl">
           {query.submitted === "1" ? (
             <div className="max-w-3xl border-t border-black/20 pt-7">
+              <ClearSavedForm storageKey="nwk-referral" />
               <h2 className="t-h2">{t.submittedTitle}</h2>
               <p className="mt-5 text-base leading-7 text-[var(--color-text-muted)] sm:text-lg sm:leading-8">
                 {t.submittedBody}

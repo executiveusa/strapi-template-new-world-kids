@@ -138,6 +138,25 @@ create table if not exists nwkids.agreements (
 create trigger nwk_agreements_touch before update on nwkids.agreements
   for each row execute function nwkids.touch_updated_at();
 
+-- youth_is_minor is never taken from the caller: it is derived from the placement's birth date when known,
+-- otherwise from the referral age (16 and 17 are minors; if the age is stale we keep the stricter limits).
+create or replace function nwkids.set_minor_flag() returns trigger
+language plpgsql set search_path = pg_catalog, nwkids, public as $$
+declare v_age int; v_birth date;
+begin
+  select r.youth_age, p.youth_birth_date into v_age, v_birth
+  from nwkids.placements p join nwkids.referrals r on r.id = p.referral_id
+  where p.id = new.placement_id;
+  if v_birth is not null then
+    new.youth_is_minor := date_part('year', age(current_date, v_birth)) < 18;
+  else
+    new.youth_is_minor := coalesce(v_age, 0) < 18;
+  end if;
+  return new;
+end $$;
+create trigger nwk_agreements_a_minor before insert or update on nwkids.agreements
+  for each row execute function nwkids.set_minor_flag();
+
 create table if not exists nwkids.agreement_signatures (
   id uuid primary key default gen_random_uuid(),
   agreement_id uuid not null references nwkids.agreements (id) on delete cascade,
