@@ -10,7 +10,7 @@ const copy = {
   en: {
     eyebrow: "Seattle · First 12 · 2027",
     title: "Help turn interest into opportunity.",
-    body: "Paid work, a mentor, and a next step for young people ages 16 to 19 in Seattle.",
+    body: "Paid work, a mentor, and a clear next step for 12 local youth ages 16 to 19.",
     primary: "Join the work",
     caption:
       "Proyecto Indigo Azul · Puerto Vallarta, Mexico. Where it started. Seattle footage is coming.",
@@ -19,7 +19,7 @@ const copy = {
   es: {
     eyebrow: "Seattle · Primeros 12 · 2027",
     title: "Ayude a convertir el interés en oportunidad.",
-    body: "Trabajo remunerado, un mentor y un siguiente paso para jóvenes de 16 a 19 años en Seattle.",
+    body: "Trabajo remunerado, un mentor y un siguiente paso claro para 12 jóvenes locales de 16 a 19 años.",
     primary: "Súmese al trabajo",
     caption:
       "Proyecto Indigo Azul · Puerto Vallarta, México. Donde empezó. El material de Seattle viene en camino.",
