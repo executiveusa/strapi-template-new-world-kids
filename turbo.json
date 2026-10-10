@@ -3,6 +3,7 @@
   "globalDependencies": ["**/.env", "**/.env.*local"],
   "globalEnv": [
     "SITE_MODE",
+    "NWK_SITE_MODE_BUILD",
     "PREVIEW_KEY",
     "APP_PUBLIC_URL",
     "NEXT_PUBLIC_BLOG_PUBLIC_URL",

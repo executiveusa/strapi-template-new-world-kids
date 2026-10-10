@@ -14,7 +14,7 @@ const csp = [
   "media-src 'self' blob: https:",
   "font-src 'self' data:",
   "connect-src 'self' https://*.supabase.co" + (isDev ? " ws: http:" : ""),
-  "frame-src https://fundrazr.com https://*.fundrazr.com",
+  "frame-src https://fundrazr.com https://*.fundrazr.com https://app.netlify.com",
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self' https://fundrazr.com https://*.fundrazr.com",
@@ -39,6 +39,8 @@ const securityHeaders = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  // Baked in at build time so the site mode also works where run-time env is limited (edge middleware).
+  env: { NWK_SITE_MODE_BUILD: process.env.SITE_MODE ?? "" },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }]
   },

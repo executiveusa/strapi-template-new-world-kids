@@ -18,7 +18,7 @@ export interface NIMCallOptions {
 }
 
 export async function nimChat(
-  messages: { role: 'user' | 'assistant' | 'system', content: string }[],
+  messages: { role: 'user' | 'assistant' | 'system'; content: string }[],
   opts: NIMCallOptions = {},
 ): Promise<string> {
   const payload = {

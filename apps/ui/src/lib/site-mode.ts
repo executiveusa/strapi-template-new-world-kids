@@ -14,11 +14,17 @@ export const PREVIEW_COOKIE = "nwk_preview"
 export function getSiteMode(
   env: Record<string, string | undefined> = process.env
 ): SiteMode {
-  const value = env.SITE_MODE?.trim().toLowerCase()
+  // The literal process.env.X reads below are replaced at build time, so the answer is still right in
+  // edge runtimes (such as Netlify's) where NODE_ENV is not present at run time.
+  const value = (env.SITE_MODE || process.env.NWK_SITE_MODE_BUILD || "")
+    .trim()
+    .toLowerCase()
   if (value === "live") return "live"
   if (value === "coming-soon" || value === "hidden") return "coming-soon"
 
-  return env.NODE_ENV === "production" ? "coming-soon" : "live"
+  const nodeEnv = env.NODE_ENV || process.env.NODE_ENV
+
+  return nodeEnv === "production" ? "coming-soon" : "live"
 }
 
 const alwaysOpen = [/^\/(?:es\/)?coming-soon\/?$/, /^\/(?:es\/)?privacy\/?$/]
