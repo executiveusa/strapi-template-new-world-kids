@@ -248,9 +248,19 @@ export default async function ComingSoonPage({
             </div>
           ))}
         </dl>
-        <p className="mt-6 max-w-3xl text-xs leading-6 text-[var(--color-ink-muted)]">
-          {hsiDisclosure}
-        </p>
+        <div className="mt-6 flex max-w-3xl flex-col gap-4 sm:flex-row sm:items-start sm:gap-6">
+          {/* HSI's required program logo, same file and wording as the site footer.
+              Hosted by HSI; the alt text is the fallback. Confirm placement with HSI. */}
+          <img
+            src="https://hsifiscalsponsor.org/wp-content/uploads/2024/05/HSI-Program-Footer-Logo-no-bg-1.png"
+            alt="Humanitarian Social Innovations"
+            loading="lazy"
+            className="block h-auto w-40 max-w-full shrink-0"
+          />
+          <p className="text-xs leading-6 text-[var(--color-ink-muted)]">
+            {hsiDisclosure}
+          </p>
+        </div>
         <p className="mt-3 flex flex-wrap items-center gap-x-5 text-xs text-[var(--color-ink-muted)]">
           <span>&copy; {new Date().getFullYear()} New World Kids</span>
           <a
