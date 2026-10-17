@@ -151,10 +151,10 @@ export function SiteFooter({ locale }: { readonly locale: Locale }) {
             <div className="mt-6 grid gap-6 sm:grid-cols-[auto_1fr] sm:items-start sm:gap-8">
               <div className="w-fit">
                 {/* HSI's required program logo, shown in its own colors on a paper plate so it
-                    stays visible on the dark footer. Hosted by HSI; the name below is the fallback. */}
+                    stays visible on the dark footer. Vendored locally because HSI site bot-blocks hotlinking; the name below is the fallback. */}
                 <div className="bg-[var(--color-paper)] p-4 sm:p-5">
                   <img
-                    src="https://hsifiscalsponsor.org/wp-content/uploads/2024/05/HSI-Program-Footer-Logo-no-bg-1.png"
+                    src="/images/hsi-program-footer-logo.png"
                     alt="Humanitarian Social Innovations"
                     loading="lazy"
                     className="block h-auto w-40 max-w-full sm:w-48"
